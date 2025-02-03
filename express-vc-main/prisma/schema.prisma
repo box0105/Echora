@@ -62,7 +62,8 @@ model Product {
 
 model ProductSku {
   //id 改為1-1, 1-2, 1-3 (productId-colorId)
-  id        Int    @id @default(autoincrement())
+  // id        Int    @id @default(autoincrement())
+  id        String    @id @db.VarChar(20)
   productId Int    @map("product_id")
   name      String @db.VarChar(100)
   colorId   Int    @map("color_id")
