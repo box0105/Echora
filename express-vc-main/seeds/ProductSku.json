@@ -2,14 +2,14 @@
     {
       "id": "1-5",
       "productId": 1,
-      "name": "Les Paul Junior Double Cut",
+      "name": "Player II Jaguar®",
       "colorId": 5,
       "stock": 10
     },
     {
       "id": "1-4",
       "productId": 1,
-      "name": "Les Paul Junior Double Cut",
+      "name": "Player II Jaguar®",
       "colorId": 4,
       "stock": 10
     },
@@ -975,7 +975,7 @@
     {
       "id": "98-11",
       "productId": 98,
-      "name": "Jim Root Jazzmaster® V4",
+      "name": "Jim Root Jazzmaster®",
       "colorId": 11,
       "stock": 10
     },

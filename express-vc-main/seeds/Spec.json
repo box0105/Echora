@@ -1,12 +1,12 @@
 [
     {
       "productId": 1,
-      "name": "Les Paul Junior Double Cut",
-      "neckPickup": "",
+      "name": "Player II Jaguar®",
+      "neckPickup": "Player Series Alnico 2 Jaguar Single-Coil",
       "middlePickup": "",
-      "bridgePickup": "Dogear P-90",
-      "controls": "1 個音量旋鈕，1 個音色旋鈕；手工接線，搭配 Orange Drop 電容器。",
-      "switching": ""
+      "bridgePickup": "Player Series Alnico 5 Jaguar Single-Coil",
+      "controls": "主音量：調節整體音量輸出，主音色：調整整體音色（影響高低頻響應）",
+      "switching": "3 檔刀型切換開關\n位置 1：僅啟用橋部拾音器\n位置 2：同時啟用橋部與頸部拾音器\n位置 3：僅啟用頸部拾音器"
     },
     {
       "productId": 2,
@@ -874,7 +874,7 @@
     },
     {
       "productId": 98,
-      "name": "Jim Root Jazzmaster® V4",
+      "name": "Jim Root Jazzmaster®",
       "neckPickup": "EMG® 60",
       "middlePickup": "",
       "bridgePickup": "EMG® 81",
