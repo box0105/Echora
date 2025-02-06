@@ -42,6 +42,7 @@ router.get('/:pid', async (req, res) => {
 })
 
 // GET /api/products/search
+// ask: error 連不到
 router.get('/search', async (req, res) => {
     res.json({
         status: "success",

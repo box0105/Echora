@@ -34,6 +34,7 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.32.2",
     "postcss": "^8.4.48",
+    "rimraf": "^6.0.1",
     "sass": "^1.78.0"
   }
 }
