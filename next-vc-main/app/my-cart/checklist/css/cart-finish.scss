@@ -1,0 +1,16 @@
+.gray200 {
+  color: #cacaca;
+}
+.m-sec3-tip {
+  max-width: 720px;
+  border: 2px solid #d52b1e;
+  padding: 32px;
+}
+
+@media (max-width: 768px) {
+  .m-sec3-tip {
+    margin: 16px;
+    padding: 16px;
+  }
+  
+}

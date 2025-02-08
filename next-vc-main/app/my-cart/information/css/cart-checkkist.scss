@@ -1,0 +1,51 @@
+/* 全域 */
+.container-fluid.m-index1 {
+  padding-inline: 64px;
+  padding-block: 100px 0;
+  @media (max-width: 768px) {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+/* section2 */
+.m-sec2-col8 {
+  padding-right: 64px;
+  @media (max-width: 768px) {
+    padding: 16px;
+  }
+}
+.m-sec1-img {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+.m-sec1-mobile {
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+.m-img-rotate {
+  transform: rotate(90deg);
+}
+.m-sec2-btn {
+  width: 40px;
+}
+.d-flex.align-items-end h4 {
+  margin: 0;
+}
+.m-sec2-card {
+  @media (max-width: 768px) {
+    margin-bottom: 32px;
+  }
+}
+.m-sec2-col4 {
+  padding-inline: 32px;
+  background-color: #f9f9f9;
+}
+.card.mb-3 {
+  @media (max-width: 768px) {
+    padding-inline: 16px;
+  }
+}
