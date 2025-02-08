@@ -1,4 +1,5 @@
 export default function CartItem({ item }) {
+
   return (
     <div className="card card1 mb-3">
       <div className="row g-0">
@@ -20,6 +21,24 @@ export default function CartItem({ item }) {
                   <h4 className="ps-2">
                     {item.stockStatus != 0 ? '有庫存' : '無庫存'}
                   </h4>
+                </div>
+                <div className="d-flex align-items-end p-lg-2 pb-lg-3 py-2">
+                  <h4>數量 :</h4>
+                  <div
+                    className="btn-group btn-group-sm"
+                    role="group"
+                    aria-label="Basic outlined example"
+                  >
+                    <button type="button" className="btn">
+                      <i className="fa-solid fa-minus fa-fw" />
+                    </button>
+                    <button type="button" className="btn">
+                      1
+                    </button>
+                    <button type="button" className="btn">
+                      <i className="fa-solid fa-plus fa-fw" />
+                    </button>
+                  </div>
                 </div>
                 {item.rentDate && (
                   <div className="d-flex align-items-end p-lg-2 py-lg-3 py-2">
