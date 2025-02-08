@@ -1,8 +1,8 @@
-'use client'
+// 伺服器端元件
+import { redirect } from "next/navigation"
+
 export default function ProductDetailPage() {
-    return(
-        <>
-            <div>ProductDetailPage</div>
-        </>
-    )
+    //導向到list列表頁
+    redirect('/product/list')
+    return<></>
 }
