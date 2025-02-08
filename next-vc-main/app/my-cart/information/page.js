@@ -1,13 +1,13 @@
 'use client'
-import './css/bootstrap.scss'
-import './css/cart-checkkist.scss'
-import './css/style0.scss'
-import './css/index.scss'
-import './css/cart-information.scss'
+import './_styles/bootstrap.scss'
+import './_styles/cart-checkkist.scss'
+import './_styles/style0.scss'
+import './_styles/index.scss'
+import './_styles/cart-information.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
-export default function InformationPage(props) {
+export default function InformationPage() {
   return (
     <>
       <div className="m-background">
@@ -17,7 +17,11 @@ export default function InformationPage(props) {
               <img className="img-fluid" src="/images/cart/流程圖2.svg" alt />
             </div>
             <div className="m-sec1-mobile w-75">
-              <img className="img-fluid" src="/images/cart/流程圖2-手機.svg" alt />
+              <img
+                className="img-fluid"
+                src="/images/cart/流程圖2-手機.svg"
+                alt
+              />
             </div>
           </div>
         </div>

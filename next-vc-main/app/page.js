@@ -1,8 +1,8 @@
 'use client'
-import './_css/bootstrap.scss'
-import './_css/nav.scss'
-import './_css/style0.scss'
-import './_css/index.scss'
+import './_styles/bootstrap.scss'
+import './_styles/nav.scss'
+import './_styles/style0.scss'
+import './_styles/index.scss'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

@@ -1,14 +1,45 @@
 'use client'
-import './css/bootstrap.scss'
-import './css/cart-checkkist.scss'
-import './css/style0.scss'
-import './css/index.scss'
+import './_styles/bootstrap.scss'
+import './_styles/cart-checkkist.scss'
+import './_styles/style0.scss'
+import './_styles/index.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css'
+
+import CartList from './_components/cart-list'
 
 import React, { useState, useEffect } from 'react'
 
 export default function ChecklistPage(props) {
+  const cartItems = [
+    {
+      id: 1,
+      name: 'Limited Edition Paranormal Troublemaker Telecaster® Deluxe',
+      color: 'white',
+      stockStatus: 0,
+      image: '/images/cart/card2-img.png',
+      quantity: 1,
+      price: 13999,
+    },
+    {
+      id: 2,
+      name: '(租用) Limited Edition Paranormal Troublemaker Telecaster® Deluxe',
+      color: 'white',
+      rentDate: '2025-01-02 - 2025-01-04',
+      stockStatus: 1,
+      image: '/images/cart/card2-img.png',
+      price: 2400,
+    },
+    {
+      id: 3,
+      name: '衛武營國際音樂節-全票',
+      stockStatus: 1,
+      image: '/images/cart/card3.png',
+      quantity: 1,
+      price: 700,
+    },
+  ]
+
   return (
     <>
       <div className="m-background">
@@ -31,148 +62,10 @@ export default function ChecklistPage(props) {
             <div className="m-sec2-col8 col-lg-8 col-12">
               <div className="d-flex justify-content-between align-items-end py-4">
                 <div className="h2">購物車清單</div>
-                <h3>2件商品</h3>
+                <h3>{cartItems.length} 件商品</h3>
               </div>
               <div className="row row-cols-1">
-                <div className="col">
-                  <div className="card card1 mb-3">
-                    <div className="row g-0">
-                      <div className="col-md-3 m-sec2-card">
-                        <img
-                          src="/images/cart/card2-img.png"
-                          className="img-fluid"
-                          alt
-                        />
-                      </div>
-                      <div className="col-md-9">
-                        <div className="card-body p-lg-3 p-0">
-                          <div className="d-flex flex-column justify-content-between">
-                            <div>
-                              <h3 className="h3 p-lg-x-2 p-lg-2">
-                                Limited Edition Paranormal Troublemaker
-                                Telecaster® Deluxe
-                              </h3>
-                              <h4 className="p-lg-2">顏色 : white</h4>
-                              <div className="d-flex align-items-end p-lg-2">
-                                <img src="/images/cart/box-icon.svg" alt />
-                                <h4 className="ps-2">有庫存</h4>
-                              </div>
-                              <div className="d-flex align-items-end p-lg-2 pb-lg-3 py-2">
-                                <h4>數量 :</h4>
-                                <div
-                                  className="btn-group btn-group-sm"
-                                  role="group"
-                                  aria-label="Basic outlined example"
-                                >
-                                  <button type="button" className="btn">
-                                    <i className="fa-solid fa-minus fa-fw" />
-                                  </button>
-                                  <button type="button" className="btn">
-                                    1
-                                  </button>
-                                  <button type="button" className="btn">
-                                    <i className="fa-solid fa-plus fa-fw" />
-                                  </button>
-                                </div>
-                              </div>
-                              <h4 className="h3 p-lg-2">價錢 : NT$ 13,999</h4>
-                            </div>
-                            <div className="d-flex justify-content-center pt-lg-5 mt-lg-5 pt-3">
-                              <h5 className="btn">移除商品</h5>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col">
-                  <div className="card card1 mb-3">
-                    <div className="row g-0">
-                      <div className="col-md-3 m-sec2-card">
-                        <img
-                          src="/images/cart/card2-img.png"
-                          className="img-fluid"
-                          alt
-                        />
-                      </div>
-                      <div className="col-md-9">
-                        <div className="card-body p-lg-3 p-0">
-                          <div className="d-flex flex-column justify-content-between">
-                            <div>
-                              <h3 className="h3 p-lg-x-2 p-lg-2">
-                                (租用)Limited Edition Paranormal Troublemaker
-                                Telecaster® Deluxe
-                              </h3>
-                              <h4 className="p-lg-2">顏色 : white</h4>
-                              <div className="d-flex align-items-end p-lg-2">
-                                <img src="/images/cart/box-icon.svg" alt />
-                                <h4 className="ps-2">有庫存</h4>
-                              </div>
-                              <div className="d-flex align-items-end p-lg-2 py-lg-3 py-2">
-                                <h4>租借日期 : 2025-01-02 - 2025-01-04</h4>
-                              </div>
-                              <h4 className="h3 p-lg-2">價錢 : NT$ 2,400</h4>
-                            </div>
-                            <div className="d-flex justify-content-center pt-lg-5 mt-lg-5 pt-3">
-                              <h5 className="btn">移除商品</h5>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col">
-                  <div className="card card1 mb-3">
-                    <div className="row g-0">
-                      <div className="col-md-3 m-sec2-card">
-                        <img
-                          src="/images/cart/card3.png"
-                          className="img-fluid"
-                          alt
-                        />
-                      </div>
-                      <div className="col-md-9">
-                        <div className="card-body p-lg-3 p-0">
-                          <div className="d-flex flex-column justify-content-between">
-                            <div>
-                              <h3 className="h3 p-lg-x-2 p-lg-2">
-                                衛武營國際音樂節-全票
-                              </h3>
-                              <div className="d-flex align-items-end p-lg-2">
-                                <img src="/images/cart/box-icon.svg" alt />
-                                <h4 className="ps-2">有庫存</h4>
-                              </div>
-                              <div className="d-flex align-items-end p-lg-2 pb-lg-3 py-2">
-                                <h4>數量 :</h4>
-                                <div
-                                  className="btn-group btn-group-sm"
-                                  role="group"
-                                  aria-label="Basic outlined example"
-                                >
-                                  <button type="button" className="btn">
-                                    <i className="fa-solid fa-minus fa-fw" />
-                                  </button>
-                                  <button type="button" className="btn">
-                                    1
-                                  </button>
-                                  <button type="button" className="btn">
-                                    <i className="fa-solid fa-plus fa-fw" />
-                                  </button>
-                                </div>
-                              </div>
-                              <h4 className="h3 p-lg-2">價錢 : NT$ 700</h4>
-                            </div>
-                            <div className="d-flex justify-content-center pt-lg-5 mt-lg-5 pt-3">
-                              <h5 className="btn">移除商品</h5>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <CartList cartItems={cartItems} />
               </div>
             </div>
             <div className="m-sec2-col4 col-lg-4 col-12">
