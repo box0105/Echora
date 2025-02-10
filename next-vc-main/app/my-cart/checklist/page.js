@@ -22,6 +22,15 @@ export default function ChecklistPage(props) {
       price: 13999,
     },
     {
+      id: 1,
+      name: 'Limited Edition Paranormal Troublemaker Telecaster® Deluxe',
+      color: 'white',
+      stockStatus: 1,
+      image: '/images/cart/card2-img.png',
+      quantity: 1,
+      price: 13999,
+    },
+    {
       id: 2,
       name: '(租用) Limited Edition Paranormal Troublemaker Telecaster® Deluxe',
       color: 'white',
