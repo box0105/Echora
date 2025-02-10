@@ -1,13 +1,13 @@
 'use client'
-import "./list.scss"
-import ProductCard from "../_components/product-card"
+import './list.scss'
+import ProductCard from '../_components/product-card'
 
-import { useState } from "react"
+import { useState } from 'react'
 
 export default function ProductListPage() {
-  const [filterOpen, SetFilterOpen]=useState(false)
-  const [ComparisionOpen, SetComparisionOpen]=useState(false)
-  const 
+  const [filterOpen, setFilterOpen] = useState(false)
+  const [comparisionOpen, setComparisionOpen] = useState(false)
+  const comparisionToggle = () => setComparisionOpen(!comparisionOpen)
   return (
     <>
       <div>
@@ -23,23 +23,51 @@ export default function ProductListPage() {
           <div className="container-fluid d-flex justify-content-between p-0">
             <div className="g-left d-flex align-items-center">
               <h6 className="g-amount mb-0">00 商品</h6>
-              <div className="g-fliter d-sm-flex d-none" onClick={() => {SetFilterOpen(true)}}>
+              <div
+                className="g-fliter d-sm-flex d-none"
+                onClick={() => {
+                  setFilterOpen(true)
+                }}
+              >
                 <img src="/images/product/list/filter.svg" />
                 <h6 className="mb-0">篩選</h6>
               </div>
             </div>
             <div className="g-right d-flex align-items-center">
-              <div className="g-compare d-sm-flex d-none" onClick={() => {SetComparisionOpen(true)}}>
+              <div
+                className="g-compare d-sm-flex d-none"
+                onClick={comparisionToggle}
+              >
                 <img src="/images/product/list/check-circle-fill.svg" />
                 <h6 className="mb-0">比較</h6>
               </div>
-              <div className="g-fliter d-sm-none d-flex" onClick={() => {SetFilterOpen(true)}}>
+              <div
+                className="g-fliter d-sm-none d-flex"
+                onClick={() => {
+                  setFilterOpen(true)
+                }}
+              >
                 <img src="/images/product/list/filter.svg" />
                 <h6 className="mb-0">篩選</h6>
               </div>
               <div className="g-order d-flex">
                 <img src="/images/product/list/order.svg" />
                 <h6 className="mb-0">排序</h6>
+                {/* order sec  要修改(參考mou)*/}
+                <div className="g-order-sec">
+                  <a href>
+                    <h6>價格由高至低</h6>
+                  </a>
+                  <a href>
+                    <h6>價格由低至高</h6>
+                  </a>
+                  <a href>
+                    <h6>商品名稱 A - Z</h6>
+                  </a>
+                  <a href>
+                    <h6>商品名稱 Z - A</h6>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -47,7 +75,7 @@ export default function ProductListPage() {
         <section className="g-pdlist px-modified">
           <div className="container-fluid p-1">
             <div className="row row-cols-xl-4 row-cols-2">
-            <ProductCard />
+              <ProductCard />
               {/* product-card-start */}
               {/* <div className="col p-2"> 這句應該跑迴圈?*/}
               {/* <div className="col p-2">
@@ -89,16 +117,21 @@ export default function ProductListPage() {
             <h6 className="mb-0">瀏覽更多</h6>
           </button>
         </div>
-        <section className={`g-filter-sec ${filterOpen ? "active" : ""}`}>
+        {/* filter bar sec */}
+        <section className={`g-filter-sec ${filterOpen ? 'active' : ''}`}>
           <div className="container-fluid p-0">
             <div className="g-filter-bar">
               <div className="g-clear d-flex justify-content-between">
                 <a href="">
                   <h6 className="g-clear-link mb-0">清除篩選條件</h6>
                 </a>
-                <img width="16px" src="/images/product/list/x.svg" onClick={() => {
-                  SetFilterOpen(false)
-                }}/>
+                <img
+                  width="16px"
+                  src="/images/product/list/x.svg"
+                  onClick={() => {
+                    setFilterOpen(false)
+                  }}
+                />
               </div>
               <div className="g-filter-scroll">
                 <div className="g-brand-sec">
@@ -306,7 +339,12 @@ export default function ProductListPage() {
             </div>
           </div>
         </section>
-        <section className={`g-compare-sec d-sm-block d-none px-modified ${ComparisionOpen ? "active" : "" }`}>
+        {/* comparision sec */}
+        <section
+          className={`g-compare-sec px-modified ${
+            comparisionOpen ? 'active' : ''
+          }`}
+        >
           <div className="container-fluid p-0">
             <div className="d-flex justify-content-between align-items-center">
               <div className>
@@ -314,7 +352,7 @@ export default function ProductListPage() {
                 <h6 className="mb-0">電吉他商品比較</h6>
               </div>
               <div className="d-flex align-items-center">
-                <img src="/images/product/list/drag.svg"/>
+                <img src="/images/product/list/drag.svg" />
                 <p className="mb-0">
                   將商品拖曳至方框中
                   <br />
@@ -322,16 +360,16 @@ export default function ProductListPage() {
                 </p>
                 <div className="g-compare-boxes d-flex gap-3">
                   <div className="g-compare-box d-flex justify-content-center align-items-center">
-                    <img src="/images/product/list/electric.svg"/>
+                    <img src="/images/product/list/electric.svg" />
                   </div>
                   <div className="g-compare-box d-flex justify-content-center align-items-center">
-                    <img src="/images/product/list/electric.svg"/>
+                    <img src="/images/product/list/electric.svg" />
                   </div>
                   <div className="g-compare-box d-flex justify-content-center align-items-center">
-                    <img src="/images/product/list/electric.svg"/>
+                    <img src="/images/product/list/electric.svg" />
                   </div>
                   <div className="g-compare-box d-flex justify-content-center align-items-center">
-                    <img src="/images/product/list/electric.svg"/>
+                    <img src="/images/product/list/electric.svg" />
                   </div>
                 </div>
               </div>
@@ -346,20 +384,6 @@ export default function ProductListPage() {
             </div>
           </div>
         </section>
-        <div className="g-order-sec">
-          <a href>
-            <h6>價格由高至低</h6>
-          </a>
-          <a href>
-            <h6>價格由低至高</h6>
-          </a>
-          <a href>
-            <h6>商品名稱 A - Z</h6>
-          </a>
-          <a href>
-            <h6>商品名稱 Z - A</h6>
-          </a>
-        </div>
       </div>
     </>
   )
