@@ -11,34 +11,24 @@ import CartList from './_components/cart-list'
 import React, { useState, useEffect } from 'react'
 
 export default function ChecklistPage(props) {
-  const cartItems = [
-    {
-      id: 1,
-      name: 'Limited Edition Paranormal Troublemaker Telecaster® Deluxe',
-      color: 'white',
-      stockStatus: 0,
-      image: '/images/cart/card2-img.png',
-      quantity: 1,
-      price: 13999,
-    },
-    {
-      id: 2,
-      name: '(租用) Limited Edition Paranormal Troublemaker Telecaster® Deluxe',
-      color: 'white',
-      rentDate: '2025-01-02 - 2025-01-04',
-      stockStatus: 1,
-      image: '/images/cart/card2-img.png',
-      price: 2400,
-    },
-    {
-      id: 3,
-      name: '衛武營國際音樂節-全票',
-      stockStatus: 1,
-      image: '/images/cart/card3.png',
-      quantity: 1,
-      price: 700,
-    },
-  ]
+  const [cartItems, setCartItems] = useState([]) // 初始化狀態
+  const [totalAmount, setTotalAmount] = useState(0)
+  const [total, setTotal] = useState(0)
+  const [coupon, setCoupon] = useState(1000)
+
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem('cartItem')) || []
+    setCartItems(storedCart)
+
+    // 計算總金額
+    const total = storedCart.reduce(
+      (acc, v) => acc + v.count * v.price,
+      0
+    )
+    const totalMax = total - coupon
+    setTotal(totalMax)
+    setTotalAmount(total)
+  }, [cartItems]) // 空依賴陣列，確保只在組件掛載時執行
 
   return (
     <>
@@ -72,7 +62,7 @@ export default function ChecklistPage(props) {
               <div className="h3 pt-4 pb-2">訂單確認</div>
               <div className="d-flex justify-content-between py-2">
                 <h5>小計 :</h5>
-                <h5>NT$ 27,998</h5>
+                <h5>NT$ {totalAmount}</h5>
               </div>
               <div className="d-flex justify-content-between py-2">
                 <h5>運費 :</h5>
@@ -92,12 +82,12 @@ export default function ChecklistPage(props) {
               </div>
               <div className="d-flex justify-content-between py-2">
                 <h5>折扣 :</h5>
-                <h5>-20%</h5>
+                <h5>-{coupon}</h5>
               </div>
               <hr />
               <div className="d-flex justify-content-between py-3">
                 <h4 className="h4">總計 :</h4>
-                <h4 className="h4">NT$ 22,398</h4>
+                <h4 className="h4">NT$ {total}</h4>
               </div>
               <button type="button" className="btn btn-dark w-100 mt-5">
                 結帳
