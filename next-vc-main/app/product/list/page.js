@@ -2,7 +2,12 @@
 import "./list.scss"
 import ProductCard from "../_components/product-card"
 
+import { useState } from "react"
+
 export default function ProductListPage() {
+  const [filterOpen, SetFilterOpen]=useState(false)
+  const [ComparisionOpen, SetComparisionOpen]=useState(false)
+  const 
   return (
     <>
       <div>
@@ -18,17 +23,17 @@ export default function ProductListPage() {
           <div className="container-fluid d-flex justify-content-between p-0">
             <div className="g-left d-flex align-items-center">
               <h6 className="g-amount mb-0">00 商品</h6>
-              <div className="g-fliter d-sm-flex d-none">
+              <div className="g-fliter d-sm-flex d-none" onClick={() => {SetFilterOpen(true)}}>
                 <img src="/images/product/list/filter.svg" />
                 <h6 className="mb-0">篩選</h6>
               </div>
             </div>
             <div className="g-right d-flex align-items-center">
-              <div className="g-compare d-sm-flex d-none">
+              <div className="g-compare d-sm-flex d-none" onClick={() => {SetComparisionOpen(true)}}>
                 <img src="/images/product/list/check-circle-fill.svg" />
                 <h6 className="mb-0">比較</h6>
               </div>
-              <div className="g-fliter d-sm-none d-flex">
+              <div className="g-fliter d-sm-none d-flex" onClick={() => {SetFilterOpen(true)}}>
                 <img src="/images/product/list/filter.svg" />
                 <h6 className="mb-0">篩選</h6>
               </div>
@@ -84,14 +89,16 @@ export default function ProductListPage() {
             <h6 className="mb-0">瀏覽更多</h6>
           </button>
         </div>
-        <section className="g-filter-sec">
+        <section className={`g-filter-sec ${filterOpen ? "active" : ""}`}>
           <div className="container-fluid p-0">
             <div className="g-filter-bar">
               <div className="g-clear d-flex justify-content-between">
-                <a href>
+                <a href="">
                   <h6 className="g-clear-link mb-0">清除篩選條件</h6>
                 </a>
-                <img width="16px" src="/images/product/list/x.svg" alt />
+                <img width="16px" src="/images/product/list/x.svg" onClick={() => {
+                  SetFilterOpen(false)
+                }}/>
               </div>
               <div className="g-filter-scroll">
                 <div className="g-brand-sec">
@@ -299,7 +306,7 @@ export default function ProductListPage() {
             </div>
           </div>
         </section>
-        <section className="g-compare-sec px-modified">
+        <section className={`g-compare-sec d-sm-block d-none px-modified ${ComparisionOpen ? "active" : "" }`}>
           <div className="container-fluid p-0">
             <div className="d-flex justify-content-between align-items-center">
               <div className>

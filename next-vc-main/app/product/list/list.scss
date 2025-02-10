@@ -181,8 +181,11 @@
             height: 100vh;
             z-index: 999;
             background-color: rgba(0, 0, 0, 0.7);
-            /* 暫時關掉 */
             display: none;
+
+            &.active{
+                display: block;
+            }
         }
 
         .g-filter-bar {
@@ -312,7 +315,6 @@
 
         /* compare section */
         .g-compare-sec {
-            /* 暫時關閉 */
             display: none;
             position: sticky;
             left: 0;
@@ -320,6 +322,10 @@
             background-color: var(--white);
             box-shadow: 0px -4px 12px 0px rgba(0, 0, 0, 0.10);
             padding-block: 20px;
+
+            &.active{
+                display: block;
+            }
 
             p{
                 color: var(--grey700);
