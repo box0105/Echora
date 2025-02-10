@@ -53,42 +53,6 @@ model Category {
   products Product[]
 }
 
-model Favorite {
-  // 關聯: User:Favorite = 1:n 
-  user      User    @relation(fields: [userId], references: [id])
-  userId    Int     @map("user_id")
-  // 關聯: Product:Favorite = 1:n 
-  product   Product @relation(fields: [productId], references: [id])
-  productId Int     @map("product_id")
-
-  // 複合主鍵
-  @@id([userId, productId])
-}
-
-model Otp {
-  id        Int      @id @default(autoincrement())
-  email     String
-  token     String
-  hash      String?
-  createdAt DateTime @default(now()) @map("created_at")
-  expiredAt DateTime @map("expired_at")
-}
-
-model Profile {
-  id       Int       @id @default(autoincrement())
-  name     String?
-  bio      String?   @db.Text
-  avatar   String?
-  sex      String?
-  // 日期格式: 2021-01-01
-  birth    DateTime? @db.Date
-  phone    String?
-  postcode String?
-  address  String?
-  // 1:1 關聯
-  user     User      @relation(fields: [userId], references: [id])
-  userId   Int       @unique @map("user_id")
-}
 
 model Product {
   id         Int        @id @default(autoincrement())
@@ -108,6 +72,7 @@ model Product {
   favorites  Favorite[]
 }
 
+//以下為會員部分
 model User {
   id              Int        @id @default(autoincrement())
   username        String     @unique
@@ -122,3 +87,77 @@ model User {
   // 關聯: User:Product = n:m 透過 Favorite
   favorites       Favorite[]
 }
+
+model Profile {
+  id       Int       @id @default(autoincrement())
+  name     String?
+  bio      String?   @db.Text
+  avatar   String?
+  sex      String?
+  // 日期格式: 2021-01-01
+  birth    DateTime? @db.Date
+  phone    String?
+  postcode String?
+  address  String?
+  // 1:1 關聯
+  user     User      @relation(fields: [userId], references: [id])
+  userId   Int       @unique @map("user_id")
+}
+
+model userLike {
+  // 關聯: User:userLike = 1:n 
+  user      User    @relation(fields: [userId], references: [id])
+  userId    Int     @map("user_id")
+  // 關聯: Product:userLike = 1:n 
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int     @map("product_id")
+  // 關聯: Article:userLike = 1:n 
+  article   Article @relation(fields: [articleId], references: [id])
+  articleId Int     @map("article_id")
+
+
+  // 複合主鍵
+  @@id([userId, productId, articleId])
+}
+
+model Order {
+  id            Int       @id @default(autoincrement())  // 訂單唯一識別碼，自動遞增
+  userId        Int       // 用戶 ID，代表誰下的訂單
+  user          User      @relation(fields: [userId], references: [id])  // 關聯到 User 資料表
+  status        String    // 訂單狀態，如：'pending', 'shipped', 'completed'
+  totalAmount   Float     // 訂單總金額
+  paymentStatus String    // 付款狀態，例：'paid', 'unpaid'
+  paymentMethod String?   // 付款方式，如 'credit_card', 'paypal', 'cash_on_delivery' 等
+  shippingAddress String? // 配送地址，儲存訂單的配送地址
+  shippingMethod String?  // 配送方式，如 'standard', 'express' 等
+  shippingCost  Float?    // 配送費用
+  discount      Float?    // 訂單折扣金額
+  createdAt     DateTime  @default(now())  // 訂單創建時間
+  updatedAt     DateTime  @updatedAt  // 訂單更新時間，自動更新
+
+  // 關聯 OrderItem 資料表，表示一個訂單可以有多個商品
+  items         OrderItem[]
+}
+
+model OrderItem {
+  id          Int     @id @default(autoincrement()) // 訂單商品唯一識別碼
+  orderId     Int     // 關聯到 Order 資料表的訂單 ID
+  productId   Int     // 產品 ID
+  quantity    Int     // 商品數量
+  price       Float   // 商品單價
+  
+  order       Order   @relation(fields: [orderId], references: [id]) // 關聯 Order 資料表
+  product     Product @relation(fields: [productId], references: [id]) // 關聯 Product 資料表
+}
+
+
+
+model Otp {
+  id        Int      @id @default(autoincrement())
+  email     String
+  token     String
+  hash      String?
+  createdAt DateTime @default(now()) @map("created_at")
+  expiredAt DateTime @map("expired_at")
+}
+
