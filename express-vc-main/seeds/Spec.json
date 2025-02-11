@@ -1,0 +1,893 @@
+[
+    {
+      "productId": 1,
+      "name": "Player II Jaguar®",
+      "neckPickup": "Player Series Alnico 2 Jaguar Single-Coil",
+      "middlePickup": "",
+      "bridgePickup": "Player Series Alnico 5 Jaguar Single-Coil",
+      "controls": "主音量：調節整體音量輸出，主音色：調整整體音色（影響高低頻響應）",
+      "switching": "3 檔刀型切換開關\n位置 1：僅啟用橋部拾音器\n位置 2：同時啟用橋部與頸部拾音器\n位置 3：僅啟用頸部拾音器"
+    },
+    {
+      "productId": 2,
+      "name": "SG Standard Dark Walnut",
+      "neckPickup": "490R",
+      "middlePickup": "",
+      "bridgePickup": "490T",
+      "controls": "2 個音量旋鈕，2 個音色旋鈕",
+      "switching": "3 檔切換開關"
+    },
+    {
+      "productId": 3,
+      "name": "SG Supreme Ebony, 3-Pickup",
+      "neckPickup": "Burstbucker Pro",
+      "middlePickup": "Burstbucker Mid Pro",
+      "bridgePickup": "Burstbucker Lead Pro +",
+      "controls": "3 個音量旋鈕（帶推/拉分線圈功能），1 個主音色旋鈕；手工接線，搭配 Orange Drop 電容器",
+      "switching": "3 檔切換開關"
+    },
+    {
+      "productId": 4,
+      "name": "70s Flying V",
+      "neckPickup": "70s Tribute",
+      "middlePickup": "",
+      "bridgePickup": "70s Tribute",
+      "controls": "2 個音量旋鈕，1 個音色旋鈕；手工接線，搭配 Orange Drop 電容器",
+      "switching": "3 檔切換開關"
+    },
+    {
+      "productId": 5,
+      "name": "Chris Shiflett Cleaver Telecaster® Deluxe",
+      "neckPickup": "Custom Chris Shiflett \"Cleaver\" Noiseless™ CS-90",
+      "middlePickup": "",
+      "bridgePickup": "Custom Chris Shiflett \"Cleaver\" Noiseless™ CS-90",
+      "controls": "音量 1：頸部拾音器（Neck Pickup）音量控制，音量 2：橋部拾音器（Bridge Pickup）音量控制，音色 1：頸部拾音器（Neck Pickup）音色控制，音色 2：橋部拾音器（Bridge Pickup）音色控制",
+      "switching": "3 檔切換開關"
+    },
+    {
+      "productId": 6,
+      "name": "American Ultra II Stratocaster®",
+      "neckPickup": "Ultra II Noiseless™ Hot Strat®",
+      "middlePickup": "Ultra II Noiseless™ Hot Strat®",
+      "bridgePickup": "Haymaker™ Humbucker",
+      "controls": "主音量（帶 S-1™ 開關）：控制所有拾音器的整體音量，S-1™ 開關提供額外的電路選項以拓展音色可能性。\n音色 1（頸部/中間拾音器）：調節頸部與中間拾音器的音色。\n音色 2（橋部拾音器）：調節橋部拾音器的音色。",
+      "switching": "5 檔刀式切換開關"
+    },
+    {
+      "productId": 7,
+      "name": "American Ultra II Telecaster®",
+      "neckPickup": "Ultra II Noiseless™ Vintage Tele®",
+      "middlePickup": "",
+      "bridgePickup": "Ultra II Noiseless™ Vintage Tele®",
+      "controls": "主音量（帶 S-1™ 開關）：控制所有拾音器的整體音量，S-1™ 開關提供額外的電路模式切換，拓展音色可能性。\n主音色：調節所有拾音器的整體音色。",
+      "switching": "3 檔刀式切換開關"
+    },
+    {
+      "productId": 8,
+      "name": "XJ-1 HT",
+      "neckPickup": "",
+      "middlePickup": "",
+      "bridgePickup": "Fishman Fluence Open Core Classic",
+      "controls": "單一音量旋鈕，具備推拉功能，用於切換不同的音色模式。",
+      "switching": "3 檔切換開關"
+    },
+    {
+      "productId": 9,
+      "name": "HORIZON CUSTOM '87",
+      "neckPickup": "Seymour Duncan Hot Rails",
+      "middlePickup": "",
+      "bridgePickup": "Seymour Duncan TB-5 Custom Trembucker",
+      "controls": "主音量旋鈕：控制整體音量，帶有推拉功能，可進行線圈分割（coil splitting），獲得單線圈音色。\n主音調旋鈕：調節音色的高頻響應，同樣具備推拉功能，用於線圈分割。",
+      "switching": "3 檔切換開關"
+    },
+    {
+      "productId": 10,
+      "name": "Les Paul Standard 60s Plain Top",
+      "neckPickup": "60s Burstbucker",
+      "middlePickup": "",
+      "bridgePickup": "60s Burstbucker",
+      "controls": "2 個音量旋鈕：分別控制兩個拾音器的音量輸出。\n2 個音色旋鈕：分別調節兩個拾音器的音色（高頻與低頻比例）。\n手工接線：採用手工接線以確保更高的音質與可靠性。\nOrange Drop 電容器：使用高品質的 Orange Drop 電容器以提供穩定的音色表現。",
+      "switching": "3 檔切換開關"
+    },
+    {
+      "productId": 11,
+      "name": "Les Paul Standard 50s Mahogany Top",
+      "neckPickup": "Burstbucker 1",
+      "middlePickup": "",
+      "bridgePickup": "Burstbucker 2",
+      "controls": "2 個音量旋鈕：分別控制兩個拾音器的音量輸出。\n2 個音色旋鈕：分別調節兩個拾音器的音色（高頻與低頻比例）。\n手工接線：採用手工接線以確保更高的音質與可靠性。\nOrange Drop 電容器：使用高品質的 Orange Drop 電容器以提供穩定的音色表現。",
+      "switching": "3 檔切換開關"
+    },
+    {
+      "productId": 12,
+      "name": "Les Paul Modern Koa ",
+      "neckPickup": "Burstbucker Pro",
+      "middlePickup": "",
+      "bridgePickup": "Burstbucker Pro +",
+      "controls": "2 個推/拉音量旋鈕（帶分線圈功能）\n2 個推/拉音色旋鈕（帶純旁路/相位功能）",
+      "switching": "3 檔切換開關"
+    },
+    {
+      "productId": 13,
+      "name": "Les Paul Modern Studio",
+      "neckPickup": "490R",
+      "middlePickup": "",
+      "bridgePickup": "498T",
+      "controls": "2 個推/拉音量旋鈕（帶分線圈功能）\n2 個推/拉音色旋鈕（帶純旁路/相位功能）",
+      "switching": "3 檔切換開關"
+    },
+    {
+      "productId": 14,
+      "name": "Les Paul Modern Lite",
+      "neckPickup": "490R Humbucker",
+      "middlePickup": "",
+      "bridgePickup": "498T Humbucker",
+      "controls": "2 個音量旋鈕，2 個音色旋鈕",
+      "switching": "3 檔切換開關"
+    },
+    {
+      "productId": 15,
+      "name": "Les Paul Supreme",
+      "neckPickup": "Burstbucker Pro Rhythm",
+      "middlePickup": "Burstbucker Pro Mid",
+      "bridgePickup": "Burstbucker Pro + Lead",
+      "controls": "3 個推/拉音量旋鈕（帶分線圈功能）\n主音色旋鈕",
+      "switching": "3 檔切換開關"
+    },
+    {
+      "productId": 16,
+      "name": "Les Paul Standard 50s Figured Top",
+      "neckPickup": "Burstbucker 1",
+      "middlePickup": "",
+      "bridgePickup": "Burstbucker 2",
+      "controls": "2 個音量旋鈕：分別控制兩個拾音器的音量輸出。\n2 個音色旋鈕：分別調節兩個拾音器的音色（高頻與低頻比例）。\n手工接線：採用手工接線以確保更高的音質與可靠性。\nOrange Drop 電容器：使用高品質的 Orange Drop 電容器以提供穩定的音色表現。",
+      "switching": "3 檔切換開關"
+    },
+    {
+      "productId": 17,
+      "name": "Les Paul Standard 60s Figured Top",
+      "neckPickup": "60s Burstbucker",
+      "middlePickup": "",
+      "bridgePickup": "60s Burstbucker",
+      "controls": "2 個音量旋鈕：分別控制兩個拾音器的音量輸出。\n2 個音色旋鈕：分別調節兩個拾音器的音色（高頻與低頻比例）。\n手工接線：採用手工接線以確保更高的音質與可靠性。\nOrange Drop 電容器：使用高品質的 Orange Drop 電容器以提供穩定的音色表現。",
+      "switching": "3 檔切換開關"
+    },
+    {
+      "productId": 18,
+      "name": "Les Paul Classic",
+      "neckPickup": "Burstbucker 61R (Zebra)",
+      "middlePickup": "",
+      "bridgePickup": "Burstbucker 61T (Zebra)",
+      "controls": "2 個推/拉音量旋鈕（帶分線圈功能）\n2 個推/拉音色旋鈕（帶純旁路/相位功能）",
+      "switching": "3 檔切換開關"
+    },
+    {
+      "productId": 19,
+      "name": "Les Paul Custom, Nickel Hardware",
+      "neckPickup": "490R",
+      "middlePickup": "",
+      "bridgePickup": "498T",
+      "controls": "2 個 500K CTS 音量電位器\n2 個 500K CTS 音色電位器\n手工接線線束\nSwitchcraft 切換開關",
+      "switching": ""
+    },
+    {
+      "productId": 20,
+      "name": "Les Paul Standard 50s P-90",
+      "neckPickup": "P-90",
+      "middlePickup": "",
+      "bridgePickup": "P-90",
+      "controls": "2 個音量旋鈕：分別控制兩個拾音器的音量輸出。\n2 個音色旋鈕：分別調節兩個拾音器的音色（高頻與低頻比例）。\n手工接線：採用手工接線以確保更高的音質與可靠性。\nOrange Drop 電容器：使用高品質的 Orange Drop 電容器以提供穩定的音色表現。",
+      "switching": "3 檔切換開關"
+    },
+    {
+      "productId": 21,
+      "name": "Mary Ford Les Paul Standard",
+      "neckPickup": "Burstbucker 2",
+      "middlePickup": "",
+      "bridgePickup": "Burstbucker 3",
+      "controls": "2 個音量旋鈕：分別控制兩個拾音器的音量輸出。\n2 個音色旋鈕：分別調節兩個拾音器的音色（高頻與低頻比例）。\n手工接線：採用手工接線以確保更高的音質與可靠性。\nOrange Drop 電容器：使用高品質的 Orange Drop 電容器以提供穩定的音色表現。",
+      "switching": "3 檔切換開關"
+    },
+    {
+      "productId": 22,
+      "name": "Adam Jones Les Paul Standard",
+      "neckPickup": "Burstbucker 1",
+      "middlePickup": "",
+      "bridgePickup": "DC High-Gain Humbucker",
+      "controls": "2 個音量旋鈕：分別控制兩個拾音器的音量輸出。\n2 個音色旋鈕：分別調節兩個拾音器的音色（高頻與低頻比例）。\n手工接線：採用手工接線以確保更高的音質與可靠性。\nOrange Drop 電容器：使用高品質的 Orange Drop 電容器以提供穩定的音色表現。",
+      "switching": "3 檔切換開關"
+    },
+    {
+      "productId": 23,
+      "name": "SG Modern",
+      "neckPickup": "Burstbucker Pro Rhythm",
+      "middlePickup": "",
+      "bridgePickup": "Burstbucker Pro + Lead",
+      "controls": "2 個推/拉音量旋鈕（帶分線圈功能）\n2 個音色旋鈕",
+      "switching": "3 檔切換開關"
+    },
+    {
+      "productId": 24,
+      "name": "1962 Les Paul SG Standard, Short Maestro, Ebony Block",
+      "neckPickup": "Custombucker (Unpotted)",
+      "middlePickup": "",
+      "bridgePickup": "Custombucker (Unpotted)",
+      "controls": "CTS 500K 音頻錐度電位器\nBlack Beauty 電容器",
+      "switching": "3 檔 Switchcraft 切換開關"
+    },
+    {
+      "productId": 25,
+      "name": "SG Special",
+      "neckPickup": "P-90",
+      "middlePickup": "",
+      "bridgePickup": "P-90",
+      "controls": "2 個音量旋鈕：分別控制兩個拾音器的音量輸出。\n2 個音色旋鈕：分別調節兩個拾音器的音色（高頻與低頻比例）。\n手工接線：採用手工接線以確保更高的音質與可靠性。\nOrange Drop 電容器：使用高品質的 Orange Drop 電容器以提供穩定的音色表現。",
+      "switching": "3 檔切換開關"
+    },
+    {
+      "productId": 26,
+      "name": "60th Anniversary 1961 Les Paul SG Custom With Sideways Vibrola",
+      "neckPickup": "Custombucker",
+      "middlePickup": "Custombucker",
+      "bridgePickup": "Custombucker",
+      "controls": "2 個音量旋鈕\n2 個音色旋鈕\n500K CTS 電位器\n手工接線線束\nBlack Beauty 電容器",
+      "switching": "3 檔 Switchcraft 切換開關"
+    },
+    {
+      "productId": 27,
+      "name": "Les Paul Junior Double Cut",
+      "neckPickup": "",
+      "middlePickup": "",
+      "bridgePickup": "Dogear P-90",
+      "controls": "1 個音量旋鈕，1 個音色旋鈕；手工接線，搭配 Orange Drop 電容器。",
+      "switching": ""
+    },
+    {
+      "productId": 28,
+      "name": "80s Flying V Ebony",
+      "neckPickup": "80s Tribute",
+      "middlePickup": "",
+      "bridgePickup": "80s Tribute",
+      "controls": "2個音量控制、1個總音調控制，採用手工配線並搭配 Orange Drop 電容器",
+      "switching": "三向切換開關"
+    },
+    {
+      "productId": 29,
+      "name": "\nJoe Bonamassa \"Amos\" 1958 Flying V Collector's Edition Antique Natural",
+      "neckPickup": "Amos Custombucker",
+      "middlePickup": "",
+      "bridgePickup": "Amos Custombucker",
+      "controls": "2個音量控制、1個音調控制；搭載500k CTS 復古錐度電位器",
+      "switching": "三向切換開關"
+    },
+    {
+      "productId": 30,
+      "name": "\nFlying V Antique Natural",
+      "neckPickup": "Burstbucker 2",
+      "middlePickup": "",
+      "bridgePickup": "Burstbucker 3",
+      "controls": "2個音量控制，1個總音調控制",
+      "switching": "三向切換開關"
+    },
+    {
+      "productId": 31,
+      "name": "Adam Jones Flying V Collector's Edition Reverse Antique Silverburst",
+      "neckPickup": "Custombucker (Reverse-Mounted)",
+      "middlePickup": "",
+      "bridgePickup": "Custom-Wound Seymour Duncan DDJ",
+      "controls": "2個音量控制，2個音調控制；1個 DiMarzio 500k 音量電位器（琴橋），以及3個 CTS 電位器，搭配 .047uF Orange Drop 電容器",
+      "switching": "三向切換開關"
+    },
+    {
+      "productId": 32,
+      "name": "Kirk Hammett 1979 Flying V Ebony",
+      "neckPickup": "T-Type Humbucker",
+      "middlePickup": "",
+      "bridgePickup": "T-Type Humbucker",
+      "controls": "2個音量控制，1個總音調控制；CTS 電位器",
+      "switching": "三向切換開關"
+    },
+    {
+      "productId": 33,
+      "name": "Richie Faulkner Flying V Custom Pelham Blue",
+      "neckPickup": "Richie Faulkner\n Signature EMG Set",
+      "middlePickup": "",
+      "bridgePickup": "Richie Faulkner Signature EMG Set",
+      "controls": "總音量控制",
+      "switching": "三向切換開關"
+    },
+    {
+      "productId": 34,
+      "name": "Dave Mustaine Flying V EXP Limited Edition Red Amber Burst",
+      "neckPickup": "Seymour Duncan Dave Mustaine Thrash Factor Pickup Set",
+      "middlePickup": "",
+      "bridgePickup": "Seymour Duncan Dave Mustaine Thrash Factor Pickup Set",
+      "controls": "2個音量控制，1個總音調控制",
+      "switching": "三向切換開關"
+    },
+    {
+      "productId": 35,
+      "name": "Dave Mustaine Flying V EXP Silver Metallic",
+      "neckPickup": "Dave Mustaine Signature Seymour Duncan Thrash Factor Set",
+      "middlePickup": "",
+      "bridgePickup": "Dave Mustaine Signature Seymour Duncan Thrash Factor Set",
+      "controls": "\n2個音量控制，1個總音調控制，客製化 Dave Mustaine 配線",
+      "switching": "三向切換開關"
+    },
+    {
+      "productId": 36,
+      "name": "Jimi Hendrix™ 1969 Flying V Aged Ebony",
+      "neckPickup": "Custombucker",
+      "middlePickup": "",
+      "bridgePickup": "Custombucker",
+      "controls": "2個 500K CTS 音量控制，1個 500K CTS 音調控制",
+      "switching": "三向切換開關"
+    },
+    {
+      "productId": 37,
+      "name": "1958 Korina Flying V (White Pickguard), Ebony, Murphy Lab Light Aged Ebony\nGibson Custom Sele",
+      "neckPickup": "Custombucker",
+      "middlePickup": "",
+      "bridgePickup": "Custombucker",
+      "controls": "2個音量控制，1個音調控制，500K CTS 復古漸變電位器",
+      "switching": "三向切換開關"
+    },
+    {
+      "productId": 38,
+      "name": "Flying V Custom w/ Ebony Fingerboard Gloss Ebony",
+      "neckPickup": "490R Humbucker",
+      "middlePickup": "",
+      "bridgePickup": "498T Humbucker",
+      "controls": "2個 500K CTS 音量電位器，1個 500K CTS 音調電位器",
+      "switching": "三向切換開關"
+    },
+    {
+      "productId": 39,
+      "name": "1958 Mahogany Flying V Walnut",
+      "neckPickup": "Custombucker Alnico III (Unpotted)",
+      "middlePickup": "",
+      "bridgePickup": "Custombucker Alnico III (Unpotted)",
+      "controls": "2個 500K CTS 音量電位器，1個 500K CTS 音調電位器，手工接線組",
+      "switching": "三向切換開關"
+    },
+    {
+      "productId": 40,
+      "name": "1958 Korina Flying V Reissue (White Pickguard) Natural",
+      "neckPickup": "Custombucker",
+      "middlePickup": "",
+      "bridgePickup": "Custombucker",
+      "controls": "2個音量控制，1個音調控制，500K CTS 復古漸變電位器",
+      "switching": "三向切換開關"
+    },
+    {
+      "productId": 41,
+      "name": "80s Explorer Ebony",
+      "neckPickup": "80s Tribute",
+      "middlePickup": "",
+      "bridgePickup": "80s Tribute",
+      "controls": "2個音量控制、1個總音調控制，採用手工配線並搭配 Orange Drop 電容器",
+      "switching": ""
+    },
+    {
+      "productId": 42,
+      "name": "Lzzy Hale Explorerbird Cardinal Red",
+      "neckPickup": "70s Tribute with Gold Screws/Rods",
+      "middlePickup": "",
+      "bridgePickup": "70s Tribute with Gold Screws/Rods",
+      "controls": "2個音量控制、1個總音調控制，採用手工配線並搭配 Orange Drop 電容器",
+      "switching": ""
+    },
+    {
+      "productId": 43,
+      "name": "1958 Korina Explorer (White Pickguard) Ebony",
+      "neckPickup": "Custombucker (Unpotted)",
+      "middlePickup": "",
+      "bridgePickup": "Custombucker (Unpotted)",
+      "controls": "2個音量控制、1個音調控制；搭載500k CTS 復古錐度電位器",
+      "switching": ""
+    },
+    {
+      "productId": 44,
+      "name": "\n1958 Korina Explorer Reissue (White Pickguard) Natural",
+      "neckPickup": "Custombucker",
+      "middlePickup": "",
+      "bridgePickup": "Custombucker",
+      "controls": "2個音量控制、1個音調控制；搭載500k CTS 復古錐度電位器",
+      "switching": ""
+    },
+    {
+      "productId": 45,
+      "name": "Explorer Custom w/ Ebony Fingerboard Gloss Ebony",
+      "neckPickup": "490R Humbucker",
+      "middlePickup": "",
+      "bridgePickup": "498T Humbucker",
+      "controls": "2 個 500K CTS 音量電位器、1 個 500K CTS 音色電位器、手製線束",
+      "switching": ""
+    },
+    {
+      "productId": 46,
+      "name": "1965 Non-Reverse Firebird V 12-String Reissue Aqua Mist VOS",
+      "neckPickup": "Firebird Alnico 5",
+      "middlePickup": "",
+      "bridgePickup": "Firebird Alnico 5",
+      "controls": "2 個音量控制、2 個音調控制、1個 500k CTS 電位器、Bumblebee 電容、手製線束",
+      "switching": ""
+    },
+    {
+      "productId": 47,
+      "name": "1963 Firebird V Vintage Sunburst",
+      "neckPickup": "Firebird Alnico V",
+      "middlePickup": "",
+      "bridgePickup": "Firebird Alnico V",
+      "controls": "2 個音量控制、2 個音調控制、手製線束",
+      "switching": ""
+    },
+    {
+      "productId": 48,
+      "name": "1965 Non-Reverse Firebird V w/ Vibrola Vintage Sunburst",
+      "neckPickup": "Firebird Alnico V",
+      "middlePickup": "",
+      "bridgePickup": "Firebird Alnico V",
+      "controls": "2 個 500K CTS 音量電位器、2 個 500K CTS 音色電位器、手製線束",
+      "switching": ""
+    },
+    {
+      "productId": 49,
+      "name": "Firebird Custom w/ Ebony Fingerboard Gloss Ebony",
+      "neckPickup": "490R Humbucker",
+      "middlePickup": "",
+      "bridgePickup": "498T Humbucker",
+      "controls": "2 個 500K CTS 音量電位器、2 個 500K CTS 音色電位器",
+      "switching": ""
+    },
+    {
+      "productId": 50,
+      "name": "1963 Firebird V With Maestro Vibrola Pelham Blue Ultra Light Aged Pelham Blue",
+      "neckPickup": "Firebird Alnico 5",
+      "middlePickup": "",
+      "bridgePickup": "Firebird Alnico 5",
+      "controls": "2個音量控制、1個音調控制；搭載500k CTS 電位器、手製線束",
+      "switching": ""
+    },
+    {
+      "productId": 51,
+      "name": "1963 Firebird V Reissue with Maestro Vibrola Light Aged Cardinal Red",
+      "neckPickup": "Firebird Alnico 5",
+      "middlePickup": "",
+      "bridgePickup": "Firebird Alnico 5",
+      "controls": "2個音量控制、1個音調控制；搭載500k CTS 電位器、Black Beauty Capacitors手製線束",
+      "switching": ""
+    },
+    {
+      "productId": 52,
+      "name": "1981 Gibson ES-347 Left-Handed",
+      "neckPickup": "Original Series 7\n(15.30 k ohms)",
+      "middlePickup": "",
+      "bridgePickup": "Original Series\n(15.42 k ohms)",
+      "controls": "2 個音量旋鈕，2 個音色旋鈕；線圈切換搖桿開關。",
+      "switching": ""
+    },
+    {
+      "productId": 53,
+      "name": "1960 Gibson ES-335 Sunburst\n",
+      "neckPickup": "Original Patent Applied For Humbucker (8.94 k ohms)",
+      "middlePickup": "",
+      "bridgePickup": "Original Patent Applied For Humbucker (8.25 k ohms)",
+      "controls": "2 個音量旋鈕，2 個音色旋鈕",
+      "switching": ""
+    },
+    {
+      "productId": 54,
+      "name": "1952 Gibson ES-295",
+      "neckPickup": "P-90 (8.79 k ohms)",
+      "middlePickup": "",
+      "bridgePickup": "P-90\n (7.65 k ohms)",
+      "controls": "2 個音量旋鈕，2 個音色旋鈕\n（原廠電位器和電容器）",
+      "switching": ""
+    },
+    {
+      "productId": 55,
+      "name": "ES-330 Ebony",
+      "neckPickup": "Dogear P-90",
+      "middlePickup": "",
+      "bridgePickup": "Dogear P-90",
+      "controls": "2 個音量旋鈕，2 個音色旋鈕\n手工焊接，配備 500k 電位器和橙色橡膠電容器",
+      "switching": ""
+    },
+    {
+      "productId": 56,
+      "name": "ES-345 Gold Hardware Dark Walnut",
+      "neckPickup": "Calibrated T-Type, Rhythm",
+      "middlePickup": "",
+      "bridgePickup": "Calibrated T-Type, Lead",
+      "controls": "2 個音量旋鈕，2 個音色旋鈕\n手工焊接，配備橙色橡膠電容器",
+      "switching": ""
+    },
+    {
+      "productId": 57,
+      "name": "ES Supreme Ebony, 3-Pickup",
+      "neckPickup": "Burstbucker \nRhythm Pro",
+      "middlePickup": "Burstbucker Mid Pro (Ebony Finish Only)",
+      "bridgePickup": "Burstbucker Lead Pro +",
+      "controls": "\"3 個推/拉音量控制（線圈切換），主音色控制，手工焊接，配備橙色橡膠電容器（Royal Tan 型號配有兩個推/拉音量控制，兩個音色控制）\"",
+      "switching": ""
+    },
+    {
+      "productId": 58,
+      "name": "ES-335 Dark Purple Burst\n",
+      "neckPickup": "Calibrated T-Type, Rhythm",
+      "middlePickup": "",
+      "bridgePickup": "Calibrated T-Type, Lead",
+      "controls": "2 個音量旋鈕，2 個音色旋鈕\n手工焊接，配備 500K 電位器和橙色橡膠電容器\"",
+      "switching": ""
+    },
+    {
+      "productId": 59,
+      "name": "ES-339 Cherry",
+      "neckPickup": "57 Classic",
+      "middlePickup": "",
+      "bridgePickup": "57 Classic +\n\n",
+      "controls": "2 個音量旋鈕，2 個音色旋鈕\"搖桿開關\"",
+      "switching": ""
+    },
+    {
+      "productId": 60,
+      "name": "B.B. King \"Live at the Regal\" ES-335 Argentine Grey",
+      "neckPickup": "Custombucker (Unpotted)",
+      "middlePickup": "",
+      "bridgePickup": "Custombucker (Unpotted)",
+      "controls": "2 個音量旋鈕，2 個音色旋鈕，500K CTS 音頻漸變電位器，油紙電容器，單聲道 Varitone 切換開關\"",
+      "switching": ""
+    },
+    {
+      "productId": 61,
+      "name": "\n1964 Trini Lopez Standard Reissue Ebony\n",
+      "neckPickup": "Custombucker Alnico III (Unpotted)",
+      "middlePickup": "",
+      "bridgePickup": "Custombucker Alnico III (Unpotted)",
+      "controls": "2 個音量旋鈕，2 個音色旋鈕\"CTS 500K 音頻漸變電位器，油紙電容器\"",
+      "switching": ""
+    },
+    {
+      "productId": 62,
+      "name": "B.B. King “Rumble in the Jungle” 1974 ES-355 Walnut",
+      "neckPickup": "T 型 Custombucker Alnico 5",
+      "middlePickup": "",
+      "bridgePickup": "T 型 Custombucker Alnico 5",
+      "controls": "2 個音量旋鈕，2 個音色旋鈕、6 位元單聲道 Varitone；老式錐形電位器、陶瓷電容器",
+      "switching": ""
+    },
+    {
+      "productId": 63,
+      "name": "ES-335 P-90 Ebony",
+      "neckPickup": "P-90",
+      "middlePickup": "",
+      "bridgePickup": "P-90",
+      "controls": "2 個音量旋鈕，2 個音色旋鈕，採用 Orange Drop 電容器手工接線",
+      "switching": ""
+    },
+    {
+      "productId": 64,
+      "name": "1959 ES-355 Reissue, Diamond F-Holes Gold Sparkle Heavy Flake Gloss",
+      "neckPickup": "Custombucker (Unpotted)",
+      "middlePickup": "",
+      "bridgePickup": "Custombucker (Unpotted)",
+      "controls": "2 個音量旋鈕，2 個音色旋鈕、老式錐形電位器、油包紙電容器",
+      "switching": ""
+    },
+    {
+      "productId": 65,
+      "name": "BB King Lucille Legacy",
+      "neckPickup": "Custombucker",
+      "middlePickup": "",
+      "bridgePickup": "Custombucker",
+      "controls": "2 個音量旋鈕，2 個音色旋鈕，6 位單聲道 Varitone 開關、500K CTS Audio-Taper 電位器、油包紙大黃蜂電容器、手工線束",
+      "switching": ""
+    },
+    {
+      "productId": 66,
+      "name": "1961 ES-335 Reissue Heavy Aged Sixties Cherry",
+      "neckPickup": "Custombucker Alnico 3 (Unpotted)",
+      "middlePickup": "",
+      "bridgePickup": "Custombucker Alnico 3 (Unpotted)",
+      "controls": "2 個音量旋鈕，2 個音色旋鈕、CTS 500K 音頻錐度電位器、油包紙電容器",
+      "switching": ""
+    },
+    {
+      "productId": 67,
+      "name": "1958 ES-335 Reissue Murphy Lab Heavy Aged",
+      "neckPickup": "Custombucker Alnico 3 (Unpotted)",
+      "middlePickup": "",
+      "bridgePickup": "Custombucker Alnico 3 (Unpotted)",
+      "controls": "2 個音量旋鈕，2 個音色旋鈕、CTS 500K 音頻錐度電位器、油包紙電容器CTS 500K 音頻錐度電位器、油包紙電容器",
+      "switching": ""
+    },
+    {
+      "productId": 68,
+      "name": "American Ultra Luxe Stratocaster®",
+      "neckPickup": "Ultra Noiseless™ Vintage Strat®",
+      "middlePickup": "Ultra Noiseless™ Vintage Strat®",
+      "bridgePickup": "Ultra Noiseless™ Vintage Strat®",
+      "controls": "主音量（帶有 S-1™ 開關），音色 1（頸拾音器/中拾音器），音色 2（橋拾音器）",
+      "switching": "5 個位置選擇開關：\n位置 1. 琴橋拾音器\n位置 2. 琴橋和中間拾音器\n位置 3. 中間拾音器\n位置 4. 中間和琴頸拾音器\n位置 5. 琴頸拾音器"
+    },
+    {
+      "productId": 69,
+      "name": "American Ultra Luxe Stratocaster® Floyd Rose® HSS",
+      "neckPickup": "Ultra Noiseless™ Hot Strat®",
+      "middlePickup": "Ultra Noiseless™ Hot Strat®",
+      "bridgePickup": "Ultra Double Tap™ Humbucking",
+      "controls": "主音量、音色 1.（琴頸/中間拾音器）、音色 2.（琴橋拾音器）",
+      "switching": "5 個位置選擇開關：\n位置 1. 琴橋拾音器\n位置 2. 琴橋和中間拾音器\n位置 3. 中間拾音器\n位置 4. 中間和琴頸拾音器\n位置 5. 琴頸拾音器"
+    },
+    {
+      "productId": 70,
+      "name": "Player II Stratocaster®",
+      "neckPickup": "Player Series Alnico 5 Strat® Single-Coil",
+      "middlePickup": "Player Series Alnico 5 Strat® Single-Coil",
+      "bridgePickup": "Player Series Alnico 5 Strat® Single-Coil",
+      "controls": "音量主控，音色 1（頸部/中部拾音器），音色 2（橋部拾音器）",
+      "switching": "5 個位置選擇開關：\n位置 1. 琴橋拾音器\n位置 2. 琴橋和中間拾音器\n位置 3. 中間拾音器\n位置 4. 中間和琴頸拾音器\n位置 5. 琴頸拾音器"
+    },
+    {
+      "productId": 71,
+      "name": "Player II Stratocaster® HSS",
+      "neckPickup": "Player Series Alnico 5 Strat® Single-Coil",
+      "middlePickup": "Player Series Alnico 5 Strat® Single-Coil",
+      "bridgePickup": "Player Series Alnico 2 Humbucker",
+      "controls": "主音量、音色 1（頸拾音器/中間拾音器）、音色 2（橋拾音器）",
+      "switching": "五檔切換開關：\n位置 1：橋拾音器\n位置 2：橋拾音器和中間拾音器\n位置 3：中間拾音器\n位置 4：中間拾音器和頸拾音器\n位置 5：頸拾音器"
+    },
+    {
+      "productId": 72,
+      "name": "Player Plus Stratocaster®",
+      "neckPickup": "Player Plus Noiseless™ Strat®",
+      "middlePickup": "Player Plus Noiseless™ Strat®",
+      "bridgePickup": "Player Plus Noiseless™ Strat®",
+      "controls": "主音量、音色 1（頸拾音器/中間拾音器）、音色 2（橋拾音器）",
+      "switching": "五檔切換開關：\n位置 1：橋拾音器\n位置 2：橋拾音器和中間拾音器\n位置 3：中間拾音器\n位置 4：中間拾音器和頸拾音器\n位置 5：頸拾音器"
+    },
+    {
+      "productId": 73,
+      "name": "Player Plus Stratocaster® HSS",
+      "neckPickup": "Player Plus Noiseless™ Strat®",
+      "middlePickup": "Player Plus Noiseless™ Strat®",
+      "bridgePickup": "Fireball® Humbucking",
+      "controls": "主音量、音色 1（頸拾音器/中間拾音器）、音色 2（橋拾音器）",
+      "switching": "五檔切換開關：\n位置 1：橋拾音器\n位置 2：橋拾音器和中間拾音器\n位置 3：中間拾音器\n位置 4：中間拾音器和頸拾音器\n位置 5：頸拾音器"
+    },
+    {
+      "productId": 74,
+      "name": "American Performer Stratocaster® HSS",
+      "neckPickup": "Yosemite® Single-Coil Stratocaster®",
+      "middlePickup": "Yosemite® Single-Coil Stratocaster®",
+      "bridgePickup": "Double Tap™ Humbucking",
+      "controls": "主音量、音色 1（頸拾音器和中間拾音器）、音色 2（Greasebucket™ 音色電路，橋拾音器）",
+      "switching": "五檔切換開關：  \n位置 1：橋雙線圈拾音器  \n位置 2：中間拾音器和橋雙線圈拾音器  \n位置 3：中間拾音器  \n位置 4：頸拾音器和中間拾音器  \n位置 5：頸拾音器"
+    },
+    {
+      "productId": 75,
+      "name": "American Professional II Stratocaster®",
+      "neckPickup": "V-Mod II Single-Coil Strat®",
+      "middlePickup": "V-Mod II Single-Coil Strat®",
+      "bridgePickup": "V-Mod II Single-Coil Strat®",
+      "controls": "主音量、音色 1（頸拾音器/中間拾音器）、音色 2（橋拾音器）",
+      "switching": "五檔切換開關：\n位置 1：橋拾音器\n位置 2：橋拾音器和中間拾音器\n位置 3：中間拾音器\n位置 4：中間拾音器和頸拾音器\n位置 5：頸拾音器"
+    },
+    {
+      "productId": 76,
+      "name": "American Vintage II 1973 Stratocaster®",
+      "neckPickup": "Pure Vintage '73 Single-Coil Strat®",
+      "middlePickup": "Pure Vintage '73 Single-Coil Strat®",
+      "bridgePickup": "Pure Vintage '73 Single-Coil Strat®",
+      "controls": "主音量、音色 1（頸拾音器/中間拾音器）、音色 2（橋拾音器）",
+      "switching": "五檔切換開關：  \n位置 1：橋拾音器  \n位置 2：橋拾音器和中間拾音器  \n位置 3：中間拾音器  \n位置 4：中間拾音器和頸拾音器  \n位置 5：頸拾音器  "
+    },
+    {
+      "productId": 77,
+      "name": "American Vintage II 1961 Stratocaster®",
+      "neckPickup": "Pure Vintage '61 Single-Coil Strat®",
+      "middlePickup": "Pure Vintage '61 Single-Coil Strat®",
+      "bridgePickup": "Pure Vintage '61 Single-Coil Strat®",
+      "controls": "主音量、音色 1（頸拾音器/中間拾音器）、音色 2（橋拾音器）",
+      "switching": "五檔切換開關：  \n位置 1：橋拾音器  \n位置 2：橋拾音器和中間拾音器  \n位置 3：中間拾音器  \n位置 4：中間拾音器和頸拾音器  \n位置 5：頸拾音器  "
+    },
+    {
+      "productId": 78,
+      "name": "American Professional II Stratocaster®, Anniversary 2-Color Sunburst",
+      "neckPickup": "V-Mod II Single-Coil Strat®",
+      "middlePickup": "V-Mod II Single-Coil Strat®",
+      "bridgePickup": "V-Mod II Single-Coil Strat®",
+      "controls": "主音量、音色 1（頸拾音器/中間拾音器）、音色 2（橋拾音器）",
+      "switching": "五檔切換開關：  \n位置 1：橋拾音器  \n位置 2：橋拾音器和中間拾音器  \n位置 3：中間拾音器  \n位置 4：中間拾音器和頸拾音器  \n位置 5：頸拾音器  "
+    },
+    {
+      "productId": 79,
+      "name": "70th Anniversary American Vintage II 1954 Stratocaster®",
+      "neckPickup": "70th Anniversary 1954 Single-Coil Strat®",
+      "middlePickup": "70th Anniversary 1954 Single-Coil Strat®",
+      "bridgePickup": "70th Anniversary 1954 Single-Coil Strat®",
+      "controls": "主音量、音色 1（頸拾音器）、音色 2（中間拾音器）",
+      "switching": "三檔切換開關：  \n位置 1：橋拾音器  \n位置 2：中間拾音器  \n位置 3：頸拾音器"
+    },
+    {
+      "productId": 80,
+      "name": "American Vintage II 1957 Stratocaster®",
+      "neckPickup": "Pure Vintage '57 Single-Coil Strat®",
+      "middlePickup": "Pure Vintage '57 Single-Coil Strat®",
+      "bridgePickup": "Pure Vintage '57 Single-Coil Strat®",
+      "controls": "主音量、音色 1（頸拾音器/中間拾音器）、音色 2（橋拾音器）",
+      "switching": "五檔切換開關：  \n位置 1：橋拾音器  \n位置 2：橋拾音器和中間拾音器  \n位置 3：中間拾音器  \n位置 4：中間拾音器和頸拾音器  \n位置 5：頸拾音器  "
+    },
+    {
+      "productId": 81,
+      "name": "Stevie Ray Vaughan Stratocaster®",
+      "neckPickup": "Custom Shop Texas Special™ Single-Coil Strat®",
+      "middlePickup": "Custom Shop Texas Special™ Single-Coil Strat®",
+      "bridgePickup": "Custom Shop Texas Special™ Single-Coil Strat®",
+      "controls": "主音量、音色 1（頸拾音器）、音色 2（中間拾音器）",
+      "switching": "五檔切換開關：  \n位置 1：橋拾音器  \n位置 2：橋拾音器和中間拾音器  \n位置 3：中間拾音器  \n位置 4：中間拾音器和頸拾音器  \n位置 5：頸拾音器  "
+    },
+    {
+      "productId": 82,
+      "name": "Jeff Beck Stratocaster®",
+      "neckPickup": "Hot Noiseless™ Single-Coil Strat®",
+      "middlePickup": "Hot Noiseless™ Single-Coil Strat®",
+      "bridgePickup": "Hot Noiseless™ Single-Coil Strat®",
+      "controls": "主音量、音色 1（頸拾音器）、音色 2（橋拾音器/中間拾音器）",
+      "switching": "五檔切換開關：  \n位置 1：橋拾音器  \n位置 2：橋拾音器和中間拾音器  \n位置 3：中間拾音器  \n位置 4：中間拾音器和頸拾音器  \n位置 5：頸拾音器  "
+    },
+    {
+      "productId": 83,
+      "name": "Limited Edition American Performer Timber Stratocaster®",
+      "neckPickup": "Yosemite® Single-Coil Stratocaster®",
+      "middlePickup": "Yosemite® Single-Coil Stratocaster®",
+      "bridgePickup": "Yosemite® Single-Coil Stratocaster®",
+      "controls": "主音量、音色 1（頸拾音器和中間拾音器）、音色 2（Greasebucket™ 音色電路，橋拾音器）",
+      "switching": "五檔切換開關：  \n位置 1：橋拾音器  \n位置 2：橋拾音器和中間拾音器  \n位置 3：中間拾音器  \n位置 4：中間拾音器和頸拾音器  \n位置 5：頸拾音器  "
+    },
+    {
+      "productId": 84,
+      "name": "Mike McCready Stratocaster®",
+      "neckPickup": "Custom Mike McCready '60s Single-Coil Strat®",
+      "middlePickup": "Custom Mike McCready '60s Single-Coil Strat®",
+      "bridgePickup": "Custom Mike McCready '60s Single-Coil Strat®",
+      "controls": "主音量，音色 1（頸拾音器），音色 2（中間拾音器）",
+      "switching": "五檔切換開關：  \n位置 1：橋拾音器  \n位置 2：橋拾音器和中間拾音器  \n位置 3：中間拾音器  \n位置 4：中間拾音器和頸拾音器  \n位置 5：頸拾音器  "
+    },
+    {
+      "productId": 85,
+      "name": "Yngwie Malmsteen Stratocaster®",
+      "neckPickup": "Seymour Duncan® YJM Fury™ Strat® STK-S10N",
+      "middlePickup": "Seymour Duncan® YJM Fury™ Strat® STK-S10N",
+      "bridgePickup": "Seymour Duncan® YJM Fury™ Strat® STK-S10B",
+      "controls": "主音量，音色 1.（頸拾音器），音色 2. 無負載音色控制（中間和橋拾音器）",
+      "switching": "3 檔刀片開關：\n位置 1. 橋拾音器  \n位置 2. 中間拾音器  \n位置 3. 頸拾音器"
+    },
+    {
+      "productId": 86,
+      "name": "Eric Clapton Stratocaster®",
+      "neckPickup": "Vintage Noiseless™ Single-Coil Strat®",
+      "middlePickup": "Vintage Noiseless™ Single-Coil Strat®",
+      "bridgePickup": "Vintage Noiseless™ Single-Coil Strat®",
+      "controls": "音量與音色控制\n主音量\n音色控制 1：主TBX™音色控制\n音色控制 2：主動中頻增強（0-25dB)",
+      "switching": "5段刀片開關：\n位置 1：橋拾音器\n位置 2：橋拾音器和中間拾音器 \n位置 3：中間拾音器\n位置 4：中間拾音器和頸拾音器  \n位置 5：頸拾音器"
+    },
+    {
+      "productId": 87,
+      "name": "Player Plus Meteora® HH",
+      "neckPickup": "Fireball® Humbucking",
+      "middlePickup": "",
+      "bridgePickup": "Fireball® Humbucking",
+      "controls": "主音量、音色 1（琴頸拾音器）、音色 2（琴橋拾音器）",
+      "switching": "三檔切換開關\n位置1：琴橋拾音器\n位置2：琴橋與琴頸拾音器同時啟用\n位置3：琴頸拾音器"
+    },
+    {
+      "productId": 88,
+      "name": "Limited Edition Paranormal Jazzmaster® XII",
+      "neckPickup": "Fender® Designed Alnico Single-Coil",
+      "middlePickup": "",
+      "bridgePickup": "Fender® Designed Alnico Single-Coil",
+      "controls": "主音量、主音色",
+      "switching": "三檔切換開關\n位置1：琴橋拾音器\n位置2：琴橋與琴頸拾音器同時啟用\n位置3：琴頸拾音器"
+    },
+    {
+      "productId": 89,
+      "name": "Player Jazzmaster®",
+      "neckPickup": "Player Series Alnico 2 Humbucking",
+      "middlePickup": "",
+      "bridgePickup": "Player Series Alnico 2 Humbucking",
+      "controls": "主音量、主音色",
+      "switching": "三檔切換開關\n位置1：琴橋拾音器\n位置2：琴橋與琴頸拾音器同時啟用\n位置3：琴頸拾音器"
+    },
+    {
+      "productId": 90,
+      "name": "Player II Jazzmaster®",
+      "neckPickup": "Player Series Alnico 5 Jazzmaster® Single-Coil",
+      "middlePickup": "",
+      "bridgePickup": "Player Series Alnico 5 Jazzmaster® Single-Coil",
+      "controls": "主音量、主音色",
+      "switching": "三檔切換開關\n位置1：琴橋拾音器\n位置2：琴橋與中間拾音器同時啟用\n位置3：中間拾音器"
+    },
+    {
+      "productId": 91,
+      "name": "Limited Edition Vintera® II '50s Jazzmaster®",
+      "neckPickup": "Vintage-Style '50s Single-Coil Jazzmaster®",
+      "middlePickup": "",
+      "bridgePickup": "Vintage-Style '50s Single-Coil Jazzmaster®",
+      "controls": "主音電路控制（滑動開關向下）：主音量、主音色；\n節奏電路控制（滑動開關向上）：兩個拇指輪控制，用於琴頸拾音器的音量與音色。",
+      "switching": "三檔切換開關（主音電路）"
+    },
+    {
+      "productId": 92,
+      "name": "Gold Foil Jazzmaster®",
+      "neckPickup": "Gold Foil Mini-Humbucker",
+      "middlePickup": "Gold Foil Mini-Humbucker",
+      "bridgePickup": "Gold Foil Mini-Humbucker",
+      "controls": "主音量、主音色",
+      "switching": "3個開/關滑動開關（每個拾音器一個）"
+    },
+    {
+      "productId": 93,
+      "name": "American Performer Jazzmaster®",
+      "neckPickup": "Yosemite® Single-Coil Jazzmaster®",
+      "middlePickup": "",
+      "bridgePickup": "Yosemite® Single-Coil Jazzmaster®",
+      "controls": "主音量、主音色",
+      "switching": "三檔切換開關\n位置 1：橋拾音器\n位置 2：橋拾音器和頸拾音器\n位置 3： 頸拾音器"
+    },
+    {
+      "productId": 94,
+      "name": "Troy Van Leeuwen Jazzmaster®",
+      "neckPickup": "Pure Vintage '65 Single-Coil Jazzmaster®",
+      "middlePickup": "",
+      "bridgePickup": "Pure Vintage '65 Single-Coil Jazzmaster®",
+      "controls": "主音量、主音色",
+      "switching": "三檔切換開關\n位置 1：橋拾音器\n位置 2：橋拾音器和頸拾音器\n位置 3：頸拾音器；2檔滑動開關：向上：節奏音色電路，向下：主音音色電路"
+    },
+    {
+      "productId": 95,
+      "name": "Jim Root Jazzmaster® V4",
+      "neckPickup": "EMG® Jim Root Signature Daemonum™ Open-Coil Active Humbucking",
+      "middlePickup": "",
+      "bridgePickup": "EMG® Jim Root Signature Daemonum™ Open-Coil Active Humbucking",
+      "controls": "主音量",
+      "switching": "三檔刀片開關\n位置 1：橋拾音器\n位置 2：橋和頸拾音器\n位置 3：頸拾音器"
+    },
+    {
+      "productId": 96,
+      "name": "American Professional II Jazzmaster®",
+      "neckPickup": "V-Mod II Single-Coil Jazzmaster®",
+      "middlePickup": "",
+      "bridgePickup": "V-Mod II Single-Coil Jazzmaster®",
+      "controls": "滑動開關控制\n向下：主音量、主音色\n向上：節奏模式下的旋鈕音量和音色控制\n\n\n\n\n\n\n",
+      "switching": "三檔切換開關\n位置 1：橋拾音器\n位置 2：橋和頸拾音器\n位置 3：頸拾音器"
+    },
+    {
+      "productId": 97,
+      "name": "American Ultra Jazzmaster®",
+      "neckPickup": "Ultra Noiseless™ Vintage Jazzmaster®",
+      "middlePickup": "",
+      "bridgePickup": "Ultra Noiseless™ Vintage Jazzmaster®",
+      "controls": "音量控制 1.（頸拾音器，S1™ 開關）\n音量控制 2.（橋拾音器）\n主音色控制\n滑動開關\n音量偏移控制 1.（頸拾音器）\n音量偏移控制 2.（橋拾音器）",
+      "switching": "三檔切換開關、滑動開關"
+    },
+    {
+      "productId": 98,
+      "name": "Jim Root Jazzmaster®",
+      "neckPickup": "EMG® 60",
+      "middlePickup": "",
+      "bridgePickup": "EMG® 81",
+      "controls": "主音量",
+      "switching": "三檔刀片開關\n位置 1：橋拾音器\n位置 2：橋和頸拾音器\n位置 3：頸拾音器"
+    },
+    {
+      "productId": 99,
+      "name": "American Vintage II 1966 Jazzmaster®",
+      "neckPickup": "Pure Vintage '66 Single-Coil Jazzmaster®",
+      "middlePickup": "",
+      "bridgePickup": "Pure Vintage '66 Single-Coil Jazzmaster®",
+      "controls": "主音調（滑動開關向下）：主音量、主音調\n節奏電路控制（滑動開關向上）：兩個旋鈕控制項，用於控制琴頸拾音器的音量和音調",
+      "switching": "三檔切換開關（主音電路）"
+    }
+  ]

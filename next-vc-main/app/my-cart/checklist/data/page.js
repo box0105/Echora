@@ -1,0 +1,41 @@
+'use client'
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+
+export default function DataPage() {
+  const router = useRouter()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const cartItems = [
+    {
+      id: 1,
+      name: 'Limited Edition Paranormal Troublemaker Telecaster® Deluxe',
+      color: 'white',
+      stockStatus: 1,
+      image: '/images/cart/card2-img.png',
+      price: 13999,
+    },
+    {
+      id: 2,
+      name: '(租用) Limited Edition Paranormal Troublemaker Telecaster® Deluxe',
+      color: 'white',
+      rentDate: '2025-01-02 - 2025-01-04',
+      stockStatus: 1,
+      image: '/images/cart/card2-img.png',
+      price: 2400,
+    },
+    {
+      id: 4,
+      name: '衛武營國際音樂節-全票',
+      stockStatus: 1,
+      image: '/images/cart/card3.png',
+      price: 700,
+    },
+  ]
+
+  useEffect(() => {
+    localStorage.setItem('cartItem', JSON.stringify(cartItems))
+    router.push('/my-cart/checklist')
+  }, [cartItems, router])
+
+  return null // 确保组件有返回值
+}

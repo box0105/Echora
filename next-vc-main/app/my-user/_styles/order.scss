@@ -1,0 +1,197 @@
+  .main {
+    min-height: 800px;
+    padding: 32px 16px;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 64px;
+  }
+
+  .page-title {
+    color: #000;
+    font: 700 32px Poppins, sans-serif;
+    margin-bottom: 20px;
+  }
+
+  .content {
+    margin: 20px 0;
+    display: flex;
+    gap: 64px;
+  }
+
+  .sidebar {
+    width: 324px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px 32px;
+  }
+
+  .sidebar-section {
+    margin-bottom: 20px;
+  }
+
+  .sidebar-title {
+    color: #666;
+    font: 700 18px Ubuntu, sans-serif;
+    margin-bottom: 16px;
+  }
+
+  .sidebar-menu {
+    list-style: none;
+    padding: 0;
+  }
+
+  .sidebar-item {
+    color: #666;
+    font: 400 16px Source Sans Pro, sans-serif;
+    padding: 8px 0;
+  }
+
+  .sidebar-item.active {
+    color: #d52b1e;
+    font-weight: bold;
+  }
+
+  .order-form {
+    flex: 1;
+    display: flex;
+    width: 100%;
+    padding: 0 0 30px;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .order-header {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .order-subtitle {
+    width: 100%;
+    padding: 0 0 6px 0;
+    color: #666;
+    font: 400 14px Noto Sans TC, sans-serif;
+  }
+
+  .order-title {
+    width: 100%;
+    padding: 0 0 20px;
+    color: #000;
+    font: 700 24px Poppins, sans-serif;
+  }
+
+  .order-summary {
+    max-width: 800px;
+    margin: auto;
+  }
+
+  .order-image img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .total {
+    background: #f6f6f6;
+  }
+
+  .hamburger-member {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 30px;
+    height: 30px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    margin: 16px 0;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+  }
+
+  .hamburger-member h5 {
+    font-size: 18px;
+    font-weight: 500;
+    padding: 4px 12px;
+    margin: 0 auto;
+  }
+
+  .hamburger-member i {
+    color: #d52b1e;
+    margin-left: auto;
+  }
+
+  .dropdown-content {
+    display: none;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    z-index: 1;
+  }
+
+  .dropdown-content h5 {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content h5:hover {
+    background-color: #f1f1f1;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .tab-link {
+    display: none;
+  }
+
+  .tab-link.active {
+    display: inline-block;
+  }
+
+  @media (max-width: 991px) {
+    .content {
+      flex-direction: column;
+    }
+
+    .sidebar {
+      display: none;
+      width: 100%;
+    }
+
+    .hamburger-member {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    .dropdown-content {
+      display: inline;
+    }
+
+    .order-form,
+    .order-header,
+    .order-subtitle,
+    .order-title {
+      max-width: 100%;
+    }
+    .order-image img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
