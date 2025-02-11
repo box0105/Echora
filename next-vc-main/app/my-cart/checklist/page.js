@@ -1,9 +1,7 @@
 'use client'
 import './_styles/bootstrap.scss'
 import './_styles/cart-checkkist.scss'
-import './_styles/style0.scss'
 import './_styles/index.scss'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 
 import CartList from './_components/cart-list'

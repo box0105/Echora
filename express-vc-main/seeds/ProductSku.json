@@ -1,0 +1,1003 @@
+[
+    {
+      "id": "1-5",
+      "productId": 1,
+      "name": "Player II Jaguar®",
+      "colorId": 5,
+      "stock": 10
+    },
+    {
+      "id": "1-4",
+      "productId": 1,
+      "name": "Player II Jaguar®",
+      "colorId": 4,
+      "stock": 10
+    },
+    {
+      "id": "2-8",
+      "productId": 2,
+      "name": "SG Standard Dark Walnut",
+      "colorId": 8,
+      "stock": 10
+    },
+    {
+      "id": "3-11",
+      "productId": 3,
+      "name": "SG Supreme Ebony, 3-Pickup",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "4-9",
+      "productId": 4,
+      "name": "70s Flying V",
+      "colorId": 9,
+      "stock": 10
+    },
+    {
+      "id": "4-7",
+      "productId": 4,
+      "name": "70s Flying V",
+      "colorId": 7,
+      "stock": 10
+    },
+    {
+      "id": "4-8",
+      "productId": 4,
+      "name": "70s Flying V",
+      "colorId": 8,
+      "stock": 10
+    },
+    {
+      "id": "5-4",
+      "productId": 5,
+      "name": "Chris Shiflett Cleaver Telecaster® Deluxe",
+      "colorId": 4,
+      "stock": 10
+    },
+    {
+      "id": "6-1",
+      "productId": 6,
+      "name": "American Ultra II Stratocaster®",
+      "colorId": 1,
+      "stock": 10
+    },
+    {
+      "id": "6-6",
+      "productId": 6,
+      "name": "American Ultra II Stratocaster®",
+      "colorId": 6,
+      "stock": 10
+    },
+    {
+      "id": "6-8",
+      "productId": 6,
+      "name": "American Ultra II Stratocaster®",
+      "colorId": 8,
+      "stock": 10
+    },
+    {
+      "id": "7-4",
+      "productId": 7,
+      "name": "American Ultra II Telecaster®",
+      "colorId": 4,
+      "stock": 10
+    },
+    {
+      "id": "7-5",
+      "productId": 7,
+      "name": "American Ultra II Telecaster®",
+      "colorId": 5,
+      "stock": 10
+    },
+    {
+      "id": "7-9",
+      "productId": 7,
+      "name": "American Ultra II Telecaster®",
+      "colorId": 9,
+      "stock": 10
+    },
+    {
+      "id": "8-11",
+      "productId": 8,
+      "name": "XJ-1 HT",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "9-4",
+      "productId": 9,
+      "name": "HORIZON CUSTOM '87",
+      "colorId": 4,
+      "stock": 10
+    },
+    {
+      "id": "9-11",
+      "productId": 9,
+      "name": "HORIZON CUSTOM '87",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "10-6",
+      "productId": 10,
+      "name": "Les Paul Standard 60s Plain Top",
+      "colorId": 6,
+      "stock": 10
+    },
+    {
+      "id": "10-8",
+      "productId": 10,
+      "name": "Les Paul Standard 60s Plain Top",
+      "colorId": 8,
+      "stock": 10
+    },
+    {
+      "id": "10-12",
+      "productId": 10,
+      "name": "Les Paul Standard 60s Plain Top",
+      "colorId": 12,
+      "stock": 10
+    },
+    {
+      "id": "11-4",
+      "productId": 11,
+      "name": "Les Paul Standard 50s Mahogany Top",
+      "colorId": 4,
+      "stock": 10
+    },
+    {
+      "id": "12-8",
+      "productId": 12,
+      "name": "Les Paul Modern Koa ",
+      "colorId": 8,
+      "stock": 10
+    },
+    {
+      "id": "13-2",
+      "productId": 13,
+      "name": "Les Paul Modern Studio",
+      "colorId": 2,
+      "stock": 10
+    },
+    {
+      "id": "13-3",
+      "productId": 13,
+      "name": "Les Paul Modern Studio",
+      "colorId": 3,
+      "stock": 10
+    },
+    {
+      "id": "14-1",
+      "productId": 14,
+      "name": "Les Paul Modern Lite",
+      "colorId": 1,
+      "stock": 10
+    },
+    {
+      "id": "14-10",
+      "productId": 14,
+      "name": "Les Paul Modern Lite",
+      "colorId": 10,
+      "stock": 10
+    },
+    {
+      "id": "15-11",
+      "productId": 15,
+      "name": "Les Paul Supreme",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "16-3",
+      "productId": 16,
+      "name": "Les Paul Standard 50s Figured Top",
+      "colorId": 3,
+      "stock": 10
+    },
+    {
+      "id": "17-1",
+      "productId": 17,
+      "name": "Les Paul Standard 60s Figured Top",
+      "colorId": 1,
+      "stock": 10
+    },
+    {
+      "id": "17-5",
+      "productId": 17,
+      "name": "Les Paul Standard 60s Figured Top",
+      "colorId": 5,
+      "stock": 10
+    },
+    {
+      "id": "18-2",
+      "productId": 18,
+      "name": "Les Paul Classic",
+      "colorId": 2,
+      "stock": 10
+    },
+    {
+      "id": "19-9",
+      "productId": 19,
+      "name": "Les Paul Custom, Nickel Hardware",
+      "colorId": 9,
+      "stock": 10
+    },
+    {
+      "id": "19-11",
+      "productId": 19,
+      "name": "Les Paul Custom, Nickel Hardware",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "20-7",
+      "productId": 20,
+      "name": "Les Paul Standard 50s P-90",
+      "colorId": 7,
+      "stock": 10
+    },
+    {
+      "id": "21-7",
+      "productId": 21,
+      "name": "Mary Ford Les Paul Standard",
+      "colorId": 7,
+      "stock": 10
+    },
+    {
+      "id": "22-11",
+      "productId": 22,
+      "name": "Adam Jones Les Paul Standard",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "23-3",
+      "productId": 23,
+      "name": "SG Modern",
+      "colorId": 3,
+      "stock": 10
+    },
+    {
+      "id": "23-11",
+      "productId": 23,
+      "name": "SG Modern",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "24-4",
+      "productId": 24,
+      "name": "1962 Les Paul SG Standard, Short Maestro, Ebony Block",
+      "colorId": 4,
+      "stock": 10
+    },
+    {
+      "id": "25-4",
+      "productId": 25,
+      "name": "SG Special",
+      "colorId": 4,
+      "stock": 10
+    },
+    {
+      "id": "25-11",
+      "productId": 25,
+      "name": "SG Special",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "26-9",
+      "productId": 26,
+      "name": "60th Anniversary 1961 Les Paul SG Custom With Sideways Vibrola",
+      "colorId": 9,
+      "stock": 10
+    },
+    {
+      "id": "27-5",
+      "productId": 27,
+      "name": "Les Paul Junior Double Cut",
+      "colorId": 5,
+      "stock": 10
+    },
+    {
+      "id": "27-4",
+      "productId": 27,
+      "name": "Les Paul Junior Double Cut",
+      "colorId": 4,
+      "stock": 10
+    },
+    {
+      "id": "28-11",
+      "productId": 28,
+      "name": "80s Flying V Ebony",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "29-6",
+      "productId": 29,
+      "name": "\nJoe Bonamassa \"Amos\" 1958 Flying V Collector's Edition Antique Natural",
+      "colorId": 6,
+      "stock": 10
+    },
+    {
+      "id": "30-7",
+      "productId": 30,
+      "name": "\nFlying V Antique Natural",
+      "colorId": 7,
+      "stock": 10
+    },
+    {
+      "id": "31-11",
+      "productId": 31,
+      "name": "Adam Jones Flying V Collector's Edition Reverse Antique Silverburst",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "32-11",
+      "productId": 32,
+      "name": "Kirk Hammett 1979 Flying V Ebony",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "33-1",
+      "productId": 33,
+      "name": "Richie Faulkner Flying V Custom Pelham Blue",
+      "colorId": 1,
+      "stock": 10
+    },
+    {
+      "id": "34-8",
+      "productId": 34,
+      "name": "Dave Mustaine Flying V EXP Limited Edition Red Amber Burst",
+      "colorId": 8,
+      "stock": 10
+    },
+    {
+      "id": "35-7",
+      "productId": 35,
+      "name": "Dave Mustaine Flying V EXP Silver Metallic",
+      "colorId": 7,
+      "stock": 10
+    },
+    {
+      "id": "35-10",
+      "productId": 35,
+      "name": "Dave Mustaine Flying V EXP Silver Metallic",
+      "colorId": 10,
+      "stock": 10
+    },
+    {
+      "id": "36-11",
+      "productId": 36,
+      "name": "Jimi Hendrix™ 1969 Flying V Aged Ebony",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "37-11",
+      "productId": 37,
+      "name": "1958 Korina Flying V (White Pickguard), Ebony, Murphy Lab Light Aged Ebony\nGibson Custom Sele",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "38-11",
+      "productId": 38,
+      "name": "Flying V Custom w/ Ebony Fingerboard Gloss Ebony",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "39-7",
+      "productId": 39,
+      "name": "1958 Mahogany Flying V Walnut",
+      "colorId": 7,
+      "stock": 10
+    },
+    {
+      "id": "40-6",
+      "productId": 40,
+      "name": "1958 Korina Flying V Reissue (White Pickguard) Natural",
+      "colorId": 6,
+      "stock": 10
+    },
+    {
+      "id": "41-11",
+      "productId": 41,
+      "name": "80s Explorer Ebony",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "42-4",
+      "productId": 42,
+      "name": "Lzzy Hale Explorerbird Cardinal Red",
+      "colorId": 4,
+      "stock": 10
+    },
+    {
+      "id": "43-11",
+      "productId": 43,
+      "name": "1958 Korina Explorer (White Pickguard) Ebony",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "44-6",
+      "productId": 44,
+      "name": "\n1958 Korina Explorer Reissue (White Pickguard) Natural",
+      "colorId": 6,
+      "stock": 10
+    },
+    {
+      "id": "45-11",
+      "productId": 45,
+      "name": "Explorer Custom w/ Ebony Fingerboard Gloss Ebony",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "46-1",
+      "productId": 46,
+      "name": "1965 Non-Reverse Firebird V 12-String Reissue Aqua Mist VOS",
+      "colorId": 1,
+      "stock": 10
+    },
+    {
+      "id": "47-8",
+      "productId": 47,
+      "name": "1963 Firebird V Vintage Sunburst",
+      "colorId": 8,
+      "stock": 10
+    },
+    {
+      "id": "48-8",
+      "productId": 48,
+      "name": "1965 Non-Reverse Firebird V w/ Vibrola Vintage Sunburst",
+      "colorId": 8,
+      "stock": 10
+    },
+    {
+      "id": "49-11",
+      "productId": 49,
+      "name": "Firebird Custom w/ Ebony Fingerboard Gloss Ebony",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "50-1",
+      "productId": 50,
+      "name": "1963 Firebird V With Maestro Vibrola Pelham Blue Ultra Light Aged Pelham Blue",
+      "colorId": 1,
+      "stock": 10
+    },
+    {
+      "id": "51-4",
+      "productId": 51,
+      "name": "1963 Firebird V Reissue with Maestro Vibrola Light Aged Cardinal Red",
+      "colorId": 4,
+      "stock": 10
+    },
+    {
+      "id": "52-7",
+      "productId": 52,
+      "name": "1981 Gibson ES-347 Left-Handed",
+      "colorId": 7,
+      "stock": 10
+    },
+    {
+      "id": "53-8",
+      "productId": 53,
+      "name": "1960 Gibson ES-335 Sunburst\n",
+      "colorId": 8,
+      "stock": 10
+    },
+    {
+      "id": "54-5",
+      "productId": 54,
+      "name": "1952 Gibson ES-295",
+      "colorId": 5,
+      "stock": 10
+    },
+    {
+      "id": "55-11",
+      "productId": 55,
+      "name": "ES-330 Ebony",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "56-8",
+      "productId": 56,
+      "name": "ES-345 Gold Hardware Dark Walnut",
+      "colorId": 8,
+      "stock": 10
+    },
+    {
+      "id": "57-6",
+      "productId": 57,
+      "name": "ES Supreme Ebony, 3-Pickup",
+      "colorId": 6,
+      "stock": 10
+    },
+    {
+      "id": "57-11",
+      "productId": 57,
+      "name": "ES Supreme Ebony, 3-Pickup",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "58-3",
+      "productId": 58,
+      "name": "ES-335 Dark Purple Burst\n",
+      "colorId": 3,
+      "stock": 10
+    },
+    {
+      "id": "58-11",
+      "productId": 58,
+      "name": "ES-335 Dark Purple Burst\n",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "59-11",
+      "productId": 59,
+      "name": "ES-339 Cherry",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "59-4",
+      "productId": 59,
+      "name": "ES-339 Cherry",
+      "colorId": 4,
+      "stock": 10
+    },
+    {
+      "id": "60-5",
+      "productId": 60,
+      "name": "B.B. King \"Live at the Regal\" ES-335 Argentine Grey",
+      "colorId": 5,
+      "stock": 10
+    },
+    {
+      "id": "61-4",
+      "productId": 61,
+      "name": "\n1964 Trini Lopez Standard Reissue Ebony\n",
+      "colorId": 4,
+      "stock": 10
+    },
+    {
+      "id": "61-11",
+      "productId": 61,
+      "name": "\n1964 Trini Lopez Standard Reissue Ebony\n",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "62-8",
+      "productId": 62,
+      "name": "B.B. King “Rumble in the Jungle” 1974 ES-355 Walnut",
+      "colorId": 8,
+      "stock": 10
+    },
+    {
+      "id": "63-11",
+      "productId": 63,
+      "name": "ES-335 P-90 Ebony",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "64-5",
+      "productId": 64,
+      "name": "1959 ES-355 Reissue, Diamond F-Holes Gold Sparkle Heavy Flake Gloss",
+      "colorId": 5,
+      "stock": 10
+    },
+    {
+      "id": "64-10",
+      "productId": 64,
+      "name": "1959 ES-355 Reissue, Diamond F-Holes Gold Sparkle Heavy Flake Gloss",
+      "colorId": 10,
+      "stock": 10
+    },
+    {
+      "id": "65-11",
+      "productId": 65,
+      "name": "BB King Lucille Legacy",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "66-4",
+      "productId": 66,
+      "name": "1961 ES-335 Reissue Heavy Aged Sixties Cherry",
+      "colorId": 4,
+      "stock": 10
+    },
+    {
+      "id": "66-6",
+      "productId": 66,
+      "name": "1961 ES-335 Reissue Heavy Aged Sixties Cherry",
+      "colorId": 6,
+      "stock": 10
+    },
+    {
+      "id": "67-5",
+      "productId": 67,
+      "name": "1958 ES-335 Reissue Murphy Lab Heavy Aged",
+      "colorId": 5,
+      "stock": 10
+    },
+    {
+      "id": "68-6",
+      "productId": 68,
+      "name": "American Ultra Luxe Stratocaster®",
+      "colorId": 6,
+      "stock": 10
+    },
+    {
+      "id": "68-7",
+      "productId": 68,
+      "name": "American Ultra Luxe Stratocaster®",
+      "colorId": 7,
+      "stock": 10
+    },
+    {
+      "id": "69-10",
+      "productId": 69,
+      "name": "American Ultra Luxe Stratocaster® Floyd Rose® HSS",
+      "colorId": 10,
+      "stock": 10
+    },
+    {
+      "id": "69-11",
+      "productId": 69,
+      "name": "American Ultra Luxe Stratocaster® Floyd Rose® HSS",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "70-4",
+      "productId": 70,
+      "name": "Player II Stratocaster®",
+      "colorId": 4,
+      "stock": 10
+    },
+    {
+      "id": "70-9",
+      "productId": 70,
+      "name": "Player II Stratocaster®",
+      "colorId": 9,
+      "stock": 10
+    },
+    {
+      "id": "71-8",
+      "productId": 71,
+      "name": "Player II Stratocaster® HSS",
+      "colorId": 8,
+      "stock": 10
+    },
+    {
+      "id": "71-9",
+      "productId": 71,
+      "name": "Player II Stratocaster® HSS",
+      "colorId": 9,
+      "stock": 10
+    },
+    {
+      "id": "72-1",
+      "productId": 72,
+      "name": "Player Plus Stratocaster®",
+      "colorId": 1,
+      "stock": 10
+    },
+    {
+      "id": "72-8",
+      "productId": 72,
+      "name": "Player Plus Stratocaster®",
+      "colorId": 8,
+      "stock": 10
+    },
+    {
+      "id": "73-11",
+      "productId": 73,
+      "name": "Player Plus Stratocaster® HSS",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "74-11",
+      "productId": 74,
+      "name": "American Performer Stratocaster® HSS",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "75-12",
+      "productId": 75,
+      "name": "American Professional II Stratocaster®",
+      "colorId": 12,
+      "stock": 10
+    },
+    {
+      "id": "76-6",
+      "productId": 76,
+      "name": "American Vintage II 1973 Stratocaster®",
+      "colorId": 6,
+      "stock": 10
+    },
+    {
+      "id": "77-9",
+      "productId": 77,
+      "name": "American Vintage II 1961 Stratocaster®",
+      "colorId": 9,
+      "stock": 10
+    },
+    {
+      "id": "78-7",
+      "productId": 78,
+      "name": "American Professional II Stratocaster®, Anniversary 2-Color Sunburst",
+      "colorId": 7,
+      "stock": 10
+    },
+    {
+      "id": "79-6",
+      "productId": 79,
+      "name": "70th Anniversary American Vintage II 1954 Stratocaster®",
+      "colorId": 6,
+      "stock": 10
+    },
+    {
+      "id": "80-1",
+      "productId": 80,
+      "name": "American Vintage II 1957 Stratocaster®",
+      "colorId": 1,
+      "stock": 10
+    },
+    {
+      "id": "81-8",
+      "productId": 81,
+      "name": "Stevie Ray Vaughan Stratocaster®",
+      "colorId": 8,
+      "stock": 10
+    },
+    {
+      "id": "82-12",
+      "productId": 82,
+      "name": "Jeff Beck Stratocaster®",
+      "colorId": 12,
+      "stock": 10
+    },
+    {
+      "id": "83-8",
+      "productId": 83,
+      "name": "Limited Edition American Performer Timber Stratocaster®",
+      "colorId": 8,
+      "stock": 10
+    },
+    {
+      "id": "84-7",
+      "productId": 84,
+      "name": "Mike McCready Stratocaster®",
+      "colorId": 7,
+      "stock": 10
+    },
+    {
+      "id": "85-5",
+      "productId": 85,
+      "name": "Yngwie Malmsteen Stratocaster®",
+      "colorId": 5,
+      "stock": 10
+    },
+    {
+      "id": "86-11",
+      "productId": 86,
+      "name": "Eric Clapton Stratocaster®",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "87-1",
+      "productId": 87,
+      "name": "Player Plus Meteora® HH",
+      "colorId": 1,
+      "stock": 10
+    },
+    {
+      "id": "87-4",
+      "productId": 87,
+      "name": "Player Plus Meteora® HH",
+      "colorId": 4,
+      "stock": 10
+    },
+    {
+      "id": "87-11",
+      "productId": 87,
+      "name": "Player Plus Meteora® HH",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "88-4",
+      "productId": 88,
+      "name": "Limited Edition Paranormal Jazzmaster® XII",
+      "colorId": 4,
+      "stock": 10
+    },
+    {
+      "id": "88-12",
+      "productId": 88,
+      "name": "Limited Edition Paranormal Jazzmaster® XII",
+      "colorId": 12,
+      "stock": 10
+    },
+    {
+      "id": "89-8",
+      "productId": 89,
+      "name": "Player Jazzmaster®",
+      "colorId": 8,
+      "stock": 10
+    },
+    {
+      "id": "90-7",
+      "productId": 90,
+      "name": "Player II Jazzmaster®",
+      "colorId": 7,
+      "stock": 10
+    },
+    {
+      "id": "90-11",
+      "productId": 90,
+      "name": "Player II Jazzmaster®",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "90-1",
+      "productId": 90,
+      "name": "Player II Jazzmaster®",
+      "colorId": 1,
+      "stock": 10
+    },
+    {
+      "id": "90-4",
+      "productId": 90,
+      "name": "Player II Jazzmaster®",
+      "colorId": 4,
+      "stock": 10
+    },
+    {
+      "id": "91-7",
+      "productId": 91,
+      "name": "Limited Edition Vintera® II '50s Jazzmaster®",
+      "colorId": 7,
+      "stock": 10
+    },
+    {
+      "id": "92-4",
+      "productId": 92,
+      "name": "Gold Foil Jazzmaster®",
+      "colorId": 4,
+      "stock": 10
+    },
+    {
+      "id": "93-7",
+      "productId": 93,
+      "name": "American Performer Jazzmaster®",
+      "colorId": 7,
+      "stock": 10
+    },
+    {
+      "id": "93-2",
+      "productId": 93,
+      "name": "American Performer Jazzmaster®",
+      "colorId": 2,
+      "stock": 10
+    },
+    {
+      "id": "93-5",
+      "productId": 93,
+      "name": "American Performer Jazzmaster®",
+      "colorId": 5,
+      "stock": 10
+    },
+    {
+      "id": "94-4",
+      "productId": 94,
+      "name": "Troy Van Leeuwen Jazzmaster®",
+      "colorId": 4,
+      "stock": 10
+    },
+    {
+      "id": "94-6",
+      "productId": 94,
+      "name": "Troy Van Leeuwen Jazzmaster®",
+      "colorId": 6,
+      "stock": 10
+    },
+    {
+      "id": "95-9",
+      "productId": 95,
+      "name": "Jim Root Jazzmaster® V4",
+      "colorId": 9,
+      "stock": 10
+    },
+    {
+      "id": "96-7",
+      "productId": 96,
+      "name": "American Professional II Jazzmaster®",
+      "colorId": 7,
+      "stock": 10
+    },
+    {
+      "id": "96-11",
+      "productId": 96,
+      "name": "American Professional II Jazzmaster®",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "96-1",
+      "productId": 96,
+      "name": "American Professional II Jazzmaster®",
+      "colorId": 1,
+      "stock": 10
+    },
+    {
+      "id": "96-10",
+      "productId": 96,
+      "name": "American Professional II Jazzmaster®",
+      "colorId": 10,
+      "stock": 10
+    },
+    {
+      "id": "97-7",
+      "productId": 97,
+      "name": "American Ultra Jazzmaster®",
+      "colorId": 7,
+      "stock": 10
+    },
+    {
+      "id": "97-2",
+      "productId": 97,
+      "name": "American Ultra Jazzmaster®",
+      "colorId": 2,
+      "stock": 10
+    },
+    {
+      "id": "98-11",
+      "productId": 98,
+      "name": "Jim Root Jazzmaster®",
+      "colorId": 11,
+      "stock": 10
+    },
+    {
+      "id": "99-1",
+      "productId": 99,
+      "name": "American Vintage II 1966 Jazzmaster®",
+      "colorId": 1,
+      "stock": 10
+    },
+    {
+      "id": "99-4",
+      "productId": 99,
+      "name": "American Vintage II 1966 Jazzmaster®",
+      "colorId": 4,
+      "stock": 10
+    },
+    {
+      "id": "99-12",
+      "productId": 99,
+      "name": "American Vintage II 1966 Jazzmaster®",
+      "colorId": 12,
+      "stock": 10
+    }
+  ]

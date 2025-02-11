@@ -1,10 +1,8 @@
 'use client'
 import './_styles/bootstrap.scss'
 import './_styles/cart-checkkist.scss'
-import './_styles/style0.scss'
 import './_styles/index.scss'
 import './_styles/cart-information.scss'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import React from 'react'
 
 export default function InformationPage() {

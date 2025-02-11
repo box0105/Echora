@@ -1,11 +1,9 @@
 'use client'
 import './_styles/bootstrap.scss'
 import './_styles/cart-checkkist.scss'
-import './_styles/style0.scss'
 import './_styles/index.scss'
 import './_styles/cart-information.scss'
 import './_styles/cart-finish.scss'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useState, useEffect } from 'react'
 
 export default function FinishPage(props) {
