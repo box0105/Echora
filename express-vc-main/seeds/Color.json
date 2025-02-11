@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Sky Blue",
+        "colorPaletteId": 1
+    },
+    {
+        "name": "Dark Blue",
+        "colorPaletteId": 1
+    },
+    {
+        "name": "Modern Purple",
+        "colorPaletteId": 1
+    },
+    {
+        "name": "Fire Red",
+        "colorPaletteId": 1
+    },
+    {
+        "name": "Golden Yellow",
+        "colorPaletteId": 2
+    },
+    {
+        "name": "Tangerine",
+        "colorPaletteId": 2
+    },
+    {
+        "name": "Brown",
+        "colorPaletteId": 2
+    },
+    {
+        "name": "Dark Brown",
+        "colorPaletteId": 2
+    },
+    {
+        "name": "Marble White",
+        "colorPaletteId": 3
+    },
+    {
+        "name": "Slate Gray",
+        "colorPaletteId": 3
+    },
+    {
+        "name": "Ebony",
+        "colorPaletteId": 4
+    },
+    {
+        "name": "Forest Green",
+        "colorPaletteId": 1
+    }
+]

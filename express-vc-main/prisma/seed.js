@@ -13,9 +13,15 @@ import { isDev } from '../lib/utils.js'
 // 定義表關聯在這裡，目的是按正確順序的匯入種子資料，否則會出現外鍵約束錯誤或無法匯入的問題
 // foreignKey is in the second table
 // const oneToOne = ['User:Profile']
+<<<<<<< HEAD
 // // foreignKey is in the second table
 // const oneToMany = ['Category:Product', 'Brand:Product']
 // // foreignKey is in the third table
+=======
+// foreignKey is in the second table
+// const oneToMany = ['Category:Product', 'Brand:Product']
+// foreignKey is in the third table
+>>>>>>> evelyn
 // const manyToMany = ['User:Product:Favorite']
 
 // seed檔案種類(副檔名)seed files extension (csv| json)
@@ -37,43 +43,43 @@ async function main() {
   const seedsPath = path.join(process.cwd(), seedsFolder)
   const filenames = await fs.promises.readdir(seedsPath)
 
-  const relations = [...oneToOne, ...oneToMany, ...manyToMany]
+  // const relations = [...oneToOne, ...oneToMany, ...manyToMany]
 
   let relationFileList = []
 
   // 建立關聯檔案名稱陣列
-  for (const relation of relations) {
-    const tmp = relation.split(':')
-    for (let i = 0; i < tmp.length; i++) {
-      relationFileList.push(`${tmp[i]}.${fileExtension}`)
-    }
-  }
+  // for (const relation of relations) {
+  //   const tmp = relation.split(':')
+  //   for (let i = 0; i < tmp.length; i++) {
+  //     relationFileList.push(`${tmp[i]}.${fileExtension}`)
+  //   }
+  // }
 
   // console.log(relationFileList)
   // sort relationFileList with oneToOne, oneToMany, manyToMany table sequence
   // 依照關聯表順序排序種子檔案
-  relationFileList.sort(function (a, b) {
-    for (let i = 0; i < relations.length; i++) {
-      const tmp = relations[i].split(':')
-      // oneToOne, oneToMany
-      if (tmp.length === 2 && a.includes(tmp[0]) && b.includes(tmp[1])) {
-        return -1
-      }
+  // relationFileList.sort(function (a, b) {
+  //   for (let i = 0; i < relations.length; i++) {
+  //     const tmp = relations[i].split(':')
+  //     // oneToOne, oneToMany
+  //     if (tmp.length === 2 && a.includes(tmp[0]) && b.includes(tmp[1])) {
+  //       return -1
+  //     }
 
-      // manyToMany
-      if (tmp.length === 3 && a.includes(tmp[0]) && b.includes(tmp[2])) {
-        return -1
-      }
+  //     // manyToMany
+  //     if (tmp.length === 3 && a.includes(tmp[0]) && b.includes(tmp[2])) {
+  //       return -1
+  //     }
 
-      // manyToMany
-      if (tmp.length === 3 && a.includes(tmp[1]) && b.includes(tmp[2])) {
-        return -1
-      }
-    }
+  //     // manyToMany
+  //     if (tmp.length === 3 && a.includes(tmp[1]) && b.includes(tmp[2])) {
+  //       return -1
+  //     }
+  //   }
 
-    // others
-    return 0
-  })
+  //   // others
+  //   return 0
+  // })
 
   // 去除重覆檔案 remove duplicate
   relationFileList = [...new Set(relationFileList)]

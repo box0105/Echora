@@ -1,9 +1,13 @@
 'use client'
+<<<<<<< HEAD
 import './_styles/bootstrap.scss'
 import './_styles/style0.scss'
 import './_styles/index.scss'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+=======
+// import Link from 'next/link'
+>>>>>>> evelyn
 
 import Cart from './_components/cart'
 
@@ -11,6 +15,7 @@ import React, { useState, useEffect } from 'react'
 
 export default function AppPage(props) {
   return (
+<<<<<<< HEAD
     <>
       <div className="m-background">
         <div className="container-fluid m-section1">
@@ -193,5 +198,8 @@ export default function AppPage(props) {
         </div>
       </div>
     </>
+=======
+    <>首頁</>
+>>>>>>> evelyn
   )
 }
