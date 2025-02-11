@@ -4,6 +4,7 @@ import '../_styles/login_signup.scss'
 import { useState } from 'react'
 import { useUserRegister } from '@/services/rest-client/use-user'
 import { useAuth } from '@/hooks/use-auth'
+import Link from 'next/link'
 
 // newUser資料範例(物件) 註: name改為在profile資料表中
 // {
@@ -53,7 +54,11 @@ export default function RegisterPage() {
     <>
       <div className="login-container">
         <div className="login-main">
-          <span className="back"> &lt;返回 </span>
+          <Link href="/">
+            {' '}
+            <span className="back"> &lt;返回 </span>
+          </Link>
+
           <img
             src="../images/user/login.jpg"
             alt="Login page hero illustration"

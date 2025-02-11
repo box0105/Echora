@@ -11,13 +11,17 @@ import Header from './_components/header'
 
 export default function RootLayout({ children }) {
   const pathname = usePathname()
-  const noHeaderPaths = ['/login', '/register']
+  const noHeaderPaths = [
+    '/my-user',
+    '/my-user/register',
+    '/my-user/forget-password',
+  ]
   return (
     <html lang="en">
       <body>
         <Suspense fallback={<div>Loading...</div>}>
           <Providers>
-            {noHeaderPaths.includes(pathname) && <Header />}
+            {!noHeaderPaths.includes(pathname) && <Header />}
             <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
             <Footer />
           </Providers>
