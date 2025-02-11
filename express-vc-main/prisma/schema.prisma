@@ -122,3 +122,26 @@ model User {
   // 關聯: User:Product = n:m 透過 Favorite
   favorites       Favorite[]
 }
+
+model Coupons {
+  id            Int      @id @default(autoincrement())
+  name          String
+  type          String   
+  discount      Decimal // 折扣金額或百分比 (根據 discount_type 決定)
+  discount_type String   
+  minPurchase   Decimal? //最低消費金額
+  description   String? // 優惠券描述 (nullable)
+  startTime     DateTime
+  endTime       DateTime
+  is_delete     Boolean  @default(false)
+}
+
+model CouponType {
+  id       Int    @id @default(autoincrement())
+  category String
+}
+
+model DiscountType {
+  id   Int    @id @default(autoincrement())
+  name String
+}
