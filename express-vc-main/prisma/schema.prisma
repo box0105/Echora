@@ -122,3 +122,33 @@ model User {
   // 關聯: User:Product = n:m 透過 Favorite
   favorites       Favorite[]
 }
+
+model Coupons {
+  id             Int          @id @default(autoincrement())
+  name           String
+  code           String?       @unique // 優惠券代碼 (例如：SUMMER20)
+  typeId         Int //type fk
+  type           CouponType   @relation(fields: [typeId], references: [id]) // 優惠券類型 (關係)
+  discount       Int // 折扣金額或百分比 (根據 discount_type 決定)
+  discountTypeId Int // discountType fk
+  discountType   DiscountType @relation(fields: [discountTypeId], references: [id]) // 折扣類型 (關係)
+  minPurchase    Decimal? //最低消費金額
+  description    String? // 優惠券描述 (nullable)
+  startTime      DateTime
+  endTime        DateTime
+  is_delete      Boolean      @default(false)
+
+  @@index([code]) // 建立 code 索引
+}
+
+model CouponType {
+  id       Int       @id @default(autoincrement())
+  category String
+  coupons  Coupons[]
+}
+
+model DiscountType {
+  id      Int       @id @default(autoincrement())
+  name    String
+  coupons Coupons[]
+}
