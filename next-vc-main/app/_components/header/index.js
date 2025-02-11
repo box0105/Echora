@@ -1,10 +1,12 @@
 'use client'
 import './header.scss'
+import CartOffcanvas from '../cart-offcanvas'
 
 import { useState } from 'react'
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [showCart, setShowCart] = useState(false)
 
   return (
     <>
@@ -32,10 +34,14 @@ export default function Header() {
               <a href="">
                 <img src="/images/header/account.svg" />
               </a>
-              <a href="">
+              <a href=""
+                onClick={(e) => {
+                  e.preventDefault()
+                  setShowCart(true)
+                }}>
                 <img src="/images/header/cart.svg" />
               </a>
-              <button className="hamburger" onClick={() => {setMenuOpen(true)}}>
+              <button className="hamburger" onClick={() => { setMenuOpen(true) }}>
                 <img src="/images/header/hamburger.svg" />
               </button>
             </div>
@@ -83,12 +89,12 @@ export default function Header() {
         </div>
       </nav>
       {/* hamburger menu bar */}
-      <section className={`g-menu-bar-sec ${menuOpen ? "active" : "" }`}>
+      <section className={`g-menu-bar-sec ${menuOpen ? "active" : ""}`}>
         <div className="container-fluid p-0">
           <div className="g-menu-bar">
             <div className="d-flex justify-content-between pb-4">
               <img className="ps-3" src="/images/header/logo-mb.svg" />
-              <img className="g-x" width="16px" src="/images/header/x.svg" onClick={() => {setMenuOpen(false)}}/>
+              <img className="g-x" width="16px" src="/images/header/x.svg" onClick={() => { setMenuOpen(false) }} />
             </div>
             <ul className="list-unstyled">
               <li>
@@ -139,6 +145,8 @@ export default function Header() {
           </div>
         </div>
       </section>
+      {/* Offcanvas：根據 showCart 控制顯示，並傳入 onClose 用於關閉 */}
+      <CartOffcanvas show={showCart} onClose={() => setShowCart(false)} />
     </>
   )
 }
