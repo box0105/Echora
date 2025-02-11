@@ -15,35 +15,36 @@ export default function CartItem({ item }) {
           <img src={item.image} className="img-fluid" alt={item.name} />
         </div>
         <div className="col-md-9">
-          <div className="card-body p-lg-3 p-0">
-            <div className="d-flex flex-column justify-content-between">
+          <div className="card-body h-100 p-lg-3 p-0 d-flex flex-column">
+            <div className="d-flex flex-column justify-content-between flex-grow-1">
               <div>
-                <h3 className="h3 p-lg-x-2 p-lg-2">{item.name}</h3>
-                {item.color && <h4 className="p-lg-2">顏色: {item.color}</h4>}
-                <div className="d-flex align-items-end p-lg-2">
-                  {item.stockStatus != 0 ? (
+                <h4 className="h3 p-lg-x-2 p-lg-1">{item.name}</h4>
+                {item.rentDate && (
+                  <div className="d-flex align-items-end p-lg-1">
+                    <h5>租借日期: {item.rentDate}</h5>
+                  </div>
+                )}
+                {item.color && <h5 className="p-lg-1">顏色: {item.color}</h5>}
+                <div className="d-flex align-items-end p-lg-1">
+                  {item.stockStatus >= item.count ? (
                     <img src="/images/cart/box-icon.svg" alt="stock icon" />
                   ) : (
                     <img src="/images/cart/box-icon-red.svg" alt="stock icon" />
                   )}
-                  <h4 className="ps-2">
-                    {item.stockStatus != 0 ? '有庫存' : '無庫存'}
-                  </h4>
+                  <h5 className="ps-2">
+                    {item.stockStatus >= item.count ? '有庫存' : '無庫存'}
+                  </h5>
                 </div>
-                <div className="d-flex align-items-end p-lg-2 pb-lg-3 py-2">
-                  <h4>數量 :</h4>
+                <div className="d-flex align-items-end p-lg-1 pb-lg-1 py-2">
+                  <h5>數量 :</h5>
                   <div
                     className="btn-group btn-group-sm"
                     role="group"
                     aria-label="Basic outlined example"
                   >
-
                     <button type="button" className="btn" onClick={() => {
-                      {
-                        if (item.count > 1) {
-                          onDecrease(item.id)
-
-                        }
+                      if (item.count > 1) {
+                        onDecrease(item.id)
                       }
                     }}>
                       <i className="fa-solid fa-minus fa-fw" />
@@ -56,14 +57,9 @@ export default function CartItem({ item }) {
                     </button>
                   </div>
                 </div>
-                {item.rentDate && (
-                  <div className="d-flex align-items-end p-lg-2 py-lg-3 py-2">
-                    <h4>租借日期: {item.rentDate}</h4>
-                  </div>
-                )}
-                <h4 className="h3 p-lg-2">價錢: NT$ {item.price}</h4>
+                <h5 className="h4 p-lg-1">價錢: NT$ {item.price}</h5>
               </div>
-              <div className="d-flex justify-content-center pt-lg-5 mt-lg-5 pt-3">
+              <div className="d-flex justify-content-center align-items-end pt-3 mt-auto">
                 <button className="btn" onClick={() => { onRemove(item.id) }}>移除商品</button>
               </div>
             </div>

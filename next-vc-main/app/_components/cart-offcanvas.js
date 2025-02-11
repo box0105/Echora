@@ -1,7 +1,6 @@
 import CartList from '../my-cart/checklist/_components/cart-list'
 import { useMyCart } from '@/hooks/use-cart'
 
-
 export default function CartOffcanvas({ show, onClose }) {
   const { cartItems, totalAmount, totalQty, clearCart } = useMyCart()
 
@@ -36,9 +35,9 @@ export default function CartOffcanvas({ show, onClose }) {
           <h4 className="h4">總計 :</h4>
           <h4 className="h4">NT$ {totalAmount}</h4>
         </div>
-        <button type="button" className="btn btn-dark w-100 mt-3">
+        <butaton type="button" className="btn btn-dark w-100 mt-3">
           前往結帳
-        </button>
+        </butaton>
         <button type="button" className="btn btn-light w-100 mt-3" onClick={clearCart}>
           清空購物車
         </button>
