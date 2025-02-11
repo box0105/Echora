@@ -1,52 +1,32 @@
-'use client'
 import CartList from '../my-cart/checklist/_components/cart-list'
-import React, { useState, useEffect, useRef } from 'react'
+import { useMyCart } from '@/hooks/use-cart'
+
 
 export default function CartOffcanvas({ show, onClose }) {
-  const [cartItems, setCartItems] = useState([]) // 初始化狀態
-  const [totalAmount, setTotalAmount] = useState(0)
-  const offcanvasRef = useRef(null)
-
-  // 根據 show 控制 offcanvas 的顯示或隱藏
-  useEffect(() => {
-    if (offcanvasRef.current) {
-      const bsOffcanvas = new window.bootstrap.Offcanvas(offcanvasRef.current)
-      if (show) {
-        bsOffcanvas.show()
-      } else {
-        bsOffcanvas.hide()
-      }
-    }
-  }, [show])
-
-  // 讀取 localStorage 中的購物車資料並計算總金額
-  useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem('cartItem')) || []
-    setCartItems(storedCart)
-
-    const total = storedCart.reduce((acc, v) => acc + v.count * v.price, 0)
-    setTotalAmount(total)
-  }, [])
+  const { cartItems, totalAmount, totalQty, clearCart } = useMyCart()
 
   return (
     <div
-      className="offcanvas offcanvas-end"
+      className={`offcanvas offcanvas-end ${show ? 'show' : ''}`} // 動態加上 "show" class
       tabIndex={-1}
       id="offcanvasRight"
       aria-labelledby="offcanvasRightLabel"
-      ref={offcanvasRef}  // 指定 ref 給 offcanvas 最外層元素
+      style={{
+        visibility: show ? 'visible' : 'hidden',
+        transform: show ? 'translateX(0)' : 'translateX(100%)', // 控制開關動畫
+        transition: 'transform 0.3s ease-in-out',
+      }}
     >
       <div className="offcanvas-header">
         <div className="d-flex align-items-end">
           <div className="h2 pe-5">購物車清單</div>
-          <h3>{cartItems.length}件商品</h3>
+          <h3>{totalQty}件商品</h3>
         </div>
         <button
           type="button"
           className="btn-close"
-          data-bs-dismiss="offcanvas"
           aria-label="Close"
-          onClick={onClose}  // 點選關閉時呼叫 onClose callback
+          onClick={onClose}
         />
       </div>
       <div className="offcanvas-body">
@@ -58,6 +38,9 @@ export default function CartOffcanvas({ show, onClose }) {
         </div>
         <button type="button" className="btn btn-dark w-100 mt-3">
           前往結帳
+        </button>
+        <button type="button" className="btn btn-light w-100 mt-3" onClick={clearCart}>
+          清空購物車
         </button>
       </div>
     </div>
