@@ -32,7 +32,7 @@ export default function CartItem({ item }) {
                     <img src="/images/cart/box-icon-red.svg" alt="stock icon" />
                   )}
                   <h5 className="ps-2">
-                    {item.stockStatus >= item.count ? '有庫存' : '無庫存'}
+                    {item.stockStatus >= item.count ? '有庫存' : '庫存不足'}
                   </h5>
                 </div>
                 <div className="d-flex align-items-end p-lg-1 pb-lg-1 py-2">

@@ -3,6 +3,8 @@ import './header.scss'
 import CartOffcanvas from '../cart-offcanvas'
 
 import { useState } from 'react'
+import Link from 'next/link';
+
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -14,8 +16,10 @@ export default function Header() {
         <div className="container-fluid">
           <div className="g-nav-top row">
             <div className="g-logo col-lg-4 col-6 order-1 ps-0">
-              <img className="g-pc-logo" src="/images/header/logo.svg" />
-              <img className="g-mb-logo" src="/images/header/logo-mb.svg" />
+              <Link href="/">
+                <img className="g-pc-logo" src="/images/header/logo.svg" />
+                <img className="g-mb-logo" src="/images/header/logo-mb.svg" />
+              </Link>
             </div>
             <form
               action

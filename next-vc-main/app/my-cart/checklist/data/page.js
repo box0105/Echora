@@ -43,7 +43,7 @@ export default function DataPage() {
   return (
     <>
       <button onClick={()=>{
-        createLocalstorage
+        createLocalstorage()
         alert("新增成功")
       }}>
         點選新建localstorage
