@@ -20,7 +20,7 @@ export default function Header() {
               className="col-lg-4 col-12 order-lg-2 order-3 d-flex align-items-center  p-0 mt-lg-0 mt-3"
             >
               <input
-                type="search"
+                type="text"
                 className="form-control focus-ring g-search-field"
                 placeholder="搜尋商品關鍵字"
               />
