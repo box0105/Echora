@@ -1,7 +1,6 @@
 'use client'
 
 // 載入購物車context
-import { CartProvider } from '@/hooks/use-cart-state'
 import { MyCartProvider } from '@/hooks/use-cart'
 //  載入認証用context
 import { AuthProvider } from '@/hooks/use-auth'
@@ -21,9 +20,7 @@ export function Providers({ children }) {
       <LoaderProvider close={2} CustomLoader={CatLoader}>
         <AuthProvider>
           <MyCartProvider>
-
             <ProductProvider>{children}</ProductProvider>
-
           </MyCartProvider>
         </AuthProvider>
       </LoaderProvider>

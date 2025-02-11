@@ -5,10 +5,15 @@ import './_styles/index.scss'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 
 import CartList from './_components/cart-list'
+import { useMyCart } from '@/hooks/use-cart'
+
 
 
 export default function ChecklistPage(props) {
-
+  const { cartItems,
+    totalAmount,
+    totalQty,
+  } = useMyCart()
   return (
     <>
       <div className="m-background">
@@ -31,7 +36,7 @@ export default function ChecklistPage(props) {
             <div className="m-sec2-col8 col-lg-8 col-12">
               <div className="d-flex justify-content-between align-items-end py-4">
                 <div className="h2">購物車清單</div>
-                <h3>{cartItems.length} 件商品</h3>
+                <h3>{totalQty} 件商品</h3>
               </div>
               <div className="row row-cols-1">
                 <CartList cartItems={cartItems} />
@@ -61,12 +66,12 @@ export default function ChecklistPage(props) {
               </div>
               <div className="d-flex justify-content-between py-2">
                 <h5>折扣 :</h5>
-                <h5>-{coupon}</h5>
+                <h5>20%</h5>
               </div>
               <hr />
               <div className="d-flex justify-content-between py-3">
                 <h4 className="h4">總計 :</h4>
-                <h4 className="h4">NT$ {total}</h4>
+                <h4 className="h4">NT$ {totalAmount}</h4>
               </div>
               <button type="button" className="btn btn-dark w-100 mt-5">
                 結帳
