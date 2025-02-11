@@ -21,9 +21,9 @@ export function Providers({ children }) {
       <LoaderProvider close={2} CustomLoader={CatLoader}>
         <AuthProvider>
           <MyCartProvider>
-            <CartProvider>
-              <ProductProvider>{children}</ProductProvider>
-            </CartProvider>
+
+            <ProductProvider>{children}</ProductProvider>
+
           </MyCartProvider>
         </AuthProvider>
       </LoaderProvider>

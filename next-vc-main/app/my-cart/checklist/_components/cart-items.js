@@ -37,13 +37,21 @@ export default function CartItem({ item }) {
                     role="group"
                     aria-label="Basic outlined example"
                   >
-                    <button type="button" className="btn" onClick={onDecrease(item.id)}>
+
+                    <button type="button" className="btn" onClick={() => {
+                      {
+                        if (item.count > 1) {
+                          onDecrease(item.id)
+
+                        }
+                      }
+                    }}>
                       <i className="fa-solid fa-minus fa-fw" />
                     </button>
                     <div type="button" className="btn">
                       {item.count}
                     </div>
-                    <button type="button" className="btn" onClick={onIncrease(item.id)}>
+                    <button type="button" className="btn" onClick={() => { onIncrease(item.id) }}>
                       <i className="fa-solid fa-plus fa-fw" />
                     </button>
                   </div>
@@ -56,7 +64,7 @@ export default function CartItem({ item }) {
                 <h4 className="h3 p-lg-2">價錢: NT$ {item.price}</h4>
               </div>
               <div className="d-flex justify-content-center pt-lg-5 mt-lg-5 pt-3">
-                <button className="btn" onClick={onRemove(item.id)}>移除商品</button>
+                <button className="btn" onClick={() => { onRemove(item.id) }}>移除商品</button>
               </div>
             </div>
           </div>
