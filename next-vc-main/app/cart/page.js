@@ -45,7 +45,7 @@ export default function CartBasicPage() {
       <h2>購物車列表</h2>
       <List />
       {/* 以下為測試按鈕 */}
-      <h4>測試按鈕</h4>
+      <h2>測試按鈕</h2>
       <div>
         <button
           onClick={() => {
