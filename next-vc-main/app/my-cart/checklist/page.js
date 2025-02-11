@@ -1,10 +1,7 @@
 'use client'
 import './_styles/bootstrap.scss'
 import './_styles/cart-checkkist.scss'
-import './_styles/style0.scss'
 import './_styles/index.scss'
-import '../../_styles/nav.scss'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 
 import CartList from './_components/cart-list'
@@ -35,7 +32,7 @@ export default function ChecklistPage(props) {
     <>
       <div className="m-background">
         <div className="m-checklist-section1">
-          <div className="container-fluid p-0 d-flex justify-content-center m-index1">
+          <div className="container-fluid d-flex justify-content-center m-index1">
             <div className="m-sec1-img w-75">
               <img className="img-fluid" src="/images/cart/流程圖.svg" alt />
             </div>
