@@ -1,9 +1,9 @@
 'use client'
 
 import '../_styles/order.scss'
-import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/css/bootstrap.min.css'
 
-export default function ProfilePage() {
+export default function OrderPage() {
   return (
     <div>
       <header />
@@ -73,7 +73,7 @@ export default function ProfilePage() {
                       <span>運費</span> <span>NT$500</span>
                     </p>
                     <hr />
-                    <p className="d-flex justify-content-between fw-bold">
+                    <p className="d-flex justify-content-between fw-bold mt-3">
                       <span>所有商品</span> <span>NT$26,400</span>
                     </p>
                   </div>

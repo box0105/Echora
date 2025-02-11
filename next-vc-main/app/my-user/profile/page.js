@@ -1,7 +1,6 @@
 'use client'
 
 import '../_styles/member.scss'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import '../_styles/style0.scss'
 import {
@@ -93,7 +92,6 @@ export default function ProfilePage() {
   return (
     <>
       <div>
-        <header />
         <main className="main">
           <div className="container">
             <h1 className="page-title">關於我</h1>
@@ -135,7 +133,7 @@ export default function ProfilePage() {
                 <div className="section-header">
                   <h4 className="section-title">個人資料</h4>
                 </div>
-                <div className="form-container">
+                <div className="a-form-container">
                   <div className="left">
                     <div className="form-group">
                       <label htmlFor="lastname" className="form-label">
@@ -274,7 +272,6 @@ export default function ProfilePage() {
             </div>
           </div>
         </main>
-        <footer className="footer" />
       </div>
     </>
   )
