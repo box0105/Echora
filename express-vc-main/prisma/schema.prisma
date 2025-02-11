@@ -15,110 +15,102 @@ datasource db {
 //   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 // }
 
-/// 以下為資料表定義
-// https://www.prisma.io/docs/concepts/components/prisma-schema/data-model
-// 部落格CRUD範例
-model Blog {
-  id        Int      @id @default(autoincrement())
-  // DateTime 會轉換成資料庫的 timestamp，time zone 會自動轉換成 UTC
-  // 格式: 2021-01-01T00:00:00.000Z
-  createdAt DateTime @default(now()) @map("created_at")
-  // 這個欄位會在每次更新時"自動"更新時間，不需要手動更新
-  // DateTime 會轉換成資料庫的 timestamp，time zone 會自動轉換成 UTC
-  updatedAt DateTime @updatedAt @map("updated_at")
-  title     String   @db.VarChar(255)
-  content   String?  @db.Text
-  published Boolean  @default(false)
-
-  // 關聯: User:Blog = 1:n 
-  // author    User     @relation(fields: [authorId], references: [id])
-  // authorId  Int
-  @@map("blog")
-}
-
+/// 以下為product相關資料表定義
 model Brand {
-  id       Int       @id @default(autoincrement())
-  name     String    @unique
-  img      String?
-  info     String    @db.Text
-  // 關聯: Brand:Product = 1:n 
-  products Product[]
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(50)
+
+  @@map("brand")
 }
 
-model Category {
-  id       Int       @id @default(autoincrement())
-  name     String    @unique
-  parentId Int?      @map("parent_id")
-  // 關聯: Category:Product = 1:n 
-  products Product[]
+model Color {
+  id             Int    @id @default(autoincrement())
+  name           String @db.VarChar(50)
+  colorPaletteId Int    @map("color_palette_id")
+
+  @@map("color")
 }
 
-model Favorite {
-  // 關聯: User:Favorite = 1:n 
-  user      User    @relation(fields: [userId], references: [id])
-  userId    Int     @map("user_id")
-  // 關聯: Product:Favorite = 1:n 
-  product   Product @relation(fields: [productId], references: [id])
-  productId Int     @map("product_id")
+model ColorPalette {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(50)
 
-  // 複合主鍵
-  @@id([userId, productId])
+  @@map("color_palette")
 }
 
-model Otp {
-  id        Int      @id @default(autoincrement())
-  email     String
-  token     String
-  hash      String?
-  createdAt DateTime @default(now()) @map("created_at")
-  expiredAt DateTime @map("expired_at")
-}
+model Image {
+  id           Int    @id @default(autoincrement())
+  productSkuId Int    @map("product_sku_id")
+  name         String @db.VarChar(150)
+  image        String @db.VarChar(300)
+  sortOrder    Int    @map("sort_order")
 
-model Profile {
-  id       Int       @id @default(autoincrement())
-  name     String?
-  bio      String?   @db.Text
-  avatar   String?
-  sex      String?
-  // 日期格式: 2021-01-01
-  birth    DateTime? @db.Date
-  phone    String?
-  postcode String?
-  address  String?
-  // 1:1 關聯
-  user     User      @relation(fields: [userId], references: [id])
-  userId   Int       @unique @map("user_id")
+  @@map("image")
 }
 
 model Product {
-  id         Int        @id @default(autoincrement())
-  name       String
-  sn         String     @unique
-  photos     String?    @db.Text
-  stock      Int        @default(0)
-  price      Int        @default(0)
-  info       String     @db.Text
-  // 關聯: Brand:Product = 1:n 
-  brand      Brand      @relation(fields: [brandId], references: [id])
-  brandId    Int        @map("brand_id")
-  // 關聯: Category:Product = 1:n 
-  category   Category   @relation(fields: [categoryId], references: [id])
-  categoryId Int        @map("category_id")
-  // 關聯: User:Product = n:m 透過 Favorite
-  favorites  Favorite[]
+  id            Int      @id @default(autoincrement())
+  name          String   @db.VarChar(100)
+  brandId       Int      @map("brand_id")
+  discription   String   @db.Text
+  price         Int      @default(0)
+  discountPrice Int?     @map("discount_price")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  @@map("product")
 }
 
-model User {
-  id              Int        @id @default(autoincrement())
-  username        String     @unique
-  password        String
-  email           String     @unique
-  // 關聯 User:Profile = 1:1 
-  profile         Profile?
-  emailValidated  Boolean    @default(false) @map("email_validated")
-  googleUid       String?    @unique @map("google_uid")
-  lineUid         String?    @unique @map("line_uid")
-  lineAccessToken String?    @map("line_access_token") @db.Text
-  // 關聯: User:Product = n:m 透過 Favorite
-  favorites       Favorite[]
+model ProductSku {
+  // id        Int    @id @default(autoincrement())
+  //id 改為1-1, 1-2, 1-3 (productId-colorId)
+  id        String @id @db.VarChar(20)
+  productId Int    @map("product_id")
+  name      String @db.VarChar(100)
+  colorId   Int    @map("color_id")
+  stock     Int    @default(0)
+
+  @@map("product_sku")
+}
+
+model Spec {
+  // id        Int    @id @default(autoincrement())
+  productId    Int     @id @map("product_id")
+  name         String  @db.VarChar(100)
+  neckPickup   String? @map("neck_pickup") @db.VarChar(100)
+  middlePickup String? @map("middle_pickup") @db.VarChar(100)
+  bridgePickup String? @map("bridge_pickup") @db.VarChar(100)
+  controls     String? @db.VarChar(300)
+  switching    String? @db.VarChar(300)
+
+  @@map("spec")
+}
+
+model Coupons {
+  id             Int          @id @default(autoincrement())
+  name           String
+  code           String?       @unique // 優惠券代碼 (例如：SUMMER20)
+  typeId         Int //type fk
+  type           CouponType   @relation(fields: [typeId], references: [id]) // 優惠券類型 (關係)
+  discount       Int // 折扣金額或百分比 (根據 discount_type 決定)
+  discountTypeId Int // discountType fk
+  discountType   DiscountType @relation(fields: [discountTypeId], references: [id]) // 折扣類型 (關係)
+  minPurchase    Decimal? //最低消費金額
+  description    String? // 優惠券描述 (nullable)
+  startTime      DateTime
+  endTime        DateTime
+  is_delete      Boolean      @default(false)
+
+  @@index([code]) // 建立 code 索引
+}
+
+model CouponType {
+  id       Int       @id @default(autoincrement())
+  category String
+  coupons  Coupons[]
+}
+
+model DiscountType {
+  id      Int       @id @default(autoincrement())
+  name    String
+  coupons Coupons[]
 }
