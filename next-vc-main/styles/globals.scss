@@ -1,0 +1,106 @@
+root {
+    --black: #000000;
+    --white: #ffffff;
+    --grey50: #F9F9F9;
+    --grey100: #DADADA;
+    --grey200: #CACACA;
+    --grey300: #BABABA;
+    --grey400: #A9A9A9;
+    --grey500: #999999;
+    --grey600: #818181;
+    --grey700: #686868;
+    --grey800: #505050;
+    --grey900: #373737;
+}
+
+body{
+    font-family: "Poppins", "Noto Sans TC", sans-serif;
+}
+
+/* tc */
+h1{
+    font-size: 2rem; /* 32px */
+    font-weight: 500;
+}
+h2{
+    font-size: 1.5rem; /* 24px */
+    font-weight: 500;
+}
+h3{
+    font-size: 20px;
+    font-weight: 500;
+}
+h4{
+    font-size: 18px;
+    font-weight: 500;
+}
+h5{
+    font-size: 16px;
+    font-weight: 500;
+}
+h6{
+    font-size: 14px;
+    font-weight: 400;
+}
+p{
+    font-size: 12px;
+    font-weight: 400;
+}
+
+/* eng */
+.h1{
+    font-size: 2rem; /* 32px */
+    font-weight: 600;
+}
+.h2{
+    font-size: 1.75rem; /* 28px */
+    font-weight: 600;
+}
+.h3{
+    font-size: 1.5rem; /* 24px */
+    font-weight: 600;
+}
+.h4{
+    font-size: 22px;
+    font-weight: 600;
+}
+.h5{
+    font-size: 18px;
+    font-weight: 500;
+}
+.h6{
+    font-size: 16px;
+    font-weight: 600;
+}
+.h7{
+    font-size: 14px;
+    font-weight: 600;
+}
+.p{
+    font-size: 12px;
+    font-weight: 500;
+}
+
+
+/* reset bs */
+/* .container-fluid{
+    margin: 0;
+    padding: 0 76px;
+
+    @media screen and (max-width: 576px) {
+    padding: 0 28px;
+    }
+} */
+
+
+/* element */
+a, a:link{
+    text-decoration: none;
+}
+
+/* module */
+.list-unstyled{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}

@@ -1,0 +1,164 @@
+/* Bootstrap的style調整 */
+.container-fluid {
+  padding: 0;
+}
+.card {
+  border-radius: 0;
+  border: none;
+  img {
+    border-radius: 0;
+  }
+}
+/* 全域 */
+body {
+  font-family: 'Noto Sans TC', Arial, Helvetica, sans-serif;
+}
+
+/* 自訂 */
+.c-background {
+  background-image: url(/images/Rent/background.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+/* mob */
+@media (max-width: 390px) {
+}
+@media (max-width: 1440px) {
+  .col-7 img {
+    display: none;
+  }
+}
+
+@media (max-width: 390px) {
+  .card-group {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .card-top {
+    width: 50%; /* 使每個卡片占據50%寬度 */
+  }
+}
+/* section1 */
+.c-section1 {
+  width: 100%;
+}
+.c-section1-text {
+  margin-left: 3%;
+}
+.no-rounded-corners {
+  border-radius: 0 ;
+}
+.bolt {
+  width: 22px;
+  height: 27.113px;
+  flex-shrink: 0;
+}
+
+/* sectioon2 */
+.c-index {
+  padding-inline: 64px;
+  padding-block: 100px 0;
+}
+.c-index-mod {
+  padding: 48px 16px 28px 16px;
+}
+.c-index-mod-1 {
+  padding: 16px 16px 0px 16px;
+}
+.c-index-title {
+  margin-bottom: 50px;
+
+  span {
+    font-size: 18px;
+  }
+}
+/*section2*/
+.c-section2-body {
+  width: 100%;
+}
+.c-index-1 {
+  padding-inline: 64px;
+}
+
+.c-tit {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+}
+.c-bot {
+  font-size: 14px;
+  font-weight: 400;
+}
+.c-filter {
+  padding-top: 0.75rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid black;
+}
+.c-lenav {
+  padding-top: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #cacaca;
+}
+.c-bot {
+  padding: 25px;
+
+  button {
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 16px;
+  }
+}
+
+.color {
+  width: 100%;
+}
+
+.card-group {
+  span {
+    font-size: 16px;
+    padding-left: 20px;
+    color: #d52b1e;
+    font-weight: 700;
+  }
+  p {
+    font-size: 12px;
+    font-weight: 700;
+  }
+}
+.card-top {
+  width: 18rem;
+}
+.btn1 {
+  width: 100%;
+  padding: 64px;
+}
+
+.d-flex .mod-sel {
+  width: 75px;
+  height: 22px;
+  p {
+    font-size: 12px;
+    font-weight: 400;
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col {
+  width: 50%; /* 讓每行顯示兩張卡片 */
+  box-sizing: border-box; /* 確保元素寬度計算正常 */
+}
+
+.card-top-1 {
+  width: 100%; /* 讓卡片容器寬度100% */
+}
+
+.card-body {
+  padding: 1rem;
+}
