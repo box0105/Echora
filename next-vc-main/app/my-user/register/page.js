@@ -107,6 +107,8 @@ export default function RegisterPage() {
               <input
                 type="email"
                 id="email"
+                value={userInput.email}
+                onChange={handleFieldChange}
                 className="form-input"
                 placeholder="電子郵件"
                 required
@@ -120,6 +122,8 @@ export default function RegisterPage() {
               <input
                 type="password"
                 id="password"
+                value={userInput.password}
+                onChange={handleFieldChange}
                 className="form-input"
                 placeholder="密碼"
                 required
@@ -140,13 +144,6 @@ export default function RegisterPage() {
               繼續
             </button>
             <div className="social-login">
-              {/* <button
-        type="button"
-        class="social-button"
-        aria-label="使用 Apple 登入"
-      >
-        <i class="bi bi-apple social-icon"></i>
-      </button> */}
               <button
                 type="button"
                 className="social-button"

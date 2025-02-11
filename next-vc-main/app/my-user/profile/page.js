@@ -9,7 +9,7 @@ import {
   useUserUpdateProfile,
 } from '@/services/rest-client/use-user'
 import { useState, useEffect } from 'react'
-import { useAuth } from '@/hooks/use-auth'
+// import { useAuth } from '@/hooks/use-auth'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Link from 'next/link'

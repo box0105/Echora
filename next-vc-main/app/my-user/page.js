@@ -120,6 +120,8 @@ export default function UserPage() {
               <input
                 type="email"
                 id="email"
+                value={userInput.email}
+                onChange={handleFieldChange}
                 className="form-input"
                 placeholder="電子郵件"
                 required
@@ -133,6 +135,8 @@ export default function UserPage() {
               <input
                 type="password"
                 id="password"
+                value={userInput.password}
+                onChange={handleFieldChange}
                 className="form-input"
                 placeholder="密碼"
                 required
@@ -149,17 +153,14 @@ export default function UserPage() {
             <a href="#" className="forgot-password">
               忘記密碼?
             </a>
-            <button type="submit" className="login-button">
+            <button
+              type="submit"
+              className="login-button"
+              onClick={handleLogin}
+            >
               登入
             </button>
             <div className="social-login">
-              {/* <button
-        type="button"
-        class="social-button"
-        aria-label="使用line 登入"
-      >
-        <i class="bi bi-apple social-icon"></i>
-      </button> */}
               <button
                 type="button"
                 className="social-button"
@@ -171,7 +172,7 @@ export default function UserPage() {
             <div className="signup-prompt">
               沒有帳號?
               <span className="signup-link" tabIndex={0} role="button">
-                註冊
+                <Link href="/my-user/register">註冊</Link>
               </span>
             </div>
           </form>
