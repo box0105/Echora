@@ -1,5 +1,4 @@
 'use client'
-import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
 export default function DataPage() {
@@ -13,6 +12,7 @@ export default function DataPage() {
       stockStatus: 1,
       image: '/images/cart/card2-img.png',
       price: 13999,
+      count: 1,
     },
     {
       id: 2,
@@ -22,6 +22,7 @@ export default function DataPage() {
       stockStatus: 1,
       image: '/images/cart/card2-img.png',
       price: 2400,
+      count: 1,
     },
     {
       id: 4,
@@ -29,13 +30,22 @@ export default function DataPage() {
       stockStatus: 1,
       image: '/images/cart/card3.png',
       price: 700,
+      count: 1,
     },
   ]
 
-  useEffect(() => {
+  function createLocalstorage() {
     localStorage.setItem('cartItem', JSON.stringify(cartItems))
-    router.push('/my-cart/checklist')
-  }, [cartItems, router])
+  }
 
-  return null // 确保组件有返回值
+
+
+  return (
+    <>
+      <button onClick={createLocalstorage}>
+        點選新建localstorage
+      </button>
+    </>
+  )
 }
+

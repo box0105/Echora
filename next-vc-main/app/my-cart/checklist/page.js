@@ -6,27 +6,8 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 
 import CartList from './_components/cart-list'
 
-import React, { useState, useEffect } from 'react'
 
 export default function ChecklistPage(props) {
-  const [cartItems, setCartItems] = useState([]) // 初始化狀態
-  const [totalAmount, setTotalAmount] = useState(0)
-  const [total, setTotal] = useState(0)
-  const [coupon, setCoupon] = useState(1000)
-
-  useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem('cartItem')) || []
-    setCartItems(storedCart)
-
-    // 計算總金額
-    const total = storedCart.reduce(
-      (acc, v) => acc + v.count * v.price,
-      0
-    )
-    const totalMax = total - coupon
-    setTotal(totalMax)
-    setTotalAmount(total)
-  }, [cartItems]) // 空依賴陣列，確保只在組件掛載時執行
 
   return (
     <>
