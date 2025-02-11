@@ -35,7 +35,7 @@ export default function ChecklistPage(props) {
     <>
       <div className="m-background">
         <div className="m-checklist-section1">
-          <div className="container-fluid d-flex justify-content-center m-index1">
+          <div className="container-fluid p-0 d-flex justify-content-center m-index1">
             <div className="m-sec1-img w-75">
               <img className="img-fluid" src="/images/cart/流程圖.svg" alt />
             </div>
