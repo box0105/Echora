@@ -114,3 +114,9 @@ model DiscountType {
   name    String
   coupons Coupons[]
 }
+
+model Activity {
+  id           Int    @id @default(autoincrement())
+  name         String @unique
+  ticket_price Int    @default(0)
+}

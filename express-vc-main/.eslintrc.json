@@ -46,5 +46,5 @@
     "node/no-unpublished-import": ["error", {
       "allowModules": ["supertest"]
     }]
-  }
+  },
 }
