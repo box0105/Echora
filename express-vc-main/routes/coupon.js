@@ -7,7 +7,7 @@ import { successResponse, errorResponse } from '../lib/utils.js'
 
 router.get("/",async (req,res)=>{
   try{
-    const [rows] = await db.execute("SELECT * FROM `coupons`")
+    const [rows] = await db.execute("SELECT * FROM `coupon`")
     res.status(200).json({
       status:'success',
       data:rows,
