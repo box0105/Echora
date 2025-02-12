@@ -1,6 +1,37 @@
 'use client'
 
+import React, { useState, useEffect } from 'react'
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import '../_styles/bootstrap.scss'
+import './_styles/act.scss'
+import './_styles/act-font.scss'
+
+import ActivityList from './_components/ActivityList';
+
 export default function ActivityPage() {
+  // 測試資料
+  const activityData = [
+    {
+      id: 1,
+      title: '裂變景觀 jonCates 與 Jason Cole Mager雙人展',
+      category: '音樂祭',
+      date: '114/01/05 ~ 114/03/02',
+      genre: '流行音樂',
+      price: '免費入場',
+      location: 'Project Space 110 新店藝術空間',
+      image: '/images/activity/浮現祭/main-1.jpg'
+    },
+    {
+      id: 2,
+      title: '裂變景觀 jonCates 與 Jason Cole Mager雙人展',
+      category: '音樂活動',
+      date: '114/02/10 ~ 114/02/12',
+      genre: '搖滾樂',
+      price: 'NT$ 1,500',
+      location: '台北小巨蛋',
+      image: '/images/activity/共生音樂節/main-2.jpg'
+    }
+  ];
 
   return (
     <>
@@ -20,6 +51,7 @@ export default function ActivityPage() {
             <h4 className="mb-0">/ 流行音樂</h4>
           </div>
         </div>
+
         {/* filter & order */}
         <div className="b-filter-bar">
           <div className="b-container d-flex justify-content-between">
@@ -38,6 +70,7 @@ export default function ActivityPage() {
         </div>
 
         <div className="b-container">
+          
           {/* 篩選條件 */}
           <div className="b-filter-slide d-flex flex-column align-items-center d-none ">
             <div className="b-filter-title d-flex justify-content-between align-items-center w-100">
@@ -52,13 +85,13 @@ export default function ActivityPage() {
                 <h4>活動類型</h4>
                 <div className="b-form-checkbox d-flex align-items-center">
                   <input type="checkbox" defaultValue id="cate1" />
-                  <label htmlFor="check1">
+                  <label htmlFor="cate1">
                     <h6>音樂祭</h6>
                   </label>
                 </div>
                 <div className="b-form-checkbox d-flex align-items-center">
                   <input type="checkbox" defaultValue id="cate2" />
-                  <label htmlFor="check2">
+                  <label htmlFor="cate2">
                     <h6>音樂活動</h6>
                   </label>
                 </div>
@@ -179,44 +212,8 @@ export default function ActivityPage() {
               </div>
             </form>
           </div>
-          {/* act list */}
-          <div className="b-act-list d-flex flex-column">
-            <div className="row row-cols-1 row-cols-xxl-2 gx-0 gy-5">
-              {/* act */}
-              <div className="col">
-                <div className="card">
-                  <div className="row g-0">
-                    {/* card-image */}
-                    <div className="col-4 col-lg-6">
-                      <img className="object-fit-cover w-100 h-100" src="/images/activity/浮現祭/main-1.jpg" alt />
-                    </div>
-                    {/* card-body */}
-                    <div className="col-8 col-lg-6">
-                      <div className="card-body d-flex flex-column">
-                        <div className="b-text d-flex flex-column">
-                          <h4 className="b-sm-none">音樂祭</h4>
-                          <h2 className="card-title"><a href="act-detail.html">裂變景觀 jonCates 與 Jason Cole
-                            Mager雙人展 Two-person
-                            show</a></h2>
-                          <div className="h5">日期 : 114/01/05 ~ 114/03/02</div>
-                          <h5 className="card-text b-tag">流行音樂</h5>
-                          <h6 className="card-text ">票價 : 免費入場</h6>
-                          <h6 className="b-sm-none">地點 : Project Space 110 新店藝術空間</h6>
-                        </div>
-                        <a className="b-btn b-sm-none" href="https://www.google.com/maps" target="_blank">查看地圖
-                          {/* <i class="ms-3 fa-solid fa-map"></i>
-                              <i class="ms-3 fa-regular fa-map"></i> */}
-                          <i className="ms-2 fa-solid fa-location-arrow" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* load more */}
-            <button className="b-btn b-load-btn">瀏覽更多</button>
-          </div>
+
+          <ActivityList data = {activityData}/>
         </div>
       </div>
     </>
