@@ -1,5 +1,5 @@
 import express from 'express'
-import db from '../db3.js'
+import db from '../config/mysql.js'
 
 const router = express.Router();
 
