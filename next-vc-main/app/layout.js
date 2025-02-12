@@ -1,9 +1,10 @@
 //套用全域樣式
+'use client'
+import { usePathname } from 'next/navigation'
 import '@/styles/globals.scss'
 
 
 import { Suspense } from 'react'
-
 
 // 載入context
 import { Providers } from './providers'
@@ -11,6 +12,12 @@ import Footer from './_components/footer'
 import Header from './_components/header'
 
 export default function RootLayout({ children }) {
+  const pathname = usePathname()
+  const noHeaderPaths = [
+    '/my-user',
+    '/my-user/register',
+    '/my-user/forget-password',
+  ]
   return (
     <html lang="en">
       <head>
@@ -19,13 +26,12 @@ export default function RootLayout({ children }) {
       <body>
         <Suspense fallback={<div>Loading...</div>}>
           <Providers>
-            <Header />
+            {!noHeaderPaths.includes(pathname) && <Header />}
             <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
             <Footer />
           </Providers>
         </Suspense>
       </body>
-
     </html>
   )
 }
