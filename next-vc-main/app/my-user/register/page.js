@@ -1,10 +1,13 @@
 'use client'
 
 import '../_styles/login_signup.scss'
+import '@fortawesome/fontawesome-free/css/all.min.css'
 import { useState } from 'react'
 import { useUserRegister } from '@/services/rest-client/use-user'
 import { useAuth } from '@/hooks/use-auth'
+import useFirebase from '../_hooks/use-firebase'
 import Link from 'next/link'
+import { useAuthGoogleLogin } from '@/services/rest-client/use-user'
 
 // newUser資料範例(物件) 註: name改為在profile資料表中
 // {
@@ -24,6 +27,31 @@ export default function RegisterPage() {
   })
 
   const { isAuth } = useAuth()
+
+  // Firebase Google 登入
+  const { loginGoogle, logoutFirebase } = useFirebase()
+  const { googleLogin } = useAuthGoogleLogin()
+
+  // **處理 Google 登入**
+  const handleGoogleLogin = () => {
+    if (isAuth) {
+      toast.error('錯誤 - 會員已登入')
+      return
+    }
+    loginGoogle(async (providerData) => {
+      console.log(providerData)
+
+      const res = await googleLogin(providerData)
+      const resData = await res.json()
+
+      if (resData.status === 'success') {
+        mutate()
+        toast.success('已成功登入')
+      } else {
+        toast.error('Google 登入失敗')
+      }
+    })
+  }
 
   // 輸入帳號 密碼用
   const handleFieldChange = (e) => {
@@ -152,9 +180,10 @@ export default function RegisterPage() {
               <button
                 type="button"
                 className="social-button"
+                onClick={handleGoogleLogin}
                 aria-label="使用 Google 登入"
               >
-                <i className="bi bi-google social-icon"> 使用 Google 登入 </i>
+                <i className="fa-brands fa-google me-2"></i> 使用 Google 登入
               </button>
             </div>
             <div className="signup-prompt">
