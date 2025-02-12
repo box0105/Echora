@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
       <body>
         <Suspense fallback={<div>Loading...</div>}>
           <Providers>
-            <Header/>
+            {/* <Header/> */}
             <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
             <Footer />
           </Providers>
