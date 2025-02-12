@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import styleList from './list.modules.scss'
+import './list.scss'
 
 export default function Page(props) {
   return (

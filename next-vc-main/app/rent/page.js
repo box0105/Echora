@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import style from './first.module.scss'
+// import 'bootstrap/dist/css/bootstrap.min.css'
+import './first.scss'
 
 export default function Page(props) {
   return (
@@ -118,30 +118,30 @@ export default function Page(props) {
               <div className="col-12 col-md-3 d-none d-lg-block d-flex flex-column c-lerf">
                 <div className="c-filter  d-flex ">
                   <i className="fa-solid fa-filter pe-3" />
-                  <h4>條件篩選</h4>
+                  <h4 >條件篩選</h4>
                 </div>
                 <div className="sort ">
                   <div className=" h5 c-lenav">排序</div>
                   <div className="sor-check pt-3">
                     <div className="ch-1 d-flex pb-4 ">
                       <input className="pe-2" type="checkbox" />
-                      <div className="h5 m-0 ps-2">精選</div>
+                      <div className="h6 m-0 ps-2">精選</div>
                     </div>
                     <div className="ch-1 d-flex pb-4 ">
                       <input className="pe-2" type="checkbox" />
-                      <div className="h5 m-0 ps-2">產品名稱:A-Z</div>
+                      <div className="h6 m-0 ps-2">產品名稱:A-Z</div>
                     </div>{' '}
                     <div className="ch-1 d-flex pb-4 ">
                       <input className="pe-2" type="checkbox" />
-                      <div className="h5 m-0 ps-2">產品名稱:Z-A</div>
+                      <div className="h6 m-0 ps-2">產品名稱:Z-A</div>
                     </div>{' '}
                     <div className="ch-1 d-flex pb-4 ">
                       <input className="pe-2" type="checkbox" />
-                      <div className="h5 m-0 ps-2">價格:由低到高</div>
+                      <div className="h6 m-0 ps-2">價格:由低到高</div>
                     </div>{' '}
                     <div className="ch-1 d-flex pb-4 ">
                       <input className="pe-2" type="checkbox" />
-                      <div className="h5 m-0 ps-2">價格:由高到底</div>
+                      <div className="h6 m-0 ps-2">價格:由高到底</div>
                     </div>
                   </div>
                 </div>
@@ -167,15 +167,15 @@ export default function Page(props) {
                   <div className="brand-check pt-3">
                     <div className="ch-1 d-flex pb-4 ">
                       <input className="pe-2" type="checkbox" />
-                      <div className="h5 m-0 ps-2">台北店</div>
+                      <div className="h6 m-0 ps-2">台北店</div>
                     </div>
                     <div className="ch-1 d-flex pb-4 ">
                       <input className="pe-2" type="checkbox" />
-                      <div className="h5 m-0 ps-2">台中店</div>
+                      <div className="h6 m-0 ps-2">台中店</div>
                     </div>{' '}
                     <div className="ch-1 d-flex pb-4 ">
                       <input className="pe-2" type="checkbox" />
-                      <div className="h5 m-0 ps-2">高雄店</div>
+                      <div className="h6 m-0 ps-2">高雄店</div>
                     </div>
                   </div>
                 </div>
@@ -184,15 +184,15 @@ export default function Page(props) {
                   <div className="brand-check pt-3 g-3">
                     <div className="ch-1 d-flex pb-4 ">
                       <input className type="checkbox" />
-                      <div className="h5 m-0 ps-2">初階</div>
+                      <div className="h6 m-0 ps-2">初階</div>
                     </div>
                     <div className="ch-1 d-flex pb-4 ">
                       <input className type="checkbox" />
-                      <div className="h5 m-0 ps-2">中階</div>
+                      <div className="h6 m-0 ps-2">中階</div>
                     </div>{' '}
                     <div className="ch-1 d-flex pb-4 ">
                       <input className type="checkbox" />
-                      <h6 className="h5 m-0 ps-2">高階</h6>
+                      <h6 className="h6 m-0 ps-2">高階</h6>
                     </div>
                   </div>
                 </div>
@@ -232,10 +232,10 @@ export default function Page(props) {
                   style={{ gap: 22 }}
                 >
                   <button className="btn btn-dark text-white ">
-                    <h6 className="m-0">確定塞選</h6>
+                    <div className="h6 m-0">確定塞選</div>
                   </button>
                   <button className="btn btn-outline-dark text-dark">
-                    <h6 className="m-0">清除塞選</h6>
+                    <div className="h6 m-0">清除塞選</div>
                   </button>
                 </div>
               </div>
@@ -245,7 +245,7 @@ export default function Page(props) {
                     <div className="card-group gap-3">
                       <div className="card-top">
                         <img
-                          src="/images/Rent/card2-img.png"
+                          src="/images/Rent/card3-img.png"
                           className="card-img-top"
                           alt="..."
                         />
@@ -320,7 +320,7 @@ export default function Page(props) {
                       </div>
                       <div className="card-top">
                         <img
-                          src="/images/Rent/card2-img.png"
+                          src="/images/Rent/card24-img.png"
                           className="card-img-top"
                           alt="..."
                         />
@@ -335,7 +335,7 @@ export default function Page(props) {
                       </div>
                       <div className="card-top">
                         <img
-                          src="/images/Rent/card2-img.png"
+                          src="/images/Rent/card24-img.png"
                           className="card-img-top"
                           alt="..."
                         />
@@ -350,7 +350,7 @@ export default function Page(props) {
                       </div>
                       <div className="card-top">
                         <img
-                          src="/images/Rent/card2-img.png"
+                          src="/images/Rent/card25-img.png"
                           className="card-img-top"
                           alt="..."
                         />
