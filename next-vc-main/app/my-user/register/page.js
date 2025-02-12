@@ -83,7 +83,6 @@ export default function RegisterPage() {
       <div className="login-container">
         <div className="login-main">
           <Link href="/">
-            {' '}
             <span className="back"> &lt;返回 </span>
           </Link>
 
