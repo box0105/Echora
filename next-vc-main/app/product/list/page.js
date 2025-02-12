@@ -2,12 +2,32 @@
 import './list.scss'
 import ProductCard from '../_components/product-card'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-export default function ProductListPage() {
+export default function ProductListPage(props) {
+  // 設定點擊事件
   const [filterOpen, setFilterOpen] = useState(false)
   const [comparisionOpen, setComparisionOpen] = useState(false)
   const comparisionToggle = () => setComparisionOpen(!comparisionOpen)
+
+  // fetch db
+  const [pdData, setPdData] = useState([])
+
+  const getPdData = async () => {
+    try {
+      const res = await fetch('http://localhost:3005/api/products')
+      const data = await res.json()
+      console.log(data?.data)
+      setPdData(data?.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  //didmount後執行getPdData()
+  useEffect(() => {
+    getPdData()
+  }, [])
+
   return (
     <>
       <div>
@@ -75,7 +95,10 @@ export default function ProductListPage() {
         <section className="g-pdlist px-modified">
           <div className="container-fluid p-1">
             <div className="row row-cols-xl-4 row-cols-2">
-              <ProductCard />
+              {pdData.map((v, i) => (
+                <ProductCard key={v.id} data={v} />
+              ))}
+              {/* <ProductCard /> */}
               {/* product-card-start */}
               {/* <div className="col p-2"> 這句應該跑迴圈?*/}
               {/* <div className="col p-2">

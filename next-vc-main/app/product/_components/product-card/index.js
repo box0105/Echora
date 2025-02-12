@@ -1,7 +1,7 @@
 'use client'
-import "./product-card.scss"
+import './product-card.scss'
 
-export default function ProductCard() {
+export default function ProductCard({ data = {} }) {
   return (
     <>
       <div className="col p-2">
@@ -13,9 +13,9 @@ export default function ProductCard() {
             />
           </div>
           <div className="g-pd-text">
-            <h6 className="h6">Product Name Product Name Product Name</h6>
+            <h6 className="h6">{data.name}</h6>
             <div className="d-flex gap-3">
-              <h6 className="h6">$79000</h6>
+              <h6 className="h6">${data.price}</h6>
             </div>
             <div className="g-color-row">
               <img width="22px" src="/images/product/list/lightblue.svg" />
