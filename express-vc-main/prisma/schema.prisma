@@ -40,7 +40,7 @@ model ColorPalette {
 
 model Image {
   id           Int    @id @default(autoincrement())
-  productSkuId Int    @map("product_sku_id")
+  productSkuId String @map("product_sku_id") @db.VarChar(20)
   name         String @db.VarChar(150)
   image        String @db.VarChar(300)
   sortOrder    Int    @map("sort_order")
@@ -88,7 +88,7 @@ model Spec {
 model Coupons {
   id             Int          @id @default(autoincrement())
   name           String
-  code           String?       @unique // 優惠券代碼 (例如：SUMMER20)
+  code           String?      @unique // 優惠券代碼 (例如：SUMMER20)
   typeId         Int //type fk
   type           CouponType   @relation(fields: [typeId], references: [id]) // 優惠券類型 (關係)
   discount       Int // 折扣金額或百分比 (根據 discount_type 決定)
