@@ -114,3 +114,43 @@ model DiscountType {
   name    String
   coupons Coupons[]
 }
+
+model Order {
+  id             BigInt    @id @default(autoincrement())
+  orderNumber    String    @unique // 訂單編號
+  userId         BigInt    // 關聯 User
+  totalPrice     Decimal   @default(0.00)
+  paymentStatus  PaymentStatus @default(PENDING)
+  shippingStatus ShippingStatus @default(PENDING)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  orderItems OrderItem[] // 一對多關聯
+}
+
+model OrderItem {
+  id          BigInt  @id @default(autoincrement())
+  orderId     BigInt  @map("order_id")
+  productId   BigInt  // 商品 ID
+  quantity    Int     @default(1)
+  unitPrice   Decimal @default(0.00)
+  subtotal    Decimal @default(0.00)
+
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+// 訂單付款狀態 ENUM
+enum PaymentStatus {
+  PENDING  // 待付款
+  PAID     // 已付款
+  FAILED   // 付款失敗
+  REFUNDED // 已退款
+}
+
+// 訂單物流狀態 ENUM
+enum ShippingStatus {
+  PENDING     // 待處理
+  SHIPPED     // 已出貨
+  DELIVERED   // 已送達
+  CANCELLED   // 已取消
+}
