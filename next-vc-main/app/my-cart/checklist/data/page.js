@@ -1,5 +1,4 @@
 'use client'
-import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
 export default function DataPage() {
@@ -10,32 +9,46 @@ export default function DataPage() {
       id: 1,
       name: 'Limited Edition Paranormal Troublemaker Telecaster® Deluxe',
       color: 'white',
-      stockStatus: 1,
+      stockStatus: 2,
       image: '/images/cart/card2-img.png',
       price: 13999,
+      count: 1,
     },
     {
       id: 2,
       name: '(租用) Limited Edition Paranormal Troublemaker Telecaster® Deluxe',
       color: 'white',
       rentDate: '2025-01-02 - 2025-01-04',
-      stockStatus: 1,
+      stockStatus: 5,
       image: '/images/cart/card2-img.png',
       price: 2400,
+      count: 1,
     },
     {
       id: 4,
       name: '衛武營國際音樂節-全票',
-      stockStatus: 1,
+      stockStatus: 10,
       image: '/images/cart/card3.png',
       price: 700,
+      count: 1,
     },
   ]
 
-  useEffect(() => {
+  function createLocalstorage() {
     localStorage.setItem('cartItem', JSON.stringify(cartItems))
-    router.push('/my-cart/checklist')
-  }, [cartItems, router])
+  }
 
-  return null // 确保组件有返回值
+
+
+  return (
+    <>
+      <button onClick={()=>{
+        createLocalstorage()
+        alert("新增成功")
+      }}>
+        點選新建localstorage
+      </button>
+    </>
+  )
 }
+

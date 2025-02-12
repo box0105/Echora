@@ -17,6 +17,7 @@
 
 .content {
   display: flex;
+  margin: 20px;
   gap: 64px;
 }
 
@@ -25,6 +26,7 @@
   background: #f9f9f9;
   border-radius: 8px;
   padding: 20px 32px;
+  height: 570px;
 }
 
 .sidebar-section {
@@ -62,10 +64,11 @@
 }
 
 .section-title {
+  margin: 20px 0;
   color: #000;
 }
 
-.form-container {
+.a-form-container {
   display: flex;
   gap: 70px;
 }
@@ -80,15 +83,7 @@
   margin-bottom: 8px;
 }
 
-.form-control {
-  flex: 1;
-  padding: 12px;
-  border: 1px solid #888;
-  border-radius: 6px;
-  font: 400 16px Source Sans Pro, sans-serif;
-}
-
-.form-control[readonly] {
+.a-form-control[readonly] {
   background: #f5f5f5;
 }
 
@@ -207,7 +202,7 @@
     padding-right: 20px;
   }
 
-  .form-container {
+  .a-form-container {
     flex-direction: column;
     gap: 1px;
   }

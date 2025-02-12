@@ -1,7 +1,7 @@
 'use client'
 
 // 載入購物車context
-import { CartProvider } from '@/hooks/use-cart-state'
+import { MyCartProvider } from '@/hooks/use-cart'
 //  載入認証用context
 import { AuthProvider } from '@/hooks/use-auth'
 //  載入商品搜尋條件context
@@ -19,9 +19,9 @@ export function Providers({ children }) {
     <SWRDevTools>
       <LoaderProvider close={2} CustomLoader={CatLoader}>
         <AuthProvider>
-          <CartProvider>
+          <MyCartProvider>
             <ProductProvider>{children}</ProductProvider>
-          </CartProvider>
+          </MyCartProvider>
         </AuthProvider>
       </LoaderProvider>
     </SWRDevTools>

@@ -1,7 +1,7 @@
 'use client'
 
 import '../_styles/member.scss'
-import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/css/bootstrap.min.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import { useState } from 'react'
 import Link from 'next/link'

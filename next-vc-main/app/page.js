@@ -3,7 +3,8 @@ import './_styles/bootstrap.scss'
 import './_styles/index.scss'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-import Cart from './_components/cart'
+
+import Cart from './_components/cart-offcanvas'
 
 import React, { useState, useEffect } from 'react'
 

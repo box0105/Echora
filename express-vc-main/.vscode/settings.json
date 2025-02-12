@@ -18,9 +18,4 @@
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
   }
-  {
-    "terminal.integrated.defaultProfile.windows": "Command Prompt",
-    "terminal.integrated.defaultProfile.linux": "bash",
-    "terminal.integrated.defaultProfile.mac": "zsh"
-  }
 }

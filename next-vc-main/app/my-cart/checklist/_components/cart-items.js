@@ -1,14 +1,12 @@
-import { useState, useEffect } from 'react'
+'use client'
+import { useMyCart } from '@/hooks/use-cart'
 
 export default function CartItem({ item }) {
-  const [count, setCount] = useState(item.count || 1) // 初始數量來自 localStorage
-
-  useEffect(() => {
-    // 當 count 變動時，更新 localStorage
-    updateCartItemInLocalStorage(item.id, count)
-  }, [count]) // 監聽 count 變化
-
-  const total = item.price * count
+  const { cartItems,
+    onDecrease,
+    onIncrease,
+    onRemove,
+  } = useMyCart()
 
   return (
     <div className="card card1 mb-3">
@@ -17,48 +15,52 @@ export default function CartItem({ item }) {
           <img src={item.image} className="img-fluid" alt={item.name} />
         </div>
         <div className="col-md-9">
-          <div className="card-body p-lg-3 p-0">
-            <div className="d-flex flex-column justify-content-between">
+          <div className="card-body h-100 p-lg-3 p-0 d-flex flex-column">
+            <div className="d-flex flex-column justify-content-between flex-grow-1">
               <div>
-                <h3 className="h3 p-lg-x-2 p-lg-2">{item.name}</h3>
-                {item.color && <h4 className="p-lg-2">顏色: {item.color}</h4>}
-                <div className="d-flex align-items-end p-lg-2">
-                  {item.stockStatus != 0 ? (
+                <h4 className="h3 p-lg-x-2 p-lg-1">{item.name}</h4>
+                {item.rentDate && (
+                  <div className="d-flex align-items-end p-lg-1">
+                    <h5>租借日期: {item.rentDate}</h5>
+                  </div>
+                )}
+                {item.color && <h5 className="p-lg-1">顏色: {item.color}</h5>}
+                <div className="d-flex align-items-end p-lg-1">
+                  {item.stockStatus >= item.count ? (
                     <img src="/images/cart/box-icon.svg" alt="stock icon" />
                   ) : (
                     <img src="/images/cart/box-icon-red.svg" alt="stock icon" />
                   )}
-                  <h4 className="ps-2">
-                    {item.stockStatus != 0 ? '有庫存' : '無庫存'}
-                  </h4>
+                  <h5 className="ps-2">
+                    {item.stockStatus >= item.count ? '有庫存' : '庫存不足'}
+                  </h5>
                 </div>
-                <div className="d-flex align-items-end p-lg-2 pb-lg-3 py-2">
-                  <h4>數量 :</h4>
+                <div className="d-flex align-items-end p-lg-1 pb-lg-1 py-2">
+                  <h5>數量 :</h5>
                   <div
                     className="btn-group btn-group-sm"
                     role="group"
                     aria-label="Basic outlined example"
                   >
-                    <button type="button" className="btn" onClick={removeOne}>
+                    <button type="button" className="btn" onClick={() => {
+                      if (item.count > 1) {
+                        onDecrease(item.id)
+                      }
+                    }}>
                       <i className="fa-solid fa-minus fa-fw" />
                     </button>
                     <div type="button" className="btn">
-                      {count}
+                      {item.count}
                     </div>
-                    <button type="button" className="btn" onClick={addOne}>
+                    <button type="button" className="btn" onClick={() => { onIncrease(item.id) }}>
                       <i className="fa-solid fa-plus fa-fw" />
                     </button>
                   </div>
                 </div>
-                {item.rentDate && (
-                  <div className="d-flex align-items-end p-lg-2 py-lg-3 py-2">
-                    <h4>租借日期: {item.rentDate}</h4>
-                  </div>
-                )}
-                <h4 className="h3 p-lg-2">價錢: NT$ {total}</h4>
+                <h5 className="h4 p-lg-1">價錢: NT$ {item.price}</h5>
               </div>
-              <div className="d-flex justify-content-center pt-lg-5 mt-lg-5 pt-3">
-                <button className="btn" onClick={removeItem}>移除商品</button>
+              <div className="d-flex justify-content-center align-items-end pt-3 mt-auto">
+                <button className="btn" onClick={() => { onRemove(item.id) }}>移除商品</button>
               </div>
             </div>
           </div>
@@ -66,35 +68,4 @@ export default function CartItem({ item }) {
       </div>
     </div>
   )
-
-  function addOne() {
-    setCount(count + 1)
-  }
-
-  function removeOne() {
-    if (count > 1) {
-      setCount(count - 1)
-    }
-  }
-
-  function removeItem() {
-    removeCartItemFromLocalStorage(item.id)
-  }
-}
-
-// 更新 localStorage 內的數量
-function updateCartItemInLocalStorage(itemId, newCount) {
-  const cartItems = JSON.parse(localStorage.getItem('cartItem')) || []
-  const updatedCart = cartItems.map((cartItem) =>
-    cartItem.id === itemId ? { ...cartItem, count: newCount } : cartItem
-  )
-  localStorage.setItem('cartItem', JSON.stringify(updatedCart))
-}
-
-// 從 localStorage 移除商品
-function removeCartItemFromLocalStorage(itemId) {
-  const cartItems = JSON.parse(localStorage.getItem('cartItem')) || []
-  const updatedCart = cartItems.filter((cartItem) => cartItem.id !== itemId)
-  localStorage.setItem('cartItem', JSON.stringify(updatedCart))
-  window.location.reload() // 刷新頁面讓 UI 更新
 }
