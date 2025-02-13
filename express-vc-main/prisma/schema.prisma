@@ -133,8 +133,8 @@ model Coupon {
   discount       Int // 折扣金額或百分比 (根據 discount_type 決定)
   discountTypeId Int // discountType fk
   // discountType   DiscountType @relation(fields: [discountTypeId], references: [id]) // 折扣類型 (關係)
-  // minPurchase    Decimal? //最低消費金額
-  // description    String? // 優惠券描述 (nullable)
+  minPurchase    Decimal? //最低消費金額
+  description    String? // 優惠券描述 (nullable)
   startTime      DateTime 
   endTime        DateTime
   isDelete      Boolean      @default(false)

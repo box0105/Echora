@@ -18,4 +18,24 @@ router.get("/",async (req,res)=>{
   }
 })
 
+// user的優惠券
+router.get('/users/:userId/coupons', async (res,req)=>{
+ const userId = Number(req.params.userId)
+ const [results] = await db.query(`SELECT coupons FROM users WHERE id = ${userId}`)
+ const result = results[0]
+ res.json({status:'success',data:{result}})
+})
+// user取得優惠券
+router.post('/users/userId/coupons', (res,req)=>{
+  
+})
+// user刪除優惠券
+router.get('/users/userId/coupons', (res,req)=>{
+  
+})
+// 使用優惠券
+router.get('/users/userId/coupons', (res,req)=>{
+  
+})
+
 export default router
