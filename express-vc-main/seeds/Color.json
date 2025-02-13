@@ -1,50 +1,62 @@
 [
-    {
-        "name": "Sky Blue",
-        "colorPaletteId": 1
-    },
-    {
-        "name": "Dark Blue",
-        "colorPaletteId": 1
-    },
-    {
-        "name": "Modern Purple",
-        "colorPaletteId": 1
-    },
-    {
-        "name": "Fire Red",
-        "colorPaletteId": 1
-    },
-    {
-        "name": "Golden Yellow",
-        "colorPaletteId": 2
-    },
-    {
-        "name": "Tangerine",
-        "colorPaletteId": 2
-    },
-    {
-        "name": "Brown",
-        "colorPaletteId": 2
-    },
-    {
-        "name": "Dark Brown",
-        "colorPaletteId": 2
-    },
-    {
-        "name": "Marble White",
-        "colorPaletteId": 3
-    },
-    {
-        "name": "Slate Gray",
-        "colorPaletteId": 3
-    },
-    {
-        "name": "Ebony",
-        "colorPaletteId": 4
-    },
-    {
-        "name": "Forest Green",
-        "colorPaletteId": 1
-    }
+  {
+    "name": "Sky Blue",
+    "colorImage": "lightblue.svg",
+    "colorPaletteId": 1
+  },
+  {
+    "name": "Dark Blue",
+    "colorImage": "darkblue.svg",
+    "colorPaletteId": 1
+  },
+  {
+    "name": "Modern Purple",
+    "colorImage": "purple.svg",
+    "colorPaletteId": 1
+  },
+  {
+    "name": "Fire Red",
+    "colorImage": "red.svg",
+    "colorPaletteId": 1
+  },
+  {
+    "name": "Golden Yellow",
+    "colorImage": "yellow.svg",
+    "colorPaletteId": 2
+  },
+  {
+    "name": "Tangerine",
+    "colorImage": "orange.svg",
+    "colorPaletteId": 2
+  },
+  {
+    "name": "Brown",
+    "colorImage": "brown.svg",
+    "colorPaletteId": 2
+  },
+  {
+    "name": "Dark Brown",
+    "colorImage": "dark-brown.svg",
+    "colorPaletteId": 2
+  },
+  {
+    "name": "Marble White",
+    "colorImage": "white.svg",
+    "colorPaletteId": 3
+  },
+  {
+    "name": "Slate Gray",
+    "colorImage": "grey.svg",
+    "colorPaletteId": 3
+  },
+  {
+    "name": "Ebony",
+    "colorImage": "black.svg",
+    "colorPaletteId": 4
+  },
+  {
+    "name": "Forest Green",
+    "colorImage": "green.svg",
+    "colorPaletteId": 1
+  }
 ]

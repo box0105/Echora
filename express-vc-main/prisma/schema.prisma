@@ -26,6 +26,7 @@ model Brand {
 model Color {
   id             Int    @id @default(autoincrement())
   name           String @db.VarChar(50)
+  colorImage     String @map("color_image") @db.VarChar(150)
   colorPaletteId Int    @map("color_palette_id")
 
   @@map("color")

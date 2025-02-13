@@ -4,6 +4,7 @@ import db from '../config/mysql.js'
 const router = express.Router()
 
 // GET /api/products
+// fetch所有產品的所有資料
 router.get('/', async (req, res) => {
   try {
     const [rows] = await db.query('SELECT * FROM product')

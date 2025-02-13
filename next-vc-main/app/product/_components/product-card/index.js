@@ -18,11 +18,13 @@ export default function ProductCard({ data = {} }) {
               <h6 className="h6">${data.price}</h6>
             </div>
             <div className="g-color-row">
+            {/* /images/product/color-images/data.color_image */}
               <img width="22px" src="/images/product/list/lightblue.svg" />
               <img width="22px" src="/images/product/list/darkblue.svg" />
               <img width="22px" src="/images/product/list/purple.svg" />
             </div>
             <p className="p g-color-text">2 colors</p>
+            {/* fetch出共有幾個顏色 */}
           </div>
         </div>
       </div>
