@@ -7,10 +7,34 @@ const upload = multer()
 
 // POST /api/myOrders
 router.post('/', upload.none(), async function (req, res) {
-  // 從 req.body 取得前端送來的資料
+  // localstorage解析
+  const cartItems = JSON.parse(req.body.cartItems)
+  const cartItem = cartItems.map(async (item) => {
+    const { name, color, image, price, count } = item
+    const total = price * count
+    const sql =
+      'INSERT INTO `myorderitem` (`name`,`color`,`image`,`price`,`count`,`total`) VALUES (?,?,?,?,?,?)'
+    try {
+      const result = await db.execute(sql, [
+        name,
+        color,
+        image,
+        price,
+        count,
+        total,
+      ])
+      console.log(result)
+
+      return res.json({ status: 'success', message: '新增訂單商品成功' })
+    } catch (error) {
+      console.error('order:', error)
+    }
+  })
+
+  console.log(cartItem)
+
+  // 表單解析
   const userData = JSON.parse(req.body.userData)
-  // const cartItems = JSON.parse(req.body.cartItems)
-  // const { id, name, color, stockStatus, image, price, count } = cartItems
   const {
     city,
     country,

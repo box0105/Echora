@@ -14,7 +14,7 @@ export default function InformationPage() {
     event.preventDefault()
 
     // 從 localStorage 讀取購物車資料
-    // const cartItems = JSON.parse(localStorage.getItem('cartItem'))
+    const cartItems = JSON.parse(localStorage.getItem('cartItem'))
     
     const target = event.target
 
@@ -32,7 +32,7 @@ export default function InformationPage() {
 
     const formData = new FormData()
     formData.append('userData', JSON.stringify(userData))
-    // formData.append('cartItems', JSON.stringify(cartItems))
+    formData.append('cartItems', JSON.stringify(cartItems))
 
     // 發送 POST 請求到後端 API 儲存資料
     try {

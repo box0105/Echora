@@ -169,9 +169,9 @@ model Spec {
 }
 
 model Coupons {
-  id             Int      @id @default(autoincrement())
+  id             Int          @id @default(autoincrement())
   name           String
-  code           String?  @unique // 優惠券代碼 (例如：SUMMER20)
+  code           String?      @unique // 優惠券代碼 (例如：SUMMER20)
   typeId         Int //type fk
   type           CouponType   @relation(fields: [typeId], references: [id]) // 優惠券類型 (關係)
   discount       Int // 折扣金額或百分比 (根據 discount_type 決定)
@@ -181,13 +181,13 @@ model Coupons {
   description    String? // 優惠券描述 (nullable)
   startTime      DateTime
   endTime        DateTime
-  is_delete      Boolean  @default(false)
+  is_delete      Boolean      @default(false)
 
   @@index([code]) // 建立 code 索引
 }
 
 model CouponType {
-  id       Int    @id @default(autoincrement())
+  id       Int       @id @default(autoincrement())
   category String
   coupons  Coupons[]
 }
@@ -218,4 +218,14 @@ model MyOrder {
   shippingAddress String? // 配送地址，儲存訂單的配送地址
   shippingMethod  String?
   paymentMethod   String?
+}
+
+model MyOrderItem {
+  id    Int     @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
+  name  String?
+  color String?
+  image String?
+  price String?
+  count String?
+  total String?
 }
