@@ -211,21 +211,23 @@ model Activity {
 }
 
 model MyOrder {
-  id              Int     @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
-  recipient       String?
-  phone           String?
-  email           String?
-  shippingAddress String? // 配送地址，儲存訂單的配送地址
-  shippingMethod  String?
-  paymentMethod   String?
+  id              Int    @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
+  recipient       String
+  phone           String
+  email           String
+  shippingAddress String // 配送地址，儲存訂單的配送地址
+  shippingMethod  String
+  paymentMethod   String
+  totalAmount     Int
 }
 
 model MyOrderItem {
-  id    Int     @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
-  name  String?
-  color String?
-  image String?
-  price String?
-  count String?
-  total String?
+  id      Int     @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
+  orderId Int
+  name    String
+  color   String?
+  image   String
+  price   String
+  count   String
+  total   String
 }
