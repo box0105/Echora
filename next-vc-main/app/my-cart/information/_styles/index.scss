@@ -9,7 +9,7 @@
 .m-index {
   padding-inline: 64px;
   padding-block: 100px 0;
-  @media (max-width: 768px) {
+  @media (max-width: 996px) {
     padding-block: 50px 0;
     padding-inline: 16px;
   }
@@ -22,14 +22,14 @@
   width: 100%;
 }
 .m-section1-card1 {
-  @media (max-width: 768px) {
+  @media (max-width: 996px) {
     display: none;
   }
 }
 .m-section1-mobile {
   display: none;
 
-  @media (max-width: 768px) {
+  @media (max-width: 996px) {
     display: block;
     height: 650px;
     overflow: hidden;
@@ -71,7 +71,7 @@
 .m-section2-col {
   background-size: cover;
   padding: 50px 40px 50px 40px;
-  @media (max-width: 768px) {
+  @media (max-width: 996px) {
     padding-block: 16px;
     padding-inline: 16px;
   }
@@ -96,7 +96,7 @@
   border-left: 5px solid white;
   padding-left: 25px;
   color: white;
-  @media (max-width: 768px) {
+  @media (max-width: 996px) {
     border-left: none;
     padding-left: 0;
     color: none;
