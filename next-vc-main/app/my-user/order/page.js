@@ -46,7 +46,7 @@ export default function OrderPage() {
             </aside>
             <div className="order-form">
               <div className="order-header">
-                <div className="order-title h4">我的訂單</div>
+                <div className="order-title h4 ms-2">我的訂單</div>
               </div>
               <div className="row order-summary">
                 <div className="col-6 col-md-4 col-sm-6 order-image mb-2 h-100">

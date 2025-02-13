@@ -15,6 +15,90 @@ datasource db {
 //   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 // }
 
+//以下為會員部分
+model User {
+  id              Int        @id @default(autoincrement())
+  username        String     @unique
+  password        String
+  email           String     @unique
+  // 關聯 User:Profile = 1:1 
+  profile         Profile?
+  emailValidated  Boolean    @default(false) @map("email_validated")
+  googleUid       String?    @unique @map("google_uid")
+  lineUid         String?    @unique @map("line_uid")
+  lineAccessToken String?    @map("line_access_token") @db.Text
+  // 關聯: User:Product = n:m 透過 Favorite
+  userLike        userLike[]
+  Order           Order[]
+}
+
+model Profile {
+  id       Int       @id @default(autoincrement())
+  name     String?
+  bio      String?   @db.Text
+  avatar   String?
+  sex      String?
+  // 日期格式: 2021-01-01
+  birth    DateTime? @db.Date
+  phone    String?
+  postcode String?
+  address  String?
+  // 1:1 關聯
+  user     User      @relation(fields: [userId], references: [id])
+  userId   Int       @unique @map("user_id")
+}
+
+model userLike {
+  // 關聯: User:userLike = 1:n 
+  user      User    @relation(fields: [userId], references: [id])
+  userId    Int     @map("user_id")
+  // 關聯: Product:userLike = 1:n 
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int     @map("product_id")
+
+  // 複合主鍵
+  @@id([userId, productId])
+}
+
+model Order {
+  id              Int      @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
+  userId          Int // 用戶 ID，代表誰下的訂單
+  user            User     @relation(fields: [userId], references: [id]) // 關聯到 User 資料表
+  status          String // 訂單狀態，如：'pending', 'shipped', 'completed'
+  totalAmount     Float // 訂單總金額
+  paymentStatus   String // 付款狀態，例：'paid', 'unpaid'
+  paymentMethod   String? // 付款方式，如 'credit_card', 'cash_on_delivery' 等
+  shippingAddress String? // 配送地址，儲存訂單的配送地址
+  shippingMethod  String? // 配送方式，如 'standard', 'express' 等
+  shippingCost    Float? // 配送費用
+  discount        Float? // 訂單折扣金額
+  createdAt       DateTime @default(now()) // 訂單創建時間
+  updatedAt       DateTime @updatedAt // 訂單更新時間，自動更新
+
+  // 關聯 OrderItem 資料表，表示一個訂單可以有多個商品
+  items OrderItem[]
+}
+
+model OrderItem {
+  id        Int   @id @default(autoincrement()) // 訂單商品唯一識別碼
+  orderId   Int // 關聯到 Order 資料表的訂單 ID
+  productId Int // 產品 ID
+  quantity  Int // 商品數量
+  price     Float // 商品單價
+
+  order   Order   @relation(fields: [orderId], references: [id]) // 關聯 Order 資料表
+  product Product @relation(fields: [productId], references: [id]) // 關聯 Product 資料表
+}
+
+model Otp {
+  id        Int      @id @default(autoincrement())
+  email     String
+  token     String
+  hash      String?
+  createdAt DateTime @default(now()) @map("created_at")
+  expiredAt DateTime @map("expired_at")
+}
+
 /// 以下為product相關資料表定義
 model Brand {
   id   Int    @id @default(autoincrement())
@@ -49,13 +133,15 @@ model Image {
 }
 
 model Product {
-  id            Int      @id @default(autoincrement())
-  name          String   @db.VarChar(100)
-  brandId       Int      @map("brand_id")
-  discription   String   @db.Text
-  price         Int      @default(0)
-  discountPrice Int?     @map("discount_price")
-  createdAt     DateTime @default(now()) @map("created_at")
+  id            Int         @id @default(autoincrement())
+  name          String      @db.VarChar(100)
+  brandId       Int         @map("brand_id")
+  discription   String      @db.Text
+  price         Int         @default(0)
+  discountPrice Int?        @map("discount_price")
+  createdAt     DateTime    @default(now()) @map("created_at")
+  userLike      userLike[]
+  OrderItem     OrderItem[]
 
   @@map("product")
 }
@@ -86,9 +172,9 @@ model Spec {
 }
 
 model Coupons {
-  id             Int          @id @default(autoincrement())
+  id             Int      @id @default(autoincrement())
   name           String
-  code           String?      @unique // 優惠券代碼 (例如：SUMMER20)
+  code           String?  @unique // 優惠券代碼 (例如：SUMMER20)
   typeId         Int //type fk
   type           CouponType   @relation(fields: [typeId], references: [id]) // 優惠券類型 (關係)
   discount       Int // 折扣金額或百分比 (根據 discount_type 決定)
@@ -98,13 +184,13 @@ model Coupons {
   description    String? // 優惠券描述 (nullable)
   startTime      DateTime
   endTime        DateTime
-  is_delete      Boolean      @default(false)
+  is_delete      Boolean  @default(false)
 
   @@index([code]) // 建立 code 索引
 }
 
 model CouponType {
-  id       Int       @id @default(autoincrement())
+  id       Int    @id @default(autoincrement())
   category String
   coupons  Coupons[]
 }
