@@ -79,7 +79,7 @@ export default function PasswordPasswordPage() {
       <MemberLayout>
         <div className="change-password-form">
           <div className="change-password-header">
-            <div className="change-password-title h4">修改密碼</div>
+            <div className="section-title h4">修改密碼</div>
           </div>
           <div className="change-password-body">
             <form action method="post">
@@ -119,7 +119,7 @@ export default function PasswordPasswordPage() {
                   required
                 />
               </div>
-              <button type="submit" className="btn btn-dark">
+              <button type="submit" className="submit-btn">
                 確認修改
               </button>
             </form>

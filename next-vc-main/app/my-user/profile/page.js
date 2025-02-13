@@ -35,7 +35,7 @@ export default function ProfilePage() {
       <MemberLayout>
         <form className="profile-form">
           <div className="section-header">
-            <h4 className="section-title">個人資料</h4>
+            <h4 className="section-title h4">個人資料</h4>
           </div>
           <div className="a-form-container">
             <div className="left">
