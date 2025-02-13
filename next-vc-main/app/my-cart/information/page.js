@@ -6,16 +6,18 @@ import './_styles/cart-information.scss'
 import React from 'react'
 import { useMyCart } from '@/hooks/use-cart'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 export default function InformationPage() {
   const { totalAmount } = useMyCart()
+  const router = useRouter()
 
   const handleSubmit = async (event) => {
     event.preventDefault()
 
     // 從 localStorage 讀取購物車資料
     const cartItems = localStorage.getItem('cartItem')
-    
+
     const target = event.target
 
     // 從表單中獲取用戶資料
@@ -28,7 +30,7 @@ export default function InformationPage() {
       address: target.address.value,
       shippingMethod: target.shippingMethod.value,
       paymentMethod: target.paymentMethod.value,
-      totalAmount: totalAmount
+      totalAmount: totalAmount,
     }
 
     const formData = new FormData()
@@ -43,7 +45,7 @@ export default function InformationPage() {
       })
 
       if (response.ok) {
-        alert('訂單已提交！')
+        router.push('/my-cart/finish')
       } else {
         alert('訂單提交失敗！')
       }
