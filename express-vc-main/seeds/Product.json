@@ -1,3002 +1,695 @@
 [
   {
-    "sn": "6e96141a-8663-43fe-a749-34063383b850",
-    "name": "Awesome Steel Cheese - adidas 長袖上衣",
-    "photos": "t1.jpg,t3.jpg,t5.jpg",
-    "stock": 80,
-    "price": 5300,
-    "info": "Savor the tangy essence in our Gloves, designed for supportive culinary adventures",
+    "name": "Player II Jaguar®",
     "brandId": 2,
-    "categoryId": 6
-  },
-  {
-    "sn": "82b9b0b2-4965-416d-b184-6303dc683b43",
-    "name": "Gorgeous Soft Shirt - Nike 慢跑鞋",
-    "photos": "t1.jpg,t3.jpg,t5.jpg",
-    "stock": 80,
-    "price": 8700,
-    "info": "Savor the savory essence in our Cheese, designed for aggravating culinary adventures",
+    "discription": "Player II Jaguar 散發著永恆的 Fender 魅力，琴頸的所有部件均專為快速、流暢的演奏而設計，從背面帶有絲滑緞面聚氨酯飾面的現代“C”型材，到帶有光滑捲邊和22 個中號大號品絲的舒適的9.5 英吋半徑板狀紅木。 Player 系列 Alnico V（琴橋）和 Alnico II（琴頸）單線圈 Jaguar 拾音器提供水晶般的高音、富有音樂感的中音和緊湊的低音，可提升任何流派的音質。 3 向刀片開關可讓您輕鬆調整從玻璃琴頸拾音器鈴聲到切割琴橋拾音器咬合以及其間的所有點，而帶有浮動顫音的6 鞍座Jaguar 琴橋、升級的Mustang® 鞍座和ClassicGear™ 調音器可確保精確調音穩定性和靈活性，並探索無限的聲音可能性。",
+    "price": 26942,
+    "discountPrice": null
+  },
+  {
+    "name": "SG Standard Dark Walnut",
     "brandId": 1,
-    "categoryId": 9
-  },
-  {
-    "sn": "6f5ff4bc-6ec5-4d67-b069-6fa2f972ea1d",
-    "name": "Incredible Rubber Chair - PUMA 短袖上衣",
-    "photos": "t5.jpg,t3.jpg,t2.jpg",
-    "stock": 40,
-    "price": 5200,
-    "info": "Discover the gorilla-like agility of our Towels, perfect for ambitious users",
-    "brandId": 3,
-    "categoryId": 4
-  },
-  {
-    "sn": "be42ba40-2ad5-43b6-8795-8187f4522eaf",
-    "name": "Incredible Metal Ball - Nike 帽類",
-    "photos": "t3.jpg,t5.jpg,t4.jpg",
-    "stock": 20,
-    "price": 3400,
-    "info": "Savor the sweet essence in our Tuna, designed for next culinary adventures",
+    "discription": "桃花心木琴身，圓弧輪廓的桃花心木琴頸，帶有包邊的玫瑰木指板，長榫接合於第 19 品格的琴頸連接處，配備 490R 和 490T Alnico 2（鋁鎳鈷 2）拾音器，以及全覆蓋式護板設計。",
+    "price": 58467,
+    "discountPrice": null
+  },
+  {
+    "name": "SG Supreme Ebony, 3-Pickup",
     "brandId": 1,
-    "categoryId": 12
-  },
-  {
-    "sn": "bc33944c-93e6-4dc8-aae0-776094550652",
-    "name": "Licensed Frozen Chair - adidas 帽類",
-    "photos": "t4.jpg,t2.jpg,t5.jpg",
-    "stock": 80,
-    "price": 8100,
-    "info": "Discover the eminent new Table with an exciting mix of Concrete ingredients",
-    "brandId": 2,
-    "categoryId": 12
-  },
-  {
-    "sn": "5ccc2438-f61b-48b0-aec9-a3d2d96b6a4b",
-    "name": "Practical Steel Keyboard - Nike 長袖上衣",
-    "photos": "t2.jpg,t4.jpg,t1.jpg",
-    "stock": 100,
-    "price": 9300,
-    "info": "Our penguin-friendly Salad ensures improbable comfort for your pets",
+    "discription": "它採用了桃花心木琴身搭配枫木面板，帶來飽滿且均衡的音色。琴頸為桃花心木材質，配有圓形半徑的烏木指板，擁有 24 顆中型加大品格及超級分裂區塊的珍珠母鑲嵌。琴頭裝飾有一個引人注目的全新珍珠母「吊燈鑲嵌」，靈感來自於 1940 年代的設計，該設計於 Gibson 檔案中被發現。配備 Burstbucker™ Pro（琴頸和中間位置）與 Burstbucker Pro +（琴橋位置）拾音器，並搭載推/拉音量控制，可實現線圈分接，此外還有一個手工接線的主音控，搭配 Orange Drop® 電容器。",
+    "price": 113717,
+    "discountPrice": null
+  },
+  {
+    "name": "70s Flying V",
     "brandId": 1,
-    "categoryId": 6
-  },
-  {
-    "sn": "31238b5b-7043-467c-9e48-e3b0f010a0d3",
-    "name": "Bespoke Fresh Soap - adidas 慢跑鞋",
-    "photos": "t3.jpg,t1.jpg,t4.jpg",
-    "stock": 60,
-    "price": 10700,
-    "info": "Introducing the Northern Mariana Islands-inspired Computer, blending indolent style with local craftsmanship",
-    "brandId": 2,
-    "categoryId": 9
-  },
-  {
-    "sn": "d841a14a-9e7b-4557-9f4d-1fd36c8b7f13",
-    "name": "Rustic Granite Computer - adidas 帽類",
-    "photos": "t4.jpg,t3.jpg,t5.jpg",
-    "stock": 90,
-    "price": 7400,
-    "info": "馬 and Sons's most advanced Hat technology increases cute capabilities",
+    "discription": "桃花心木琴身，搭配 SlimTaper 輕薄輪廓的桃花心木琴頸，玫瑰木指板，配有 22 顆中型加大品格，70s Tribute 雙線圈拾音器，手工接線至 CTS 音量/音調電位器，鍍鉻硬體，並附有硬殼琴盒。",
+    "price": 81217,
+    "discountPrice": null
+  },
+  {
+    "name": "Chris Shiflett Cleaver Telecaster® Deluxe",
     "brandId": 2,
-    "categoryId": 12
-  },
-  {
-    "sn": "05cdee5b-4e77-439f-8a86-0ecce2719b0c",
-    "name": "Luxurious Wooden Car - PUMA 籃球鞋",
-    "photos": "t5.jpg,t4.jpg,t2.jpg",
-    "stock": 80,
-    "price": 14800,
-    "info": "The 黑色 Chicken combines Jordan aesthetics with Lithium-based durability",
-    "brandId": 3,
-    "categoryId": 10
-  },
-  {
-    "sn": "7dc7af31-3497-4d21-bc38-ebc2f9755a48",
-    "name": "Intelligent Soft Gloves - New Balance 包款",
-    "photos": "t5.jpg,t3.jpg,t1.jpg",
-    "stock": 70,
-    "price": 8900,
-    "info": "Our rich-inspired Computer brings a taste of luxury to your uneven lifestyle",
-    "brandId": 4,
-    "categoryId": 11
-  },
-  {
-    "sn": "da6133ca-dd72-46eb-9bdc-e688a5050abf",
-    "name": "Tasty Metal Chair - PUMA 帽類",
-    "photos": "t4.jpg,t3.jpg,t1.jpg",
-    "stock": 80,
-    "price": 12100,
-    "info": "New 青綠色 Salad with ergonomic design for meaty comfort",
-    "brandId": 3,
-    "categoryId": 12
-  },
-  {
-    "sn": "5301c325-282b-4b5d-8602-b828eb780d3c",
-    "name": "Electronic Fresh Ball - New Balance 包款",
-    "photos": "t4.jpg,t1.jpg,t2.jpg",
-    "stock": 100,
-    "price": 8100,
-    "info": "Our golden-inspired Hat brings a taste of luxury to your needy lifestyle",
-    "brandId": 4,
-    "categoryId": 11
-  },
-  {
-    "sn": "8f7768ae-49a1-4483-9776-a618678ebfb1",
-    "name": "Awesome Steel Keyboard - adidas 慢跑鞋",
-    "photos": "t1.jpg,t3.jpg,t2.jpg",
-    "stock": 90,
-    "price": 4800,
-    "info": "Our golden-inspired Bacon brings a taste of luxury to your ambitious lifestyle",
+    "discription": "共鳴的榿木琴體為震撼人心的體育場音色奠定了完美的基礎。這款榿木琴體採用硝基纖維素漆面，還具有“腹部切割”，可在最長的演奏中提供卓越的舒適度。紅木指板和21 個中型巨型品絲，可帶來火熱的演奏引線和絲質彎曲為這款Tele® 增添了一絲意想不到的優雅感- 它是一款主力產品，但這並不意味著它的真正魅力在於拾音器：兩個定制的Chris Shiflett“Cleaver”。 「型調音器、骨質螺母和帶有尼龍墊片的翼弦樹使一切保持音調穿過馬拉松組，而穿弦琴身的硬尾琴橋增強了共鳴和延音。\n\nChris Shiflett Cleaver Telecaster® Deluxe 憑藉其主力結構、多功能聲音和經過實際測試的設計，是需要動態、不妥協音色的吉他手的必備品。隨時隨地插入電源並開闢自己的道路。",
+    "price": 81249,
+    "discountPrice": null
+  },
+  {
+    "name": "American Ultra II Stratocaster®",
     "brandId": 2,
-    "categoryId": 9
-  },
-  {
-    "sn": "d86f2e24-5231-4471-8d10-675185e98735",
-    "name": "Electronic Concrete Bike - adidas 外套",
-    "photos": "t4.jpg,t2.jpg,t1.jpg",
-    "stock": 10,
-    "price": 1600,
-    "info": "Discover the superficial new Pizza with an exciting mix of Concrete ingredients",
+    "discription": "Fender® American Ultra II Stratocaster® 採用精選的榿木琴體，具有雕刻般的琴體輪廓。為了輕鬆演奏，四分之一鋸切楓木琴頸採用現代 D 型材和光滑的超緞面表面。烏木或四分之一鋸楓木 10”-14” 複合半徑指板具有超捲邊、中型巨型品絲、Luminlay® 側點和 Graph Tech® TUSQ® 琴枕。錐形頸跟和雕刻的身體輪廓允許無與倫比的更高音域。\n\n在引擎蓋下，三個 Ultra II Noiseless™ Vintage Strat® 拾音器可提供從甜美水晶般的清音到灼熱主音的一切聲音，而且沒有一絲嗡嗡聲。我們專利的 S-1™ 開關巧妙地解鎖了額外的拾音器配置，以獲得更多音色變化。其他適合公路使用的功能包括帶有彈出臂的 2 點 American Ultra 同步顫音、拋光不銹鋼塊鞍座、冷軋鋼塊、豪華鎖定調諧器、軟觸旋鈕和單層陽極氧化鋁護板。",
+    "price": 71499,
+    "discountPrice": null
+  },
+  {
+    "name": "American Ultra II Telecaster®",
     "brandId": 2,
-    "categoryId": 8
-  },
-  {
-    "sn": "cb29b547-4f79-4166-8ae1-d472c60848fa",
-    "name": "Handcrafted Soft Table - Nike 短褲",
-    "photos": "t3.jpg,t2.jpg,t5.jpg",
-    "stock": 10,
-    "price": 4500,
-    "info": "Discover the butterfly-like agility of our Shoes, perfect for indelible users",
-    "brandId": 1,
-    "categoryId": 5
-  },
-  {
-    "sn": "9a3ad71a-1a9e-4cb1-a40c-fdcab2ebf105",
-    "name": "Fantastic Fresh Soap - PUMA 長褲",
-    "photos": "t5.jpg,t3.jpg,t4.jpg",
-    "stock": 70,
-    "price": 12700,
-    "info": "The 黎昕 Chicken is the latest in a series of reckless products from 賀, 郭 and 馬",
+    "discription": "Fender® American Ultra II Telecaster® 採用精選的榿木琴體，具有雕刻般的琴體輪廓。為了輕鬆演奏，四分之一鋸切楓木琴頸採用現代 D 型材和光滑的超緞面表面。烏木或四分之一鋸楓木 10”-14” 複合半徑指板具有超捲邊、中型巨型品絲、Luminlay® 側點和 Graph Tech® TUSQ® 琴枕。錐形頸跟和雕刻的身體輪廓允許無與倫比的更高音域。\n\n在引擎蓋下，Ultra II Noiseless™ Vintage Tele® 拾音器可提供甜美的水晶般的清音、活潑的鼻音和強勁的咆哮聲，所有這些都沒有一絲嗡嗡聲。我們專利的 S-1™ 開關巧妙地採用串聯接線選項，以獲得更多音色變化。其他適合公路使用的功能包括帶有鍍鉻黃銅弦枕的 6 弦枕穿弦琴橋、豪華鎖定調音器、滾花鋁製旋鈕和單層陽極氧化鋁製護板。",
+    "price": 71499,
+    "discountPrice": null
+  },
+  {
+    "name": "XJ-1 HT",
     "brandId": 3,
-    "categoryId": 7
-  },
-  {
-    "sn": "094d6348-1d92-46fe-b124-674256d7aefc",
-    "name": "Refined Steel Cheese - PUMA 長褲",
-    "photos": "t3.jpg,t2.jpg,t5.jpg",
-    "stock": 90,
-    "price": 14500,
-    "info": "Savor the sweet essence in our Pants, designed for lone culinary adventures",
+    "discription": " XJ-1 HT 採用 25.5 英吋大小的螺栓固定式結構，其沼澤梣木車身採用紋理噴砂 Black Blast 飾面。它採用堅固可靠的螺栓固定式三片式薄 U 形烤楓木琴頸，以及向後傾斜的反向琴頭，非常適合在較低調音時保持琴弦張力。 XJ-1 HT 配備了帶有珍珠塊狀鑲嵌的望加錫烏木指板和 22 個特大號不銹鋼品絲。這款出色樂器的組件包括 LTD 鎖定調音器和帶有琴弦穿過琴體的 Hipshot 硬尾琴橋。 XJ-1 HT 靈活的聲音特性來自其 Fluence Open Core Classic 琴橋拾音器，可透過推拉控制存取多種聲音。 Voice 1 為您提供傳奇的琴橋拾音器雙線圈音色以及當代音樂表演所需的輸出電平。您還可以獲得令人垂涎的稍微過度纏繞的單線圈音色。",
+    "price": 48717,
+    "discountPrice": null
+  },
+  {
+    "name": "HORIZON CUSTOM '87",
     "brandId": 3,
-    "categoryId": 7
-  },
-  {
-    "sn": "b321364b-2142-4a2a-a8bb-4423f2324cb8",
-    "name": "Practical Plastic Bike - New Balance 長袖上衣",
-    "photos": "t4.jpg,t1.jpg,t3.jpg",
-    "stock": 20,
-    "price": 7200,
-    "info": "The sleek and average Sausages comes with 紅褐色 LED lighting for smart functionality",
-    "brandId": 4,
-    "categoryId": 6
-  },
-  {
-    "sn": "6b9b5028-d798-4a26-8935-3bb3a01f60dc",
-    "name": "Rustic Fresh Pants - Nike 外套",
-    "photos": "t2.jpg,t4.jpg,t5.jpg",
-    "stock": 10,
-    "price": 3800,
-    "info": "New Shirt model with 27 GB RAM, 549 GB storage, and hateful features",
+    "discription": "這款吉他採用 25.5 吋尺寸的琴頸貫穿琴體結構，搭配榿木琴體和超薄三片楓木琴頸，可提供強烈的延音效果。 Horizo​​n Custom ’87 採用望加錫烏木指板，配有 24 個特大品絲，無鑲嵌；側面位置點可協助您找到方向。其組件包括 Floyd Rose 1000 雙鎖顫音器、琴馬處的 Seymour Duncan TB-5 Custom Trembucker 以及琴頸處的 Seymour Duncan Hot Rails。透過音量和音調旋鈕上的推拉控制，可以在一個或兩個拾音器上實現單線圈音調的線圈噴射。",
+    "price": 48717,
+    "discountPrice": null
+  },
+  {
+    "name": "Les Paul Standard 60s Plain Top",
     "brandId": 1,
-    "categoryId": 8
-  },
-  {
-    "sn": "36f1f1cd-f6ae-43a5-8f7e-6433d51b14f2",
-    "name": "Handmade Plastic Salad - adidas 慢跑鞋",
-    "photos": "t5.jpg,t3.jpg,t4.jpg",
-    "stock": 70,
-    "price": 6600,
-    "info": "The 橙色 Chicken combines Cook Islands aesthetics with Caesium-based durability",
-    "brandId": 2,
-    "categoryId": 9
-  },
-  {
-    "sn": "9fd39f08-d2f9-4cb9-9d9e-0d427325a3f8",
-    "name": "Ergonomic Granite Keyboard - adidas 慢跑鞋",
-    "photos": "t1.jpg,t2.jpg,t3.jpg",
-    "stock": 70,
-    "price": 12400,
-    "info": "Introducing the Nepal-inspired Salad, blending superior style with local craftsmanship",
-    "brandId": 2,
-    "categoryId": 9
-  },
-  {
-    "sn": "9b2a59c0-4e0d-44ab-b872-a9774cbda3a6",
-    "name": "Sleek Rubber Keyboard - Nike 包款",
-    "photos": "t1.jpg,t4.jpg,t3.jpg",
-    "stock": 40,
-    "price": 14400,
-    "info": "Introducing the Comoros-inspired Chips, blending profitable style with local craftsmanship",
+    "discription": "實心電吉他，採用單切面實心桃花心木琴體、實心楓木琴蓋、採用 SlimTaper 輪廓的桃花心木琴頸和紅木指板、兩個 60 年代 Burstbucker 雙線圈拾音器、硬殼琴盒",
+    "price": 84467,
+    "discountPrice": null
+  },
+  {
+    "name": "Les Paul Standard 50s Mahogany Top",
     "brandId": 1,
-    "categoryId": 11
-  },
-  {
-    "sn": "26a4632a-2c24-4c43-bbee-1ced0019520d",
-    "name": "Oriental Frozen Chips - adidas 短袖上衣",
-    "photos": "t3.jpg,t5.jpg,t2.jpg",
-    "stock": 10,
-    "price": 2000,
-    "info": "New Pants model with 50 GB RAM, 649 GB storage, and trusty features",
-    "brandId": 2,
-    "categoryId": 4
-  },
-  {
-    "sn": "7a1d5921-4632-4bd9-8bab-74e00efb3a81",
-    "name": "Luxurious Plastic Towels - adidas 籃球鞋",
-    "photos": "t5.jpg,t3.jpg,t2.jpg",
-    "stock": 30,
-    "price": 6200,
-    "info": "Luxurious Car designed with Frozen for left performance",
-    "brandId": 2,
-    "categoryId": 10
-  },
-  {
-    "sn": "0b92b7ad-a248-4570-802b-4d8b43ecbb91",
-    "name": "Bespoke Concrete Chicken - adidas 帽類",
-    "photos": "t3.jpg,t1.jpg,t2.jpg",
-    "stock": 50,
-    "price": 13600,
-    "info": "Oriental Chair designed with Cotton for fortunate performance",
-    "brandId": 2,
-    "categoryId": 12
-  },
-  {
-    "sn": "befbb0b3-7446-4b66-af01-c42d656e8b1e",
-    "name": "Refined Bronze Shirt - New Balance 短褲",
-    "photos": "t2.jpg,t1.jpg,t5.jpg",
-    "stock": 30,
-    "price": 3600,
-    "info": "Our fresh-inspired Keyboard brings a taste of luxury to your present lifestyle",
-    "brandId": 4,
-    "categoryId": 5
-  },
-  {
-    "sn": "e73d08a9-9aef-4552-81fc-052a3a4b82ce",
-    "name": "Luxurious Metal Bacon - New Balance 包款",
-    "photos": "t5.jpg,t4.jpg,t3.jpg",
-    "stock": 90,
-    "price": 5600,
-    "info": "Innovative Table featuring excellent technology and Wooden construction",
-    "brandId": 4,
-    "categoryId": 11
-  },
-  {
-    "sn": "12dff91e-e0a5-4d45-b469-3e3e78d6644a",
-    "name": "Handcrafted Steel Keyboard - New Balance 短褲",
-    "photos": "t4.jpg,t3.jpg,t5.jpg",
-    "stock": 80,
-    "price": 14400,
-    "info": "Innovative Chips featuring closed technology and Rubber construction",
-    "brandId": 4,
-    "categoryId": 5
-  },
-  {
-    "sn": "1a3e2325-45c5-4580-9ef4-fe83e57f1561",
-    "name": "Handcrafted Wooden Bike - Nike 包款",
-    "photos": "t3.jpg,t2.jpg,t4.jpg",
-    "stock": 30,
-    "price": 10000,
-    "info": "Experience the 藍綠色 brilliance of our Pants, perfect for glaring environments",
+    "discription": "桃花心木琴體，桃花心木面板，桃花心木琴頸，具有 50 年代復古輪廓，帶有梯形鑲嵌的紅木指板，Burstbucker 1 和 2 拾音器，音頻錐形盆，Orange Drop 電容器和硬殼琴盒",
+    "price": 84467,
+    "discountPrice": null
+  },
+  {
+    "name": "Les Paul Modern Koa ",
     "brandId": 1,
-    "categoryId": 11
-  },
-  {
-    "sn": "fb96840a-8578-4793-8893-2b8114dcd440",
-    "name": "Small Wooden Towels - New Balance 長袖上衣",
-    "photos": "t5.jpg,t3.jpg,t2.jpg",
-    "stock": 100,
-    "price": 7200,
-    "info": "Our squirrel-friendly Bacon ensures wide comfort for your pets",
-    "brandId": 4,
-    "categoryId": 6
-  },
-  {
-    "sn": "0ef688ee-3832-4fb0-8430-1571ec078165",
-    "name": "Recycled Steel Towels - Nike 外套",
-    "photos": "t4.jpg,t2.jpg,t5.jpg",
-    "stock": 70,
-    "price": 3100,
-    "info": "Discover the fox-like agility of our Chips, perfect for quick users",
+    "discription": "減輕重量的桃花心木琴體，帶花紋相思木面板，不對稱 SlimTaper 琴頸輪廓，複合半徑烏木指板，現代輪廓後跟，Grover 鎖定調音器，帶 4 個推/拉電位器的 Burstbucker Pro 拾音器",
+    "price": 123467,
+    "discountPrice": null
+  },
+  {
+    "name": "Les Paul Modern Studio",
     "brandId": 1,
-    "categoryId": 8
-  },
-  {
-    "sn": "146a2563-195b-4834-801f-a0a2bef19b1b",
-    "name": "Refined Frozen Hat - adidas 短褲",
-    "photos": "t2.jpg,t3.jpg,t5.jpg",
-    "stock": 80,
-    "price": 13200,
-    "info": "The 思源 Hat is the latest in a series of aggressive products from 張, 陳 and 梁",
-    "brandId": 2,
-    "categoryId": 5
-  },
-  {
-    "sn": "6e59d276-9fc4-413d-a9fc-c4e0b5b4ab6e",
-    "name": "Fantastic Bronze Pizza - Nike 短褲",
-    "photos": "t3.jpg,t2.jpg,t4.jpg",
-    "stock": 100,
-    "price": 2400,
-    "info": "Professional-grade Bike perfect for quick training and recreational use",
+    "discription": "桃花心木琴體，楓木帽和超現代減重，桃花心木琴頸，圓形輪廓，複合半徑包邊烏木指板，現代輪廓鞋跟，帶線圈攻絲的 490R 和 498T 拾音器",
+    "price": 64967,
+    "discountPrice": null
+  },
+  {
+    "name": "Les Paul Modern Lite",
     "brandId": 1,
-    "categoryId": 5
-  },
-  {
-    "sn": "05f2790a-f52e-4fcb-8403-0c2aa69fbd38",
-    "name": "Licensed Concrete Tuna - adidas 慢跑鞋",
-    "photos": "t2.jpg,t4.jpg,t3.jpg",
-    "stock": 10,
-    "price": 13300,
-    "info": "Handcrafted Soap designed with Soft for ruddy performance",
-    "brandId": 2,
-    "categoryId": 9
-  },
-  {
-    "sn": "384e11b7-b829-4e49-b01e-fbe05e5dfb85",
-    "name": "Ergonomic Wooden Chicken - New Balance 外套",
-    "photos": "t1.jpg,t2.jpg,t5.jpg",
-    "stock": 90,
-    "price": 6700,
-    "info": "Ergonomic Towels made with Frozen for all-day incomparable support",
-    "brandId": 4,
-    "categoryId": 8
-  },
-  {
-    "sn": "838c7e9b-78eb-426c-a353-e2e0dd430adc",
-    "name": "Refined Wooden Soap - adidas 帽類",
-    "photos": "t3.jpg,t1.jpg,t4.jpg",
-    "stock": 10,
-    "price": 8200,
-    "info": "Featuring Gold-enhanced technology, our Cheese offers unparalleled lost performance",
-    "brandId": 2,
-    "categoryId": 12
-  },
-  {
-    "sn": "9f65a108-17bc-4124-a97d-1cffc15c87c3",
-    "name": "Tasty Plastic Bacon - PUMA 短褲",
-    "photos": "t3.jpg,t5.jpg,t1.jpg",
-    "stock": 60,
-    "price": 13000,
-    "info": "Savor the zesty essence in our Mouse, designed for cuddly culinary adventures",
-    "brandId": 3,
-    "categoryId": 5
-  },
-  {
-    "sn": "670dfad7-10ad-4adf-9c52-91fef5a1e5d0",
-    "name": "Recycled Wooden Pants - New Balance 包款",
-    "photos": "t1.jpg,t4.jpg,t2.jpg",
-    "stock": 20,
-    "price": 5600,
-    "info": "Savor the tender essence in our Salad, designed for lumbering culinary adventures",
-    "brandId": 4,
-    "categoryId": 11
-  },
-  {
-    "sn": "ff4f8e92-dbcc-475b-bca5-adefbcdaffcb",
-    "name": "Luxurious Concrete Hat - Nike 籃球鞋",
-    "photos": "t2.jpg,t1.jpg,t5.jpg",
-    "stock": 70,
-    "price": 10800,
-    "info": "New Bacon model with 83 GB RAM, 941 GB storage, and alarmed features",
+    "discription": "Les Paul Modern Lite 體現了 Les Paul™ 的經典風格，採用了全新、更薄的全桃花心木琴身，既輕巧又平衡。琴體後部還設有腹部切口，以增加演奏舒適度。桃花心木琴頸採用紅木指板和快速演奏的 SlimTaper™ 輪廓。 Les Paul Modern Lite 由開放式線圈 490R 和 498T humbucker™ 拾音器提供動力，可提供廣泛的聲音功能，非常適合任何風格的音樂。",
+    "price": 48717,
+    "discountPrice": null
+  },
+  {
+    "name": "Les Paul Supreme",
     "brandId": 1,
-    "categoryId": 10
-  },
-  {
-    "sn": "24dc9619-a2a3-4c33-8a53-d21c37f82f65",
-    "name": "Unbranded Steel Salad - PUMA 外套",
-    "photos": "t1.jpg,t5.jpg,t2.jpg",
-    "stock": 100,
-    "price": 8100,
-    "info": "The sleek and powerless Computer comes with 紫色 LED lighting for smart functionality",
-    "brandId": 3,
-    "categoryId": 8
-  },
-  {
-    "sn": "f226cd49-0b06-4359-b074-769e832a5aeb",
-    "name": "Oriental Soft Hat - New Balance 短褲",
-    "photos": "t1.jpg,t2.jpg,t5.jpg",
-    "stock": 90,
-    "price": 13700,
-    "info": "New 紫色 Bike with ergonomic design for nice comfort",
-    "brandId": 4,
-    "categoryId": 5
-  },
-  {
-    "sn": "06df0883-14f9-4c48-b772-be91c614d115",
-    "name": "Recycled Concrete Pants - PUMA 外套",
-    "photos": "t3.jpg,t4.jpg,t5.jpg",
-    "stock": 100,
-    "price": 3800,
-    "info": "New 紫紅色 Pizza with ergonomic design for finished comfort",
-    "brandId": 3,
-    "categoryId": 8
-  },
-  {
-    "sn": "bde6abba-609e-4b54-9e1e-0030e8cf3be1",
-    "name": "Small Soft Chicken - PUMA 長袖上衣",
-    "photos": "t5.jpg,t4.jpg,t3.jpg",
-    "stock": 10,
-    "price": 10700,
-    "info": "The User-friendly next generation functionalities Computer offers reliable performance and gentle design",
-    "brandId": 3,
-    "categoryId": 6
-  },
-  {
-    "sn": "9976631e-0695-4487-9cf2-80d132d697bb",
-    "name": "Handmade Wooden Towels - adidas 帽類",
-    "photos": "t3.jpg,t4.jpg,t2.jpg",
-    "stock": 30,
-    "price": 5000,
-    "info": "Experience the 紫色 brilliance of our Computer, perfect for first environments",
-    "brandId": 2,
-    "categoryId": 12
-  },
-  {
-    "sn": "f5445b2d-66cc-422f-a5f3-1567f15d8b53",
-    "name": "Licensed Fresh Hat - Nike 短袖上衣",
-    "photos": "t5.jpg,t4.jpg,t1.jpg",
-    "stock": 80,
-    "price": 12300,
-    "info": "Savor the golden essence in our Tuna, designed for pricey culinary adventures",
+    "discription": "減輕重量的桃花心木琴體、純楓木面板、帶有 Super Split-Block MOP 鑲嵌的複合半徑烏木指板和 3 個 Burstbucker 拾音器。",
+    "price": 129967,
+    "discountPrice": null
+  },
+  {
+    "name": "Les Paul Standard 50s Figured Top",
     "brandId": 1,
-    "categoryId": 4
-  },
-  {
-    "sn": "73e87a27-11a4-4917-a033-5be3dd0cf278",
-    "name": "Recycled Rubber Bike - adidas 帽類",
-    "photos": "t2.jpg,t3.jpg,t1.jpg",
-    "stock": 80,
-    "price": 14500,
-    "info": "盧 LLC's most advanced Pizza technology increases competent capabilities",
-    "brandId": 2,
-    "categoryId": 12
-  },
-  {
-    "sn": "d12e72ed-e171-40f7-83ed-f8958b1e9d60",
-    "name": "Handmade Plastic Soap - PUMA 帽類",
-    "photos": "t3.jpg,t2.jpg,t4.jpg",
-    "stock": 80,
-    "price": 6200,
-    "info": "Featuring Protactinium-enhanced technology, our Chair offers unparalleled quarrelsome performance",
-    "brandId": 3,
-    "categoryId": 12
-  },
-  {
-    "sn": "1964fa5e-82b5-465c-ad36-4376e2434798",
-    "name": "Incredible Concrete Ball - adidas 慢跑鞋",
-    "photos": "t3.jpg,t1.jpg,t5.jpg",
-    "stock": 60,
-    "price": 14000,
-    "info": "Introducing the Democratic People's Republic of Korea-inspired Bacon, blending blushing style with local craftsmanship",
-    "brandId": 2,
-    "categoryId": 9
-  },
-  {
-    "sn": "4fe2d7a4-9fc9-452f-9daf-f699d9378d49",
-    "name": "Bespoke Soft Towels - PUMA 長褲",
-    "photos": "t5.jpg,t1.jpg,t3.jpg",
-    "stock": 20,
-    "price": 5800,
-    "info": "The sleek and regal Shirt comes with 黃色 LED lighting for smart functionality",
-    "brandId": 3,
-    "categoryId": 7
-  },
-  {
-    "sn": "afde2f39-0100-4143-aa18-2ebd4f0a4683",
-    "name": "Fantastic Cotton Chips - PUMA 短袖上衣",
-    "photos": "t2.jpg,t5.jpg,t1.jpg",
-    "stock": 70,
-    "price": 10800,
-    "info": "New Keyboard model with 83 GB RAM, 648 GB storage, and authorized features",
-    "brandId": 3,
-    "categoryId": 4
-  },
-  {
-    "sn": "bad0c2b8-ed0a-4522-8fe3-9f519caabded",
-    "name": "Handcrafted Rubber Car - New Balance 帽類",
-    "photos": "t1.jpg,t3.jpg,t4.jpg",
-    "stock": 80,
-    "price": 13000,
-    "info": "New Chair model with 8 GB RAM, 866 GB storage, and flustered features",
-    "brandId": 4,
-    "categoryId": 12
-  },
-  {
-    "sn": "03dae9dc-5144-4ec3-98df-e4a1724b30bd",
-    "name": "Small Bronze Keyboard - New Balance 包款",
-    "photos": "t2.jpg,t3.jpg,t4.jpg",
-    "stock": 60,
-    "price": 7400,
-    "info": "顧, 林 and 段's most advanced Hat technology increases warm capabilities",
-    "brandId": 4,
-    "categoryId": 11
-  },
-  {
-    "sn": "e830e5ce-a765-42b7-be51-5790861caa1b",
-    "name": "Rustic Wooden Soap - Nike 短袖上衣",
-    "photos": "t2.jpg,t1.jpg,t5.jpg",
-    "stock": 60,
-    "price": 5800,
-    "info": "The 雨澤 Keyboard is the latest in a series of infatuated products from 汪, 高 and 史",
+    "discription": "Les Paul™ 標準 50 年代花紋面板回歸經典設計，使其具有相關性、演奏性和喜愛性 - 塑造跨世代和音樂流派的聲音。它向 Gibson 的創新黃金時代致敬，讓真實性重新煥發活力。它擁有實心桃花心木琴體、AA 花紋楓木面板和獨特的半透明訂製彩色硝基漆飾面，展示了花紋楓木面板。桃花心木琴頸具有 50 年代復古輪廓，玫瑰木指板帶有梯形鑲嵌。 Les Paul 標準 50 年代花紋面板配備了 ABR-1、經典風格的 Tune-O-Matic™ 琴橋、鋁製 Stop Bar 拉弦板、帶 Keystone 按鈕的 Vintage Deluxe 調音器和金色禮帽旋鈕。經過校準的 Burstbucker™ 1（琴頸）和 Burstbucker 2（琴橋）拾音器裝有 Alnico 2 磁鐵，並連接到音頻錐度電位器和 Orange Drop® 電容器。",
+    "price": 90967,
+    "discountPrice": null
+  },
+  {
+    "name": "Les Paul Standard 60s Figured Top",
     "brandId": 1,
-    "categoryId": 4
-  },
-  {
-    "sn": "18f053a4-40ce-445e-86de-0bad09e2a3d2",
-    "name": "Luxurious Fresh Salad - New Balance 籃球鞋",
-    "photos": "t2.jpg,t3.jpg,t1.jpg",
-    "stock": 60,
-    "price": 11600,
-    "info": "The sleek and minty Pants comes with 紫色 LED lighting for smart functionality",
-    "brandId": 4,
-    "categoryId": 10
-  },
-  {
-    "sn": "a3bc4535-dc0b-4c35-a98d-08e2b9382d23",
-    "name": "Awesome Bronze Pants - PUMA 包款",
-    "photos": "t3.jpg,t4.jpg,t2.jpg",
-    "stock": 40,
-    "price": 8300,
-    "info": "Featuring Praseodymium-enhanced technology, our Hat offers unparalleled filthy performance",
-    "brandId": 3,
-    "categoryId": 11
-  },
-  {
-    "sn": "4480ae61-41ed-4af5-9a76-f8594f6013f2",
-    "name": "Electronic Metal Chips - PUMA 包款",
-    "photos": "t3.jpg,t2.jpg,t5.jpg",
-    "stock": 100,
-    "price": 5000,
-    "info": "Handmade Mouse designed with Concrete for shoddy performance",
-    "brandId": 3,
-    "categoryId": 11
-  },
-  {
-    "sn": "6874661d-7032-4705-9d4c-19b84ac2a244",
-    "name": "Ergonomic Fresh Gloves - Nike 外套",
-    "photos": "t2.jpg,t1.jpg,t3.jpg",
-    "stock": 10,
-    "price": 9500,
-    "info": "Our fresh-inspired Chair brings a taste of luxury to your gruesome lifestyle",
+    "discription": "Les Paul Standard 60 年代花紋面板採用實心桃花心木琴體，在新型令人頭暈的半透明定制彩色硝基漆飾面下方可見 AA 花紋楓木面板。桃花心木琴頸具有 60 年代風格的 SlimTaper™ 輪廓和帶有梯形鑲嵌的紅木指板。 Les Paul Standard 60s 花紋面板配備了經典的ABR-1 Tune-O-Matic™ 琴橋、鋁製Stop Bar 拉弦板、Grover® Rotomatic® “腎型”調音器以及帶有銀色反光鏡的金色禮帽旋鈕。 60 年代的 Burstbucker™ 拾音器裝有 Alnico 5 磁鐵，並連接到音頻錐度電位器和 Orange Drop® 電容器。",
+    "price": 90967,
+    "discountPrice": null
+  },
+  {
+    "name": "Les Paul Classic",
     "brandId": 1,
-    "categoryId": 8
-  },
-  {
-    "sn": "dc1a5163-31d4-4bfb-bba7-e7694a3b07af",
-    "name": "Small Wooden Shoes - PUMA 短袖上衣",
-    "photos": "t4.jpg,t5.jpg,t2.jpg",
-    "stock": 30,
-    "price": 12600,
-    "info": "Our spicy-inspired Car brings a taste of luxury to your concerned lifestyle",
-    "brandId": 3,
-    "categoryId": 4
-  },
-  {
-    "sn": "5b217f65-6bb4-4913-8baf-5ed716f5f5ac",
-    "name": "Licensed Metal Keyboard - PUMA 籃球鞋",
-    "photos": "t5.jpg,t3.jpg,t2.jpg",
-    "stock": 30,
-    "price": 12600,
-    "info": "The sleek and alienated Table comes with 乳白色 LED lighting for smart functionality",
-    "brandId": 3,
-    "categoryId": 10
-  },
-  {
-    "sn": "7fbd19ce-4f47-416c-8975-f80138df5104",
-    "name": "Tasty Rubber Hat - PUMA 帽類",
-    "photos": "t2.jpg,t3.jpg,t1.jpg",
-    "stock": 90,
-    "price": 9300,
-    "info": "Unbranded Car designed with Metal for memorable performance",
-    "brandId": 3,
-    "categoryId": 12
-  },
-  {
-    "sn": "fa4df84b-2454-4f53-9bda-511317340542",
-    "name": "Unbranded Plastic Bacon - adidas 短袖上衣",
-    "photos": "t1.jpg,t3.jpg,t4.jpg",
-    "stock": 90,
-    "price": 6300,
-    "info": "Ergonomic Cheese made with Frozen for all-day torn support",
-    "brandId": 2,
-    "categoryId": 4
-  },
-  {
-    "sn": "bf737668-77d5-43cc-b4a5-fe4b1a7076cc",
-    "name": "Handmade Cotton Towels - New Balance 短袖上衣",
-    "photos": "t3.jpg,t2.jpg,t4.jpg",
-    "stock": 30,
-    "price": 13200,
-    "info": "Featuring Manganese-enhanced technology, our Shoes offers unparalleled amused performance",
-    "brandId": 4,
-    "categoryId": 4
-  },
-  {
-    "sn": "c6f6b651-4445-4997-b862-bf9949e21736",
-    "name": "Fantastic Plastic Computer - Nike 慢跑鞋",
-    "photos": "t5.jpg,t3.jpg,t4.jpg",
-    "stock": 10,
-    "price": 8200,
-    "info": "The sleek and personal Salad comes with 綠色 LED lighting for smart functionality",
+    "discription": "Gibson Les Paul™ Classic 將 60 年代早期風格的 Les Paul 型號與一些功能性且經過時間考驗的修改相結合。正如預期的那樣，Les Paul Classic 採用桃花心木背板和楓木面板，搭配 SlimTaper 桃花心木琴頸和包邊紅木指板。 Burstbucker™ 61R 和 61T 斑馬紋開放線圈拾音器提供了那個時代的經典 Gibson 音色，並且由於開放線圈而具有額外的衝擊力。控制組件具有 4 個推拉電位器，可提供線圈抽頭、相位切換和純旁路的選擇，以實現功能性和多功能的聲音變化。",
+    "price": 60742,
+    "discountPrice": null
+  },
+  {
+    "name": "Les Paul Custom, Nickel Hardware",
     "brandId": 1,
-    "categoryId": 9
-  },
-  {
-    "sn": "0e0fd995-3b6f-4e43-87d7-fe8f6c031cf9",
-    "name": "Incredible Rubber Cheese - Nike 包款",
-    "photos": "t5.jpg,t2.jpg,t3.jpg",
-    "stock": 70,
-    "price": 9200,
-    "info": "Introducing the Saint Kitts and Nevis-inspired Bike, blending grim style with local craftsmanship",
+    "discription": "Gibson Custom Select Les Paul Custom 具有光澤烏木色和阿爾卑斯白飾面、鎳製五金、490R 和 498T 雙線圈拾音器以及烏木指板",
+    "price": 178717,
+    "discountPrice": null
+  },
+  {
+    "name": "Les Paul Standard 50s P-90",
     "brandId": 1,
-    "categoryId": 11
-  },
-  {
-    "sn": "01860cca-eca8-49da-8f52-a71834c50da7",
-    "name": "Handmade Granite Cheese - adidas 長褲",
-    "photos": "t5.jpg,t2.jpg,t1.jpg",
-    "stock": 60,
-    "price": 10400,
-    "info": "Ergonomic Cheese made with Steel for all-day willing support",
-    "brandId": 2,
-    "categoryId": 7
-  },
-  {
-    "sn": "f2b55831-9610-4178-9364-12d80351cb51",
-    "name": "Licensed Rubber Computer - adidas 短褲",
-    "photos": "t5.jpg,t1.jpg,t3.jpg",
-    "stock": 50,
-    "price": 4600,
-    "info": "Introducing the Marshall Islands-inspired Hat, blending bogus style with local craftsmanship",
-    "brandId": 2,
-    "categoryId": 5
-  },
-  {
-    "sn": "5f14d215-c7e4-4f99-b35c-89c3c5fe334c",
-    "name": "Rustic Plastic Hat - New Balance 帽類",
-    "photos": "t4.jpg,t3.jpg,t2.jpg",
-    "stock": 90,
-    "price": 2100,
-    "info": "Our creamy-inspired Gloves brings a taste of luxury to your jagged lifestyle",
-    "brandId": 4,
-    "categoryId": 12
-  },
-  {
-    "sn": "c442127b-b9d6-465a-8e83-3da81466c107",
-    "name": "Unbranded Bronze Cheese - Nike 外套",
-    "photos": "t5.jpg,t3.jpg,t4.jpg",
-    "stock": 50,
-    "price": 4000,
-    "info": "Discover the old-fashioned new Chips with an exciting mix of Steel ingredients",
+    "discription": "新款 Les Paul Standard 回歸了使其聞名的經典設計。它向 Gibson 的創新黃金時代致敬，讓真實性重新煥發活力。 Les Paul Standard 50s P-90 採用實心桃花心木琴體，配有楓木面板和圓形 50s 風格桃花心木琴頸，配有紅木指板和梯形鑲嵌。它配備了 ABR-1、經典風格的 Tune-O-Matic™ 琴馬、鋁製 Stop Bar 拉弦板、帶 Keystone 按鈕的 Vintage Deluxe 調音器和 Top Hat 旋鈕。經典的 P-90 拾音器（琴頸和琴馬）裝有 Alnico 5 磁鐵、音頻錐度電位器和 Orange Drop® 電容器。",
+    "price": 84467,
+    "discountPrice": null
+  },
+  {
+    "name": "Mary Ford Les Paul Standard",
     "brandId": 1,
-    "categoryId": 8
-  },
-  {
-    "sn": "aa2d76de-1f49-4b4d-b636-a42d26e4e429",
-    "name": "Awesome Bronze Ball - adidas 長袖上衣",
-    "photos": "t3.jpg,t2.jpg,t4.jpg",
-    "stock": 100,
-    "price": 11200,
-    "info": "Professional-grade Chicken perfect for strident training and recreational use",
-    "brandId": 2,
-    "categoryId": 6
-  },
-  {
-    "sn": "cb4ec408-09de-4f45-bf29-cacb5b4e2295",
-    "name": "Rustic Wooden Chips - Nike 帽類",
-    "photos": "t2.jpg,t4.jpg,t1.jpg",
-    "stock": 80,
-    "price": 2500,
-    "info": "Professional-grade Towels perfect for sparse training and recreational use",
+    "discription": "首次公開發行黃金時代的超罕見標誌性型號，配有桃花心木琴體、楓木琴蓋、ES-295 風格的花卉護板和配套扶手、帶紅木指板的 SlimTaper 桃花心木琴頸以及 Burstbucker 拾音器",
+    "price": 97467,
+    "discountPrice": null
+  },
+  {
+    "name": "Adam Jones Les Paul Standard",
     "brandId": 1,
-    "categoryId": 12
-  },
-  {
-    "sn": "9aa859ae-f637-461b-a20e-13c0219e9c45",
-    "name": "Ergonomic Rubber Keyboard - New Balance 籃球鞋",
-    "photos": "t5.jpg,t2.jpg,t4.jpg",
-    "stock": 20,
-    "price": 9800,
-    "info": "Discover the avaricious new Pizza with an exciting mix of Plastic ingredients",
-    "brandId": 4,
-    "categoryId": 10
-  },
-  {
-    "sn": "d546ca85-d4f0-43dc-b79e-69aec42e8688",
-    "name": "Awesome Rubber Keyboard - adidas 慢跑鞋",
-    "photos": "t5.jpg,t4.jpg,t3.jpg",
-    "stock": 40,
-    "price": 14500,
-    "info": "The Optional national focus group Fish offers reliable performance and scientific design",
-    "brandId": 2,
-    "categoryId": 9
-  },
-  {
-    "sn": "58f2d305-4980-4f70-b087-64c381ec7a72",
-    "name": "Electronic Cotton Pants - New Balance 短袖上衣",
-    "photos": "t5.jpg,t3.jpg,t1.jpg",
-    "stock": 30,
-    "price": 3100,
-    "info": "Introducing the Tokelau-inspired Pizza, blending authorized style with local craftsmanship",
-    "brandId": 4,
-    "categoryId": 4
-  },
-  {
-    "sn": "a6c2dbcc-ad5f-4a0c-8d41-a0841287b8d9",
-    "name": "Bespoke Frozen Cheese - PUMA 包款",
-    "photos": "t2.jpg,t4.jpg,t1.jpg",
-    "stock": 70,
-    "price": 11400,
-    "info": "Ergonomic Pizza made with Cotton for all-day bossy support",
-    "brandId": 3,
-    "categoryId": 11
-  },
-  {
-    "sn": "e6b027d1-777c-4195-836b-8f4b40c8ad3b",
-    "name": "Unbranded Fresh Salad - adidas 籃球鞋",
-    "photos": "t4.jpg,t1.jpg,t2.jpg",
-    "stock": 70,
-    "price": 14500,
-    "info": "Discover the shark-like agility of our Keyboard, perfect for good users",
-    "brandId": 2,
-    "categoryId": 10
-  },
-  {
-    "sn": "c59f2b7c-76dc-46ef-9495-a15fa0da9fb5",
-    "name": "Small Wooden Fish - New Balance 籃球鞋",
-    "photos": "t1.jpg,t2.jpg,t5.jpg",
-    "stock": 10,
-    "price": 12500,
-    "info": "Discover the wolf-like agility of our Pants, perfect for boring users",
-    "brandId": 4,
-    "categoryId": 10
-  },
-  {
-    "sn": "6754f0ca-30cb-4920-9fdf-ab9641736e94",
-    "name": "Modern Bronze Cheese - Nike 長袖上衣",
-    "photos": "t3.jpg,t5.jpg,t1.jpg",
-    "stock": 20,
-    "price": 10000,
-    "info": "Discover the responsible new Mouse with an exciting mix of Metal ingredients",
+    "discription": "Gibson USA 很榮幸與 Adam Jones 合作推出一款新的 Artist 型號，Adam Jones 是搖滾界最有才華和聲音創新的吉他手之一，來自多白金銷量和多次格萊美獎®獲獎樂隊 Tool。他的新款 Les Paul™ Standard 採用 Antique Silverburst 材質，烏木指板帶有珍珠母梯形鑲嵌，Grover® Rotomatic® 調音器配有現代風格的按鈕。它在琴頸位置配備了鍍鉻的 Burstbucker™ 1，在琴橋位置配備了未覆蓋的 DC High-Gain Humbucker™。控制採用 Orange Drop® 電容器手工接線。它還在桁架桿蓋上印有 Adam 的簽名，在琴頭背面印有定制的 Adam Jones 藝術品，並配有現代硬殼琴盒。",
+    "price": 97467,
+    "discountPrice": null
+  },
+  {
+    "name": "SG Modern",
     "brandId": 1,
-    "categoryId": 6
-  },
-  {
-    "sn": "4431457f-284a-43f0-9164-678c091b41ed",
-    "name": "Small Soft Pants - Nike 慢跑鞋",
-    "photos": "t3.jpg,t5.jpg,t1.jpg",
-    "stock": 10,
-    "price": 3300,
-    "info": "New Car model with 46 GB RAM, 712 GB storage, and coarse features",
+    "discription": "桃花心木琴體，帶有 AA 花紋楓木面板，不對稱桃花心木琴頸，帶 SlimTaper 輪廓和 24 品烏木指板，Burstbucker Pro 拾音器帶推/拉線圈抽頭開關",
+    "price": 81217,
+    "discountPrice": null
+  },
+  {
+    "name": "1962 Les Paul SG Standard, Short Maestro, Ebony Block",
     "brandId": 1,
-    "categoryId": 9
-  },
-  {
-    "sn": "2d28de74-c54d-4b3a-9a22-d010f754cb43",
-    "name": "Refined Frozen Salad - New Balance 帽類",
-    "photos": "t2.jpg,t4.jpg,t1.jpg",
-    "stock": 70,
-    "price": 3100,
-    "info": "Our cat-friendly Chips ensures shameless comfort for your pets",
-    "brandId": 4,
-    "categoryId": 12
-  },
-  {
-    "sn": "d91887e2-74f7-4792-b2f4-75dd88801229",
-    "name": "Rustic Granite Car - adidas 包款",
-    "photos": "t4.jpg,t1.jpg,t5.jpg",
-    "stock": 60,
-    "price": 14900,
-    "info": "Elegant Chair designed with Metal for respectful performance",
-    "brandId": 2,
-    "categoryId": 11
-  },
-  {
-    "sn": "3fc4f843-bf5a-40f9-9a9d-1faae50e7ca4",
-    "name": "Oriental Bronze Towels - New Balance 長褲",
-    "photos": "t5.jpg,t2.jpg,t4.jpg",
-    "stock": 30,
-    "price": 9100,
-    "info": "Featuring Nihonium-enhanced technology, our Ball offers unparalleled shadowy performance",
-    "brandId": 4,
-    "categoryId": 7
-  },
-  {
-    "sn": "ab939d6d-36ea-482a-abba-c3c0b8743544",
-    "name": "Oriental Rubber Gloves - PUMA 短褲",
-    "photos": "t1.jpg,t2.jpg,t3.jpg",
-    "stock": 60,
-    "price": 14400,
-    "info": "The 藍色 Chair combines Venezuela aesthetics with Gadolinium-based durability",
-    "brandId": 3,
-    "categoryId": 5
-  },
-  {
-    "sn": "5a684375-98dd-45b2-91b7-5f61c0378d1a",
-    "name": "Handcrafted Plastic Pizza - Nike 長袖上衣",
-    "photos": "t5.jpg,t2.jpg,t3.jpg",
-    "stock": 30,
-    "price": 6400,
-    "info": "Discover the squirrel-like agility of our Shoes, perfect for humiliating users",
+    "discription": "Gibson Custom Select 採用桃花心木琴身，搭配桃花心木琴頸，配有玫瑰木指板及 60 年代 SlimTaper 輕薄輪廓設計，搭載 Ebony Block 短型 Maestro Vibrola 搖座系統，配備 2 顆 Custombucker 拾音器，並經由 Murphy Lab 輕度老化處理，呈現復古質感。Gibson Custom 的 1962 Les Paul™ SG 標準版的這個迭代配備了 Murphy Lab Light Aging。吉他還包括熱沖壓 2 層「Les Paul」桁架桿蓋、Kluson 單線、雙環調音器和一對未封裝的 Custombucker 雙線圈拾音器等正宗功能，確保歷史準確性和卓越品質的融合。這款 Gibson 獨家產​​品數量非常有限",
+    "price": 201467,
+    "discountPrice": null
+  },
+  {
+    "name": "SG Special",
     "brandId": 1,
-    "categoryId": 6
-  },
-  {
-    "sn": "881cd2bc-8222-4ae5-bac0-c2ad7deda43d",
-    "name": "Small Bronze Shirt - New Balance 籃球鞋",
-    "photos": "t4.jpg,t5.jpg,t3.jpg",
-    "stock": 70,
-    "price": 11100,
-    "info": "羅, 高 and 徐's most advanced Chair technology increases shameless capabilities",
-    "brandId": 4,
-    "categoryId": 10
-  },
-  {
-    "sn": "902c4e23-4c65-4518-8304-4ec6ea28aadb",
-    "name": "Elegant Granite Soap - PUMA 慢跑鞋",
-    "photos": "t5.jpg,t1.jpg,t2.jpg",
-    "stock": 40,
-    "price": 8500,
-    "info": "New 紅色 Table with ergonomic design for vibrant comfort",
-    "brandId": 3,
-    "categoryId": 9
-  },
-  {
-    "sn": "61b86eb0-b062-47ea-b628-3b09ad24d9a2",
-    "name": "Small Granite Soap - adidas 慢跑鞋",
-    "photos": "t2.jpg,t4.jpg,t3.jpg",
-    "stock": 60,
-    "price": 13900,
-    "info": "Rustic Cheese designed with Granite for sorrowful performance",
-    "brandId": 2,
-    "categoryId": 9
-  },
-  {
-    "sn": "d9049b13-7f5f-486c-83a2-dc75d097d3b6",
-    "name": "Sleek Metal Car - Nike 短褲",
-    "photos": "t3.jpg,t1.jpg,t4.jpg",
-    "stock": 70,
-    "price": 2600,
-    "info": "梁 - 譚's most advanced Car technology increases firm capabilities",
+    "discription": "SG™ Special 回歸經典設計，其影響力、受歡迎程度以及跨越世代與音樂類型的深遠影響使其廣受喜愛。這款 60 年代早期風格的 SG Special 擁有無數經典搖滾錄音中熟悉的氛圍與音色。舒適的 SlimTaper™ 桃花心木琴頸與帶有包邊的玫瑰木指板，以流暢且輕鬆的演奏感聞名。兩顆 P-90 拾音器因其在過載時飽滿且帶有野性吼聲的音色，以及在乾淨音色下的甜美平滑音質而廣受推崇。SG Special 配備三段式切換開關，並採用手工接線的控制電路，搭配 Orange Drop® 電容器。附贈硬殼琴盒。",
+    "price": 51967,
+    "discountPrice": null
+  },
+  {
+    "name": "60th Anniversary 1961 Les Paul SG Custom With Sideways Vibrola",
     "brandId": 1,
-    "categoryId": 5
-  },
-  {
-    "sn": "bb5f63e1-c8f1-416c-abba-02f7743d2e5e",
-    "name": "Recycled Steel Fish - Nike 長褲",
-    "photos": "t3.jpg,t4.jpg,t2.jpg",
-    "stock": 20,
-    "price": 14500,
-    "info": "The 青檸色 Shoes combines Syrian Arab Republic aesthetics with Neon-based durability",
+    "discription": "1961 年，Gibson Les Paul™ 系列迎來了重大變革，最顯著的特點是全新流線型雙切角設計的桃花心木琴身，後來被命名為 SG™。這款來自 Gibson Custom Shop 的型號，完美重現了首批 Les Paul SG Custom 的設計，配備 Custom 風格的外觀裝飾、金色硬體，以及 Sideways Vibrola™ 搖座，一種側拉式的顫音系統，類似 1960 年代早期型號中的配置。\n\n此外，它擁有 Authentic 61 薄輪廓桃花心木琴頸，帶包邊設計，搭載 Grover® 弦鍵、ABR-1 Tune-O-Matic™ 琴橋、三顆 Custombucker 拾音器、CTS® 復古音量電位器以及 Black Beauty 電容器，完美呈現經典音色與現代工藝的結合。",
+    "price": 217717,
+    "discountPrice": null
+  },
+  {
+    "name": "Les Paul Junior Double Cut",
     "brandId": 1,
-    "categoryId": 7
-  },
-  {
-    "sn": "734380e2-4fb8-450a-b415-9377f890aaed",
-    "name": "Incredible Metal Computer - New Balance 帽類",
-    "photos": "t4.jpg,t1.jpg,t5.jpg",
-    "stock": 30,
-    "price": 13300,
-    "info": "Innovative Chicken featuring jumbo technology and Granite construction",
-    "brandId": 4,
-    "categoryId": 12
-  },
-  {
-    "sn": "c3b601a6-e32b-4056-91a6-7bd88130e83b",
-    "name": "Recycled Fresh Computer - Nike 慢跑鞋",
-    "photos": "t1.jpg,t5.jpg,t4.jpg",
-    "stock": 100,
-    "price": 10900,
-    "info": "New Bike model with 70 GB RAM, 805 GB storage, and afraid features",
+    "discription": "雙切角桃花心木琴身，搭配 SlimTaper 輕薄琴頸輪廓的桃花心木琴頸，玫瑰木指板，配備 22 個中號加大品格及壓克力圓點鑲嵌，Dogear P-90 單線圈拾音器，並附硬殼琴盒。",
+    "price": 55217,
+    "discountPrice": null
+  },
+  {
+    "name": "80s Flying V Ebony",
     "brandId": 1,
-    "categoryId": 9
-  },
-  {
-    "sn": "3dcb4235-c587-490a-8ee6-f23bd9097e68",
-    "name": "Elegant Metal Pizza - New Balance 長褲",
-    "photos": "t1.jpg,t4.jpg,t3.jpg",
-    "stock": 50,
-    "price": 13500,
-    "info": "Savor the crispy essence in our Table, designed for muted culinary adventures",
-    "brandId": 4,
-    "categoryId": 7
-  },
-  {
-    "sn": "ce5a86df-d14b-4401-97e6-c315f1000a93",
-    "name": "Electronic Wooden Bacon - PUMA 慢跑鞋",
-    "photos": "t3.jpg,t5.jpg,t2.jpg",
-    "stock": 50,
-    "price": 3700,
-    "info": "Featuring Platinum-enhanced technology, our Keyboard offers unparalleled common performance",
-    "brandId": 3,
-    "categoryId": 9
-  },
-  {
-    "sn": "f1a15e77-8a7b-4052-bca8-a4bf59323dcd",
-    "name": "Gorgeous Concrete Chicken - PUMA 外套",
-    "photos": "t4.jpg,t2.jpg,t5.jpg",
-    "stock": 60,
-    "price": 1500,
-    "info": "Elegant Shirt designed with Rubber for mild performance",
-    "brandId": 3,
-    "categoryId": 8
-  },
-  {
-    "sn": "b36dfbc4-d39b-43ab-87d0-53cd1ec9baff",
-    "name": "Licensed Bronze Sausages - PUMA 短袖上衣",
-    "photos": "t1.jpg,t3.jpg,t5.jpg",
-    "stock": 10,
-    "price": 14700,
-    "info": "The sleek and internal Shirt comes with 紫色 LED lighting for smart functionality",
-    "brandId": 3,
-    "categoryId": 4
-  },
-  {
-    "sn": "71358fe2-c90a-4064-9f0c-167cba8b4327",
-    "name": "Unbranded Bronze Chips - Nike 長褲",
-    "photos": "t3.jpg,t2.jpg,t5.jpg",
-    "stock": 60,
-    "price": 4600,
-    "info": "Discover the timely new Chair with an exciting mix of Wooden ingredients",
+    "discription": "Gibson Flying V™ 被現代吉他手視為經典設計。它首次於1958年推出，並在接下來的幾十年間逐漸受到歡迎，特別是在硬式搖滾和金屬音樂的吉他手中。對許多人來說，這款型號在1980年代真正達到了巔峰。Gibson 80s Flying V 是基於備受追捧的1984年型號設計的。它配備了快感的 SlimTaper™ 桃花心木琴頸和玫瑰木指板。經典造型的桃花心木琴身搭載全新的 80s Tribute 拾音器，精確捕捉了那個時代獨特的厚實音色與豐富的延音。現已推出黑色款，並附帶硬殼吉他盒。",
+    "price": 81217,
+    "discountPrice": null
+  },
+  {
+    "name": "Joe Bonamassa \"Amos\" 1958 Flying V Collector's Edition Antique Natural",
     "brandId": 1,
-    "categoryId": 7
-  },
-  {
-    "sn": "a80ad91a-6ae7-4705-933f-e876a1bdbc5f",
-    "name": "Ergonomic Steel Bike - New Balance 包款",
-    "photos": "t2.jpg,t1.jpg,t5.jpg",
-    "stock": 10,
-    "price": 5200,
-    "info": "New Bike model with 61 GB RAM, 450 GB storage, and shady features",
-    "brandId": 4,
-    "categoryId": 11
-  },
-  {
-    "sn": "17439ccc-eb64-4455-af9e-ceb9a6493aff",
-    "name": "Elegant Concrete Ball - adidas 長褲",
-    "photos": "t5.jpg,t2.jpg,t4.jpg",
-    "stock": 80,
-    "price": 5200,
-    "info": "蔣 - 葉's most advanced Soap technology increases complicated capabilities",
-    "brandId": 2,
-    "categoryId": 7
-  },
-  {
-    "sn": "27e49e34-9fa7-4645-a5a3-779c48fd4d08",
-    "name": "Intelligent Concrete Car - adidas 外套",
-    "photos": "t3.jpg,t5.jpg,t4.jpg",
-    "stock": 40,
-    "price": 1600,
-    "info": "The 煜城 Pizza is the latest in a series of confused products from 賴 Inc",
-    "brandId": 2,
-    "categoryId": 8
-  },
-  {
-    "sn": "0f262b05-b3eb-4969-9ae1-3dd60a01bcce",
-    "name": "Incredible Fresh Car - Nike 包款",
-    "photos": "t3.jpg,t4.jpg,t5.jpg",
-    "stock": 90,
-    "price": 10500,
-    "info": "Our tiger-friendly Ball ensures elegant comfort for your pets",
+    "discription": "在 Joe Bonamassa 的史詩級吉他收藏中，其中最珍貴且著名的一把吉他是“Amos”，一把原版的1958年 Gibson Flying V™。Amos 這個名字以及客製化的琴頸調節桿蓋，來自於一位名叫 Amos Arthur 的紳士，他是印第安納州印第安納波利斯 Arthur’s Music 店的擁有者。根據 Gibson 的記錄，這把 Flying V 於1958年5月29日運送到他的店鋪。這把吉他最終售予 Ernest Tubb 樂隊的 Pete Mitchell，而在1970年代中期，它輾轉到了 Norman’s Rare Guitars 的 Norm Harris 手中。多年來，這把吉他出現在許多著名的吉他書籍中，甚至在1984年的電影《This Is Spinal Tap》中亮相。Joe 在近十年前從 Norm Harris 手中購得 Amos，這把美麗的樂器至今仍持續激勵著他，經常在現場演出和錄音室中亮相。\n\n這款特別的收藏家版限量復刻系列，運用了全新的3D掃描技術和極為精準的 Murphy Lab 老化技術，以手工打造出 Amos 的高仿製品。每一個細節都被精心復刻，從精確的演奏磨損痕跡到聲音特性以及實心巴西玫瑰木指板。僅有50把這樣非凡的樂器由位於田納西州納什維爾的 Gibson Custom Shop 和 Murphy Lab 的專業製琴師手工製作，作為這個非凡收藏家版系列的一部分。",
+    "price": 649967,
+    "discountPrice": null
+  },
+  {
+    "name": "Flying V Antique Natural",
     "brandId": 1,
-    "categoryId": 11
-  },
-  {
-    "sn": "43b76a11-f628-438c-a39e-ab184ae211b4",
-    "name": "Small Concrete Shirt - New Balance 外套",
-    "photos": "t3.jpg,t4.jpg,t1.jpg",
-    "stock": 10,
-    "price": 8200,
-    "info": "Innovative Bacon featuring untimely technology and Soft construction",
-    "brandId": 4,
-    "categoryId": 8
-  },
-  {
-    "sn": "ca56752f-0115-4fce-b5c2-b13b390e3b5f",
-    "name": "Sleek Steel Shirt - adidas 短袖上衣",
-    "photos": "t4.jpg,t1.jpg,t5.jpg",
-    "stock": 80,
-    "price": 9800,
-    "info": "New 淺橙色 Pants with ergonomic design for celebrated comfort",
-    "brandId": 2,
-    "categoryId": 4
-  },
-  {
-    "sn": "932bc6ad-b883-4745-aef3-da0d7f3dc02a",
-    "name": "Practical Frozen Tuna - PUMA 慢跑鞋",
-    "photos": "t4.jpg,t5.jpg,t2.jpg",
-    "stock": 50,
-    "price": 11100,
-    "info": "黃 Group's most advanced Towels technology increases glum capabilities",
-    "brandId": 3,
-    "categoryId": 9
-  },
-  {
-    "sn": "95e644c2-05d1-4666-8d1e-27e08e0f1cdd",
-    "name": "Ergonomic Bronze Towels - Nike 短褲",
-    "photos": "t3.jpg,t5.jpg,t4.jpg",
-    "stock": 90,
-    "price": 8400,
-    "info": "The 鴻煊 Shoes is the latest in a series of moist products from 熊 LLC",
+    "discription": "Gibson Flying V™ 於1958年推出，僅限量生產，但多年來卻吸引了眾多追隨者，成為經典傳奇。這款 Flying V 將其傳承提升至新高度。復古天然色塗裝、桃花心木琴身，以及配備玫瑰木指板的 SlimTaper™ 琴頸，呈現出經典的外觀、音色與演奏手感。特殊調校的 Burstbucker™ 2（琴頸）和 Burstbucker 3（琴橋）拾音器組合，完美融合了音量、音色與力量。",
+    "price": 77967,
+    "discountPrice": null
+  },
+  {
+    "name": "Adam Jones Flying V Collector's Edition Reverse Antique Silverburst",
     "brandId": 1,
-    "categoryId": 5
-  },
-  {
-    "sn": "b360d36e-ec1b-4de9-b44b-203b1f129ad6",
-    "name": "Awesome Metal Chair - New Balance 長褲",
-    "photos": "t4.jpg,t5.jpg,t2.jpg",
-    "stock": 70,
-    "price": 3400,
-    "info": "The 青檸色 Shirt combines Norway aesthetics with Uranium-based durability",
-    "brandId": 4,
-    "categoryId": 7
-  },
-  {
-    "sn": "61e4f9dc-a30f-48b8-938a-98d928b2667e",
-    "name": "Practical Bronze Chicken - New Balance 長袖上衣",
-    "photos": "t2.jpg,t3.jpg,t5.jpg",
-    "stock": 20,
-    "price": 7800,
-    "info": "New 紅色 Chair with ergonomic design for short-term comfort",
-    "brandId": 4,
-    "categoryId": 6
-  },
-  {
-    "sn": "07886b4f-d27b-4fd4-8b68-ebd5e032d6f7",
-    "name": "Rustic Steel Bike - New Balance 籃球鞋",
-    "photos": "t1.jpg,t3.jpg,t4.jpg",
-    "stock": 70,
-    "price": 3800,
-    "info": "Our crispy-inspired Computer brings a taste of luxury to your different lifestyle",
-    "brandId": 4,
-    "categoryId": 10
-  },
-  {
-    "sn": "1a860c71-6d54-4e9f-9748-bb569b33dbe6",
-    "name": "Generic Metal Bike - New Balance 短褲",
-    "photos": "t3.jpg,t2.jpg,t5.jpg",
-    "stock": 60,
-    "price": 5200,
-    "info": "The 棕褐色 Shirt combines Venezuela aesthetics with Ruthenium-based durability",
-    "brandId": 4,
-    "categoryId": 5
-  },
-  {
-    "sn": "ad287234-270f-4805-aab9-b23113807478",
-    "name": "Incredible Bronze Sausages - adidas 帽類",
-    "photos": "t5.jpg,t4.jpg,t1.jpg",
-    "stock": 60,
-    "price": 1800,
-    "info": "The Open-architected zero defect system engine Table offers reliable performance and stale design",
-    "brandId": 2,
-    "categoryId": 12
-  },
-  {
-    "sn": "9d48d15d-35b3-4f0d-b270-07baf17f75bc",
-    "name": "Modern Granite Tuna - New Balance 外套",
-    "photos": "t5.jpg,t2.jpg,t4.jpg",
-    "stock": 90,
-    "price": 14800,
-    "info": "Professional-grade Cheese perfect for measly training and recreational use",
-    "brandId": 4,
-    "categoryId": 8
-  },
-  {
-    "sn": "40b1b538-86b7-4993-a51a-0402b447a8bd",
-    "name": "Fantastic Bronze Cheese - PUMA 慢跑鞋",
-    "photos": "t4.jpg,t5.jpg,t3.jpg",
-    "stock": 70,
-    "price": 12500,
-    "info": "Professional-grade Pants perfect for ripe training and recreational use",
-    "brandId": 3,
-    "categoryId": 9
-  },
-  {
-    "sn": "e7f3eb26-3f7d-42d2-9d7a-a1ba7c637164",
-    "name": "Bespoke Granite Hat - Nike 長袖上衣",
-    "photos": "t2.jpg,t1.jpg,t4.jpg",
-    "stock": 100,
-    "price": 3800,
-    "info": "Luxurious Mouse designed with Plastic for shocked performance",
+    "discription": "Adam Jones，來自多白金唱片銷量且多次榮獲葛萊美獎®的樂隊 Tool，是搖滾界最具才華和聲音創新的吉他手之一。這款超凡脫俗的限量版 Flying V 是專為 Adam Jones 設計和打造的，展現了他對偏重型吉他的偏好，採用了未減重的桃花心木琴身、穿弦設計、Futura 風格分體式琴頭設計、自定義配件，以及帶有專屬藝術圖案的琴頸調節桿蓋，並以精雕細琢的反向復古銀爆裂漆面覆蓋。\n\n此外，還隨附一條由 Adam 親自設計的可調式皮製背帶。吉他裝飾了一枚由藝術家 Alex Kuno 設計的「雙頭犬」手工鑄造並鍍層的胸針。經 Murphy Lab 工匠精心老化處理，這款非凡的限量版僅由田納西州納什維爾 Gibson Custom Shop 的專業製琴師與工匠手工製作，全球僅限量50把。",
+    "price": 97500,
+    "discountPrice": null
+  },
+  {
+    "name": "Kirk Hammett 1979 Flying V Ebony",
     "brandId": 1,
-    "categoryId": 6
-  },
-  {
-    "sn": "d9fb1f3c-748f-44be-bba2-690f878d2e3f",
-    "name": "Fantastic Plastic Pizza - adidas 外套",
-    "photos": "t2.jpg,t5.jpg,t3.jpg",
-    "stock": 100,
-    "price": 8300,
-    "info": "Tasty Car designed with Frozen for zesty performance",
-    "brandId": 2,
-    "categoryId": 8
-  },
-  {
-    "sn": "2c53c35e-6127-46ff-b5b5-28a6b5724a61",
-    "name": "Elegant Fresh Keyboard - Nike 慢跑鞋",
-    "photos": "t4.jpg,t1.jpg,t3.jpg",
-    "stock": 30,
-    "price": 2700,
-    "info": "Discover the squirrel-like agility of our Pants, perfect for lined users",
+    "discription": "全球的 Metallica 粉絲都熟悉 Kirk Hammett 的1979年 Flying V。這是 Kirk 的第一把 Gibson 吉他，並奠定了他對 Gibson 吉他的熱愛。當時的購買靈感來自於他崇拜的著名 Flying V™ 演奏者，並且他也在尋找更豐富的音色。而那音色，的確非凡！Kirk 至今仍演奏著這把原版吉他，並在所有早期的 Metallica 專輯中使用，包括《Kill 'Em All》、《Ride the Lightning》、《Master of Puppets》、《...And Justice for All》及《The Black Album》，使這把吉他成為歷史上最重要的重金屬吉他之一。\n\n全球僅有200把由 Gibson Custom Shop 的專業製琴師在田納西州納什維爾手工製作，並由 Murphy Lab 精心老化，與原版保持一致。隨附的真實證書照片上由 Kirk Hammett 親筆簽名",
+    "price": 487467,
+    "discountPrice": null
+  },
+  {
+    "name": "Richie Faulkner Flying V Custom Pelham Blue",
     "brandId": 1,
-    "categoryId": 9
-  },
-  {
-    "sn": "11b6bf20-7561-4c93-b1c0-201ca5c0008d",
-    "name": "Generic Soft Salad - PUMA 慢跑鞋",
-    "photos": "t2.jpg,t1.jpg,t5.jpg",
-    "stock": 50,
-    "price": 11600,
-    "info": "Discover the bee-like agility of our Soap, perfect for grumpy users",
-    "brandId": 3,
-    "categoryId": 9
-  },
-  {
-    "sn": "0c253375-8c02-48b7-aa53-069036739541",
-    "name": "Ergonomic Soft Pants - adidas 短褲",
-    "photos": "t1.jpg,t5.jpg,t2.jpg",
-    "stock": 50,
-    "price": 10000,
-    "info": "Discover the dolphin-like agility of our Bike, perfect for corrupt users",
-    "brandId": 2,
-    "categoryId": 5
-  },
-  {
-    "sn": "02f8bebe-367d-447a-8e47-77688bc89a61",
-    "name": "Generic Wooden Tuna - New Balance 短褲",
-    "photos": "t3.jpg,t2.jpg,t1.jpg",
-    "stock": 90,
-    "price": 8600,
-    "info": "汪, 董 and 鄒's most advanced Salad technology increases delicious capabilities",
-    "brandId": 4,
-    "categoryId": 5
-  },
-  {
-    "sn": "c216b981-acac-4532-86b8-8d1fcf19bf8b",
-    "name": "Oriental Soft Table - PUMA 長袖上衣",
-    "photos": "t3.jpg,t5.jpg,t4.jpg",
-    "stock": 50,
-    "price": 3800,
-    "info": "Experience the 橙色 brilliance of our Chicken, perfect for well-lit environments",
-    "brandId": 3,
-    "categoryId": 6
-  },
-  {
-    "sn": "955ca41d-92cd-4bd9-a9b9-c2e5d1d24cab",
-    "name": "Handmade Metal Hat - Nike 慢跑鞋",
-    "photos": "t2.jpg,t1.jpg,t5.jpg",
-    "stock": 90,
-    "price": 9200,
-    "info": "Introducing the Cape Verde-inspired Tuna, blending crooked style with local craftsmanship",
+    "discription": "\nRichie Faulkner 是傳奇金屬樂隊 Judas Priest 的共同主音吉他手，也是新金屬超級樂隊 Elegant Weapons 的吉他手，該樂隊由 Rainbow、Pantera 和 Judas Priest 的成員組成。作為 Gibson Flying V™ 的長期粉絲，Richie Faulkner Flying V Custom 將 Richie 的個人風格融入這款吉他中，擁有一體式桃花心木琴身、全覆面擋板、多層邊框、擁有 Richie Faulkner 客製化輪廓的桃花心木琴頸，以及在第12品處嵌有珍珠母的獵鷹圖案的烏木指板。這款吉他還配有 Floyd Rose® 顫音器和 Richie 的簽名 EMG™ 拾音器組合。電子設計簡潔，只配有拾音器選擇開關和單一音量控制，提供最基本的功能，沒有多餘的干擾。\n\n這款超高端的 Flying V 模型僅限量製作100把，由 Gibson Custom Shop 的製琴師精心打造，作為這個特別限量版系列的一部分。還隨附硬殼吉他盒。\n\n在2021年9月26日於 Louder than Life 音樂節與 Judas Priest 同台表演時，Richie 遭遇了罕見的主動脈動脈瘤和完全主動脈剝離。儘管他完全沒有心臟病史，Richie 仍被緊急送入附近醫院接受開胸手術，幸運的是，他完全康復，並決定回饋社會。Richie 將把這款 Flying V Custom 的收益捐贈給 John Ritter 基金會和美國心臟協會。",
+    "price": 308717,
+    "discountPrice": null
+  },
+  {
+    "name": "Dave Mustaine Flying V EXP Limited Edition Red Amber Burst",
     "brandId": 1,
-    "categoryId": 9
-  },
-  {
-    "sn": "5192ef82-0174-4ae4-9a6d-75bd8ee8e291",
-    "name": "Oriental Plastic Chicken - adidas 籃球鞋",
-    "photos": "t5.jpg,t1.jpg,t4.jpg",
-    "stock": 20,
-    "price": 11400,
-    "info": "The 俊馳 Pants is the latest in a series of every products from 汪 - 許",
-    "brandId": 2,
-    "categoryId": 10
-  },
-  {
-    "sn": "11c3c2f1-4703-47a8-b1d1-18ec751d0e7f",
-    "name": "Licensed Steel Towels - adidas 短袖上衣",
-    "photos": "t5.jpg,t1.jpg,t4.jpg",
-    "stock": 80,
-    "price": 11900,
-    "info": "Ergonomic Sausages made with Bronze for all-day astonishing support",
-    "brandId": 2,
-    "categoryId": 4
-  },
-  {
-    "sn": "8c42fc4c-127e-49cf-91d6-8bcc142dd506",
-    "name": "Oriental Plastic Chair - New Balance 外套",
-    "photos": "t1.jpg,t4.jpg,t2.jpg",
-    "stock": 90,
-    "price": 11000,
-    "info": "New Salad model with 53 GB RAM, 130 GB storage, and bony features",
-    "brandId": 4,
-    "categoryId": 8
-  },
-  {
-    "sn": "84cad79a-8d7b-48c5-ad2a-d34879990e17",
-    "name": "Incredible Cotton Bacon - PUMA 短袖上衣",
-    "photos": "t3.jpg,t2.jpg,t4.jpg",
-    "stock": 60,
-    "price": 12500,
-    "info": "New Bacon model with 21 GB RAM, 283 GB storage, and warmhearted features",
-    "brandId": 3,
-    "categoryId": 4
-  },
-  {
-    "sn": "0fdcd4e8-82ff-4781-b596-7ff2f1549f03",
-    "name": "Luxurious Steel Tuna - Nike 短褲",
-    "photos": "t3.jpg,t5.jpg,t1.jpg",
-    "stock": 20,
-    "price": 7200,
-    "info": "Discover the lawful new Pants with an exciting mix of Rubber ingredients",
+    "discription": "Dave Mustaine 是傳奇吉他手、主唱、詞曲創作人以及多白金銷量和葛萊美獎®得主樂隊 MEGADETH 的創辦人。他的新款 Gibson Dave Mustaine Flying V™ EXP 限量版吉他，提供他所要求的強大、沉重音色和卓越的演奏表現。這款吉他配有 25.5 吋比例的桃花心木琴頸，並設有邊框烏木指板，擁有24品，珍珠母嵌片，Explorer™ 風格琴頭搭配 Grover® Mini Rotomatic® 調音鈕，以及 Graph Tech® TUSQ® 琴枕。Dave Mustaine 的簽名印刷於琴頸調節桿蓋上，並在琴頭背面展示了 Dave 的剪影。\n\n桃花心木 Flying V 風格琴身配有枫木琴蓋（紅琥珀爆裂版本為紋理枫木），並搭載 Tune-O-Matic™ 音橋、穿弦設計的 Chevron 尾釘，以及 Dave Mustaine 簽名的 Seymour Duncan® Thrash Factor 拾音器組合。紅琥珀爆裂漆面為 nitrocellulose 漆，並搭配金色硬體，而 Ebony VOS 版本則配備鎳色硬體。還隨附一個 Dave Mustaine 設計的硬殼吉他盒。\n\n每種顏色僅限量製作75把，由 Gibson Custom Shop 的專業製琴師精心製作，作為這個特別限量版系列的一部分",
+    "price": 455000,
+    "discountPrice": null
+  },
+  {
+    "name": "Dave Mustaine Flying V EXP Silver Metallic",
     "brandId": 1,
-    "categoryId": 5
-  },
-  {
-    "sn": "0e11ad8e-c260-4491-b707-bf6bc8a3435c",
-    "name": "Ergonomic Cotton Towels - Nike 帽類",
-    "photos": "t3.jpg,t4.jpg,t5.jpg",
-    "stock": 90,
-    "price": 11500,
-    "info": "Innovative Salad featuring narrow technology and Rubber construction",
+    "discription": "Dave Mustaine 是傳奇吉他手、主唱、詞曲創作人，以及多白金銷量和葛萊美獎®得主樂隊 MEGADETH 的創辦人。他的新款 Gibson Dave Mustaine Flying V™ EXP Artist 模型，提供了他所要求的強大、沉重音色和卓越的演奏表現。這款吉他配備了 25.5 吋比例的桃花心木琴頸，並設有複合曲率的烏木指板，24品中型巨型品，珍珠母「牙齒」形狀的嵌片，Explorer™ 風格琴頭，搭配 Grover® Mini Rotomatic® 調音鈕（帶腎形按鈕），以及 Graph Tech® 琴枕。\n\n桃花心木 Flying V 風格琴身配有 Tune-O-Matic™ 音橋、Stop Bar 尾釘，並搭載 Dave Mustaine 簽名的 Seymour Duncan® Thrash Factor 拾音器組合。復古天然色和銀色金屬漆面搭配黑色鉻金屬硬體。還隨附一個硬殼吉他盒",
+    "price": 90967,
+    "discountPrice": null
+  },
+  {
+    "name": "Jimi Hendrix™ 1969 Flying V Aged Ebony",
     "brandId": 1,
-    "categoryId": 12
-  },
-  {
-    "sn": "a3a161f6-cae1-480a-9e7b-bb4befc7e20c",
-    "name": "Bespoke Concrete Tuna - PUMA 帽類",
-    "photos": "t1.jpg,t4.jpg,t2.jpg",
-    "stock": 90,
-    "price": 5800,
-    "info": "The sleek and greedy Gloves comes with 橙色 LED lighting for smart functionality",
-    "brandId": 3,
-    "categoryId": 12
-  },
-  {
-    "sn": "91649b65-167e-401c-aae4-920c4a095042",
-    "name": "Ergonomic Bronze Hat - PUMA 外套",
-    "photos": "t1.jpg,t5.jpg,t2.jpg",
-    "stock": 90,
-    "price": 7500,
-    "info": "Discover the fish-like agility of our Computer, perfect for splendid users",
-    "brandId": 3,
-    "categoryId": 8
-  },
-  {
-    "sn": "a189cc21-c7ac-42f9-96bb-ffb8bb14702f",
-    "name": "Handcrafted Fresh Bacon - PUMA 短袖上衣",
-    "photos": "t2.jpg,t1.jpg,t5.jpg",
-    "stock": 20,
-    "price": 7200,
-    "info": "Introducing the Greenland-inspired Sausages, blending polished style with local craftsmanship",
-    "brandId": 3,
-    "categoryId": 4
-  },
-  {
-    "sn": "44c43bde-fbdf-47aa-9930-a48aa45440fc",
-    "name": "Refined Fresh Hat - Nike 長袖上衣",
-    "photos": "t3.jpg,t5.jpg,t4.jpg",
-    "stock": 10,
-    "price": 7300,
-    "info": "The sleek and exalted Hat comes with 乳白色 LED lighting for smart functionality",
+    "discription": "Jimi Hendrix 被廣泛認為是搖滾時代最具創新精神的吉他手。這款 Custom Shop Flying V™ 是一款右手版本的重製，基於 Jimi 左手的 1969 年 Gibson Flying V，這款吉他是他直接向 Gibson 定製訂購的。它曾在 Band of Gypsys 時期使用，並在 1970 年 8 月 31 日的 Isle of Wight 音樂節上由 Hendrix 演出而成名。這把吉他擁有 Murphy Lab 老化處理的烏木漆面，以及經過老化的金色硬體。僅會製作 125 把右手版本，作為這個特別限量版系列的一部分，由 Gibson Custom Shop 的專業製琴師和工匠在美國田納西州納什維爾手工製作",
+    "price": 152717,
+    "discountPrice": null
+  },
+  {
+    "name": "1958 Korina Flying V (White Pickguard), Ebony, Murphy Lab Light Aged Ebony\nGibson Custom Sele",
     "brandId": 1,
-    "categoryId": 6
-  },
-  {
-    "sn": "e6ab3a55-8a58-4d25-9a8c-a8cfcae8d498",
-    "name": "Ergonomic Plastic Table - adidas 籃球鞋",
-    "photos": "t4.jpg,t1.jpg,t5.jpg",
-    "stock": 100,
-    "price": 2500,
-    "info": "Discover the zebra-like agility of our Hat, perfect for round users",
-    "brandId": 2,
-    "categoryId": 10
-  },
-  {
-    "sn": "15cd22a3-8ac7-4d31-a148-1ebe47f2e065",
-    "name": "Generic Steel Chips - adidas 包款",
-    "photos": "t1.jpg,t4.jpg,t3.jpg",
-    "stock": 40,
-    "price": 9700,
-    "info": "Stylish Mouse designed to make you stand out with pale looks",
-    "brandId": 2,
-    "categoryId": 11
-  },
-  {
-    "sn": "8f81483f-78c9-4066-a3a4-f953a10ff550",
-    "name": "Oriental Steel Computer - adidas 包款",
-    "photos": "t1.jpg,t2.jpg,t3.jpg",
-    "stock": 80,
-    "price": 14300,
-    "info": "Introducing the El Salvador-inspired Ball, blending fragrant style with local craftsmanship",
-    "brandId": 2,
-    "categoryId": 11
-  },
-  {
-    "sn": "40f184a6-b35b-42f1-8820-f907d51a18bf",
-    "name": "Handcrafted Fresh Salad - New Balance 長褲",
-    "photos": "t3.jpg,t4.jpg,t5.jpg",
-    "stock": 50,
-    "price": 9600,
-    "info": "The 博超 Towels is the latest in a series of gruesome products from 郭, 閻 and 田",
-    "brandId": 4,
-    "categoryId": 7
-  },
-  {
-    "sn": "df73f2b6-1bf5-48be-9622-771ca691b590",
-    "name": "Oriental Plastic Bacon - New Balance 帽類",
-    "photos": "t5.jpg,t2.jpg,t1.jpg",
-    "stock": 80,
-    "price": 12000,
-    "info": "New 藍紫色 Car with ergonomic design for splendid comfort",
-    "brandId": 4,
-    "categoryId": 12
-  },
-  {
-    "sn": "ae82d3f3-5dbc-478f-b0d9-80b71fa5b3cc",
-    "name": "Unbranded Bronze Tuna - adidas 外套",
-    "photos": "t5.jpg,t1.jpg,t4.jpg",
-    "stock": 20,
-    "price": 10600,
-    "info": "Discover the elephant-like agility of our Hat, perfect for sick users",
-    "brandId": 2,
-    "categoryId": 8
-  },
-  {
-    "sn": "f6b7000c-d713-4433-b5b0-92cf18893a3a",
-    "name": "Handmade Rubber Pants - PUMA 外套",
-    "photos": "t4.jpg,t5.jpg,t3.jpg",
-    "stock": 40,
-    "price": 4500,
-    "info": "Savor the sweet essence in our Ball, designed for favorite culinary adventures",
-    "brandId": 3,
-    "categoryId": 8
-  },
-  {
-    "sn": "7898f2ff-43fd-4634-aea7-2b2c1435e919",
-    "name": "Rustic Soft Sausages - Nike 慢跑鞋",
-    "photos": "t3.jpg,t1.jpg,t4.jpg",
-    "stock": 30,
-    "price": 9100,
-    "info": "Savor the tangy essence in our Chicken, designed for amazing culinary adventures",
+    "discription": "幾位著名的吉他英雄——Albert King、Keith Richards、Slash——曾將 Korina Flying V™ 包含在他們的吉他收藏中，但他們從未擁有過像這把這樣的吉他。Gibson Custom 和 Murphy Lab 重構了這個具有開創性、經典的設計，並將其作為特殊訂單，回到首次發佈的年份，當時 Cherry 和 Ebony 是唯一的定制顏色選項。這款夢幻版本優雅地以 Ebony 漆面搭配金色硬體和白色塑料，呈現出一種精緻的「燕尾服」外觀。\n\n這把吉他完成於 Murphy Lab 老化 Nitrocellulose 漆面，並採用了 50年代復古琴頸輪廓，是一款真正吸引目光的 Flying V，搭載 ABR-1 音橋、穿弦設計的兩片 Korina 琴身，以及帶有 22品印度玫瑰木指板的 Korina 琴頸。配備了一對 Custombucker 拾音器，並帶有 True Historic 老化金色覆蓋，此外，在四層擋板下，您會發現 CTS® 電位器和復古風格的「電話簿」音調電容器。隨吉他附贈的是一個歷史準確的 Flying V 吉他盒，外觀為經典的棕色外殼，內部為柔軟的粉紅色內襯，提升了復古風格的體驗",
+    "price": 373717,
+    "discountPrice": null
+  },
+  {
+    "name": "Flying V Custom w/ Ebony Fingerboard Gloss Ebony",
     "brandId": 1,
-    "categoryId": 9
-  },
-  {
-    "sn": "276b7901-117c-4ca1-a33a-d517996c27b9",
-    "name": "Sleek Frozen Chicken - adidas 帽類",
-    "photos": "t3.jpg,t4.jpg,t1.jpg",
-    "stock": 10,
-    "price": 5700,
-    "info": "Introducing the Yemen-inspired Tuna, blending short-term style with local craftsmanship",
-    "brandId": 2,
-    "categoryId": 12
-  },
-  {
-    "sn": "c5892715-4891-4975-b1f3-91492d33c99f",
-    "name": "Elegant Frozen Computer - adidas 長袖上衣",
-    "photos": "t3.jpg,t4.jpg,t2.jpg",
-    "stock": 20,
-    "price": 8100,
-    "info": "胡, 孟 and 董's most advanced Bacon technology increases corny capabilities",
-    "brandId": 2,
-    "categoryId": 6
-  },
-  {
-    "sn": "fe4663e9-6739-4a98-b651-22bbb2640191",
-    "name": "Oriental Plastic Table - Nike 短褲",
-    "photos": "t2.jpg,t4.jpg,t5.jpg",
-    "stock": 70,
-    "price": 14800,
-    "info": "New 藍色 Table with ergonomic design for lawful comfort",
+    "discription": "Flying V Custom 為 Gibson 最大膽、最具傳奇色彩的設計之一增添了高端的「黑美人」細節。最終的結果是一把散發風格和獨特性的吉他——一件以無可比擬的 Gibson 音色和演奏性為支撐的聲明之作。從實心的烏木指板到分裂鑽石形狀的琴頭嵌片，它無可否認地是一把現代經典，當之無愧地擁有「Custom」的名稱",
+    "price": 185250,
+    "discountPrice": null
+  },
+  {
+    "name": "1958 Mahogany Flying V Walnut",
     "brandId": 1,
-    "categoryId": 5
-  },
-  {
-    "sn": "67a45d3d-8937-4793-be12-84dfbfda0d58",
-    "name": "Incredible Concrete Shirt - Nike 帽類",
-    "photos": "t1.jpg,t4.jpg,t3.jpg",
-    "stock": 20,
-    "price": 5100,
-    "info": "顧, 薛 and 覃's most advanced Chips technology increases second capabilities",
+    "discription": "這款忠實致敬於原版 1958 年 Korina 材質 Flying V 模型的吉他，改為使用桃花心木製作，並採用美麗的胡桃木漆面，為這一超越時代的經典設計增添了一層優雅的氛圍",
+    "price": 162467,
+    "discountPrice": null
+  },
+  {
+    "name": "1958 Korina Flying V Reissue (White Pickguard) Natural",
     "brandId": 1,
-    "categoryId": 12
-  },
-  {
-    "sn": "a5995fd7-a0fb-43fb-a7e2-c9754cfc5a77",
-    "name": "Small Bronze Shoes - Nike 短褲",
-    "photos": "t2.jpg,t4.jpg,t5.jpg",
-    "stock": 50,
-    "price": 14300,
-    "info": "Our crunchy-inspired Car brings a taste of luxury to your graceful lifestyle",
+    "discription": "Gibson Flying V™ 在 1958 年推出時遠遠超前於其時代，那一年僅出貨 81 把，但自那以後，它已經變得非常受歡迎。這款歷史再版型號精心重現了經典復古 Flying V 的特徵。該吉他配有 ABR-1 音橋，搭配穿弦 Korina 琴身、Custombucker 拾音器、Korina 琴頸、印度玫瑰木指板、兩個音量和一個音調控制，配有 CTS® 電位器和電話簿電容器、金色硬體、Kluson® 調音鈕、四層擋板。隨附的歷史準確吉他盒擁有經典的棕色外殼和柔軟的粉紅色內襯。",
+    "price": 324967,
+    "discountPrice": null
+  },
+  {
+    "name": "80s Explorer Ebony",
     "brandId": 1,
-    "categoryId": 5
-  },
-  {
-    "sn": "fa3c051d-aa9a-4386-9a19-62cc613be295",
-    "name": "Electronic Soft Tuna - New Balance 短袖上衣",
-    "photos": "t1.jpg,t5.jpg,t3.jpg",
-    "stock": 50,
-    "price": 3700,
-    "info": "宋 LLC's most advanced Car technology increases carefree capabilities",
-    "brandId": 4,
-    "categoryId": 4
-  },
-  {
-    "sn": "01a6a052-a7d7-4f30-9098-74fb8392818a",
-    "name": "Bespoke Concrete Mouse - Nike 包款",
-    "photos": "t2.jpg,t4.jpg,t5.jpg",
-    "stock": 50,
-    "price": 5100,
-    "info": "The 白色 Mouse combines Taiwan aesthetics with Uranium-based durability",
+    "discription": "Explorer™ 於 1958 年首次推出，隨著時間的推移，吉他手發現了它的許多魅力。到 20 世紀 70 年代，搖滾樂隊開始接受其未來派的外形和強勁的聲音，但在硬搖滾 80 年代，該模型開始發揮自己的作用，並被該十年中一些最偉大的演奏家所採用。新款 80 年代 Explorer 以流行的 1984 年車型為基礎。它採用快速演奏的 SlimTaper™ 桃花心木琴頸和紅木指板。標誌性造型的桃花心木琴身配備了全新 80 年代 Tribute 拾音器，可準確捕捉那個時代型號獨特的厚重聲音和豐富的延音。現在有烏木版本。還包括一個硬殼盒。",
+    "price": 81217,
+    "discountPrice": null
+  },
+  {
+    "name": "Lzzy Hale Explorerbird Cardinal Red",
     "brandId": 1,
-    "categoryId": 11
-  },
-  {
-    "sn": "4001a1fc-cde4-4de6-ac81-428c776d5e67",
-    "name": "Sleek Granite Tuna - adidas 長褲",
-    "photos": "t5.jpg,t1.jpg,t2.jpg",
-    "stock": 100,
-    "price": 2000,
-    "info": "Featuring Platinum-enhanced technology, our Shoes offers unparalleled quarrelsome performance",
-    "brandId": 2,
-    "categoryId": 7
-  },
-  {
-    "sn": "90d9b132-a326-4c86-97f9-2455dd6c3545",
-    "name": "Generic Granite Soap - adidas 帽類",
-    "photos": "t3.jpg,t4.jpg,t5.jpg",
-    "stock": 40,
-    "price": 11900,
-    "info": "New 金色 Pizza with ergonomic design for spirited comfort",
-    "brandId": 2,
-    "categoryId": 12
-  },
-  {
-    "sn": "cba719b1-914f-4fbd-9878-1fd8a1acdc95",
-    "name": "Gorgeous Plastic Pizza - adidas 長褲",
-    "photos": "t4.jpg,t2.jpg,t5.jpg",
-    "stock": 100,
-    "price": 7200,
-    "info": "Our gecko-friendly Chips ensures crafty comfort for your pets",
-    "brandId": 2,
-    "categoryId": 7
-  },
-  {
-    "sn": "a72ab719-8606-4017-aafc-4ad4abdbd194",
-    "name": "Recycled Bronze Mouse - adidas 長袖上衣",
-    "photos": "t4.jpg,t1.jpg,t3.jpg",
-    "stock": 30,
-    "price": 4000,
-    "info": "Bespoke Fish designed with Plastic for that performance",
-    "brandId": 2,
-    "categoryId": 6
-  },
-  {
-    "sn": "e905bad0-1726-4b60-a4b9-9de3f8744abc",
-    "name": "Ergonomic Bronze Shoes - adidas 慢跑鞋",
-    "photos": "t4.jpg,t5.jpg,t1.jpg",
-    "stock": 40,
-    "price": 15000,
-    "info": "The 紅色 Table combines Switzerland aesthetics with Platinum-based durability",
-    "brandId": 2,
-    "categoryId": 9
-  },
-  {
-    "sn": "a0657fc7-50db-47d5-883a-6a548463c8a6",
-    "name": "Sleek Steel Cheese - New Balance 長袖上衣",
-    "photos": "t5.jpg,t4.jpg,t1.jpg",
-    "stock": 70,
-    "price": 12600,
-    "info": "Innovative Bacon featuring practical technology and Granite construction",
-    "brandId": 4,
-    "categoryId": 6
-  },
-  {
-    "sn": "ea70fea4-8818-466e-8d62-282c5f74dbf7",
-    "name": "Bespoke Wooden Hat - adidas 帽類",
-    "photos": "t3.jpg,t1.jpg,t5.jpg",
-    "stock": 70,
-    "price": 9200,
-    "info": "Innovative Chips featuring secret technology and Fresh construction",
-    "brandId": 2,
-    "categoryId": 12
-  },
-  {
-    "sn": "a028503c-db6e-4edf-88df-d94e04717237",
-    "name": "Handmade Metal Gloves - PUMA 包款",
-    "photos": "t4.jpg,t1.jpg,t5.jpg",
-    "stock": 40,
-    "price": 1900,
-    "info": "The 藍綠色 Sausages combines Japan aesthetics with Polonium-based durability",
-    "brandId": 3,
-    "categoryId": 11
-  },
-  {
-    "sn": "a087c8a8-4e56-4b40-ab01-01611c6491e1",
-    "name": "Gorgeous Bronze Shoes - PUMA 外套",
-    "photos": "t1.jpg,t2.jpg,t5.jpg",
-    "stock": 80,
-    "price": 11300,
-    "info": "Our rich-inspired Table brings a taste of luxury to your unusual lifestyle",
-    "brandId": 3,
-    "categoryId": 8
-  },
-  {
-    "sn": "b398a12c-b9eb-4794-88e1-b081d2750128",
-    "name": "Fantastic Metal Salad - PUMA 慢跑鞋",
-    "photos": "t3.jpg,t5.jpg,t4.jpg",
-    "stock": 30,
-    "price": 5900,
-    "info": "Rustic Pants designed with Concrete for sad performance",
-    "brandId": 3,
-    "categoryId": 9
-  },
-  {
-    "sn": "413cf8d2-df50-4541-a27d-62dd8e28c3b2",
-    "name": "Generic Plastic Chair - adidas 外套",
-    "photos": "t5.jpg,t1.jpg,t3.jpg",
-    "stock": 100,
-    "price": 14400,
-    "info": "Ergonomic Table made with Frozen for all-day expert support",
-    "brandId": 2,
-    "categoryId": 8
-  },
-  {
-    "sn": "c5f1549f-132f-4adf-a803-b8c90a5c54a9",
-    "name": "Ergonomic Cotton Keyboard - PUMA 籃球鞋",
-    "photos": "t2.jpg,t3.jpg,t1.jpg",
-    "stock": 30,
-    "price": 5700,
-    "info": "The Customer-focused holistic policy Cheese offers reliable performance and ultimate design",
-    "brandId": 3,
-    "categoryId": 10
-  },
-  {
-    "sn": "b731f6fa-fd56-4091-aa3c-ffd44b3b3200",
-    "name": "Ergonomic Metal Soap - New Balance 外套",
-    "photos": "t4.jpg,t1.jpg,t2.jpg",
-    "stock": 50,
-    "price": 3600,
-    "info": "The User-centric context-sensitive help-desk Computer offers reliable performance and enchanting design",
-    "brandId": 4,
-    "categoryId": 8
-  },
-  {
-    "sn": "b8b31ed3-a123-4bf5-a618-6f3434f614df",
-    "name": "Tasty Plastic Gloves - adidas 外套",
-    "photos": "t1.jpg,t2.jpg,t3.jpg",
-    "stock": 30,
-    "price": 5700,
-    "info": "Innovative Gloves featuring miserly technology and Steel construction",
-    "brandId": 2,
-    "categoryId": 8
-  },
-  {
-    "sn": "363be497-38b7-482a-b9b0-08d2800da5f7",
-    "name": "Handcrafted Plastic Shoes - PUMA 包款",
-    "photos": "t3.jpg,t1.jpg,t2.jpg",
-    "stock": 60,
-    "price": 4300,
-    "info": "The 振家 Computer is the latest in a series of firm products from 林 LLC",
-    "brandId": 3,
-    "categoryId": 11
-  },
-  {
-    "sn": "87ac3d76-c9c0-4643-9dca-6dbf1af05b62",
-    "name": "Oriental Soft Shirt - Nike 帽類",
-    "photos": "t1.jpg,t5.jpg,t3.jpg",
-    "stock": 100,
-    "price": 9800,
-    "info": "黃 - 許's most advanced Fish technology increases enchanted capabilities",
+    "discription": "Lzzy Hale 是 Gibson 的首位女性品牌大使，以其樂團 Halestorm 的爆炸性現場表演而聞名。她的新 Explorerbird 是一款風格硬朗、外觀精美的吉他，專為重型音樂打造。它將經典 Explorer™ 的琴體形狀和 Non-Reverse Firebird™ 琴頭結合成藝術家模型，一定會吸引觀眾的注意並激發觀眾的興趣。紅衣主教紅色硝化纖維素漆飾面與金色五金和品絲相得益彰……甚至強大的 70 年代 Tribute 拾音器上的金色螺絲和桿也是如此。還包括一個 Modern 系列硬殼盒。",
+    "price": 90967,
+    "discountPrice": null
+  },
+  {
+    "name": "1958 Korina Explorer (White Pickguard) Ebony",
     "brandId": 1,
-    "categoryId": 12
-  },
-  {
-    "sn": "ab58b927-246f-49aa-b30a-211dda796415",
-    "name": "Incredible Soft Pizza - PUMA 帽類",
-    "photos": "t3.jpg,t5.jpg,t2.jpg",
-    "stock": 70,
-    "price": 14100,
-    "info": "Small Pants designed with Bronze for noted performance",
-    "brandId": 3,
-    "categoryId": 12
-  },
-  {
-    "sn": "55e3cf2f-de51-4306-9e68-6d70292baaf2",
-    "name": "Elegant Fresh Table - adidas 短袖上衣",
-    "photos": "t5.jpg,t3.jpg,t4.jpg",
-    "stock": 80,
-    "price": 4700,
-    "info": "Ergonomic Computer made with Bronze for all-day golden support",
-    "brandId": 2,
-    "categoryId": 4
-  },
-  {
-    "sn": "64a05926-7f35-47ad-a288-0e7d4d4ea381",
-    "name": "Awesome Wooden Soap - New Balance 籃球鞋",
-    "photos": "t1.jpg,t4.jpg,t5.jpg",
-    "stock": 10,
-    "price": 3700,
-    "info": "The sleek and sad Pants comes with 藍色 LED lighting for smart functionality",
-    "brandId": 4,
-    "categoryId": 10
-  },
-  {
-    "sn": "ece77475-1ada-4ada-a333-d9bdcfa2f1a4",
-    "name": "Modern Plastic Fish - New Balance 籃球鞋",
-    "photos": "t3.jpg,t5.jpg,t4.jpg",
-    "stock": 60,
-    "price": 14500,
-    "info": "Our bear-friendly Soap ensures nippy comfort for your pets",
-    "brandId": 4,
-    "categoryId": 10
-  },
-  {
-    "sn": "95695dee-f032-4658-9c8f-a40caabf20ba",
-    "name": "Tasty Soft Hat - PUMA 籃球鞋",
-    "photos": "t5.jpg,t3.jpg,t4.jpg",
-    "stock": 30,
-    "price": 2400,
-    "info": "Featuring Krypton-enhanced technology, our Chips offers unparalleled flashy performance",
-    "brandId": 3,
-    "categoryId": 10
-  },
-  {
-    "sn": "1a45e511-97d4-444a-9987-e50c3c96c2f5",
-    "name": "Licensed Soft Towels - Nike 籃球鞋",
-    "photos": "t4.jpg,t5.jpg,t3.jpg",
-    "stock": 90,
-    "price": 11100,
-    "info": "The sleek and unripe Table comes with 天藍色 LED lighting for smart functionality",
+    "discription": "這款來自Gibson Custom 和Murphy Lab 的1958 年Korina Explorer™ 與Flying V™ 同類產品的風格相呼應，重新構想了開創性、未來派的Explorer 設計，作為發布第一年的特別訂單，當時櫻桃色和烏木色是唯一的客製化顏色選擇。這款夢幻版本採用優雅的烏木色，配有金色五金件和白色塑料，賦予其精緻的“燕尾服”外觀。這也標誌著自 2021 年推出最初的高度限量珍藏版 Korina 重新發行批次以來，墨菲實驗室老化已應用於 Korina Explorer 和 Flying V 型號的首次生產。 \n\n這款優雅的 Explorer 採用 ABR-1 琴橋、輕質鋁製止動桿拉弦板和 2 件式 Korina 琴體。它配備了未封裝的 Custombucker 拾音器、Korina 琴頸和印度玫瑰木指板。控制包括兩個音量和一個音調，帶有 CTS® 電位器和復古風格的“電話簿”電容器。它配備了歷史準確的錶殼，具有經典的棕色外觀和豪華的粉紅色內飾。",
+    "price": 373717,
+    "discountPrice": null
+  },
+  {
+    "name": "\n1958 Korina Explorer Reissue (White Pickguard) Natural",
     "brandId": 1,
-    "categoryId": 10
-  },
-  {
-    "sn": "1f351493-c915-424b-abba-a8d2dc96b0d8",
-    "name": "Recycled Granite Chips - adidas 長褲",
-    "photos": "t5.jpg,t3.jpg,t2.jpg",
-    "stock": 60,
-    "price": 6600,
-    "info": "Innovative Shoes featuring inexperienced technology and Bronze construction",
-    "brandId": 2,
-    "categoryId": 7
-  },
-  {
-    "sn": "0bd8587d-dbb8-44fb-8df8-4e9d0a993235",
-    "name": "Electronic Bronze Chicken - adidas 短褲",
-    "photos": "t3.jpg,t5.jpg,t2.jpg",
-    "stock": 60,
-    "price": 7100,
-    "info": "Savor the sour essence in our Chicken, designed for multicolored culinary adventures",
-    "brandId": 2,
-    "categoryId": 5
-  },
-  {
-    "sn": "8a8ce7ef-dc7b-43e8-b7b6-ce342c223de6",
-    "name": "Bespoke Rubber Sausages - Nike 慢跑鞋",
-    "photos": "t3.jpg,t5.jpg,t4.jpg",
-    "stock": 60,
-    "price": 4400,
-    "info": "Our sea lion-friendly Car ensures grounded comfort for your pets",
+    "discription": "Gibson Explorer™ 在 1958 年推出時遠遠領先於時代，當年僅發貨了 19 台，但從那時起它就變得非常受歡迎。這款歷史性的重新發行型號精心再現了經典的復古探險家功能。配備ABR-1 琴橋和Stop Bar 拉弦板、Korina 琴體、Custombucker 拾音器、Korina 琴頸、印度紅木指板、帶CTS® 電位器的兩個音量和一個音調控制以及電話簿電容器、金色硬體、 Kluson® 調音器和4 層護板。包括一個符合歷史的盒子，具有經典的棕色外觀和豪華的粉紅色內部。",
+    "price": 324967,
+    "discountPrice": null
+  },
+  {
+    "name": "Explorer Custom w/ Ebony Fingerboard Gloss Ebony",
     "brandId": 1,
-    "categoryId": 9
-  },
-  {
-    "sn": "aeaf0992-75dc-4867-8ca9-858e8f874a9d",
-    "name": "Luxurious Frozen Bacon - adidas 短褲",
-    "photos": "t5.jpg,t2.jpg,t3.jpg",
-    "stock": 80,
-    "price": 3400,
-    "info": "The sleek and inexperienced Pants comes with 薄荷綠色 LED lighting for smart functionality",
-    "brandId": 2,
-    "categoryId": 5
-  },
-  {
-    "sn": "42d8a35d-1ffb-4f7a-84c6-9e6a91399df7",
-    "name": "Generic Concrete Pizza - Nike 短袖上衣",
-    "photos": "t1.jpg,t4.jpg,t5.jpg",
-    "stock": 40,
-    "price": 7200,
-    "info": "New 藍綠色 Salad with ergonomic design for blank comfort",
+    "discription": "經典的 Gibson Explorer 憑藉這款定製版本進入了新的美學和聲音領域，配有多層包邊、珍珠裝飾、金色硬件和實心烏木指板。這是一種令人興奮的高檔外觀，帶來了 Gibson 標誌性的演奏性能、立即可識別的聲音以及 Gibson Custom 堅定不移地致力於打造世界上最好的吉他。",
+    "price": 188467,
+    "discountPrice": null
+  },
+  {
+    "name": "1965 Non-Reverse Firebird V 12-String Reissue Aqua Mist VOS",
     "brandId": 1,
-    "categoryId": 4
-  },
-  {
-    "sn": "403e84ab-d2b2-49ab-93b7-32898d328102",
-    "name": "Modern Plastic Chicken - adidas 長褲",
-    "photos": "t5.jpg,t1.jpg,t3.jpg",
-    "stock": 10,
-    "price": 10200,
-    "info": "Experience the 黃色 brilliance of our Shirt, perfect for narrow environments",
-    "brandId": 2,
-    "categoryId": 7
-  },
-  {
-    "sn": "ee503470-9606-45ff-a194-5821588aae64",
-    "name": "Electronic Steel Chair - adidas 籃球鞋",
-    "photos": "t4.jpg,t3.jpg,t5.jpg",
-    "stock": 60,
-    "price": 10700,
-    "info": "Featuring Lawrencium-enhanced technology, our Pants offers unparalleled sophisticated performance",
-    "brandId": 2,
-    "categoryId": 10
-  },
-  {
-    "sn": "7faf292d-e521-47fc-a95c-9dfc0dcc0c78",
-    "name": "Handmade Plastic Soap - Nike 短褲",
-    "photos": "t4.jpg,t3.jpg,t1.jpg",
-    "stock": 20,
-    "price": 8100,
-    "info": "Our rabbit-friendly Chair ensures favorable comfort for your pets",
+    "discription": "自 1960 年代中期以來，12 弦電吉他一直是流行音樂的中流砥柱，其獨特的叮噹聲受到披頭四 (The Beatles) 和 The Byrds 等樂團的青睞。 Gibson 標誌性的EDS-1275 曾出現在世界各地的許多經典唱片和音樂會舞台上，但對於那些喜歡彈奏不附加六弦的12 弦電吉他的人來說，Gibson Custom 很自豪地推出1965 Non -反向 Firebird V 12 弦重新發行。這款極具收藏價值的 1965 年型號的重新製作仍然忠實於其靈感來源的吉他，並進行了一項關鍵改進 - 琴頸寬度達到 1 11/16 英寸，而不是原版上較窄的琴頸。我們還回顧了 1959 年的經典 Oldsmobile 顏色圖表，該圖表是一些歷史悠久的 Gibson 定制顏色的來源，用於美麗的 Aqua Mist VOS 飾面。它配備了一對帶有 Alnico 5 磁鐵的 Firebird 拾音器，可在平衡良好、可演奏性高、復古風格的 12 弦電動琴中提供您所需的所有閃光和鈴聲。",
+    "price": 194967,
+    "discountPrice": null
+  },
+  {
+    "name": "1963 Firebird V Vintage Sunburst",
     "brandId": 1,
-    "categoryId": 5
-  },
-  {
-    "sn": "117fc98f-254b-447f-a02c-54b83014d6d4",
-    "name": "Modern Soft Chair - adidas 長褲",
-    "photos": "t3.jpg,t4.jpg,t5.jpg",
-    "stock": 90,
-    "price": 3100,
-    "info": "Introducing the Belgium-inspired Tuna, blending silky style with local craftsmanship",
-    "brandId": 2,
-    "categoryId": 7
-  },
-  {
-    "sn": "a240a776-055c-448f-9f68-fba6d7b07e4d",
-    "name": "Incredible Bronze Chicken - New Balance 籃球鞋",
-    "photos": "t3.jpg,t2.jpg,t4.jpg",
-    "stock": 10,
-    "price": 7000,
-    "info": "The sleek and measly Chicken comes with 薄荷綠色 LED lighting for smart functionality",
-    "brandId": 4,
-    "categoryId": 10
-  },
-  {
-    "sn": "a0f9f336-acaf-4a4e-bef5-f9188d4f6f18",
-    "name": "Tasty Wooden Chips - adidas 短袖上衣",
-    "photos": "t2.jpg,t1.jpg,t5.jpg",
-    "stock": 90,
-    "price": 7800,
-    "info": "The sleek and dependent Pizza comes with 薄荷綠色 LED lighting for smart functionality",
-    "brandId": 2,
-    "categoryId": 4
-  },
-  {
-    "sn": "cc9b7ccd-2443-404b-8b38-c48bfad05e1b",
-    "name": "Generic Steel Mouse - PUMA 包款",
-    "photos": "t5.jpg,t4.jpg,t1.jpg",
-    "stock": 60,
-    "price": 2500,
-    "info": "Ergonomic Salad made with Cotton for all-day compassionate support",
-    "brandId": 3,
-    "categoryId": 11
-  },
-  {
-    "sn": "59be8d5c-63f4-4dc3-a7d9-30f49a159560",
-    "name": "Small Granite Shirt - New Balance 長褲",
-    "photos": "t4.jpg,t5.jpg,t1.jpg",
-    "stock": 40,
-    "price": 14900,
-    "info": "Featuring Darmstadtium-enhanced technology, our Cheese offers unparalleled punctual performance",
-    "brandId": 4,
-    "categoryId": 7
-  },
-  {
-    "sn": "c99218c9-a309-4e26-a34b-aa859b386aaa",
-    "name": "Modern Frozen Shirt - adidas 短褲",
-    "photos": "t3.jpg,t4.jpg,t2.jpg",
-    "stock": 10,
-    "price": 14200,
-    "info": "馮 - 雷's most advanced Bacon technology increases thick capabilities",
-    "brandId": 2,
-    "categoryId": 5
-  },
-  {
-    "sn": "f84b196f-8e2d-4667-9107-fc4a48d4fb2a",
-    "name": "Unbranded Frozen Cheese - New Balance 籃球鞋",
-    "photos": "t3.jpg,t2.jpg,t1.jpg",
-    "stock": 10,
-    "price": 6300,
-    "info": "The Persistent discrete function Salad offers reliable performance and mixed design",
-    "brandId": 4,
-    "categoryId": 10
-  },
-  {
-    "sn": "a30418de-ba35-4074-bfcd-8cfe6354fdc6",
-    "name": "Ergonomic Steel Chicken - adidas 帽類",
-    "photos": "t4.jpg,t3.jpg,t5.jpg",
-    "stock": 40,
-    "price": 10100,
-    "info": "Discover the international new Chicken with an exciting mix of Wooden ingredients",
-    "brandId": 2,
-    "categoryId": 12
-  },
-  {
-    "sn": "f4c4b2b9-c582-4122-bcb6-7010a095829d",
-    "name": "Bespoke Metal Chicken - adidas 外套",
-    "photos": "t2.jpg,t5.jpg,t3.jpg",
-    "stock": 80,
-    "price": 7700,
-    "info": "Stylish Pants designed to make you stand out with educated looks",
-    "brandId": 2,
-    "categoryId": 8
-  },
-  {
-    "sn": "757d9797-9261-491b-9597-e846188228d3",
-    "name": "Generic Metal Chips - PUMA 籃球鞋",
-    "photos": "t3.jpg,t4.jpg,t5.jpg",
-    "stock": 60,
-    "price": 14700,
-    "info": "The sleek and unknown Computer comes with 紫色 LED lighting for smart functionality",
-    "brandId": 3,
-    "categoryId": 10
-  },
-  {
-    "sn": "280d38dd-8068-43a9-beac-7db59599d137",
-    "name": "Awesome Soft Chair - PUMA 包款",
-    "photos": "t1.jpg,t3.jpg,t4.jpg",
-    "stock": 30,
-    "price": 14100,
-    "info": "New Hat model with 19 GB RAM, 747 GB storage, and stunning features",
-    "brandId": 3,
-    "categoryId": 11
-  },
-  {
-    "sn": "602a7992-db98-4694-8196-dd8156e95c87",
-    "name": "Gorgeous Plastic Hat - New Balance 包款",
-    "photos": "t5.jpg,t1.jpg,t3.jpg",
-    "stock": 90,
-    "price": 6400,
-    "info": "Ergonomic Chair made with Cotton for all-day watery support",
-    "brandId": 4,
-    "categoryId": 11
-  },
-  {
-    "sn": "16874bac-712f-481a-b8f9-694ca9bab8c2",
-    "name": "Intelligent Cotton Pizza - PUMA 外套",
-    "photos": "t1.jpg,t2.jpg,t3.jpg",
-    "stock": 30,
-    "price": 14900,
-    "info": "The 睿淵 Chicken is the latest in a series of unlined products from 姜 and Sons",
-    "brandId": 3,
-    "categoryId": 8
-  },
-  {
-    "sn": "8ac46396-e8ff-4676-bad3-1894f6cdc4cf",
-    "name": "Fantastic Metal Bacon - Nike 籃球鞋",
-    "photos": "t5.jpg,t4.jpg,t2.jpg",
-    "stock": 20,
-    "price": 1800,
-    "info": "Our bee-friendly Hat ensures inconsequential comfort for your pets",
+    "discription": "當吉布森 (Gibson) 聘請著名汽車設計師雷·迪特里希 (Ray Dietrich) 打造一款激進的新型實心吉他時，搖滾樂的歷史隨之而來。憑藉其偏置形狀、頸穿式結構和灼熱的迷你雙線圈拾音器，'63 Firebird V 立即成為經典。 Custom Shop 很自豪地推出這款復古原作的精確複製品，它採用真實的輪廓、尺寸和構造方法，帶來令人難以置信的擁有和遊戲體驗。",
+    "price": 211217,
+    "discountPrice": null
+  },
+  {
+    "name": "1965 Non-Reverse Firebird V w/ Vibrola Vintage Sunburst",
     "brandId": 1,
-    "categoryId": 10
-  },
-  {
-    "sn": "f0ec6322-b2d4-4a38-b793-3846ba5ab06b",
-    "name": "Handmade Concrete Car - New Balance 籃球鞋",
-    "photos": "t4.jpg,t1.jpg,t5.jpg",
-    "stock": 30,
-    "price": 13800,
-    "info": "Savor the fluffy essence in our Table, designed for total culinary adventures",
-    "brandId": 4,
-    "categoryId": 10
-  },
-  {
-    "sn": "1795d0d3-1efe-4dfc-bf8e-fba831e36736",
-    "name": "Intelligent Concrete Chicken - Nike 帽類",
-    "photos": "t1.jpg,t2.jpg,t3.jpg",
-    "stock": 10,
-    "price": 3300,
-    "info": "莫 Group's most advanced Gloves technology increases lavish capabilities",
+    "discription": "Firebird 的第二個版本將偏移平台帶入了新的聲音領域。憑藉其輕盈的固定琴頸結構以及琴頸和琴身的翻轉方向，'65 Firebird V 因其功能和風格而受到喜愛和推崇。這款客製化商店遊戲使用真實的型材和構造方法來提供無可否認的外觀、感覺和聲音樂器。",
+    "price": 146217,
+    "discountPrice": null
+  },
+  {
+    "name": "Firebird Custom w/ Ebony Fingerboard Gloss Ebony",
     "brandId": 1,
-    "categoryId": 12
-  },
-  {
-    "sn": "f9c3fdf6-e982-480f-809b-a8f1ae65831c",
-    "name": "Small Rubber Computer - New Balance 慢跑鞋",
-    "photos": "t5.jpg,t2.jpg,t4.jpg",
-    "stock": 70,
-    "price": 13400,
-    "info": "Stylish Gloves designed to make you stand out with favorable looks",
-    "brandId": 4,
-    "categoryId": 9
-  },
-  {
-    "sn": "2fba99cf-d496-44f5-924f-4123b39d9121",
-    "name": "Modern Fresh Sausages - Nike 短袖上衣",
-    "photos": "t2.jpg,t1.jpg,t3.jpg",
-    "stock": 70,
-    "price": 11800,
-    "info": "The sleek and well-groomed Table comes with 銀色 LED lighting for smart functionality",
+    "discription": "Firebird Custom 保留了標誌性的流線型形狀，使其成為 Gibson 最具視覺吸引力的吉他之一，同時添加了高檔定製配置和強大的雙線圈拾音器，以增加視覺和聲音衝擊力。實心桃花心木結構飾有多層包邊、金色五金、珍珠鑲嵌和實心烏木指板。它大膽、美麗，而且是一次非常有趣的旅程。",
+    "price": 146217,
+    "discountPrice": null
+  },
+  {
+    "name": "1963 Firebird V With Maestro Vibrola Pelham Blue Ultra Light Aged Pelham Blue",
     "brandId": 1,
-    "categoryId": 4
-  },
-  {
-    "sn": "2472503f-3573-47ee-8d9b-8ec4a59a04a3",
-    "name": "Oriental Steel Ball - PUMA 包款",
-    "photos": "t2.jpg,t5.jpg,t3.jpg",
-    "stock": 60,
-    "price": 7700,
-    "info": "The sleek and expert Table comes with 淺橙色 LED lighting for smart functionality",
-    "brandId": 3,
-    "categoryId": 11
-  },
-  {
-    "sn": "80942527-1505-4559-a756-5f490af20ac1",
-    "name": "Electronic Plastic Gloves - Nike 慢跑鞋",
-    "photos": "t5.jpg,t3.jpg,t4.jpg",
-    "stock": 20,
-    "price": 12700,
-    "info": "Ergonomic Computer made with Bronze for all-day untimely support",
+    "discription": "當吉布森 (Gibson) 聘請著名汽車設計師雷·迪特里希 (Ray Dietrich) 打造一款激進的新型實心吉他時，搖滾樂的歷史隨之而來。憑藉其偏置形狀、頸穿結構和灼熱的迷你雙線圈拾音器™，'63 Firebird™ V 立即成為經典。 Gibson Custom Shop 很自豪地推出這款復古原件的精確複製品，它採用真實的輪廓、尺寸和構造方法，帶來令人難以置信的擁有和演奏體驗。它採用墨菲實驗室熟練工匠的超輕老化技術。 Murphy Lab Ultra Light Aged 飾面處理與輕度老化的五金搭配，模擬數十年的輕度玩耍磨損，賦予其獨特的個性、氛圍和 Gibson Golden Era 原始示例的感覺。",
+    "price": 246967,
+    "discountPrice": null
+  },
+  {
+    "name": "1963 Firebird V Reissue with Maestro Vibrola Light Aged Cardinal Red",
     "brandId": 1,
-    "categoryId": 9
-  },
-  {
-    "sn": "bb0770a9-0776-4062-a4d5-2e6f46b4c001",
-    "name": "Refined Metal Sausages - New Balance 帽類",
-    "photos": "t1.jpg,t5.jpg,t3.jpg",
-    "stock": 100,
-    "price": 11200,
-    "info": "Ergonomic Car made with Bronze for all-day different support",
-    "brandId": 4,
-    "categoryId": 12
-  },
-  {
-    "sn": "3b9f87f1-880b-4540-b84b-b54c996147a7",
-    "name": "Intelligent Cotton Cheese - New Balance 帽類",
-    "photos": "t5.jpg,t4.jpg,t2.jpg",
-    "stock": 30,
-    "price": 8400,
-    "info": "Introducing the Qatar-inspired Keyboard, blending delectable style with local craftsmanship",
-    "brandId": 4,
-    "categoryId": 12
-  },
-  {
-    "sn": "2e92b935-3a69-4eda-88c4-b3001aafeb52",
-    "name": "Bespoke Soft Bacon - Nike 短袖上衣",
-    "photos": "t3.jpg,t5.jpg,t1.jpg",
-    "stock": 10,
-    "price": 12500,
-    "info": "Experience the 紫色 brilliance of our Ball, perfect for squiggly environments",
+    "discription": "當吉布森 (Gibson) 聘請著名汽車設計師雷·迪特里希 (Ray Dietrich) 打造一款激進的新型實心吉他時，搖滾樂的歷史隨之而來。憑藉其偏置形狀、頸穿結構和灼熱的迷你雙線圈拾音器™，'63 Firebird™ V 立即成為經典。 Gibson Custom Shop 很自豪地推出這款復古原件的精確複製品，它採用真實的輪廓、尺寸和構造方法，帶來令人難以置信的擁有和演奏體驗。它採用墨菲實驗室技術精湛的工匠進行的光老化處理。 Murphy Lab Light Aged 飾面處理與輕度老化的五金搭配，模擬數十年的自然玩耍磨損，賦予其獨特的個性、氛圍和吉布森黃金時代原創範例的感覺。",
+    "price": 285967,
+    "discountPrice": null
+  },
+  {
+    "name": "1981 Gibson ES-347 Left-Handed",
     "brandId": 1,
-    "categoryId": 4
-  },
-  {
-    "sn": "7137bc06-f1da-41a1-923d-548acc31d21d",
-    "name": "Electronic Bronze Tuna - New Balance 長褲",
-    "photos": "t2.jpg,t4.jpg,t5.jpg",
-    "stock": 90,
-    "price": 9000,
-    "info": "Savor the rich essence in our Keyboard, designed for dapper culinary adventures",
-    "brandId": 4,
-    "categoryId": 7
-  },
-  {
-    "sn": "76c88a74-b6b5-4203-ac49-da14bc069566",
-    "name": "Gorgeous Rubber Pants - PUMA 籃球鞋",
-    "photos": "t5.jpg,t4.jpg,t1.jpg",
-    "stock": 30,
-    "price": 5300,
-    "info": "Experience the 青檸色 brilliance of our Chair, perfect for scornful environments",
-    "brandId": 3,
-    "categoryId": 10
-  },
-  {
-    "sn": "794c6a24-35d9-4128-89be-86670601732b",
-    "name": "Oriental Metal Towels - adidas 長褲",
-    "photos": "t2.jpg,t3.jpg,t4.jpg",
-    "stock": 90,
-    "price": 9700,
-    "info": "New 紫紅色 Tuna with ergonomic design for massive comfort",
-    "brandId": 2,
-    "categoryId": 7
-  },
-  {
-    "sn": "7e2250c8-82a3-4ac9-9f32-0bdca745689a",
-    "name": "Handcrafted Bronze Ball - Nike 長褲",
-    "photos": "t2.jpg,t5.jpg,t1.jpg",
-    "stock": 90,
-    "price": 14700,
-    "info": "Professional-grade Soap perfect for arid training and recreational use",
+    "discription": "採用罕見的櫻桃色旭日飾面，全部原始且近乎完好。 Gibson ES-335 的短命且用途廣泛的豪華版，更像是帶有烏木指板、MOP 嵌體和多彈邊定制琴頭的 ES-355。有一些非常輕微的磨損，但沒有天氣檢查，沒有裂縫、損壞或任何其他隱藏的維修。這把吉他有一個工廠內置的線圈抽頭，為演奏者提供了一些美妙的單線圈聲音的額外選擇。這把吉他實際上聽起來真的非常非常好，線圈抽頭功能 100% 可用，聽起來很棒 - 不薄，但透明且更清晰，非常適合過載的聲音！包括它的原始情況。",
+    "price": 178750,
+    "discountPrice": null
+  },
+  {
+    "name": "1960 Gibson ES-335 Sunburst\n",
     "brandId": 1,
-    "categoryId": 7
-  },
-  {
-    "sn": "33612516-2c21-4bdb-b52e-cab572d91a49",
-    "name": "Rustic Concrete Hat - adidas 外套",
-    "photos": "t1.jpg,t5.jpg,t4.jpg",
-    "stock": 10,
-    "price": 11500,
-    "info": "Ergonomic Bike made with Rubber for all-day regal support",
-    "brandId": 2,
-    "categoryId": 8
-  },
-  {
-    "sn": "a10d35e8-3e18-47a9-a709-4f6f12e6e4ee",
-    "name": "Elegant Frozen Computer - New Balance 包款",
-    "photos": "t1.jpg,t3.jpg,t5.jpg",
-    "stock": 30,
-    "price": 3800,
-    "info": "Professional-grade Sausages perfect for timely training and recreational use",
-    "brandId": 4,
-    "categoryId": 11
-  },
-  {
-    "sn": "948c163b-9416-4269-8bee-e9a21a33344a",
-    "name": "Bespoke Granite Salad - New Balance 包款",
-    "photos": "t5.jpg,t1.jpg,t4.jpg",
-    "stock": 50,
-    "price": 4100,
-    "info": "Discover the sea lion-like agility of our Shoes, perfect for extra-large users",
-    "brandId": 4,
-    "categoryId": 11
-  },
-  {
-    "sn": "a9f5c720-1186-4eef-ac28-420e3f6448ea",
-    "name": "Rustic Rubber Car - Nike 長袖上衣",
-    "photos": "t5.jpg,t4.jpg,t2.jpg",
-    "stock": 50,
-    "price": 14600,
-    "info": "The 藍紫色 Bacon combines Japan aesthetics with Ruthenium-based durability",
+    "discription": " Rounded“C”桃花心木琴頸與玫瑰木指板上的珍珠圓點鑲嵌提醒演奏者一切是從哪裡開始。\nGibson 的 T 型雙線圈拾音器與我們的手焊接線控制組件搭配， 為演奏者帶來 60 多年來一直渴望的多功能 Gibson ES 音色。 其它如 Keystone 按鈕的 Vintage Deluxe 調音器提供調音穩定性和精確音調，搭配輕質鋁製 ABR-1 琴橋和 Stop Bar 止弦板。",
+    "price": 2600000,
+    "discountPrice": null
+  },
+  {
+    "name": "1952 Gibson ES-295",
     "brandId": 1,
-    "categoryId": 6
-  },
-  {
-    "sn": "46ac1ce1-94b0-4ca4-8712-ad3008e15a96",
-    "name": "Bespoke Granite Chicken - Nike 籃球鞋",
-    "photos": "t5.jpg,t3.jpg,t4.jpg",
-    "stock": 60,
-    "price": 12200,
-    "info": "Savor the golden essence in our Chicken, designed for ashamed culinary adventures",
+    "discription": "標準配置相同的環繞式梯形拉弦板。[ 1 ]整把吉他（包括琴頸）均採用金色飾面，並配有像牙包邊和護板。這把吉他有兩個單線圈 P-90，帶有奶油色拾音器蓋。吉他有一個三向開關，帶有兩個音調旋鈕和兩個音量旋鈕。金屬部件全部採用金色處理。",
+    "price": 633750,
+    "discountPrice": null
+  },
+  {
+    "name": "ES-330 Ebony",
     "brandId": 1,
-    "categoryId": 10
-  },
-  {
-    "sn": "13af5f2e-6ece-4a3d-8c74-3ca6182559b7",
-    "name": "Awesome Frozen Car - Nike 長褲",
-    "photos": "t5.jpg,t3.jpg,t2.jpg",
-    "stock": 30,
-    "price": 6900,
-    "info": "The sleek and favorite Shirt comes with 紅色 LED lighting for smart functionality",
+    "discription": "薄型全空心電吉他，採用3 層楓木/楊木/楓木琴體，採用圓形C 型材的桃花心木琴頸，採用小塊丙烯酸鑲嵌的印度紅木指板，以及手工連接至500k 電位器和Orange Drop 電容器的Dogear P-90 拾音器，包括硬殼盒",
+    "price": 113717,
+    "discountPrice": null
+  },
+  {
+    "name": "ES-345 Gold Hardware Dark Walnut",
     "brandId": 1,
-    "categoryId": 7
-  },
-  {
-    "sn": "cfb72db6-78e4-458c-b196-2c32fc5cb04b",
-    "name": "Tasty Bronze Bike - PUMA 長袖上衣",
-    "photos": "t1.jpg,t2.jpg,t4.jpg",
-    "stock": 100,
-    "price": 9200,
-    "info": "Our zesty-inspired Ball brings a taste of luxury to your sunny lifestyle",
-    "brandId": 3,
-    "categoryId": 6
-  },
-  {
-    "sn": "1d383cc5-e1de-4b41-87fd-1948788823be",
-    "name": "Handcrafted Wooden Towels - PUMA 帽類",
-    "photos": "t4.jpg,t1.jpg,t5.jpg",
-    "stock": 70,
-    "price": 9300,
-    "info": "New 淺橙色 Keyboard with ergonomic design for oddball comfort",
-    "brandId": 3,
-    "categoryId": 12
-  },
-  {
-    "sn": "8390a729-bdbd-4d0e-82f3-3ac54cfb102e",
-    "name": "Intelligent Bronze Chair - adidas 籃球鞋",
-    "photos": "t4.jpg,t1.jpg,t3.jpg",
-    "stock": 30,
-    "price": 14100,
-    "info": "董, 劉 and 崔's most advanced Cheese technology increases unique capabilities",
-    "brandId": 2,
-    "categoryId": 10
-  },
-  {
-    "sn": "8ca73601-bff9-4ed2-8c1e-e47082e85813",
-    "name": "Electronic Fresh Keyboard - PUMA 包款",
-    "photos": "t1.jpg,t4.jpg,t5.jpg",
-    "stock": 10,
-    "price": 4100,
-    "info": "Generic Pants designed with Frozen for wobbly performance",
-    "brandId": 3,
-    "categoryId": 11
-  },
-  {
-    "sn": "49730bea-9dba-431e-9053-4375c06d5566",
-    "name": "Small Granite Keyboard - Nike 外套",
-    "photos": "t3.jpg,t1.jpg,t2.jpg",
-    "stock": 80,
-    "price": 4400,
-    "info": "Innovative Bacon featuring back technology and Plastic construction",
+    "discription": "三層楓木/楊木/楓木半空心琴體，實心楓木中板，桃花心木琴頸，圓形“C”型材，紅木指板，亞克力分裂平行四邊形鑲嵌，校準的T 型拾音器，以及硬殼琴盒",
+    "price": 126717,
+    "discountPrice": null
+  },
+  {
+    "name": "ES Supreme Ebony, 3-Pickup",
     "brandId": 1,
-    "categoryId": 8
-  },
-  {
-    "sn": "7b80a003-afb7-47a0-87bb-b91f40671f11",
-    "name": "Bespoke Cotton Keyboard - New Balance 長袖上衣",
-    "photos": "t2.jpg,t1.jpg,t3.jpg",
-    "stock": 50,
-    "price": 3900,
-    "info": "Discover the gorilla-like agility of our Cheese, perfect for last users",
-    "brandId": 4,
-    "categoryId": 6
-  },
-  {
-    "sn": "88a2e537-323b-4bd5-9432-fe13ae9cc2cd",
-    "name": "Modern Cotton Chicken - Nike 長袖上衣",
-    "photos": "t4.jpg,t5.jpg,t2.jpg",
-    "stock": 90,
-    "price": 5500,
-    "info": "The sleek and grizzled Hat comes with 天藍色 LED lighting for smart functionality",
+    "discription": "桃花心木琴體提供豐富、平衡的音色。\n桃花心木琴頸採用複合半徑烏木指板、24 個中型巨型品絲和超分割塊珍珠母貝鑲嵌。\n琴頭採用引人注目的全新珍珠母貝“吊燈鑲嵌”，其靈感源自 Gibson 檔案中的 20 世紀 40 年代設計。\n三個拾音器、兩個Burst Backer Pro（琴頸和中間位置）和Burst Backer Pro Plus（琴橋位置）拾音器組合在一起，帶有用於線圈敲擊的推/拉音量控制和手動連接到Orange Drop 電容器的主音控制。\n烏木飾面優雅地搭配金色硬件，使其成為一款音質優美、靈活的樂器，也是一款外觀絕對漂亮的現代搖滾機器。",
+    "price": 139717,
+    "discountPrice": null
+  },
+  {
+    "name": "ES-335 Dark Purple Burst\n",
     "brandId": 1,
-    "categoryId": 6
-  },
-  {
-    "sn": "fe72dd22-0e5b-4046-8fcc-3f71a01677aa",
-    "name": "Unbranded Rubber Shirt - New Balance 包款",
-    "photos": "t2.jpg,t1.jpg,t4.jpg",
-    "stock": 50,
-    "price": 8100,
-    "info": "Discover the hippopotamus-like agility of our Shirt, perfect for fine users",
-    "brandId": 4,
-    "categoryId": 11
-  },
-  {
-    "sn": "d27833da-b5e4-475c-844e-a5a47a3d7fc9",
-    "name": "Rustic Wooden Car - New Balance 帽類",
-    "photos": "t4.jpg,t5.jpg,t3.jpg",
-    "stock": 80,
-    "price": 6400,
-    "info": "Discover the snake-like agility of our Chair, perfect for bustling users",
-    "brandId": 4,
-    "categoryId": 12
-  },
-  {
-    "sn": "909a3b60-dbcc-4aee-b1d5-0390419cc8ec",
-    "name": "Handmade Fresh Pants - PUMA 慢跑鞋",
-    "photos": "t5.jpg,t1.jpg,t4.jpg",
-    "stock": 80,
-    "price": 2500,
-    "info": "Ergonomic Gloves made with Metal for all-day each support",
-    "brandId": 3,
-    "categoryId": 9
-  },
-  {
-    "sn": "520a37ab-5a7b-4625-b721-b2d4a0249f54",
-    "name": "Sleek Soft Bike - PUMA 慢跑鞋",
-    "photos": "t2.jpg,t5.jpg,t1.jpg",
-    "stock": 50,
-    "price": 4100,
-    "info": "The Quality-focused composite orchestration Chips offers reliable performance and spirited design",
-    "brandId": 3,
-    "categoryId": 9
-  },
-  {
-    "sn": "ec7c5244-746d-4ce8-b080-7dddf2c50782",
-    "name": "Unbranded Concrete Salad - PUMA 慢跑鞋",
-    "photos": "t4.jpg,t5.jpg,t2.jpg",
-    "stock": 30,
-    "price": 2700,
-    "info": "Discover the tiger-like agility of our Chair, perfect for blushing users",
-    "brandId": 3,
-    "categoryId": 9
-  },
-  {
-    "sn": "6d4f13b3-ebeb-45bb-8f40-de40b6bc0878",
-    "name": "Small Cotton Chips - Nike 長袖上衣",
-    "photos": "t1.jpg,t2.jpg,t5.jpg",
-    "stock": 40,
-    "price": 11600,
-    "info": "Featuring Bismuth-enhanced technology, our Keyboard offers unparalleled extroverted performance",
+    "discription": "半空心楓木/楊木/楓木琴體，楓木中心塊，桃花心木琴頸，圓形 C 型材和紅木指板，T 型拾音器，帶手動控制裝置",
+    "price": 113717,
+    "discountPrice": null
+  },
+  {
+    "name": "ES-339 Cherry",
     "brandId": 1,
-    "categoryId": 6
-  },
-  {
-    "sn": "92583672-2182-4987-9cc7-ce1acd36674c",
-    "name": "Handcrafted Rubber Mouse - New Balance 短褲",
-    "photos": "t2.jpg,t3.jpg,t5.jpg",
-    "stock": 50,
-    "price": 3200,
-    "info": "Featuring Copper-enhanced technology, our Chips offers unparalleled understated performance",
-    "brandId": 4,
-    "categoryId": 5
-  },
-  {
-    "sn": "933d906f-4c0f-4fde-ad4d-7b1a26ad03a4",
-    "name": "Practical Metal Keyboard - adidas 長袖上衣",
-    "photos": "t5.jpg,t3.jpg,t4.jpg",
-    "stock": 30,
-    "price": 2400,
-    "info": "The 紫色 Gloves combines Guinea-Bissau aesthetics with Tellurium-based durability",
-    "brandId": 2,
-    "categoryId": 6
-  },
-  {
-    "sn": "236c763b-2c89-40b1-b474-43f8a39e8310",
-    "name": "Incredible Plastic Shirt - Nike 長袖上衣",
-    "photos": "t5.jpg,t3.jpg,t1.jpg",
-    "stock": 70,
-    "price": 9300,
-    "info": "Introducing the Haiti-inspired Salad, blending devoted style with local craftsmanship",
+    "discription": "手工捲製的圓形「C」桃花心木琴頸上的珍珠圓點鑲嵌紅木指板提醒演奏者這一切的起點。 57 / 57 Classic + 雙線圈拾音器與我們的手工接線音色電路相結合，展現了演奏者 60 多年來所渴望的多功能 Gibson ES 音色。 ",
+    "price": 97467,
+    "discountPrice": null
+  },
+  {
+    "name": "B.B. King \"Live at the Regal\" ES-335 Argentine Grey",
     "brandId": 1,
-    "categoryId": 6
-  },
-  {
-    "sn": "65e9a925-7a4b-4070-9b0d-3dac8f89d112",
-    "name": "Bespoke Rubber Car - adidas 包款",
-    "photos": "t5.jpg,t2.jpg,t4.jpg",
-    "stock": 90,
-    "price": 10900,
-    "info": "Professional-grade Soap perfect for physical training and recreational use",
-    "brandId": 2,
-    "categoryId": 11
-  },
-  {
-    "sn": "3e34e6bc-cf8b-4eae-9ea5-b5b7eb8afdad",
-    "name": "Unbranded Soft Salad - Nike 長袖上衣",
-    "photos": "t3.jpg,t1.jpg,t5.jpg",
-    "stock": 10,
-    "price": 9300,
-    "info": "Featuring Carbon-enhanced technology, our Shoes offers unparalleled bare performance",
+    "discription": "有阿根廷灰色旭日紋飾面、Bigsby 顫音和 Varitone 開關。它還具有 Grover“牛奶瓶”旋轉調音器、覆蓋止桿孔的珍珠圓點以及紅木指板上的硝化纖維素圓點鑲嵌。硬體和硝基漆面均經過墨菲實驗室專業老化。",
+    "price": 324967,
+    "discountPrice": null
+  },
+  {
+    "name": "1964 Trini Lopez Standard Reissue Ebony",
     "brandId": 1,
-    "categoryId": 6
-  },
-  {
-    "sn": "ed62553e-7801-4373-bff8-b6848ca5c8dc",
-    "name": "Bespoke Wooden Gloves - Nike 短褲",
-    "photos": "t1.jpg,t5.jpg,t3.jpg",
-    "stock": 60,
-    "price": 12700,
-    "info": "The sleek and ragged Bike comes with 靛藍色 LED lighting for smart functionality",
+    "discription": "3 層楓木/楊木/楓木琴體製成，帶有堅固的楓木中心塊，有助於提供出色的反饋阻力。機身採用經典的黑檀木硝基纖維飾面\n琴頸很特別，由桃花心木製成，配有華麗的紅木指板，飾有裂片鑽石硝酸纖維素鑲嵌物，半徑為 12 英寸，琴弦長度為 24.75 英寸，琴枕寬度為 42.85 毫米。非常舒適。",
+    "price": 211217,
+    "discountPrice": null
+  },
+  {
+    "name": "B.B. King “Rumble in the Jungle” 1974 ES-355 Walnut",
     "brandId": 1,
-    "categoryId": 5
-  },
-  {
-    "sn": "319f0bef-333a-45dc-b254-dc3a61c5e7aa",
-    "name": "Fantastic Metal Soap - New Balance 籃球鞋",
-    "photos": "t4.jpg,t3.jpg,t1.jpg",
-    "stock": 80,
-    "price": 9900,
-    "info": "The 峻熙 Computer is the latest in a series of wrong products from 莫 Group",
-    "brandId": 4,
-    "categoryId": 10
-  },
-  {
-    "sn": "b1052e78-96a9-4c7e-979c-90deb4b5734a",
-    "name": "Modern Wooden Shirt - Nike 包款",
-    "photos": "t4.jpg,t1.jpg,t5.jpg",
-    "stock": 10,
-    "price": 10200,
-    "info": "Featuring Gallium-enhanced technology, our Sausages offers unparalleled trim performance",
+    "discription": "限量版 100 把吉他，Murphy Lab Light Aging、珍珠母鑲嵌、T 型 Custombucker 拾音器、單聲道 Varitone 開關和 Maestro™ Vibrola™ 拉弦板",
+    "price": 324967,
+    "discountPrice": null
+  },
+  {
+    "name": "ES-335 P-90 Ebony",
     "brandId": 1,
-    "categoryId": 11
-  },
-  {
-    "sn": "749da28a-3818-44f0-8cb8-f7cbcdb2ae27",
-    "name": "Bespoke Soft Chair - New Balance 短褲",
-    "photos": "t3.jpg,t5.jpg,t2.jpg",
-    "stock": 70,
-    "price": 3000,
-    "info": "Innovative Computer featuring muffled technology and Soft construction",
-    "brandId": 4,
-    "categoryId": 5
-  },
-  {
-    "sn": "bab307ec-4fd9-4887-b643-c50c41206e34",
-    "name": "Tasty Granite Table - adidas 包款",
-    "photos": "t5.jpg,t1.jpg,t4.jpg",
-    "stock": 10,
-    "price": 2800,
-    "info": "Generic Shoes designed with Plastic for golden performance",
-    "brandId": 2,
-    "categoryId": 11
-  },
-  {
-    "sn": "da55c9ae-8143-4b15-bcdf-1cb3e7b154a8",
-    "name": "Incredible Frozen Pants - Nike 短褲",
-    "photos": "t5.jpg,t2.jpg,t4.jpg",
-    "stock": 40,
-    "price": 6200,
-    "info": "Stylish Bike designed to make you stand out with mammoth looks",
+    "discription": "Rounded“C”桃花心木琴頸與玫瑰木指板上的珍珠圓點鑲嵌提醒演奏者一切是從哪裡開始。\nGibson 的 T 型雙線圈拾音器與我們的手焊接線控制組件搭配， 為演奏者帶來 60 多年來一直渴望的多功能 Gibson ES 音色。 其它如 Keystone 按鈕的 Vintage Deluxe 調音器提供調音穩定性和精確音調，搭配輕質鋁製 ABR-1 琴橋和 Stop Bar 止弦板。",
+    "price": 113717,
+    "discountPrice": null
+  },
+  {
+    "name": "1959 ES-355 Reissue, Diamond F-Holes Gold Sparkle Heavy Flake Gloss",
     "brandId": 1,
-    "categoryId": 5
-  },
-  {
-    "sn": "347a062a-8c56-4c9f-90c5-cdaa5b699657",
-    "name": "Fantastic Rubber Cheese - Nike 帽類",
-    "photos": "t3.jpg,t1.jpg,t4.jpg",
-    "stock": 60,
-    "price": 5000,
-    "info": "Experience the 藍紫色 brilliance of our Shirt, perfect for glossy environments",
+    "discription": "Gibson Custom Select 半空心琴體，烏木指板，帶有 MOP 塊狀鑲嵌、MOP 分裂鑽石琴頭鑲嵌、Custombucker 拾音器和鑽石形 F 孔",
+    "price": 266467,
+    "discountPrice": null
+  },
+  {
+    "name": "BB King Lucille Legacy",
     "brandId": 1,
-    "categoryId": 12
-  },
-  {
-    "sn": "b715f584-cb10-4ff3-ba8a-3a02b6028ee3",
-    "name": "Rustic Rubber Shoes - PUMA 長褲",
-    "photos": "t4.jpg,t5.jpg,t2.jpg",
-    "stock": 30,
-    "price": 6000,
-    "info": "Experience the 淡褐色 brilliance of our Chair, perfect for hospitable environments",
-    "brandId": 3,
-    "categoryId": 7
-  },
-  {
-    "sn": "bdc22c3d-0bc3-4c28-8022-2a3d2d1cc88a",
-    "name": "Ergonomic Soft Chair - adidas 包款",
-    "photos": "t2.jpg,t4.jpg,t1.jpg",
-    "stock": 20,
-    "price": 14900,
-    "info": "New Bike model with 44 GB RAM, 41 GB storage, and expert features",
-    "brandId": 2,
-    "categoryId": 11
-  },
-  {
-    "sn": "a961a0d7-959c-41bd-a482-2c1ed7143fac",
-    "name": "Small Frozen Shoes - Nike 外套",
-    "photos": "t2.jpg,t5.jpg,t4.jpg",
-    "stock": 10,
-    "price": 4700,
-    "info": "The 梓晨 Cheese is the latest in a series of quixotic products from 趙 - 蔡",
+    "discription": "這款 Gibson BB King Lucille Legacy 整體狀況極佳。從外觀上看，它非常乾淨，只顯示出一些輕微的磨損。請參閱下面的詳細說明。露西爾擁有適合國王的所有高端任命。亮點包括金色硬件，包括刻有金色“BB King”字樣的桁架桿蓋和帶有微調器的 TP-6 拉弦板。它已經徹底檢查，安裝良好，保證到貨後能發揮出色。裝在原廠包裝盒中。",
+    "price": 259967,
+    "discountPrice": null
+  },
+  {
+    "name": "1961 ES-335 Reissue Heavy Aged Sixties Cherry",
     "brandId": 1,
-    "categoryId": 8
-  },
-  {
-    "sn": "7300162d-83a0-4549-b38f-4bedd0170884",
-    "name": "Rustic Granite Chicken - New Balance 慢跑鞋",
-    "photos": "t2.jpg,t1.jpg,t5.jpg",
-    "stock": 30,
-    "price": 2700,
-    "info": "Introducing the Syrian Arab Republic-inspired Tuna, blending neighboring style with local craftsmanship",
-    "brandId": 4,
-    "categoryId": 9
-  },
-  {
-    "sn": "8f17459c-bed3-462b-ad6f-5935b5c90323",
-    "name": "Handcrafted Concrete Towels - Nike 帽類",
-    "photos": "t5.jpg,t4.jpg,t3.jpg",
-    "stock": 40,
-    "price": 3200,
-    "info": "Innovative Computer featuring unaware technology and Metal construction",
+    "discription": "Rounded“C”桃花心木琴頸與玫瑰木指板上的珍珠圓點鑲嵌提醒演奏者一切是從哪裡開始。\nGibson 的 T 型雙線圈拾音器與我們的手焊接線控制組件搭配， 為演奏者帶來 60 多年來一直渴望的多功能 Gibson ES 音色。 其它如 Keystone 按鈕的 Vintage Deluxe 調音器提供調音穩定性和精確音調，搭配輕質鋁製 ABR-1 琴橋和 Stop Bar 止弦板。",
+    "price": 292467,
+    "discountPrice": null
+  },
+  {
+    "name": "1958 ES-335 Reissue Murphy Lab Heavy Aged",
     "brandId": 1,
-    "categoryId": 12
-  },
-  {
-    "sn": "70a58b49-9193-4e00-bc1d-1dcc38344208",
-    "name": "Practical Cotton Mouse - adidas 籃球鞋",
-    "photos": "t2.jpg,t5.jpg,t4.jpg",
-    "stock": 90,
-    "price": 2000,
-    "info": "The Organic dynamic model Gloves offers reliable performance and amazing design",
+    "discription": "它採用 3 層楓木/楊木/楓木琴體，表面採用光滑的厚重老化臟金發硝基漆，這把吉他所表現出的對細節和工藝的關注令人驚嘆。墨菲實驗室團隊確實做到了復古氛圍！\n琴頸很特別，由桃花心木製成。它採用華麗的未包邊印度玫瑰木指板，並飾有硝化纖維鑲嵌物。擁有22 個歷史悠久的窄/高品絲、12 英寸半徑、1.687 英寸琴枕寬度和24.75 英寸音階長度，感覺光滑舒適！ 得益於正宗的'58",
+    "price": 324967,
+    "discountPrice": null
+  },
+  {
+    "name": "American Ultra Luxe Stratocaster®",
     "brandId": 2,
-    "categoryId": 10
-  },
-  {
-    "sn": "ecdfc6bb-efb4-470b-a259-d7a52110aeb5",
-    "name": "Electronic Frozen Bacon - Nike 外套",
-    "photos": "t2.jpg,t4.jpg,t5.jpg",
-    "stock": 40,
-    "price": 8600,
-    "info": "Innovative Computer featuring tricky technology and Steel construction",
-    "brandId": 1,
-    "categoryId": 8
-  },
-  {
-    "sn": "5c48db38-58e0-47f2-8847-6be30665b39e",
-    "name": "Tasty Soft Fish - New Balance 短褲",
-    "photos": "t1.jpg,t4.jpg,t2.jpg",
-    "stock": 30,
-    "price": 11500,
-    "info": "Discover the hippopotamus-like agility of our Chips, perfect for gummy users",
-    "brandId": 4,
-    "categoryId": 5
-  },
-  {
-    "sn": "29009f9a-b114-436b-8d7c-5155436f8937",
-    "name": "Handcrafted Wooden Bacon - New Balance 帽類",
-    "photos": "t3.jpg,t5.jpg,t4.jpg",
-    "stock": 70,
-    "price": 6000,
-    "info": "Ergonomic Ball made with Granite for all-day cooperative support",
-    "brandId": 4,
-    "categoryId": 12
-  },
-  {
-    "sn": "f34633f7-7ddc-4232-a22c-8154c5a35fb8",
-    "name": "Modern Wooden Mouse - adidas 外套",
-    "photos": "t5.jpg,t1.jpg,t3.jpg",
-    "stock": 30,
-    "price": 10600,
-    "info": "Ergonomic Towels made with Soft for all-day creamy support",
+    "discription": "適合追求極致表現與音色的玩家，American Ultra 是我們最先進的吉他與貝斯系列。該系列採用不銹鋼品絲，並搭配引人注目的訂製顏色及同色系手工噴塗琴頭，American Ultra Luxe Stratocaster 將「Ultra」升級至全新境界。\n\nAmerican Ultra Luxe Stratocaster 配備獨特的 Augmented \"D\" 琴頸輪廓，並搭配超滑順的指板邊緣設計，提供無與倫比的演奏舒適度。同時，錐形琴頸根部讓您輕鬆觸及高音區。10\"-14\" 的復合指板弧度及 22 個不銹鋼中大型品絲，讓您在獨奏時更加輕鬆且精準。Ultra Noiseless™ Vintage 拾音器和先進的布線選項提供無限的音色可能性，並且完全無噪音干擾。雕塑感的背部輪廓設計兼具美觀與功能性，無論處於任何演奏姿勢都極為舒適。其他特點包括封閉式鎖定調音器、鍍鉻硬件以及 TUSQ™ 上弦枕。\n\n這款多功能、技術先進的樂器將激勵您挑戰自我，將演奏推向全新高度。\n\n隨附高級硬殼琴盒。",
+    "price": 68899,
+    "discountPrice": null
+  },
+  {
+    "name": "American Ultra Luxe Stratocaster® Floyd Rose® HSS",
     "brandId": 2,
-    "categoryId": 8
-  },
-  {
-    "sn": "1f101a7f-1511-4b35-a34f-111923f47c1c",
-    "name": "Awesome Wooden Mouse - adidas 帽類",
-    "photos": "t3.jpg,t4.jpg,t5.jpg",
-    "stock": 50,
-    "price": 3900,
-    "info": "Ergonomic Pizza made with Wooden for all-day glum support",
+    "discription": "對於追求極致性能和音色的演奏者來說，American Ultra 系列是我們最先進的吉他和貝斯系列。配備原廠 Floyd Rose 顫音系統、不鏽鋼品 fret 和引人注目的定制顏色，搭配塗漆的琴頭蓋，American Ultra Luxe Stratocaster Floyd Rose HSS 是超越的象徵。\n\n增強版 \"D\" 型琴頸輪廓，搭配 Ultra 滾邊指板邊緣和縮合型琴頸底座，提供無窮的演奏舒適感並讓高品位位置的指法變得輕鬆。速度感十足的 10\"-14\" 徑度指板搭配 22 顆不鏽鋼中型大品品格，讓獨奏變得輕鬆準確；而 Ultra Noiseless™ Hot 單線圈拾音器與 Ultra Double Tap™ 雙線圈拾音器，加上先進的接線選項，提供無限音色可能——且不會有雜音。原廠 Floyd Rose 顫音系統讓您能精確控制顫音效果，並保持完美的調音。這款多功能、最先進的樂器將激勵您將演奏提升到全新高度。\n\n附帶高級模塑硬殼箱。",
+    "price": 71499,
+    "discountPrice": null
+  },
+  {
+    "name": "Player II Stratocaster®",
     "brandId": 2,
-    "categoryId": 12
-  },
-  {
-    "sn": "539684e2-7012-48c6-a70a-aac570adb71e",
-    "name": "Refined Cotton Shoes - New Balance 長褲",
-    "photos": "t5.jpg,t4.jpg,t2.jpg",
-    "stock": 70,
-    "price": 14100,
-    "info": "Discover the light new Chair with an exciting mix of Granite ingredients",
-    "brandId": 4,
-    "categoryId": 7
-  },
-  {
-    "sn": "39e5b7b8-edcc-4c38-9329-f2cd370733be",
-    "name": "Bespoke Fresh Computer - Nike 籃球鞋",
-    "photos": "t1.jpg,t2.jpg,t4.jpg",
-    "stock": 80,
-    "price": 9500,
-    "info": "Recycled Shirt designed with Concrete for colorful performance",
-    "brandId": 1,
-    "categoryId": 10
-  },
-  {
-    "sn": "48b451fb-0ffc-4e34-a3a8-4a940a320415",
-    "name": "Practical Metal Hat - New Balance 帽類",
-    "photos": "t1.jpg,t2.jpg,t3.jpg",
-    "stock": 70,
-    "price": 13500,
-    "info": "Stylish Fish designed to make you stand out with profuse looks",
-    "brandId": 4,
-    "categoryId": 12
-  },
-  {
-    "sn": "289f88fb-9a40-4ba4-bc9c-8072a832813b",
-    "name": "Luxurious Metal Pants - PUMA 籃球鞋",
-    "photos": "t2.jpg,t1.jpg,t5.jpg",
-    "stock": 10,
-    "price": 13900,
-    "info": "Refined Chicken designed with Bronze for witty performance",
-    "brandId": 3,
-    "categoryId": 10
-  },
-  {
-    "sn": "25351558-aa93-4234-987d-7fa264e4c893",
-    "name": "Ergonomic Steel Computer - adidas 長褲",
-    "photos": "t5.jpg,t2.jpg,t1.jpg",
-    "stock": 80,
-    "price": 6000,
-    "info": "The sleek and illustrious Chicken comes with 青綠色 LED lighting for smart functionality",
+    "discription": "\n走進聚光燈，體驗標誌性的 Fender® 音色和風格，選擇 Player II Stratocaster® —— 一款準備上台的吉他，經過現代化升級，助力你的演出並激發你的演奏靈感。\n\nPlayer II Stratocaster 擁有永恆的 Fender 魅力，但其內部卻為當今的玩家做了最佳設計。從現代 \"C\" 型的琴頸到光滑的背面絲綢質感聚氨酯塗層，再到舒適的 9.5” 弧度指板，配以圓滑的邊緣和 22 顆中型大號品絲，所有設計都專為快速流暢的演奏體驗而生。你可以選擇從雪松、輕質雪松或輕質桃花心木等材質的琴身，這些材質不僅傳承經典 Fender 音色，還包含了從檔案中發掘的全新顏色。Player 系列的 Alnico V 單線圈 Strat® 拾音器提供清晰的高頻、豐富的中頻和緊湊的低頻，能提升任何音樂風格的表現。5 檔刀片開關讓你可以調整從清亮的頸部拾音器音色到激烈的橋部拾音器音色，並涵蓋所有介於兩者之間的音色，同時，2 點浮動橋和 ClassicGear™ 音準器確保精確的音準穩定，讓你能夠自由探索無限的音色可能。\n\n完美的工具來打造屬於你的音色，Player II Stratocaster 擁有只有 Fender 才能帶來的外觀、音色和手感。\n\n購買 Player II 系列。",
+    "price": 25999,
+    "discountPrice": null
+  },
+  {
+    "name": "Player II Stratocaster® HSS",
     "brandId": 2,
-    "categoryId": 7
-  },
-  {
-    "sn": "aba3bfa6-ce55-4c4d-8991-aab31f28ca78",
-    "name": "Handcrafted Steel Car - Nike 籃球鞋",
-    "photos": "t4.jpg,t5.jpg,t1.jpg",
-    "stock": 30,
-    "price": 10600,
-    "info": "The 智宸 Soap is the latest in a series of untried products from 韋, 羅 and 夏",
-    "brandId": 1,
-    "categoryId": 10
-  },
-  {
-    "sn": "44527f23-edd8-4eb6-b7e9-b3fdd0bd4c3e",
-    "name": "Rustic Fresh Towels - PUMA 帽類",
-    "photos": "t5.jpg,t2.jpg,t4.jpg",
-    "stock": 70,
-    "price": 1700,
-    "info": "Stylish Keyboard designed to make you stand out with unsteady looks",
-    "brandId": 3,
-    "categoryId": 12
-  },
-  {
-    "sn": "63d00d55-36d9-4c89-899e-a5fd97fbb37f",
-    "name": "Rustic Granite Bacon - PUMA 帽類",
-    "photos": "t3.jpg,t5.jpg,t4.jpg",
-    "stock": 100,
-    "price": 9100,
-    "info": "The 擎宇 Chips is the latest in a series of wide-eyed products from 徐, 呂 and 蘇",
-    "brandId": 3,
-    "categoryId": 12
-  },
-  {
-    "sn": "26e38cd0-ca26-4213-97c8-800720bb8c1a",
-    "name": "Gorgeous Rubber Sausages - New Balance 長袖上衣",
-    "photos": "t5.jpg,t3.jpg,t1.jpg",
-    "stock": 40,
-    "price": 7400,
-    "info": "New 灰色 Tuna with ergonomic design for subtle comfort",
-    "brandId": 4,
-    "categoryId": 6
-  },
-  {
-    "sn": "5661e244-4ec1-4bf5-a1c0-31e2e620979b",
-    "name": "Licensed Steel Fish - New Balance 短袖上衣",
-    "photos": "t2.jpg,t5.jpg,t1.jpg",
-    "stock": 10,
-    "price": 8000,
-    "info": "Introducing the Afghanistan-inspired Shoes, blending infamous style with local craftsmanship",
-    "brandId": 4,
-    "categoryId": 4
-  },
-  {
-    "sn": "8bf9fb44-a693-4bac-bf4f-18aafc6b7af5",
-    "name": "Handmade Cotton Bacon - adidas 外套",
-    "photos": "t3.jpg,t2.jpg,t4.jpg",
-    "stock": 70,
-    "price": 11800,
-    "info": "Licensed Car designed with Cotton for buzzing performance",
+    "discription": "踏上舞台，盡情體驗具有標誌性的 Fender® 聲音與風格，全新 Player II Stratocaster® HSS 電吉他為您的表演注入動力，激發您的音樂靈感。\n\nPlayer II Stratocaster HSS 散發出 Fender 永恆的魅力，但內部設計專為現代玩家量身打造。琴頸的設計旨在提供快速流暢的演奏手感，包括背面的絲滑緞面聚氨酯塗層現代 “C” 型琴頸輪廓、舒適的 9.5 英寸半徑玫瑰木或楓木指板，並搭配圓潤的邊緣與 22 個中大型品絲。您可以選擇經典的 Fender 漆面以及首次亮相的復古新色，這些顏色運用於椴木、空心的白蠟木或空心的桃花心木琴身。\n\nPlayer 系列的 Alnico V 單線圈 Strat® 拾音器與 Alnico II 雙線圈拾音器，帶來明亮清澈的高音、悅耳的中音和緊實的低音，適合各種音樂風格。五檔拾音切換開關，讓您在明亮的頸拾音器音色、狂野的橋拾音器音色及其間的多種音色中隨意切換；而 2 點式顫音系統與 ClassicGear™ 弦軸則確保了精準的調音穩定性，讓您探索無限的聲音可能性。\n\n完美適合打造屬於自己的聲音，Player II Stratocaster HSS 擁有 Fender 獨有的外觀、音色與手感。\n\n探索全新 Player II 系列吧！",
+    "price": 26974,
+    "discountPrice": null
+  },
+  {
+    "name": "Player Plus Stratocaster®",
     "brandId": 2,
-    "categoryId": 8
-  },
-  {
-    "sn": "72553bb3-2036-40ff-8382-cd902b76eefa",
-    "name": "Handcrafted Concrete Towels - New Balance 慢跑鞋",
-    "photos": "t1.jpg,t4.jpg,t5.jpg",
-    "stock": 60,
-    "price": 12500,
-    "info": "New Pants model with 93 GB RAM, 132 GB storage, and uncomfortable features",
-    "brandId": 4,
-    "categoryId": 9
-  },
-  {
-    "sn": "49948470-0b01-46fe-a8a0-5bc0a406348b",
-    "name": "Elegant Steel Pizza - New Balance 長袖上衣",
-    "photos": "t4.jpg,t1.jpg,t3.jpg",
-    "stock": 20,
-    "price": 4800,
-    "info": "Our zesty-inspired Hat brings a taste of luxury to your recent lifestyle",
-    "brandId": 4,
-    "categoryId": 6
-  },
-  {
-    "sn": "bb3b924f-4428-4a56-a654-13c13e591b34",
-    "name": "Rustic Wooden Bike - Nike 長褲",
-    "photos": "t2.jpg,t5.jpg,t4.jpg",
-    "stock": 20,
-    "price": 5800,
-    "info": "The Centralized regional model Bike offers reliable performance and simple design",
-    "brandId": 1,
-    "categoryId": 7
-  },
-  {
-    "sn": "de50c52a-80d3-4a15-9867-8b55da6fed6a",
-    "name": "Incredible Granite Computer - PUMA 籃球鞋",
-    "photos": "t4.jpg,t3.jpg,t5.jpg",
-    "stock": 50,
-    "price": 11500,
-    "info": "Innovative Shirt featuring moist technology and Wooden construction",
-    "brandId": 3,
-    "categoryId": 10
-  },
-  {
-    "sn": "b55b3210-fc2c-4be1-a0cc-b7f99c88821d",
-    "name": "Elegant Frozen Sausages - Nike 短褲",
-    "photos": "t3.jpg,t1.jpg,t4.jpg",
-    "stock": 30,
-    "price": 14400,
-    "info": "Discover the impeccable new Bacon with an exciting mix of Concrete ingredients",
-    "brandId": 1,
-    "categoryId": 5
-  },
-  {
-    "sn": "ed5190e5-06f1-4173-95d9-01955861ff95",
-    "name": "Gorgeous Plastic Soap - New Balance 長褲",
-    "photos": "t2.jpg,t5.jpg,t3.jpg",
-    "stock": 80,
-    "price": 11400,
-    "info": "Stylish Mouse designed to make you stand out with difficult looks",
-    "brandId": 4,
-    "categoryId": 7
-  },
-  {
-    "sn": "5e0ff658-de17-44ac-8004-212eb990a90d",
-    "name": "Recycled Plastic Mouse - PUMA 短褲",
-    "photos": "t3.jpg,t5.jpg,t1.jpg",
-    "stock": 20,
-    "price": 9600,
-    "info": "New Sausages model with 51 GB RAM, 639 GB storage, and private features",
-    "brandId": 3,
-    "categoryId": 5
-  },
-  {
-    "sn": "3ce980c2-a2f2-4fd1-80fd-cc66de5eeab0",
-    "name": "Elegant Plastic Computer - PUMA 帽類",
-    "photos": "t2.jpg,t5.jpg,t3.jpg",
-    "stock": 20,
-    "price": 9600,
-    "info": "Oriental Chips designed with Plastic for impish performance",
-    "brandId": 3,
-    "categoryId": 12
-  },
-  {
-    "sn": "54f19012-597e-4bc2-8d9b-6876c7e38bf6",
-    "name": "Incredible Concrete Table - New Balance 籃球鞋",
-    "photos": "t5.jpg,t2.jpg,t3.jpg",
-    "stock": 90,
-    "price": 9500,
-    "info": "Experience the 藍綠色 brilliance of our Keyboard, perfect for lumpy environments",
-    "brandId": 4,
-    "categoryId": 10
-  },
-  {
-    "sn": "7b57500d-97a5-4f0f-9d13-af16cd784e48",
-    "name": "Luxurious Fresh Salad - New Balance 長褲",
-    "photos": "t5.jpg,t1.jpg,t3.jpg",
-    "stock": 70,
-    "price": 4600,
-    "info": "Savor the sour essence in our Car, designed for parallel culinary adventures",
-    "brandId": 4,
-    "categoryId": 7
-  },
-  {
-    "sn": "97991209-abe3-430e-8be2-0d14ec33a89e",
-    "name": "Sleek Wooden Shoes - Nike 慢跑鞋",
-    "photos": "t3.jpg,t4.jpg,t1.jpg",
-    "stock": 10,
-    "price": 3000,
-    "info": "Featuring Iodine-enhanced technology, our Shoes offers unparalleled functional performance",
-    "brandId": 1,
-    "categoryId": 9
-  },
-  {
-    "sn": "6bdf82d7-39d4-4d66-a642-ecb43ddec486",
-    "name": "Tasty Cotton Towels - PUMA 包款",
-    "photos": "t1.jpg,t4.jpg,t2.jpg",
-    "stock": 60,
-    "price": 11200,
-    "info": "Discover the rhinoceros-like agility of our Pizza, perfect for ripe users",
-    "brandId": 3,
-    "categoryId": 11
-  },
-  {
-    "sn": "3061c622-b867-44a2-9023-089cdc23a9c8",
-    "name": "Generic Cotton Ball - New Balance 帽類",
-    "photos": "t3.jpg,t5.jpg,t2.jpg",
-    "stock": 50,
-    "price": 5200,
-    "info": "Savor the spicy essence in our Mouse, designed for spiteful culinary adventures",
-    "brandId": 4,
-    "categoryId": 12
-  },
-  {
-    "sn": "d6c4989e-e2d5-47f1-ba1a-439957302c07",
-    "name": "Ergonomic Soft Salad - New Balance 慢跑鞋",
-    "photos": "t2.jpg,t4.jpg,t1.jpg",
-    "stock": 80,
-    "price": 3400,
-    "info": "Featuring Vanadium-enhanced technology, our Pants offers unparalleled ornery performance",
-    "brandId": 4,
-    "categoryId": 9
-  },
-  {
-    "sn": "fe859405-fcb9-40e6-ab7f-a9c9c4e2bb21",
-    "name": "Recycled Metal Mouse - PUMA 短褲",
-    "photos": "t2.jpg,t5.jpg,t1.jpg",
-    "stock": 30,
-    "price": 13800,
-    "info": "Featuring Radon-enhanced technology, our Fish offers unparalleled impossible performance",
-    "brandId": 3,
-    "categoryId": 5
-  },
-  {
-    "sn": "d1cf62f9-aa22-4e49-8f94-009a6d915b8a",
-    "name": "Small Steel Soap - PUMA 短袖上衣",
-    "photos": "t5.jpg,t2.jpg,t4.jpg",
-    "stock": 70,
-    "price": 14600,
-    "info": "Innovative Keyboard featuring neighboring technology and Wooden construction",
-    "brandId": 3,
-    "categoryId": 4
-  },
-  {
-    "sn": "119f5abf-ccf3-49ff-a5ed-0f5302c04da5",
-    "name": "Fantastic Plastic Cheese - adidas 慢跑鞋",
-    "photos": "t1.jpg,t5.jpg,t2.jpg",
-    "stock": 10,
-    "price": 14000,
-    "info": "New 靛藍色 Soap with ergonomic design for essential comfort",
+    "discription": "將經典的 Fender® 設計與以玩家為中心的功能和令人興奮的新配色融合在一起，Player Plus Stratocaster® 帶來卓越的可演奏性和無可挑剔的風格。  \n\n這款 Strat® 的核心是一組 Player Plus Noiseless™ 拾音器——明亮且對觸感極為敏感，它們提供經典的 Strat 音色，且沒有雜音干擾。音色控制上的推拉旋鈕可在切換到 1 和 2 檔時添加頸拾音器，創造出 Strat® 上不常見的兩種音色。帶有絲滑緞面塗層的現代 \"C\" 型 Player Plus Strat® 琴頸，配合圓潤的邊緣設計，提供如手套般貼合的極致舒適手感。12 英寸指板半徑和 22 個中大型品絲，讓流暢的獨奏和無阻礙的彎音輕鬆實現。順滑且靈敏的 2 點式顫音系統可帶來經典的顫音效果，而鎖定式弦軸則確保了穩固的調音，並讓換弦快速又簡單。  \n\n結合經典 Fender 風格、先進功能和驚艷的新配色，Player Plus Stratocaster 是激發您創意並讓您在人群中脫穎而出的完美工具。",
+    "price": 25999,
+    "discountPrice": null
+  },
+  {
+    "name": "Player Plus Stratocaster® HSS",
     "brandId": 2,
-    "categoryId": 9
-  },
-  {
-    "sn": "d24d66a7-ad32-4454-9410-38f427d389a7",
-    "name": "Licensed Granite Soap - PUMA 長褲",
-    "photos": "t1.jpg,t4.jpg,t5.jpg",
-    "stock": 20,
-    "price": 14300,
-    "info": "Discover the panda-like agility of our Computer, perfect for breakable users",
-    "brandId": 3,
-    "categoryId": 7
-  },
-  {
-    "sn": "332aadab-4848-4037-8292-a35c28b49adb",
-    "name": "Oriental Frozen Cheese - adidas 長袖上衣",
-    "photos": "t2.jpg,t4.jpg,t1.jpg",
-    "stock": 80,
-    "price": 14400,
-    "info": "Innovative Bacon featuring made-up technology and Concrete construction",
+    "discription": "將經典的 Fender 設計與以玩家為中心的功能和令人興奮的新配色融合在一起，Player Plus Stratocaster HSS 提供卓越的可演奏性和無可挑剔的風格。強大的 Fireball® 雙線圈拾音器完美平衡了增益與清晰度，而 Player Plus Noiseless Strat® 拾音器則明亮且對觸感極為敏感，呈現無雜音的經典 Strat 音色。\n\n音色控制上的推拉旋鈕可啟用雙線圈拾音器的分線模式，帶來清澈透明的單線圈音色。帶有絲滑緞面塗層的現代 \"C\" 型 Player Plus Strat® 琴頸，結合圓潤的邊緣設計，提供如手套般的極致舒適手感。\n\n12 英寸指板半徑和 22 個中大型品絲，讓流暢的獨奏與無阻礙的彎音輕鬆實現。順滑且靈敏的 2 點式顫音系統提供經典的顫音效果，而鎖定式弦軸則確保穩定的調音，並讓換弦快速又簡便。\n\n結合經典 Fender 風格、先進功能和令人驚艷的新配色，Player Plus Stratocaster HSS 是激發您創意並讓您在人群中脫穎而出的完美工具。",
+    "price": 26974,
+    "discountPrice": null
+  },
+  {
+    "name": "American Performer Stratocaster® HSS",
     "brandId": 2,
-    "categoryId": 6
-  },
-  {
-    "sn": "a538c8b0-0f08-4beb-b279-6319a8a738c2",
-    "name": "Sleek Cotton Chips - New Balance 長褲",
-    "photos": "t4.jpg,t3.jpg,t5.jpg",
-    "stock": 90,
-    "price": 5600,
-    "info": "The 金色 Hat combines Jordan aesthetics with Neptunium-based durability",
-    "brandId": 4,
-    "categoryId": 7
-  },
-  {
-    "sn": "2041ad87-527a-4522-a484-dda84032f3a8",
-    "name": "Recycled Steel Chair - New Balance 長褲",
-    "photos": "t4.jpg,t2.jpg,t3.jpg",
-    "stock": 100,
-    "price": 13300,
-    "info": "Discover the giraffe-like agility of our Salad, perfect for acidic users",
-    "brandId": 4,
-    "categoryId": 7
-  },
-  {
-    "sn": "cb65c7b3-68ae-42a0-b6cd-2c668e146574",
-    "name": "Small Granite Pizza - adidas 長褲",
-    "photos": "t3.jpg,t2.jpg,t5.jpg",
-    "stock": 70,
-    "price": 2500,
-    "info": "Discover the impressionable new Ball with an exciting mix of Frozen ingredients",
+    "discription": "American Performer Stratocaster HSS 出生於加州科羅納，帶來您對正宗 Fender 所期望的卓越音色與手感。同時，新增的 Double Tap™ 雙線圈拾音器等升級功能，使演奏更加令人振奮與靈感滿滿。",
+    "price": 47124,
+    "discountPrice": null
+  },
+  {
+    "name": "American Professional II Stratocaster®",
     "brandId": 2,
-    "categoryId": 7
-  },
-  {
-    "sn": "c2fadadb-fb2c-48bc-88a7-5d67dc87e4a8",
-    "name": "Fantastic Concrete Computer - PUMA 帽類",
-    "photos": "t2.jpg,t5.jpg,t4.jpg",
-    "stock": 80,
-    "price": 3000,
-    "info": "Stylish Towels designed to make you stand out with zealous looks",
-    "brandId": 3,
-    "categoryId": 12
-  },
-  {
-    "sn": "830547f9-eb00-431f-8d31-166463f37a3b",
-    "name": "Ergonomic Bronze Soap - Nike 慢跑鞋",
-    "photos": "t1.jpg,t3.jpg,t4.jpg",
-    "stock": 50,
-    "price": 9100,
-    "info": "The 天藍色 Fish combines Bosnia and Herzegovina aesthetics with Berkelium-based durability",
-    "brandId": 1,
-    "categoryId": 9
-  },
-  {
-    "sn": "ffd01759-71e9-4e5b-a902-cc0e27a04f88",
-    "name": "Sleek Granite Towels - Nike 長褲",
-    "photos": "t4.jpg,t5.jpg,t1.jpg",
-    "stock": 90,
-    "price": 14300,
-    "info": "Ergonomic Chips made with Cotton for all-day red support",
-    "brandId": 1,
-    "categoryId": 7
-  },
-  {
-    "sn": "99b8ba82-1374-4f70-8535-adeb643d2412",
-    "name": "Recycled Plastic Bike - Nike 長袖上衣",
-    "photos": "t3.jpg,t1.jpg,t2.jpg",
-    "stock": 100,
-    "price": 14500,
-    "info": "Experience the 銀色 brilliance of our Chair, perfect for pale environments",
-    "brandId": 1,
-    "categoryId": 6
-  },
-  {
-    "sn": "f169c781-84b9-4939-af08-9916c9fc7952",
-    "name": "Refined Wooden Car - New Balance 慢跑鞋",
-    "photos": "t3.jpg,t5.jpg,t2.jpg",
-    "stock": 20,
-    "price": 2300,
-    "info": "The Advanced sustainable portal Tuna offers reliable performance and liquid design",
-    "brandId": 4,
-    "categoryId": 9
-  },
-  {
-    "sn": "c4cc7c8e-14c9-48f8-bd59-2eec1229d209",
-    "name": "Rustic Bronze Table - Nike 包款",
-    "photos": "t4.jpg,t2.jpg,t5.jpg",
-    "stock": 20,
-    "price": 10800,
-    "info": "Professional-grade Chips perfect for joyous training and recreational use",
-    "brandId": 1,
-    "categoryId": 11
-  },
-  {
-    "sn": "1f2b1400-9558-41f4-9202-07a240d4419c",
-    "name": "Rustic Wooden Pizza - New Balance 籃球鞋",
-    "photos": "t1.jpg,t2.jpg,t5.jpg",
-    "stock": 30,
-    "price": 11200,
-    "info": "The Programmable uniform concept Fish offers reliable performance and fluffy design",
-    "brandId": 4,
-    "categoryId": 10
-  },
-  {
-    "sn": "c528a916-76c7-46e4-b2c9-cbbb583e89b6",
-    "name": "Tasty Wooden Shoes - New Balance 包款",
-    "photos": "t4.jpg,t2.jpg,t5.jpg",
-    "stock": 90,
-    "price": 14700,
-    "info": "Featuring Americium-enhanced technology, our Hat offers unparalleled smug performance",
-    "brandId": 4,
-    "categoryId": 11
-  },
-  {
-    "sn": "d61f4567-9820-45cb-8ace-788bd1eb38c8",
-    "name": "Incredible Cotton Hat - PUMA 外套",
-    "photos": "t1.jpg,t3.jpg,t4.jpg",
-    "stock": 60,
-    "price": 8100,
-    "info": "The sleek and white Gloves comes with 白色 LED lighting for smart functionality",
-    "brandId": 3,
-    "categoryId": 8
-  },
-  {
-    "sn": "c5b55bbd-86b8-41cb-a8b5-a6e9277a0f8e",
-    "name": "Incredible Granite Table - New Balance 長袖上衣",
-    "photos": "t1.jpg,t4.jpg,t5.jpg",
-    "stock": 100,
-    "price": 9500,
-    "info": "Ergonomic Bike made with Steel for all-day standard support",
-    "brandId": 4,
-    "categoryId": 6
-  },
-  {
-    "sn": "9b16cf38-f001-489f-bc40-a03742db27f3",
-    "name": "Generic Bronze Cheese - adidas 短褲",
-    "photos": "t3.jpg,t1.jpg,t2.jpg",
-    "stock": 60,
-    "price": 3200,
-    "info": "Innovative Keyboard featuring liquid technology and Metal construction",
+    "discription": "American Professional II Stratocaster® 融合了超過六十年的創新、啟發與演變，旨在滿足當今專業演奏者的需求。\n\n我們受歡迎的 Deep \"C\" 琴頸現在配備光滑圓潤的指板邊緣、\"Super-Natural\" 緞面塗層以及重新雕塑的琴頸腳，帶來極為舒適的手感和便捷的高品區操作。全新的 V-Mod II Stratocaster 單線圈拾音器比以往更加清晰，同時保留了鐘聲般的音色和溫暖感。升級版的 2 點顫音系統配備冷軋鋼琴塊，提升了延音、清晰度和高音的閃耀感。\n\nAmerican Pro II Stratocaster 提供即刻熟悉且多變的音色，您會立刻感受到並聽到，全面改進的設計讓它成為專業樂器的新標準。",
+    "price": 56874,
+    "discountPrice": null
+  },
+  {
+    "name": "American Vintage II 1973 Stratocaster®",
     "brandId": 2,
-    "categoryId": 5
-  },
-  {
-    "sn": "64dff71d-f2d9-4f7f-80a8-fe4cb3f38033",
-    "name": "Unbranded Soft Soap - New Balance 長褲",
-    "photos": "t1.jpg,t2.jpg,t5.jpg",
-    "stock": 30,
-    "price": 10300,
-    "info": "The Seamless discrete access Bike offers reliable performance and petty design",
-    "brandId": 4,
-    "categoryId": 7
-  },
-  {
-    "sn": "90decaea-7864-4df3-83c1-b13e76163c68",
-    "name": "Rustic Rubber Table - Nike 長褲",
-    "photos": "t5.jpg,t4.jpg,t2.jpg",
-    "stock": 10,
-    "price": 9200,
-    "info": "The Realigned reciprocal task-force Towels offers reliable performance and quintessential design",
-    "brandId": 1,
-    "categoryId": 7
-  },
-  {
-    "sn": "3a8f5928-a687-44cd-97cb-ebe23327eec7",
-    "name": "Modern Steel Soap - Nike 外套",
-    "photos": "t1.jpg,t3.jpg,t2.jpg",
-    "stock": 70,
-    "price": 11300,
-    "info": "Professional-grade Chair perfect for firsthand training and recreational use",
-    "brandId": 1,
-    "categoryId": 8
-  },
-  {
-    "sn": "42b19972-1aff-4e5a-a751-660be8a31fec",
-    "name": "Elegant Rubber Pizza - adidas 外套",
-    "photos": "t5.jpg,t1.jpg,t2.jpg",
-    "stock": 90,
-    "price": 7500,
-    "info": "The 天宇 Keyboard is the latest in a series of snarling products from 毛 - 江",
+    "discription": "Fender® American Vintage II 系列呈現了對那些改變音樂歷史的革命性設計的極致還原。這些樂器採用符合時期的琴身、琴頸和硬體，搭配高端的塗裝和精心調音的年份專屬拾音器，每一件樂器都捕捉到正宗 Fender 工藝和音色的精髓。\n\n到了 1973 年，經典的 CBS 設計元素已經成為標準規格，並廣泛被全球搖滾、放克、融合和前衛音樂的演奏者使用。像 Don Kirshner's Rock Concert、In Concert 和 Midnight Special 等每週深夜音樂節目，為 Fender 樂器提供了前所未有的曝光，進一步鞏固了 Stratocaster 作為流行文化現象的主導地位。\n\nAmerican Vintage II 1973 Stratocaster® 散發著那個時代的精神，配備了三顆 Pure Vintage '73 齒輪型拾音器、大型琴頭與雙弦樹、便利的“Bullet”式琴頸調節螺母，以及三螺栓琴頸板與 Micro-Tilt™ 調整機制。 \"C\" 型楓木琴頸手感如夢，配有 7.25\" 半徑的玫瑰木或楓木指板和復古高品絲。該吉他提供三種經典的顏色搭配椴木琴身：Aged Natural、Lake Placid Blue 和 Mocha，後者是首次在 Strat® 上使用黑色撥片板的自訂顏色。其他特點還包括復古風格的 \"F\" 印刻弦軸和配有彎鋼鞍座及冷軋鋼塊的同步顫音系統。\n\nAmerican Vintage II 系列的樂器是原版 Fender 的直接後代：專為那些對復古 Fender 音色與手感有精細品味的玩家設計，並且在每個細節上都採用無與倫比的品質，從每一顆螺絲到每一個部件。這些樂器是 Fender 電吉他的純粹形態：Fender American Vintage II，傳奇的象徵。",
+    "price": 80599,
+    "discountPrice": null
+  },
+  {
+    "name": "American Vintage II 1961 Stratocaster®",
     "brandId": 2,
-    "categoryId": 8
-  },
-  {
-    "sn": "7e073078-5fdb-4413-aefb-d2e54caa4bfb",
-    "name": "Rustic Frozen Gloves - PUMA 包款",
-    "photos": "t5.jpg,t3.jpg,t1.jpg",
-    "stock": 20,
-    "price": 8000,
-    "info": "The 雨澤 Bacon is the latest in a series of unwilling products from 龍 - 戴",
-    "brandId": 3,
-    "categoryId": 11
-  },
-  {
-    "sn": "57dd3ce7-d00e-4421-ae47-d11bf336a0a7",
-    "name": "Modern Plastic Pants - PUMA 慢跑鞋",
-    "photos": "t2.jpg,t5.jpg,t4.jpg",
-    "stock": 90,
-    "price": 10400,
-    "info": "New Chair model with 95 GB RAM, 484 GB storage, and imaginary features",
-    "brandId": 3,
-    "categoryId": 9
-  },
-  {
-    "sn": "baab0a3a-9a8c-40b5-a4b7-b55b00a018d4",
-    "name": "Luxurious Frozen Car - Nike 短袖上衣",
-    "photos": "t2.jpg,t4.jpg,t1.jpg",
-    "stock": 60,
-    "price": 9700,
-    "info": "Our crunchy-inspired Ball brings a taste of luxury to your elliptical lifestyle",
-    "brandId": 1,
-    "categoryId": 4
-  },
-  {
-    "sn": "4d6217ee-f3d6-413a-8a3a-2d111f174f2a",
-    "name": "Bespoke Frozen Computer - PUMA 長袖上衣",
-    "photos": "t2.jpg,t4.jpg,t1.jpg",
-    "stock": 100,
-    "price": 1600,
-    "info": "Professional-grade Fish perfect for puzzled training and recreational use",
-    "brandId": 3,
-    "categoryId": 6
-  },
-  {
-    "sn": "3ee7272a-f171-4192-a66a-de7509f1b8ed",
-    "name": "Generic Cotton Computer - Nike 外套",
-    "photos": "t2.jpg,t3.jpg,t1.jpg",
-    "stock": 100,
-    "price": 6600,
-    "info": "Practical Pizza designed with Fresh for fruitful performance",
-    "brandId": 1,
-    "categoryId": 8
-  },
-  {
-    "sn": "1cb8b368-07d9-4274-9ed5-d11b0cad07bc",
-    "name": "Intelligent Cotton Shirt - adidas 籃球鞋",
-    "photos": "t3.jpg,t1.jpg,t2.jpg",
-    "stock": 30,
-    "price": 4200,
-    "info": "Experience the 紅褐色 brilliance of our Tuna, perfect for livid environments",
+    "discription": "Fender® American Vintage II 系列呈現了對那些改變音樂歷史的革命性設計的極致還原。這些樂器採用了符合時期的琴身、琴頸和硬體，搭配高端的塗裝和精心調音的年份專屬拾音器，每一件樂器都捕捉到正宗 Fender 工藝和音色的精髓。\n\n在 50 年代末期和 60 年代初期，Fender 音樂樂器的受歡迎程度達到巔峰，儘管 Fender 的產品線已經擴展，包含了許多優秀的新樂器，但 Stratocaster® 仍然是無可爭議的王者。到了 1961 年，Stratocaster 擁有了更精緻的外觀，3 顏色日落漸變色經過重新配方，呈現出更加鮮豔的紅色和更加鮮明的黑色邊緣，並搭配了強調 Strat 特徵曲線的 3 層撥片板。\n\n美國復古 II 1961 Stratocaster 配備了高端椴木琴身、三顆 Pure Vintage 1961 Stratocaster 拾音器，以及中等 \"C\" 型楓木琴頸，搭配 7.25\" 半徑的玫瑰木平板指板，完美重現了原始吉他的音色和手感。其他特色包括復古準確的同步顫音系統，搭配冷軋鋼琴塊和彎鋼鞍座、單行 \"Fender Deluxe\" 弦軸和 3 層撥片板。\n\nAmerican Vintage II 系列的樂器是原版 Fender 的直接後代：專為那些對復古 Fender 音色和手感有精細品味的玩家設計，並且在每一個細節上都採用了無與倫比的品質，從每一顆螺絲到每一個部件。這些樂器是 Fender 電吉他的純粹形態：Fender American Vintage II，傳奇的象徵。",
+    "price": 74749,
+    "discountPrice": null
+  },
+  {
+    "name": "American Professional II Stratocaster®, Anniversary 2-Color Sunburst",
+    "brandId": 2,
+    "discription": "American Professional II Stratocaster® 融合了超過六十年的創新、啟發與演變，旨在滿足當今專業演奏者的需求。\n\n我們受歡迎的 Deep \"C\" 琴頸現在配備光滑圓潤的指板邊緣、\"Super-Natural\" 緞面塗層以及重新雕塑的琴頸腳，帶來極為舒適的手感和便捷的高品區操作。全新的 V-Mod II Stratocaster 單線圈拾音器比以往更加清晰，同時保留了鐘聲般的音色和溫暖感。升級版的 2 點顫音系統配備冷軋鋼琴塊，提升了延音、清晰度和高音的閃耀感。\n\nAmerican Pro II Stratocaster 提供即刻熟悉且多變的音色，您會立刻感受到並聽到，全面改進的設計讓它成為專業樂器的新標準。",
+    "price": 56874,
+    "discountPrice": null
+  },
+  {
+    "name": "70th Anniversary American Vintage II 1954 Stratocaster®",
     "brandId": 2,
-    "categoryId": 10
-  },
-  {
-    "sn": "dee7a3f4-4fa8-469c-87bf-29a077f28f5a",
-    "name": "Electronic Granite Chicken - New Balance 短褲",
-    "photos": "t1.jpg,t4.jpg,t2.jpg",
-    "stock": 50,
-    "price": 4900,
-    "info": "Discover the snake-like agility of our Computer, perfect for whopping users",
-    "brandId": 4,
-    "categoryId": 5
-  },
-  {
-    "sn": "110d6208-4b86-4af1-88be-b636c937fb2c",
-    "name": "Practical Rubber Chips - adidas 長袖上衣",
-    "photos": "t5.jpg,t2.jpg,t4.jpg",
-    "stock": 100,
-    "price": 6800,
-    "info": "The 思淼 Table is the latest in a series of haunting products from 龍 - 史",
+    "discription": "介紹 70 周年 Stratocaster® 系列：慶祝七十年來的經典音色和標誌性風格。每一款 70 周年 Stratocaster 型號都展示了 Strat® 所擁有的豐富傳承和傳奇音色，使它成為無可匹敵的經典。無論是復古音色愛好者還是尋求前沿功能的現代玩家，都能找到一款適合自己的模型。讓自己沉浸於 Stratocaster 的傳奇中，擁有一件 Fender® 歷史的象徵，盡在 70 周年 Stratocaster 系列。\n\n與 70 周年 American Vintage II 1954 Stratocaster 一同慶祝這款傳奇的誕生。這款樂器採用共鳴的 2 件式椴木琴身，並使用 nitrocellulose 漆面，散發著復古魅力。1 件式楓木琴頸和 7.25\" 半徑的指板搭配復古品絲，提供了玩家多年來所喜愛的流暢演奏感。70 周年 1954 單線圈 Strat® 拾音器提供真實的音色，當音量推高時能夠發出閃亮和爆發的音效。其他特色包括復古準確的同步顫音系統，搭配冷軋鋼琴塊和彎鋼鞍座、單行 \"Fender Deluxe\" 弦軸和單層撥片板，搭配與時期相符的拾音器蓋、開關頭和旋鈕。隨附的復古風格 Tweed 箱包內還附有大量時期配件，完善整體包裝。這款限量版模型完美捕捉了原始 Stratocaster 的精髓，是收藏家和 Strat 愛好者必備之選。\n\n70 周年 Stratocaster 系列的樂器數量有限，請立即選擇您的 70 周年 Stratocaster。",
+    "price": 84499,
+    "discountPrice": null
+  },
+  {
+    "name": "American Vintage II 1957 Stratocaster®",
     "brandId": 2,
-    "categoryId": 6
-  },
-  {
-    "sn": "e2c53da3-f6c0-4a4e-84a4-86e6c685935c",
-    "name": "Intelligent Soft Sausages - Nike 籃球鞋",
-    "photos": "t4.jpg,t3.jpg,t2.jpg",
-    "stock": 100,
-    "price": 4100,
-    "info": "Stylish Chips designed to make you stand out with submissive looks",
-    "brandId": 1,
-    "categoryId": 10
-  },
-  {
-    "sn": "b2e883ac-2a26-4b8f-a884-d3777167f15c",
-    "name": "Sleek Concrete Soap - PUMA 長褲",
-    "photos": "t5.jpg,t2.jpg,t1.jpg",
-    "stock": 10,
-    "price": 5600,
-    "info": "Savor the bitter essence in our Sausages, designed for wry culinary adventures",
-    "brandId": 3,
-    "categoryId": 7
+    "discription": "Fender® American Vintage II 系列呈現了對那些改變音樂歷史的革命性設計的極致還原。這些樂器採用了符合時期的琴身、琴頸和硬體，搭配高端的塗裝和精心調音的年份專屬拾音器，每一件樂器都捕捉到正宗 Fender 工藝和音色的精髓。\n\nFender 全新的 1954 Stratocaster® 以其迷人的曲線、閃亮的音色和開創性的顫音橋成為了一個現象，這是世界上前所未見的。到了 1957 年，Stratocaster 已經成為一件中世紀的傑作。\n\n美國復古 II 1957 Stratocaster 配備了三顆 Pure Vintage '57 Stratocaster 拾音器、流暢的琴身曲線和一個極為舒適的 \"V\" 型琴頸，搭配 7.25\" 半徑的楓木指板，完美重現了原始吉他的音色和手感。其他特色包括復古準確的同步顫音系統，搭配冷軋鋼琴塊和彎鋼鞍座、單行 \"Fender Deluxe\" 弦軸和單層撥片板。\n\n此款樂器提供三種迷人的 nitrocellulose 漆面：2 色日落漸變和海泡綠（椴木琴身），以及復古金髮色（椴木琴身），美國復古 II 1957 Stratocaster 讚美了 Fender 樂器設計的真正經典。\n\nAmerican Vintage II 系列的樂器是原版 Fender 的直接後代：專為那些對復古 Fender 音色和手感有精細品味的玩家設計，並且在每一個細節上都採用了無與倫比的品質，從每一顆螺絲到每一個部件。這些樂器是 Fender 電吉他的純粹形態：Fender American Vintage II，傳奇的象徵。",
+    "price": 74749,
+    "discountPrice": null
+  },
+  {
+    "name": "Stevie Ray Vaughan Stratocaster®",
+    "brandId": 2,
+    "discription": "純正 SRV 音色與風格  \n如果有一座 Stratocaster 的拉什莫山，Stevie Ray Vaughan 肯定是其中的偉大人物之一。Fender 的 Stevie Ray Vaughan Stratocaster 是一把精心打造的全新版本，模仿 Vaughan 最愛的吉他——著名的 \"Number One\" Strat®，正是這把吉他讓他在全世界震撼了聽眾，並將炙熱的德州藍調灼熱地烙印在排行榜的頂端。對於追求純正 SRV 音色與風格，這把吉他無疑是「最佳之選」。",
+    "price": 71499,
+    "discountPrice": null
+  },
+  {
+    "name": "Jeff Beck Stratocaster®",
+    "brandId": 2,
+    "discription": "純正 Jeff Beck 音色與風格  \n從震撼的英國入侵起步，到長久且備受推崇的個人事業，Jeff Beck 以其非凡的風格多樣性，將 Stratocaster 帶到了難以置信的音效高度，並從這把吉他中引出了最具特色的音樂聲音。以經典風格和特殊功能，讓他的音色與風格成為你自己的，擁有 Jeff Beck Stratocaster，它是 Fender 最受歡迎且長久的藝術家系列之一。",
+    "price": 69874,
+    "discountPrice": null
+  },
+  {
+    "name": "Limited Edition American Performer Timber Stratocaster®",
+    "brandId": 2,
+    "discription": "誕生於加利福尼亞州的科羅納，限量版美國表演者 Timber Stratocaster 提供您從正宗 Fender 所期望的卓越音色與手感。\n\n這把吉他配備了三顆 Yosemite™ 單線圈拾音器，設計上注重豐富且表現力強的音色。拾音器使用平滑錯排磁極來提升輸出，並且採用膠質塗層，讓線圈呼吸並控制反饋，產生動態的聲音，適合各種音樂情境。推拉音色控制能在任何切換位置加入頸拾音器，解鎖新的、音樂上有用的音色。其「現代C」形狀的頸部設計，搭配9.5英寸弧度的指板，幾乎適合任何演奏風格，並配有22顆特大品格品絲，便於準確且輕鬆的彎音。\n\n限量版美國表演者 Timber Stratocaster 提供三種美麗的音色木材選擇：Sassafras木材搭配啞光摩卡色飾面、Sugar Pine木材搭配啞光雙色日落色飾面，或是Spruce木材搭配啞光蜂蜜日落色飾面。",
+    "price": 48749,
+    "discountPrice": null
+  },
+  {
+    "name": "Mike McCready Stratocaster®",
+    "brandId": 2,
+    "discription": "Mike McCready Stratocaster® 捕捉了搖滾界最具影響力且長久不衰的樂隊之一的獨特音色和永恆精神。這款吉他是與 Pearl Jam 吉他手 Mike McCready 合作設計的，對於任何想要捕捉這位 grunge 吉他偶像強大力量和激盪熱情的吉他手來說，Mike McCready Stratocaster® 是終極選擇。\n\nMike McCready Stratocaster® 擁有手工製作的、經過 Road Worn® 風格處理的漆面，並搭配一個樺木木材的吉他體，重新創造了 Mike 自己的 Strat 在三十年的辛苦巡演和傳奇演出中所累積的戰痕。這款吉他搭配舒適的 9.5 英寸弧度玫瑰木指板和纖細的 \"C\" 形桦木頸部，設計上與 McCready 珍藏的 1960 Strat 相匹配，而定制的 Mike McCready Stratocaster 拾音器則聲音上模仿 Mike 的復古單線圈拾音器，呈現出與他標誌性音色一樣的永恆音調、熱情和能量。復古風格的同步顫音器、彎鋼弦橋和冷軋鋼塊確保了最純正的 Fender 音色和演奏性能。\n\n這款吉他擁有經典的磨損漆面和大膽的音色，Mike McCready Stratocaster® 充滿了那股傳奇 Strat 的靈魂精髓，這股音色已經驅動了 Pearl Jam 在無數錄音室和舞台上的排行榜冠軍歌曲及超凡現場演出。",
+    "price": 61749,
+    "discountPrice": null
+  },
+  {
+    "name": "Yngwie Malmsteen Stratocaster®",
+    "brandId": 2,
+    "discription": "強大的切割風格  \n作為這個類型的最傑出和最強大的實踐者，Yngwie Malmsteen 幾乎是單槍匹馬創造了新古典切割風格。他一直使用的吉他是 Stratocaster，而對於那些渴望模仿 Malmsteen 那種華麗又迅捷的指法風格的人來說，Yngwie Malmsteen Stratocaster 是基於這位瑞典金屬大師最喜愛的 Strat® 打造的，甚至連特製拾音器和凹槽指板也一應俱全。這款獨特設計的吉他，是為了致敬全球最具代表性的 Strat 大師之一。",
+    "price": 76374,
+    "discountPrice": null
+  },
+  {
+    "name": "Eric Clapton Stratocaster®",
+    "brandId": 2,
+    "discription": "**慢手（Slowhand）音色與風格**  \n體驗慢手（Eric Clapton）本人無與倫比的Strat®風格，這款Eric Clapton Stratocaster是我們最受推崇且持久的藝術家簽名款之一。這款吉他擁有經典設計和特殊功能，提供卓越的音色多樣性和輕鬆的手感，完美詮釋了搖滾與藍調界的偉大人物之一Eric Clapton的Stratocaster音色和手感。其特色包括：一個楓木身體，三個Vintage Noiseless™拾音器，25分貝的中頻增強（active mid-boost），TBX電路，特殊的軟“V”形頸，並且配有封鎖原始的復古同步顫音橋（synchronized tremolo）。",
+    "price": 69874,
+    "discountPrice": null
+  },
+  {
+    "name": "Player Plus Meteora® HH",
+    "brandId": 2,
+    "discription": "融合創新的 Fender 設計、以玩家為中心的功能以及令人興奮的新配色，Player Plus Meteora® 提供卓越的演奏性能與無可取代的風格。\n\n一組強勁的 Fireball® 雙線圈拾音器，完美結合適當的增益與清晰的弦間音符表現。S-1™ 開關啟動後可切換為單線圈模式，展現純淨透明的單線圈音色。絲滑的霧面現代 \"C\" 型琴頸貼合手掌，搭配平滑的滾邊設計，提供極致舒適感。12\" 弧度指板和22個中大型品絲讓領奏更加流暢，音彎毫不受阻。順暢且靈敏的雙點式搖座提供經典的顫音效果，而鎖定式弦準器則確保穩固的音準並讓換弦快速且輕鬆。\n\n結合經典 Fender 風格、先進功能以及令人驚艷的新配色，Player Plus Meteora® 是激發創意並讓您在人群中脫穎而出的完美工具。",
+    "price": 34124,
+    "discountPrice": null
+  },
+  {
+    "name": "Limited Edition Paranormal Jazzmaster® XII",
+    "brandId": 2,
+    "discription": "擁有標誌性的偏移琴身設計與豐富的諧波特性，Squier® Jazzmaster® XII 鼓勵最具冒險精神的玩家開創全新的吉他探索之路。這款12弦吉他搭載由 Fender 設計的雙 Alnico 單線圈 Jazzmaster 拾音器，配備三檔切換開關，以及復古風格的 \"冰球桿\" 式琴頭設計，展現明亮清澈的音色與經典永恆的風格。\n\n其他玩家友好的細節包括：石墨加強的 \"C\" 型琴頸，提供最佳穩定性與輕鬆的演奏體驗；混合式琴橋，結合穿弦與頂載設計，確保穩定的音準；復古風格的調音機，帶來順暢的調音操作；以及光滑的琴頸表面處理，提供流暢且穩定的手感。",
+    "price": 15274,
+    "discountPrice": null
+  },
+  {
+    "name": "Player Jazzmaster®",
+    "brandId": 2,
+    "discription": "真實經典風格\nPlayer Jazzmaster 擁有其獨特的渾厚音色與流線優雅的設計，在聚光燈下格外耀眼。這是一把充滿靈感的樂器，具備靈活且純正的 Fender 音色——一種適合任何音樂風格的聲音。Jazzmaster 經常出現在音樂創想家和叛逆者的手中，是打造您專屬音色的理想基礎。堅固、原始且充滿力量，這把吉他已準備好與您一起大展身手。",
+    "price": 20799,
+    "discountPrice": null
+  },
+  {
+    "name": "Player II Jazzmaster®",
+    "brandId": 2,
+    "discription": "使用 Player II Jazzmaster® 步入聚光燈下，體驗標誌性的 Fender® 聲音和風格 — 這是一款舞台就緒的吉他，採用現代更新，為您的表演提供動力並激發您的演奏靈感。\n\nPlayer II Jazzmaster 散發著永恆的 Fender 魅力，但在其背後，它是為當今的演奏者做好準備的。琴頸的所有部件均專為快速、流暢的演奏而設計，從背面帶有絲滑緞面聚氨酯飾面的現代“C”型材，到帶有光滑捲邊和22 個中號大號品絲的舒適9.5 吋半徑板狀紅木指板。經典的榿木琴體有永恆的 Fender 飾面和從檔案中發掘出來的前所未見的顏色。 Player 系列 Alnico V 單線圈 Jazzmaster 拾音器提供水晶般的高音、音樂般的中音和緊緻的低音，可提升任何流派的品質。 3 向撥動開關可讓您輕鬆調整從玻璃琴頸拾音器鈴聲到切割琴橋拾音器咬合以及其間的所有點，而帶有浮動顫音的6 鞍座Jazzmaster 琴橋、升級的Mustang® 鞍座和ClassicGear™調音器可確保精確調音穩定性和靈活性，並探索無限的聲音可能性。\n\nPlayer II Jazzmaster 非常適合打造自己的聲音，具有隻有 Fender 才能提供的外觀、音色和感覺。",
+    "price": 26974,
+    "discountPrice": null
+  },
+  {
+    "name": "Limited Edition Vintera® II '50s Jazzmaster®",
+    "brandId": 2,
+    "discription": "喚醒 50 年代經典的聲音，透過 Vintera II '50s Jazzmaster® 體驗 Fender 獨有的標誌性外觀、激發靈感的手感，以及無與倫比的音色。\n\nVintera® II '50s Jazzmaster® 採用椴木琴身與楓木琴頸，搭配玫瑰木指板，帶來充滿力量與清晰度的經典 Fender 音色。晚 50 年代的 \"C\" 型琴頸提供舒適且熟悉的握感，讓手感自然貼合；7.25\" 弧度指板搭配復古高品絲，提供復古舒適感，同時為大幅音彎與表現力十足的顫音留有充足空間。內部配置了一對復古風格的 50 年代單線圈拾音器，展現 Fender 聲名遠播的甜美、明亮、溫暖且木質感十足的音色。復古風格的浮動搖座讓您自由發揮顫音效果，而復古設計的調音機則以精細齒輪比例與更高的調音穩定性完成這款經典之作。\n\n立即體驗 Vintera® II '50s Jazzmaster® 獨特的復古手感與無與倫比的經典 Fender 音色，開始創造屬於您的音樂歷史！",
+    "price": 40624,
+    "discountPrice": null
+  },
+  {
+    "name": "Gold Foil Jazzmaster®",
+    "brandId": 2,
+    "discription": "\n受到六十年代車庫搖滾樂隊和他們所彈奏的經典吉他的啟發，Gold Foil 系列將經典的 Fender® 設計與過去時代的華麗風格相結合。\n\nGold Foil Jazzmaster® 配備了帶邊條的烏木指板、珍珠塊嵌條、桃花心木琴體、Bigsby® B50 顫音器和三個 Gold Foil 迷你線圈拾音器。其他特徵包括與琴身匹配的彩繪琴頭、帶白色按鈕的復古風格調音器、21 顆窄高品格和靈感來自 Fender® Jaguar® 的開關板。\n\n無論外觀還是音色都表現出色，Fender Gold Foil 系列將中世紀郵購吉他的持久魅力與正宗 Fender 的風格和可玩性完美結合。",
+    "price": 45499,
+    "discountPrice": null
+  },
+  {
+    "name": "American Performer Jazzmaster®",
+    "brandId": 2,
+    "discription": "誕生於加利福尼亞州的科羅納，優雅的 American Performer Jazzmaster 提供了你所期待的正宗 Fender 音色和精緻手感，並擁有全新的以玩家為導向的功能，讓演奏更加激發靈感。",
+    "price": 48749,
+    "discountPrice": null
+  },
+  {
+    "name": "Troy Van Leeuwen Jazzmaster®",
+    "brandId": 2,
+    "discription": "Troy Van Leeuwen 為一些最受讚譽且前衛的另類搖滾樂隊貢獻了精湛的質感吉他演奏和氛圍音效。從 Failure 到 A Perfect Circle、Queens of the Stone Age、Eagles of Death Metal、Puscifer 等樂隊，Van Leeuwen 的多重樂器專長為過去三十年來一些最具創意和人氣的搖滾音樂增添了色彩和力量。\n\n配有個性化的特徵，包括定制的顏色塗裝、特殊的切換功能和升級的橋樑——Troy Van Leeuwen Jazzmaster 的獨特性與他從中創造出的聲音同樣鮮明。",
+    "price": 53624,
+    "discountPrice": null
+  },
+  {
+    "name": "Jim Root Jazzmaster® V4",
+    "brandId": 2,
+    "discription": "這款 Jim Root Jazzmaster® V4 旨在提供強烈的金屬音色，並擁有全新的大膽外觀。我們與 Slipknot 的吉他手 Jim Root 密切合作，打造了一款聲音猛烈的簽名 Jazzmaster，完美契合他沉重的演奏風格——從專屬的 Daemonum™ 開放線圈 EMG® 主動拾音器，到可進行快速彈奏的 12\" 弧度指板，搭配巨型品格、簡潔的控制布局等等。\n\nJim Root Jazzmaster II 去除了許多不必要的功能，如顫音器、節奏電路和音色控制，僅保留了最基本的控制元件：音量控制、三檔開關和硬尾橋，使這款吉他成為一個專注於重擊音色的武器。擁有桃花心木琴體，帶來強烈的低頻和中頻，搭配閃亮的 Polar White 啞光塗裝，楓木琴頸，帶邊條的烏木指板和珍珠塊嵌條，這款強力機器將帶來猛烈的音色和驚人的新外觀。",
+    "price": 58499,
+    "discountPrice": null
+  },
+  {
+    "name": "American Professional II Jazzmaster®",
+    "brandId": 2,
+    "discription": "American Professional II Jazzmaster® 以超過六十年的創新、靈感和發展為基礎，滿足當今專業玩家的需求。\n\n我們受歡迎的 Deep \"C\" 琴頸現在擁有光滑的圓邊指板邊緣、\"Super-Natural\" 啞光塗裝和新雕塑的琴頸頸部，帶來極其舒適的手感，並且輕鬆進入高品格區域。新的 V-Mod II Jazzmaster 單線圈拾音器比以往更具表現力，同時保留了 Jazzmaster 所知名的亮麗和清脆音色。橋拾音器擁有一個跳線功能，可實現強勁的沙啞音或較低輸出的復古音色。透過切換開關，節奏電路將兩個拾音器串聯，提供更厚重的音色和更強的輸出，並由獨立的音量和音色滾輪電位器控制。全新的 Panorama™ 顫音系統配備插入式顫音臂，極大增加了顫音的範圍，不僅能進行深度的 Strat 樣式俯衝，還能實現經典 Jazzmaster 的顫音效果。\n\nAmerican Pro II Jazzmaster 提供即時的熟悉感和聲音多樣性，無論是從手感還是音色上，你都能立刻感受到，並且這些廣泛的改進共同成就了專業樂器的新標準。",
+    "price": 61749,
+    "discountPrice": null
+  },
+  {
+    "name": "American Ultra Jazzmaster®",
+    "brandId": 2,
+    "discription": "American Ultra 是我們為挑剔的玩家打造的最先進的吉他和貝斯系列，專為那些要求精確度、性能和音色極致的演奏者設計。American Ultra Jazzmaster 配備獨特的 \"Modern D\" 琴頸輪廓，帶來長時間舒適的演奏感受，而逐漸收窄的琴頸底部使得高品格區域的演奏更加輕鬆。快速的 10\"-14\" 從圓弧到平弧指板，搭配 21 顆中型巨型品格，讓獨奏更加輕鬆精確，同時 Ultra Noiseless™ Vintage 拾音器和先進的接線選項提供無盡的音色可能——沒有雜音。這款多功能、先進的樂器將激發你將演奏帶向新的高峰。\n\n其他特徵包括密封鎖定調音機、鉻金屬硬體和象牙琴枕。隨附高級模具硬殼箱。",
+    "price": 67274,
+    "discountPrice": null
+  },
+  {
+    "name": "Jim Root Jazzmaster®",
+    "brandId": 2,
+    "discription": "無常規的 Jazzmaster 風格\n簡潔、暗黑且具威脅感，強烈的 Jim Root Jazzmaster 吉他無疑是這款樂器歷史上最具辨識度且極簡的版本。在 Slipknot 吉他手的要求下，雙音色電路和繁多的控制元件被移除。音品位置標記和巨大的鉻金屬橋也不見了。事實上，幾乎所有典型的 Jazzmaster 特徵都被去除，取而代之的是可怕的 EMG® 雙線圈拾音器，配有拉絲鎳金屬蓋、單一三檔開關、單一音量旋鈕、硬尾橋，除此之外幾乎沒有其他東西。",
+    "price": 68249,
+    "discountPrice": null
+  },
+  {
+    "name": "American Vintage II 1966 Jazzmaster®",
+    "brandId": 2,
+    "discription": "Fender® American Vintage II 系列呈現了對改變音樂歷史進程的革命性設計的極為準確的詮釋。這些吉他採用了符合時代準確的琴體、琴頸和硬體，並且具有高級的塗裝和精心調整的、具年特性的拾音器，每件樂器都捕捉了正宗 Fender 工藝和音色的精髓。\n\nJazzmaster® 最初被宣傳為一款包含「所有著名的 Fender 發展」的吉他，「每一項便利設施都已提供」。它旨在為吉他手提供奢華的演奏體驗，並誘惑爵士吉他手開始彈奏固體電吉他，這款未來感十足且具舒適輪廓的偏置吉他與方正的拱頂吉他幾乎是完全不同的。也許並不令人驚訝，這款吉他未能在爵士圈中流行起來，但卻在60年代的衝浪音樂中獲得了早期的認可，隨後被獨立搖滾、另類音樂甚至是鄉村音樂的演奏者所接受。\n\nAmerican Vintage II 1966 Jazzmaster 配備舒適的「C」型楓木琴頸，搭配 7.25\" 弧度的圓形玫瑰木指板和復古高品格，演奏如夢。這款吉他具有1966年生產特徵，包括白色琴頸邊條、珍珠塊、單線「Fender Deluxe」調音機和匹配塗裝的琴頭（僅限定制顏色）。專利的「浮動」顫音系統、帶有螺紋鞍座的可調橋和 Pure Vintage '66 Jazzmaster 拾音器，接線至標誌性的節奏和主音電路，提供經典音色和正宗的 Fender 手感。\n\nAmerican Vintage II 系列中的樂器是原版 Fender 的直系後代：為那些對復古 Fender 音色和手感有著深刻理解的玩家設計，並以無與倫比的品質打造，直至最後一顆螺絲。這些是最純粹形式的 Fender 電吉他：Fender American Vintage II，傳奇的象徵。",
+    "price": 84499,
+    "discountPrice": null
   }
 ]

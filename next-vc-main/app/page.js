@@ -1,97 +1,196 @@
-import Link from 'next/link'
+'use client'
+import './_styles/bootstrap.scss'
+import './_styles/index.scss'
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
-export default function HomePage() {
+
+import Cart from './_components/cart-offcanvas'
+
+import React, { useState, useEffect } from 'react'
+
+export default function AppPage(props) {
   return (
     <>
-      <h1 id="%E7%AF%84%E4%BE%8B">範例</h1>
-      <h2 id="%E9%83%A8%E8%90%BD%E6%A0%BC">部落格</h2>
-      <ul>
-        <li>
-          <Link href="/blog">部落格列表</Link>
-        </li>
-      </ul>
-      <h2 id="%E8%B3%BC%E7%89%A9%E8%BB%8A">購物車</h2>
-      <ul>
-        <li>
-          <Link href="/cart">購物車範例</Link>
-        </li>
-        <li>
-          <Link href="/cart/coupon">購物車-折價券</Link>
-        </li>
-      </ul>
-      <h2 id="%E7%B6%A0%E7%95%8Cecpay%E9%87%91%E6%B5%81">綠界(ECPay)金流</h2>
-      <ul>
-        <li>
-          <Link href="/ecpay">綠界金流</Link>
-        </li>
-      </ul>
-      <h2 id="%E6%88%91%E7%9A%84%E6%9C%80%E6%84%9B">我的最愛</h2>
-      <ul>
-        <li>
-          <Link href="/fav">我的最愛範例</Link>
-        </li>
-      </ul>
-      <h2 id="line-pay%E9%87%91%E6%B5%81">Line Pay金流</h2>
-      <ul>
-        <li>
-          <Link href="/line-pay">Line Pay金流</Link>
-        </li>
-      </ul>
-      <h2 id="%E8%BC%89%E5%85%A5%E5%8B%95%E7%95%AB">載入動畫</h2>
-      <ul>
-        <li>
-          <Link href="/loader">手動載入用</Link>
-        </li>
-        <li>
-          <Link href="/loader/placeholder">與佔位符配合用</Link>
-        </li>
-      </ul>
-      <h2 id="%E5%95%86%E5%93%81%E6%90%9C%E5%B0%8B%E9%81%8E%E6%BF%BE%E5%88%86%E9%A0%81">
-        商品搜尋過濾/分頁
-      </h2>
-      <ul>
-        <li>
-          <Link href="/product-no-db">無連接後端與資料庫</Link>
-        </li>
-        <li>
-          <Link href="/product-fetch/list">只使用fetch</Link>
-        </li>
-        <li>
-          <Link href="/product/list">一般列表-useSWR</Link>
-        </li>
-        <li>
-          <Link href="/product/list-loadmore">載入更多列表-useSWR</Link>
-        </li>
-        <li>
-          <Link href="/product/list-is">捲動載入列表-useSWR</Link>
-        </li>
-      </ul>
-      <h2 id="7-11-%E9%81%8B%E9%80%81%E5%95%86%E5%BA%97%E9%81%B8%E6%93%87">
-        7-11 運送商店選擇
-      </h2>
-      <ul>
-        <li>
-          <Link href="/ship">運送商店選擇</Link>
-        </li>
-      </ul>
-      <h2 id="%E6%9C%83%E5%93%A1%E7%9B%B8%E9%97%9C">會員相關</h2>
-      <ul>
-        <li>
-          <Link href="/user">會員登入/註冊/修改資料/忘記密碼</Link>
-        </li>
-        <li>
-          <Link href="/user/google-login">Google登入整合</Link>
-        </li>
-        <li>
-          <Link href="/user/line-login">Line登入整合</Link>
-        </li>
-        <li>
-          <Link href="/user/forget-password">忘記密碼OTP單頁式</Link>
-        </li>
-        <li>
-          <Link href="/user/forget-password-2p">忘記密碼OTP二頁式</Link>
-        </li>
-      </ul>
+      <div className="m-background">
+        <div className="container-fluid m-section1">
+          <div className="card text-bg-dark m-section1-card1">
+            <img src="/images/cart/section1-img2.png" className="card-img" alt="..." />
+            <div className="card-img-overlay d-flex justify-content-end align-items-center">
+              {/* <div class="col-4 m-section1-card1-text">
+        <h5 class="card-title">SPECIAL OFFER</h5>
+        <p class="card-text">聖誕季優惠活動 LES系列9折優惠</p>
+        <button class="card-text btn btn-outline-light m-section1-btn">
+          <small>SHOP NOW</small>
+        </button>
+      </div> */}
+            </div>
+          </div>
+          <div className="m-section1-mobile">
+            <img src="/images/cart/section1-img2.png" alt />
+          </div>
+        </div>
+        <div className="m-section2">
+          <div className="container-fluid m-index">
+            <div className="m-index-title">
+              <h1 className="h3">
+                SHOP BY PALETTE<span> / 商品風格分類</span>
+              </h1>
+            </div>
+            <div className="row mb-2">
+              <div className="col-lg-7 col-6 m-section2-col m-section2-col1">
+                <div className="m-section2-line d-flex flex-column justify-content-center">
+                  <h4>JSHINE</h4>
+                  <p>曜彩系列</p>
+                </div>
+              </div>
+              <div className="col-lg-5 col-6 m-section2-col m-section2-col2">
+                <div className="m-section2-line d-flex flex-column justify-content-center">
+                  <h4>SUNRISE WOOD</h4>
+                  <p>晨曦木韻系列</p>
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-lg-5 col-6 m-section2-col m-section2-col3">
+                <div className="m-section2-line d-flex flex-column justify-content-center">
+                  <h4>GREY &amp; WHITE</h4>
+                  <p>石韻白系列</p>
+                </div>
+              </div>
+              <div className="col-lg-7 col-6 m-section2-col m-section2-col4">
+                <div className="m-section2-line d-flex flex-column justify-content-center">
+                  <h4>MIDNIGHT CITY</h4>
+                  <p>夜晚城市系列</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="m-section3">
+          <div className="container-fluid m-index">
+            <div className="m-index-title">
+              <h1 className="h3">
+                TRENDING DEALS<span> / 熱門優惠商品</span>
+              </h1>
+            </div>
+            <div className="row row-cols-lg-4 row-cols-1">
+              <div className="col card-group">
+                <div className="card w-100" style={{ width: '18rem' }}>
+                  <img
+                    src="/images/cart/card2-img.png"
+                    className="card-img-top"
+                    alt="..."
+                  />
+                  <div className="card-body">
+                    <h3 className="card-title">Product Name</h3>
+                    <h4 className="card-text">Productttt</h4>
+                    <div className="d-flex">
+                      <h5 className="card-text">$77999</h5>
+                      <span>$72900</span>
+                    </div>
+                    <p>2 COLORS</p>
+                  </div>
+                </div>
+              </div>
+              <div className="col card-group d-none d-lg-block">
+                <div className="card w-100" style={{ width: '18rem' }}>
+                  <img
+                    src="/images/cart/card2-img.png"
+                    className="card-img-top"
+                    alt="..."
+                  />
+                  <div className="card-body">
+                    <h3 className="card-title">Product Name</h3>
+                    <h4 className="card-text">Productttt</h4>
+                    <div className="d-flex">
+                      <h5 className="card-text">$77999</h5>
+                      <span>$72900</span>
+                    </div>
+                    <p>2 COLORS</p>
+                  </div>
+                </div>
+              </div>
+              <div className="col card-group d-none d-lg-block">
+                <div className="card w-100" style={{ width: '18rem' }}>
+                  <img
+                    src="/images/cart/card2-img.png"
+                    className="card-img-top"
+                    alt="..."
+                  />
+                  <div className="card-body">
+                    <h3 className="card-title">Product Name</h3>
+                    <h4 className="card-text">Productttt</h4>
+                    <div className="d-flex">
+                      <h5 className="card-text">$77999</h5>
+                      <span>$72900</span>
+                    </div>
+                    <p>2 COLORS</p>
+                  </div>
+                </div>
+              </div>
+              <div className="col card-group d-none d-lg-block">
+                <div className="card w-100" style={{ width: '18rem' }}>
+                  <img
+                    src="/images/cart/card2-img.png"
+                    className="card-img-top"
+                    alt="..."
+                  />
+                  <div className="card-body">
+                    <h3 className="card-title">Product Name</h3>
+                    <h4 className="card-text">Productttt</h4>
+                    <div className="d-flex">
+                      <h5 className="card-text">$77999</h5>
+                      <span>$72900</span>
+                    </div>
+                    <p>2 COLORS</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="m-section4">
+          <div className="container-fluid m-index">
+            <div className="m-index-title">
+              <h1 className="h3">
+                RECENT ACTIVITIES<span> / 近期活動</span>
+              </h1>
+            </div>
+            <div className="row row-cols-1 row-cols-md-2 g-4">
+              <div className="col">
+                <div className="card">
+                  <img
+                    src="/images/cart/card3.png"
+                    className="card-img-top"
+                    alt="..."
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title h5">
+                      Weiwuying International Music Festival
+                    </h5>
+                    <p className="card-text h6">衛武營國際音樂節</p>
+                  </div>
+                </div>
+              </div>
+              <div className="col">
+                <div className="card">
+                  <img
+                    src="/images/cart/card3.png"
+                    className="card-img-top"
+                    alt="..."
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title h5">
+                      Weiwuying International Music Festival
+                    </h5>
+                    <p className="card-text h6">衛武營國際音樂節</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   )
 }

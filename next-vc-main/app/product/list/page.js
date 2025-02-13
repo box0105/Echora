@@ -1,349 +1,390 @@
 'use client'
+import './list.scss'
+import ProductCard from '../_components/product-card'
 
-import { useState, useEffect, useRef } from 'react'
-import {
-  useGetProductListAll,
-  useProductState,
-  useGetProductBrands,
-  useGetProductCategories,
-} from '@/services/rest-client/use-product'
-import Link from 'next/link'
-import styles from '../_styles/list.module.css'
-// 載入loading元件
-import { Oval } from 'react-loader-spinner'
-// 導入所有條件元件
-import InputName from '../_components/input-name'
-import InputPrice from '../_components/input-price'
-import SelectPerpage from '../_components/select-perpage'
-import CheckboxsBrands from '../_components/checkboxs-brands'
-import CheckboxsCategories from '../_components/checkboxs-categories'
-import SelectSort from '../_components/select-sort'
+import { useState } from 'react'
 
 export default function ProductListPage() {
-  // 第一次載入
-  const [didMount, setDidMount] = useState(false)
-  // 只有按下搜尋按鈕才會更新
-  const [isDynamicSearch, setIsDynamicSearch] = useState(true)
-  // 強制重置用
-  const [forceReset, setForceReset] = useState(false)
-  // 搜尋條件
-  const [queryString, setQueryString] = useState('')
-  // 獲得所有資料，包含總筆數、總頁數…
-  const { total, products, pageCount, isLoading, isError } =
-    useGetProductListAll(queryString)
-  // 獲得品牌資料
-  const { brands } = useGetProductBrands()
-  // 獲得分類資料
-  const { mainCategories, subCategories } = useGetProductCategories()
-  // 在不同頁面之間共享條件(列表頁、商品頁)
-  const { criteria, setCriteria, defaultCriteria } = useProductState()
-  // 從context中取得目前記錄的共享條件
-  const {
-    page,
-    perpage,
-    nameLike,
-    brandIds,
-    categoryIds,
-    priceGte,
-    priceLte,
-    sort,
-    order,
-  } = criteria
-  // 記錄前一次的條件用來比對
-  const criteriaRef = useRef(criteria)
-  // 用於設定條件
-  const setCriteriaByName = (name, value) => {
-    setCriteria((prev) => {
-      return { ...prev, [name]: value }
-    })
-  }
-
-  // 判斷是否並不是換頁，而是其它會影響頁數的條件有變動
-  const isForceFirstPage = (criteria, newCriteria) => {
-    for (const key in criteria) {
-      // 如果條件有變，且不是頁數的變動，則強制回到第一頁
-      if (newCriteria[key] !== criteria[key] && key !== 'page') {
-        return true
-      }
-    }
-    return false
-  }
-
-  // 判斷是否只有換頁
-  const isOnlyPageChange = (criteria, newCriteria) => {
-    for (const key in criteria) {
-      // 如果條件有變，且不是頁數的變動，則返回false
-      if (newCriteria[key] !== criteria[key] && key !== 'page') {
-        return false
-      }
-    }
-
-    // 如果頁數沒變動，回傳false
-    if (criteria.page === newCriteria.page) {
-      return false
-    }
-
-    return true
-  }
-
-  // 產生查詢字串
-  const generateQueryString = (criteria) => {
-    const query = {}
-    for (const key in criteria) {
-      // 這裡是將數字陣列轉為字串，轉換為snake_case名稱
-      if (key === 'brandIds') {
-        query['brand_ids'] = criteria[key].join(',')
-        continue
-      }
-      if (key === 'categoryIds') {
-        query['category_ids'] = criteria[key].join(',')
-        continue
-      }
-      // 轉換為snake_case
-      if (key === 'nameLike') {
-        query['name_like'] = criteria[key]
-        continue
-      }
-
-      if (key === 'priceGte') {
-        query['price_gte'] = criteria[key]
-        continue
-      }
-
-      if (key === 'priceLte') {
-        query['price_lte'] = criteria[key]
-        continue
-      }
-
-      query[key] = criteria[key]
-    }
-
-    return new URLSearchParams(query).toString()
-  }
-
-  // 初次載入時，取得所有資料
-  useEffect(() => {
-    setQueryString(generateQueryString(criteria))
-    // 初次載入時，延遲1.2秒，讓didMount變為true
-    if (!didMount) {
-      setTimeout(() => {
-        setDidMount(true)
-      }, 1200)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  const handleSearch = (criteria) => {
-    const newCriteria = criteria
-
-    // 用記錄在ref的條件與新的條件比對，如果除了是page外的變動，則強制回到第一頁
-    if (isForceFirstPage(criteriaRef.current, criteria)) {
-      newCriteria.page = 1
-      setCriteriaByName('page', 1)
-    }
-
-    setQueryString(generateQueryString(newCriteria))
-    // 記錄目前的條件，如果有進行搜尋的的話
-    criteriaRef.current = criteria
-  }
-
-  // 當條件有變動時 => 更新queryString
-  useEffect(() => {
-    // 略過第一次載入
-    if (!didMount) return
-
-    // 從context中取得目前記錄的共享條件=>初始化所有欄位+queryString
-    if (isDynamicSearch) {
-      handleSearch(criteria)
-    }
-
-    // 如果並不是動態搜尋，則只有在換頁時才會觸發動態搜尋
-    if (!isDynamicSearch && isOnlyPageChange(criteriaRef.current, criteria)) {
-      handleSearch(criteria)
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [criteria])
-
-  if (isError) return <div>發生錯誤</div>
-
-  const searchRender = (
-    <>
-      <InputName
-        nameLike={nameLike}
-        setNameLike={(value) => setCriteriaByName('nameLike', value)}
-        forceReset={forceReset}
-      />
-      <SelectPerpage
-        perpage={perpage}
-        setPerpage={(value) => setCriteriaByName('perpage', value)}
-      />
-      <CheckboxsBrands
-        brands={brands}
-        brandIds={brandIds}
-        setBrandIds={(value) => setCriteriaByName('brandIds', value)}
-      />
-      <CheckboxsCategories
-        mainCategories={mainCategories}
-        subCategories={subCategories}
-        categoryIds={categoryIds}
-        setCategoryIds={(value) => setCriteriaByName('categoryIds', value)}
-      />
-      <InputPrice
-        priceGte={priceGte}
-        priceLte={priceLte}
-        setPriceGte={(value) => setCriteriaByName('priceGte', value)}
-        setPriceLte={(value) => setCriteriaByName('priceLte', value)}
-        forceReset={forceReset}
-      />
-      <SelectSort
-        sort={sort}
-        order={order}
-        setSort={(value) => setCriteriaByName('sort', value)}
-        setOrder={(value) => setCriteriaByName('order', value)}
-      />
-    </>
-  )
-
-  // 載入中
-  const loadingRender = <div>載入中...</div>
-
-  // 資料渲染
-  const dataRender = (
-    <ul>
-      {products.map((product) => (
-        <li
-          key={product.id}
-          style={{
-            borderColor: 'gray',
-            borderStyle: 'solid',
-            borderWidth: '1px',
-            padding: '20px',
-          }}
-        >
-          <Link
-            // 也可以使用搜尋參數的方式
-            //href={`/product/detail?productId=${product.id}`
-            // 使用動態路由的方式
-            href={`/product/detail/${product.id}`}
-          >
-            {product.name}/({product.price})
-          </Link>
-        </li>
-      ))}
-    </ul>
-  )
-
-  // 分頁
-  const paginationRender = (
-    <div className={styles.pagination}>
-      <a
-        onClick={(e) => {
-          e.preventDefault()
-          setCriteriaByName('page', 1)
-        }}
-        aria-hidden="true"
-      >
-        &laquo;
-      </a>
-      {pageCount &&
-        Array(pageCount)
-          .fill(1)
-          .map((_, i) => {
-            return (
-              <a
-                className={`${page === i + 1 ? styles.active : ''}`}
-                key={i + 1}
-                onClick={(e) => {
-                  e.preventDefault()
-                  setCriteriaByName('page', i + 1)
-                }}
-                aria-hidden="true"
-              >
-                {i + 1}
-              </a>
-            )
-          })}
-      <a
-        onClick={(e) => {
-          e.preventDefault()
-          setCriteriaByName('page', pageCount)
-        }}
-        aria-hidden="true"
-      >
-        &raquo;
-      </a>
-    </div>
-  )
-
-  // 頁面載入中
-  if (!didMount)
-    return (
-      <Oval
-        visible={true}
-        height="80"
-        width="80"
-        color="#4fa94d"
-        ariaLabel="oval-loading"
-        wrapperStyle={{}}
-        wrapperClass=""
-      />
-    )
-
+  const [filterOpen, setFilterOpen] = useState(false)
+  const [comparisionOpen, setComparisionOpen] = useState(false)
+  const comparisionToggle = () => setComparisionOpen(!comparisionOpen)
   return (
     <>
-      <h1>商品列表</h1>
-      <Link href="/product/list">回到一般列表</Link>
-      <br />
-      <Link href="/product/list-loadmore">回到[載入更多]列表</Link>
-      <br />
-      <Link href="/product/list-is">回到[捲動載入]列表</Link>
-      <br />
-      <input
-        type="checkbox"
-        checked={isDynamicSearch}
-        onChange={() => {
-          setIsDynamicSearch(!isDynamicSearch)
-        }}
-      />{' '}
-      動態搜尋
-      <button disabled={isDynamicSearch} onClick={() => handleSearch(criteria)}>
-        搜尋
-      </button>
-      <hr />
-      <button
-        onClick={() => {
-          setCriteria(defaultCriteria)
-          setForceReset(true)
-          setTimeout(() => {
-            setForceReset(false)
-          }, 0)
-        }}
-      >
-        重置
-      </button>
-      <section id="search">{searchRender}</section>
-      <hr />
-      <button
-        onClick={() => setCriteriaByName('page', page - 1)}
-        disabled={page <= 1}
-      >
-        上一頁
-      </button>
-      <button
-        onClick={() => setCriteriaByName('page', page + 1)}
-        disabled={page >= pageCount}
-      >
-        下一頁
-      </button>
-      總共有{total}筆資料 / 總頁數:{pageCount} / 目前在第{page}頁
-      <hr />
-      <section id="product-list">
-        {isLoading ? loadingRender : dataRender}
-      </section>
-      <section id="pagination">
-        {isLoading || products?.length === 0 ? '' : paginationRender}
-      </section>
+      <div>
+        <div className="g-pdlist-title px-modified">
+          <div className="container-fluid p-0">
+            <div className="d-flex align-items-center">
+              <h4 className="h4 mb-0">ELECTRIC GUITARS</h4>
+              <h4 className="mb-0">電吉他商品</h4>
+            </div>
+          </div>
+        </div>
+        <div className="g-pdlist-topbar px-modified">
+          <div className="container-fluid d-flex justify-content-between p-0">
+            <div className="g-left d-flex align-items-center">
+              <h6 className="g-amount mb-0">00 商品</h6>
+              <div
+                className="g-fliter d-sm-flex d-none"
+                onClick={() => {
+                  setFilterOpen(true)
+                }}
+              >
+                <img src="/images/product/list/filter.svg" />
+                <h6 className="mb-0">篩選</h6>
+              </div>
+            </div>
+            <div className="g-right d-flex align-items-center">
+              <div
+                className="g-compare d-sm-flex d-none"
+                onClick={comparisionToggle}
+              >
+                <img src="/images/product/list/check-circle-fill.svg" />
+                <h6 className="mb-0">比較</h6>
+              </div>
+              <div
+                className="g-fliter d-sm-none d-flex"
+                onClick={() => {
+                  setFilterOpen(true)
+                }}
+              >
+                <img src="/images/product/list/filter.svg" />
+                <h6 className="mb-0">篩選</h6>
+              </div>
+              <div className="g-order d-flex">
+                <img src="/images/product/list/order.svg" />
+                <h6 className="mb-0">排序</h6>
+                {/* order sec  要修改(參考mou)*/}
+                <div className="g-order-sec">
+                  <a href>
+                    <h6>價格由高至低</h6>
+                  </a>
+                  <a href>
+                    <h6>價格由低至高</h6>
+                  </a>
+                  <a href>
+                    <h6>商品名稱 A - Z</h6>
+                  </a>
+                  <a href>
+                    <h6>商品名稱 Z - A</h6>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <section className="g-pdlist px-modified">
+          <div className="container-fluid p-1">
+            <div className="row row-cols-xl-4 row-cols-2">
+              <ProductCard />
+              {/* product-card-start */}
+              {/* <div className="col p-2"> 這句應該跑迴圈?*/}
+              {/* <div className="col p-2">
+                <div className="g-product-card">
+                  <div className="g-pd-img d-flex justify-content-center align-items-center">
+                    <img
+                      className="h-100"
+                      src="/images/product/list/0119151776_fen_ins_frt_1_rr-Photoroom.png"
+                    />
+                  </div>
+                  <div className="g-pd-text">
+                    <h6 className="h6">
+                      Product Name Product Name Product Name
+                    </h6>
+                    <div className="d-flex gap-3">
+                      <h6 className="h6">$79000</h6>
+                    </div>
+                    <div className="g-color-row">
+                      <img
+                        width="22px"
+                        src="/images/product/list/lightblue.svg"
+                      />
+                      <img
+                        width="22px"
+                        src="/images/product/list/darkblue.svg"
+                      />
+                      <img width="22px" src="/images/product/list/purple.svg" />
+                    </div>
+                    <p className="p g-color-text">2 colors</p>
+                  </div>
+                </div>
+              </div> */}
+              {/* product-card-end */}
+            </div>
+          </div>
+        </section>
+        <div className="g-more-sec d-flex justify-content-center align-items-center">
+          <button className="g-more-btn">
+            <h6 className="mb-0">瀏覽更多</h6>
+          </button>
+        </div>
+        {/* filter bar sec */}
+        <section className={`g-filter-sec ${filterOpen ? 'active' : ''}`}>
+          <div className="container-fluid p-0">
+            <div className="g-filter-bar">
+              <div className="g-clear d-flex justify-content-between">
+                <a href="">
+                  <h6 className="g-clear-link mb-0">清除篩選條件</h6>
+                </a>
+                <img
+                  width="16px"
+                  src="/images/product/list/x.svg"
+                  onClick={() => {
+                    setFilterOpen(false)
+                  }}
+                />
+              </div>
+              <div className="g-filter-scroll">
+                <div className="g-brand-sec">
+                  <div className="g-filter-title py-4">
+                    <h6 className="mb-0">品牌</h6>
+                  </div>
+                  <ul className="list-unstyled mt-4">
+                    <li className="pb-3">
+                      <div className="form-check mb-0">
+                        <input
+                          className="form-check-input focus-ring"
+                          style={{
+                            '--bsFocusRingColor': 'rgba(var(--white), 0)',
+                          }}
+                          type="checkbox"
+                          defaultValue
+                          id="gibson"
+                        />
+                        <label className="form-check-label" htmlFor="gibson">
+                          <h6 className="h7">Gibson</h6>
+                        </label>
+                      </div>
+                    </li>
+                    <li className="pb-3">
+                      <div className="form-check mb-0">
+                        <input
+                          className="form-check-input focus-ring"
+                          style={{
+                            '--bsFocusRingColor': 'rgba(var(--white), 0)',
+                          }}
+                          type="checkbox"
+                          defaultValue
+                          id="fender"
+                        />
+                        <label className="form-check-label" htmlFor="fender">
+                          <h6 className="h7">Fender</h6>
+                        </label>
+                      </div>
+                    </li>
+                    <li className="pb-3">
+                      <div className="form-check mb-0">
+                        <input
+                          className="form-check-input focus-ring"
+                          style={{
+                            '--bsFocusRingColor': 'rgba(var(--white), 0)',
+                          }}
+                          type="checkbox"
+                          defaultValue
+                          id="yamaha"
+                        />
+                        <label className="form-check-label" htmlFor="yamaha">
+                          <h6 className="h7">Yamaha</h6>
+                        </label>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div className="g-palette-sec">
+                  <div className="g-filter-title py-4">
+                    <h6 className="mb-0">色系類別</h6>
+                  </div>
+                  <div className="g-series-sec d-flex flex-wrap gap-1 pt-4 pb-3">
+                    <div className="g-series g-series1">
+                      <h6 className="h7 mb-0">JSHINE</h6>
+                      <p className="mb-0" style={{ fontWeight: 500 }}>
+                        曜彩系列
+                      </p>
+                    </div>
+                    <div className="g-series g-series2">
+                      <h6 className="h7 mb-0">SUNRISE WOOD</h6>
+                      <p className="mb-0" style={{ fontWeight: 500 }}>
+                        晨曦木韻系列
+                      </p>
+                    </div>
+                    <div className="g-series g-series3">
+                      <h6 className="h7 mb-0">GREY &amp; WHITE</h6>
+                      <p className="mb-0" style={{ fontWeight: 500 }}>
+                        石韻白系列
+                      </p>
+                    </div>
+                    <div className="g-series g-series4">
+                      <h6 className="h7 mb-0">MIDNIGHT CITY</h6>
+                      <p className="mb-0" style={{ fontWeight: 500 }}>
+                        夜晚城市系列
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="g-color-sec">
+                  <div className="g-filter-title py-4">
+                    <h6 className="mb-0">顏色</h6>
+                  </div>
+                  <div className="g-color-filter pt-4 pb-3">
+                    <img src="/images/product/list/lightblue.svg" />
+                    <img src="/images/product/list/darkblue.svg" />
+                    <img src="/images/product/list/purple.svg" />
+                    <img src="/images/product/list/green.svg" />
+                    <img src="/images/product/list/red.svg" />
+                    <img src="/images/product/list/yellow.svg" />
+                    <img src="/images/product/list/orange.svg" />
+                    <img src="/images/product/list/brown.svg" />
+                    <img src="/images/product/list/dark-brown.svg" />
+                    <img src="/images/product/list/white.svg" />
+                    <img src="/images/product/list/grey.svg" />
+                    <img src="/images/product/list/black.svg" />
+                  </div>
+                </div>
+                <div className="g-price-sec">
+                  <div className="g-filter-title py-4">
+                    <h6 className="mb-0">價錢</h6>
+                  </div>
+                  <ul className="list-unstyled mt-4">
+                    <li className="pb-3">
+                      <div className="form-check mb-0">
+                        <input
+                          className="form-check-input focus-ring"
+                          style={{
+                            '--bsFocusRingColor': 'rgba(var(--white), 0)',
+                          }}
+                          type="checkbox"
+                          defaultValue
+                          id="price1"
+                        />
+                        <label className="form-check-label" htmlFor="price1">
+                          <h6>
+                            NT$50,000以下{' '}
+                            <span style={{ color: 'var(--grey500)' }}>
+                              (171)
+                            </span>
+                          </h6>
+                        </label>
+                      </div>
+                    </li>
+                    <li className="pb-3">
+                      <div className="form-check mb-0">
+                        <input
+                          className="form-check-input focus-ring"
+                          style={{
+                            '--bsFocusRingColor': 'rgba(var(--white), 0)',
+                          }}
+                          type="checkbox"
+                          defaultValue
+                          id="price2"
+                        />
+                        <label className="form-check-label" htmlFor="price2">
+                          <h6>
+                            NT$50,000 - NT$100,000{' '}
+                            <span style={{ color: 'var(--grey500)' }}>
+                              (171)
+                            </span>
+                          </h6>
+                        </label>
+                      </div>
+                    </li>
+                    <li className="pb-3">
+                      <div className="form-check mb-0">
+                        <input
+                          className="form-check-input focus-ring"
+                          style={{
+                            '--bsFocusRingColor': 'rgba(var(--white), 0)',
+                          }}
+                          type="checkbox"
+                          defaultValue
+                          id="price3"
+                        />
+                        <label className="form-check-label" htmlFor="price3">
+                          <h6>
+                            NT$100,000 - NT$150,000{' '}
+                            <span style={{ color: 'var(--grey500)' }}>
+                              (171)
+                            </span>
+                          </h6>
+                        </label>
+                      </div>
+                    </li>
+                    <li className="pb-3">
+                      <div className="form-check mb-0">
+                        <input
+                          className="form-check-input focus-ring"
+                          style={{
+                            '--bsFocusRingColor': 'rgba(var(--white), 0)',
+                          }}
+                          type="checkbox"
+                          defaultValue
+                          id="price4"
+                        />
+                        <label className="form-check-label" htmlFor="price4">
+                          <h6>
+                            NT$200,000以上{' '}
+                            <span style={{ color: 'var(--grey500)' }}>
+                              (171)
+                            </span>
+                          </h6>
+                        </label>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="g-action pt-4 text-center">
+                <button className="g-action-btn">
+                  <h6 className="mb-0">顯示產品</h6>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* comparision sec */}
+        <section
+          className={`g-compare-sec px-modified ${
+            comparisionOpen ? 'active' : ''
+          }`}
+        >
+          <div className="container-fluid p-0">
+            <div className="d-flex justify-content-between align-items-center">
+              <div className>
+                <h6 className="h6">Electric Guitar Comparision</h6>
+                <h6 className="mb-0">電吉他商品比較</h6>
+              </div>
+              <div className="d-flex align-items-center">
+                <img src="/images/product/list/drag.svg" />
+                <p className="mb-0">
+                  將商品拖曳至方框中
+                  <br />
+                  最多可比較4款商品
+                </p>
+                <div className="g-compare-boxes d-flex gap-3">
+                  <div className="g-compare-box d-flex justify-content-center align-items-center">
+                    <img src="/images/product/list/electric.svg" />
+                  </div>
+                  <div className="g-compare-box d-flex justify-content-center align-items-center">
+                    <img src="/images/product/list/electric.svg" />
+                  </div>
+                  <div className="g-compare-box d-flex justify-content-center align-items-center">
+                    <img src="/images/product/list/electric.svg" />
+                  </div>
+                  <div className="g-compare-box d-flex justify-content-center align-items-center">
+                    <img src="/images/product/list/electric.svg" />
+                  </div>
+                </div>
+              </div>
+              <div className="d-flex flex-column">
+                <button className="g-compare-btn text-center">
+                  <h6 className="mb-0">比較O款電吉他</h6>
+                </button>
+                <button className="g-clear-btn text-center">
+                  <h6 className="mb-0">清除全部</h6>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </>
   )
 }
