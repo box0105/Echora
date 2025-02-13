@@ -10,15 +10,10 @@ import Link from 'next/link';
 
 
 
-export default function ChecklistPage(props) {
+export default function ChecklistPage() {
   const { cartItems,
     totalAmount,
     totalQty,
-    onAdd,
-    onDecrease,
-    onIncrease,
-    onRemove,
-    clearCart,
   } = useMyCart()
   return (
     <>

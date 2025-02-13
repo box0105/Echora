@@ -4,14 +4,53 @@ import './_styles/cart-checkkist.scss'
 import './_styles/index.scss'
 import './_styles/cart-information.scss'
 import React from 'react'
-import CartList from '../checklist/_components/cart-list'
 import { useMyCart } from '@/hooks/use-cart'
-import Link from 'next/link';
+import Link from 'next/link'
 
 export default function InformationPage() {
-  const { 
-    totalAmount,
-  } = useMyCart()
+  const { totalAmount } = useMyCart()
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+
+    // 從 localStorage 讀取購物車資料
+    // const cartItems = JSON.parse(localStorage.getItem('cartItem'))
+    
+    const target = event.target
+
+    // 從表單中獲取用戶資料
+    const userData = {
+      recipient: target.recipient.value, // 使用表單的 name 屬性
+      phone: target.phone.value,
+      email: target.email.value,
+      city: target.city.value,
+      country: target.country.value,
+      address: target.address.value,
+      shippingMethod: target.shippingMethod.value,
+      paymentMethod: target.paymentMethod.value,
+    }
+
+    const formData = new FormData()
+    formData.append('userData', JSON.stringify(userData))
+    // formData.append('cartItems', JSON.stringify(cartItems))
+
+    // 發送 POST 請求到後端 API 儲存資料
+    try {
+      const response = await fetch('http://localhost:3005/api/myOrders', {
+        method: 'POST',
+        body: formData,
+      })
+
+      if (response.ok) {
+        alert('訂單已提交！')
+      } else {
+        alert('訂單提交失敗！')
+      }
+    } catch (error) {
+      console.error('錯誤:', error)
+      alert('訂單提交過程中出現錯誤')
+    }
+  }
 
   return (
     <>
@@ -31,7 +70,7 @@ export default function InformationPage() {
           </div>
         </div>
         <div className="m-checklist-section2 w-100">
-          <form>
+          <form action="" method="POST" onSubmit={handleSubmit}>
             <div className="container-fluid m-index1 row">
               <div className="m-sec2-col8 col-lg-8 col-12">
                 <div className="d-flex justify-content-between align-items-end pt-4 pb-2">
@@ -49,16 +88,33 @@ export default function InformationPage() {
                 </div>
                 <div className="row">
                   <div className="col-6 pe-1">
-                    <input className="w-100 p-3" type="text" placeholder="姓名" />
+                    <input
+                      className="w-100 p-3"
+                      type="text"
+                      placeholder="收件人姓名"
+                      id="recipient"
+                      name="name"
+                      required
+                    />
                   </div>
                   <div className="col-6 ps-1">
-                    <input className="w-100 p-3" type="text" placeholder="手機" />
+                    <input
+                      className="w-100 p-3"
+                      type="text"
+                      placeholder="手機"
+                      id="phone"
+                      name="phone"
+                      required
+                    />
                   </div>
                   <div className="col12">
                     <input
                       className="w-100 p-3 mt-2"
                       type="email"
                       placeholder="E-mail"
+                      id="email"
+                      name="email"
+                      required
                     />
                   </div>
                 </div>
@@ -67,20 +123,33 @@ export default function InformationPage() {
                 </div>
                 <div className="row">
                   <div className="col-6 pe-1">
-                    <input className="w-100 p-3" type="text" placeholder="縣市" />
+                    <input
+                      className="w-100 p-3"
+                      type="text"
+                      placeholder="縣市"
+                      id="city"
+                      name="city"
+                      required
+                    />
                   </div>
                   <div className="col-6 ps-1">
                     <input
                       className="w-100 p-3"
                       type="text"
                       placeholder="鄉鎮 / 市區"
+                      id="country"
+                      name="country"
+                      required
                     />
                   </div>
                   <div className="col12">
                     <input
                       className="w-100 p-3 mt-2"
-                      type="email"
+                      type="text"
                       placeholder="地址"
+                      id="address"
+                      name="address"
+                      required
                     />
                   </div>
                 </div>
@@ -90,8 +159,10 @@ export default function InformationPage() {
                 <div className="form-check py-3 mb-2">
                   <input
                     type="radio"
-                    name="flexRadioDefault1"
+                    name="shippingMethod"
                     id="flexRadioDefault1"
+                    value="homeDelivery"
+                    defaultChecked
                   />
                   <label
                     className="form-check-label ps-2"
@@ -103,9 +174,9 @@ export default function InformationPage() {
                 <div className="form-check py-3">
                   <input
                     type="radio"
-                    name="flexRadioDefault1"
+                    name="shippingMethod"
                     id="flexRadioDefault2"
-                    defaultChecked
+                    value="storePickup"
                   />
                   <label
                     className="form-check-label ps-2"
@@ -120,12 +191,14 @@ export default function InformationPage() {
                 <div className="form-check py-3 mb-2">
                   <input
                     type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault1"
+                    name="paymentMethod"
+                    id="flexRadioDefault3"
+                    value="linePay"
+                    defaultChecked
                   />
                   <label
                     className="form-check-label ps-2"
-                    htmlFor="flexRadioDefault1"
+                    htmlFor="flexRadioDefault3"
                   >
                     LINE Pay
                   </label>
@@ -133,13 +206,13 @@ export default function InformationPage() {
                 <div className="form-check py-3 mb-2">
                   <input
                     type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault2"
-                    defaultChecked
+                    name="paymentMethod"
+                    id="flexRadioDefault4"
+                    value="ECpay"
                   />
                   <label
                     className="form-check-label ps-2"
-                    htmlFor="flexRadioDefault2"
+                    htmlFor="flexRadioDefault4"
                   >
                     綠界科技ECPay
                   </label>
@@ -147,13 +220,13 @@ export default function InformationPage() {
                 <div className="form-check py-3 pe-4">
                   <input
                     type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault2"
-                    defaultChecked
+                    name="paymentMethod"
+                    id="flexRadioDefault5"
+                    value="creditCard"
                   />
                   <label
                     className="form-check-label ps-2"
-                    htmlFor="flexRadioDefault2"
+                    htmlFor="flexRadioDefault5"
                   >
                     信用卡
                   </label>
@@ -208,7 +281,7 @@ export default function InformationPage() {
                 {/* <div className="row row-cols-1 pt-4 d-md-block d-none">
                 <CartList cartItems={cartItems} />
               </div> */}
-                <button type="button" className="btn btn-dark w-100 mt-5">
+                <button type="submit" className="btn btn-dark w-100 mt-5">
                   下訂單
                 </button>
                 <Link href="/my-cart/checklist">
