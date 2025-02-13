@@ -29,7 +29,6 @@ model User {
   lineAccessToken String?    @map("line_access_token") @db.Text
   // 關聯: User:Product = n:m 透過 Favorite
   userLike        userLike[]
-  Order           Order[]
 }
 
 model Profile {
@@ -62,16 +61,14 @@ model userLike {
 
 model Order {
   id              Int      @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
-  userId          Int // 用戶 ID，代表誰下的訂單
-  user            User     @relation(fields: [userId], references: [id]) // 關聯到 User 資料表
-  status          String // 訂單狀態，如：'pending', 'shipped', 'completed'
-  totalAmount     Float // 訂單總金額
-  paymentStatus   String // 付款狀態，例：'paid', 'unpaid'
+  orderNumber     String?  @unique // 訂單編號
+  userId          Int? // 用戶 ID，代表誰下的訂單
+  // user            User     @relation(fields: [userId], references: [id]) // 關聯到 User 資料表
+  status          String? // 訂單狀態，如：'pending', 'shipped', 'completed'
+  totalAmount     Float? // 訂單總金額
   paymentMethod   String? // 付款方式，如 'credit_card', 'cash_on_delivery' 等
   shippingAddress String? // 配送地址，儲存訂單的配送地址
   shippingMethod  String? // 配送方式，如 'standard', 'express' 等
-  shippingCost    Float? // 配送費用
-  discount        Float? // 訂單折扣金額
   createdAt       DateTime @default(now()) // 訂單創建時間
   updatedAt       DateTime @updatedAt // 訂單更新時間，自動更新
 
@@ -213,42 +210,12 @@ model Activity {
   ticket_price Int    @default(0)
 }
 
-model Order {
-  id             BigInt    @id @default(autoincrement())
-  orderNumber    String    @unique // 訂單編號
-  userId         BigInt    // 關聯 User
-  totalPrice     Decimal   @default(0.00)
-  paymentStatus  PaymentStatus @default(PENDING)
-  shippingStatus ShippingStatus @default(PENDING)
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
-
-  orderItems OrderItem[] // 一對多關聯
-}
-
-model OrderItem {
-  id          BigInt  @id @default(autoincrement())
-  orderId     BigInt  @map("order_id")
-  productId   BigInt  // 商品 ID
-  quantity    Int     @default(1)
-  unitPrice   Decimal @default(0.00)
-  subtotal    Decimal @default(0.00)
-
-  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
-}
-
-// 訂單付款狀態 ENUM
-enum PaymentStatus {
-  PENDING  // 待付款
-  PAID     // 已付款
-  FAILED   // 付款失敗
-  REFUNDED // 已退款
-}
-
-// 訂單物流狀態 ENUM
-enum ShippingStatus {
-  PENDING     // 待處理
-  SHIPPED     // 已出貨
-  DELIVERED   // 已送達
-  CANCELLED   // 已取消
+model MyOrder {
+  id              Int     @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
+  recipient       String?
+  phone           String?
+  email           String?
+  shippingAddress String? // 配送地址，儲存訂單的配送地址
+  shippingMethod  String?
+  paymentMethod   String?
 }
