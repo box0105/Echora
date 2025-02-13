@@ -168,20 +168,21 @@ model Spec {
   @@map("spec")
 }
 
-model Coupons {
-  id             Int      @id @default(autoincrement())
+// 問題:開啟關聯部分無法寫入資料
+model Coupon {
+  id             Int          @id @default(autoincrement())
   name           String
   code           String?  @unique // 優惠券代碼 (例如：SUMMER20)
   typeId         Int //type fk
-  type           CouponType   @relation(fields: [typeId], references: [id]) // 優惠券類型 (關係)
+  // type           CouponType   @relation(fields: [typeId], references: [id]) // 優惠券類型 (關係)
   discount       Int // 折扣金額或百分比 (根據 discount_type 決定)
   discountTypeId Int // discountType fk
-  discountType   DiscountType @relation(fields: [discountTypeId], references: [id]) // 折扣類型 (關係)
+  // discountType   DiscountType @relation(fields: [discountTypeId], references: [id]) // 折扣類型 (關係)
   minPurchase    Decimal? //最低消費金額
   description    String? // 優惠券描述 (nullable)
-  startTime      DateTime
+  startTime      DateTime 
   endTime        DateTime
-  is_delete      Boolean  @default(false)
+  isDelete      Boolean      @default(false)
 
   @@index([code]) // 建立 code 索引
 }
@@ -189,13 +190,13 @@ model Coupons {
 model CouponType {
   id       Int    @id @default(autoincrement())
   category String
-  coupons  Coupons[]
+  // coupons  Coupon[]
 }
 
 model DiscountType {
   id      Int       @id @default(autoincrement())
   name    String
-  coupons Coupons[]
+  // coupons Coupon[]
 }
 
 model Rent {

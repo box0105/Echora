@@ -195,6 +195,7 @@ async function main() {
     if (isDev)
       console.log(`Created ${result.count} seeds for "${model}" Model.`)
   }
+
 }
 
 main()

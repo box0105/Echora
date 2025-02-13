@@ -4,10 +4,10 @@
     height: auto;
 }
 
-/* 
-*{
-    border: 1px solid red;
-} */
+
+// * {
+//     border: 1px solid red;
+// }
 
 .k-main {
     display: flex;
@@ -37,11 +37,12 @@
         width: 33rem;
         height: 27rem;
         margin-left: 3rem;
-         /* mobile */
-    @media (max-width:580px) {
-        margin-left: 0;
 
-    }
+        /* mobile */
+        @media (max-width:580px) {
+            margin-left: 0;
+
+        }
 
 
         .title {
@@ -112,6 +113,8 @@
     background: #f9f9f9;
     padding-inline: 64px;
 
+
+
     .k-title {
         padding-top: 5rem;
         padding-bottom: 2rem;
@@ -127,39 +130,97 @@
     }
 
     .row {
+        margin: 0;
         width: 100%;
-
-        @media (max-width:1120px) {
-            justify-content: center;
-
-            .col:nth-child(-n +4) {
-                display: none;
-            }
-        }
 
         @media (max-width:1500px) {
             justify-content: center;
         }
 
-        .col {
-            @media (max-width:1715px) {
-                display: flex;
-                justify-content: center;
-                width: 30%;
-            }
+        @media (max-width:1120px) {
+            justify-content: center;
 
-            @media (max-width:1500px) {
-                width: 40%;
-            }
-
-            @media (max-width:1120px) {
-                width: 50%;
-            }
-
-            @media (max-width:930px) {
-                width: 100%;
+            .col:nth-child(-n +2) {
+                display: none;
             }
         }
+
+
+
+        .col {
+            position: relative;
+            width: 100%;
+            height: 8.5rem;
+
+            button {
+                position: absolute;
+                top: 48%;
+                right: 10%;
+                transform: translate(-50%, -50%);
+
+                @media (max-width:1200px) {
+                    top: 50%;
+                    right: 15%;
+                }
+
+                @media (max-width:870px) {
+                    right: 0;
+                }
+
+                @media (max-width:400px) {
+                    display: none;
+                }
+            }
+
+            // @media (max-width:1715px) {
+            //     display: flex;
+            //     justify-content: center;
+            //     width: 30%;
+            // }
+
+            // @media (max-width:1600px) {
+            //     width: 50%;
+            // }
+
+            // @media (max-width:1200px) {
+            //     width: 50%;
+            // }
+
+            // @media (max-width:930px) {
+            //     width: 100%;
+            // }
+          
+        }
+
+        .image-col {
+
+            object-fit: contain;
+
+
+        }
+
+        .image-col:nth-child(odd) {
+            background: url(../../public/images/coupon.svg)no-repeat;
+            background-position: center;
+            /* 圖片置中 */
+            background-size: contain;
+            /* 圖片縮放到容器大小，保持比例 */
+
+            /* 單數 col 的圖片 */
+        }
+
+        .image-col:nth-child(even) {
+            background: url(../../public/images/coupon-b.svg)no-repeat;
+            background-position: center;
+            /* 圖片置中 */
+            background-size: contain;
+            /* 圖片縮放到容器大小，保持比例 */
+
+            /* 偶數 col 的圖片 */
+        }
+
+
+
     }
 
     .k-btn {
