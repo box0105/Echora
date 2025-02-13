@@ -85,6 +85,8 @@ model Spec {
   @@map("spec")
 }
 
+// coupons
+
 model Coupons {
   id             Int          @id @default(autoincrement())
   name           String
@@ -114,6 +116,8 @@ model DiscountType {
   name    String
   coupons Coupons[]
 }
+
+// activity
 
 model Activity {
   id           Int    @id @default(autoincrement())
