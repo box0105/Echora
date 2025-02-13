@@ -16,7 +16,7 @@ export default function Header() {
               <img className="g-mb-logo" src="/images/header/logo-mb.svg" />
             </div>
             <form
-              action
+              action="true"
               className="col-lg-4 col-12 order-lg-2 order-3 d-flex align-items-center  p-0 mt-lg-0 mt-3"
             >
               <input
@@ -26,13 +26,13 @@ export default function Header() {
               />
             </form>
             <div className="g-right-menu d-flex gap-4 col-lg-4 col-6 order-2 d-flex justify-content-end align-items-center p-0">
-              <a href="">
+              <a href="true">
                 <img src="/images/header/heart.svg" />
               </a>
-              <a href="">
+              <a href="true">
                 <img src="/images/header/account.svg" />
               </a>
-              <a href="">
+              <a href="true">
                 <img src="/images/header/cart.svg" />
               </a>
               <button className="hamburger" onClick={() => {setMenuOpen(true)}}>
@@ -43,7 +43,7 @@ export default function Header() {
           <div className="g-nav-bottom">
             <ul className="d-flex justify-content-center gap-5 list-unstyled">
               <li>
-                <a href>
+                <a href="true">
                   <div className="d-flex">
                     <h6 className="h7">ELECTRIC GUITARS</h6>
                     <p className="px-1">/</p>
@@ -52,7 +52,7 @@ export default function Header() {
                 </a>
               </li>
               <li>
-                <a href>
+                <a href="true">
                   <div className="d-flex">
                     <h6 className="h7">MUSIC FESTIVALS</h6>
                     <p className="px-1">/</p>
@@ -61,7 +61,7 @@ export default function Header() {
                 </a>
               </li>
               <li>
-                <a href>
+                <a href="true">
                   <div className="d-flex">
                     <h6 className="h7">RENTAL SERVICE</h6>
                     <p className="px-1">/</p>
@@ -70,7 +70,7 @@ export default function Header() {
                 </a>
               </li>
               <li>
-                <a href>
+                <a href="true">
                   <div className="d-flex">
                     <h6 className="h7">SPECIAL EVENTS</h6>
                     <p className="px-1">/</p>
@@ -92,7 +92,7 @@ export default function Header() {
             </div>
             <ul className="list-unstyled">
               <li>
-                <a href>
+                <a href="true">
                   <div className="d-flex">
                     <h6 className="h7 mb-0">ELECTRIC GUITARS</h6>
                     <p className="px-1 mb-0">/</p>
@@ -103,7 +103,7 @@ export default function Header() {
                 </a>
               </li>
               <li>
-                <a href>
+                <a href="true">
                   <div className="d-flex">
                     <h6 className="h7 mb-0">MUSIC FESTIVALS</h6>
                     <p className="px-1 mb-0">/</p>
@@ -114,7 +114,7 @@ export default function Header() {
                 </a>
               </li>
               <li>
-                <a href>
+                <a href="true">
                   <div className="d-flex">
                     <h6 className="h7 mb-0">RENTAL SERVICE</h6>
                     <p className="px-1 mb-0">/</p>
@@ -125,7 +125,7 @@ export default function Header() {
                 </a>
               </li>
               <li>
-                <a href>
+                <a href="true">
                   <div className="d-flex">
                     <h6 className="h7 mb-0">SPECIAL EVENTS</h6>
                     <p className="px-1 mb-0">/</p>

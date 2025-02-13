@@ -13,7 +13,6 @@ export default function ActivityCard({ activity }) {
                             src={activity.image}
                             alt={activity.title}
                             width={500} height={300}
-                            layout="responsive"
                         />
                     </div>
                     {/* card-body */}
