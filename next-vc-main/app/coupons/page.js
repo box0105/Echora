@@ -5,37 +5,44 @@ import '../_styles/nav.scss'
 import "../_styles/globals.scss";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 
 
 
 
 export default async function CouponPage(props) {
-  const [coupon, setCoupon] = useState({
+  const [coupon, setCoupon] = useState([])
+  // {
 
-    id: 1,
-    name: "夏日特惠",
-    code: "matsu",
-    typeId: 1,
-    discount: 50,
-    discountTypeId: 1,
-    startTime: "2024-07-27T12:34:56.789Z",
-    endTime: "2024-07-27T12:34:56.789Z",
-    isDelete: false
+  //   id: 1,
+  //   name: "夏日特惠",
+  //   code: "matsu",
+  //   typeId: 1,
+  //   discount: 50,
+  //   discountTypeId: 1,
+  //   startTime: "2024-07-27T12:34:56.789Z",
+  //   endTime: "2024-07-27T12:34:56.789Z",
+  //   isDelete: false
 
-  })
+  // }
 
   useEffect(()=>{
     const fetchData = async ()=>{
       try{
-        const url = '/api/coupon'
+        const url = 'http://localhost:3005/api/coupon'
         const res = await fetch(url);
         if(!res.ok) throw new Error('狀態錯誤') 
+          const data = await res.json();
+        console.log(data.data);
+        setCoupon(data.data);
       }catch(err){
         console.log('發生錯誤',err);
       }
     }
-  })
+    fetchData();
+  },[])
 
 
   // 轉換時間格式
@@ -49,6 +56,32 @@ export default async function CouponPage(props) {
     // console.log(readableDate); 輸出：2024/7/27 （或 2024年7月27日，取決於地區設定）
     return readableDate;
   }
+
+  // 領取提示
+  const notifyAndGet = (itemName) => {
+    const MySwal = withReactContent(Swal);
+
+    MySwal.fire({
+      title: '要領取優惠券嗎?',
+      text: '優惠券將加入會員-我的優惠券',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: '取消',
+      confirmButtonText: '確定',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: '領取成功',
+          text: `優惠券已領取`,
+          icon: 'success',
+        });
+
+        // 進行領取
+
+      }
+    });
+  };
 
 
   return (
@@ -99,11 +132,14 @@ export default async function CouponPage(props) {
             </div>
             {/* test */}
             <div>
-              <h1>項目列表</h1>
+              <h1>優惠券列表</h1>
               <ul>
-                {items.map(item => (
-                  <li key={item._id}> {/*  假設你的 MongoDB 文件有 _id 欄位 */}
-                    <strong>{item.name}</strong>: {item.description}
+                {coupon.map(item => (
+                  <li key={item.id} id={item.id}>
+                    <strong>{item.name}</strong><br></br> ${item.discount}<br></br>
+                    <button className='btn btn-primary' onClick={()=>{
+                      notifyAndGet(item.name)
+                    }}>領取</button>
                   </li>
                 ))}
               </ul>
