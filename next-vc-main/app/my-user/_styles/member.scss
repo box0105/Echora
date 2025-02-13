@@ -141,7 +141,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
-  width: 30px;
+  width: 100%;
   height: 30px;
   background-color: #f9f9f9;
   cursor: pointer;
@@ -151,8 +151,7 @@
 }
 
 .hamburger-member h5 {
-  font-size: 18px;
-  font-weight: 500;
+  font-weight: 400;
   padding: 4px 12px;
   margin: 0 auto;
 }
@@ -164,6 +163,7 @@
 
 .dropdown-content {
   display: none;
+  width: 100%;
   background-color: #f9f9f9;
   min-width: 160px;
   z-index: 1;
@@ -188,9 +188,9 @@
   display: none;
 }
 
-.tab-link.active {
-  display: inline-block;
-}
+// .tab-link.active {
+//   display: inline-block;
+// }
 
 @media (max-width: 991px) {
   .header-top,
@@ -229,6 +229,7 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
+ 
   }
 
   .dropdown-content {

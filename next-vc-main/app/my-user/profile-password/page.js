@@ -2,6 +2,7 @@
 
 import '../_styles/member.scss'
 // import 'bootstrap/dist/css/bootstrap.min.css'
+import MemberLayout from '../layouts/memberLayout'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import { useState } from 'react'
 import Link from 'next/link'
@@ -75,98 +76,57 @@ export default function PasswordPasswordPage() {
 
   return (
     <>
-      <div>
-        <header />
-        <main className="main">
-          <div className="container">
-            <h1 className="page-title">關於我</h1>
-            <hr />
-            <div className="hamburger-member" id="hamburger-member">
-              <div className="dropdown-content dropdown">
-                <h5>
-                  關於我 <i className="fa-solid fa-caret-down" />
-                </h5>
-                <h5 className="tab-link active" data-tab="orders">
-                  我的訂單
-                </h5>
-                <h5 className="tab-link active" data-tab="favorites">
-                  我的收藏
-                </h5>
-                <h5>我的優惠券</h5>
-              </div>
-            </div>
-            <div className="content">
-              <aside className="sidebar">
-                <div className="sidebar-section">
-                  <h2 className="sidebar-title">關於我</h2>
-                  <ul className="sidebar-menu">
-                    <li className="sidebar-item active">個人資料</li>
-                    <li className="sidebar-item">修改密碼</li>
-                  </ul>
-                </div>
-                <div className="sidebar-section">
-                  <h2 className="sidebar-title">我的訂單</h2>
-                </div>
-                <div className="sidebar-section">
-                  <h2 className="sidebar-title">我的收藏</h2>
-                </div>
-                <div className="sidebar-section">
-                  <h2 className="sidebar-title">我的優惠券</h2>
-                </div>
-              </aside>
-              <div className="change-password-form">
-                <div className="change-password-header">
-                  <div className="change-password-title h4">修改密碼</div>
-                </div>
-                <div className="change-password-body">
-                  <form action method="post">
-                    <div className="mb-4">
-                      <label htmlFor="old-password" className="form-label">
-                        舊密碼
-                      </label>
-                      <input
-                        type="password"
-                        className="form-control"
-                        id="old-password"
-                        name="old-password"
-                        required
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label htmlFor="new-password" className="form-label">
-                        新密碼
-                      </label>
-                      <input
-                        type="password"
-                        className="form-control"
-                        id="new-password"
-                        name="new-password"
-                        required
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label htmlFor="confirm-password" className="form-label">
-                        確認新密碼
-                      </label>
-                      <input
-                        type="password"
-                        className="form-control"
-                        id="confirm-password"
-                        name="confirm-password"
-                        required
-                      />
-                    </div>
-                    <button type="submit" className="btn btn-dark">
-                      確認修改
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </div>
+      <MemberLayout>
+        <div className="change-password-form">
+          <div className="change-password-header">
+            <div className="change-password-title h4">修改密碼</div>
           </div>
-        </main>
+          <div className="change-password-body">
+            <form action method="post">
+              <div className="mb-4">
+                <label htmlFor="old-password" className="form-label">
+                  舊密碼
+                </label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="old-password"
+                  name="old-password"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="new-password" className="form-label">
+                  新密碼
+                </label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="new-password"
+                  name="new-password"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="confirm-password" className="form-label">
+                  確認新密碼
+                </label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="confirm-password"
+                  name="confirm-password"
+                  required
+                />
+              </div>
+              <button type="submit" className="btn btn-dark">
+                確認修改
+              </button>
+            </form>
+          </div>
+        </div>
         <footer className="footer" />
-      </div>
+      </MemberLayout>
     </>
   )
 }

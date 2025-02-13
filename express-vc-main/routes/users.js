@@ -114,7 +114,6 @@ router.put('/:id', async (req, res) => {
   }
 
   try {
-    // 更新會員的 username
     const result = await db.query('UPDATE user SET username = ? WHERE id = ?', [
       username,
       userId,
@@ -127,13 +126,11 @@ router.put('/:id', async (req, res) => {
       })
     }
 
-    // 回傳成功訊息
     res.status(200).json({
       status: 'success',
       message: '會員資料更新成功',
     })
   } catch (err) {
-    // 若發生錯誤，回傳錯誤訊息
     console.log(err)
     res.status(400).json({
       status: 'error',
@@ -150,7 +147,7 @@ router.put('/:id/password', async (req, res) => {
   if (!password) {
     return res.status(400).json({
       status: 'error',
-      message: '請提供新的 password',
+      message: '請提供新的密碼',
     })
   }
 
@@ -167,13 +164,11 @@ router.put('/:id/password', async (req, res) => {
       })
     }
 
-    // 回傳成功訊息
     res.status(200).json({
       status: 'success',
       message: '會員密碼更新成功',
     })
   } catch (err) {
-    // 若發生錯誤，回傳錯誤訊息
     console.log(err)
     res.status(400).json({
       status: 'error',
