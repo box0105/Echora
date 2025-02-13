@@ -188,7 +188,7 @@ export default function RegisterPage() {
             <div className="signup-prompt">
               已經有帳號?
               <span className="signup-link" tabIndex={0} role="button">
-                登入
+                <Link href="/my-user">登入</Link>
               </span>
             </div>
           </form>

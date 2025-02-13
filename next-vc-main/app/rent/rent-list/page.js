@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/css/bootstrap.min.css'
 import './list.scss'
 
 export default function Page(props) {
@@ -38,8 +38,9 @@ export default function Page(props) {
                 <div className="c-text">
                   <div className="c-title d-flex justify-content-start align-items-center">
                     <h2 className="title-text">Les Paul Mondern Lite</h2>
-                    <div className="icon">
-                      <i className="fa-regular fa-heart" />
+                    <div>
+                      <div className="h5 icon text-success d-none d-md-block"><i className="bi bi-box-seam" />尚有庫存</div>
+                      <div className="h6 icon text-success d-block d-md-none"><i className="bi bi-box-seam" />尚有庫存</div>
                     </div>
                   </div>
                   <div className="c-price">
@@ -59,6 +60,7 @@ export default function Page(props) {
                         <div className="h5 pe-3">顏色 :</div>
                         <h5>Sky Blue</h5>
                       </div>
+                    <div className="math d-flex align-items-center pb-3">數量<input type="number" id="quantity" className="form-control text-center mx-2" style={{width: 60}} defaultValue={1} min={1} /></div>
                       <div className="c-body-co">
                         <div className="circle d-flex gap-3">
                           <img src="/images/Rent/circle.jpg" alt />

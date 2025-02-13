@@ -11,7 +11,7 @@
 
   .page-title {
     color: #000;
-    font: 700 32px Poppins, sans-serif;
+    // font: 700 32px Poppins, sans-serif;
     margin-bottom: 20px;
   }
 
@@ -32,11 +32,7 @@
     margin-bottom: 20px;
   }
 
-  .sidebar-title {
-    color: #666;
-    font: 700 18px Ubuntu, sans-serif;
-    margin-bottom: 16px;
-  }
+
 
   .sidebar-menu {
     list-style: none;
@@ -78,9 +74,7 @@
 
   .order-title {
     width: 100%;
-    padding: 0 0 20px;
     color: #000;
-    font: 700 24px Poppins, sans-serif;
   }
 
   .order-summary {
@@ -163,6 +157,10 @@
       width: 100%;
     }
 
+    .col-6 {
+      width: 100%;
+    }
+
     .hamburger-member {
       display: flex;
       width: 100%;
@@ -179,9 +177,10 @@
     .order-title {
       max-width: 100%;
     }
+
     .order-image img {
       max-width: 100%;
-      height: auto;
+      height: 325px;
     }
   }
 

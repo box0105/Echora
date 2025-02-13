@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "username": "harry",
+    "password": "$2b$10$7s99Xc59jxpmN555LdOLsOUMZ8tB0INHGXg18oUIMsC4JhRLgtDuW",
+    "email": "reynold.reichel30@ethereal.email",
+    "email_validated": "1",
+    "google_uid": null,
+    "line_uid": null,
+    "line_access_token": null
+  },
+  {
+    "id": "2",
+    "username": "ginny",
+    "password": "$2b$10$\/JbZj69aGRur3G.GN6JsfOVB7s7RESbYfdmwPhTzrDPfQUQRRRzf.",
+    "email": "ginny@test.com",
+    "email_validated": "1",
+    "google_uid": null,
+    "line_uid": null,
+    "line_access_token": null
+  },
+  {
+    "id": "3",
+    "username": "mione",
+    "password": "$2b$10$kqEXtNbZBlD\/IZj1\/.v3fObJT6NLUP7j853.hF\/1ej63Im3zdBbZC",
+    "email": "mione@test.com",
+    "email_validated": "1",
+    "google_uid": null,
+    "line_uid": null,
+    "line_access_token": null
+  }
+]
