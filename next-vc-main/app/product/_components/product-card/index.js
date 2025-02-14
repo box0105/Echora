@@ -1,7 +1,9 @@
 'use client'
+import { useState } from 'react'
 import './product-card.scss'
 
 export default function ProductCard({ data = {} }) {
+  const [mainImage, setMainImage] = useState(data.defaultImage)
   return (
     <>
       <div className="col p-2">
@@ -9,7 +11,7 @@ export default function ProductCard({ data = {} }) {
           <div className="g-pd-img d-flex justify-content-center align-items-center">
             <img
               className="h-100"
-              src={`/images/product/pd-images/${data.image}`}
+              src={`/images/product/pd-images/${mainImage}`}
               alt=""
             />
           </div>
@@ -19,13 +21,18 @@ export default function ProductCard({ data = {} }) {
               <h6 className="h6">${data.price}</h6>
             </div>
             <div className="g-color-row">
-              {/* /images/product/color-images/data.color_image */}
-              <img width="22px" src="/images/product/list/lightblue.svg" />
-              <img width="22px" src="/images/product/list/darkblue.svg" />
-              <img width="22px" src="/images/product/list/purple.svg" />
+              {data.colors.map((color) => (
+                <img
+                  key={color.id}
+                  width="22px"
+                  src={`/images/product/color-images/${color.image}`}
+                  alt={color.name}
+                  onMouseEnter={() => setMainImage(data.images[color.skuId])}
+                  onMouseLeave={() => setMainImage(data.defaultImage)}
+                />
+              ))}
             </div>
-            <p className="p g-color-text">2 colors</p>
-            {/* fetch出共有幾個顏色 */}
+            <p className="p g-color-text">{data.colors.length} colors</p>
           </div>
         </div>
       </div>
