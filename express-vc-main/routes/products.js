@@ -7,7 +7,9 @@ const router = express.Router()
 // fetch所有產品的所有資料
 router.get('/', async (req, res) => {
   try {
-    const [rows] = await db.query('SELECT * FROM product')
+    const sql =
+      'SELECT product.*, brand.name AS brand_name, product_sku.id AS product_sku_id, product_sku.stock, color.name AS color_name, color.color_image, color_palette.name AS color_palette_name, image.image FROM product JOIN brand ON product.brand_id = brand.id JOIN product_sku ON product.id = product_sku.product_id JOIN color ON product_sku.color_id = color.id JOIN color_palette ON color.color_palette_id = color_palette.id JOIN image ON product_sku.id = image.product_sku_id WHERE image.sort_order = 1;'
+    const [rows] = await db.query(sql)
     res.status(200).json({
       status: 'success',
       data: rows,

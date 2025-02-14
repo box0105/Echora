@@ -62,19 +62,19 @@
   {
     "productSkuId": "26-9",
     "name": "60th Anniversary 1961 Les Paul SG Custom With Sideways Vibrola",
-    "image": "__static.gibson.com_product-images_Custom_CUSF52344_Polaris_White_SGC60THVOCWGSP1_back.jpg",
+    "image": "__static.gibson.com_product-images_Custom_CUSF52344_Polaris_White_SGC60THVOCWGSP1_back.png",
     "sortOrder": 2
   },
   {
     "productSkuId": "26-9",
     "name": "60th Anniversary 1961 Les Paul SG Custom With Sideways Vibrola",
-    "image": "__static.gibson.com_product-images_Custom_CUSF52344_Polaris_White_SGC60THVOCWGSP1_Front.jpg",
+    "image": "__static.gibson.com_product-images_Custom_CUSF52344_Polaris_White_SGC60THVOCWGSP1_Front.png",
     "sortOrder": 1
   },
   {
     "productSkuId": "26-9",
     "name": "60th Anniversary 1961 Les Paul SG Custom With Sideways Vibrola",
-    "image": "__static.gibson.com_product-images_Custom_CUSF52344_Polaris_White_SGC60THVOCWGSP1_Side.jpg",
+    "image": "__static.gibson.com_product-images_Custom_CUSF52344_Polaris_White_SGC60THVOCWGSP1_Side.png",
     "sortOrder": 3
   },
   {
@@ -483,7 +483,7 @@
     "productSkuId": "14-10",
     "name": "Les Paul Modern Lite",
     "image": "LPTRM00WTCH1_hs_front.png",
-    "sortOrder": 1
+    "sortOrder": 6
   },
   {
     "productSkuId": "14-10",
@@ -674,19 +674,19 @@
   {
     "productSkuId": "20-7",
     "name": "Les Paul Standard 50s P-90",
-    "image": "__static.gibson.com_product-images_USA_USA85B326_Gold_Top_LPS5P900GTNH1_1.jpg",
+    "image": "__static.gibson.com_product-images_USA_USA85B326_Gold_Top_LPS5P900GTNH1_1-Photoroom.png",
     "sortOrder": 1
   },
   {
     "productSkuId": "20-7",
     "name": "Les Paul Standard 50s P-90",
-    "image": "__static.gibson.com_product-images_USA_USA85B326_Gold_Top_LPS5P900GTNH1_2.jpg",
+    "image": "__static.gibson.com_product-images_USA_USA85B326_Gold_Top_LPS5P900GTNH1_2-Photoroom.png",
     "sortOrder": 2
   },
   {
     "productSkuId": "20-7",
     "name": "Les Paul Standard 50s P-90",
-    "image": "__static.gibson.com_product-images_USA_USA85B326_Gold_Top_LPS5P900GTNH1_4.jpg",
+    "image": "__static.gibson.com_product-images_USA_USA85B326_Gold_Top_LPS5P900GTNH1_4-Photoroom.png",
     "sortOrder": 3
   },
   {
@@ -1917,13 +1917,13 @@
     "productSkuId": "49-11",
     "name": "Firebird Custom w Ebony Fingerboard Gloss Ebony",
     "image": "183ffdd5-2a46-45c5-9a3a-7a8373b38ff6.png",
-    "sortOrder": 1
+    "sortOrder": 4
   },
   {
     "productSkuId": "49-11",
     "name": "Firebird Custom w Ebony Fingerboard Gloss Ebony",
     "image": "c41fc6bc-f8b5-413f-a026-61b6adb76d96.png",
-    "sortOrder": 4
+    "sortOrder": 1
   },
   {
     "productSkuId": "49-11",

@@ -9,7 +9,8 @@ export default function ProductCard({ data = {} }) {
           <div className="g-pd-img d-flex justify-content-center align-items-center">
             <img
               className="h-100"
-              src="/images/product/list/0119151776_fen_ins_frt_1_rr-Photoroom.png"
+              src={`/images/product/pd-images/${data.image}`}
+              alt=""
             />
           </div>
           <div className="g-pd-text">
@@ -18,7 +19,7 @@ export default function ProductCard({ data = {} }) {
               <h6 className="h6">${data.price}</h6>
             </div>
             <div className="g-color-row">
-            {/* /images/product/color-images/data.color_image */}
+              {/* /images/product/color-images/data.color_image */}
               <img width="22px" src="/images/product/list/lightblue.svg" />
               <img width="22px" src="/images/product/list/darkblue.svg" />
               <img width="22px" src="/images/product/list/purple.svg" />
