@@ -153,12 +153,13 @@ export default function UserPage() {
                 className="show-password"
                 aria-label="顯示密碼"
               >
-                <i className="bi bi-eye show-password-icon" />
+                <i class="fa-solid fa-eye"></i>
               </button>
             </div>
-            <a href="#" className="forgot-password">
+            <Link href="/my-user/forget-password" className="forgot-password">
+              {' '}
               忘記密碼?
-            </a>
+            </Link>
             <button
               type="button"
               className="login-button"

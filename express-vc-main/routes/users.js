@@ -1,9 +1,12 @@
 import express from 'express'
 import db from '../db3.js'
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const router = express.Router()
-
-import {} from '../lib/utils.js'
 
 // #region ------ GET ------
 /* router prefix: /api/users */
@@ -28,7 +31,6 @@ router.get('/', async (req, res) => {
   }
 })
 
-// * router prefix: /api/users/:id
 // 查詢單一會員資料
 router.get('/:id', async (req, res) => {
   const userId = req.params.id // 取得 URL 參數中的 id
@@ -60,7 +62,7 @@ router.get('/:id', async (req, res) => {
 
 // #region ------ POST ------
 // 新增會員資料(後面更新資料庫再有哪些欄位要改)
-router.post('/', async (req, res) => {
+router.post('/register', async (req, res) => {
   const { username, email, password } = req.body
 
   if (!username || !email || !password) {
@@ -71,10 +73,13 @@ router.post('/', async (req, res) => {
   }
 
   try {
+    // 加密密碼
+    const hashedPassword = await bcrypt.hash(password, 10)
+
     // 新增會員資料
     const result = await db.query(
       'INSERT INTO user (username, email, password) VALUES (?, ?, ?)',
-      [username, email, password]
+      [username, email, hashedPassword]
     )
 
     // 回傳成功訊息
@@ -97,11 +102,68 @@ router.post('/', async (req, res) => {
   }
 })
 
+// 登入會員
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body
+
+  if (!email || !password) {
+    return res.status(400).json({
+      status: 'error',
+      message: '請提供 email 和 password',
+    })
+  }
+
+  try {
+    // 查詢會員資料
+    const [rows] = await db.query('SELECT * FROM user WHERE email = ?', [email])
+
+    if (rows.length === 0) {
+      return res.status(404).json({
+        status: 'error',
+        message: '找不到該會員',
+      })
+    }
+
+    const user = rows[0]
+
+    // 驗證密碼
+    const isMatch = await bcrypt.compare(password, user.password)
+    if (!isMatch) {
+      return res.status(400).json({
+        status: 'error',
+        message: '密碼錯誤',
+      })
+    }
+
+    // 生成 JWT
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+      expiresIn: '1h',
+    })
+
+    res.status(200).json({
+      status: 'success',
+      message: '登入成功',
+      data: {
+        token,
+        user: {
+          id: user.id,
+          username: user.username,
+          email: user.email,
+        },
+      },
+    })
+  } catch (err) {
+    console.log(err)
+    res.status(400).json({
+      status: 'error',
+      message: err.message || '登入失敗',
+    })
+  }
+})
 // #endregion ------------
 
 // #region ------ PUT ------
 // 更新使用者名稱
-// put還沒弄好(先測試修改username及password有成功)
 router.put('/:id', async (req, res) => {
   const userId = req.params.id
   const { username } = req.body
@@ -152,8 +214,11 @@ router.put('/:id/password', async (req, res) => {
   }
 
   try {
+    // 加密新密碼
+    const hashedPassword = await bcrypt.hash(password, 10)
+
     const result = await db.query('UPDATE user SET password = ? WHERE id = ?', [
-      password,
+      hashedPassword,
       userId,
     ])
 
@@ -176,4 +241,6 @@ router.put('/:id/password', async (req, res) => {
     })
   }
 })
+// #endregion ------------
+
 export default router
