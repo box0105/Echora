@@ -2,7 +2,7 @@
 .container-fluid.m-index1 {
   padding-inline: 64px;
   padding-block: 100px 0;
-  @media (max-width: 768px) {
+  @media (max-width: 996px) {
     padding: 0;
     margin: 0;
   }
@@ -11,18 +11,19 @@
 /* section2 */
 .m-sec2-col8 {
   padding-right: 64px;
-  @media (max-width: 768px) {
+  @media (max-width: 996px) {
     padding: 16px;
   }
 }
 .m-sec1-img {
-  @media (max-width: 768px) {
+  @media (max-width: 996px) {
     display: none;
   }
 }
 .m-sec1-mobile {
   display: none;
-  @media (max-width: 768px) {
+  @media (max-width: 996px) {
+    text-align: center;
     display: block;
   }
 }
@@ -36,7 +37,7 @@
   margin: 0;
 }
 .m-sec2-card {
-  @media (max-width: 768px) {
+  @media (max-width: 996px) {
     margin-bottom: 32px;
   }
 }
@@ -45,7 +46,7 @@
   background-color: #f9f9f9;
 }
 .card.mb-3 {
-  @media (max-width: 768px) {
+  @media (max-width: 996px) {
     padding-inline: 16px;
   }
 }

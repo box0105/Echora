@@ -239,11 +239,13 @@ export default function UserPage() {
                 className="show-password"
                 aria-label="顯示密碼"
               >
-                <i className="bi bi-eye show-password-icon" />
+                <i class="fa-solid fa-eye"></i>
               </button>
             </div>
-            <a href="#" className="forgot-password">
+            <Link href="/my-user/forget-password" className="forgot-password">
+              {' '}
               忘記密碼?
+<<<<<<< HEAD
             </a>
 <<<<<<< HEAD
             <button type="submit" className="login-button">
@@ -264,6 +266,9 @@ export default function UserPage() {
               >
                 <i className="bi bi-google social-icon"> 使用 Google 登入 </i>
 =======
+=======
+            </Link>
+>>>>>>> dev
             <button
               type="button"
               className="login-button"

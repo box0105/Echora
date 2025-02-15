@@ -6,16 +6,18 @@ import './_styles/cart-information.scss'
 import React from 'react'
 import { useMyCart } from '@/hooks/use-cart'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 export default function InformationPage() {
   const { totalAmount } = useMyCart()
+  const router = useRouter()
 
   const handleSubmit = async (event) => {
     event.preventDefault()
 
     // 從 localStorage 讀取購物車資料
-    // const cartItems = JSON.parse(localStorage.getItem('cartItem'))
-    
+    const cartItems = localStorage.getItem('cartItem')
+
     const target = event.target
 
     // 從表單中獲取用戶資料
@@ -28,11 +30,12 @@ export default function InformationPage() {
       address: target.address.value,
       shippingMethod: target.shippingMethod.value,
       paymentMethod: target.paymentMethod.value,
+      totalAmount: totalAmount,
     }
 
     const formData = new FormData()
     formData.append('userData', JSON.stringify(userData))
-    // formData.append('cartItems', JSON.stringify(cartItems))
+    formData.append('cartItems', cartItems)
 
     // 發送 POST 請求到後端 API 儲存資料
     try {
@@ -42,7 +45,7 @@ export default function InformationPage() {
       })
 
       if (response.ok) {
-        alert('訂單已提交！')
+        router.push('/my-cart/finish')
       } else {
         alert('訂單提交失敗！')
       }
@@ -57,7 +60,7 @@ export default function InformationPage() {
       <div className="m-background">
         <div className="m-checklist-section1">
           <div className="container-fluid d-flex justify-content-center m-index1">
-            <div className="m-sec1-img w-75">
+            <div className="m-sec1-img w-75 ">
               <img className="img-fluid" src="/images/cart/流程圖2.svg" alt />
             </div>
             <div className="m-sec1-mobile w-75">
@@ -93,7 +96,7 @@ export default function InformationPage() {
                       type="text"
                       placeholder="收件人姓名"
                       id="recipient"
-                      name="name"
+                      name="recipient"
                       required
                     />
                   </div>
