@@ -1,12 +1,11 @@
 'use client'
-import { useRouter } from 'next/navigation'
 
 export default function DataPage() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const cartItems = [
     {
       id: 1,
-      recipient: 'Limited Edition Paranormal Troublemaker Telecaster® Deluxe',
+      name: 'Limited Edition Paranormal Troublemaker Telecaster® Deluxe',
       color: 'white',
       stockStatus: 2,
       image: '/images/cart/card2-img.png',
@@ -15,7 +14,7 @@ export default function DataPage() {
     },
     {
       id: 2,
-      recipient: '(租用) Limited Edition Paranormal Troublemaker Telecaster® Deluxe',
+      name: '(租用) Limited Edition Paranormal Troublemaker Telecaster® Deluxe',
       color: 'white',
       rentDate: '2025-01-02 - 2025-01-04',
       stockStatus: 5,
@@ -24,8 +23,8 @@ export default function DataPage() {
       count: 1,
     },
     {
-      id: 4,
-      recipient: '衛武營國際音樂節-全票',
+      id: 3,
+      name: '衛武營國際音樂節-全票',
       stockStatus: 10,
       image: '/images/cart/card3.png',
       price: 700,
@@ -43,9 +42,9 @@ export default function DataPage() {
     <>
       <button onClick={()=>{
         createLocalstorage()
-        alert("新增成功")
+        alert("加入成功")
       }}>
-        點選新建localstorage
+        加入購物車
       </button>
     </>
   )

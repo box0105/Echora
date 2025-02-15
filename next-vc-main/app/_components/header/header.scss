@@ -163,3 +163,18 @@
     width: 100%;
   }
 }
+
+
+.m-cart{
+  position: relative;
+  .m-circle{
+    font-size: 12px;
+    background-color: #444444;
+    color: white;
+    padding-inline: 5px;
+    border-radius: 50%;
+    position: absolute;
+    top: -8px;
+    right: -10px;
+  }
+}

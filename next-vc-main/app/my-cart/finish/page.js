@@ -26,15 +26,22 @@ export default function FinishPage(props) {
         </div>
         <div className="m-finish-section2">
           <div className="container d-flex flex-column align-items-center">
-            <img className="py-3 mt-5" src="/images/cart/CheckCircle.svg" alt />
-            <div className="h2 gray200">已收到您的訂單</div>
-            <div className="h3 py-2">您可以在會員中心確認訂單狀態</div>
+            <div className="d-flex">
+              <img
+                className="py-3 mt-5"
+                src="/images/cart/CheckCircle.svg"
+                alt
+              />
+              <div className="h2 m-finish-order pt-4 mt-5">已收到您的訂單</div>
+            </div>
+            <h4 className="py-2 gray200">您可以在會員中心確認訂單狀態</h4>
           </div>
         </div>
-        <div className="m-finish-section3 d-flex justify-content-center">
+        <div className="m-finish-section3 d-flex justify-content-center mt-4">
           <div className="m-sec3-tip">
             <h4>完成訂單後的注意事項</h4>
             <hr />
+            <br />
             <h5>1 . 訂單確認</h5>
             <p>
               請您確認訂單內容是否正確，包含商品名稱、數量及價格。如有任何問題或需要協助，請立即聯繫我們的客服人員，我們將竭誠為您服務。
@@ -46,7 +53,7 @@ export default function FinishPage(props) {
           </div>
         </div>
         <div className="m-finish-section4 d-flex justify-content-center">
-          <button type="button" className="btn btn-dark px-5 py-2 mt-lg-5 mt-3">
+          <button type="button" className="btn btn-dark px-5 py-2 mt-lg-5 mt-3 mb-5">
             查看訂單
           </button>
         </div>
