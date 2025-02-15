@@ -53,7 +53,7 @@ export default function ProductListPage(props) {
         })
         products[id].images[product_sku_id] = image
       })
-      console.log(Object.values(products))
+      // console.log(Object.values(products))
       setPdData(Object.values(products))
     } catch (err) {
       console.log(err)

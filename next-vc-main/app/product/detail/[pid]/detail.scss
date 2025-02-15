@@ -9,6 +9,11 @@
 
 /* ---- */
 
+.g-loading {
+  height: 500px;
+  padding: 64px;
+}
+
 /* product details section */
 .g-pd-details {
   /* 向下捲動時header會隱藏的狀態下 */
@@ -131,6 +136,11 @@
   .g-color-balls {
     gap: 12px;
 
+    button {
+      padding: 0;
+      border: none;
+      background-color: rgba(255, 255, 255, 0);
+    }
     /* react改成click時作用*/
     img:hover {
       outline: 2px solid var(--black);
