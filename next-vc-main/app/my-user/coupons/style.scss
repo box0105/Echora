@@ -1,58 +1,60 @@
-
-
-
-
-.image-col:nth-child(even) {
-    // background: url(../../public/images/coupon/coupon-b.svg) no-repeat;
-    background-position: center;
-    /* 圖片置中 */
-    background-size: contain;
-    /* 圖片縮放到容器大小，保持比例 */
-
-    /* 偶數 col 的圖片 */
-}
-
-li {
-    padding: 0;
-    list-style: none;
-    display: flex;
-
-    div .text {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+.k-body{
+    .image-col:nth-child(even) {
+        // background: url(../../public/images/coupon/coupon-b.svg) no-repeat;
+        background-position: center;
+        /* 圖片置中 */
+        background-size: contain;
+        /* 圖片縮放到容器大小，保持比例 */
+    
+        /* 偶數 col 的圖片 */
+    }
+    
+    li {
+        padding: 0;
+        list-style: none;
+        display: flex;
+    
+        div .text {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            position: absolute;
+        }
+    }
+    
+    button {
         position: absolute;
+        top: 48%;
+        right: 1rem;
+        transform: translate(-50%, -50%);
+    
+        @media (max-width: 770px) {
+            right: 8rem;
+        }
+        @media (max-width: 720px) {
+            right: 7rem;
+        }
+        @media (max-width: 680px) {
+            right: 6rem;
+        }
+        @media (max-width: 640px) {
+            right: 5rem;
+        }
+        @media (max-width: 600px) {
+            right: 3rem;
+        }
+        @media (max-width: 540px) {
+            right: 1rem;
+        }
+        @media (max-width: 520px) {
+            right: 1rem;
+        }
+        @media (max-width: 480px) {
+            display: none;
+        }
     }
+    
 }
 
-button {
-    position: absolute;
-    top: 48%;
-    right: 1rem;
-    transform: translate(-50%, -50%);
 
-    @media (max-width: 770px) {
-        right: 8rem;
-    }
-    @media (max-width: 720px) {
-        right: 7rem;
-    }
-    @media (max-width: 680px) {
-        right: 6rem;
-    }
-    @media (max-width: 640px) {
-        right: 5rem;
-    }
-    @media (max-width: 600px) {
-        right: 3rem;
-    }
-    @media (max-width: 540px) {
-        right: 1rem;
-    }
-    @media (max-width: 520px) {
-        right: 1rem;
-    }
-    @media (max-width: 480px) {
-        display: none;
-    }
-}
+

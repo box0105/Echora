@@ -45,7 +45,7 @@ export default function OrderPage() {
 
   return (
     <MemberLayout>
-      <div className="body">
+      <div className="k-body">
         <div className="section-title h4 ">我的優惠券</div>
         <section className="section">
           {/* <div className="gary-line div">
