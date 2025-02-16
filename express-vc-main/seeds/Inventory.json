@@ -1,0 +1,17 @@
+[
+    {
+        "storeId": 1,
+        "rentColorId": 2 ,
+        "stock": 10
+    },
+    {
+        "storeId": 2,
+        "rentColorId": 2 ,
+        "stock": 10
+    },
+    {
+        "storeId": 3,
+        "rentColorId": 2 ,
+        "stock": 10
+    }
+]

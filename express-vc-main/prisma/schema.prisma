@@ -115,14 +115,87 @@ model DiscountType {
   coupons Coupons[]
 }
 
-model Rent {
-  id    Int    @id @default(autoincrement())
-  name  String @unique
-  price Int    @default(0)
-}
-
 model Activity {
   id           Int    @id @default(autoincrement())
   name         String @unique
   ticket_price Int    @default(0)
+}
+
+model Stores {
+  id            Int         @id @default(autoincrement())
+  name          String      @unique
+  address       String      @unique
+  address_phone String      @default("")
+  inventories   Inventory[]
+  rents         Rent[]
+}
+
+model Inventory {
+  id          Int        @id @default(autoincrement())
+  stock       Int?
+  store       Stores     @relation(fields: [storeId], references: [id])
+  storeId     Int
+  rentColor   RentColor? @relation(fields: [rentColorId], references: [id])
+  rentColorId Int?
+  Rent        Rent[]
+}
+
+model Rent {
+  id           Int        @id @default(autoincrement())
+  name         String
+  rentBrandId  Int? // 外鍵，關聯到 Brand 模型
+  rentBrand    RentBrand? @relation(fields: [rentBrandId], references: [id]) // 關聯到 Brand 模型
+  rentColorId  Int?
+  rentColor    RentColor? @relation(fields: [rentColorId], references: [id])
+  stores_id    Int? // 外鍵，關聯到 Stores 模型
+  stores       Stores?    @relation(fields: [stores_id], references: [id]) // 關聯到 Stores 模型
+  price        Decimal?
+  RentList_id  Int? // 外鍵，關聯到 RentList 模型
+  RentList     RentList?  @relation(fields: [RentList_id], references: [id]) // 關聯到 RentList 模型
+  RentImges_id Int? // 外鍵，關聯到 RentImges 模型
+  RentImges    RentImges? @relation(fields: [RentImges_id], references: [id]) // 關聯到 RentImges 模型
+  time_start   DateTime?
+  time_end     DateTime?
+  created_at   DateTime   @default(now()) // 建立時間，預設為當前時間
+  inventory_id Int? // 外鍵，關聯到 Inventory 模型
+  inventory    Inventory? @relation(fields: [inventory_id], references: [id]) // 關聯到 Inventory 模型
+}
+
+model RentBrand {
+  id    Int    @id @default(autoincrement())
+  name  String
+  rents Rent[] // 一個品牌可以有多個租賃物品
+}
+
+model RentColor {
+  id            Int             @id @default(autoincrement())
+  name          String
+  RentItemColor RentItemColor[] // RentColor 可以有多個 RentItemColor
+  rents         Rent[]
+  Inventory     Inventory[]
+}
+
+model RentItemColor {
+  id          Int       @id @default(autoincrement())
+  name        String
+  rentColor   RentColor @relation(fields: [rentColorId], references: [id])
+  rentColorId Int
+}
+
+model RentList {
+  id           Int     @id @default(autoincrement())
+  name         String  @db.VarChar(100)
+  neckPickup   String? @map("neck_pickup") @db.VarChar(100)
+  middlePickup String? @map("middle_pickup") @db.VarChar(100)
+  bridgePickup String? @map("bridge_pickup") @db.VarChar(100)
+  controls     String? @db.VarChar(300)
+  switching    String? @db.VarChar(300)
+  rents        Rent[]
+}
+
+model RentImges {
+  id    Int    @id @default(autoincrement())
+  name  String @db.VarChar(150)
+  image String @db.VarChar(300)
+  rents Rent[]
 }

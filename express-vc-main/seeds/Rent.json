@@ -1,12 +1,12 @@
-[
-    {
-      "id": 1,
-      "name": "浮現祭",
-      "price": 500
-    },
-    {
-      "id": 2,
-      "name": "共生音樂節",
-      "price": 1000
-    }
-  ]
+{
+  "name": "租賃物品名稱",
+  "rentBrandId": 1, 
+  "rentColorId": 2, 
+  "stores_id": 3, 
+  "price": 1000, 
+  "RentList_id": 4,
+  "RentImges_id": 5, 
+  "time_start": "2024-07-27T10:00:00.000Z", 
+  "time_end": "2024-08-03T10:00:00.000Z", 
+  "inventory_id": 6 
+}

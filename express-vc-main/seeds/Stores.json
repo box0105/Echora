@@ -1,0 +1,18 @@
+[
+    {
+        "name": "台北店",
+        "address": "商店地址",
+        "address_phone": "商店電話號碼"
+      },
+      {
+        "name": "台中店",
+        "address": "商店地址",
+        "address_phone": "商店電話號碼"
+      },
+      {
+        "name": "高雄店",
+        "address": "商店地址",
+        "address_phone": "商店電話號碼"
+      }
+]
+  

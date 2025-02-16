@@ -18,27 +18,75 @@ router.get('/', async (req, res) => {
     errorResponse(res, error)
   }
 })
-// router prefix: /api/rent/search
-router.get("/search",async (req, res) => {
-  const {q} = req.query;
-  try{
-    if(!q)throw new Error("沒有搜尋參數");
+// 修改后的 /api/rent/search 路由
+router.get('/search', async (req, res) => {
+  try {
+    let sql = 'SELECT * FROM `rent` WHERE 1=1 ' // 起始 SQL，1=1 保证 WHERE 子句始终有效
+    const params = []
+    const {
+      nameLike,
+      categoryIds,
+      priceGte,
+      priceLte,
+      storesName,
+      storesAddress,
+      color,
+      // ... 其他筛选条件
+    } = req.query
 
-    const sql = "SELECT * FROM `rent` WHERE `name` LIKE ?";
+    if (nameLike) {
+      sql += 'AND `name` LIKE ? '
+      params.push(`%${nameLike}%`)
+    }
 
-    const [rows] = await db.execute(sql, [`${q}%`]);
+    if (categoryIds) {
+      const ids = JSON.parse(categoryIds) // 解析 JSON 数组
+      if (Array.isArray(ids) && ids.length > 0) {
+        sql += 'AND `category_id` IN (?) ' // 使用 IN 查询
+        params.push(ids)
+      }
+    }
 
-  res.status(200).json({
-    status: "success",
-    data: rows,
-    message: `搜尋成功, 條件${q}`
-  })
-  }catch(err){
-    console.log(err);
-    res.status(400).json({
-      status: "error",
-      message: err.message?err.message:"搜尋失敗"
+    if (priceGte) {
+      sql += 'AND `price` >= ? '
+      params.push(priceGte)
+    }
+
+    if (priceLte) {
+      sql += 'AND `price` <= ? '
+      params.push(priceLte)
+    }
+
+    if (storesName) {
+      sql +=
+        'AND `stores_id` IN (SELECT `id` FROM `stores` WHERE `name` LIKE ?) ' // 子查询
+      params.push(`%${storesName}%`)
+    }
+
+    if (storesAddress) {
+      sql +=
+        'AND `stores_id` IN (SELECT `id` FROM `stores` WHERE `address` LIKE ?) ' // 子查询
+      params.push(`%${storesAddress}%`)
+    }
+
+    if (color) {
+      sql +=
+        'AND `rent_color_id` IN (SELECT `id` FROM `rent_color` WHERE `name` LIKE ?) ' // 子查询
+      params.push(`%${color}%`)
+    }
+
+    // ... 其他筛选条件，类似 storesName 和 storesAddress
+
+    const [rows] = await db.execute(sql, params)
+
+    res.status(200).json({
+      status: 'success',
+      data: rows,
+      message: '搜尋成功',
     })
+  } catch (err) {
+    console.error(err)
+    errorResponse(res, err) // 使用 utils.js 中的错误处理函数
   }
 })
 // router prefix: /api/rent/:pid
@@ -60,8 +108,5 @@ router.get('/:pid', async (req, res) => {
     })
   }
 })
-
-
-
 
 export default router
