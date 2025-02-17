@@ -1,11 +1,6 @@
 'use client'
 
 import '../_styles/login_signup.scss'
-<<<<<<< HEAD
-import { useState } from 'react'
-import { useUserRegister } from '@/services/rest-client/use-user'
-import { useAuth } from '@/hooks/use-auth'
-=======
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import { useState, useEffect } from 'react'
 import { useUserRegister } from '@/services/rest-client/use-user'
@@ -13,21 +8,9 @@ import { useAuth } from '@/hooks/use-auth'
 import useFirebase from '../_hooks/use-firebase'
 import Link from 'next/link'
 import { useAuthGoogleLogin } from '@/services/rest-client/use-user'
-<<<<<<< HEAD
->>>>>>> 7c65590620b8dc8efd648a4dcc2b7ec5b85d79d1
-
-// newUser資料範例(物件) 註: name改為在profile資料表中
-// {
-//     "username":"ginny",
-//     "password":"123456",
-//     "name":"金妮",
-//     "email":"ginny@test.com",
-// }
-=======
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useRouter } from 'next/navigation'
->>>>>>> dev
 
 export default function RegisterPage() {
   const { register, isMutating, isError } = useUserRegister()
@@ -48,8 +31,6 @@ export default function RegisterPage() {
     setIsClient(true)
   }, [])
 
-<<<<<<< HEAD
-=======
   // Firebase Google 登入
   const { loginGoogle, logoutFirebase } = useFirebase()
   const { googleLogin } = useAuthGoogleLogin()
@@ -77,7 +58,6 @@ export default function RegisterPage() {
     })
   }
 
->>>>>>> 7c65590620b8dc8efd648a4dcc2b7ec5b85d79d1
   // 輸入帳號 密碼用
   const handleFieldChange = (e) => {
     setUserInput({ ...userInput, [e.target.name]: e.target.value })
@@ -133,14 +113,10 @@ export default function RegisterPage() {
     <>
       <div className="login-container">
         <div className="login-main">
-<<<<<<< HEAD
-          <span className="back"> &lt;返回 </span>
-=======
           <Link href="/">
             <span className="back"> &lt;返回 </span>
           </Link>
 
->>>>>>> 7c65590620b8dc8efd648a4dcc2b7ec5b85d79d1
           <img
             src="../images/user/login.jpg"
             alt="Login page hero illustration"
@@ -189,11 +165,8 @@ export default function RegisterPage() {
                 type="email"
                 name="email"
                 id="email"
-<<<<<<< HEAD
-=======
                 value={userInput.email}
                 onChange={handleFieldChange}
->>>>>>> 7c65590620b8dc8efd648a4dcc2b7ec5b85d79d1
                 className="form-input"
                 placeholder="電子郵件"
                 required
@@ -208,11 +181,8 @@ export default function RegisterPage() {
                 type={showPassword ? 'text' : 'password'}
                 name="password"
                 id="password"
-<<<<<<< HEAD
-=======
                 value={userInput.password}
                 onChange={handleFieldChange}
->>>>>>> 7c65590620b8dc8efd648a4dcc2b7ec5b85d79d1
                 className="form-input"
                 placeholder="密碼"
                 required
@@ -240,21 +210,6 @@ export default function RegisterPage() {
               繼續
             </button>
             <div className="social-login">
-<<<<<<< HEAD
-              {/* <button
-        type="button"
-        class="social-button"
-        aria-label="使用 Apple 登入"
-      >
-        <i class="bi bi-apple social-icon"></i>
-      </button> */}
-              <button
-                type="button"
-                className="social-button"
-                aria-label="使用 Google 登入"
-              >
-                <i className="bi bi-google social-icon"> 使用 Google 登入 </i>
-=======
               <button
                 type="button"
                 className="social-button"
@@ -262,17 +217,12 @@ export default function RegisterPage() {
                 aria-label="使用 Google 登入"
               >
                 <i className="fa-brands fa-google me-2"></i> 使用 Google 登入
->>>>>>> 7c65590620b8dc8efd648a4dcc2b7ec5b85d79d1
               </button>
             </div>
             <div className="signup-prompt">
               已經有帳號?
               <span className="signup-link" tabIndex={0} role="button">
-<<<<<<< HEAD
-                登入
-=======
                 <Link href="/my-user">登入</Link>
->>>>>>> 7c65590620b8dc8efd648a4dcc2b7ec5b85d79d1
               </span>
             </div>
           </form>
