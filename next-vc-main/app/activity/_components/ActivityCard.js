@@ -4,8 +4,8 @@ import Image from 'next/image';
 export default function ActivityCard({ activity }) {
     return (
         <div className="col">
-            <div className="card">
-                <div className="row g-0">
+            <div className="card h-100">
+                <div className="row g-0 h-100">
                     {/* card-image */}
                     <div className="col-4 col-lg-6">
                         <Image
@@ -22,7 +22,7 @@ export default function ActivityCard({ activity }) {
                                 <h4 className="b-sm-none">{activity.category}</h4>
                                 <h2 className="card-title"><a href="act-detail.html">{activity.title}</a></h2>
                                 <div className="h5">日期 : {activity.date}</div>
-                                <h5 className="card-text b-tag">{activity.genre}</h5>
+                                <h6 className="card-text b-tag">{activity.genre}</h6>
                                 <h6 className="card-text ">票價 : {activity.price}</h6>
                                 <h6 className="b-sm-none">地點 : {activity.location}</h6>
                             </div>

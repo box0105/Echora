@@ -3,6 +3,7 @@ import React from 'react';
 import FormCheckbox from './FormCheckbox';
 import FormDate from './FormDate';
 import FormSelect from './FormSelect';
+import PriceSlider from './PriceSlider';
 
 export default function FilterPanel({ isOpen, onClose }) {
     // 控制 FilterPanel 開啟關閉
@@ -22,29 +23,15 @@ export default function FilterPanel({ isOpen, onClose }) {
             </div>
 
             <form className="w-100 b-filter-conds d-flex flex-column align-items-start align-self-stretch">
-                <FormCheckbox
-                    title="活動類型"
-                    options={categories}
-                />
-
-                <FormCheckbox
-                    title="音樂類型"
-                    options={genres}
-                />
-
-                <FormDate title="活動時間"/>
-                
+                <FormCheckbox title="活動類型" options={categories} />
+                <FormCheckbox title="音樂類型" options={genres} />
+                <FormDate title="活動時間" />
                 <FormSelect title="城市" options={city} />
-
-                {/* 價錢 ticket_price */}
-                <div className="d-flex flex-column align-self-stretch">
-                    <h4>價錢</h4>
-                    <div className="d-flex flex-column align-items-center gap-4">
-                        <input type="range" className="form-range" min={0} max={100} step={10} />
-                        <div className="h6">低於 NT$ 79,000</div>
-                    </div>
-                    <button className="b-btn b-load-btn">顯示商品</button>
-                </div>
+                <PriceSlider max={5000} percent={0.5} />
+                <button className="b-btn b-load-btn" onClick={() => {
+                    onClose();
+                    document.querySelector(".b-title")?.scrollIntoView({ behavior: "smooth" });
+                }}>顯示商品</button>
             </form>
         </div>
     )

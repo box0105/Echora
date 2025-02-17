@@ -1,6 +1,7 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '../_styles/bootstrap.scss'
 import './_styles/act.scss'
@@ -8,9 +9,11 @@ import './_styles/act-font.scss'
 
 import ActivityList from './_components/ActivityList';
 import FilterPanel from './_components/FilterPanel';
+import HeroSection from './_components/HeroSection';
+import Title from './_components/Title';
 
 export default function ActivityPage() {
-  // 測試資料
+  // test data
   const activityData = [
     {
       id: 1,
@@ -24,7 +27,7 @@ export default function ActivityPage() {
     },
     {
       id: 2,
-      title: '裂變景觀 jonCates 與 Jason Cole Mager雙人展',
+      title: '新北耶誕城',
       category: '音樂活動',
       date: '114/02/10 ~ 114/02/12',
       genre: '搖滾樂',
@@ -33,35 +36,24 @@ export default function ActivityPage() {
       image: '/images/activity/共生音樂節/main-2.jpg'
     }
   ];
+  const images = ["cover.jpeg", "main-1.jpg", "main-2.jpg"];
 
-  // 篩選視窗開關
-  const [isFilterOpen, setIsFilterOpen] = useState(true);
+  // Filter Switch
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   return (
     <>
       <div className="container-fluid">
-        {/* hero */}
-        <div className="b-hero position-relative">
-          <div className={`${['b-text']} position-absolute b-sm-none`}>
-            <div className={`${['b-hero-title']}`}>2025 全台音樂祭</div>
-            <div className="b-hero-subtitle">一同締造屬於你的冒險拾光</div>
-          </div>
-        </div>
+        <HeroSection title="2025 全台音樂祭" subTitle="一同締造屬於你的冒險拾光" images={images} />
+        
+        <Title title="音樂祭" subTitle="流行音樂"/>
 
-        {/* title */}
-        <div className="b-container">
-          <div className="b-title d-flex align-items-baseline">
-            <h1 className="mb-0">音樂祭</h1>
-            <h4 className="mb-0">/ 流行音樂</h4>
-          </div>
-        </div>
-
-        {/* filter & order */}
+        {/* filter & order 之後套關關的 */}
         <div className="b-filter-bar">
           <div className="b-container d-flex justify-content-between">
             <h4>04 活動</h4>
             <div className="b-filters d-flex align-items-baseline">
-              <button className="b-filter b-btn-unstyled d-flex align-items-baseline">
+              <button className="b-filter b-btn-unstyled d-flex align-items-baseline" onClick={() => setIsFilterOpen(!isFilterOpen)}>
                 <i className="fa-solid fa-filter" />
                 <h4>篩選</h4>
               </button>
