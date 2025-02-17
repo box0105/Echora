@@ -38,11 +38,11 @@ class LineLogin {
     ]
 
     // Check if required parameters are all set.
-    required_params.map((param) => {
-      if (!options[param]) {
-        throw new Error(`Required parameter ${param} is missing.`)
-      }
-    })
+    // required_params.map((param) => {
+    //   if (!options[param]) {
+    //     throw new Error(`Required parameter ${param} is missing.`)
+    //   }
+    // })
 
     // Check if configured parameters are all valid.
     Object.keys(options).map((param) => {
