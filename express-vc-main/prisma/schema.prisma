@@ -175,14 +175,23 @@ model Coupon {
 model CouponType {
   id       Int    @id @default(autoincrement())
   category String
-  // coupons  Coupon[]
+  // coupon  Coupon[]
 }
 
 model DiscountType {
   id   Int    @id @default(autoincrement())
   name String
-  // coupons Coupon[]
+  // coupon Coupon[]
 }
+
+model UserCoupons {
+  id       Int     @id @default(autoincrement())
+  userId   Int
+  couponId Int 
+  claimed  Boolean @default(true)
+}
+
+
 
 model Rent {
   id    Int    @id @default(autoincrement())
