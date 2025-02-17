@@ -117,17 +117,17 @@
   }
 }
 
-.b-swipper {
+.b-swiper {
   height: 520px;
   opacity: 0.9;
 
-  .b-swipper-text {
+  .b-swiper-text {
     top: 50%;
     left: 6%;
     transform: translateY(-50%);
     z-index: 5;
 
-    .b-swipper-title {
+    .b-swiper-title {
       color: var(--grey50);
       font-family: Poppins;
       font-size: 3.5rem;
@@ -135,7 +135,7 @@
       text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.9);
     }
 
-    .b-swipper-subtitle {
+    .b-swiper-subtitle {
       color: var(--grey50);
       font-family: 'Noto Sans TC';
       font-size: 2.25rem;
