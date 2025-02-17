@@ -19,17 +19,27 @@ router.get('/', async (req, res) => {
 })
 
 // user的優惠券
-router.get('/users/:userId/coupons', async (res, req) => {
+router.get('/:userId', async (req, res) => {
   const userId = Number(req.params.userId)
+
   const [results] = await db.query(
-    `SELECT coupons FROM users WHERE id = ${userId}`
+    `SELECT coupons FROM user WHERE id = ${userId}`
   )
   const result = results[0]
-  res.json({ status: 'success', data: { result } })
+  try {
+    const user = await db.query(`SELECT user FROM user WHERE id = ${userId}`)
+    if (!user) throw new Error('請先登入!')
+    res.json({ status: 'success', data: { result } })
+
+  } catch (err) {
+    console.log(err);
+    res.json({ status: 'fail', message: "有錯誤" })
+
+  }
 })
 
 // user取得優惠券
-router.post('/users/userId/coupons', async (res, req) => {
+router.post('/:userId', async (req, res) => {
   // const {userId} = req.params; 如果ID有在路徑 可以用此
   const userId = Number(req.params.userId)
   const { couponId } = req.body //送來的資料要包含ID
@@ -57,7 +67,7 @@ router.post('/users/userId/coupons', async (res, req) => {
     //  await coupon.update({ usersClaimed: coupon.usersClaimed + 1 });
     // 更新使用者已使用優惠券的狀態
     //await db.query(UPDATE user_coupons SET isDelete = 1 WHERE user_id = 'user_id' AND coupon_id = 'coupon_id')
-
+    console.log(getCoupon);
     res
       .status(200)
       .josn({ status: 'success', message: '優惠券已成功添加到您的帳戶' })
@@ -67,8 +77,14 @@ router.post('/users/userId/coupons', async (res, req) => {
   }
 })
 // user刪除優惠券
-router.get('/users/userId/coupons', (res, req) => {})
+router.delete('/:userId', (req, res) => { })
 // 使用優惠券
-router.get('/users/userId/coupons', (res, req) => {})
+router.put('/:userId', async (req, res) => {
+  const { couponCode, cartItem } = req.body // 如何取得要溝通
+
+  if (!cartItem) throw new Error("沒有可以使用優惠券的商品!")
+  const usedcoupon = await db.query(`UPDATE user_coupons SET isDelete = 1 WHERE user_id = 'user_id AND coupon_code = 'couponCode`)
+})
+
 
 export default router
