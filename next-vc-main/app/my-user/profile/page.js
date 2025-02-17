@@ -9,6 +9,7 @@ import Link from 'next/link'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import PreviewUploadImage from './_components/preview-upload-image'
+import { jwtDecode } from 'jwt-decode'
 import TWZipCode from './_components/tw-zipcode'
 import { Oval } from 'react-loader-spinner'
 
@@ -24,12 +25,32 @@ const initUserProfile = {
 }
 
 export default function ProfilePage() {
+  const [userProfile, setUserProfile] = useState(initUserProfile)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen)
   }
 
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const res = await fetch('http://localhost:3005/api/users/1') // 替換為實際的用戶 ID
+        const resData = await res.json()
+        // console.log('API 回傳資料:', resData)
+        if (resData.status === 'success') {
+          setUserProfile(resData.data)
+          // console.log(resData.data)
+        } else {
+          toast.error(`獲取會員資料失敗: ${resData.message}`)
+        }
+      } catch (err) {
+        toast.error(`獲取會員資料失敗: ${err.message}`)
+      }
+    }
+
+    fetchUserProfile()
+  }, [])
   return (
     <>
       <MemberLayout>
@@ -40,27 +61,17 @@ export default function ProfilePage() {
           <div className="a-form-container">
             <div className="left">
               <div className="form-group">
-                <label htmlFor="lastname" className="form-label">
-                  姓氏
+                <label htmlFor="username" className="form-label">
+                  姓名
                 </label>
                 <input
                   type="text"
-                  id="lastname"
+                  id="username"
                   className="form-control"
-                  defaultValue="Chen"
+                  defaultValue={userProfile?.username || ''}
                 />
               </div>
-              <div className="form-group">
-                <label htmlFor="firstname" className="form-label">
-                  名字
-                </label>
-                <input
-                  type="text"
-                  id="firstname"
-                  className="form-control"
-                  defaultValue="Mike"
-                />
-              </div>
+
               <div className="form-group">
                 <label htmlFor="email" className="form-label">
                   Email
@@ -69,7 +80,7 @@ export default function ProfilePage() {
                   type="email"
                   id="email"
                   className="form-control"
-                  defaultValue="1234567@gmail.com"
+                  defaultValue={userProfile?.email || ''}
                   readOnly
                 />
               </div>
@@ -83,14 +94,19 @@ export default function ProfilePage() {
                       type="password"
                       id="password"
                       className
-                      value="******"
+                      defaultValue={userProfile?.password || ''}
                       readOnly
                     >
                       ******
                     </div>
                   </div>
                   <button type="button" className="change-password">
-                    修改
+                    <Link
+                      href="/my-user/profile-password"
+                      className="change-password"
+                    >
+                      修改
+                    </Link>
                   </button>
                 </div>
               </div>
