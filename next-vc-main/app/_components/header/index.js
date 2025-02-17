@@ -1,5 +1,5 @@
 'use client'
-import './header.scss'
+import styles from './header.module.scss'
 import CartOffcanvas from '../cart-offcanvas'
 
 import { useState } from 'react'
@@ -10,24 +10,24 @@ export default function Header() {
 
   return (
     <>
-      <nav className="g-header px-modified">
+      <nav className={`${styles['g-header']} ${styles['px-modified']}`}>
         <div className="container-fluid">
-          <div className="g-nav-top row">
-            <div className="g-logo col-lg-4 col-6 order-1 ps-0">
-              <img className="g-pc-logo" src="/images/header/logo.svg" />
-              <img className="g-mb-logo" src="/images/header/logo-mb.svg" />
+          <div className={`${styles['g-nav-top']} row`}>
+            <div className={`${styles['g-logo']} col-lg-4 col-6 order-1 ps-0`}>
+              <img className={styles['g-pc-logo']} src="/images/header/logo.svg" />
+              <img className={styles['g-mb-logo']} src="/images/header/logo-mb.svg" />
             </div>
             <form
               action
-              className="col-lg-4 col-12 order-lg-2 order-3 d-flex align-items-center  p-0 mt-lg-0 mt-3"
+              className="col-lg-4 col-12 order-lg-2 order-3 d-flex align-items-center p-0 mt-lg-0 mt-3"
             >
               <input
                 type="text"
-                className="form-control focus-ring g-search-field"
+                className={`form-control focus-ring ${styles['g-search-field']}`}
                 placeholder="搜尋商品關鍵字"
               />
             </form>
-            <div className="g-right-menu d-flex gap-4 col-lg-4 col-6 order-2 d-flex justify-content-end align-items-center p-0">
+            <div className={`${styles['g-right-menu']} d-flex gap-4 col-lg-4 col-6 order-2 d-flex justify-content-end align-items-center p-0`}>
               <a href="">
                 <img src="/images/header/heart.svg" />
               </a>
@@ -41,12 +41,12 @@ export default function Header() {
                 }}>
                 <img src="/images/header/cart.svg" />
               </a>
-              <button className="hamburger" onClick={() => { setMenuOpen(true) }}>
+              <button className={styles.hamburger} onClick={() => { setMenuOpen(true) }}>
                 <img src="/images/header/hamburger.svg" />
               </button>
             </div>
           </div>
-          <div className="g-nav-bottom">
+          <div className={styles['g-nav-bottom']}>
             <ul className="d-flex justify-content-center gap-5 list-unstyled">
               <li>
                 <a href>
@@ -89,12 +89,12 @@ export default function Header() {
         </div>
       </nav>
       {/* hamburger menu bar */}
-      <section className={`g-menu-bar-sec ${menuOpen ? "active" : ""}`}>
+      <section className={`${styles['g-menu-bar-sec']} ${menuOpen ? styles.active : ""}`}>
         <div className="container-fluid p-0">
-          <div className="g-menu-bar">
+          <div className={styles['g-menu-bar']}>
             <div className="d-flex justify-content-between pb-4">
               <img className="ps-3" src="/images/header/logo-mb.svg" />
-              <img className="g-x" width="16px" src="/images/header/x.svg" onClick={() => { setMenuOpen(false) }} />
+              <img className={styles['g-x']} width="16px" src="/images/header/x.svg" onClick={() => { setMenuOpen(false) }} />
             </div>
             <ul className="list-unstyled">
               <li>
