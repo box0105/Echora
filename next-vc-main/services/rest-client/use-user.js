@@ -1,5 +1,4 @@
 import { useMutation, useQuery, fetcher } from './use-fetcher'
-import axios from 'axios'
 import { apiURL, isDev } from '@/config'
 
 export const defaultUser = {

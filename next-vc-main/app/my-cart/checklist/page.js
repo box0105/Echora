@@ -6,15 +6,17 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 
 import CartList from './_components/cart-list'
 import { useMyCart } from '@/hooks/use-cart'
-import Link from 'next/link';
-
-
+import { useRouter } from 'next/navigation'
 
 export default function ChecklistPage() {
-  const { cartItems,
-    totalAmount,
-    totalQty,
-  } = useMyCart()
+  const { cartItems, totalAmount, totalQty } = useMyCart()
+  const router = useRouter()
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    router.replace('/my-cart/information')
+  }
+
   return (
     <>
       <div className="m-background">
@@ -32,7 +34,7 @@ export default function ChecklistPage() {
             </div>
           </div>
         </div>
-        <div className="m-checklist-section2 w-100">
+        <form onSubmit={handleSubmit} className="m-checklist-section2 w-100">
           <div className="container-fluid m-index1 row">
             <div className="m-sec2-col8 col-lg-8 col-12">
               <div className="d-flex justify-content-between align-items-end py-4">
@@ -74,14 +76,12 @@ export default function ChecklistPage() {
                 <h4 className="h4">總計 :</h4>
                 <h4 className="h4">NT$ {totalAmount}</h4>
               </div>
-              <Link href="/my-cart/information">
-                <button type="button" className="btn btn-dark w-100 mt-5">
-                  結帳
-                </button>
-              </Link>
+              <button type="submit" className="btn btn-dark w-100 mt-5">
+                結帳
+              </button>
             </div>
           </div>
-        </div>
+        </form>
         <div className="m-section3 w-100">
           <div className="container-fluid m-index">
             <div className="m-index-title">

@@ -6,7 +6,7 @@ import './_styles/cart-information.scss'
 import React from 'react'
 import { useMyCart } from '@/hooks/use-cart'
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams,useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { isDev, apiURL } from '@/config'
@@ -15,6 +15,8 @@ import { isDev, apiURL } from '@/config'
 export default function InformationPage() {
   // 取得網址參數，例如: ?transactionId=xxxxxx/
   const searchParams = useSearchParams()
+  const router = useRouter()
+
 
   if (isDev) console.log('transactionId', searchParams.get('transactionId'))
 
@@ -41,7 +43,7 @@ export default function InformationPage() {
     if (resData.status === 'success') {
       if (window.confirm('確認要導向至LINE Pay進行付款?')) {
         //導向至LINE Pay付款頁面
-        window.location.href = resData.data.paymentUrl
+        router.replace(window.location.href = resData.data.paymentUrl)
       }
     } else {
       toast.error('付款失敗')
