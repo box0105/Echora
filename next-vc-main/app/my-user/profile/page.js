@@ -14,12 +14,10 @@ import TWZipCode from './_components/tw-zipcode'
 import { Oval } from 'react-loader-spinner'
 
 const initUserProfile = {
-  name: '',
-  bio: '',
+  username: '',
+  email: '',
   sex: '',
   phone: '',
-  avatar: '',
-  birth: '',
   postcode: '',
   address: '',
 }
@@ -120,7 +118,7 @@ export default function ProfilePage() {
                   type="text"
                   id="phone"
                   className="form-control"
-                  defaultValue
+                  defaultValue={userProfile?.phone || ''}
                   placeholder="請輸入電話號碼"
                 />
               </div>
@@ -132,7 +130,7 @@ export default function ProfilePage() {
                   type="text"
                   id="address"
                   className="form-control"
-                  defaultValue
+                  defaultValue={userProfile?.address || ''}
                   placeholder="請輸入地址"
                 />
               </div>
@@ -144,7 +142,7 @@ export default function ProfilePage() {
                   type="text"
                   id="postcode"
                   className="form-control"
-                  defaultValue
+                  defaultValue={userProfile?.postcode || ''}
                   placeholder="請輸入郵遞區號"
                 />
               </div>
