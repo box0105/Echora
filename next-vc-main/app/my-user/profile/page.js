@@ -33,7 +33,7 @@ export default function ProfilePage() {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const res = await fetch('http://localhost:3005/api/users/1') // 替換為實際的用戶 ID
+        const res = await fetch(`http://localhost:3005/api/users/4`) // 替換為實際的用戶 ID
         const resData = await res.json()
         // console.log('API 回傳資料:', resData)
         if (resData.status === 'success') {
@@ -153,9 +153,10 @@ export default function ProfilePage() {
                 <label className="gender-label">
                   <input
                     type="radio"
-                    name="gender"
-                    defaultValue="female"
+                    name="sex"
+                    value="female"
                     className="visually-hidden"
+                    checked={userProfile.sex === 'female'}
                   />
                   <span className="gender-radio" />
                   <span>女</span>
@@ -163,9 +164,10 @@ export default function ProfilePage() {
                 <label className="gender-label">
                   <input
                     type="radio"
-                    name="gender"
-                    defaultValue="male"
+                    name="sex"
+                    value="male"
                     className="visually-hidden"
+                    checked={userProfile.sex === 'male'}
                   />
                   <span className="gender-radio" />
                   <span>男</span>
@@ -173,9 +175,10 @@ export default function ProfilePage() {
                 <label className="gender-label">
                   <input
                     type="radio"
-                    name="gender"
-                    defaultValue="other"
+                    name="sex"
+                    value="other"
                     className="visually-hidden"
+                    checked={userProfile.sex === 'other'}
                   />
                   <span className="gender-radio" />
                   <span>不便透露</span>
