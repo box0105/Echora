@@ -91,8 +91,8 @@ router.delete('/:userId/:couponId', async (req, res) => {
   const userId = req.params.userId
 
   try {
-    const deletecoupon = await db.query("DELETE FROM usercoupons WHERE userId = ? AND couponId = ?",
-      [userId, couponId])
+    // const deletecoupon = await db.query("DELETE FROM usercoupons WHERE userId = ? AND couponId = ?",
+    //   [userId, couponId])
     res.status(200).json({ status: 'success', message: '刪除成功!' })
   } catch (err) {
     console.log(err);
