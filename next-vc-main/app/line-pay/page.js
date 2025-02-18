@@ -154,13 +154,6 @@ export default function LinePayPage() {
     </>
   )
 
-  const confirmOrder = (
-    <>
-      <h2>最後付款確認結果(付款成功): </h2>
-      <p>{JSON.stringify(result)}</p>
-    </>
-  )
-
   if (loading)
     return (
       <>
@@ -172,7 +165,6 @@ export default function LinePayPage() {
 
   return (
     <>
-
     </>
   )
 }

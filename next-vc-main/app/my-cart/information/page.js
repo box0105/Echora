@@ -8,14 +8,12 @@ import { useMyCart } from '@/hooks/use-cart'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useSearchParams } from 'next/navigation'
-import { toast} from 'react-toastify'
+import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { isDev, apiURL } from '@/config'
 // 載入loading元件
 
 export default function InformationPage() {
-
-  
   // 取得網址參數，例如: ?transactionId=xxxxxx/
   const searchParams = useSearchParams()
 
@@ -74,6 +72,10 @@ export default function InformationPage() {
       shippingMethod: target.shippingMethod.value,
       paymentMethod: target.paymentMethod.value,
       totalAmount: totalAmount,
+    }
+
+    if (userData.paymentMethod == 'linePay') {
+      goLinePay()
     }
 
     const formData = new FormData()
@@ -327,11 +329,7 @@ export default function InformationPage() {
                 {/* <div className="row row-cols-1 pt-4 d-md-block d-none">
                 <CartList cartItems={cartItems} />
               </div> */}
-                <button
-                  type="submit"
-                  className="btn btn-dark w-100 mt-5"
-                  onClick={goLinePay}
-                >
+                <button type="submit" className="btn btn-dark w-100 mt-5">
                   下訂單
                 </button>
                 <Link href="/my-cart/checklist">
