@@ -32,7 +32,7 @@ export default function CartItem({ item }) {
                     <img src="/images/cart/box-icon-red.svg" alt="stock icon" />
                   )}
                   <h5 className="ps-2">
-                    {item.stockStatus >= item.count ? '有庫存' : '庫存不足'}
+                    {item.stockStatus > item.count ? '有庫存' : '已達庫存上限'}
                   </h5>
                 </div>
                 <div className="d-flex align-items-end p-lg-1 pb-lg-1 py-2">
@@ -52,7 +52,7 @@ export default function CartItem({ item }) {
                     <div type="button" className="btn">
                       {item.count}
                     </div>
-                    <button type="button" className="btn" onClick={() => { onIncrease(item.id) }}>
+                    <button type="button" className="btn" onClick={() => { if(item.stockStatus > item.count){onIncrease(item.id)} }}>
                       <i className="fa-solid fa-plus fa-fw" />
                     </button>
                   </div>
