@@ -21,72 +21,17 @@ router.get('/', async (req, res) => {
 // 修改后的 /api/rent/search 路由
 router.get('/search', async (req, res) => {
   try {
-    let sql = 'SELECT * FROM `rent` WHERE 1=1 ' // 起始 SQL，1=1 保证 WHERE 子句始终有效
-    const params = []
-    const {
-      nameLike,
-      categoryIds,
-      priceGte,
-      priceLte,
-      storesName,
-      storesAddress,
-      color,
-      // ... 其他筛选条件
-    } = req.query
-
-    if (nameLike) {
-      sql += 'AND `name` LIKE ? '
-      params.push(`%${nameLike}%`)
-    }
-
-    if (categoryIds) {
-      const ids = JSON.parse(categoryIds) // 解析 JSON 数组
-      if (Array.isArray(ids) && ids.length > 0) {
-        sql += 'AND `category_id` IN (?) ' // 使用 IN 查询
-        params.push(ids)
-      }
-    }
-
-    if (priceGte) {
-      sql += 'AND `price` >= ? '
-      params.push(priceGte)
-    }
-
-    if (priceLte) {
-      sql += 'AND `price` <= ? '
-      params.push(priceLte)
-    }
-
-    if (storesName) {
-      sql +=
-        'AND `stores_id` IN (SELECT `id` FROM `stores` WHERE `name` LIKE ?) ' // 子查询
-      params.push(`%${storesName}%`)
-    }
-
-    if (storesAddress) {
-      sql +=
-        'AND `stores_id` IN (SELECT `id` FROM `stores` WHERE `address` LIKE ?) ' // 子查询
-      params.push(`%${storesAddress}%`)
-    }
-
-    if (color) {
-      sql +=
-        'AND `rent_color_id` IN (SELECT `id` FROM `rent_color` WHERE `name` LIKE ?) ' // 子查询
-      params.push(`%${color}%`)
-    }
-
-    // ... 其他筛选条件，类似 storesName 和 storesAddress
-
-    const [rows] = await db.execute(sql, params)
-
-    res.status(200).json({
-      status: 'success',
-      data: rows,
-      message: '搜尋成功',
-    })
+    let sql = `
+      SELECT rent.*, stores.*
+      FROM rent
+      JOIN stores ON rent.stores_id = stores.id
+      WHERE 1=1
+    `
+    const [rows] = await db.execute(sql, )
+    res.status(200).json({ status: 'success', data: rows, message: '搜尋成功' })
   } catch (err) {
-    console.error(err)
-    errorResponse(res, err) // 使用 utils.js 中的错误处理函数
+    console.error('錯誤:', err)
+    res.status(500).json({ status: 'error', message: '伺服器錯誤' })
   }
 })
 // router prefix: /api/rent/:pid

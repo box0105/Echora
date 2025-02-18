@@ -1,14 +1,63 @@
 [
-    {
-        "name": "jshine"
-    },
-    {
-        "name": "sunrise wood"
-    },
-    {
-        "name": "grey white"
-    },
-    {
-        "name": "midnight"
-    }
+  {
+    "rentId": 1,
+    "rentColorId": 1,
+    "stock": 10
+  },
+  {
+    "rentId": 1,
+    "rentColorId": 2,
+    "stock": 5
+  },
+  {
+    "rentId": 2,
+    "rentColorId": 2,
+    "stock": 10
+  },
+
+  {
+    "rentId": 2,
+    "rentColorId": 3,
+    "stock": 5
+  },
+  {
+    "rentId": 3,
+    "rentColorId": 3,
+    "stock": 5
+  },
+  {
+    "rentId": 3,
+    "rentColorId": 1,
+    "stock": 10
+  },
+  {
+    "rentId": 4,
+    "rentColorId": 5,
+    "stock": 10
+  },
+  {
+    "rentId": 4,
+    "rentColorId": 4,
+    "stock": 6
+  },
+  {
+    "rentId": 5,
+    "rentColorId": 4,
+    "stock": 10
+  },
+  {
+    "rentId": 5,
+    "rentColorId": 1,
+    "stock": 5
+  },
+  {
+    "rentId": 6,
+    "rentColorId": 4,
+    "stock": 10
+  },
+  {
+    "rentId": 6,
+    "rentColorId": 1,
+    "stock": 5
+  }
 ]

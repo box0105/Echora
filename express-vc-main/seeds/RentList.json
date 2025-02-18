@@ -1,6 +1,6 @@
 [
     {
-      "productId": 1,
+      "rentId": 1,
       "name": "Player II Jaguar®",
       "neckPickup": "Player Series Alnico 2 Jaguar Single-Coil",
       "middlePickup": "",
@@ -9,7 +9,7 @@
       "switching": "3 檔刀型切換開關\n位置 1：僅啟用橋部拾音器\n位置 2：同時啟用橋部與頸部拾音器\n位置 3：僅啟用頸部拾音器"
     },
     {
-      "productId": 2,
+      "rentId": 2,
       "name": "SG Standard Dark Walnut",
       "neckPickup": "490R",
       "middlePickup": "",
@@ -18,7 +18,7 @@
       "switching": "3 檔切換開關"
     },
     {
-      "productId": 3,
+      "rentId": 3,
       "name": "SG Supreme Ebony, 3-Pickup",
       "neckPickup": "Burstbucker Pro",
       "middlePickup": "Burstbucker Mid Pro",
@@ -27,7 +27,7 @@
       "switching": "3 檔切換開關"
     },
     {
-      "productId": 4,
+      "rentId": 4,
       "name": "70s Flying V",
       "neckPickup": "70s Tribute",
       "middlePickup": "",
@@ -36,7 +36,7 @@
       "switching": "3 檔切換開關"
     },
     {
-      "productId": 5,
+      "rentId": 5,
       "name": "Chris Shiflett Cleaver Telecaster® Deluxe",
       "neckPickup": "Custom Chris Shiflett \"Cleaver\" Noiseless™ CS-90",
       "middlePickup": "",
@@ -45,7 +45,7 @@
       "switching": "3 檔切換開關"
     },
     {
-      "productId": 6,
+      "rentId": 6,
       "name": "American Ultra II Stratocaster®",
       "neckPickup": "Ultra II Noiseless™ Hot Strat®",
       "middlePickup": "Ultra II Noiseless™ Hot Strat®",
@@ -54,7 +54,7 @@
       "switching": "5 檔刀式切換開關"
     },
     {
-      "productId": 7,
+      "rentId": 7,
       "name": "American Ultra II Telecaster®",
       "neckPickup": "Ultra II Noiseless™ Vintage Tele®",
       "middlePickup": "",
@@ -63,7 +63,7 @@
       "switching": "3 檔刀式切換開關"
     },
     {
-      "productId": 8,
+      "rentId": 8,
       "name": "XJ-1 HT",
       "neckPickup": "",
       "middlePickup": "",
@@ -72,7 +72,7 @@
       "switching": "3 檔切換開關"
     },
     {
-      "productId": 9,
+      "rentId": 9,
       "name": "HORIZON CUSTOM '87",
       "neckPickup": "Seymour Duncan Hot Rails",
       "middlePickup": "",
@@ -81,7 +81,7 @@
       "switching": "3 檔切換開關"
     },
     {
-      "productId": 10,
+      "rentId": 10,
       "name": "Les Paul Standard 60s Plain Top",
       "neckPickup": "60s Burstbucker",
       "middlePickup": "",
@@ -90,7 +90,7 @@
       "switching": "3 檔切換開關"
     },
     {
-      "productId": 11,
+      "rentId": 11,
       "name": "Les Paul Standard 50s Mahogany Top",
       "neckPickup": "Burstbucker 1",
       "middlePickup": "",
@@ -99,7 +99,7 @@
       "switching": "3 檔切換開關"
     },
     {
-      "productId": 12,
+      "rentId": 12,
       "name": "Les Paul Modern Koa ",
       "neckPickup": "Burstbucker Pro",
       "middlePickup": "",
@@ -108,7 +108,7 @@
       "switching": "3 檔切換開關"
     },
     {
-      "productId": 13,
+      "rentId": 13,
       "name": "Les Paul Modern Studio",
       "neckPickup": "490R",
       "middlePickup": "",
@@ -117,7 +117,7 @@
       "switching": "3 檔切換開關"
     },
     {
-      "productId": 14,
+      "rentId": 14,
       "name": "Les Paul Modern Lite",
       "neckPickup": "490R Humbucker",
       "middlePickup": "",
@@ -126,7 +126,7 @@
       "switching": "3 檔切換開關"
     },
     {
-      "productId": 15,
+      "rentId": 15,
       "name": "Les Paul Supreme",
       "neckPickup": "Burstbucker Pro Rhythm",
       "middlePickup": "Burstbucker Pro Mid",
@@ -135,7 +135,7 @@
       "switching": "3 檔切換開關"
     },
     {
-      "productId": 16,
+      "rentId": 16,
       "name": "Les Paul Standard 50s Figured Top",
       "neckPickup": "Burstbucker 1",
       "middlePickup": "",
@@ -144,7 +144,7 @@
       "switching": "3 檔切換開關"
     },
     {
-      "productId": 17,
+      "rentId": 17,
       "name": "Les Paul Standard 60s Figured Top",
       "neckPickup": "60s Burstbucker",
       "middlePickup": "",
@@ -153,7 +153,7 @@
       "switching": "3 檔切換開關"
     },
     {
-      "productId": 18,
+      "rentId": 18,
       "name": "Les Paul Classic",
       "neckPickup": "Burstbucker 61R (Zebra)",
       "middlePickup": "",
@@ -162,7 +162,7 @@
       "switching": "3 檔切換開關"
     },
     {
-      "productId": 19,
+      "rentId": 19,
       "name": "Les Paul Custom, Nickel Hardware",
       "neckPickup": "490R",
       "middlePickup": "",
@@ -171,7 +171,7 @@
       "switching": ""
     },
     {
-      "productId": 20,
+      "rentId": 20,
       "name": "Les Paul Standard 50s P-90",
       "neckPickup": "P-90",
       "middlePickup": "",
@@ -180,7 +180,7 @@
       "switching": "3 檔切換開關"
     },
     {
-      "productId": 21,
+      "rentId": 21,
       "name": "Mary Ford Les Paul Standard",
       "neckPickup": "Burstbucker 2",
       "middlePickup": "",
@@ -189,7 +189,7 @@
       "switching": "3 檔切換開關"
     },
     {
-      "productId": 22,
+      "rentId": 22,
       "name": "Adam Jones Les Paul Standard",
       "neckPickup": "Burstbucker 1",
       "middlePickup": "",
@@ -198,7 +198,7 @@
       "switching": "3 檔切換開關"
     },
     {
-      "productId": 23,
+      "rentId": 23,
       "name": "SG Modern",
       "neckPickup": "Burstbucker Pro Rhythm",
       "middlePickup": "",
@@ -207,7 +207,7 @@
       "switching": "3 檔切換開關"
     },
     {
-      "productId": 24,
+      "rentId": 24,
       "name": "1962 Les Paul SG Standard, Short Maestro, Ebony Block",
       "neckPickup": "Custombucker (Unpotted)",
       "middlePickup": "",
@@ -216,7 +216,7 @@
       "switching": "3 檔 Switchcraft 切換開關"
     },
     {
-      "productId": 25,
+      "rentId": 25,
       "name": "SG Special",
       "neckPickup": "P-90",
       "middlePickup": "",
@@ -225,7 +225,7 @@
       "switching": "3 檔切換開關"
     },
     {
-      "productId": 26,
+      "rentId": 26,
       "name": "60th Anniversary 1961 Les Paul SG Custom With Sideways Vibrola",
       "neckPickup": "Custombucker",
       "middlePickup": "Custombucker",
@@ -234,7 +234,7 @@
       "switching": "3 檔 Switchcraft 切換開關"
     },
     {
-      "productId": 27,
+      "rentId": 27,
       "name": "Les Paul Junior Double Cut",
       "neckPickup": "",
       "middlePickup": "",
@@ -243,7 +243,7 @@
       "switching": ""
     },
     {
-      "productId": 28,
+      "rentId": 28,
       "name": "80s Flying V Ebony",
       "neckPickup": "80s Tribute",
       "middlePickup": "",
@@ -252,7 +252,7 @@
       "switching": "三向切換開關"
     },
     {
-      "productId": 29,
+      "rentId": 29,
       "name": "\nJoe Bonamassa \"Amos\" 1958 Flying V Collector's Edition Antique Natural",
       "neckPickup": "Amos Custombucker",
       "middlePickup": "",
@@ -261,7 +261,7 @@
       "switching": "三向切換開關"
     },
     {
-      "productId": 30,
+      "rentId": 30,
       "name": "\nFlying V Antique Natural",
       "neckPickup": "Burstbucker 2",
       "middlePickup": "",
@@ -270,7 +270,7 @@
       "switching": "三向切換開關"
     },
     {
-      "productId": 31,
+      "rentId": 31,
       "name": "Adam Jones Flying V Collector's Edition Reverse Antique Silverburst",
       "neckPickup": "Custombucker (Reverse-Mounted)",
       "middlePickup": "",
@@ -279,7 +279,7 @@
       "switching": "三向切換開關"
     },
     {
-      "productId": 32,
+      "rentId": 32,
       "name": "Kirk Hammett 1979 Flying V Ebony",
       "neckPickup": "T-Type Humbucker",
       "middlePickup": "",
@@ -288,7 +288,7 @@
       "switching": "三向切換開關"
     },
     {
-      "productId": 33,
+      "rentId": 33,
       "name": "Richie Faulkner Flying V Custom Pelham Blue",
       "neckPickup": "Richie Faulkner\n Signature EMG Set",
       "middlePickup": "",
@@ -297,7 +297,7 @@
       "switching": "三向切換開關"
     },
     {
-      "productId": 34,
+      "rentId": 34,
       "name": "Dave Mustaine Flying V EXP Limited Edition Red Amber Burst",
       "neckPickup": "Seymour Duncan Dave Mustaine Thrash Factor Pickup Set",
       "middlePickup": "",
@@ -306,7 +306,7 @@
       "switching": "三向切換開關"
     },
     {
-      "productId": 35,
+      "rentId": 35,
       "name": "Dave Mustaine Flying V EXP Silver Metallic",
       "neckPickup": "Dave Mustaine Signature Seymour Duncan Thrash Factor Set",
       "middlePickup": "",
@@ -315,7 +315,7 @@
       "switching": "三向切換開關"
     },
     {
-      "productId": 36,
+      "rentId": 36,
       "name": "Jimi Hendrix™ 1969 Flying V Aged Ebony",
       "neckPickup": "Custombucker",
       "middlePickup": "",
@@ -324,7 +324,7 @@
       "switching": "三向切換開關"
     },
     {
-      "productId": 37,
+      "rentId": 37,
       "name": "1958 Korina Flying V (White Pickguard), Ebony, Murphy Lab Light Aged Ebony\nGibson Custom Sele",
       "neckPickup": "Custombucker",
       "middlePickup": "",
@@ -333,7 +333,7 @@
       "switching": "三向切換開關"
     },
     {
-      "productId": 38,
+      "rentId": 38,
       "name": "Flying V Custom w/ Ebony Fingerboard Gloss Ebony",
       "neckPickup": "490R Humbucker",
       "middlePickup": "",
@@ -342,7 +342,7 @@
       "switching": "三向切換開關"
     },
     {
-      "productId": 39,
+      "rentId": 39,
       "name": "1958 Mahogany Flying V Walnut",
       "neckPickup": "Custombucker Alnico III (Unpotted)",
       "middlePickup": "",
@@ -351,7 +351,7 @@
       "switching": "三向切換開關"
     },
     {
-      "productId": 40,
+      "rentId": 40,
       "name": "1958 Korina Flying V Reissue (White Pickguard) Natural",
       "neckPickup": "Custombucker",
       "middlePickup": "",
@@ -360,7 +360,7 @@
       "switching": "三向切換開關"
     },
     {
-      "productId": 41,
+      "rentId": 41,
       "name": "80s Explorer Ebony",
       "neckPickup": "80s Tribute",
       "middlePickup": "",
@@ -369,7 +369,7 @@
       "switching": ""
     },
     {
-      "productId": 42,
+      "rentId": 42,
       "name": "Lzzy Hale Explorerbird Cardinal Red",
       "neckPickup": "70s Tribute with Gold Screws/Rods",
       "middlePickup": "",
@@ -378,7 +378,7 @@
       "switching": ""
     },
     {
-      "productId": 43,
+      "rentId": 43,
       "name": "1958 Korina Explorer (White Pickguard) Ebony",
       "neckPickup": "Custombucker (Unpotted)",
       "middlePickup": "",
@@ -387,7 +387,7 @@
       "switching": ""
     },
     {
-      "productId": 44,
+      "rentId": 44,
       "name": "\n1958 Korina Explorer Reissue (White Pickguard) Natural",
       "neckPickup": "Custombucker",
       "middlePickup": "",
@@ -396,7 +396,7 @@
       "switching": ""
     },
     {
-      "productId": 45,
+      "rentId": 45,
       "name": "Explorer Custom w/ Ebony Fingerboard Gloss Ebony",
       "neckPickup": "490R Humbucker",
       "middlePickup": "",
@@ -405,7 +405,7 @@
       "switching": ""
     },
     {
-      "productId": 46,
+      "rentId": 46,
       "name": "1965 Non-Reverse Firebird V 12-String Reissue Aqua Mist VOS",
       "neckPickup": "Firebird Alnico 5",
       "middlePickup": "",
@@ -414,7 +414,7 @@
       "switching": ""
     },
     {
-      "productId": 47,
+      "rentId": 47,
       "name": "1963 Firebird V Vintage Sunburst",
       "neckPickup": "Firebird Alnico V",
       "middlePickup": "",
@@ -423,7 +423,7 @@
       "switching": ""
     },
     {
-      "productId": 48,
+      "rentId": 48,
       "name": "1965 Non-Reverse Firebird V w/ Vibrola Vintage Sunburst",
       "neckPickup": "Firebird Alnico V",
       "middlePickup": "",
@@ -432,7 +432,7 @@
       "switching": ""
     },
     {
-      "productId": 49,
+      "rentId": 49,
       "name": "Firebird Custom w/ Ebony Fingerboard Gloss Ebony",
       "neckPickup": "490R Humbucker",
       "middlePickup": "",
@@ -441,7 +441,7 @@
       "switching": ""
     },
     {
-      "productId": 50,
+      "rentId": 50,
       "name": "1963 Firebird V With Maestro Vibrola Pelham Blue Ultra Light Aged Pelham Blue",
       "neckPickup": "Firebird Alnico 5",
       "middlePickup": "",
@@ -450,7 +450,7 @@
       "switching": ""
     },
     {
-      "productId": 51,
+      "rentId": 51,
       "name": "1963 Firebird V Reissue with Maestro Vibrola Light Aged Cardinal Red",
       "neckPickup": "Firebird Alnico 5",
       "middlePickup": "",
@@ -459,7 +459,7 @@
       "switching": ""
     },
     {
-      "productId": 52,
+      "rentId": 52,
       "name": "1981 Gibson ES-347 Left-Handed",
       "neckPickup": "Original Series 7\n(15.30 k ohms)",
       "middlePickup": "",
@@ -468,7 +468,7 @@
       "switching": ""
     },
     {
-      "productId": 53,
+      "rentId": 53,
       "name": "1960 Gibson ES-335 Sunburst\n",
       "neckPickup": "Original Patent Applied For Humbucker (8.94 k ohms)",
       "middlePickup": "",
@@ -477,7 +477,7 @@
       "switching": ""
     },
     {
-      "productId": 54,
+      "rentId": 54,
       "name": "1952 Gibson ES-295",
       "neckPickup": "P-90 (8.79 k ohms)",
       "middlePickup": "",
@@ -486,7 +486,7 @@
       "switching": ""
     },
     {
-      "productId": 55,
+      "rentId": 55,
       "name": "ES-330 Ebony",
       "neckPickup": "Dogear P-90",
       "middlePickup": "",
@@ -495,7 +495,7 @@
       "switching": ""
     },
     {
-      "productId": 56,
+      "rentId": 56,
       "name": "ES-345 Gold Hardware Dark Walnut",
       "neckPickup": "Calibrated T-Type, Rhythm",
       "middlePickup": "",
@@ -504,7 +504,7 @@
       "switching": ""
     },
     {
-      "productId": 57,
+      "rentId": 57,
       "name": "ES Supreme Ebony, 3-Pickup",
       "neckPickup": "Burstbucker \nRhythm Pro",
       "middlePickup": "Burstbucker Mid Pro (Ebony Finish Only)",
@@ -513,7 +513,7 @@
       "switching": ""
     },
     {
-      "productId": 58,
+      "rentId": 58,
       "name": "ES-335 Dark Purple Burst\n",
       "neckPickup": "Calibrated T-Type, Rhythm",
       "middlePickup": "",
@@ -522,7 +522,7 @@
       "switching": ""
     },
     {
-      "productId": 59,
+      "rentId": 59,
       "name": "ES-339 Cherry",
       "neckPickup": "57 Classic",
       "middlePickup": "",
@@ -531,7 +531,7 @@
       "switching": ""
     },
     {
-      "productId": 60,
+      "rentId": 60,
       "name": "B.B. King \"Live at the Regal\" ES-335 Argentine Grey",
       "neckPickup": "Custombucker (Unpotted)",
       "middlePickup": "",
@@ -540,7 +540,7 @@
       "switching": ""
     },
     {
-      "productId": 61,
+      "rentId": 61,
       "name": "\n1964 Trini Lopez Standard Reissue Ebony\n",
       "neckPickup": "Custombucker Alnico III (Unpotted)",
       "middlePickup": "",
@@ -549,7 +549,7 @@
       "switching": ""
     },
     {
-      "productId": 62,
+      "rentId": 62,
       "name": "B.B. King “Rumble in the Jungle” 1974 ES-355 Walnut",
       "neckPickup": "T 型 Custombucker Alnico 5",
       "middlePickup": "",
@@ -558,7 +558,7 @@
       "switching": ""
     },
     {
-      "productId": 63,
+      "rentId": 63,
       "name": "ES-335 P-90 Ebony",
       "neckPickup": "P-90",
       "middlePickup": "",
@@ -567,7 +567,7 @@
       "switching": ""
     },
     {
-      "productId": 64,
+      "rentId": 64,
       "name": "1959 ES-355 Reissue, Diamond F-Holes Gold Sparkle Heavy Flake Gloss",
       "neckPickup": "Custombucker (Unpotted)",
       "middlePickup": "",
@@ -576,7 +576,7 @@
       "switching": ""
     },
     {
-      "productId": 65,
+      "rentId": 65,
       "name": "BB King Lucille Legacy",
       "neckPickup": "Custombucker",
       "middlePickup": "",
@@ -585,7 +585,7 @@
       "switching": ""
     },
     {
-      "productId": 66,
+      "rentId": 66,
       "name": "1961 ES-335 Reissue Heavy Aged Sixties Cherry",
       "neckPickup": "Custombucker Alnico 3 (Unpotted)",
       "middlePickup": "",
@@ -594,7 +594,7 @@
       "switching": ""
     },
     {
-      "productId": 67,
+      "rentId": 67,
       "name": "1958 ES-335 Reissue Murphy Lab Heavy Aged",
       "neckPickup": "Custombucker Alnico 3 (Unpotted)",
       "middlePickup": "",
@@ -603,7 +603,7 @@
       "switching": ""
     },
     {
-      "productId": 68,
+      "rentId": 68,
       "name": "American Ultra Luxe Stratocaster®",
       "neckPickup": "Ultra Noiseless™ Vintage Strat®",
       "middlePickup": "Ultra Noiseless™ Vintage Strat®",
@@ -612,7 +612,7 @@
       "switching": "5 個位置選擇開關：\n位置 1. 琴橋拾音器\n位置 2. 琴橋和中間拾音器\n位置 3. 中間拾音器\n位置 4. 中間和琴頸拾音器\n位置 5. 琴頸拾音器"
     },
     {
-      "productId": 69,
+      "rentId": 69,
       "name": "American Ultra Luxe Stratocaster® Floyd Rose® HSS",
       "neckPickup": "Ultra Noiseless™ Hot Strat®",
       "middlePickup": "Ultra Noiseless™ Hot Strat®",
@@ -621,7 +621,7 @@
       "switching": "5 個位置選擇開關：\n位置 1. 琴橋拾音器\n位置 2. 琴橋和中間拾音器\n位置 3. 中間拾音器\n位置 4. 中間和琴頸拾音器\n位置 5. 琴頸拾音器"
     },
     {
-      "productId": 70,
+      "rentId": 70,
       "name": "Player II Stratocaster®",
       "neckPickup": "Player Series Alnico 5 Strat® Single-Coil",
       "middlePickup": "Player Series Alnico 5 Strat® Single-Coil",
@@ -630,7 +630,7 @@
       "switching": "5 個位置選擇開關：\n位置 1. 琴橋拾音器\n位置 2. 琴橋和中間拾音器\n位置 3. 中間拾音器\n位置 4. 中間和琴頸拾音器\n位置 5. 琴頸拾音器"
     },
     {
-      "productId": 71,
+      "rentId": 71,
       "name": "Player II Stratocaster® HSS",
       "neckPickup": "Player Series Alnico 5 Strat® Single-Coil",
       "middlePickup": "Player Series Alnico 5 Strat® Single-Coil",
@@ -639,7 +639,7 @@
       "switching": "五檔切換開關：\n位置 1：橋拾音器\n位置 2：橋拾音器和中間拾音器\n位置 3：中間拾音器\n位置 4：中間拾音器和頸拾音器\n位置 5：頸拾音器"
     },
     {
-      "productId": 72,
+      "rentId": 72,
       "name": "Player Plus Stratocaster®",
       "neckPickup": "Player Plus Noiseless™ Strat®",
       "middlePickup": "Player Plus Noiseless™ Strat®",
@@ -648,7 +648,7 @@
       "switching": "五檔切換開關：\n位置 1：橋拾音器\n位置 2：橋拾音器和中間拾音器\n位置 3：中間拾音器\n位置 4：中間拾音器和頸拾音器\n位置 5：頸拾音器"
     },
     {
-      "productId": 73,
+      "rentId": 73,
       "name": "Player Plus Stratocaster® HSS",
       "neckPickup": "Player Plus Noiseless™ Strat®",
       "middlePickup": "Player Plus Noiseless™ Strat®",
@@ -657,7 +657,7 @@
       "switching": "五檔切換開關：\n位置 1：橋拾音器\n位置 2：橋拾音器和中間拾音器\n位置 3：中間拾音器\n位置 4：中間拾音器和頸拾音器\n位置 5：頸拾音器"
     },
     {
-      "productId": 74,
+      "rentId": 74,
       "name": "American Performer Stratocaster® HSS",
       "neckPickup": "Yosemite® Single-Coil Stratocaster®",
       "middlePickup": "Yosemite® Single-Coil Stratocaster®",
@@ -666,7 +666,7 @@
       "switching": "五檔切換開關：  \n位置 1：橋雙線圈拾音器  \n位置 2：中間拾音器和橋雙線圈拾音器  \n位置 3：中間拾音器  \n位置 4：頸拾音器和中間拾音器  \n位置 5：頸拾音器"
     },
     {
-      "productId": 75,
+      "rentId": 75,
       "name": "American Professional II Stratocaster®",
       "neckPickup": "V-Mod II Single-Coil Strat®",
       "middlePickup": "V-Mod II Single-Coil Strat®",
@@ -675,7 +675,7 @@
       "switching": "五檔切換開關：\n位置 1：橋拾音器\n位置 2：橋拾音器和中間拾音器\n位置 3：中間拾音器\n位置 4：中間拾音器和頸拾音器\n位置 5：頸拾音器"
     },
     {
-      "productId": 76,
+      "rentId": 76,
       "name": "American Vintage II 1973 Stratocaster®",
       "neckPickup": "Pure Vintage '73 Single-Coil Strat®",
       "middlePickup": "Pure Vintage '73 Single-Coil Strat®",
@@ -684,7 +684,7 @@
       "switching": "五檔切換開關：  \n位置 1：橋拾音器  \n位置 2：橋拾音器和中間拾音器  \n位置 3：中間拾音器  \n位置 4：中間拾音器和頸拾音器  \n位置 5：頸拾音器  "
     },
     {
-      "productId": 77,
+      "rentId": 77,
       "name": "American Vintage II 1961 Stratocaster®",
       "neckPickup": "Pure Vintage '61 Single-Coil Strat®",
       "middlePickup": "Pure Vintage '61 Single-Coil Strat®",
@@ -693,7 +693,7 @@
       "switching": "五檔切換開關：  \n位置 1：橋拾音器  \n位置 2：橋拾音器和中間拾音器  \n位置 3：中間拾音器  \n位置 4：中間拾音器和頸拾音器  \n位置 5：頸拾音器  "
     },
     {
-      "productId": 78,
+      "rentId": 78,
       "name": "American Professional II Stratocaster®, Anniversary 2-Color Sunburst",
       "neckPickup": "V-Mod II Single-Coil Strat®",
       "middlePickup": "V-Mod II Single-Coil Strat®",
@@ -702,7 +702,7 @@
       "switching": "五檔切換開關：  \n位置 1：橋拾音器  \n位置 2：橋拾音器和中間拾音器  \n位置 3：中間拾音器  \n位置 4：中間拾音器和頸拾音器  \n位置 5：頸拾音器  "
     },
     {
-      "productId": 79,
+      "rentId": 79,
       "name": "70th Anniversary American Vintage II 1954 Stratocaster®",
       "neckPickup": "70th Anniversary 1954 Single-Coil Strat®",
       "middlePickup": "70th Anniversary 1954 Single-Coil Strat®",
@@ -711,7 +711,7 @@
       "switching": "三檔切換開關：  \n位置 1：橋拾音器  \n位置 2：中間拾音器  \n位置 3：頸拾音器"
     },
     {
-      "productId": 80,
+      "rentId": 80,
       "name": "American Vintage II 1957 Stratocaster®",
       "neckPickup": "Pure Vintage '57 Single-Coil Strat®",
       "middlePickup": "Pure Vintage '57 Single-Coil Strat®",
@@ -720,7 +720,7 @@
       "switching": "五檔切換開關：  \n位置 1：橋拾音器  \n位置 2：橋拾音器和中間拾音器  \n位置 3：中間拾音器  \n位置 4：中間拾音器和頸拾音器  \n位置 5：頸拾音器  "
     },
     {
-      "productId": 81,
+      "rentId": 81,
       "name": "Stevie Ray Vaughan Stratocaster®",
       "neckPickup": "Custom Shop Texas Special™ Single-Coil Strat®",
       "middlePickup": "Custom Shop Texas Special™ Single-Coil Strat®",
@@ -729,7 +729,7 @@
       "switching": "五檔切換開關：  \n位置 1：橋拾音器  \n位置 2：橋拾音器和中間拾音器  \n位置 3：中間拾音器  \n位置 4：中間拾音器和頸拾音器  \n位置 5：頸拾音器  "
     },
     {
-      "productId": 82,
+      "rentId": 82,
       "name": "Jeff Beck Stratocaster®",
       "neckPickup": "Hot Noiseless™ Single-Coil Strat®",
       "middlePickup": "Hot Noiseless™ Single-Coil Strat®",
@@ -738,7 +738,7 @@
       "switching": "五檔切換開關：  \n位置 1：橋拾音器  \n位置 2：橋拾音器和中間拾音器  \n位置 3：中間拾音器  \n位置 4：中間拾音器和頸拾音器  \n位置 5：頸拾音器  "
     },
     {
-      "productId": 83,
+      "rentId": 83,
       "name": "Limited Edition American Performer Timber Stratocaster®",
       "neckPickup": "Yosemite® Single-Coil Stratocaster®",
       "middlePickup": "Yosemite® Single-Coil Stratocaster®",
@@ -747,7 +747,7 @@
       "switching": "五檔切換開關：  \n位置 1：橋拾音器  \n位置 2：橋拾音器和中間拾音器  \n位置 3：中間拾音器  \n位置 4：中間拾音器和頸拾音器  \n位置 5：頸拾音器  "
     },
     {
-      "productId": 84,
+      "rentId": 84,
       "name": "Mike McCready Stratocaster®",
       "neckPickup": "Custom Mike McCready '60s Single-Coil Strat®",
       "middlePickup": "Custom Mike McCready '60s Single-Coil Strat®",
@@ -756,7 +756,7 @@
       "switching": "五檔切換開關：  \n位置 1：橋拾音器  \n位置 2：橋拾音器和中間拾音器  \n位置 3：中間拾音器  \n位置 4：中間拾音器和頸拾音器  \n位置 5：頸拾音器  "
     },
     {
-      "productId": 85,
+      "rentId": 85,
       "name": "Yngwie Malmsteen Stratocaster®",
       "neckPickup": "Seymour Duncan® YJM Fury™ Strat® STK-S10N",
       "middlePickup": "Seymour Duncan® YJM Fury™ Strat® STK-S10N",
@@ -765,7 +765,7 @@
       "switching": "3 檔刀片開關：\n位置 1. 橋拾音器  \n位置 2. 中間拾音器  \n位置 3. 頸拾音器"
     },
     {
-      "productId": 86,
+      "rentId": 86,
       "name": "Eric Clapton Stratocaster®",
       "neckPickup": "Vintage Noiseless™ Single-Coil Strat®",
       "middlePickup": "Vintage Noiseless™ Single-Coil Strat®",
@@ -774,7 +774,7 @@
       "switching": "5段刀片開關：\n位置 1：橋拾音器\n位置 2：橋拾音器和中間拾音器 \n位置 3：中間拾音器\n位置 4：中間拾音器和頸拾音器  \n位置 5：頸拾音器"
     },
     {
-      "productId": 87,
+      "rentId": 87,
       "name": "Player Plus Meteora® HH",
       "neckPickup": "Fireball® Humbucking",
       "middlePickup": "",
@@ -783,7 +783,7 @@
       "switching": "三檔切換開關\n位置1：琴橋拾音器\n位置2：琴橋與琴頸拾音器同時啟用\n位置3：琴頸拾音器"
     },
     {
-      "productId": 88,
+      "rentId": 88,
       "name": "Limited Edition Paranormal Jazzmaster® XII",
       "neckPickup": "Fender® Designed Alnico Single-Coil",
       "middlePickup": "",
@@ -792,7 +792,7 @@
       "switching": "三檔切換開關\n位置1：琴橋拾音器\n位置2：琴橋與琴頸拾音器同時啟用\n位置3：琴頸拾音器"
     },
     {
-      "productId": 89,
+      "rentId": 89,
       "name": "Player Jazzmaster®",
       "neckPickup": "Player Series Alnico 2 Humbucking",
       "middlePickup": "",
@@ -801,7 +801,7 @@
       "switching": "三檔切換開關\n位置1：琴橋拾音器\n位置2：琴橋與琴頸拾音器同時啟用\n位置3：琴頸拾音器"
     },
     {
-      "productId": 90,
+      "rentId": 90,
       "name": "Player II Jazzmaster®",
       "neckPickup": "Player Series Alnico 5 Jazzmaster® Single-Coil",
       "middlePickup": "",
@@ -810,7 +810,7 @@
       "switching": "三檔切換開關\n位置1：琴橋拾音器\n位置2：琴橋與中間拾音器同時啟用\n位置3：中間拾音器"
     },
     {
-      "productId": 91,
+      "rentId": 91,
       "name": "Limited Edition Vintera® II '50s Jazzmaster®",
       "neckPickup": "Vintage-Style '50s Single-Coil Jazzmaster®",
       "middlePickup": "",
@@ -819,7 +819,7 @@
       "switching": "三檔切換開關（主音電路）"
     },
     {
-      "productId": 92,
+      "rentId": 92,
       "name": "Gold Foil Jazzmaster®",
       "neckPickup": "Gold Foil Mini-Humbucker",
       "middlePickup": "Gold Foil Mini-Humbucker",
@@ -828,7 +828,7 @@
       "switching": "3個開/關滑動開關（每個拾音器一個）"
     },
     {
-      "productId": 93,
+      "rentId": 93,
       "name": "American Performer Jazzmaster®",
       "neckPickup": "Yosemite® Single-Coil Jazzmaster®",
       "middlePickup": "",
@@ -837,7 +837,7 @@
       "switching": "三檔切換開關\n位置 1：橋拾音器\n位置 2：橋拾音器和頸拾音器\n位置 3： 頸拾音器"
     },
     {
-      "productId": 94,
+      "rentId": 94,
       "name": "Troy Van Leeuwen Jazzmaster®",
       "neckPickup": "Pure Vintage '65 Single-Coil Jazzmaster®",
       "middlePickup": "",
@@ -846,7 +846,7 @@
       "switching": "三檔切換開關\n位置 1：橋拾音器\n位置 2：橋拾音器和頸拾音器\n位置 3：頸拾音器；2檔滑動開關：向上：節奏音色電路，向下：主音音色電路"
     },
     {
-      "productId": 95,
+      "rentId": 95,
       "name": "Jim Root Jazzmaster® V4",
       "neckPickup": "EMG® Jim Root Signature Daemonum™ Open-Coil Active Humbucking",
       "middlePickup": "",
@@ -855,7 +855,7 @@
       "switching": "三檔刀片開關\n位置 1：橋拾音器\n位置 2：橋和頸拾音器\n位置 3：頸拾音器"
     },
     {
-      "productId": 96,
+      "rentId": 96,
       "name": "American Professional II Jazzmaster®",
       "neckPickup": "V-Mod II Single-Coil Jazzmaster®",
       "middlePickup": "",
@@ -864,7 +864,7 @@
       "switching": "三檔切換開關\n位置 1：橋拾音器\n位置 2：橋和頸拾音器\n位置 3：頸拾音器"
     },
     {
-      "productId": 97,
+      "rentId": 97,
       "name": "American Ultra Jazzmaster®",
       "neckPickup": "Ultra Noiseless™ Vintage Jazzmaster®",
       "middlePickup": "",
@@ -873,7 +873,7 @@
       "switching": "三檔切換開關、滑動開關"
     },
     {
-      "productId": 98,
+      "rentId": 98,
       "name": "Jim Root Jazzmaster®",
       "neckPickup": "EMG® 60",
       "middlePickup": "",
@@ -882,7 +882,7 @@
       "switching": "三檔刀片開關\n位置 1：橋拾音器\n位置 2：橋和頸拾音器\n位置 3：頸拾音器"
     },
     {
-      "productId": 99,
+      "rentId": 99,
       "name": "American Vintage II 1966 Jazzmaster®",
       "neckPickup": "Pure Vintage '66 Single-Coil Jazzmaster®",
       "middlePickup": "",

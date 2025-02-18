@@ -1,50 +1,47 @@
 [
     {
-        "name": "Sky Blue",
-        "colorPaletteId": 1
+        "name": "Sky Blue"
     },
     {
-        "name": "Dark Blue",
-        "colorPaletteId": 1
+        "name": "Dark Blue"
     },
     {
-        "name": "Modern Purple",
-        "colorPaletteId": 1
+        "name": "Modern Purple"
+
     },
     {
-        "name": "Fire Red",
-        "colorPaletteId": 1
+        "name": "Fire Red"
+
     },
     {
-        "name": "Golden Yellow",
-        "colorPaletteId": 2
+        "name": "Golden Yellow"
+
     },
     {
-        "name": "Tangerine",
-        "colorPaletteId": 2
+        "name": "Tangerine"
+
     },
     {
-        "name": "Brown",
-        "colorPaletteId": 2
+        "name": "Brown"
+
     },
     {
-        "name": "Dark Brown",
-        "colorPaletteId": 2
+        "name": "Dark Brown"
+
     },
     {
-        "name": "Marble White",
-        "colorPaletteId": 3
+        "name": "Marble White"
+
     },
     {
-        "name": "Slate Gray",
-        "colorPaletteId": 3
+        "name": "Slate Gray"
+
     },
     {
-        "name": "Ebony",
-        "colorPaletteId": 4
+        "name": "Ebony"
+
     },
     {
-        "name": "Forest Green",
-        "colorPaletteId": 1
+        "name": "Forest Green"
     }
 ]

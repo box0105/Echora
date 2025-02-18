@@ -121,44 +121,23 @@ model Activity {
   ticket_price Int    @default(0)
 }
 
-model Stores {
-  id            Int         @id @default(autoincrement())
-  name          String      @unique
-  address       String      @unique
-  address_phone String      @default("")
-  inventories   Inventory[]
-  rents         Rent[]
-}
-
-model Inventory {
-  id          Int        @id @default(autoincrement())
-  stock       Int?
-  store       Stores     @relation(fields: [storeId], references: [id])
-  storeId     Int
-  rentColor   RentColor? @relation(fields: [rentColorId], references: [id])
-  rentColorId Int?
-  Rent        Rent[]
-}
-
 model Rent {
-  id           Int        @id @default(autoincrement())
-  name         String
-  rentBrandId  Int? // 外鍵，關聯到 Brand 模型
-  rentBrand    RentBrand? @relation(fields: [rentBrandId], references: [id]) // 關聯到 Brand 模型
-  rentColorId  Int?
-  rentColor    RentColor? @relation(fields: [rentColorId], references: [id])
-  stores_id    Int? // 外鍵，關聯到 Stores 模型
-  stores       Stores?    @relation(fields: [stores_id], references: [id]) // 關聯到 Stores 模型
-  price        Decimal?
-  RentList_id  Int? // 外鍵，關聯到 RentList 模型
-  RentList     RentList?  @relation(fields: [RentList_id], references: [id]) // 關聯到 RentList 模型
-  RentImges_id Int? // 外鍵，關聯到 RentImges 模型
-  RentImges    RentImges? @relation(fields: [RentImges_id], references: [id]) // 關聯到 RentImges 模型
-  time_start   DateTime?
-  time_end     DateTime?
-  created_at   DateTime   @default(now()) // 建立時間，預設為當前時間
-  inventory_id Int? // 外鍵，關聯到 Inventory 模型
-  inventory    Inventory? @relation(fields: [inventory_id], references: [id]) // 關聯到 Inventory 模型
+  id          Int             @id @default(autoincrement())
+  name        String
+  level       Int
+  description String?
+  rentBrandId Int?
+  rentBrand   RentBrand?      @relation(fields: [rentBrandId], references: [id])
+  rentColors  RentItemColor[]
+  stores_id   Int?
+  stores      Stores?         @relation(fields: [stores_id], references: [id])
+  price       Decimal?
+  RentList_id Int?
+  RentList    RentList?       @relation(fields: [RentList_id], references: [id])
+  time_start  DateTime?
+  time_end    DateTime?
+  created_at  DateTime        @default(now())
+  rentImges   RentImges[] // 一個 Rent 可以有多個圖片
 }
 
 model RentBrand {
@@ -168,22 +147,23 @@ model RentBrand {
 }
 
 model RentColor {
-  id            Int             @id @default(autoincrement())
-  name          String
-  RentItemColor RentItemColor[] // RentColor 可以有多個 RentItemColor
-  rents         Rent[]
-  Inventory     Inventory[]
+  id             Int             @id @default(autoincrement())
+  name           String
+  rentItemColors RentItemColor[] // 修改關聯名稱，保持一致性
 }
 
 model RentItemColor {
   id          Int       @id @default(autoincrement())
-  name        String
-  rentColor   RentColor @relation(fields: [rentColorId], references: [id])
+  rentId      Int
+  rent        Rent      @relation(fields: [rentId], references: [id])
   rentColorId Int
+  rentColor   RentColor @relation(fields: [rentColorId], references: [id])
+  stock       Int
 }
 
 model RentList {
   id           Int     @id @default(autoincrement())
+  rentId       Int
   name         String  @db.VarChar(100)
   neckPickup   String? @map("neck_pickup") @db.VarChar(100)
   middlePickup String? @map("middle_pickup") @db.VarChar(100)
@@ -197,5 +177,16 @@ model RentImges {
   id    Int    @id @default(autoincrement())
   name  String @db.VarChar(150)
   image String @db.VarChar(300)
-  rents Rent[]
+
+  // 外鍵，指向 Rent 的 id
+  rentId Int
+  rent   Rent? @relation(fields: [rentId], references: [id], onDelete: Cascade)
+}
+
+model Stores {
+  id            Int    @id @default(autoincrement())
+  name          String @unique
+  address       String @unique
+  address_phone String @default("")
+  rents         Rent[] // 關聯到 Rent 表
 }

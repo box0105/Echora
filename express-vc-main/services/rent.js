@@ -19,10 +19,6 @@ rentSchema.conditions = z.object({
   storesAddress: z.string().optional(),
   // ... 其他 Stores 表的篩選條件
 
-  // Inventory 表的篩選條件
-  inventoryStockGte: z.number().optional(),
-  inventoryStockLte: z.number().optional(),
-  // ... 其他 Inventory 表的篩選條件
 
   // RentBrand 表的篩選條件
   rentBrandName: z.string().optional(),
@@ -99,6 +95,9 @@ const generateWhere = (conditions) => {
   if (conditions.rentColorName) {
     where.rentColor = { name: { contains: conditions.rentColorName } };
   }
+  if (conditions.RentItemColorName) {
+    where.RentItemColor = { name: { contains: conditions.RentItemColorName } };
+  }
 
   // RentList 表的篩選條件
   if (conditions.rentListName) {
@@ -143,9 +142,9 @@ export const getRentsCount = async (conditions = {}) => {
       include: {
         category: true,
         stores: true,
-        inventory: true, // 包含 Inventory 資料
         rentBrand: true, // 包含 RentBrand 資料
         rentColor: true, // 包含 RentColor 資料
+        rentItemColor: true, // 包含 rentItemColor 資料
         rentList: true,  // 包含 RentList 資料
         rentImges: true, // 包含 RentImges 資料
       },
