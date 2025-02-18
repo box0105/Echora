@@ -65,13 +65,13 @@ async function main() {
         return -1
       }
 
-      // manyToMany
+  //     // manyToMany
       if (tmp.length === 3 && a.includes(tmp[1]) && b.includes(tmp[2])) {
         return -1
       }
     }
 
-    // others
+  //   // others
     return 0
   })
 

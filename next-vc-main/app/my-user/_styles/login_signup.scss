@@ -1,12 +1,20 @@
 * {
   box-sizing: border-box;
 }
+
 html,
 body {
   height: 100%;
   margin: 0;
   overflow: hidden;
 }
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  // margin-bottom: 5px;
+}
+
 .back {
   position: absolute;
   top: 36px;
@@ -15,12 +23,14 @@ body {
   color: #000;
   font: 400 16px Noto Sans TC, sans-serif;
 }
+
 .login-container {
   background: #fff;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
 }
+
 .login-main {
   display: flex;
   width: 100%;
@@ -30,12 +40,14 @@ body {
   height: 100vh;
   max-width: 100%;
 }
+
 .hero-image {
   width: 65%;
   height: 100vh;
   object-fit: cover;
   margin-right: 20px;
 }
+
 .form-container {
   align-self: stretch;
   display: flex;
@@ -47,6 +59,7 @@ body {
   margin: auto 0;
   padding: 80px 60px 0;
 }
+
 .forget-password-container {
   align-self: stretch;
   display: flex;
@@ -58,6 +71,7 @@ body {
   margin: 140px 0;
   padding: 80px 60px 0;
 }
+
 .brand-container {
   align-self: center;
   z-index: 10;
@@ -65,6 +79,7 @@ body {
   align-items: center;
   gap: 20px;
 }
+
 .logo-wrapper {
   align-self: stretch;
   display: flex;
@@ -73,6 +88,7 @@ body {
   width: 40px;
   margin: auto 0;
 }
+
 .brand-logo {
   aspect-ratio: 1;
   object-fit: contain;
@@ -80,6 +96,7 @@ body {
   align-self: stretch;
   margin: auto 0;
 }
+
 .brand-text {
   align-self: stretch;
   display: flex;
@@ -88,25 +105,29 @@ body {
   font-weight: 600;
   margin: auto 0;
 }
+
 .brand-name-en {
   align-self: stretch;
   margin: auto 0;
   font: 32px Poppins, sans-serif;
 }
+
 .brand-name-zh {
   align-self: stretch;
   margin: auto 0;
   font: 20px Noto Sans TC, sans-serif;
 }
+
 .login {
   font-size: 24px;
   font-weight: 600;
   margin-top: 16px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   color: #000;
   text-align: center;
   font-family: Poppins, sans-serif;
 }
+
 .input-field,
 .input-field-signup {
   border-radius: 6px;
@@ -120,22 +141,28 @@ body {
   font: 500 16px Noto Sans TC, sans-serif;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  margin-top: 10px;
 }
+
 .input-field {
   flex-direction: column;
   margin-top: 16px;
 }
+
 .input-field-signup {
   flex: 1;
   flex-direction: row;
 }
+
 .name-container {
   display: flex;
   gap: 16px;
 }
+
 .password-field {
   margin-top: 16px;
 }
+
 .form-input {
   background: #fff;
   z-index: 0;
@@ -146,6 +173,7 @@ body {
   outline: none;
   font: inherit;
 }
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -156,6 +184,7 @@ body {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
+
 .show-password {
   border-radius: 18px;
   position: absolute;
@@ -170,11 +199,13 @@ body {
   border: none;
   cursor: pointer;
 }
+
 .show-password-icon {
   aspect-ratio: 0.63;
   object-fit: contain;
   width: 100%;
 }
+
 .forgot-password {
   color: #595959;
   text-align: center;
@@ -183,6 +214,7 @@ body {
   font: 400 14px Source Sans Pro, sans-serif;
   text-decoration: none;
 }
+
 .login-button {
   border-radius: 35px;
   background: #f0f0f0;
@@ -196,10 +228,12 @@ body {
   cursor: pointer;
   width: 100%;
 }
+
 .login-button:hover {
   background: #000;
   color: #fff;
 }
+
 .social-login {
   display: flex;
   margin-top: 13px;
@@ -207,6 +241,7 @@ body {
   white-space: nowrap;
   text-align: center;
 }
+
 .social-button {
   border-radius: 35px;
   min-height: 50px;
@@ -218,10 +253,12 @@ body {
   background: transparent;
   cursor: pointer;
 }
+
 .social-icon {
   aspect-ratio: 2.84;
   object-fit: contain;
 }
+
 .signup-prompt {
   color: #000;
   text-align: center;
@@ -229,24 +266,30 @@ body {
   margin-top: 35px;
   font: 400 14px Source Sans Pro, sans-serif;
 }
+
 .signup-link {
   text-decoration: underline;
   cursor: pointer;
 }
+
 @media (max-width: 430px) {
   .hero-image {
     display: none;
   }
+
   .form-container {
     max-width: 100%;
     padding: 16px;
   }
+
   .name-container {
     flex-direction: column;
   }
+
   .input-field-signup {
     margin-top: 0px;
   }
+
   .input-field {
     max-width: 100%;
     margin-top: 16px;

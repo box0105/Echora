@@ -1,22 +1,29 @@
 'use client'
 
 import './_styles/login_signup.scss'
-import React from 'react'
-
-import { useState } from 'react'
+import '@fortawesome/fontawesome-free/css/all.min.css'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useAuth } from '@/hooks/use-auth'
+import useFirebase from './_hooks/use-firebase'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import {
+  useAuthGoogleLogin,
   useAuthGet,
   useAuthLogout,
   useAuthLogin,
 } from '@/services/rest-client/use-user'
-import { toast, ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import { useRouter } from 'next/navigation'
 
 export default function UserPage() {
   // 輸入表單用的狀態
-  const [userInput, setUserInput] = useState({ username: '', password: '' })
+  const [userInput, setUserInput] = useState({ email: '', password: '' })
+  const [errorMessage, setErrorMessage] = useState('')
+
+  // Firebase Google 登入
+  const { loginGoogle, logoutFirebase } = useFirebase()
+  const { googleLogin } = useAuthGoogleLogin()
 
   // 登入後設定全域的會員資料用
   const { mutate } = useAuthGet()
@@ -24,75 +31,102 @@ export default function UserPage() {
   const { logout } = useAuthLogout()
 
   // 取得登入狀態
-  const { isAuth, isLoading } = useAuth()
+  const { isAuth } = useAuth()
+  const router = useRouter()
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   // 輸入帳號與密碼框用
   const handleFieldChange = (e) => {
     setUserInput({ ...userInput, [e.target.name]: e.target.value })
   }
 
-  // 處理登入
+  // **處理一般登入**
   const handleLogin = async () => {
-    // 如果是已登入狀態，就不要再登入
     if (isAuth) {
       toast.error('錯誤 - 會員已登入')
       return
     }
 
-    const res = await login(userInput)
-    const resData = await res.json()
+    if (!userInput.email || !userInput.password) {
+      toast.error('請提供 email 和 password')
+      return
+    }
 
-    console.log(resData)
+    try {
+      const res = await fetch('http://localhost:3005/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userInput),
+      })
 
-    if (resData?.status === 'success') {
-      // 呼叫useAuthGet的mutate方法
-      // 將會進行重新驗證(revalidation)(將資料標記為已過期並觸發重新請求)
-      mutate()
+      const resData = await res.json()
 
-      toast.success('已成功登入')
-    } else {
-      toast.error(`登入失敗`)
+      if (resData?.status === 'success') {
+        mutate()
+        toast.success('已成功登入')
+        if (isClient) {
+          router.push('/') // 重定向到首頁
+        }
+      } else {
+        toast.error(`登入失敗: ${resData.message}`)
+      }
+    } catch (err) {
+      toast.error(`登入失敗: ${err.message}`)
     }
   }
 
-  // 處理登出
+  // **處理 Google 登入**
+  const handleGoogleLogin = () => {
+    if (isAuth) {
+      toast.error('錯誤 - 會員已登入')
+      return
+    }
+    loginGoogle(async (providerData) => {
+      console.log(providerData)
+
+      const res = await googleLogin(providerData)
+      const resData = await res.json()
+
+      if (resData.status === 'success') {
+        mutate()
+        toast.success('已成功登入')
+        if (isClient) {
+          router.push('/') // 重定向到首頁
+        }
+      } else {
+        toast.error('Google 登入失敗')
+      }
+    })
+  }
+
+  // **處理登出（支援 Google + 一般帳號）**
   const handleLogout = async () => {
+    logoutFirebase() // Google 登出 Firebase
+
     const res = await logout()
     const resData = await res.json()
-    // 成功登出
-    if (resData.status === 'success') {
-      // 呼叫useAuthGet的mutate方法
-      // 將會進行重新驗證(revalidation)(將資料標記為已過期並觸發重新請求)
-      mutate()
 
+    if (resData.status === 'success') {
+      mutate()
       toast.success('已成功登出')
     } else {
-      toast.error(`登出失敗`)
+      toast.error('登出失敗')
     }
   }
-
-  // 處理檢查登入狀態
-  const handleCheckAuth = async () => {
-    if (isAuth) {
-      toast.success('已登入會員')
-    } else {
-      toast.error(`非會員身份`)
-    }
-  }
-
-  // if (isLoading) {
-  //   return (
-  //     <div>
-  //       <h3>載入中...</h3>
-  //     </div>
-  //   )
-  // }
 
   return (
     <>
       <div className="login-container">
         <div className="login-main">
-          <span className="back"> &lt;返回 </span>
+          <Link href="/">
+            <span className="back"> &lt;返回 </span>
+          </Link>
           <img
             src="../images/user/login.jpg"
             alt="Login page hero illustration"
@@ -113,12 +147,16 @@ export default function UserPage() {
               </div>
             </div>
             <div className="login">登入</div>
+            {errorMessage && (
+              <div className="error-message">{errorMessage}</div>
+            )}
             <div className="input-field">
               <label htmlFor="email" className="visually-hidden">
                 電子郵件
               </label>
               <input
                 type="email"
+                name="email"
                 id="email"
                 value={userInput.email}
                 onChange={handleFieldChange}
@@ -134,6 +172,7 @@ export default function UserPage() {
               </label>
               <input
                 type="password"
+                name="password"
                 id="password"
                 value={userInput.password}
                 onChange={handleFieldChange}
@@ -147,14 +186,15 @@ export default function UserPage() {
                 className="show-password"
                 aria-label="顯示密碼"
               >
-                <i className="bi bi-eye show-password-icon" />
+                <i className="fa-solid fa-eye"></i>
               </button>
             </div>
-            <a href="#" className="forgot-password">
+            <Link href="/my-user/forget-password" className="forgot-password">
+              {' '}
               忘記密碼?
-            </a>
+            </Link>
             <button
-              type="submit"
+              type="button"
               className="login-button"
               onClick={handleLogin}
             >
@@ -164,9 +204,10 @@ export default function UserPage() {
               <button
                 type="button"
                 className="social-button"
+                onClick={handleGoogleLogin}
                 aria-label="使用 Google 登入"
               >
-                <i className="bi bi-google social-icon"> 使用 Google 登入 </i>
+                <i className="fa-brands fa-google me-2"></i> 使用 Google 登入
               </button>
             </div>
             <div className="signup-prompt">
@@ -176,8 +217,14 @@ export default function UserPage() {
               </span>
             </div>
           </form>
+          {isAuth && (
+            <button className="logout-button" onClick={handleLogout}>
+              登出
+            </button>
+          )}
         </div>
       </div>
+      <ToastContainer />
     </>
   )
 }

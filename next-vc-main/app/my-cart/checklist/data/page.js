@@ -1,8 +1,6 @@
 'use client'
-import { useRouter } from 'next/navigation'
 
 export default function DataPage() {
-  const router = useRouter()
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const cartItems = [
     {
@@ -25,7 +23,7 @@ export default function DataPage() {
       count: 1,
     },
     {
-      id: 4,
+      id: 3,
       name: '衛武營國際音樂節-全票',
       stockStatus: 10,
       image: '/images/cart/card3.png',
@@ -44,9 +42,9 @@ export default function DataPage() {
     <>
       <button onClick={()=>{
         createLocalstorage()
-        alert("新增成功")
+        alert("加入成功")
       }}>
-        點選新建localstorage
+        加入購物車
       </button>
     </>
   )

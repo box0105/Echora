@@ -1,10 +1,12 @@
 .gray200 {
-  color: #cacaca;
+  color: #444444;
 }
 .m-sec3-tip {
   max-width: 720px;
-  border: 2px solid #d52b1e;
+  // border: 2px solid #d52b1e;
   padding: 32px;
+  background-color: #ececec;
+  border-radius: 5px;
 }
 
 @media (max-width: 768px) {
@@ -12,5 +14,14 @@
     margin: 16px;
     padding: 16px;
   }
-  
+}
+
+.m-finish-section2 {
+  img {
+    width: 40px;
+    margin-right: 20px;
+  }
+  .m-finish-order {
+    color: #00b853;
+  }
 }

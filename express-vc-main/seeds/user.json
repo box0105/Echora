@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "username": "john_doe",
+    "password": "hashed_password_123",
+    "email": "john.doe@example.com",
+    "sex": "male",
+    "phone": "0912345678",
+    "address": "台北市中正區忠孝東路1段1號",
+    "postcode": "100",
+    "emailValidated": true,
+    "googleUid": "google_12345"
+  },
+  {
+    "id": 2,
+    "username": "jane_smith",
+    "password": "hashed_password_456",
+    "email": "jane.smith@example.com",
+    "sex": "female",
+    "phone": "0987654321",
+    "address": "新北市板橋區文化路2段2號",
+    "postcode": "220",
+    "emailValidated": false,
+    "googleUid": null
+  },
+  {
+    "id": 3,
+    "username": "bob_chen",
+    "password": "hashed_password_789",
+    "email": "bob.chen@example.com",
+    "sex": "male",
+    "phone": null,
+    "address": null,
+    "postcode": null,
+    "emailValidated": true,
+    "googleUid": "google_67890"
+  },
+  {
+    "id": 4,
+    "username": "alice_wu",
+    "password": "hashed_password_abc",
+    "email": "alice.wu@example.com",
+    "sex": "female",
+    "phone": "0955123456",
+    "address": "桃園市中壢區中正路123號",
+    "postcode": "320",
+    "emailValidated": true,
+    "googleUid": null
+  },
+  {
+    "id": 5,
+    "username": "david_lin",
+    "password": "hashed_password_xyz",
+    "email": "david.lin@example.com",
+    "sex": "male",
+    "phone": "0933999888",
+    "address": "台中市西屯區文心路456號",
+    "postcode": "407",
+    "emailValidated": false,
+    "googleUid": "google_99887"
+  },
+  {
+    "id": 6,
+    "username": "emma_liu",
+    "password": "hashed_password_liu",
+    "email": "emma.liu@example.com",
+    "sex": "female",
+    "phone": "0977777666",
+    "address": "台南市東區大同路789號",
+    "postcode": "701",
+    "emailValidated": true,
+    "googleUid": null
+  },
+  {
+    "id": 7,
+    "username": "frank_huang",
+    "password": "hashed_password_777",
+    "email": "frank.huang@example.com",
+    "sex": "male",
+    "phone": null,
+    "address": "高雄市三民區建國一路987號",
+    "postcode": "807",
+    "emailValidated": false,
+    "googleUid": "google_334455"
+  },
+  {
+    "id": 8,
+    "username": "grace_chang",
+    "password": "hashed_password_888",
+    "email": "grace.chang@example.com",
+    "sex": "female",
+    "phone": "0966888555",
+    "address": "基隆市仁愛區愛三路654號",
+    "postcode": "200",
+    "emailValidated": true,
+    "googleUid": null
+  },
+  {
+    "id": 9,
+    "username": "henry_kuo",
+    "password": "hashed_password_999",
+    "email": "henry.kuo@example.com",
+    "sex": "male",
+    "phone": "0922333444",
+    "address": null,
+    "postcode": null,
+    "emailValidated": true,
+    "googleUid": "google_556677"
+  },
+  {
+    "id": 10,
+    "username": "ivy_yang",
+    "password": "hashed_password_ivy",
+    "email": "ivy.yang@example.com",
+    "sex": "female",
+    "phone": "0911222333",
+    "address": "花蓮縣花蓮市中山路321號",
+    "postcode": "970",
+    "emailValidated": false,
+    "googleUid": null
+  }
+]

@@ -1,0 +1,31 @@
+// GET /api/users/:userId/coupons
+'use client'
+import { useState, useEffect } from 'react';
+
+
+function useUserCoupons(userId) {
+  const [userCoupons, setUserCoupons] = useState([])
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+
+      try {
+        const res = await fetch(`/api/users/${userId}/coupons`)
+        if (!res.ok) throw new Error(`HTTP 錯誤! 狀態碼:${res.status}`)
+
+        const data = await res.json();
+        setUserCoupons(data)
+      } catch (err) {
+        setError(err)
+      }
+    }
+    fetchData()
+
+  }, [userId]) //ID改變時重新獲取資料
+
+  return { userCoupons, isLoading, error }
+}
+export default useUserCoupons;

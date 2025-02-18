@@ -6,10 +6,11 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 
 import CartList from './_components/cart-list'
 import { useMyCart } from '@/hooks/use-cart'
+import Link from 'next/link';
 
 
 
-export default function ChecklistPage(props) {
+export default function ChecklistPage() {
   const { cartItems,
     totalAmount,
     totalQty,
@@ -73,9 +74,11 @@ export default function ChecklistPage(props) {
                 <h4 className="h4">總計 :</h4>
                 <h4 className="h4">NT$ {totalAmount}</h4>
               </div>
-              <button type="button" className="btn btn-dark w-100 mt-5">
-                結帳
-              </button>
+              <Link href="/my-cart/information">
+                <button type="button" className="btn btn-dark w-100 mt-5">
+                  結帳
+                </button>
+              </Link>
             </div>
           </div>
         </div>
