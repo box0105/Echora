@@ -66,8 +66,11 @@ export default function UserPage() {
       })
 
       const resData = await res.json()
+      console.log(resData)
 
       if (resData?.status === 'success') {
+        localStorage.setItem('userId', resData.data.user.id)
+
         mutate()
         toast.success('已成功登入')
         if (isClient) {

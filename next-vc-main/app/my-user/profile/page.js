@@ -8,8 +8,8 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { useAuth } from '@/hooks/use-auth'
 import PreviewUploadImage from './_components/preview-upload-image'
-import { jwtDecode } from 'jwt-decode'
 import TWZipCode from './_components/tw-zipcode'
 import { Oval } from 'react-loader-spinner'
 
@@ -23,6 +23,7 @@ const initUserProfile = {
 }
 
 export default function ProfilePage() {
+  const { user, isAuth } = useAuth()
   const [userProfile, setUserProfile] = useState(initUserProfile)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
@@ -31,14 +32,21 @@ export default function ProfilePage() {
   }
 
   useEffect(() => {
+    const userId = localStorage.getItem('userId')
+    // console.log('Current token:', userId)
+    // if (!isAuth || !user?.id) return
     const fetchUserProfile = async () => {
       try {
-        const res = await fetch(`http://localhost:3005/api/users/4`) // 替換為實際的用戶 ID
+        const res = await fetch(`http://localhost:3005/api/users/${userId}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('userId')}`, // 附帶 token
+          },
+        })
         const resData = await res.json()
-        // console.log('API 回傳資料:', resData)
+        console.log('API 回傳資料:', resData)
         if (resData.status === 'success') {
           setUserProfile(resData.data)
-          // console.log(resData.data)
+          console.log('User profile data:', resData.data)
         } else {
           toast.error(`獲取會員資料失敗: ${resData.message}`)
         }
@@ -48,11 +56,43 @@ export default function ProfilePage() {
     }
 
     fetchUserProfile()
-  }, [])
+  }, [user, isAuth])
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setUserProfile((prevProfile) => ({
+      ...prevProfile,
+      [name]: value,
+    }))
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const userId = localStorage.getItem('userId')
+    try {
+      const res = await fetch(`http://localhost:3005/api/users/${userId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('userId')}`,
+        },
+        body: JSON.stringify(userProfile),
+      })
+      const resData = await res.json()
+      if (resData.status === 'success') {
+        toast.success('會員資料更新成功')
+      } else {
+        toast.error(`更新會員資料失敗: ${resData.message}`)
+      }
+    } catch (err) {
+      toast.error(`更新會員資料失敗: ${err.message}`)
+    }
+  }
+
   return (
     <>
       <MemberLayout>
-        <form className="profile-form">
+        <form className="profile-form" onSubmit={handleSubmit}>
           <div className="section-header">
             <h4 className="section-title h4">個人資料</h4>
           </div>
@@ -65,8 +105,10 @@ export default function ProfilePage() {
                 <input
                   type="text"
                   id="username"
+                  name="username"
                   className="form-control"
-                  defaultValue={userProfile?.username || ''}
+                  value={userProfile.username}
+                  onChange={handleInputChange}
                 />
               </div>
 
@@ -77,8 +119,9 @@ export default function ProfilePage() {
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   className="form-control"
-                  defaultValue={userProfile?.email || ''}
+                  value={userProfile.email}
                   readOnly
                 />
               </div>
@@ -88,13 +131,7 @@ export default function ProfilePage() {
                     <label htmlFor="password" className="form-label">
                       密碼
                     </label>
-                    <div
-                      type="password"
-                      id="password"
-                      className
-                      defaultValue={userProfile?.password || ''}
-                      readOnly
-                    >
+                    <div type="password" id="password" readOnly>
                       ******
                     </div>
                   </div>
@@ -111,38 +148,44 @@ export default function ProfilePage() {
             </div>
             <div className="right">
               <div className="form-group">
-                <label htmlFor="lastname" className="form-label">
+                <label htmlFor="phone" className="form-label">
                   電話號碼
                 </label>
                 <input
                   type="text"
                   id="phone"
+                  name="phone"
                   className="form-control"
-                  defaultValue={userProfile?.phone || ''}
+                  value={userProfile.phone}
+                  onChange={handleInputChange}
                   placeholder="請輸入電話號碼"
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="lastname" className="form-label">
+                <label htmlFor="address" className="form-label">
                   地址
                 </label>
                 <input
                   type="text"
                   id="address"
+                  name="address"
                   className="form-control"
-                  defaultValue={userProfile?.address || ''}
+                  value={userProfile.address}
+                  onChange={handleInputChange}
                   placeholder="請輸入地址"
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="lastname" className="form-label">
+                <label htmlFor="postcode" className="form-label">
                   郵遞區號
                 </label>
                 <input
                   type="text"
                   id="postcode"
+                  name="postcode"
                   className="form-control"
-                  defaultValue={userProfile?.postcode || ''}
+                  value={userProfile.postcode}
+                  onChange={handleInputChange}
                   placeholder="請輸入郵遞區號"
                 />
               </div>
@@ -157,6 +200,7 @@ export default function ProfilePage() {
                     value="female"
                     className="visually-hidden"
                     checked={userProfile.sex === 'female'}
+                    onChange={handleInputChange}
                   />
                   <span className="gender-radio" />
                   <span>女</span>
@@ -168,6 +212,7 @@ export default function ProfilePage() {
                     value="male"
                     className="visually-hidden"
                     checked={userProfile.sex === 'male'}
+                    onChange={handleInputChange}
                   />
                   <span className="gender-radio" />
                   <span>男</span>
@@ -179,6 +224,7 @@ export default function ProfilePage() {
                     value="other"
                     className="visually-hidden"
                     checked={userProfile.sex === 'other'}
+                    onChange={handleInputChange}
                   />
                   <span className="gender-radio" />
                   <span>不便透露</span>
@@ -191,6 +237,7 @@ export default function ProfilePage() {
           </button>
         </form>
       </MemberLayout>
+      <ToastContainer />
     </>
   )
 }

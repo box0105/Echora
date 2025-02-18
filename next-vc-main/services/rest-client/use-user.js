@@ -109,7 +109,7 @@ export const useUserRegister = () => {
 
 export const useAuthLogin = () => {
   const { trigger, isMutating, isError } = useMutation(
-    `${apiURL}/auth/login`,
+    `${apiURL}/users/login`,
     'POST'
   )
   // POST方法時，要利用login({ username, password })來登入
