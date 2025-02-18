@@ -3,6 +3,10 @@
 import React, { useState, useEffect } from 'react'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import './first.scss'
+import HeroSection from "./_components/HeroSection"
+import RentalProcess from "./_components/RentalProcess"
+import Filter from "./_components/Filter"
+import List from "./_components/List"
 
 export default function Page(props) {
   return (
