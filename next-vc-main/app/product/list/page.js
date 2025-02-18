@@ -30,7 +30,7 @@ export default function ProductListPage(props) {
           color_id,
           color_name,
           color_image,
-          color_palette_name,
+          color_palette_id,
           image,
         } = item
 
