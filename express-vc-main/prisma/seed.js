@@ -14,7 +14,7 @@ import { isDev } from '../lib/utils.js'
 // foreignKey is in the second table
 const oneToOne = []
 // // foreignKey is in the second table
-const oneToMany = []
+const oneToMany = ['CouponType:Coupon','DiscountType:Coupon']
 // // foreignKey is in the third table
 const manyToMany = []
 
