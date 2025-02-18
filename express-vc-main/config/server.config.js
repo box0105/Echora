@@ -37,13 +37,13 @@ export const serverConfig = {
   // local development
   lineLogin: {
     development: {
-      channelId: '123456789',
-      channelSecret: 'xxxxxxxxxxxx',
+      channelId: 'test_202502186397@line.pay',
+      channelSecret: 'yEOj5BAi(e',
       callbackUrl: 'http://localhost:3000/user/line-login',
     },
     production: {
-      channelId: '',
-      channelSecret: '',
+      channelId: 'test_202502186397@line.pay',
+      channelSecret: 'yEOj5BAi(e',
       callbackUrl: 'https://xxxxx.vercel.app/user/line-login',
     },
   },
@@ -58,14 +58,14 @@ export const serverConfig = {
   },
   linePay: {
     development: {
-      channelId: '123456789',
-      channelSecret: 'xxxxxxxxxxxx',
+      channelId: '2006923376',
+      channelSecret: '5f013f8f8fa8d845a4dc9058be905879',
       confirmUrl: 'http://localhost:3000/line-pay',
       cancelUrl: 'http://localhost:3000/line-pay/cancel',
     },
     production: {
-      channelId: '',
-      channelSecret: '',
+      channelId: '2006923376',
+      channelSecret: '5f013f8f8fa8d845a4dc9058be905879',
       confirmUrl: 'https://next-app-raw.vercel.app/line-pay',
       cancelUrl: 'https://next-app-raw.vercel.app/line-pay/cancel',
     },

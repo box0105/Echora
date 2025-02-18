@@ -29,7 +29,7 @@ export default function LinePayPage() {
     returnMessage: '',
   })
 
-  // 取得網址參數，例如: ?transactionId=xxxxxx
+  // 取得網址參數，例如: ?transactionId=xxxxxx/
   const searchParams = useSearchParams()
   const router = useRouter()
 
