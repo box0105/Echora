@@ -2,12 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 // import 'bootstrap/dist/css/bootstrap.min.css'
-import './_styles/first.scss'
-import HeroSection from "./_components/HeroSection"
-import RentalProcess from "./_components/RentalProcess"
-import Filter from "./_components/Filter"
-import List from "./_components/List"
-
+import '../_styles/first.scss'
 export default function Page(props) {
   return (
     <>
@@ -16,7 +11,46 @@ export default function Page(props) {
           {/* section1 */}
           <div className="c-section1">
             <div className="card text-bg-dark c-section1">
-            <HeroSection/>
+              <img
+                src="/images/Rent/C-main.jpg"
+                className="card-img d-none d-md-block border-radius-0"
+                alt="..."
+              />
+              <img
+                src="/images/Rent/C-main.jpg"
+                className="card-img d-block d-md-none border-radius-0"
+                style={{ height: 400 }}
+                alt="..."
+              />
+              <div className="card-img-overlay no-rounded-corners d-flex justify-content-satrt align-items-center">
+                <div className="col-6 c-section1-text ">
+                  <h1 className="home-title d-none d-md-block ">
+                    ELECTRIC GUITAR RENTAL SERVICES
+                  </h1>
+                  <h1 className="home-title d-block d-md-none">
+                    <div className="c-mod-text">
+                      ELECTRIC <br />
+                      GUITAR RENTAL <br />
+                      SERVICES
+                    </div>
+                  </h1>
+                  <div className=" h4 home-2-title d-none d-md-block">
+                    電吉他租借服務
+                  </div>
+                  <h4 className="home-2-title d-block d-md-none">
+                    <div className="mod-text-1">電吉他租借服務</div>
+                  </h4>
+                  <div className="c-ptext d-none d-md-block">
+                    <div className=" h4 home-text">
+                      電吉他租借服務說明電吉他租借服務電吉他租借服務
+                      電吉他租借服務電吉他租借服務
+                      <br />
+                      全台共三間台北、台中、高雄三間門市可取貨
+                    </div>
+                    <div className="h4 c-bottom-text">歡迎來電洽詢</div>
+                  </div>
+                </div>
+              </div>
               <div className="col-12 c-Process">
                 <div className="d-none d-sm-flex bg-black">
                   <div className="col-1 d-flex justify-content-center align-items-center iconf">
