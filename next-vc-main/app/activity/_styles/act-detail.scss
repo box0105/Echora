@@ -1,0 +1,85 @@
+.b-container {
+  padding-top: 2rem;
+
+  .b-main-info {
+    padding-top: 3rem;
+    padding-bottom: 4.5rem;
+
+    .breadcrumb-item:hover a {
+      color: #2f97c6;
+    }
+    .breadcrumb-item.active a{
+      color: var(--grey600);
+    }
+
+    .b-title {
+      padding-top: 1rem;
+    }
+
+    .col-12 {
+      padding-bottom: 3rem;
+    }
+
+    .b-card-info,
+    .b-card-band {
+      border-top: 1.5px solid var(--grey100);
+      padding-top: 3rem;
+    }
+
+    .flattenBtn {
+      transition: transform 0.4s ease;
+      &:hover{
+        transform: scale(1.25);
+      }
+    }
+
+    .table td {
+      align-content: center;
+    }
+  }
+
+  .b-card {
+    padding: 2rem;
+    border-radius: 0.75rem;
+    border: 2px solid var(--grey200);
+  }
+
+  .b-article-card {
+    gap: 4rem;
+  }
+
+  .b-aside {
+    background: var(--grey50);
+    padding: 2.25rem;
+    width: 24.375rem;
+    position: sticky;
+    top: 0;
+
+    @media screen and (max-width: 1200px) {
+      width: 100%;
+    }
+
+    .b-purchaseBtn {
+      margin-top: 3.5rem;
+    }
+
+    .b-warning {
+      border-top: 1.5px solid var(--grey200);
+
+      li {
+        margin-block: 0.3rem;
+        font-size: 0.875rem;
+      }
+    }
+  }
+
+  .b-other-act {
+    .b-title {
+      padding-top: 6rem;
+    }
+
+    .b-act-list {
+      padding-block: 2.5rem;
+    }
+  }
+}

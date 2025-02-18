@@ -44,8 +44,11 @@ export default function ActivityPage() {
   return (
     <>
       <div className="container-fluid">
-        <HeroSection title="2025 全台音樂祭" subTitle="一同締造屬於你的冒險拾光" images={images} />
-        <Title title="音樂祭" subTitle="流行音樂"/>
+        <HeroSection title="2025 全台音樂祭" subTitle="一同締造屬於你的冒險拾光" images={images} isLoop={true} />
+        
+        <div className="b-container">
+          <Title title="音樂祭" subTitle="流行音樂" />
+        </div>
 
         {/* filter & order 之後套關關的 */}
         <div className="b-filter-bar">
