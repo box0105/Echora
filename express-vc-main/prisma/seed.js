@@ -16,7 +16,7 @@ const oneToOne = []
 // // foreignKey is in the second table
 const oneToMany = ['CouponType:Coupon','DiscountType:Coupon']
 // // foreignKey is in the third table
-const manyToMany = [] //'Coupon:User:UserCoupons'
+const manyToMany = ['Coupon:User:UserCoupons'] //'Coupon:User:UserCoupons'
 
 // seed檔案種類(副檔名)seed files extension (csv| json)
 const fileExtension = 'json'
