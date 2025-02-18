@@ -6,7 +6,6 @@ import './_styles/cart-information.scss'
 import React from 'react'
 import { useMyCart } from '@/hooks/use-cart'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import { useSearchParams } from 'next/navigation'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -50,8 +49,7 @@ export default function InformationPage() {
   }
 
   // ---------------------------------------
-  const { totalAmount } = useMyCart()
-  const router = useRouter()
+  const { totalAmount,clearCart } = useMyCart()
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -90,6 +88,7 @@ export default function InformationPage() {
       })
 
       if (response.ok) {
+        clearCart()
         console.log('OK')
       } else {
         alert('訂單提交失敗！')
@@ -283,7 +282,7 @@ export default function InformationPage() {
                       <div className="col-12">
                         <input
                           className="w-100 p-3"
-                          type="email"
+                          type="creditCard"
                           placeholder="卡號 1234 1234 1234 1234"
                         />
                       </div>
