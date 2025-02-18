@@ -17,34 +17,19 @@ datasource db {
 
 //以下為會員部分
 model User {
-  id              Int        @id @default(autoincrement())
-  username        String     @unique
-  password        String
-  email           String     @unique
+  id             Int        @id @default(autoincrement())
+  username       String     @unique
+  password       String
+  email          String     @unique
+  sex            String?
+  phone          String?
+  postcode       String?
+  address        String?
   // 關聯 User:Profile = 1:1 
-  profile         Profile?
-  emailValidated  Boolean    @default(false) @map("email_validated")
-  googleUid       String?    @unique @map("google_uid")
-  lineUid         String?    @unique @map("line_uid")
-  lineAccessToken String?    @map("line_access_token") @db.Text
+  emailValidated Boolean    @default(false) @map("email_validated")
+  googleUid      String?    @unique @map("google_uid")
   // 關聯: User:Product = n:m 透過 Favorite
-  userLike        userLike[]
-}
-
-model Profile {
-  id       Int       @id @default(autoincrement())
-  name     String?
-  bio      String?   @db.Text
-  avatar   String?
-  sex      String?
-  // 日期格式: 2021-01-01
-  birth    DateTime? @db.Date
-  phone    String?
-  postcode String?
-  address  String?
-  // 1:1 關聯
-  user     User      @relation(fields: [userId], references: [id])
-  userId   Int       @unique @map("user_id")
+  userLike       userLike[]
 }
 
 model userLike {
@@ -168,35 +153,46 @@ model Spec {
   @@map("spec")
 }
 
-model Coupons {
-  id             Int          @id @default(autoincrement())
+// 問題:開啟關聯部分無法寫入資料
+model Coupon {
+  id             Int      @id @default(autoincrement())
   name           String
-  code           String?      @unique // 優惠券代碼 (例如：SUMMER20)
+  code           String?  @unique // 優惠券代碼 (例如：SUMMER20)
   typeId         Int //type fk
   type           CouponType   @relation(fields: [typeId], references: [id]) // 優惠券類型 (關係)
   discount       Int // 折扣金額或百分比 (根據 discount_type 決定)
   discountTypeId Int // discountType fk
-  discountType   DiscountType @relation(fields: [discountTypeId], references: [id]) // 折扣類型 (關係)
+  discountType   DiscountType @  relation(fields: [discountTypeId], references: [id]) // 折扣類型 (關係)
   minPurchase    Decimal? //最低消費金額
   description    String? // 優惠券描述 (nullable)
   startTime      DateTime
   endTime        DateTime
-  is_delete      Boolean      @default(false)
+  isDelete       Boolean  @default(false)
 
   @@index([code]) // 建立 code 索引
 }
 
 model CouponType {
-  id       Int       @id @default(autoincrement())
+  id       Int    @id @default(autoincrement())
   category String
-  coupons  Coupons[]
+  coupon  Coupon[]
 }
 
 model DiscountType {
-  id      Int       @id @default(autoincrement())
-  name    String
-  coupons Coupons[]
+  id   Int    @id @default(autoincrement())
+  name String
+  coupon Coupon[]
 }
+
+model UserCoupons {
+  id       Int     @id @default(autoincrement())
+  userId   Int
+  couponId Int 
+  claimed  Boolean @default(true)
+  isDelete       Boolean  @default(false)
+}
+
+
 
 model Rent {
   id    Int    @id @default(autoincrement())

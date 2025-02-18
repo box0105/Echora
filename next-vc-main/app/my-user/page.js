@@ -2,7 +2,7 @@
 
 import './_styles/login_signup.scss'
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useAuth } from '@/hooks/use-auth'
 import useFirebase from './_hooks/use-firebase'
@@ -14,10 +14,12 @@ import {
   useAuthLogout,
   useAuthLogin,
 } from '@/services/rest-client/use-user'
+import { useRouter } from 'next/navigation'
 
 export default function UserPage() {
   // 輸入表單用的狀態
   const [userInput, setUserInput] = useState({ email: '', password: '' })
+  const [errorMessage, setErrorMessage] = useState('')
 
   // Firebase Google 登入
   const { loginGoogle, logoutFirebase } = useFirebase()
@@ -30,6 +32,12 @@ export default function UserPage() {
 
   // 取得登入狀態
   const { isAuth } = useAuth()
+  const router = useRouter()
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   // 輸入帳號與密碼框用
   const handleFieldChange = (e) => {
@@ -43,14 +51,33 @@ export default function UserPage() {
       return
     }
 
-    const res = await login(userInput)
-    const resData = await res.json()
+    if (!userInput.email || !userInput.password) {
+      toast.error('請提供 email 和 password')
+      return
+    }
 
-    if (resData?.status === 'success') {
-      mutate()
-      toast.success('已成功登入')
-    } else {
-      toast.error(`登入失敗`)
+    try {
+      const res = await fetch('http://localhost:3005/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userInput),
+      })
+
+      const resData = await res.json()
+
+      if (resData?.status === 'success') {
+        mutate()
+        toast.success('已成功登入')
+        if (isClient) {
+          router.push('/') // 重定向到首頁
+        }
+      } else {
+        toast.error(`登入失敗: ${resData.message}`)
+      }
+    } catch (err) {
+      toast.error(`登入失敗: ${err.message}`)
     }
   }
 
@@ -69,6 +96,9 @@ export default function UserPage() {
       if (resData.status === 'success') {
         mutate()
         toast.success('已成功登入')
+        if (isClient) {
+          router.push('/') // 重定向到首頁
+        }
       } else {
         toast.error('Google 登入失敗')
       }
@@ -117,6 +147,9 @@ export default function UserPage() {
               </div>
             </div>
             <div className="login">登入</div>
+            {errorMessage && (
+              <div className="error-message">{errorMessage}</div>
+            )}
             <div className="input-field">
               <label htmlFor="email" className="visually-hidden">
                 電子郵件
@@ -153,12 +186,13 @@ export default function UserPage() {
                 className="show-password"
                 aria-label="顯示密碼"
               >
-                <i className="bi bi-eye show-password-icon" />
+                <i className="fa-solid fa-eye"></i>
               </button>
             </div>
-            <a href="#" className="forgot-password">
+            <Link href="/my-user/forget-password" className="forgot-password">
+              {' '}
               忘記密碼?
-            </a>
+            </Link>
             <button
               type="button"
               className="login-button"
