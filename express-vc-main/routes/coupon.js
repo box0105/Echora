@@ -5,6 +5,7 @@ const router = express.Router()
 
 import { successResponse, errorResponse } from '../lib/utils.js'
 
+// 測試取得所有優惠券
 router.get('/', async (req, res) => {
   try {
     const [rows] = await db.execute('SELECT * FROM `coupon`')
@@ -85,17 +86,53 @@ router.post('/:userId/:couponId', async (req, res) => {
 })
 
 // user刪除優惠券
-router.delete('/:userId', (req, res) => { })
+router.delete('/:userId/:couponId', async (req, res) => {
+  const couponId = req.params.couponId
+  const userId = req.params.userId
+
+  try {
+    const deletecoupon = await db.query("DELETE FROM usercoupons WHERE userId = ? AND couponId = ?",
+      [userId, couponId])
+    res.status(200).json({ status: 'success', message: '刪除成功!' })
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ status: 'fail', message: '刪除失敗!' })
+  }
+})
 
 // 使用優惠券
-router.put('/:userId', async (req, res) => {
+router.put('/:userId/:couponId', async (req, res) => {
   // 更新使用者已使用優惠券的狀態
   //await db.query(UPDATE user_coupons SET isDelete = 1 WHERE user_id = 'user_id' AND coupon_id = 'coupon_id')
-  // console.log(getCoupon);
-  const { couponId, cartItem } = req.body // 如何取得要溝通
+  const { cartItem } = req.body
+  const couponId = req.params.couponId
+  const userId = req.params.userId
 
-  if (!cartItem) throw new Error("沒有可以使用優惠券的商品!")
-  const usedcoupon = await db.query(`UPDATE usercoupons SET isDelete = 1 WHERE userId = 'user_id AND couponId = 'coupon_id`)
+
+  try {
+    // if (!cartItem) throw new Error("沒有可以使用優惠券的商品!")
+
+    const usedcoupon = await db.query(`UPDATE usercoupons SET isDelete = 1 , claimed = 0 WHERE userId = ? AND couponId = ?`, [userId, couponId])
+    console.log(usedcoupon);
+    res.status(200).json({ status: 'success', message: '折扣完成' })
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ status: 'fail', message: err.message })
+  }
+})
+// 復原(測試環境)
+router.put('/re/:userId/:couponId', async (req, res) => {
+  const couponId = req.params.couponId
+  const userId = req.params.userId
+  try {
+    const re = await db.query(`UPDATE usercoupons SET isDelete = 0 , claimed = 1 WHERE userId = ? AND couponId = ?`, [userId, couponId])
+
+    res.status(200).json({ status: 'success', message: '復原成功' })
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ status: 'fail', message: '復原失敗' })
+  }
+
 })
 
 
