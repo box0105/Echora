@@ -7,8 +7,51 @@ import React from 'react'
 import { useMyCart } from '@/hooks/use-cart'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
+import { toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { isDev, apiURL } from '@/config'
+// 載入loading元件
 
 export default function InformationPage() {
+
+  
+  // 取得網址參數，例如: ?transactionId=xxxxxx/
+  const searchParams = useSearchParams()
+
+  if (isDev) console.log('transactionId', searchParams.get('transactionId'))
+
+  // 導向至LINE Pay付款頁面
+  const goLinePay = async () => {
+    // 先連到node伺服器後端，取得LINE Pay付款網址
+    const res = await fetch(
+      `${apiURL}/line-pay-test-only/reserve?amount=${totalAmount}`,
+      {
+        method: 'GET',
+        // 讓fetch能夠傳送cookie
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+      }
+    )
+
+    const resData = await res.json()
+
+    console.log(resData)
+
+    if (resData.status === 'success') {
+      if (window.confirm('確認要導向至LINE Pay進行付款?')) {
+        //導向至LINE Pay付款頁面
+        window.location.href = resData.data.paymentUrl
+      }
+    } else {
+      toast.error('付款失敗')
+    }
+  }
+
+  // ---------------------------------------
   const { totalAmount } = useMyCart()
   const router = useRouter()
 
@@ -45,7 +88,7 @@ export default function InformationPage() {
       })
 
       if (response.ok) {
-        router.push('/my-cart/finish')
+        console.log('OK')
       } else {
         alert('訂單提交失敗！')
       }
@@ -284,7 +327,11 @@ export default function InformationPage() {
                 {/* <div className="row row-cols-1 pt-4 d-md-block d-none">
                 <CartList cartItems={cartItems} />
               </div> */}
-                <button type="submit" className="btn btn-dark w-100 mt-5">
+                <button
+                  type="submit"
+                  className="btn btn-dark w-100 mt-5"
+                  onClick={goLinePay}
+                >
                   下訂單
                 </button>
                 <Link href="/my-cart/checklist">

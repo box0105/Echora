@@ -29,7 +29,7 @@ export default function LinePayPage() {
     returnMessage: '',
   })
 
-  // 取得網址參數，例如: ?transactionId=xxxxxx/
+  // 取得網址參數，例如: ?transactionId=xxxxxx
   const searchParams = useSearchParams()
   const router = useRouter()
 
@@ -97,7 +97,7 @@ export default function LinePayPage() {
       // 關閉loading動畫
       setLoading(false)
       // 導向至訂單頁
-      router.replace('/line-pay')
+      router.replace('/my-cart/finish')
     }, 3000)
   }
 
@@ -156,17 +156,8 @@ export default function LinePayPage() {
 
   const confirmOrder = (
     <>
-      <h2>最後付款確認結果(returnCode=0000 代表成功): </h2>
+      <h2>最後付款確認結果(付款成功): </h2>
       <p>{JSON.stringify(result)}</p>
-      <p>
-        <button
-          onClick={() => {
-            window.location.href = '/line-pay'
-          }}
-        >
-          重新測試
-        </button>
-      </p>
     </>
   )
 
@@ -181,19 +172,7 @@ export default function LinePayPage() {
 
   return (
     <>
-      <h1>Line Pay測試</h1>
-      <p>
-        本功能目前與資料庫無關，但會用到後端伺服器的session機制(預設是file-session-store)，這是為了付完款後返回後，需要訂單的金額作最後確認用的。
-      </p>
-      <p>
-        會員登入狀態: {isAuth ? '已登入' : '未登入'}
-        <br />
-        <Link href="/user">連至會員登入頁</Link>
-      </p>
-      <hr />
-      {result.returnCode ? confirmOrder : orderDisplay}
-      {/* 土司訊息視窗用 */}
-      <ToastContainer />
+
     </>
   )
 }
