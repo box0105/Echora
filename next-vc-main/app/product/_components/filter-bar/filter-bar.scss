@@ -91,6 +91,7 @@
     padding: 10px 16px;
     min-width: 171px;
     transition: all 0.2s;
+    user-select: none;
   
     &:hover {
       /* react 改成hover & click事件 */
