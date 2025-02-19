@@ -20,6 +20,8 @@ export default function UserPage() {
   // 輸入表單用的狀態
   const [userInput, setUserInput] = useState({ email: '', password: '' })
   const [errorMessage, setErrorMessage] = useState('')
+  const [showPassword, setShowPassword] = useState(false) // 用於切換密碼顯示
+  const [isFormValid, setIsFormValid] = useState(false) // 用於控制按鈕樣式
 
   // Firebase Google 登入
   const { loginGoogle, logoutFirebase } = useFirebase()
@@ -39,9 +41,28 @@ export default function UserPage() {
     setIsClient(true)
   }, [])
 
+  // 檢查表單是否有效
+  const checkFormValidity = (email, password) => {
+    if (email.length > 0 && password.length > 0) {
+      setIsFormValid(true)
+    } else {
+      setIsFormValid(false)
+    }
+  }
+
   // 輸入帳號與密碼框用
   const handleFieldChange = (e) => {
-    setUserInput({ ...userInput, [e.target.name]: e.target.value })
+    const { name, value } = e.target
+    setUserInput((prevState) => ({ ...prevState, [name]: value }))
+    checkFormValidity(
+      name === 'email' ? value : userInput.email,
+      name === 'password' ? value : userInput.password
+    )
+  }
+
+  // 切換密碼顯示
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword)
   }
 
   // **處理一般登入**
@@ -174,7 +195,7 @@ export default function UserPage() {
                 密碼
               </label>
               <input
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 name="password"
                 id="password"
                 value={userInput.password}
@@ -188,8 +209,13 @@ export default function UserPage() {
                 type="button"
                 className="show-password"
                 aria-label="顯示密碼"
+                onClick={togglePasswordVisibility}
               >
-                <i className="fa-solid fa-eye"></i>
+                <i
+                  className={`fa-solid ${
+                    showPassword ? 'fa-eye-slash' : 'fa-eye'
+                  }`}
+                ></i>
               </button>
             </div>
             <Link href="/my-user/forget-password" className="forgot-password">
@@ -198,7 +224,7 @@ export default function UserPage() {
             </Link>
             <button
               type="button"
-              className="login-button"
+              className={`login-button ${isFormValid ? 'hover' : ''}`}
               onClick={handleLogin}
             >
               登入

@@ -22,6 +22,7 @@ export default function RegisterPage() {
   })
   const [showPassword, setShowPassword] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
+  const [isFormValid, setIsFormValid] = useState(false) // 用於控制按鈕樣式
 
   const { isAuth } = useAuth()
   const router = useRouter()
@@ -31,36 +32,23 @@ export default function RegisterPage() {
     setIsClient(true)
   }, [])
 
-  // Firebase Google 登入
-  const { loginGoogle, logoutFirebase } = useFirebase()
-  const { googleLogin } = useAuthGoogleLogin()
-
-  // **處理 Google 登入**
-  const handleGoogleLogin = () => {
-    if (isAuth) {
-      toast.error('錯誤 - 會員已登入')
-      return
+  // 檢查表單是否有效
+  const checkFormValidity = (email, password) => {
+    if (email.length > 0 && password.length > 0) {
+      setIsFormValid(true)
+    } else {
+      setIsFormValid(false)
     }
-    loginGoogle(async (providerData) => {
-      console.log(providerData)
-
-      const res = await googleLogin(providerData)
-      const resData = await res.json()
-
-      if (resData.status === 'success') {
-        toast.success('已成功登入')
-        if (isClient) {
-          router.push('/') // 重定向到首頁
-        }
-      } else {
-        toast.error('Google 登入失敗')
-      }
-    })
   }
 
   // 輸入帳號 密碼用
   const handleFieldChange = (e) => {
-    setUserInput({ ...userInput, [e.target.name]: e.target.value })
+    const { name, value } = e.target
+    setUserInput((prevState) => ({ ...prevState, [name]: value }))
+    checkFormValidity(
+      name === 'email' ? value : userInput.email,
+      name === 'password' ? value : userInput.password
+    )
   }
 
   const handleSubmit = async (e) => {
@@ -107,6 +95,33 @@ export default function RegisterPage() {
   // 切換密碼顯示狀態
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword)
+  }
+
+  // Firebase Google 登入
+  const { loginGoogle, logoutFirebase } = useFirebase()
+  const { googleLogin } = useAuthGoogleLogin()
+
+  // **處理 Google 登入**
+  const handleGoogleLogin = () => {
+    if (isAuth) {
+      toast.error('錯誤 - 會員已登入')
+      return
+    }
+    loginGoogle(async (providerData) => {
+      console.log(providerData)
+
+      const res = await googleLogin(providerData)
+      const resData = await res.json()
+
+      if (resData.status === 'success') {
+        toast.success('已成功登入')
+        if (isClient) {
+          router.push('/') // 重定向到首頁
+        }
+      } else {
+        toast.error('Google 登入失敗')
+      }
+    })
   }
 
   return (
@@ -206,7 +221,10 @@ export default function RegisterPage() {
               忘記密碼?
             </Link>
 
-            <button type="submit" className="login-button">
+            <button
+              type="submit"
+              className={`login-button ${isFormValid ? 'hover' : ''}`}
+            >
               繼續
             </button>
             <div className="social-login">
