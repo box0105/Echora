@@ -212,7 +212,7 @@ model Activity {
 }
 
 model MyOrder {
-  id              Int    @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
+  id              Int      @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
   recipient       String
   phone           String
   email           String
@@ -220,6 +220,7 @@ model MyOrder {
   shippingMethod  String
   paymentMethod   String
   totalAmount     Int
+  createdAt       DateTime @default(now()) // 訂單創建時間
 }
 
 model MyOrderItem {

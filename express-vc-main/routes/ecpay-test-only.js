@@ -43,7 +43,7 @@ router.get('/', function (req, res) {
   // (二選一)以下這個設定，會有回傳結果，但要用前端的api路由來接收並協助重新導向到前端成功callback頁面(不用時下面要83~97從中的值要註解)
   const OrderResultURL = 'http://localhost:3000/ecpay/api' //前端成功頁面api路由(POST)
   // (二選一)以下這個設定，不會任何回傳結果(不用時下面要83~97從中的值要註解)
-  // const ClientBackURL = 'http://localhost:3000/ecpay/callback' //前端成功頁面
+  // const ClientBackURL = 'http://localhost:3000/my-cart/finish' //前端成功頁面
   const ChoosePayment = 'ALL'
 
   ////////////////////////以下參數不用改////////////////////////
