@@ -16,8 +16,16 @@ export default function Header() {
         <div className="container-fluid">
           <div className={`${styles['g-nav-top']} row`}>
             <div className={`${styles['g-logo']} col-lg-4 col-6 order-1 ps-0`}>
-              <img className={styles['g-pc-logo']} src="/images/header/logo.svg" />
-              <img className={styles['g-mb-logo']} src="/images/header/logo-mb.svg" />
+              <Link href="/">
+                <img
+                  className={styles['g-pc-logo']}
+                  src="/images/header/logo.svg"
+                />
+                <img
+                  className={styles['g-mb-logo']}
+                  src="/images/header/logo-mb.svg"
+                />
+              </Link>
             </div>
             <form
               action
@@ -29,7 +37,9 @@ export default function Header() {
                 placeholder="搜尋商品關鍵字"
               />
             </form>
-            <div className={`${styles['g-right-menu']} d-flex gap-4 col-lg-4 col-6 order-2 d-flex justify-content-end align-items-center p-0`}>
+            <div
+              className={`${styles['g-right-menu']} d-flex gap-4 col-lg-4 col-6 order-2 d-flex justify-content-end align-items-center p-0`}
+            >
               <a href="">
                 <img src="/images/header/heart.svg" />
               </a>
@@ -47,7 +57,12 @@ export default function Header() {
                 <img src="/images/header/cart.svg" />
                 <div className={styles['m-circle']}>{totalQty}</div>
               </a>
-              <button className={styles.hamburger} onClick={() => { setMenuOpen(true) }}>
+              <button
+                className={styles.hamburger}
+                onClick={() => {
+                  setMenuOpen(true)
+                }}
+              >
                 <img src="/images/header/hamburger.svg" />
               </button>
             </div>
@@ -95,12 +110,23 @@ export default function Header() {
         </div>
       </nav>
       {/* hamburger menu bar */}
-      <section className={`${styles['g-menu-bar-sec']} ${menuOpen ? styles.active : ""}`}>
+      <section
+        className={`${styles['g-menu-bar-sec']} ${
+          menuOpen ? styles.active : ''
+        }`}
+      >
         <div className="container-fluid p-0">
           <div className={styles['g-menu-bar']}>
             <div className="d-flex justify-content-between pb-4">
               <img className="ps-3" src="/images/header/logo-mb.svg" />
-              <img className={styles['g-x']} width="16px" src="/images/header/x.svg" onClick={() => { setMenuOpen(false) }} />
+              <img
+                className={styles['g-x']}
+                width="16px"
+                src="/images/header/x.svg"
+                onClick={() => {
+                  setMenuOpen(false)
+                }}
+              />
             </div>
             <ul className="list-unstyled">
               <li>
