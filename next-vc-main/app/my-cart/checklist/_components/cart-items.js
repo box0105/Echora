@@ -60,7 +60,7 @@ export default function CartItem({ item }) {
                 <h5 className="h4 p-lg-1">價錢: NT$ {item.price}</h5>
               </div>
               <div className="d-flex justify-content-center align-items-end pt-3 mt-auto">
-                <button className="btn" onClick={() => { onRemove(item.id) }}>移除商品</button>
+                <button type="button" className="btn" onClick={() => { onRemove(item.id) }}>移除商品</button>
               </div>
             </div>
           </div>

@@ -324,7 +324,7 @@ export default function InformationPage() {
                     綠界科技ECPay
                   </label>
                 </div>
-                <div className="form-check py-3 pe-4">
+                {/* <div className="form-check py-3 pe-4">
                   <input
                     type="radio"
                     name="paymentMethod"
@@ -364,7 +364,7 @@ export default function InformationPage() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div ref={payFormDiv} style={{ display: 'none' }}></div>
               </div>
               <div className="m-sec2-col4 col-lg-4 col-12">
