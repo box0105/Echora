@@ -124,6 +124,13 @@ export default function RegisterPage() {
     })
   }
 
+  // 如果已登入，重定向到首頁
+  useEffect(() => {
+    if (isAuth) {
+      router.push('/')
+    }
+  }, [isAuth, router])
+
   return (
     <>
       <div className="login-container">

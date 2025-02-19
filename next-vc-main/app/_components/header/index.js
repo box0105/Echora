@@ -4,20 +4,42 @@ import CartOffcanvas from '../cart-offcanvas'
 import { useMyCart } from '@/hooks/use-cart'
 import { useState } from 'react'
 import Link from 'next/link'
+import { useAuth } from '@/hooks/use-auth'
 
 export default function Header() {
   const { totalQty } = useMyCart()
   const [menuOpen, setMenuOpen] = useState(false)
   const [showCart, setShowCart] = useState(false)
+  const { isAuth } = useAuth()
 
+  // **處理登出（支援 Google + 一般帳號）**
+  const handleLogout = async () => {
+    logoutFirebase() // Google 登出 Firebase
+
+    const res = await logout()
+    const resData = await res.json()
+
+    if (resData.status === 'success') {
+      mutate()
+      toast.success('已成功登出')
+    } else {
+      toast.error('登出失敗')
+    }
+  }
   return (
     <>
       <nav className={`${styles['g-header']} ${styles['px-modified']}`}>
         <div className="container-fluid">
           <div className={`${styles['g-nav-top']} row`}>
             <div className={`${styles['g-logo']} col-lg-4 col-6 order-1 ps-0`}>
-              <img className={styles['g-pc-logo']} src="/images/header/logo.svg" />
-              <img className={styles['g-mb-logo']} src="/images/header/logo-mb.svg" />
+              <img
+                className={styles['g-pc-logo']}
+                src="/images/header/logo.svg"
+              />
+              <img
+                className={styles['g-mb-logo']}
+                src="/images/header/logo-mb.svg"
+              />
             </div>
             <form
               action
@@ -29,12 +51,27 @@ export default function Header() {
                 placeholder="搜尋商品關鍵字"
               />
             </form>
-            <div className={`${styles['g-right-menu']} d-flex gap-4 col-lg-4 col-6 order-2 d-flex justify-content-end align-items-center p-0`}>
+            <div
+              className={`${styles['g-right-menu']} d-flex gap-4 col-lg-4 col-6 order-2 d-flex justify-content-end align-items-center p-0 `}
+            >
+              <Link
+                href={isAuth ? '/my-user/profile' : '/my-user'}
+                legacyBehavior
+              >
+                <div className="position-relative">
+                  <img src="/images/header/account.svg" />
+                  {isAuth && (
+                    <button
+                      className={`${styles['logout-button']}`}
+                      onClick={handleLogout}
+                    >
+                      Hi! 小米
+                    </button>
+                  )}
+                </div>
+              </Link>
               <a href="">
                 <img src="/images/header/heart.svg" />
-              </a>
-              <a href="">
-                <img src="/images/header/account.svg" />
               </a>
               <a
                 className={styles['m-cart']}
@@ -47,7 +84,12 @@ export default function Header() {
                 <img src="/images/header/cart.svg" />
                 <div className={styles['m-circle']}>{totalQty}</div>
               </a>
-              <button className={styles.hamburger} onClick={() => { setMenuOpen(true) }}>
+              <button
+                className={styles.hamburger}
+                onClick={() => {
+                  setMenuOpen(true)
+                }}
+              >
                 <img src="/images/header/hamburger.svg" />
               </button>
             </div>
@@ -95,12 +137,23 @@ export default function Header() {
         </div>
       </nav>
       {/* hamburger menu bar */}
-      <section className={`${styles['g-menu-bar-sec']} ${menuOpen ? styles.active : ""}`}>
+      <section
+        className={`${styles['g-menu-bar-sec']} ${
+          menuOpen ? styles.active : ''
+        }`}
+      >
         <div className="container-fluid p-0">
           <div className={styles['g-menu-bar']}>
             <div className="d-flex justify-content-between pb-4">
               <img className="ps-3" src="/images/header/logo-mb.svg" />
-              <img className={styles['g-x']} width="16px" src="/images/header/x.svg" onClick={() => { setMenuOpen(false) }} />
+              <img
+                className={styles['g-x']}
+                width="16px"
+                src="/images/header/x.svg"
+                onClick={() => {
+                  setMenuOpen(false)
+                }}
+              />
             </div>
             <ul className="list-unstyled">
               <li>

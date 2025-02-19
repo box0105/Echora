@@ -6,6 +6,7 @@
     padding: 0 16px;
   }
 }
+
 /* ---- */
 .g-header {
   border-bottom: 1px solid var(--grey-100, #dadada);
@@ -119,9 +120,9 @@
   background-color: rgba(0, 0, 0, 0.7);
   display: none;
 
-  &.active{
+  &.active {
     display: block;
-    
+
     // .g-menu-bar{
     //   transform: translateX(0);
     // }
@@ -151,7 +152,8 @@
 
     &:hover {
       background-color: var(--black);
-      div{
+
+      div {
         color: var(--white);
       }
     }
@@ -165,9 +167,10 @@
 }
 
 
-.m-cart{
+.m-cart {
   position: relative;
-  .m-circle{
+
+  .m-circle {
     font-size: 12px;
     background-color: #444444;
     color: white;
@@ -176,5 +179,19 @@
     position: absolute;
     top: -8px;
     right: -10px;
+  }
+}
+
+.logout-button {
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  left: -60px;
+  font-size: 12px;
+  top: 3px;
+
+  @media screen and (max-width: 390px) {
+    display: none;
+
   }
 }

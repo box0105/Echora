@@ -144,6 +144,13 @@ export default function UserPage() {
     }
   }
 
+  // 如果已登入，重定向到首頁
+  useEffect(() => {
+    if (isAuth) {
+      router.push('/')
+    }
+  }, [isAuth, router])
+
   return (
     <>
       <div className="login-container">
@@ -246,11 +253,11 @@ export default function UserPage() {
               </span>
             </div>
           </form>
-          {isAuth && (
+          {/* {isAuth && (
             <button className="logout-button" onClick={handleLogout}>
               登出
             </button>
-          )}
+          )} */}
         </div>
       </div>
       <ToastContainer />

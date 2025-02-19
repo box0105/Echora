@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
   const { user, favorites, isLoading } = useAuthGet()
 
   // isAuth是用來判斷是否已登入
-  const [isAuth, setIsAuth] = useState(!!user?.id)
+  const [isAuth, setIsAuth] = useState(false)
 
   // #region 隱私保護路由處理
   const router = useRouter()
@@ -30,6 +30,15 @@ export const AuthProvider = ({ children }) => {
   }, [])
 
   // didMount(初次渲染)後，檢查是否有登入
+  useEffect(() => {
+    const userId = localStorage.getItem('userId')
+    if (userId) {
+      setIsAuth(true)
+    } else {
+      setIsAuth(!!user?.id)
+    }
+  }, [user])
+
   // 如果會員未登入，有比對到是隱私路由，就跳轉到登入頁面
   useEffect(() => {
     if (!isAuth && didAuthMount) {
@@ -38,7 +47,7 @@ export const AuthProvider = ({ children }) => {
       }
     }
     // eslint-disable-next-line
-  }, [pathname])
+  }, [pathname, isAuth, didAuthMount])
   // #endregion
 
   return (
