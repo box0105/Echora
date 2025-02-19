@@ -66,24 +66,62 @@ router.get('/', async (req, res) => {
   }
 })
 
-// router.get('/', async (req, res) => {
-//   try {
-//     const sql =
-//       'SELECT product.*, brand.name AS brand_name, product_sku.id AS product_sku_id, product_sku.stock, color.id As color_id ,color.name AS color_name, color.color_image, color_palette.name AS color_palette_name, image.image FROM product JOIN brand ON product.brand_id = brand.id JOIN product_sku ON product.id = product_sku.product_id JOIN color ON product_sku.color_id = color.id JOIN color_palette ON color.color_palette_id = color_palette.id JOIN image ON product_sku.id = image.product_sku_id WHERE image.sort_order = 1;'
-//     const [rows] = await db.query(sql)
-//     res.status(200).json({
-//       status: 'success',
-//       data: rows,
-//       message: '取得資料成功',
-//     })
-//   } catch (err) {
-//     console.log(err)
-//     res.status(400).json({
-//       status: 'error',
-//       message: err.message ? err.message : '取得資料失敗',
-//     })
-//   }
-// })
+//brands
+router.get('/brands', async (req, res) => {
+  try {
+    const sql = `SELECT * FROM brand`
+    const [rows] = await db.query(sql)
+    res.status(200).json({
+      status: 'success',
+      data: rows,
+      message: '取得資料成功',
+    })
+  } catch (err) {
+    console.log(err)
+    res.status(400).json({
+      status: 'error',
+      message: err.message ? err.message : '取得資料失敗',
+    })
+  }
+})
+
+//colors
+router.get('/colors', async (req, res) => {
+  try {
+    const sql = `SELECT * FROM color`
+    const [rows] = await db.query(sql)
+    res.status(200).json({
+      status: 'success',
+      data: rows,
+      message: '取得資料成功',
+    })
+  } catch (err) {
+    console.log(err)
+    res.status(400).json({
+      status: 'error',
+      message: err.message ? err.message : '取得資料失敗',
+    })
+  }
+})
+
+//color palette
+router.get('/colorpalette', async (req, res) => {
+  try {
+    const sql = `SELECT * FROM color_palette`
+    const [rows] = await db.query(sql)
+    res.status(200).json({
+      status: 'success',
+      data: rows,
+      message: '取得資料成功',
+    })
+  } catch (err) {
+    console.log(err)
+    res.status(400).json({
+      status: 'error',
+      message: err.message ? err.message : '取得資料失敗',
+    })
+  }
+})
 
 // GET /api/products/search?q=
 router.get('/search', async (req, res) => {
@@ -133,6 +171,7 @@ router.get('/:pid', async (req, res) => {
     })
   }
 })
+
 
 // *ask: "比較功能"怎麼設路由? 從productlist的網址上拿pid參數?
 
