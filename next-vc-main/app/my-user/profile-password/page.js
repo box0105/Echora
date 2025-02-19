@@ -4,7 +4,7 @@ import '../_styles/member.scss'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import MemberLayout from '../layouts/memberLayout'
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -19,60 +19,75 @@ const initUserPassword = {
 }
 
 export default function PasswordPasswordPage() {
-  // const { updatePassword } = useUserUpdatePassword()
-  // // 需要會員登入時的id
-  // const { isAuth } = useAuth()
-  // // 本頁狀態用
-  // const [userPasswordInput, setUserPasswordInput] = useState(initUserPassword)
+  const { updatePassword } = useUserUpdatePassword()
+  const { user, isAuth, setIsAuth } = useAuth()
+  const [userPasswordInput, setUserPasswordInput] = useState(initUserPassword)
 
-  // // 輸入資料用
-  // const handleFieldChange = (e) => {
-  //   setUserPasswordInput({
-  //     ...userPasswordInput,
-  //     [e.target.name]: e.target.value,
-  //   })
-  // }
+  // 檢查登入狀態
+  useEffect(() => {
+    const userId = localStorage.getItem('userId')
+    if (userId) {
+      setIsAuth(true)
+    }
+  }, [setIsAuth])
 
-  // // 送出表單用
-  // const handleSubmit = async (e) => {
-  //   // 阻擋表單預設送出行為
-  //   e.preventDefault()
+  // 輸入資料用
+  const handleFieldChange = (e) => {
+    setUserPasswordInput({
+      ...userPasswordInput,
+      [e.target.name]: e.target.value,
+    })
+  }
 
-  //   // 表單驗証 - START
-  //   if (
-  //     !userPasswordInput.new ||
-  //     !userPasswordInput.current ||
-  //     !userPasswordInput.confirm
-  //   ) {
-  //     toast.error('密碼欄位為必填')
-  //     return // 跳出函式
-  //   }
+  // 送出表單用
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const userId = localStorage.getItem('userId')
 
-  //   if (userPasswordInput.new !== userPasswordInput.confirm) {
-  //     toast.error('新密碼與確認密碼不同')
-  //     return // 跳出函式
-  //   }
-  //   // 表單驗証 - END
+    // 表單驗証 - START
+    if (
+      !userPasswordInput.new ||
+      !userPasswordInput.current ||
+      !userPasswordInput.confirm
+    ) {
+      toast.error('密碼欄位為必填')
+      return
+    }
 
-  //   // 送到伺服器進行更新
-  //   const password = {
-  //     currentPassword: userPasswordInput.current,
-  //     newPassword: userPasswordInput.new,
-  //   }
-  //   const res = await updatePassword(password)
-  //   const resData = await res.json()
+    if (userPasswordInput.new !== userPasswordInput.confirm) {
+      toast.error('新密碼與確認密碼不同')
+      return
+    }
+    // 表單驗証 - END
 
-  //   console.log(resData)
+    try {
+      const res = await fetch(
+        `http://localhost:3005/api/users/${userId}/password`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+          },
+          body: JSON.stringify({
+            currentPassword: userPasswordInput.current,
+            newPassword: userPasswordInput.new,
+          }),
+        }
+      )
+      const resData = await res.json()
+      if (resData.status === 'success') {
+        toast.success('會員密碼修改成功')
+      } else {
+        toast.error(`會員密碼修改失敗: ${resData.message}`)
+      }
+    } catch (err) {
+      toast.error(`會員密碼修改失敗: ${err.message}`)
+    }
+  }
 
-  //   if (resData.status === 'success') {
-  //     toast.success('會員密碼修改成功')
-  //   } else {
-  //     toast.error('會員密碼修改失敗')
-  //   }
-  // }
-
-  // // 未登入時，不會出現頁面內容
-  // if (!isAuth) return <></>
+  // 未登入時，不會出現頁面內容
+  if (!isAuth) return <></>
 
   return (
     <>
@@ -82,40 +97,46 @@ export default function PasswordPasswordPage() {
             <div className="section-title h4">修改密碼</div>
           </div>
           <div className="change-password-body">
-            <form action method="post">
+            <form onSubmit={handleSubmit}>
               <div className="mb-4">
-                <label htmlFor="old-password" className="form-label">
+                <label htmlFor="current" className="form-label">
                   舊密碼
                 </label>
                 <input
                   type="password"
                   className="form-control"
-                  id="old-password"
-                  name="old-password"
+                  id="current"
+                  name="current"
+                  value={userPasswordInput.current}
+                  onChange={handleFieldChange}
                   required
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="new-password" className="form-label">
+                <label htmlFor="new" className="form-label">
                   新密碼
                 </label>
                 <input
                   type="password"
                   className="form-control"
-                  id="new-password"
-                  name="new-password"
+                  id="new"
+                  name="new"
+                  value={userPasswordInput.new}
+                  onChange={handleFieldChange}
                   required
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="confirm-password" className="form-label">
+                <label htmlFor="confirm" className="form-label">
                   確認新密碼
                 </label>
                 <input
                   type="password"
                   className="form-control"
-                  id="confirm-password"
-                  name="confirm-password"
+                  id="confirm"
+                  name="confirm"
+                  value={userPasswordInput.confirm}
+                  onChange={handleFieldChange}
                   required
                 />
               </div>
@@ -127,6 +148,7 @@ export default function PasswordPasswordPage() {
         </div>
         <footer className="footer" />
       </MemberLayout>
+      <ToastContainer />
     </>
   )
 }

@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
   const { user, favorites, isLoading } = useAuthGet()
 
   // isAuth是用來判斷是否已登入
-  const isAuth = !!user?.id
+  const [isAuth, setIsAuth] = useState(!!user?.id)
 
   // #region 隱私保護路由處理
   const router = useRouter()
@@ -47,6 +47,7 @@ export const AuthProvider = ({ children }) => {
         isLoading, // 載入動畫指示用(會撥放1秒)
         didAuthMount,
         isAuth,
+        setIsAuth, // 提供setIsAuth函數
         user, // 個人資料在user.profile
         favorites,
       }}

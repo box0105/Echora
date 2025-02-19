@@ -163,23 +163,56 @@ router.post('/login', async (req, res) => {
 // #endregion ------------
 
 // #region ------ PUT ------
-// 更新使用者名稱
+// 更新會員資料
 router.put('/:id', async (req, res) => {
   const userId = req.params.id
-  const { username } = req.body
+  const { username, phone, address, email, postcode, sex } = req.body
 
-  if (!username) {
+  // 構建動態 SQL 語句和參數數組
+  let updateFields = []
+  let updateValues = []
+
+  if (username) {
+    updateFields.push('username = ?')
+    updateValues.push(username)
+  }
+  if (phone) {
+    updateFields.push('phone = ?')
+    updateValues.push(phone)
+  }
+  if (address) {
+    updateFields.push('address = ?')
+    updateValues.push(address)
+  }
+  if (email) {
+    updateFields.push('email = ?')
+    updateValues.push(email)
+  }
+  if (postcode) {
+    updateFields.push('postcode = ?')
+    updateValues.push(postcode)
+  }
+  if (sex) {
+    updateFields.push('sex = ?')
+    updateValues.push(sex)
+  }
+
+  // 如果沒有提供任何欄位，返回錯誤
+  if (updateFields.length === 0) {
     return res.status(400).json({
       status: 'error',
-      message: '請提供新的 username',
+      message: '請提供至少一個要更新的欄位',
     })
   }
 
+  // 添加 userId 到參數數組的最後
+  updateValues.push(userId)
+
   try {
-    const result = await db.query('UPDATE user SET username = ? WHERE id = ?', [
-      username,
-      userId,
-    ])
+    const result = await db.query(
+      `UPDATE user SET ${updateFields.join(', ')} WHERE id = ?`,
+      updateValues
+    )
 
     if (result.affectedRows === 0) {
       return res.status(404).json({
@@ -200,23 +233,44 @@ router.put('/:id', async (req, res) => {
     })
   }
 })
+// #endregion ------------
 
 // 更新會員密碼
 router.put('/:id/password', async (req, res) => {
   const userId = req.params.id
-  const { password } = req.body
+  const { currentPassword, newPassword } = req.body
 
-  if (!password) {
+  if (!currentPassword || !newPassword) {
     return res.status(400).json({
       status: 'error',
-      message: '請提供新的密碼',
+      message: '請提供舊密碼和新密碼',
     })
   }
 
   try {
-    // 加密新密碼
-    const hashedPassword = await bcrypt.hash(password, 10)
+    // 獲取用戶資料
+    const [user] = await db.query('SELECT * FROM user WHERE id = ?', [userId])
 
+    if (!user || user.length === 0) {
+      return res.status(404).json({
+        status: 'error',
+        message: '找不到該會員',
+      })
+    }
+
+    // 檢查當前密碼是否正確
+    const isMatch = await bcrypt.compare(currentPassword, user[0].password)
+    if (!isMatch) {
+      return res.status(400).json({
+        status: 'error',
+        message: '當前密碼不正確',
+      })
+    }
+
+    // 加密新密碼
+    const hashedPassword = await bcrypt.hash(newPassword, 10)
+
+    // 更新密碼
     const result = await db.query('UPDATE user SET password = ? WHERE id = ?', [
       hashedPassword,
       userId,
