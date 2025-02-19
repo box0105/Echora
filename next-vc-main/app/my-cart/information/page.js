@@ -110,14 +110,11 @@ export default function InformationPage() {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    // 從 localStorage 讀取購物車資料
-    const cartItems = localStorage.getItem('cartItem')
-
     const target = event.target
 
     // 從表單中獲取用戶資料
     const userData = {
-      recipient: target.recipient.value, // 使用表單的 name 屬性
+      recipient: target.recipient.value,
       phone: target.phone.value,
       email: target.email.value,
       city: target.city.value,
@@ -128,32 +125,13 @@ export default function InformationPage() {
       totalAmount: totalAmount,
     }
 
+    // 將 userData 寫入 localStorage
+    localStorage.setItem('userData', JSON.stringify(userData))
+
     if (userData.paymentMethod == 'linePay') {
       goLinePay()
     } else if (userData.paymentMethod == 'ECpay') {
       goEcpay()
-    }
-
-    const formData = new FormData()
-    formData.append('userData', JSON.stringify(userData))
-    formData.append('cartItems', cartItems)
-
-    // 發送 POST 請求到後端 API 儲存資料
-    try {
-      const response = await fetch('http://localhost:3005/api/myOrders', {
-        method: 'POST',
-        body: formData,
-      })
-
-      if (response.ok) {
-        // clearCart()
-        console.log('OK')
-      } else {
-        alert('訂單提交失敗！')
-      }
-    } catch (error) {
-      console.error('錯誤:', error)
-      alert('訂單提交過程中出現錯誤')
     }
   }
   //#endregion

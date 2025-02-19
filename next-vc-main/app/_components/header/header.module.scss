@@ -167,14 +167,16 @@
 
 .m-cart{
   position: relative;
+  text-align: center;
   .m-circle{
+    width: 18px;
+    height: 18px;
     font-size: 12px;
     background-color: #444444;
     color: white;
-    padding-inline: 5px;
     border-radius: 50%;
     position: absolute;
-    top: -8px;
+    top: -7px;
     right: -10px;
   }
 }
