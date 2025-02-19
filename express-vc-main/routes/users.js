@@ -238,19 +238,39 @@ router.put('/:id', async (req, res) => {
 // 更新會員密碼
 router.put('/:id/password', async (req, res) => {
   const userId = req.params.id
-  const { password } = req.body
+  const { currentPassword, newPassword } = req.body
 
-  if (!password) {
+  if (!currentPassword || !newPassword) {
     return res.status(400).json({
       status: 'error',
-      message: '請提供新的密碼',
+      message: '請提供舊密碼和新密碼',
     })
   }
 
   try {
-    // 加密新密碼
-    const hashedPassword = await bcrypt.hash(password, 10)
+    // 獲取用戶資料
+    const [user] = await db.query('SELECT * FROM user WHERE id = ?', [userId])
 
+    if (!user || user.length === 0) {
+      return res.status(404).json({
+        status: 'error',
+        message: '找不到該會員',
+      })
+    }
+
+    // 檢查當前密碼是否正確
+    const isMatch = await bcrypt.compare(currentPassword, user[0].password)
+    if (!isMatch) {
+      return res.status(400).json({
+        status: 'error',
+        message: '當前密碼不正確',
+      })
+    }
+
+    // 加密新密碼
+    const hashedPassword = await bcrypt.hash(newPassword, 10)
+
+    // 更新密碼
     const result = await db.query('UPDATE user SET password = ? WHERE id = ?', [
       hashedPassword,
       userId,

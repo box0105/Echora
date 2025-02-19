@@ -45,7 +45,8 @@ export const useAuthGet = () => {
 
 export const useUserUpdatePassword = () => {
   const { trigger, isMutating, isError } = useMutation(
-    `${apiURL}/users/me/password`,
+    `${apiURL}/users/profile-password`,
+
     'PUT'
   )
   // 要利用updateProfile(data)來更新會員資料
