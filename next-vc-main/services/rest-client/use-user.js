@@ -1,4 +1,5 @@
 import { useMutation, useQuery, fetcher } from './use-fetcher'
+// import axios from 'axios'
 import { apiURL, isDev } from '@/config'
 
 export const defaultUser = {
@@ -89,7 +90,7 @@ export const useUserUpdateAvatar = () => {
 
 export const useUserRegister = () => {
   const { trigger, isMutating, isError } = useMutation(
-    `${apiURL}/users`,
+    `${apiURL}/users/register`,
     'POST'
   )
   // POST方法，要呼叫register(newUser)來註冊
@@ -103,7 +104,6 @@ export const useUserRegister = () => {
   const register = async (data = {}) => {
     return await trigger({ data: data })
   }
-
   return { register, isMutating, isError }
 }
 

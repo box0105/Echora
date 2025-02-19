@@ -1,10 +1,12 @@
 'use client'
 import styles from './header.module.scss'
 import CartOffcanvas from '../cart-offcanvas'
-
+import { useMyCart } from '@/hooks/use-cart'
 import { useState } from 'react'
+import Link from 'next/link'
 
 export default function Header() {
+  const { totalQty } = useMyCart()
   const [menuOpen, setMenuOpen] = useState(false)
   const [showCart, setShowCart] = useState(false)
 
@@ -34,12 +36,16 @@ export default function Header() {
               <a href="">
                 <img src="/images/header/account.svg" />
               </a>
-              <a href=""
+              <a
+                className="m-cart"
+                href=""
                 onClick={(e) => {
                   e.preventDefault()
                   setShowCart(true)
-                }}>
+                }}
+              >
                 <img src="/images/header/cart.svg" />
+                <div className="m-circle">{totalQty}</div>
               </a>
               <button className={styles.hamburger} onClick={() => { setMenuOpen(true) }}>
                 <img src="/images/header/hamburger.svg" />

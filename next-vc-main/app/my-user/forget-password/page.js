@@ -176,7 +176,9 @@ export default function ForgetPasswordPage() {
     <>
       <div className="login-container">
         <div className="login-main">
-          <span className="back"> &lt;返回 </span>
+          <Link href="/">
+            <span className="back"> &lt;返回 </span>
+          </Link>
           <img
             src="../images/user/login.jpg"
             alt="Login page hero illustration"

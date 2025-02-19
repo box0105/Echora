@@ -72,15 +72,15 @@
 
     p {
       position: absolute;
+      text-align: center;
       top: 1.5rem;
       left: 0;
 
       @media (max-width: 776px) {
         width: 300px;
         top: 60px;
-        /* align-items: center; */
         left: 50%;
-        transform: translate(-30%);
+        transform: translate(-50%,-50%);
       }
     }
 
