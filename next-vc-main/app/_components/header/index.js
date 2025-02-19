@@ -37,7 +37,7 @@ export default function Header() {
                 <img src="/images/header/account.svg" />
               </a>
               <a
-                className="m-cart"
+                className={styles['m-cart']}
                 href=""
                 onClick={(e) => {
                   e.preventDefault()
@@ -45,7 +45,7 @@ export default function Header() {
                 }}
               >
                 <img src="/images/header/cart.svg" />
-                <div className="m-circle">{totalQty}</div>
+                <div className={styles['m-circle']}>{totalQty}</div>
               </a>
               <button className={styles.hamburger} onClick={() => { setMenuOpen(true) }}>
                 <img src="/images/header/hamburger.svg" />
