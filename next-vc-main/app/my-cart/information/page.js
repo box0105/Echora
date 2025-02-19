@@ -3,20 +3,74 @@ import './_styles/bootstrap.scss'
 import './_styles/cart-checkkist.scss'
 import './_styles/index.scss'
 import './_styles/cart-information.scss'
-import React from 'react'
+import React, { useRef } from 'react'
 import { useMyCart } from '@/hooks/use-cart'
 import Link from 'next/link'
-import { useSearchParams,useRouter } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { isDev, apiURL } from '@/config'
 // 載入loading元件
 
 export default function InformationPage() {
+  const { totalAmount, clearCart, cartItems } = useMyCart()
+
+  //#region EC Pay
+  const payFormDiv = useRef(null)
+  const createEcpayForm = (params, action) => {
+    const form = document.createElement('form')
+    form.method = 'POST'
+    form.action = action
+    for (const key in params) {
+      const input = document.createElement('input')
+      input.type = 'hidden'
+      input.name = key
+      input.value = params[key]
+      form.appendChild(input)
+    }
+    // 回傳form表單的物件參照
+    return payFormDiv.current.appendChild(form)
+    // 以下是直接送出表單的方式
+    // form.submit()
+  }
+
+  const goEcpay = async () => {
+    // 先連到node伺服器後端，取得EC Pay付款網址
+    const res = await fetch(`${apiURL}/ecpay-test-only?amount=${totalAmount}`, {
+      method: 'GET',
+      // 讓fetch能夠傳送cookie
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
+
+    const resData = await res.json()
+
+    if (isDev) console.log(resData)
+
+    if (resData.status === 'success') {
+      // 建立表單，回傳的是表單的物件參照
+      const payForm = createEcpayForm(resData.data.params, resData.data.action)
+
+      if (isDev) console.log(payForm)
+
+      if (window.confirm('確認要導向至ECPay(綠界金流)進行付款?')) {
+        //送出表單
+        payForm.submit()
+      }
+    } else {
+      toast.error('付款失敗')
+    }
+  }
+  //#endregion
+  // ---------------------------------------
+
+  //#region LIne Pay
   // 取得網址參數，例如: ?transactionId=xxxxxx/
   const searchParams = useSearchParams()
   const router = useRouter()
-
 
   if (isDev) console.log('transactionId', searchParams.get('transactionId'))
 
@@ -24,7 +78,7 @@ export default function InformationPage() {
   const goLinePay = async () => {
     // 先連到node伺服器後端，取得LINE Pay付款網址
     const res = await fetch(
-      `${apiURL}/line-pay-test-only/reserve?amount=${totalAmount}`,
+      `${apiURL}/line-pay-test-only/reserve?amount=${totalAmount}&items=${cartItems.name}`,
       {
         method: 'GET',
         // 讓fetch能夠傳送cookie
@@ -43,16 +97,16 @@ export default function InformationPage() {
     if (resData.status === 'success') {
       if (window.confirm('確認要導向至LINE Pay進行付款?')) {
         //導向至LINE Pay付款頁面
-        router.replace(window.location.href = resData.data.paymentUrl)
+        router.replace((window.location.href = resData.data.paymentUrl))
       }
     } else {
       toast.error('付款失敗')
     }
   }
-
+  //#endregion
   // ---------------------------------------
-  const { totalAmount,clearCart } = useMyCart()
 
+  //#region 送出事件
   const handleSubmit = async (event) => {
     event.preventDefault()
 
@@ -76,6 +130,8 @@ export default function InformationPage() {
 
     if (userData.paymentMethod == 'linePay') {
       goLinePay()
+    } else if (userData.paymentMethod == 'ECpay') {
+      goEcpay()
     }
 
     const formData = new FormData()
@@ -90,7 +146,7 @@ export default function InformationPage() {
       })
 
       if (response.ok) {
-        clearCart()
+        // clearCart()
         console.log('OK')
       } else {
         alert('訂單提交失敗！')
@@ -100,6 +156,8 @@ export default function InformationPage() {
       alert('訂單提交過程中出現錯誤')
     }
   }
+  //#endregion
+  // ---------------------------------------
 
   return (
     <>
@@ -307,6 +365,7 @@ export default function InformationPage() {
                     </div>
                   </div>
                 </div>
+                <div ref={payFormDiv} style={{ display: 'none' }}></div>
               </div>
               <div className="m-sec2-col4 col-lg-4 col-12">
                 <div className="h3 pt-4 pb-2">訂單摘要</div>
