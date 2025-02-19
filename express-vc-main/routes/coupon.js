@@ -5,6 +5,8 @@ const router = express.Router()
 
 import { successResponse, errorResponse } from '../lib/utils.js'
 
+router.use(express.json())
+
 // 測試取得所有優惠券
 router.get('/', async (req, res) => {
   try {
@@ -134,6 +136,20 @@ router.put('/re/:userId/:couponId', async (req, res) => {
   }
 
 })
+
+router.post('/resource', (req, res) => {
+ 
+  // 請求主體的資料會儲存在 req.body 物件中
+  const data = req.body;
+  const {couponId} = data
+  console.log(couponId);
+  // if(couponId instanceof Array){
+  //   console.log('陣列');
+  //   return
+  // }
+  console.log(data); // { key1: 'value1', key2: 'value2' }
+  res.status(200).json({ status: 'success', message: '測試成功' })
+});
 
 
 export default router
