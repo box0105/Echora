@@ -92,14 +92,23 @@
     min-width: 171px;
     transition: all 0.2s;
     user-select: none;
+    cursor: pointer;
   
-    &:hover {
-      /* react 改成hover & click事件 */
+    // &:hover {
+    //   /* react 改成hover & click事件 */
+    //   color: var(--black);
+    //   scale: 1.015;
+    //   outline: 1.5px solid var(--black);
+    // }
+
+    &.active {
       color: var(--black);
       scale: 1.015;
       outline: 1.5px solid var(--black);
     }
   }
+
+
   
   @media screen and (max-width: 460px) {
     .g-series {

@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import './filter-bar.scss'
 import {
   useGetBrands,
@@ -12,12 +13,16 @@ export default function FilterBar({
   setFilterOpen,
   generateQueryString,
   criteria,
-  setCriteria,
+  // setCriteria,
   queryString,
   setQueryString,
   brandIds,
   setBrandIds,
-  getPdData
+  colorPids,
+  setColorPids,
+  colorIds,
+  setColorIds,
+  getPdData,
   // handleSearch,
 }) {
   // fetch brands, colors, colorpalette
@@ -28,14 +33,22 @@ export default function FilterBar({
   // 執行篩選查詢 問題-queryString沒同步
   const handleSearch = () => {
     //更新查詢字串queryString
-    setQueryString(generateQueryString(criteria))
+    // setQueryString(generateQueryString(criteria))
     console.log('查詢字串:', queryString)
-    console.log(criteria);
-    //fetch取得產品資訊 
+    console.log(criteria)
+    //fetch取得產品資訊
     getPdData(queryString)
 
     setFilterOpen(false)
   }
+
+  //criteria改變時即時更新查詢字串queryString
+  useEffect(() => {
+    setQueryString(generateQueryString(criteria))
+  }, [criteria])
+
+  //設定color palette狀態
+  const [colorSeries, setColorSeries] = useState({})
 
   return (
     <>
@@ -100,8 +113,21 @@ export default function FilterBar({
                 <div className="g-series-sec d-flex flex-wrap gap-1 pt-4 pb-3">
                   {colorpalette.map((colorseries) => (
                     <div
-                      className={`g-series g-series${colorseries.id}`}
+                      className={`g-series g-series${colorseries.id} ${
+                        colorSeries[colorseries.id] ? 'active' : ''
+                      }`}
                       key={colorseries.id}
+                      onClick={() => {
+                        setColorSeries((prev)=>{
+                          const updatedColorSeries = { ...prev, [colorseries.id]: !prev[colorseries.id] }
+                          if (!prev[colorseries.id]) {
+                          setColorPids([...colorPids, colorseries.id])
+                        } else {
+                          setColorPids(colorPids.filter((id) => id !== colorseries.id))
+                        }
+                          return updatedColorSeries
+                        })
+                      }}
                     >
                       <h6 className="h7 mb-0">{colorseries.name}</h6>
                       <p className="mb-0" style={{ fontWeight: 500 }}>
@@ -206,10 +232,7 @@ export default function FilterBar({
               </div>
             </div>
             <div className="g-action pt-4 text-center">
-              <button
-                className="g-action-btn"
-                onClick={handleSearch}
-              >
+              <button className="g-action-btn" onClick={handleSearch}>
                 <h6 className="mb-0">顯示產品</h6>
               </button>
             </div>

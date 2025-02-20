@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
   const colorIds = req.query.color_ids ? req.query.color_ids.split(",").map((id)=>Number(id)) : []
 
   const priceGte = Number(req.query.price_gte) || 0
-  const priceLte = Number(req.query.price_lte) || 1000000
+  const priceLte = Number(req.query.price_lte) || 10000000
 
   // const conditions = {nameLike, brandIds, colorPids, colorIds, priceGte, priceLte}
 

@@ -290,6 +290,10 @@ export default function ProductListPage(props) {
           getPdData={getPdData}
           brandIds={brandIds}
           setBrandIds={(value) => setCriteriaByName('brandIds', value)}
+          colorPids={colorPids}
+          setColorPids={(value) => setCriteriaByName('colorPids', value)}
+          colorIds={colorIds}
+          setColorIds={(value) => setCriteriaByName('colorIds', value)}
         />
         {/* comparision sec */}
         <section
