@@ -1,11 +1,12 @@
-import React from 'react';
-
+import React from 'react'
+import FilterTitle from './FilterTitle/FilterTitle.js'
+import RentCards from './Rentcard/card.js'
 export default function RentList() {
   return (
     <div className="c-section2-body d-none d-md-block">
-      <div className="container-fluid c-index-1 ;">
+      <div className="container-fluid ">
         <div className="row">
-          {/* ... */}
+          <FilterTitle />
           <div className="col-6 col-sm-6 col-md-9 col-lg-9 clo-2 ">
             <div className="caa info">
               <div className="c-section3">
@@ -21,14 +22,8 @@ export default function RentList() {
         </div>
       </div>
     </div>
-  );
+  )
 }
-
-const RentCards = () => (
-  <>
-    {/* ... (你的卡片) */}
-  </>
-);
 
 const LoadMoreButton = () => (
   <button
@@ -42,5 +37,4 @@ const LoadMoreButton = () => (
   >
     <div className="h5">瀏覽更多</div>
   </button>
-);
-
+)

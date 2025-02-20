@@ -117,7 +117,7 @@ export default function Page(props) {
               <div className="col-12 col-md-3 d-none d-lg-block d-flex flex-column c-lerf">
                 <div className="c-filter  d-flex ">
                   <i className="fa-solid fa-filter pe-3" />
-                  <h4 >條件篩選</h4>
+                  <h4>條件篩選</h4>
                 </div>
                 <div className="sort ">
                   <div className=" h5 c-lenav">排序</div>

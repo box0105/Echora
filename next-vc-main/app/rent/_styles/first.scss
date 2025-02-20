@@ -79,6 +79,41 @@ body {
 .c-section2-body {
   width: 100%;
 }
+.c-section2-body.Mod {
+  /* 初始過濾器隱藏 */
+  .c-lerf-mod {
+    display: none;
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out; /* 過渡動畫 */
+    transform: translateX(100%); /* 初始過濾器會從右邊隱藏 */
+  }
+
+  /* 當過濾器開啟時顯示 */
+  &.filter-open {
+    .c-lerf-mod {
+      display: block; /* 顯示過濾器 */
+      transform: translateX(0); /* 過濾器滑入 */
+    }
+  }
+}
+
+/* 確保過濾器容器能夠滾動 */
+.c-lerf-mod {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%; /* 調整過濾器寬度 */
+  height: 100vh; /* 高度填滿視窗 */
+  background-color: rgb(255, 255, 255);
+  // box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* 給過濾器加上陰影 */
+  // padding: 20px;
+  z-index: 100; /* 確保過濾器層級高於其他元素 */
+  overflow-y: auto; /* 允許垂直滾動 */
+  // -webkit-overflow-scrolling: touch; /* 讓在 iOS 上也能流暢滾動 */
+  // border-right: 2px solid #ddd; /* 可視化邊界 */
+  // display: flex;
+  // flex-direction: column; /* 子元素垂直排列 */
+}
 .c-index-1 {
   padding-inline: 64px;
 }
@@ -111,11 +146,37 @@ body {
     font-size: 16px;
   }
 }
-
+.c-bot-mod {
+  padding: 25px;
+  position: sticky;
+  bottom: 0;
+  background-color: white; /* 可以設置背景色讓按鈕清晰可見 */
+  padding: 15px;
+  z-index: 1; /* 確保按鈕在最上層 */
+  button {
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 16px;
+  }
+}
 .color {
   width: 100%;
 }
+c-filter-img {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
 
+  img {
+    width: 24px;
+    cursor: pointer;
+
+    &:hover {
+      outline: 2px solid var(--black);
+      border-radius: 50%;
+    }
+  }
+}
 .card-group {
   span {
     font-size: 16px;

@@ -1,0 +1,59 @@
+.card-top-mod:hover {
+  outline: 1px solid var(--grey300);
+  box-shadow: 0px 0px 10px 5px rgba(200, 200, 200, 0.2);
+}
+.c-card-img {
+  height: 460px;
+  padding: 30px 20px;
+  background: radial-gradient(
+    111.92% 179.77% at -76.41% -9.75%,
+    #e5e5e5 0%,
+    #f9f9f9 100%
+  );
+  overflow: hidden;
+}
+.card-body {
+  position: relative;
+}
+.card-top-mod:hover .card-body:before {
+  position: absolute;
+  top: 0;
+  left: 2px;
+  right: 2px;
+  content: ''; /* 加上顯示內容來檢查效果 */
+  height: 1px;
+  background-color: rgb(236, 236, 236);
+}
+
+.card-top-mod:hover .c-card-img {
+  background: white !important;
+}
+
+.card-top-mod-mod {
+  width: 167px;
+}
+
+.c-card-color-mod {
+  img {
+    width: 25px;
+    padding-right: 5px;
+  }
+}
+.in-stock {
+  margin-top: 2px;
+  color: rgb(0, 207, 0);
+  display: flex;
+  align-items: center;
+  img {
+    width: 15px;
+  }
+}
+.out-stock {
+  display: none;
+  color: rgb(255, 0, 0);
+  align-items: center;
+  img {
+    width: 15px;
+    height: 15px;
+  }
+}

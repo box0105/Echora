@@ -3,12 +3,18 @@
 import React, { useState, useEffect } from 'react'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import './_styles/first.scss'
-import HeroSection from "./_components/HeroSection"
-import RentalProcess from "./_components/RentalProcess"
-import Filter from "./_components/Filter"
-import List from "./_components/List"
+import HeroSection from './_components/HeroSection'
+import RentalProcess from './_components/RentalProcess'
+import Cardmod from './_components/Rentcard/card-mod'
+import List from './_components/List'
 
 export default function Page(props) {
+  const [isOpen, setIsOpen] = useState(false)
+  const onKeyPressHandler = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      setIsOpen(true)
+    }
+  }
   return (
     <>
       <div>
@@ -16,37 +22,8 @@ export default function Page(props) {
           {/* section1 */}
           <div className="c-section1">
             <div className="card text-bg-dark c-section1">
-            <HeroSection/>
-              <div className="col-12 c-Process">
-                <div className="d-none d-sm-flex bg-black">
-                  <div className="col-1 d-flex justify-content-center align-items-center iconf">
-                    <img
-                      src="/images/Rent/light.png"
-                      className="img-fluid  bolt"
-                      alt
-                    />
-                  </div>
-                  <div className="col-3 text-white">
-                    <h2>Rental Process</h2>
-                    <div className="h3">租借流程說明</div>
-                  </div>
-                  <div className="col-7 ">
-                    <img src="/images/Rent/Process-1.png" alt />
-                  </div>
-                  <div className="col-1 d-flex justify-content-center align-items-center iconf">
-                    <img
-                      src="/images/Rent/light.png"
-                      className="img-fluid  bolt"
-                      alt
-                    />
-                  </div>
-                </div>
-                <div className="d-block d-sm-none bg-black">
-                  <div className="col-12">
-                    <img src="/images/Rent/Process-mod.png" alt />
-                  </div>
-                </div>
-              </div>
+              <HeroSection />
+              <RentalProcess />
             </div>
           </div>
         </div>
@@ -71,42 +48,116 @@ export default function Page(props) {
             <div className="col">
               <div className=" h6 c-bot p-0">電吉他租借商品</div>
             </div>
-            <div className=" d-flex mod-sel  justify-content-end">
-              <i className="fa-solid fa-filter pt-1" />
-              <div className=" h6 m-0">條件篩選</div>
+            <div
+              className=" d-flex mod-sel  justify-content-end"
+              onClick={() => setIsOpen(true)}
+              onKeyUp={onKeyPressHandler}
+              role="button"
+              tabindex="0"
+            >
+              <img
+                src="/images/Rent/select.png"
+                className="pe-1 pt-1 c-icons-img"
+                alt=""
+                style={{ width: '20px', height: '14px' }}
+              />
+              <div className=" h5 m-0">條件篩選</div>
             </div>
           </div>
         </div>
+        {/* section2-body */}
         <div className="c-section2-body d-none d-md-block">
           <div className="container-fluid c-index-1 ;">
+            <List />
+          </div>
+        </div>
+        {/* section-mod */}
+        <div
+          className={`c-section2-body Mod d-block d-md-none ${
+            isOpen ? 'filter-open' : ''
+          }`}
+        >
+          <div className="container-fluid c-index-mod-1">
             <div className="row">
-              <div className="col-12 col-md-3 d-none d-lg-block d-flex flex-column c-lerf">
-                <div className="c-filter  d-flex ">
-                  <i className="fa-solid fa-filter pe-3" />
-                  <h4 >條件篩選</h4>
-                </div>
+              <div className="col-12 col-md-3 d-flex flex-column c-lerf-mod c-filter-scroll">
                 <div className="sort ">
-                  <div className=" h5 c-lenav">排序</div>
+                  <div className="row">
+                    <div className=" col-11 h5 c-lenav">排序</div>
+                    <div
+                      className=" col-1 h5 c-lenav"
+                      onClick={() => setIsOpen(false)}
+                      onKeyUp={onKeyPressHandler}
+                      role="button"
+                      tabindex="0"
+                    >
+                      X
+                    </div>
+                  </div>
+                  <ul className=""></ul>
                   <div className="sor-check pt-3">
                     <div className="ch-1 d-flex pb-4 ">
-                      <input className="pe-2" type="checkbox" />
-                      <div className="h6 m-0 ps-2">精選</div>
+                      <div className="form-check mb-0">
+                        <input
+                          className="form-check-input focus-ring pb-2"
+                          style={{
+                            '--bsFocusRingColor': 'rgba(var(--white), 0)',
+                          }}
+                          type="checkbox"
+                          defaultValue
+                          id="a-z"
+                        />
+                        <label className="form-check-label" htmlFor="a-z">
+                          <h6 className="h6">產品名稱:A-Z</h6>
+                        </label>
+                      </div>
                     </div>
                     <div className="ch-1 d-flex pb-4 ">
-                      <input className="pe-2" type="checkbox" />
-                      <div className="h6 m-0 ps-2">產品名稱:A-Z</div>
-                    </div>{' '}
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className="pe-2" type="checkbox" />
-                      <div className="h6 m-0 ps-2">產品名稱:Z-A</div>
-                    </div>{' '}
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className="pe-2" type="checkbox" />
-                      <div className="h6 m-0 ps-2">價格:由低到高</div>
-                    </div>{' '}
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className="pe-2" type="checkbox" />
-                      <div className="h6 m-0 ps-2">價格:由高到底</div>
+                      <div className="form-check mb-0">
+                        <input
+                          className="form-check-input focus-ring"
+                          style={{
+                            '--bsFocusRingColor': 'rgba(var(--white), 0)',
+                          }}
+                          type="checkbox"
+                          defaultValue
+                          id="z-a"
+                        />
+                        <label className="form-check-label" htmlFor="z-a">
+                          <h6 className="h6">產品名稱:Z-A</h6>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="ch-1 d-flex pb-4 ">
+                    <div className="form-check mb-0">
+                      <input
+                        className="form-check-input focus-ring"
+                        style={{
+                          '--bsFocusRingColor': 'rgba(var(--white), 0)',
+                        }}
+                        type="checkbox"
+                        defaultValue
+                        id="price-top"
+                      />
+                      <label className="form-check-label" htmlFor="price-top">
+                        <h6 className="h6">價格:由低到高</h6>
+                      </label>
+                    </div>
+                  </div>
+                  <div className="ch-1 d-flex pb-4 ">
+                    <div className="form-check mb-0">
+                      <input
+                        className="form-check-input focus-ring"
+                        style={{
+                          '--bsFocusRingColor': 'rgba(var(--white), 0)',
+                        }}
+                        type="checkbox"
+                        defaultValue
+                        id="price-low"
+                      />
+                      <label className="form-check-label" htmlFor="price-low">
+                        <h6 className="h6">價格:由高到低</h6>
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -114,50 +165,145 @@ export default function Page(props) {
                   <div className="h5 c-lenav">品牌</div>
                   <div className="brand-check pt-3">
                     <div className="ch-1 d-flex pb-4 ">
-                      <input className="pe-2" type="checkbox" />
-                      <h6 className="m-0 ps-2">Gibson</h6>
+                      <div className="form-check mb-0">
+                        <input
+                          className="form-check-input focus-ring"
+                          style={{
+                            '--bsFocusRingColor': 'rgba(var(--white), 0)',
+                          }}
+                          type="checkbox"
+                          defaultValue
+                          id="gibson"
+                        />
+                        <label className="form-check-label" htmlFor="gibson">
+                          <h6 className="h6">Gibson</h6>
+                        </label>
+                      </div>
                     </div>
                     <div className="ch-1 d-flex pb-4 ">
-                      <input className="pe-2" type="checkbox" />
-                      <h6 className="m-0 ps-2">Fender</h6>
-                    </div>{' '}
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className="pe-2" type="checkbox" />
-                      <h6 className="m-0 ps-2">Yamaha</h6>
+                      <div className="form-check mb-0">
+                        <input
+                          className="form-check-input focus-ring"
+                          style={{
+                            '--bsFocusRingColor': 'rgba(var(--white), 0)',
+                          }}
+                          type="checkbox"
+                          defaultValue
+                          id="Fender"
+                        />
+                        <label className="form-check-label" htmlFor="Fender">
+                          <h6 className="h6">Fender</h6>
+                        </label>
+                      </div>
                     </div>
                   </div>
                 </div>
+
                 <div className="rent title">
                   <div className="h5 c-lenav">租借地址</div>
-                  <div className="brand-check pt-3">
+                  <div className="address-check pt-3">
                     <div className="ch-1 d-flex pb-4 ">
-                      <input className="pe-2" type="checkbox" />
-                      <div className="h6 m-0 ps-2">台北店</div>
+                      <div className="form-check mb-0">
+                        <input
+                          className="form-check-input focus-ring"
+                          style={{
+                            '--bsFocusRingColor': 'rgba(var(--white), 0)',
+                          }}
+                          type="checkbox"
+                          defaultValue
+                          id="Taipei"
+                        />
+                        <label className="form-check-label" htmlFor="Taipei">
+                          <h6 className="h6">台北店</h6>
+                        </label>
+                      </div>
                     </div>
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className="pe-2" type="checkbox" />
-                      <div className="h6 m-0 ps-2">台中店</div>
+                    <div className="address-check d-flex pb-4 ">
+                      <div className="form-check mb-0">
+                        <input
+                          className="form-check-input focus-ring"
+                          style={{
+                            '--bsFocusRingColor': 'rgba(var(--white), 0)',
+                          }}
+                          type="checkbox"
+                          defaultValue
+                          id="Taichung"
+                        />
+                        <label className="form-check-label" htmlFor="Taichung">
+                          <h6 className="h6">台中店</h6>
+                        </label>
+                      </div>
                     </div>{' '}
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className="pe-2" type="checkbox" />
-                      <div className="h6 m-0 ps-2">高雄店</div>
+                    <div className="address-check d-flex pb-4 ">
+                      <div className="form-check mb-0">
+                        <input
+                          className="form-check-input focus-ring"
+                          style={{
+                            '--bsFocusRingColor': 'rgba(var(--white), 0)',
+                          }}
+                          type="checkbox"
+                          defaultValue
+                          id="Kaohsiung"
+                        />
+                        <label className="form-check-label" htmlFor="Kaohsiung">
+                          <h6 className="h6">高雄店</h6>
+                        </label>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="rent title">
+
+                <div className="level title">
                   <div className="h5 c-lenav">吉他級別</div>
-                  <div className="brand-check pt-3 g-3">
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className type="checkbox" />
-                      <div className="h6 m-0 ps-2">初階</div>
+                  <div className="level-check d-flex pt-3 g-3">
+                    <div className="form-check mb-0">
+                      <input
+                        className="form-check-input focus-ring"
+                        style={{
+                          '--bsFocusRingColor': 'rgba(var(--white), 0)',
+                        }}
+                        type="checkbox"
+                        defaultValue
+                        id="Beginner"
+                      />
+                      <label className="form-check-label" htmlFor="Beginner">
+                        <h6 className="h6">初級</h6>
+                      </label>
                     </div>
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className type="checkbox" />
-                      <div className="h6 m-0 ps-2">中階</div>
-                    </div>{' '}
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className type="checkbox" />
-                      <h6 className="h6 m-0 ps-2">高階</h6>
+                  </div>
+                  <div className="level-check d-flex pt-3 g-3">
+                    <div className="form-check mb-0">
+                      <input
+                        className="form-check-input focus-ring"
+                        style={{
+                          '--bsFocusRingColor': 'rgba(var(--white), 0)',
+                        }}
+                        type="checkbox"
+                        defaultValue
+                        id="Intermediate"
+                      />
+                      <label
+                        className="form-check-label"
+                        htmlFor="Intermediate"
+                      >
+                        <h6 className="h6">中級</h6>
+                      </label>
+                    </div>
+                  </div>
+                  <div className="level-check d-flex pt-3 g-3">
+                    <div className="form-check mb-0">
+                      <input
+                        className="form-check-input focus-ring"
+                        style={{
+                          '--bsFocusRingColor': 'rgba(var(--white), 0)',
+                        }}
+                        type="checkbox"
+                        defaultValue
+                        id="Advanced"
+                      />
+                      <label className="form-check-label" htmlFor="Advanced">
+                        <h6 className="h6">高級</h6>
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -165,500 +311,35 @@ export default function Page(props) {
                   <div className="color-title pb-4">
                     <div className="h5 c-lenav">顏色</div>
                   </div>
-                  <div className="c-rad d-flex flex-wrap">
-                    <div className="rad p-2">
-                      <img src="/images/Rent/circle.jpg" alt />
-                    </div>
-                    <div className="rad p-2">
-                      <img src="/images/Rent/circle.jpg" alt />
-                    </div>
-                    <div className="rad p-2">
-                      <img src="/images/Rent/circle.jpg" alt />
-                    </div>
-                    <div className="rad p-2">
-                      <img src="/images/Rent/circle.jpg" alt />
-                    </div>
-                    <div className="rad p-2">
-                      <img src="/images/Rent/circle.jpg" alt />
-                    </div>
-                    <div className="rad p-2">
-                      <img src="/images/Rent/cricleBroder.jpg" alt />
-                    </div>
-                    <div className="rad p-2">
-                      <img src="/images/Rent/circle.jpg" alt />
-                    </div>
-                    <div className="rad p-2">
-                      <img src="/images/Rent/circle.jpg" alt />
-                    </div>
+                  <div className="c-filter-color d-flex flex-wrap gap-2">
+                    <img src="/images/Rent/circle-red.png" alt="red" />
+                    <img src="/images/Rent/circle-orange.png" alt="orange" />
+                    <img src="/images/Rent/circle-yellow.png" alt="yellow" />
+                    <img src="/images/Rent/circle-green.png" alt="green" />
+                    <img src="/images/Rent/circle-blue.png" alt="blue" />
+                    <img
+                      src="/images/Rent/circle-Navy-Blue.png"
+                      alt="Navy-Blue"
+                    />
+                    <img src="/images/Rent/circle-black.png" alt="black" />
+                    <img src="/images/Rent/circle-gray.png" alt="gray" />
+                    <img src="/images/Rent/circle-brown.png" alt="brown" />
+                    <img src="/images/Rent/circle-purple.png" alt="purple" />
                   </div>
                 </div>
                 <div
-                  className="c-bot d-flex justify-content-center "
+                  className="c-bot-mod d-flex justify-content-center "
                   style={{ gap: 22 }}
                 >
-                  <button className="btn btn-dark text-white ">
+                  <button className="btn btn-dark text-white c-filter-btn">
                     <div className="h6 m-0">確定塞選</div>
                   </button>
-                  <button className="btn btn-outline-dark text-dark">
+                  <button className="btn btn-outline-dark text-dark c-filter-btn">
                     <div className="h6 m-0">清除塞選</div>
                   </button>
                 </div>
               </div>
-              <div className="col-6 col-sm-6 col-md-9 col-lg-9 clo-2 ">
-                <div className="caa info">
-                  <div className="c-section3">
-                    <div className="card-group gap-3">
-                      <div className="card-top">
-                        <img
-                          src="/images/Rent/card3-img.png"
-                          className="card-img-top"
-                          alt="..."
-                        />
-                        <div className="card-body">
-                          <h3 className="card-title">Product Name</h3>
-                          <h4 className="card-text">Product</h4>
-                          <div className="d-flex">
-                            <h5 className="card-text">$1000</h5>
-                          </div>
-                          <p>2 COLORS</p>
-                        </div>
-                      </div>
-                      <div className="card-top">
-                        <img
-                          src="/images/Rent/card24-img.png"
-                          className="card-img-top"
-                          alt="..."
-                        />
-                        <div className="card-body">
-                          <h3 className="card-title">Product Name</h3>
-                          <h4 className="card-text">Product</h4>
-                          <div className="d-flex">
-                            <h5 className="card-text">$1200</h5>
-                          </div>
-                          <p>2 COLORS</p>
-                        </div>
-                      </div>
-                      <div className="card-top">
-                        <img
-                          src="/images/Rent/card25-img.png"
-                          className="card-img-top"
-                          alt="..."
-                        />
-                        <div className="card-body">
-                          <h3 className="card-title">Product Name</h3>
-                          <h4 className="card-text">Product</h4>
-                          <div className="d-flex">
-                            <h5 className="card-text">$1500</h5>
-                          </div>
-                          <p>4 COLORS</p>
-                        </div>
-                      </div>
-                      <div className="card-top">
-                        <img
-                          src="/images/Rent/card25-img.png"
-                          className="card-img-top"
-                          alt="..."
-                        />
-                        <div className="card-body">
-                          <h3 className="card-title">Product Name</h3>
-                          <h4 className="card-text">Product</h4>
-                          <div className="d-flex">
-                            <h5 className="card-text">$1500</h5>
-                          </div>
-                          <p>4 COLORS</p>
-                        </div>
-                      </div>
-                      <div className="card-top">
-                        <img
-                          src="/images/Rent/card23-img.png"
-                          className="card-img-top"
-                          alt="..."
-                        />
-                        <div className="card-body">
-                          <h3 className="card-title">Product Name</h3>
-                          <h4 className="card-text">Product</h4>
-                          <div className="d-flex">
-                            <h5 className="card-text">$1200</h5>
-                          </div>
-                          <p>3 COLORS</p>
-                        </div>
-                      </div>
-                      <div className="card-top">
-                        <img
-                          src="/images/Rent/card24-img.png"
-                          className="card-img-top"
-                          alt="..."
-                        />
-                        <div className="card-body">
-                          <h3 className="card-title">Product Name</h3>
-                          <h4 className="card-text">Product</h4>
-                          <div className="d-flex">
-                            <h5 className="card-text">$1000</h5>
-                          </div>
-                          <p>3 COLORS</p>
-                        </div>
-                      </div>
-                      <div className="card-top">
-                        <img
-                          src="/images/Rent/card24-img.png"
-                          className="card-img-top"
-                          alt="..."
-                        />
-                        <div className="card-body">
-                          <h3 className="card-title">Product Name</h3>
-                          <h4 className="card-text">Product</h4>
-                          <div className="d-flex">
-                            <h5 className="card-text">$1000</h5>
-                          </div>
-                          <p>2 COLORS</p>
-                        </div>
-                      </div>
-                      <div className="card-top">
-                        <img
-                          src="/images/Rent/card25-img.png"
-                          className="card-img-top"
-                          alt="..."
-                        />
-                        <div className="card-body">
-                          <h3 className="card-title">Product Name</h3>
-                          <h4 className="card-text">Product</h4>
-                          <div className="d-flex">
-                            <h5 className="card-text">$1000</h5>
-                          </div>
-                          <p>2 COLORS</p>
-                        </div>
-                      </div>
-                      <div className="card-top">
-                        <img
-                          src="/images/Rent/card23-img.png"
-                          className="card-img-top"
-                          alt="..."
-                        />
-                        <div className="card-body">
-                          <h3 className="card-title">Product Name</h3>
-                          <h4 className="card-text">Product</h4>
-                          <div className="d-flex">
-                            <h5 className="card-text">$1200</h5>
-                          </div>
-                          <p>2 COLORS</p>
-                        </div>
-                      </div>
-                      <div className="card-top">
-                        <img
-                          src="/images/Rent/card23-img.png"
-                          className="card-img-top"
-                          alt="..."
-                        />
-                        <div className="card-body">
-                          <h3 className="card-title">Product Name</h3>
-                          <h4 className="card-text">Product</h4>
-                          <div className="d-flex">
-                            <h5 className="card-text">$1200</h5>
-                          </div>
-                          <p>2 COLORS</p>
-                        </div>
-                      </div>
-                      <div className="card-top">
-                        <img
-                          src="/images/Rent/card25-img.png"
-                          className="card-img-top"
-                          alt="..."
-                        />
-                        <div className="card-body">
-                          <h3 className="card-title">Product Name</h3>
-                          <h4 className="card-text">Product</h4>
-                          <div className="d-flex">
-                            <h5 className="card-text">$1500</h5>
-                          </div>
-                          <p>2 COLORS</p>
-                        </div>
-                      </div>
-                      <div className="card-top">
-                        <img
-                          src="/images/Rent/card25-img.png"
-                          className="card-img-top"
-                          alt="..."
-                        />
-                        <div className="card-body">
-                          <h3 className="card-title">Product Name</h3>
-                          <h4 className="card-text">Product</h4>
-                          <div className="d-flex">
-                            <h5 className="card-text">$1500</h5>
-                          </div>
-                          <p>2 COLORS</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="btn1 d-flex justify-content-center ">
-              <button
-                className=" btn btn-outline-dark text-dark "
-                style={{
-                  padding: '0.75rem 1.5rem',
-                  borderRadius: '3.125rem',
-                  width: '15rem',
-                  height: '3rem',
-                }}
-              >
-                <div className="h5">瀏覽更多</div>
-              </button>
-            </div>
-          </div>
-        </div>
-        {/* section-mod */}
-        <div className="c-section2-body d-block d-md-none">
-          <div className="container-fluid c-index-mod-1">
-            <div className="row">
-              <div className="col-12 col-md-3 d-none d-lg-block d-flex flex-column c-lerf">
-                <div className="c-filter  d-flex ">
-                  <i className="fa-solid fa-filter pe-3" />
-                  <h4>條件篩選</h4>
-                </div>
-                <div className="sort ">
-                  <div className="h4 c-lenav">排序</div>
-                  <div className="sor-check pt-3">
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className="pe-2" type="checkbox" />
-                      <div className="m-0 ps-2">精選</div>
-                    </div>
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className="pe-2" type="checkbox" />
-                      <div className="h5 m-0 ps-2">產品名稱:A-Z</div>
-                    </div>{' '}
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className="pe-2" type="checkbox" />
-                      <div className="h5 m-0 ps-2">產品名稱:Z-A</div>
-                    </div>{' '}
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className="pe-2" type="checkbox" />
-                      <div className="h5 m-0 ps-2">價格:由低到高</div>
-                    </div>{' '}
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className="pe-2" type="checkbox" />
-                      <div className="h5 m-0 ps-2">價格:由高到底</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="brand">
-                  <div className="h4 c-lenav">品牌</div>
-                  <div className="brand-check pt-3">
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className="pe-2" type="checkbox" />
-                      <h6 className="m-0 ps-2">Gibson</h6>
-                    </div>
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className="pe-2" type="checkbox" />
-                      <h6 className="m-0 ps-2">Fender</h6>
-                    </div>{' '}
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className="pe-2" type="checkbox" />
-                      <h6 className="m-0 ps-2">Yamaha</h6>
-                    </div>
-                  </div>
-                </div>
-                <div className="rent title">
-                  <div className="h4 c-lenav">租借地址</div>
-                  <div className="brand-check pt-3">
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className="pe-2" type="checkbox" />
-                      <div className="h5 m-0 ps-2">台北店</div>
-                    </div>
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className="pe-2" type="checkbox" />
-                      <div className="h5 m-0 ps-2">台中店</div>
-                    </div>{' '}
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className="pe-2" type="checkbox" />
-                      <div className="h5 m-0 ps-2">高雄店</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="rent title">
-                  <div className="h4 c-lenav">吉他級別</div>
-                  <div className="brand-check pt-3 g-3">
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className type="checkbox" />
-                      <div className="h5 m-0 ps-2">初階</div>
-                    </div>
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className type="checkbox" />
-                      <div className="h5 m-0 ps-2">中階</div>
-                    </div>{' '}
-                    <div className="ch-1 d-flex pb-4 ">
-                      <input className type="checkbox" />
-                      <div className="h5 m-0 ps-2">高階</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="color ">
-                  <div className="color-title pb-4">
-                    <div className="h4 c-lenav">顏色</div>
-                  </div>
-                  <div className="c-rad d-flex flex-wrap">
-                    <div className="rad p-2">
-                      <img src="/images/Rent/circle.jpg" alt />
-                    </div>
-                    <div className="rad p-2">
-                      <img src="/images/Rent/circle.jpg" alt />
-                    </div>
-                    <div className="rad p-2">
-                      <img src="/images/Rent/circle.jpg" alt />
-                    </div>
-                    <div className="rad p-2">
-                      <img src="/images/Rent/circle.jpg" alt />
-                    </div>
-                    <div className="rad p-2">
-                      <img src="/images/Rent/circle.jpg" alt />
-                    </div>
-                    <div className="rad p-2">
-                      <img src="/images/Rent/cricleBroder.jpg" alt />
-                    </div>
-                    <div className="rad p-2">
-                      <img src="/images/Rent/circle.jpg" alt />
-                    </div>
-                    <div className="rad p-2">
-                      <img src="/images/Rent/circle.jpg" alt />
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="c-bot d-flex justify-content-center "
-                  style={{ gap: 22 }}
-                >
-                  <button className="btn btn-dark text-white ">
-                    <div className="h6 m-0">確定塞選</div>
-                  </button>
-                  <button className="btn btn-outline-dark text-dark">
-                    <div className="h6 m-0">清除塞選</div>
-                  </button>
-                </div>
-              </div>
-              <div className="row row-cols-1 row-cols-sm-2 g-3 mt-0">
-                {/* Card 1 */}
-                <div className="col-6 col-sm-6 col-md-4">
-                  <div className="card-top-1">
-                    <img
-                      src="/images/Rent/card2-img.png"
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h3 className="card-title">Product Name</h3>
-                      <h4 className="card-text">Product</h4>
-                      <div className="d-flex">
-                        <h5 className="card-text">$1000</h5>
-                      </div>
-                      <p>2 COLORS</p>
-                    </div>
-                  </div>
-                </div>
-                {/* Card 2 */}
-                <div className="col-6 col-sm-6 col-md-4">
-                  <div className="card-top-1">
-                    <img
-                      src="/images/Rent/card24-img.png"
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h3 className="card-title">Product Name</h3>
-                      <h4 className="card-text">Product</h4>
-                      <div className="d-flex">
-                        <h5 className="card-text">$1200</h5>
-                      </div>
-                      <p>2 COLORS</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-6 col-sm-6 col-md-4">
-                  <div className="card-top-1">
-                    <img
-                      src="/images/Rent/card24-img.png"
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h3 className="card-title">Product Name</h3>
-                      <h4 className="card-text">Product</h4>
-                      <div className="d-flex">
-                        <h5 className="card-text">$1200</h5>
-                      </div>
-                      <p>2 COLORS</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-6 col-sm-6 col-md-4">
-                  <div className="card-top-1">
-                    <img
-                      src="/images/Rent/card25-img.png"
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h3 className="card-title">Product Name</h3>
-                      <h4 className="card-text">Product</h4>
-                      <div className="d-flex">
-                        <h5 className="card-text">$1200</h5>
-                      </div>
-                      <p>2 COLORS</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-6 col-sm-6 col-md-4">
-                  <div className="card-top-1">
-                    <img
-                      src="/images/Rent/card24-img.png"
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h3 className="card-title">Product Name</h3>
-                      <h4 className="card-text">Product</h4>
-                      <div className="d-flex">
-                        <h5 className="card-text">$1200</h5>
-                      </div>
-                      <p>2 COLORS</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-6 col-sm-6 col-md-4">
-                  <div className="card-top-1">
-                    <img
-                      src="/images/Rent/card25-img.png"
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h3 className="card-title">Product Name</h3>
-                      <h4 className="card-text">Product</h4>
-                      <div className="d-flex">
-                        <h5 className="card-text">$1200</h5>
-                      </div>
-                      <p>2 COLORS</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-6 col-sm-6 col-md-4">
-                  <div className="card-top-1">
-                    <img
-                      src="/images/Rent/card23-img.png"
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h3 className="card-title">Product Name</h3>
-                      <h4 className="card-text">Product</h4>
-                      <div className="d-flex">
-                        <h5 className="card-text">$1200</h5>
-                      </div>
-                      <p>2 COLORS</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Cardmod />
             </div>
             <div className="btn1 d-flex justify-content-center ">
               <button
