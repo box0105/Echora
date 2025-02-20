@@ -2,15 +2,15 @@
 
 import React, { useState } from 'react'
 
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css'
 import '../_styles/bootstrap.scss'
 import './_styles/act.scss'
 import './_styles/act-font.scss'
 
-import ActivityList from './_components/ActivityList';
-import FilterPanel from './_components/FilterPanel';
-import HeroSection from './_components/HeroSection';
-import Title from './_components/Title';
+import ActivityList from './_components/ActivityList'
+import FilterPanel from './_components/FilterPanel'
+import HeroSection from './_components/HeroSection'
+import Title from './_components/Title'
 
 export default function ActivityPage() {
   // test data
@@ -22,8 +22,8 @@ export default function ActivityPage() {
       date: '114/01/05 ~ 114/03/02',
       genre: '流行音樂',
       price: '免費入場',
-      location: 'Project Space 110 新店藝術空間',
-      image: '/images/activity/浮現祭/main-1.jpg'
+      address: 'Project Space 110 新店藝術空間',
+      image: '/images/activity/浮現祭/main-1.jpg',
     },
     {
       id: 2,
@@ -32,27 +32,38 @@ export default function ActivityPage() {
       date: '114/02/10 ~ 114/02/12',
       genre: '搖滾樂',
       price: 'NT$ 1,500',
-      location: '台北小巨蛋',
-      image: '/images/activity/共生音樂節/main-2.jpg'
-    }
-  ];
-  const images = ["cover.jpeg", "main-1.jpg", "main-2.jpg"];
+      address: '台北小巨蛋',
+      image: '/images/activity/共生音樂節/main-2.jpg',
+    },
+  ]
+  const images = ['cover.jpeg', 'main-1.jpg', 'main-2.jpg']
 
   // Filter Switch
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [isFilterOpen, setIsFilterOpen] = useState(false)
 
   return (
     <>
       <div className="container-fluid">
-        <HeroSection title="2025 全台音樂祭" subTitle="一同締造屬於你的冒險拾光" images={images} />
-        <Title title="音樂祭" subTitle="流行音樂"/>
+        <HeroSection
+          title="2025 全台音樂祭"
+          subTitle="一同締造屬於你的冒險拾光"
+          images={images}
+          isLoop={true}
+        />
+
+        <div className="b-container">
+          <Title title="音樂祭" subTitle="流行音樂" />
+        </div>
 
         {/* filter & order 之後套關關的 */}
         <div className="b-filter-bar">
           <div className="b-container d-flex justify-content-between">
             <h4>04 活動</h4>
             <div className="b-filters d-flex align-items-baseline">
-              <button className="b-filter b-btn-unstyled d-flex align-items-baseline" onClick={() => setIsFilterOpen(!isFilterOpen)}>
+              <button
+                className="b-filter b-btn-unstyled d-flex align-items-baseline"
+                onClick={() => setIsFilterOpen(!isFilterOpen)}
+              >
                 <i className="fa-solid fa-filter" />
                 <h4>篩選</h4>
               </button>
@@ -65,7 +76,10 @@ export default function ActivityPage() {
         </div>
 
         <div className="b-container">
-          <FilterPanel isOpen={isFilterOpen} onClose={() => setIsFilterOpen(!isFilterOpen)} />
+          <FilterPanel
+            isOpen={isFilterOpen}
+            onClose={() => setIsFilterOpen(!isFilterOpen)}
+          />
           <ActivityList data={activityData} />
         </div>
       </div>
