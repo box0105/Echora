@@ -1,207 +1,85 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination } from 'swiper/modules'
 
-export default function ListBottom(props) {
+// Swiper 樣式
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+// import "./SwiperSlide.scss"
+export default function ListBottom() {
+  // 模擬商品資料
+  const Rent = [
+    {
+      img: '/images/Rent/card3-img.png',
+      name: 'Rent A',
+      price: '$1000',
+      colors: '2 COLORS',
+    },
+    {
+      img: '/images/Rent/card2-img.png',
+      name: 'Rent B',
+      price: '$1000',
+      colors: '3 COLORS',
+    },
+    {
+      img: '/images/Rent/card4-img.png',
+      name: 'Rent C',
+      price: '$1200',
+      colors: '1 COLOR',
+    },
+    {
+      img: '/images/Rent/card5-img.png',
+      name: 'Rent D',
+      price: '$1500',
+      colors: '4 COLORS',
+    },
+    {
+      img: '/images/Rent/card5-img.png',
+      name: 'Rent D',
+      price: '$1500',
+      colors: '4 COLORS',
+    },
+    {
+      img: '/images/Rent/card5-img.png',
+      name: 'Rent D',
+      price: '$1500',
+      colors: '4 COLORS',
+    },
+  ]
+
   return (
-    <>
-      <div className=" card-group d-none d-sm-flex">
-        <div className="icon ">
-          <i className="fa-solid fa-circle-chevron-left ic-1" />
-        </div>
-        <div className="card" style={{ width: '18rem' }}>
-          <img
-            src="/images/Rent/card3-img.png"
-            className="card-img-top"
-            alt="..."
-          />
-          <div className="card-body">
-            <h3 className="card-title">Product Name</h3>
-            <h4 className="card-text">Product</h4>
-            <div className="d-flex">
-              <h5 className="card-text">$1000</h5>
-            </div>
-            <p>2 COLORS</p>
-          </div>
-        </div>
-        <div className="card" style={{ width: '18rem' }}>
-          <img
-            src="/images/Rent/card2-img.png"
-            className="card-img-top"
-            alt="..."
-          />
-          <div className="card-body">
-            <h3 className="card-title">Product Name</h3>
-            <h4 className="card-text">Product</h4>
-            <div className="d-flex">
-              <h5 className="card-text">$1000</h5>
-            </div>
-            <p>2 COLORS</p>
-          </div>
-        </div>
-        <div className="card" style={{ width: '18rem' }}>
-          <img
-            src="/images/Rent/card4-img.png"
-            className="card-img-top"
-            alt="..."
-          />
-          <div className="card-body">
-            <h3 className="card-title">Product Name</h3>
-            <h4 className="card-text">Product</h4>
-            <div className="d-flex">
-              <h5 className="card-text">$1200</h5>
-            </div>
-            <p>2 COLORS</p>
-          </div>
-        </div>
-        <div className="card" style={{ width: '18rem' }}>
-          <img
-            src="/images/Rent/card5-img.png"
-            className="card-img-top"
-            alt="..."
-          />
-          <div className="card-body">
-            <h3 className="card-title">Product Name</h3>
-            <h4 className="card-text">Product</h4>
-            <div className="d-flex">
-              <h5 className="card-text">$1500</h5>
-            </div>
-            <p>2 COLORS</p>
-          </div>
-        </div>
-        <div className="icon d-none d-md-block">
-          <i className="fa-solid fa-circle-chevron-right ic-1" />
-        </div>
-      </div>
-      <div
-        id="productCarousel"
-        className="carousel slide d-block d-md-none"
-        data-bs-ride="carousel"
+    <div className="list-bottom-container">
+      <Swiper
+        modules={[Navigation, Pagination]}
+        spaceBetween={20}
+        slidesPerView={1}
+        navigation // 左右箭頭
+        pagination={{ clickable: true }} // 分頁圓點
+        breakpoints={{
+          576: { slidesPerView: 1, spaceBetween: 20 },
+          768: { slidesPerView: 3, spaceBetween: 30 },
+          1024: { slidesPerView: 4, spaceBetween: 20 },
+        }}
       >
-        {/* Carousel indicators */}
-        <div className="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#productCarousel"
-            data-bs-slide-to={0}
-            className="active"
-            aria-current="true"
-            aria-label="Slide 1"
-          />
-          <button
-            type="button"
-            data-bs-target="#productCarousel"
-            data-bs-slide-to={1}
-            aria-label="Slide 2"
-          />
-          <button
-            type="button"
-            data-bs-target="#productCarousel"
-            data-bs-slide-to={2}
-            aria-label="Slide 3"
-          />
-          <button
-            type="button"
-            data-bs-target="#productCarousel"
-            data-bs-slide-to={3}
-            aria-label="Slide 4"
-          />
-        </div>
-        {/* Carousel items (cards) */}
-        <div className="carousel-inner">
-          {/* Card 1 */}
-          <div className="carousel-item active">
+        {Rent.map((Rent, index) => (
+          <SwiperSlide key={index}>
             <div className="card" style={{ width: '18rem' }}>
-              <img
-                src="/images/Rent/card3-img.png"
-                className="card-img-top"
-                alt="..."
-              />
+              <img src={Rent.img} className="card-img-top" alt={Rent.name} />
               <div className="card-body">
-                <h3 className="card-title">Product Name</h3>
-                <h4 className="card-text">Product</h4>
+                <h3 className="card-title">{Rent.name}</h3>
+                <h4 className="card-text">Rent</h4>
                 <div className="d-flex">
-                  <h5 className="card-text">$1000</h5>
+                  <h5 className="card-text">{Rent.price}</h5>
                 </div>
-                <p>2 COLORS</p>
+                <p>{Rent.colors}</p>
               </div>
             </div>
-          </div>
-          {/* Card 2 */}
-          <div className="carousel-item">
-            <div className="card" style={{ width: '18rem' }}>
-              <img
-                src="/images/Rent/card2-img.png"
-                className="card-img-top"
-                alt="..."
-              />
-              <div className="card-body">
-                <h3 className="card-title">Product Name</h3>
-                <h4 className="card-text">Product</h4>
-                <div className="d-flex">
-                  <h5 className="card-text">$1000</h5>
-                </div>
-                <p>2 COLORS</p>
-              </div>
-            </div>
-          </div>
-          {/* Card 3 */}
-          <div className="carousel-item">
-            <div className="card" style={{ width: '18rem' }}>
-              <img
-                src="/images/Rent/card4-img.png"
-                className="card-img-top"
-                alt="..."
-              />
-              <div className="card-body">
-                <h3 className="card-title">Product Name</h3>
-                <h4 className="card-text">Product</h4>
-                <div className="d-flex">
-                  <h5 className="card-text">$1200</h5>
-                </div>
-                <p>2 COLORS</p>
-              </div>
-            </div>
-          </div>
-          {/* Card 4 */}
-          <div className="carousel-item">
-            <div className="card" style={{ width: '18rem' }}>
-              <img
-                src="/images/Rent/card5-img.png"
-                className="card-img-top"
-                alt="..."
-              />
-              <div className="card-body">
-                <h3 className="card-title">Product Name</h3>
-                <h4 className="card-text">Product</h4>
-                <div className="d-flex">
-                  <h5 className="card-text">$1500</h5>
-                </div>
-                <p>2 COLORS</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* Carousel controls */}
-        <button
-          className="carousel-control-prev"
-          type="button"
-          data-bs-target="#productCarousel"
-          data-bs-slide="prev"
-        >
-          <span className="carousel-control-prev-icon" aria-hidden="true" />
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button
-          className="carousel-control-next"
-          type="button"
-          data-bs-target="#productCarousel"
-          data-bs-slide="next"
-        >
-          <span className="carousel-control-next-icon" aria-hidden="true" />
-          <span className="visually-hidden">Next</span>
-        </button>
-      </div>
-    </>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   )
 }
