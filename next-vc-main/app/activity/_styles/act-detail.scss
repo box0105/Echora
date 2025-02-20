@@ -1,5 +1,14 @@
+:root {
+  --article-height: 36rem;
+}
+
+.card-body, .b-card-text {
+  white-space: pre-line;
+}
+
 .b-container {
   padding-top: 2rem;
+  padding-inline: 2rem;
 
   .b-main-info {
     padding-top: 3rem;
@@ -8,7 +17,7 @@
     .breadcrumb-item:hover a {
       color: #2f97c6;
     }
-    .breadcrumb-item.active a{
+    .breadcrumb-item.active a {
       color: var(--grey600);
     }
 
@@ -28,7 +37,7 @@
 
     .flattenBtn {
       transition: transform 0.4s ease;
-      &:hover{
+      &:hover {
         transform: scale(1.25);
       }
     }
@@ -44,14 +53,35 @@
     border: 2px solid var(--grey200);
   }
 
-  .b-article-card {
+  .b-article-cards {
     gap: 4rem;
+
+    .b-swiper {
+      background: var(--grey50);
+      min-height: 520px;
+      overflow: hidden;
+      height: 100%;
+
+      @media (max-width: 576px) {
+        /* 小於 sm */
+        .b-swiper-image {
+          object-fit: cover !important;
+        }
+      }
+    }
+    @media screen and (min-width: 1200px) {
+      .card-body {
+        max-height: var(--article-height);
+        overflow-y: auto; /* 允許內容滾動 */
+        scrollbar-width: thin; /* (可選) 縮小滾動條，在 Firefox 有效 */
+      }
+    }
   }
 
   .b-aside {
     background: var(--grey50);
     padding: 2.25rem;
-    width: 24.375rem;
+    min-width: 24.375rem;
     position: sticky;
     top: 0;
 

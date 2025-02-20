@@ -6,8 +6,13 @@ export default function BreadCrumb({ breads }) {
       <ol className="breadcrumb">
         {breads.map((bread, i) => {
           return (
-            <li key={i} className={`breadcrumb-item ${i == breads.length - 1 ? 'active' : ''}`}>
-              <a href="act-list.html">{bread}</a>
+            <li
+              key={i}
+              className={`breadcrumb-item ${
+                i == breads.length - 1 ? 'active' : ''
+              }`}
+            >
+              <a href="/activity">{bread}</a>
             </li>
           )
         })}
