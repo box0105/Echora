@@ -17,19 +17,20 @@ export default function ProductListPage(props) {
 
   // 在不同頁面之間共享條件(列表頁、商品頁)
   const { criteria, setCriteria, defaultCriteria } = useProductState()
-  // 從context中取得目前記錄的共享條件
+  // 從context中取得目前記錄的共享條件的值
   const {
     page,
     perpage,
     nameLike,
     brandIds,
-    categoryIds,
+    colorPids,
+    colorIds,
     priceGte,
     priceLte,
     sort,
     order,
   } = criteria
-  
+
   // 用於設定條件
   // (當 setCriteria 傳入函式時，React 會自動把「當前的 criteria 狀態」當成函式的參數（這裡是 prev）)
   const setCriteriaByName = (name, value) => {
@@ -38,12 +39,54 @@ export default function ProductListPage(props) {
     })
   }
 
+  // 產生查詢字串
+  const generateQueryString = (criteria, exceptPage = false) => {
+    const query = {}
+    for (const key in criteria) {
+      // 略過page
+      if (key === 'page' && exceptPage) continue
+
+      // 這裡是將數字陣列轉為字串，轉換為snake_case名稱
+      if (key === 'brandIds') {
+        query['brand_ids'] = criteria[key].join(',')
+        continue
+      }
+      if (key === 'colorPids') {
+        query['color_pids'] = criteria[key].join(',')
+        continue
+      }
+      if (key === 'colorIds') {
+        query['color_ids'] = criteria[key].join(',')
+        continue
+      }
+      // 轉換為snake_case
+      if (key === 'nameLike') {
+        query['name_like'] = criteria[key]
+        continue
+      }
+
+      if (key === 'priceGte') {
+        query['price_gte'] = criteria[key]
+        continue
+      }
+
+      if (key === 'priceLte') {
+        query['price_lte'] = criteria[key]
+        continue
+      }
+
+      query[key] = criteria[key]
+    }
+
+    return new URLSearchParams(query).toString()
+  }
+
   // fetch db
   const [pdData, setPdData] = useState([])
 
-  const getPdData = async () => {
+  const getPdData = async (queryString) => {
     try {
-      const res = await fetch('http://localhost:3005/api/products')
+      const res = await fetch(`http://localhost:3005/api/products?${queryString}`)
       const data = await res.json()
 
       // 資料整理(符合product card UI)
@@ -87,9 +130,74 @@ export default function ProductListPage(props) {
       console.log(err)
     }
   }
-  //didmount後執行getPdData()
+
+  
+  // 執行篩選查詢
+  // const handleSearch = () => {
+  //   //更新查詢字串queryString
+  //   setQueryString(generateQueryString(criteria))
+  //   console.log('查詢字串:', queryString)
+
+  //   //fetch取得產品資訊
+  //   getPdData(queryString)
+  // }
+
+    // fetch db
+    // const [pdData, setPdData] = useState([])
+
+    // const getPdData = async () => {
+    //   try {
+    //     const res = await fetch('http://localhost:3005/api/products')
+    //     const data = await res.json()
+  
+    //     // 資料整理(符合product card UI)
+    //     const products = {}
+    //     data?.data.forEach((item) => {
+    //       const {
+    //         id,
+    //         name,
+    //         price,
+    //         brand_name,
+    //         product_sku_id,
+    //         color_id,
+    //         color_name,
+    //         color_image,
+    //         color_palette_id,
+    //         image,
+    //       } = item
+  
+    //       if (!products[id]) {
+    //         products[id] = {
+    //           id,
+    //           name,
+    //           price,
+    //           brand: brand_name,
+    //           colors: [],
+    //           images: {},
+    //           defaultImage: image,
+    //         }
+    //       }
+    //       products[id].colors.push({
+    //         id: color_id,
+    //         name: color_name,
+    //         image: color_image,
+    //         skuId: product_sku_id,
+    //       })
+    //       products[id].images[product_sku_id] = image
+    //     })
+    //     // console.log(Object.values(products))
+    //     setPdData(Object.values(products))
+    //   } catch (err) {
+    //     console.log(err)
+    //   }
+    // }
+
+  // didmount後執行getPdData()
   useEffect(() => {
-    getPdData()
+    setQueryString(generateQueryString(criteria))
+    // console.log('產生字串:', generateQueryString(criteria));
+    // console.log('查詢字串:', queryString);
+    getPdData(queryString)
   }, [])
 
   return (
@@ -170,11 +278,18 @@ export default function ProductListPage(props) {
             <h6 className="mb-0">瀏覽更多</h6>
           </button>
         </div>
-        <FilterBar 
-        filterOpen={filterOpen} 
-        setFilterOpen={setFilterOpen} 
-        brandIds= {brandIds}
-        set
+        <FilterBar
+          filterOpen={filterOpen}
+          setFilterOpen={setFilterOpen}
+          criteria={criteria}
+          setCriteria={setCriteria}
+          generateQueryString={generateQueryString}
+          queryString={queryString}
+          setQueryString={setQueryString}
+          // handleSearch={handleSearch}
+          getPdData={getPdData}
+          brandIds={brandIds}
+          setBrandIds={(value) => setCriteriaByName('brandIds', value)}
         />
         {/* comparision sec */}
         <section

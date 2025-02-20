@@ -7,11 +7,35 @@ import {
   useGetColorPalette,
 } from '@/services/rest-client/use-products'
 
-export default function FilterBar({ filterOpen, setFilterOpen }) {
+export default function FilterBar({
+  filterOpen,
+  setFilterOpen,
+  generateQueryString,
+  criteria,
+  setCriteria,
+  queryString,
+  setQueryString,
+  brandIds,
+  setBrandIds,
+  getPdData
+  // handleSearch,
+}) {
   // fetch brands, colors, colorpalette
   const { brands } = useGetBrands()
   const { colors } = useGetColors()
   const { colorpalette } = useGetColorPalette()
+
+  // 執行篩選查詢 問題-queryString沒同步
+  const handleSearch = () => {
+    //更新查詢字串queryString
+    setQueryString(generateQueryString(criteria))
+    console.log('查詢字串:', queryString)
+    console.log(criteria);
+    //fetch取得產品資訊 
+    getPdData(queryString)
+
+    setFilterOpen(false)
+  }
 
   return (
     <>
@@ -47,9 +71,21 @@ export default function FilterBar({ filterOpen, setFilterOpen }) {
                           type="checkbox"
                           value={brand.id}
                           id={`${brand.id}`}
-                          // checked=""
+                          checked={brandIds.includes(brand.id)}
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setBrandIds([...brandIds, brand.id])
+                            } else {
+                              setBrandIds(
+                                brandIds.filter((id) => id !== brand.id)
+                              )
+                            }
+                          }}
                         />
-                        <label className="form-check-label" htmlFor={`${brand.id}`}>
+                        <label
+                          className="form-check-label"
+                          htmlFor={`${brand.id}`}
+                        >
                           <h6 className="h7">{brand.name}</h6>
                         </label>
                       </div>
@@ -63,7 +99,10 @@ export default function FilterBar({ filterOpen, setFilterOpen }) {
                 </div>
                 <div className="g-series-sec d-flex flex-wrap gap-1 pt-4 pb-3">
                   {colorpalette.map((colorseries) => (
-                    <div className={`g-series g-series${colorseries.id}`} key={colorseries.id}>
+                    <div
+                      className={`g-series g-series${colorseries.id}`}
+                      key={colorseries.id}
+                    >
                       <h6 className="h7 mb-0">{colorseries.name}</h6>
                       <p className="mb-0" style={{ fontWeight: 500 }}>
                         {colorseries.cname}
@@ -77,9 +116,9 @@ export default function FilterBar({ filterOpen, setFilterOpen }) {
                   <h6 className="mb-0">顏色</h6>
                 </div>
                 <div className="g-color-filter pt-4 pb-3">
-                {colors.map((color) => (
-                  <img src={`/images/product/list/${color.color_image}`} />
-                ))}
+                  {colors.map((color) => (
+                    <img src={`/images/product/list/${color.color_image}`} />
+                  ))}
                 </div>
               </div>
               <div className="g-price-sec">
@@ -167,7 +206,10 @@ export default function FilterBar({ filterOpen, setFilterOpen }) {
               </div>
             </div>
             <div className="g-action pt-4 text-center">
-              <button className="g-action-btn">
+              <button
+                className="g-action-btn"
+                onClick={handleSearch}
+              >
                 <h6 className="mb-0">顯示產品</h6>
               </button>
             </div>
