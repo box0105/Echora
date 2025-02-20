@@ -3,26 +3,118 @@ import './_styles/bootstrap.scss'
 import './_styles/cart-checkkist.scss'
 import './_styles/index.scss'
 import './_styles/cart-information.scss'
-import React from 'react'
+import React, { useRef } from 'react'
 import { useMyCart } from '@/hooks/use-cart'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { isDev, apiURL } from '@/config'
+// 載入loading元件
 
 export default function InformationPage() {
-  const { totalAmount } = useMyCart()
+  const { totalAmount, clearCart, cartItems } = useMyCart()
+
+  //#region EC Pay
+  const payFormDiv = useRef(null)
+  const createEcpayForm = (params, action) => {
+    const form = document.createElement('form')
+    form.method = 'POST'
+    form.action = action
+    for (const key in params) {
+      const input = document.createElement('input')
+      input.type = 'hidden'
+      input.name = key
+      input.value = params[key]
+      form.appendChild(input)
+    }
+    // 回傳form表單的物件參照
+    return payFormDiv.current.appendChild(form)
+    // 以下是直接送出表單的方式
+    // form.submit()
+  }
+
+  const goEcpay = async () => {
+    // 先連到node伺服器後端，取得EC Pay付款網址
+    const res = await fetch(`${apiURL}/ecpay-test-only?amount=${totalAmount}`, {
+      method: 'GET',
+      // 讓fetch能夠傳送cookie
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
+
+    const resData = await res.json()
+
+    if (isDev) console.log(resData)
+
+    if (resData.status === 'success') {
+      // 建立表單，回傳的是表單的物件參照
+      const payForm = createEcpayForm(resData.data.params, resData.data.action)
+
+      if (isDev) console.log(payForm)
+
+      if (window.confirm('確認要導向至ECPay(綠界金流)進行付款?')) {
+        //送出表單
+        payForm.submit()
+      }
+    } else {
+      toast.error('付款失敗')
+    }
+  }
+  //#endregion
+  // ---------------------------------------
+
+  //#region LIne Pay
+  // 取得網址參數，例如: ?transactionId=xxxxxx/
+  const searchParams = useSearchParams()
   const router = useRouter()
 
+  if (isDev) console.log('transactionId', searchParams.get('transactionId'))
+
+  // 導向至LINE Pay付款頁面
+  const goLinePay = async () => {
+    // 先連到node伺服器後端，取得LINE Pay付款網址
+    const res = await fetch(
+      `${apiURL}/line-pay-test-only/reserve?amount=${totalAmount}&items=${cartItems.name}`,
+      {
+        method: 'GET',
+        // 讓fetch能夠傳送cookie
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+      }
+    )
+
+    const resData = await res.json()
+
+    console.log(resData)
+
+    if (resData.status === 'success') {
+      if (window.confirm('確認要導向至LINE Pay進行付款?')) {
+        //導向至LINE Pay付款頁面
+        router.replace((window.location.href = resData.data.paymentUrl))
+      }
+    } else {
+      toast.error('付款失敗')
+    }
+  }
+  //#endregion
+  // ---------------------------------------
+
+  //#region 送出事件
   const handleSubmit = async (event) => {
     event.preventDefault()
-
-    // 從 localStorage 讀取購物車資料
-    const cartItems = localStorage.getItem('cartItem')
 
     const target = event.target
 
     // 從表單中獲取用戶資料
     const userData = {
-      recipient: target.recipient.value, // 使用表單的 name 屬性
+      recipient: target.recipient.value,
       phone: target.phone.value,
       email: target.email.value,
       city: target.city.value,
@@ -33,27 +125,17 @@ export default function InformationPage() {
       totalAmount: totalAmount,
     }
 
-    const formData = new FormData()
-    formData.append('userData', JSON.stringify(userData))
-    formData.append('cartItems', cartItems)
+    // 將 userData 寫入 localStorage
+    localStorage.setItem('userData', JSON.stringify(userData))
 
-    // 發送 POST 請求到後端 API 儲存資料
-    try {
-      const response = await fetch('http://localhost:3005/api/myOrders', {
-        method: 'POST',
-        body: formData,
-      })
-
-      if (response.ok) {
-        router.push('/my-cart/finish')
-      } else {
-        alert('訂單提交失敗！')
-      }
-    } catch (error) {
-      console.error('錯誤:', error)
-      alert('訂單提交過程中出現錯誤')
+    if (userData.paymentMethod == 'linePay') {
+      goLinePay()
+    } else if (userData.paymentMethod == 'ECpay') {
+      goEcpay()
     }
   }
+  //#endregion
+  // ---------------------------------------
 
   return (
     <>
@@ -220,7 +302,7 @@ export default function InformationPage() {
                     綠界科技ECPay
                   </label>
                 </div>
-                <div className="form-check py-3 pe-4">
+                {/* <div className="form-check py-3 pe-4">
                   <input
                     type="radio"
                     name="paymentMethod"
@@ -238,7 +320,7 @@ export default function InformationPage() {
                       <div className="col-12">
                         <input
                           className="w-100 p-3"
-                          type="email"
+                          type="creditCard"
                           placeholder="卡號 1234 1234 1234 1234"
                         />
                       </div>
@@ -260,7 +342,8 @@ export default function InformationPage() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
+                <div ref={payFormDiv} style={{ display: 'none' }}></div>
               </div>
               <div className="m-sec2-col4 col-lg-4 col-12">
                 <div className="h3 pt-4 pb-2">訂單摘要</div>

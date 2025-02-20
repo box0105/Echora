@@ -1,7 +1,9 @@
 'use client'
-import "./product-card.scss"
+import { useState } from 'react'
+import './product-card.scss'
 
-export default function ProductCard() {
+export default function ProductCard({ data = {} }) {
+  const [mainImage, setMainImage] = useState(data.defaultImage)
   return (
     <>
       <div className="col p-2">
@@ -9,20 +11,28 @@ export default function ProductCard() {
           <div className="g-pd-img d-flex justify-content-center align-items-center">
             <img
               className="h-100"
-              src="/images/product/list/0119151776_fen_ins_frt_1_rr-Photoroom.png"
+              src={`/images/product/pd-images/${mainImage}`}
+              alt=""
             />
           </div>
           <div className="g-pd-text">
-            <h6 className="h6">Product Name Product Name Product Name</h6>
+            <h6 className="h6">{data.name}</h6>
             <div className="d-flex gap-3">
-              <h6 className="h6">$79000</h6>
+              <h6 className="h6">${data.price}</h6>
             </div>
             <div className="g-color-row">
-              <img width="22px" src="/images/product/list/lightblue.svg" />
-              <img width="22px" src="/images/product/list/darkblue.svg" />
-              <img width="22px" src="/images/product/list/purple.svg" />
+              {data.colors.map((color) => (
+                <img
+                  key={color.id}
+                  width="22px"
+                  src={`/images/product/color-images/${color.image}`}
+                  alt={color.name}
+                  onMouseEnter={() => setMainImage(data.images[color.skuId])}
+                  onMouseLeave={() => setMainImage(data.defaultImage)}
+                />
+              ))}
             </div>
-            <p className="p g-color-text">2 colors</p>
+            <p className="p g-color-text">{data.colors.length} colors</p>
           </div>
         </div>
       </div>

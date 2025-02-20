@@ -12,7 +12,7 @@ export default function AppPage(props) {
   return (
     <>
       <div className="m-background">
-        <div className="container-fluid m-section1">
+        <div className="container-fluid m-section1 p-0">
           <div className="card text-bg-dark m-section1-card1">
             <img src="/images/cart/section1-img2.png" className="card-img" alt="..." />
             <div className="card-img-overlay d-flex justify-content-end align-items-center">

@@ -2,12 +2,68 @@
 import './list.scss'
 import ProductCard from '../_components/product-card'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-export default function ProductListPage() {
+export default function ProductListPage(props) {
+  // 設定點擊事件
   const [filterOpen, setFilterOpen] = useState(false)
   const [comparisionOpen, setComparisionOpen] = useState(false)
   const comparisionToggle = () => setComparisionOpen(!comparisionOpen)
+
+  // fetch db
+  const [pdData, setPdData] = useState([])
+
+  const getPdData = async () => {
+    try {
+      const res = await fetch('http://localhost:3005/api/products')
+      const data = await res.json()
+
+      // 資料整理(符合product card UI)
+      const products = {}
+      data?.data.forEach((item) => {
+        const {
+          id,
+          name,
+          price,
+          brand_name,
+          product_sku_id,
+          color_id,
+          color_name,
+          color_image,
+          color_palette_name,
+          image,
+        } = item
+
+        if (!products[id]) {
+          products[id] = {
+            id,
+            name,
+            price,
+            brand: brand_name,
+            colors: [],
+            images: {},
+            defaultImage: image,
+          }
+        }
+        products[id].colors.push({
+          id: color_id,
+          name: color_name,
+          image: color_image,
+          skuId: product_sku_id,
+        })
+        products[id].images[product_sku_id] = image
+      })
+      // console.log(Object.values(products))
+      setPdData(Object.values(products))
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  //didmount後執行getPdData()
+  useEffect(() => {
+    getPdData()
+  }, [])
+
   return (
     <>
       <div>
@@ -75,40 +131,10 @@ export default function ProductListPage() {
         <section className="g-pdlist px-modified">
           <div className="container-fluid p-1">
             <div className="row row-cols-xl-4 row-cols-2">
-              <ProductCard />
-              {/* product-card-start */}
-              {/* <div className="col p-2"> 這句應該跑迴圈?*/}
-              {/* <div className="col p-2">
-                <div className="g-product-card">
-                  <div className="g-pd-img d-flex justify-content-center align-items-center">
-                    <img
-                      className="h-100"
-                      src="/images/product/list/0119151776_fen_ins_frt_1_rr-Photoroom.png"
-                    />
-                  </div>
-                  <div className="g-pd-text">
-                    <h6 className="h6">
-                      Product Name Product Name Product Name
-                    </h6>
-                    <div className="d-flex gap-3">
-                      <h6 className="h6">$79000</h6>
-                    </div>
-                    <div className="g-color-row">
-                      <img
-                        width="22px"
-                        src="/images/product/list/lightblue.svg"
-                      />
-                      <img
-                        width="22px"
-                        src="/images/product/list/darkblue.svg"
-                      />
-                      <img width="22px" src="/images/product/list/purple.svg" />
-                    </div>
-                    <p className="p g-color-text">2 colors</p>
-                  </div>
-                </div>
-              </div> */}
-              {/* product-card-end */}
+              {/* <ProductCard /> */}
+              {pdData.map((product, i) => (
+                <ProductCard key={product.id} data={product} />
+              ))}
             </div>
           </div>
         </section>

@@ -18,11 +18,11 @@ export function Providers({ children }) {
   return (
     <SWRDevTools>
       <LoaderProvider close={2} CustomLoader={CatLoader}>
-        {/* <AuthProvider> */}
+        <AuthProvider>
           <MyCartProvider>
             <ProductProvider>{children}</ProductProvider>
           </MyCartProvider>
-        {/* </AuthProvider> */}
+        </AuthProvider>
       </LoaderProvider>
     </SWRDevTools>
   )

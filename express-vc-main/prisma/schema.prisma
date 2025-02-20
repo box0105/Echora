@@ -30,6 +30,7 @@ model User {
   googleUid      String?    @unique @map("google_uid")
   // 關聯: User:Product = n:m 透過 Favorite
   userLike       userLike[]
+  usercoupons UserCoupons[]
 }
 
 model userLike {
@@ -92,6 +93,7 @@ model Brand {
 model Color {
   id             Int    @id @default(autoincrement())
   name           String @db.VarChar(50)
+  colorImage     String @map("color_image") @db.VarChar(150)
   colorPaletteId Int    @map("color_palette_id")
 
   @@map("color")
@@ -106,7 +108,7 @@ model ColorPalette {
 
 model Image {
   id           Int    @id @default(autoincrement())
-  productSkuId Int    @map("product_sku_id")
+  productSkuId String @map("product_sku_id") @db.VarChar(20)
   name         String @db.VarChar(150)
   image        String @db.VarChar(300)
   sortOrder    Int    @map("sort_order")
@@ -155,33 +157,34 @@ model Spec {
 
 // 問題:開啟關聯部分無法寫入資料
 model Coupon {
-  id             Int      @id @default(autoincrement())
+  id             Int           @id @default(autoincrement())
   name           String
-  code           String?  @unique // 優惠券代碼 (例如：SUMMER20)
+  code           String?      @unique // 優惠券代碼 (例如：SUMMER20)
   typeId         Int //type fk
-  // type           CouponType   @relation(fields: [typeId], references: [id]) // 優惠券類型 (關係)
+  type           CouponType    @relation(fields: [typeId], references: [id]) // 優惠券類型 (關係)
   discount       Int // 折扣金額或百分比 (根據 discount_type 決定)
   discountTypeId Int // discountType fk
-  // discountType   DiscountType @  relation(fields: [discountTypeId], references: [id]) // 折扣類型 (關係)
+  discountType   DiscountType  @relation(fields: [discountTypeId], references: [id]) // 折扣類型 (關係)
   minPurchase    Decimal? //最低消費金額
   description    String? // 優惠券描述 (nullable)
   startTime      DateTime
   endTime        DateTime
-  isDelete       Boolean  @default(false)
+  isDelete       Boolean       @default(false)
+  usercoupons    UserCoupons[]
 
   @@index([code]) // 建立 code 索引
 }
 
 model CouponType {
-  id       Int    @id @default(autoincrement())
+  id       Int      @id @default(autoincrement())
   category String
-  // coupon  Coupon[]
+  coupon   Coupon[]
 }
 
 model DiscountType {
-  id   Int    @id @default(autoincrement())
-  name String
-  // coupon Coupon[]
+  id     Int      @id @default(autoincrement())
+  name   String
+  coupon Coupon[]
 }
 
 model Activity {

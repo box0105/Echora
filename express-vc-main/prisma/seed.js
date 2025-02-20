@@ -184,7 +184,7 @@ async function main() {
     const model = filename.split('.')[0]
     const prop = convertToCamelCase(model)
 
-    console.log('prop', prop, 'data', data)
+    // console.log('prop', prop, 'data', data)
 
     // this maybe anti typescript way
     const result = await prisma[prop].createMany({

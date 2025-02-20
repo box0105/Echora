@@ -3,10 +3,45 @@ import db from '../config/mysql.js'
 
 const router = express.Router()
 
+// 得到所有商品資料
 // GET /api/products
+
+// router.get('/', async (req, res) => {
+//   // type決定是否取得資料
+//   // type=data 需取得資料; type=count 不需取得資料
+//   const type = req.query.type || 'all'
+
+//   const page = Number(req.query.page) || 1
+//   const perPage = Number(req.query.perpage) || 8
+
+//   //搜尋參數
+//   const nameLike = req.query.name_like || ""
+
+//   //篩選參數
+//   const brandIds = req.query.brand_ids ? req.query.brand_ids.split(",").map((id)=>Number(id)) : []
+//   const colorPids = req.query.color_pids ? req.query.color_pids.split(",").map((id)=>Number(id)) : []
+//   const colorIds = req.query.color_ids ? req.query.color_ids.split(",").map((id)=>Number(id)) : []
+
+//   const priceGte = Number(req.query.price_gte) || 0
+//   const priceLte = Number(req.query.price_lte) || 1000000
+
+//   const conditions = {nameLike, brandIds, colorPids, colorIds, priceGte, priceLte}
+
+//   //排序參數
+//   const sort = req.query.sort || 'price'
+//   const order = req.query.order || 'desc'
+//   const sortBy = { sort, order }
+
+//   console.log(conditions);
+
+//   // 從這裡開始 try catch (從資料庫拿資料)
+// })
+
 router.get('/', async (req, res) => {
   try {
-    const [rows] = await db.query('SELECT * FROM product')
+    const sql =
+      'SELECT product.*, brand.name AS brand_name, product_sku.id AS product_sku_id, product_sku.stock, color.id As color_id ,color.name AS color_name, color.color_image, color_palette.name AS color_palette_name, image.image FROM product JOIN brand ON product.brand_id = brand.id JOIN product_sku ON product.id = product_sku.product_id JOIN color ON product_sku.color_id = color.id JOIN color_palette ON color.color_palette_id = color_palette.id JOIN image ON product_sku.id = image.product_sku_id WHERE image.sort_order = 1;'
+    const [rows] = await db.query(sql)
     res.status(200).json({
       status: 'success',
       data: rows,
@@ -47,15 +82,18 @@ router.get('/search', async (req, res) => {
   }
 })
 
+// 得到單筆資料
 // GET /api/products/:pid
+//for product detail page
 router.get('/:pid', async (req, res) => {
   const { pid } = req.params
+  const sql = `SELECT product.*, brand.name AS brand_name, product_sku.id AS product_sku_id, product_sku.stock, color.name AS color_name, color.color_image, image.image, image.sort_order, spec.neck_pickup, spec.middle_pickup, spec.bridge_pickup, spec.controls, spec.switching FROM product JOIN brand ON product.brand_id = brand.id JOIN product_sku ON product.id = product_sku.product_id JOIN color ON product_sku.color_id = color.id JOIN image ON product_sku.id = image.product_sku_id JOIN spec ON product.id = spec.product_id WHERE product.id = ${pid} ORDER BY image.sort_order;`
   try {
-    const [rows] = await db.query(`SELECT * FROM product WHERE id = ${pid}`)
-    const row = rows[0]
+    const [rows] = await db.query(sql)
+    // console.log(rows)
     res.status(200).json({
       status: 'success',
-      data: row,
+      data: rows,
       message: '取得資料成功',
     })
   } catch (err) {

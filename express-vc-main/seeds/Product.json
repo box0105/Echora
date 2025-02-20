@@ -259,7 +259,7 @@
     "discountPrice": null
   },
   {
-    "name": "Flying V Custom w/ Ebony Fingerboard Gloss Ebony",
+    "name": "Flying V Custom Ebony Fingerboard Gloss Ebony",
     "brandId": 1,
     "discription": "Flying V Custom 為 Gibson 最大膽、最具傳奇色彩的設計之一增添了高端的「黑美人」細節。最終的結果是一把散發風格和獨特性的吉他——一件以無可比擬的 Gibson 音色和演奏性為支撐的聲明之作。從實心的烏木指板到分裂鑽石形狀的琴頭嵌片，它無可否認地是一把現代經典，當之無愧地擁有「Custom」的名稱",
     "price": 185250,
@@ -308,7 +308,7 @@
     "discountPrice": null
   },
   {
-    "name": "Explorer Custom w/ Ebony Fingerboard Gloss Ebony",
+    "name": "Explorer Custom Ebony Fingerboard Gloss Ebony",
     "brandId": 1,
     "discription": "經典的 Gibson Explorer 憑藉這款定製版本進入了新的美學和聲音領域，配有多層包邊、珍珠裝飾、金色硬件和實心烏木指板。這是一種令人興奮的高檔外觀，帶來了 Gibson 標誌性的演奏性能、立即可識別的聲音以及 Gibson Custom 堅定不移地致力於打造世界上最好的吉他。",
     "price": 188467,
@@ -329,14 +329,14 @@
     "discountPrice": null
   },
   {
-    "name": "1965 Non-Reverse Firebird V w/ Vibrola Vintage Sunburst",
+    "name": "1965 Non-Reverse Firebird V Vibrola Vintage Sunburst",
     "brandId": 1,
     "discription": "Firebird 的第二個版本將偏移平台帶入了新的聲音領域。憑藉其輕盈的固定琴頸結構以及琴頸和琴身的翻轉方向，'65 Firebird V 因其功能和風格而受到喜愛和推崇。這款客製化商店遊戲使用真實的型材和構造方法來提供無可否認的外觀、感覺和聲音樂器。",
     "price": 146217,
     "discountPrice": null
   },
   {
-    "name": "Firebird Custom w/ Ebony Fingerboard Gloss Ebony",
+    "name": "Firebird Custom Ebony Fingerboard Gloss Ebony",
     "brandId": 1,
     "discription": "Firebird Custom 保留了標誌性的流線型形狀，使其成為 Gibson 最具視覺吸引力的吉他之一，同時添加了高檔定製配置和強大的雙線圈拾音器，以增加視覺和聲音衝擊力。實心桃花心木結構飾有多層包邊、金色五金、珍珠鑲嵌和實心烏木指板。它大膽、美麗，而且是一次非常有趣的旅程。",
     "price": 146217,
@@ -499,7 +499,7 @@
   {
     "name": "Player Plus Stratocaster®",
     "brandId": 2,
-    "discription": "將經典的 Fender® 設計與以玩家為中心的功能和令人興奮的新配色融合在一起，Player Plus Stratocaster® 帶來卓越的可演奏性和無可挑剔的風格。  \n\n這款 Strat® 的核心是一組 Player Plus Noiseless™ 拾音器——明亮且對觸感極為敏感，它們提供經典的 Strat 音色，且沒有雜音干擾。音色控制上的推拉旋鈕可在切換到 1 和 2 檔時添加頸拾音器，創造出 Strat® 上不常見的兩種音色。帶有絲滑緞面塗層的現代 \"C\" 型 Player Plus Strat® 琴頸，配合圓潤的邊緣設計，提供如手套般貼合的極致舒適手感。12 英寸指板半徑和 22 個中大型品絲，讓流暢的獨奏和無阻礙的彎音輕鬆實現。順滑且靈敏的 2 點式顫音系統可帶來經典的顫音效果，而鎖定式弦軸則確保了穩固的調音，並讓換弦快速又簡單。  \n\n結合經典 Fender 風格、先進功能和驚艷的新配色，Player Plus Stratocaster 是激發您創意並讓您在人群中脫穎而出的完美工具。",
+    "discription": "將經典的 Fender® 設計與以玩家為中心的功能和令人興奮的新配色融合在一起，Player Plus Stratocaster® 帶來卓越的可演奏性和無可挑剔的風格。  \n\n這款 Strat® 的核心是一組 Player Plus Noiseless™ 拾音器——明亮且對觸感極為敏感，它們提供經典的 Strat 音色，且沒有雜音干擾。音色控制上的推拉旋鈕可在切換到 1 和 2 檔時添加頸拾音器，創造出 Strat® 上不常見的兩種音色。帶有絲滑緞面塗層的現代 \"C\" 型 Player Plus Strat® 琴頸，配合圓潤的邊緣設計，提供如手套般貼合的極致舒適手感。12 英寸指板半徑和 22 個中大型品絲，讓流暢的獨奏和無阻礙的彎音輕鬆實現。順滑且靈敏的 2 點式顫音系統可帶來經典的顫音效果，而鎖定式弦軸則確保了穩固的調音，並讓換弦快速又簡單。 \n\n結合經典 Fender 風格、先進功能和驚艷的新配色，Player Plus Stratocaster 是激發您創意並讓您在人群中脫穎而出的完美工具。",
     "price": 25999,
     "discountPrice": null
   },
@@ -562,14 +562,14 @@
   {
     "name": "Stevie Ray Vaughan Stratocaster®",
     "brandId": 2,
-    "discription": "純正 SRV 音色與風格  \n如果有一座 Stratocaster 的拉什莫山，Stevie Ray Vaughan 肯定是其中的偉大人物之一。Fender 的 Stevie Ray Vaughan Stratocaster 是一把精心打造的全新版本，模仿 Vaughan 最愛的吉他——著名的 \"Number One\" Strat®，正是這把吉他讓他在全世界震撼了聽眾，並將炙熱的德州藍調灼熱地烙印在排行榜的頂端。對於追求純正 SRV 音色與風格，這把吉他無疑是「最佳之選」。",
+    "discription": "純正 SRV 音色與風格 \n如果有一座 Stratocaster 的拉什莫山，Stevie Ray Vaughan 肯定是其中的偉大人物之一。Fender 的 Stevie Ray Vaughan Stratocaster 是一把精心打造的全新版本，模仿 Vaughan 最愛的吉他——著名的 \"Number One\" Strat®，正是這把吉他讓他在全世界震撼了聽眾，並將炙熱的德州藍調灼熱地烙印在排行榜的頂端。對於追求純正 SRV 音色與風格，這把吉他無疑是「最佳之選」。",
     "price": 71499,
     "discountPrice": null
   },
   {
     "name": "Jeff Beck Stratocaster®",
     "brandId": 2,
-    "discription": "純正 Jeff Beck 音色與風格  \n從震撼的英國入侵起步，到長久且備受推崇的個人事業，Jeff Beck 以其非凡的風格多樣性，將 Stratocaster 帶到了難以置信的音效高度，並從這把吉他中引出了最具特色的音樂聲音。以經典風格和特殊功能，讓他的音色與風格成為你自己的，擁有 Jeff Beck Stratocaster，它是 Fender 最受歡迎且長久的藝術家系列之一。",
+    "discription": "純正 Jeff Beck 音色與風格 \n從震撼的英國入侵起步，到長久且備受推崇的個人事業，Jeff Beck 以其非凡的風格多樣性，將 Stratocaster 帶到了難以置信的音效高度，並從這把吉他中引出了最具特色的音樂聲音。以經典風格和特殊功能，讓他的音色與風格成為你自己的，擁有 Jeff Beck Stratocaster，它是 Fender 最受歡迎且長久的藝術家系列之一。",
     "price": 69874,
     "discountPrice": null
   },
@@ -590,14 +590,14 @@
   {
     "name": "Yngwie Malmsteen Stratocaster®",
     "brandId": 2,
-    "discription": "強大的切割風格  \n作為這個類型的最傑出和最強大的實踐者，Yngwie Malmsteen 幾乎是單槍匹馬創造了新古典切割風格。他一直使用的吉他是 Stratocaster，而對於那些渴望模仿 Malmsteen 那種華麗又迅捷的指法風格的人來說，Yngwie Malmsteen Stratocaster 是基於這位瑞典金屬大師最喜愛的 Strat® 打造的，甚至連特製拾音器和凹槽指板也一應俱全。這款獨特設計的吉他，是為了致敬全球最具代表性的 Strat 大師之一。",
+    "discription": "強大的切割風格 \n作為這個類型的最傑出和最強大的實踐者，Yngwie Malmsteen 幾乎是單槍匹馬創造了新古典切割風格。他一直使用的吉他是 Stratocaster，而對於那些渴望模仿 Malmsteen 那種華麗又迅捷的指法風格的人來說，Yngwie Malmsteen Stratocaster 是基於這位瑞典金屬大師最喜愛的 Strat® 打造的，甚至連特製拾音器和凹槽指板也一應俱全。這款獨特設計的吉他，是為了致敬全球最具代表性的 Strat 大師之一。",
     "price": 76374,
     "discountPrice": null
   },
   {
     "name": "Eric Clapton Stratocaster®",
     "brandId": 2,
-    "discription": "**慢手（Slowhand）音色與風格**  \n體驗慢手（Eric Clapton）本人無與倫比的Strat®風格，這款Eric Clapton Stratocaster是我們最受推崇且持久的藝術家簽名款之一。這款吉他擁有經典設計和特殊功能，提供卓越的音色多樣性和輕鬆的手感，完美詮釋了搖滾與藍調界的偉大人物之一Eric Clapton的Stratocaster音色和手感。其特色包括：一個楓木身體，三個Vintage Noiseless™拾音器，25分貝的中頻增強（active mid-boost），TBX電路，特殊的軟“V”形頸，並且配有封鎖原始的復古同步顫音橋（synchronized tremolo）。",
+    "discription": "**慢手（Slowhand）音色與風格** \n體驗慢手（Eric Clapton）本人無與倫比的Strat®風格，這款Eric Clapton Stratocaster是我們最受推崇且持久的藝術家簽名款之一。這款吉他擁有經典設計和特殊功能，提供卓越的音色多樣性和輕鬆的手感，完美詮釋了搖滾與藍調界的偉大人物之一Eric Clapton的Stratocaster音色和手感。其特色包括：一個楓木身體，三個Vintage Noiseless™拾音器，25分貝的中頻增強（active mid-boost），TBX電路，特殊的軟“V”形頸，並且配有封鎖原始的復古同步顫音橋（synchronized tremolo）。",
     "price": 69874,
     "discountPrice": null
   },
