@@ -16,7 +16,7 @@ const oneToOne = ['Rent:RentItemColor']
 // foreignKey is in the second table
 const oneToMany = ['Rent:RentItemColor', 'Rent:RentImges']
 // foreignKey is in the third table
-// const manyToMany = ['User:Product:Favorite']
+const manyToMany = []
 
 // seed檔案種類(副檔名)seed files extension (csv| json)
 const fileExtension = 'json'
@@ -37,7 +37,7 @@ async function main() {
   const seedsPath = path.join(process.cwd(), seedsFolder)
   const filenames = await fs.promises.readdir(seedsPath)
 
-  const relations = [...oneToOne, ...oneToMany, ]//...manyToMany
+  const relations = [...oneToOne, ...oneToMany,...manyToMany ]
 
   let relationFileList = []
 
