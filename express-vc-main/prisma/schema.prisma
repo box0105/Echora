@@ -17,20 +17,20 @@ datasource db {
 
 //以下為會員部分
 model User {
-  id             Int        @id @default(autoincrement())
-  username       String     @unique
+  id             Int           @id @default(autoincrement())
+  username       String        @unique
   password       String
-  email          String     @unique
+  email          String        @unique
   sex            String?
   phone          String?
   postcode       String?
   address        String?
   // 關聯 User:Profile = 1:1 
-  emailValidated Boolean    @default(false) @map("email_validated")
-  googleUid      String?    @unique @map("google_uid")
+  emailValidated Boolean       @default(false) @map("email_validated")
+  googleUid      String?       @unique @map("google_uid")
   // 關聯: User:Product = n:m 透過 Favorite
   userLike       userLike[]
-  usercoupons UserCoupons[]
+  usercoupons    UserCoupons[]
 }
 
 model userLike {
@@ -159,7 +159,7 @@ model Spec {
 model Coupon {
   id             Int           @id @default(autoincrement())
   name           String
-  code           String?      @unique // 優惠券代碼 (例如：SUMMER20)
+  code           String?       @unique // 優惠券代碼 (例如：SUMMER20)
   typeId         Int //type fk
   type           CouponType    @relation(fields: [typeId], references: [id]) // 優惠券類型 (關係)
   discount       Int // 折扣金額或百分比 (根據 discount_type 決定)
@@ -221,6 +221,7 @@ model RentBrand {
 model RentColor {
   id             Int             @id @default(autoincrement())
   name           String
+  rentColorImages      String
   rentItemColors RentItemColor[] // 修改關聯名稱，保持一致性
 }
 
