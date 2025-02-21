@@ -122,12 +122,11 @@
         margin: 0;
         width: 100%;
 
-        @media (max-width: 1500px) {
-            justify-content: center;
+        @media (max-width: 1920px) {
+            justify-content: start;
         }
 
         @media (max-width: 1120px) {
-            justify-content: center;
 
             // .col:nth-child(-n +2) {
             //     display: none;
@@ -151,7 +150,7 @@
             background-size: contain;
             /* 圖片縮放到容器大小，保持比例 */
 
-            /* 單數 col 的圖片 */
+           
         }
 
         .image-col:nth-child(even) {
@@ -160,15 +159,13 @@
             /* 圖片置中 */
             background-size: contain;
             /* 圖片縮放到容器大小，保持比例 */
-
-            /* 偶數 col 的圖片 */
+            color: #fff;
         }
 
         li {
             padding: 0;
             list-style: none;
             display: flex;
-            background-color: green;
 
             div .text {
                 top: 50%;

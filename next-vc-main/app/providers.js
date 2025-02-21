@@ -10,6 +10,8 @@ import { ProductProvider } from '@/services/rest-client/use-product'
 import { LoaderProvider } from '@/hooks/use-loader'
 // 自訂用載入動畫元件
 import { CatLoader } from '@/hooks/use-loader/components'
+//
+import { MyCouponProvider } from '@/hooks/use-coupon'
 
 // 載入swr-devtools使用
 import { SWRDevTools } from 'swr-devtools'
@@ -18,11 +20,21 @@ export function Providers({ children }) {
   return (
     <SWRDevTools>
       <LoaderProvider close={2} CustomLoader={CatLoader}>
+<<<<<<< HEAD
         <AuthProvider>
           <MyCartProvider>
             <ProductProvider>{children}</ProductProvider>
           </MyCartProvider>
         </AuthProvider>
+=======
+        <MyCouponProvider>
+        {/* <AuthProvider> */}
+          <MyCartProvider>
+            <ProductProvider>{children}</ProductProvider>
+          </MyCartProvider>
+        {/* </AuthProvider> */}
+        </MyCouponProvider>
+>>>>>>> wabi
       </LoaderProvider>
     </SWRDevTools>
   )
