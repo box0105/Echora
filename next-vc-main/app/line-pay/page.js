@@ -13,7 +13,7 @@ import { RotatingLines } from 'react-loader-spinner'
 
 export default function LinePayPage() {
   // 檢查是否登入
-  const { isAuth } = useAuth()
+  // const { isAuth } = useAuth()
 
   const { clearCart } = useMyCart()
 
