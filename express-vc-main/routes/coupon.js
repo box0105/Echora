@@ -27,14 +27,15 @@ router.get('/:userId', async (req, res) => {
   // const user = await db.query(`SELECT user FROM user WHERE id = ${userId}`)
   // if (!user) throw new Error('請先登入!') 不確定是否要驗證
 
-  const [results] = await db.query(
+  const [rows] = await db.query(
     `SELECT * FROM usercoupons WHERE userId = ${userId}`
   )
-  const result = results[0]
-  const message = results.length > 0 ? '擁有的優惠券' : '目前未擁有優惠券'
+  // const result = results[0]
+  console.log(rows);
+  const message = rows.length > 0 ? '擁有的優惠券' : '目前未擁有優惠券'
 
   try {
-    res.json({ status: 'success', data: { result }, message: message })
+    res.json({ status: 'success', data: rows ,message: message })
 
   } catch (err) {
     console.log(err);
@@ -99,7 +100,7 @@ router.post('/:userId/:couponId', async (req, res) => {
 
   } catch (err) {
     console.log(err)
-    res.status(400).json({ status: 'fail', message: err.message })
+    res.json({ status: 'fail', message: err.message })
   }
 })
 

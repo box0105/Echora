@@ -53,19 +53,19 @@ export function MyCouponProvider({ children }) {
         confirmButtonText: '確定',
       })
       if (result.isConfirmed) {
-
         // 進行領取
         const res = await claimCoupon(100, itemId)
         console.log(res);
+        // callback()
 
         if (res.status == 'fail') {
-          Swal.fire({
+          MySwal.fire({
             title: '無法領取',
             text: `已經擁有優惠券`,
-            icon: 'error',
+            icon: 'notice',
           })
         } else {
-          Swal.fire({
+          MySwal.fire({
             title: '領取成功',
             text: `優惠券已領取`,
             icon: 'success',
@@ -75,7 +75,7 @@ export function MyCouponProvider({ children }) {
     } catch (err) {
       console.error("領取優惠券時發生錯誤:", err);
       setError(err.message);
-      Swal.fire({
+      MySwal.fire({
         title: '領取失敗',
         text: `領取優惠券時發生錯誤: ${err.message}`,
         icon: 'error',

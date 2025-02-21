@@ -4,9 +4,11 @@ import './style.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useState, useEffect } from 'react'
 import { useMyCoupon } from '@/hooks/use-coupon'
+import { array } from 'prop-types'
 
 export default async function CouponPage() {
   const [coupon, setCoupon] = useState([])
+  const [userCoupons, setUserCoupons] = useState([])
   const { notifyAndGet } = useMyCoupon()
 
   useEffect(() => {
@@ -24,6 +26,28 @@ export default async function CouponPage() {
     }
     fetchData()
   }, [])
+
+  
+
+  useEffect(() => {
+    const fetchUserCoupon = async () => {
+      try {
+        const url = `http://localhost:3005/api/coupon/100`
+        const res = await fetch(url)
+        if (!res.ok) throw new Error('狀態錯誤')
+        const data = await res.json()
+        console.log(data.data)
+        setUserCoupons(data.data)
+  
+  
+      } catch (err) {
+        console.log('發生錯誤', err)
+      }
+    }
+    fetchUserCoupon()
+
+  }, [])
+
 
   // 轉換時間格式
   const time = (time) => {
@@ -78,11 +102,14 @@ export default async function CouponPage() {
 
                   <button
                     className="btn btn-dark"
-                    onClick={() => {
-                      notifyAndGet(item.id)
+                    onClick={async () => {
+                     await notifyAndGet(item.id,)
+                    //  await fetchUserCoupon()
                     }}
                   >
-                    領取
+                    {userCoupons.map(v => v.couponId).includes(item.id) ? '已領取' : '領取'}
+                    {/* 領取 */}
+
                   </button>
                 </div>
               </li>
