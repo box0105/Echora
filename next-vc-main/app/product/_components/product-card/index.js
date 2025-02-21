@@ -22,14 +22,17 @@ export default function ProductCard({ data = {} }) {
             </div>
             <div className="g-color-row">
               {data.colors.map((color) => (
-                <img
+                <div
                   key={color.id}
-                  width="22px"
-                  src={`/images/product/color-images/${color.image}`}
-                  alt={color.name}
                   onMouseEnter={() => setMainImage(data.images[color.skuId])}
                   onMouseLeave={() => setMainImage(data.defaultImage)}
-                />
+                >
+                  <img
+                    width="22px"
+                    src={`/images/product/color-images/${color.image}`}
+                    alt={color.name}
+                  />
+                </div>
               ))}
             </div>
             <p className="p g-color-text">{data.colors.length} colors</p>

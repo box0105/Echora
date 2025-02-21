@@ -88,7 +88,7 @@ export default function ProductListPage(props) {
     try {
       const res = await fetch(`http://localhost:3005/api/products?${queryString}`)
       const data = await res.json()
-
+      console.log(data.data);
       // 資料整理(符合product card UI)
       const products = {}
       data?.data.forEach((item) => {

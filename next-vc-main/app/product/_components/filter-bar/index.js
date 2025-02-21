@@ -49,6 +49,8 @@ export default function FilterBar({
 
   //設定color palette狀態
   const [colorSeries, setColorSeries] = useState({})
+  //設定color狀態
+  const [colorActive, setColorActive] = useState({})
 
   return (
     <>
@@ -118,13 +120,18 @@ export default function FilterBar({
                       }`}
                       key={colorseries.id}
                       onClick={() => {
-                        setColorSeries((prev)=>{
-                          const updatedColorSeries = { ...prev, [colorseries.id]: !prev[colorseries.id] }
+                        setColorSeries((prev) => {
+                          const updatedColorSeries = {
+                            ...prev,
+                            [colorseries.id]: !prev[colorseries.id],
+                          }
                           if (!prev[colorseries.id]) {
-                          setColorPids([...colorPids, colorseries.id])
-                        } else {
-                          setColorPids(colorPids.filter((id) => id !== colorseries.id))
-                        }
+                            setColorPids([...colorPids, colorseries.id])
+                          } else {
+                            setColorPids(
+                              colorPids.filter((id) => id !== colorseries.id)
+                            )
+                          }
                           return updatedColorSeries
                         })
                       }}
@@ -143,7 +150,26 @@ export default function FilterBar({
                 </div>
                 <div className="g-color-filter pt-4 pb-3">
                   {colors.map((color) => (
-                    <img src={`/images/product/list/${color.color_image}`} />
+                    <div 
+                    key={color.id}
+                    onClick={()=>{
+                      setColorActive((prev) => {
+                          const updatedColor = {
+                            ...prev,
+                            [color.id]: !prev[color.id],
+                          }
+                          if (!prev[color.id]) {
+                            setColorIds([...colorIds, color.id])
+                          } else {
+                            setColorIds(
+                              colorIds.filter((id) => id !== color.id)
+                            )
+                          }
+                          return updatedColor
+                        })
+                    }}>
+                      <img src={`/images/product/list/${color.color_image}`} className={colorActive[color.id] ?"active" : ""}/>
+                    </div>
                   ))}
                 </div>
               </div>

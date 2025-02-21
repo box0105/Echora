@@ -55,10 +55,12 @@
 
   .g-color-row {
     display: flex;
-    gap: 8px;
+    // gap: 8px;
     margin-block: 6px;
+    margin-left: -4px;
 
-    img {
+    div {
+      padding-inline: 4px;
       cursor: pointer;
     }
   }
