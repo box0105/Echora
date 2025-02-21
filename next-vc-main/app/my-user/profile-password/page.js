@@ -117,7 +117,9 @@ export default function PasswordPage() {
                 />
                 <i
                   className={`fa ${
-                    showPassword.current ? 'fa-eye-slash' : 'fa-eye'
+                    showPassword.current
+                      ? 'fa-regular fa-eye-slash'
+                      : ' fa-regular fa-eye'
                   } position-absolute`}
                   style={{ top: '60%', right: '10px', cursor: 'pointer' }}
                   onClick={() => toggleShowPassword('current')}
@@ -138,7 +140,9 @@ export default function PasswordPage() {
                 />
                 <i
                   className={`fa ${
-                    showPassword.new ? 'fa-eye-slash' : 'fa-eye'
+                    showPassword.new
+                      ? 'fa-regular fa-eye-slash'
+                      : ' fa-regular fa-eye'
                   } position-absolute`}
                   style={{ top: '60%', right: '10px', cursor: 'pointer' }}
                   onClick={() => toggleShowPassword('new')}
@@ -159,7 +163,9 @@ export default function PasswordPage() {
                 />
                 <i
                   className={`fa ${
-                    showPassword.confirm ? 'fa-eye-slash' : 'fa-eye'
+                    showPassword.confirm
+                      ? 'fa-regular fa-eye-slash'
+                      : ' fa-regular fa-eye'
                   } position-absolute`}
                   style={{ top: '60%', right: '10px', cursor: 'pointer' }}
                   onClick={() => toggleShowPassword('confirm')}
