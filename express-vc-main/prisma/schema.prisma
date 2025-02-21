@@ -159,7 +159,7 @@ model Spec {
 model Coupon {
   id             Int           @id @default(autoincrement())
   name           String
-  code           String?        @unique // 優惠券代碼 (例如：SUMMER20)
+  code           String?       @unique // 優惠券代碼 (例如：SUMMER20)
   typeId         Int //type fk
   type           CouponType    @relation(fields: [typeId], references: [id]) // 優惠券類型 (關係)
   discount       Int // 折扣金額或百分比 (根據 discount_type 決定)
@@ -221,9 +221,9 @@ model Activity {
   article        String           @db.Text
 
   // 1:n
-  lineup        ActivityLineup[]
+  lineup ActivityLineup[]
   // media         Media[]
-  
+
   // tickets       Ticket[]
   // types         Type[]
 }
@@ -291,6 +291,18 @@ model MyOrder {
   totalAmount     Int
   createdAt       DateTime @default(now()) // 訂單創建時間
 }
+
+model MyOrderItem {
+  id      Int     @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
+  orderId Int
+  name    String
+  color   String?
+  image   String
+  price   String
+  count   String
+  total   String
+}
+
 model Rent {
   id          Int             @id @default(autoincrement())
   name        String
@@ -317,10 +329,10 @@ model RentBrand {
 }
 
 model RentColor {
-  id             Int             @id @default(autoincrement())
-  name           String
-  rentColorImages      String
-  rentItemColors RentItemColor[] // 修改關聯名稱，保持一致性
+  id              Int             @id @default(autoincrement())
+  name            String
+  rentColorImages String?
+  rentItemColors  RentItemColor[] // 修改關聯名稱，保持一致性
 }
 
 model RentItemColor {
