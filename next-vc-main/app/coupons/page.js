@@ -1,8 +1,6 @@
 'use client'
 
 import './style.scss'
-import '../_styles/nav.scss'
-import '../_styles/globals.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useState, useEffect } from 'react'
 import { useMyCoupon } from '@/hooks/use-coupon'
