@@ -160,6 +160,17 @@ router.post('/login', async (req, res) => {
     })
   }
 })
+
+// 登出會員
+router.post('/logout', (req, res) => {
+  // 清除客戶端的 JWT token 和 userId
+  res.clearCookie('token')
+  res.status(200).json({
+    status: 'success',
+    message: '登出成功',
+  })
+})
+
 // #endregion ------------
 
 // #region ------ PUT ------

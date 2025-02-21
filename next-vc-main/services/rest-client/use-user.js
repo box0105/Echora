@@ -137,7 +137,7 @@ export const useAuthGoogleLogin = () => {
 // 登出用
 export const useAuthLogout = () => {
   const { trigger, isMutating, isError } = useMutation(
-    `${apiURL}/auth/logout`,
+    `${apiURL}/users/logout`,
     'POST'
   )
   // POST方法時，要利用logout()來登出

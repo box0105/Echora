@@ -33,7 +33,7 @@ export default function UserPage() {
   const { logout } = useAuthLogout()
 
   // 取得登入狀態
-  const { isAuth } = useAuth()
+  const { isAuth, setIsAuth } = useAuth()
   const router = useRouter()
   const [isClient, setIsClient] = useState(false)
 
@@ -91,7 +91,7 @@ export default function UserPage() {
 
       if (resData?.status === 'success') {
         localStorage.setItem('userId', resData.data.user.id)
-
+        setIsAuth(true)
         mutate()
         toast.success('已成功登入')
         if (isClient) {
