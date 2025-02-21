@@ -125,19 +125,11 @@ export default function Header() {
                 onMouseEnter={() => setShowDropdown(true)}
                 onMouseLeave={() => setShowDropdown(false)}
               >
-                <Link
-                  href={isAuth ? '/my-user/profile' : '/my-user'}
-                  legacyBehavior
-                >
-                  <a>
-                    <img src="/images/header/account.svg" />
-                  </a>
+                <Link href={isAuth ? '/my-user/profile' : '/my-user'}>
+                  <img src="/images/header/account.svg" />
                 </Link>
-                {showDropdown && (
+                {isAuth && showDropdown && (
                   <div className={styles['dropdown-menu']}>
-                    {/* <Link href="/my-user/profile" legacyBehavior>
-                      <a>會員中心</a>
-                    </Link> */}
                     <button onClick={handleLogout}>登出</button>
                   </div>
                 )}
