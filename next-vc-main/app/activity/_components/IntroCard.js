@@ -3,7 +3,7 @@
 import ReactHtmlParser from 'html-react-parser'
 import { NumberZh } from 'number-zh'
 
-export default function IntroCard({ isOpen, onClose, intro, info, lineup }) {
+export default function IntroCard({ isOpen, onClose, act }) {
   const numberZh = new NumberZh()
 
   return (
@@ -15,7 +15,9 @@ export default function IntroCard({ isOpen, onClose, intro, info, lineup }) {
             <i className="fa-solid fa-star me-3" />
             活動介紹
           </h3>
-          <div className="b-card-text">{ReactHtmlParser(intro)}</div>
+          <div className="b-card-text">
+            {ReactHtmlParser(act.intro || '')}
+          </div>
         </div>
         {/* info */}
         {isOpen && (
@@ -25,12 +27,12 @@ export default function IntroCard({ isOpen, onClose, intro, info, lineup }) {
               活動資訊
             </h3>
             <div className="b-card-text d-flex flex-column gap-2">
-              <h5 className="b-date">{`活動日期 : ${info.dateStart} ~ ${info.dateEnd}`}</h5>
-              <h5 className="b-enroll-date">{`報名日期 : ${info.signupStart} ~ ${info.signupEnd}`}</h5>
-              <h5 className="b-address">{`地址 : ${info.city}${info.dist}${info.address}`}</h5>
+              <h5 className="b-date">{`活動日期 : ${act.date_start} ~ ${act.date_end}`}</h5>
+              <h5 className="b-enroll-date">{`報名日期 : ${act.signup_start} ~ ${act.signup_end}`}</h5>
+              <h5 className="b-address">{`地址 : ${act.city}${act.dist}${act.address}`}</h5>
               <a
                 className="b-btn b-sm-none mt-2"
-                href={`https://www.google.com/maps?q=${info.address}`}
+                href={`https://www.google.com/maps?q=${act.address}`}
                 target="_blank"
               >
                 查看地圖
@@ -55,11 +57,13 @@ export default function IntroCard({ isOpen, onClose, intro, info, lineup }) {
                 </tr>
               </thead>
               <tbody>
-                {lineup.map((bands, i) => {
+                {act.lineup.map((lineup, i) => {
+                  const wave = numberZh.numberToZh(i + 1);
+                  const waveText = i >= 9 ? wave.slice(1) : wave;
                   return (
                     <tr key={i}>
-                      <td>{`第${numberZh.numberToZh(i + 1)}波`}</td>
-                      <td>{bands}</td>
+                      <td>{`第${waveText}波`}</td>
+                      <td>{lineup.bands}</td>
                     </tr>
                   )
                 })}
@@ -71,9 +75,8 @@ export default function IntroCard({ isOpen, onClose, intro, info, lineup }) {
         <div className="col-auto mx-auto">
           <button className="flattenBtn b-btn-unstyled" onClick={onClose}>
             <i
-              className={`fa-solid ${
-                isOpen ? 'fa-chevron-up' : 'fa-chevron-down'
-              }`}
+              className={`fa-solid ${isOpen ? 'fa-chevron-up' : 'fa-chevron-down'
+                }`}
             />
           </button>
         </div>
