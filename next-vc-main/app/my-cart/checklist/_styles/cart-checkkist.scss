@@ -36,6 +36,9 @@
   margin: 0;
 }
 .m-sec2-card {
+  max-height: 350px;
+  display: flex;
+  justify-content: center;
   @media (max-width: 768px) {
     margin-bottom: 32px;
   }

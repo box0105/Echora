@@ -6,6 +6,9 @@ import { useMyCart } from '@/hooks/use-cart'
 import { useParams } from 'next/navigation'
 
 export default function ProductDetailIdPage() {
+  //box
+  const [selectedColor, setSelectedColor] = useState()
+
   const [colorName, setColorName] = useState()
   const [selectedSku, setSelectedSku] = useState()
   const { onAdd } = useMyCart()
@@ -178,6 +181,9 @@ export default function ProductDetailIdPage() {
                         <button
                           key={color.skuId}
                           onClick={() => {
+                            console.log(color)
+                            // box
+                            setSelectedColor(color)
                             setColorName(color.name)
                             setSelectedSku(color.skuId)
                           }}
@@ -192,7 +198,12 @@ export default function ProductDetailIdPage() {
                     ))}
                   </div>
                 </div>
-                <button className="g-add-to-cart d-flex justify-content-center align-items-center" onClick={()=>{onAdd(detailData[0])}}>
+                <button
+                  className="g-add-to-cart d-flex justify-content-center align-items-center"
+                  onClick={() => {
+                    onAdd(detailData[0], selectedColor)
+                  }}
+                >
                   <h6 className="m-0">加入購物車</h6>
                 </button>
                 <div className="g-stock d-flex align-items-center gap-2">
