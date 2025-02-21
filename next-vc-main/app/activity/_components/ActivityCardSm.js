@@ -9,7 +9,7 @@ export default function ActivityCardSm({ data }) {
             <Image
               className="object-fit-cover w-100 h-100"
               src={data.image}
-              alt={data.title}
+              alt={data.name}
               width={500}
               height={300}
             />
@@ -18,11 +18,11 @@ export default function ActivityCardSm({ data }) {
             <div className="card-body d-flex flex-column">
               <div className="b-text d-flex flex-column">
                 <h2 className="card-title">
-                  <a href="true">{data.title}</a>
+                  <a href="true">{data.name}</a>
                 </h2>
                 <div className="h5">{`活動日期 : ${data.date_start} ~ ${data.date_end}`}</div>
-                <h6 className="card-text b-tag">{data.genre}</h6>
-                <h6 className="card-text ">票價 : {data.price}</h6>
+                <h6 className="card-text b-tag">{data.genre.name}</h6>
+                <h6 className="card-text ">票價 : {data.type?.[0]?.price}</h6>
               </div>
             </div>
           </div>

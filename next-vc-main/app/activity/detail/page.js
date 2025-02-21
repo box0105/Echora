@@ -20,8 +20,12 @@ export default function DetailPage() {
   const searchParams = useSearchParams()
   const activityId = searchParams?.get('id')
 
-  const [act, setActivity] = useState({ category: {}, genre: {}, lineup: [{}] });
-  const [acts, setActivities] = useState([{ category: {}, genre: {}, lineup: [{}] }])
+  const initState = { category: {}, genre: {}, lineup: [{}], lineup: [{}] };
+  const [act, setActivity] = useState(initState);
+  const [acts, setActivities] = useState([initState])
+
+  // Info Switch
+  const [isInfoOpen, setIsInfoOpen] = useState(false)
 
   // 網址上的單一活動
   useEffect(() => {
@@ -55,44 +59,6 @@ export default function DetailPage() {
     }
   }, [])
 
-  const breadcrumb = ['音樂祭', '流行音樂', '台中市', '浮現祭']
-  const intro = `
-    ❝ 浮現祭，一場名為冒險的音樂祭。 ❞
-        
-      ▎記憶
-      總有一個只有好朋友
-      才知曉的秘密基地
-       
-      ▎夢境
-      總有一座只有你自己
-      創造的夢幻遊樂園
-        
-      ✪ 藏寶的秘密基地・華麗變身 ✨  
-         
-      ✪ 搖滾冒險遊樂園・熱鬧開張 🎢
-        
-      這些年來，踏入浮現祭的樂團和樂迷朋友們，不論是化身為發掘新聲音的音樂遊俠、來海線擴充好料圖鑑的美食獵人，還是漫遊在小鎮街道巷弄裡的探險家，每個人在浮現祭裡都有屬於自己的冒險故事集，一個無法被取代的回憶存檔。
-        
-      2025年，浮現祭將變身為「搖滾冒險遊樂園」!
-        
-      在這裡，你會遇見更多世界各地直送的新鮮音樂； 解鎖更多尚未被味蕾收錄的海線美食； 發掘更多小鎮文化秘境； 探索更多驚奇的限定跨域合作，更多更多超乎想像的驚喜，正等你收藏。
-        
-      百怪千奇的場景、千變萬化的遊樂園，唯有親身體驗，才能寫下新篇章。帶上冒險裝備，與我們一起啟動搖滾旅程，在這座冒險遊樂園裡邊聽邊玩，探尋屬於你的音樂寶藏 .ᐟ.ᐟ
-    `
-  const info = {
-    dateStart: '2025/2/22 11:00',
-    dateEnd: '2025/2/23 22:00',
-    signupStart: '2024/11/05 12:00',
-    signupEnd: '2025/02/21 23:59',
-    city: '台中市',
-    dist: '清水區',
-    address: '鰲峰山運動公園',
-  }
-  const lineup = [
-    `康士坦的變化球 ft. GIGO、怕胖團、拍謝少年、傷心欲絕、冰球樂團、ENTH (日本)、POT (日本)、溫蒂漫步、莉周她說、SHOOT UP、伯爵白、上山、桑尼、工口紳士`,
-    `GEZEN(日本)、康先生、傻子與白痴、福夢、芒果醬、老破麻、hue、好大一把勇者劍、島嶼都市浪漫譚、郭子恆、NeaR Band 你阿伯`,
-    `董事長樂團、The Chairman、JOYCE 就 以 斯、163braces、TORO(日本)、公館青少年、DIZLIKE、MAX'N(日本)、核果仁、GUJI 孤寂輔導室`,
-  ]
   const articles = [
     {
       title: `✫ 浮現祭 EMERGE FEST 2025 ✫  
@@ -174,19 +140,11 @@ export default function DetailPage() {
   ]
   // test data
   const coverImages = ['/浮現祭/main-1.jpg']
-  const ticket = [
-    { name: '冒險先知單人雙日票', amount: 2, price: 2466 },
-    { name: '冒險旅人單人雙日票 ', amount: 2, price: 2666 },
-    { name: '大冒險家單人雙日票', amount: 2, price: 2966 },
-  ]
-
-  // Info Switch
-  const [isInfoOpen, setIsInfoOpen] = useState(false)
 
   return (
     <div className="b-container">
       {/* 開發測試 */}
-      {/* <pre>{JSON.stringify(acts, null, 2)}</pre> */}
+      {/* <pre>{JSON.stringify(act.type, null, 2)}</pre> */}
       <HeroSection images={coverImages} />
 
       <main>
@@ -215,7 +173,7 @@ export default function DetailPage() {
             </article>
           </div>
           <div className="col-12 col-xl-3 order-first order-xl-last">
-            <PurchaseAside ticket={ticket[0]} />
+            <PurchaseAside ticket={act.type} />
           </div>
         </div>
 
@@ -224,9 +182,9 @@ export default function DetailPage() {
 
           <div className="b-act-list d-flex flex-column">
             <div className="row row-cols-1 row-cols-lg-2 row-cols-xl-3 gx-4 gy-5">
-              {/* {acts.map((data) => {
+              {acts.map((data) => {
                 return <ActivityCardSm key={data.id} data={data} />
-              })} */}
+              })}
             </div>
             <button className="b-btn b-load-btn">瀏覽更多</button>
           </div>

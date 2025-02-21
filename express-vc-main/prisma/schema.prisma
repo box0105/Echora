@@ -223,9 +223,8 @@ model Activity {
   // 1:n
   lineup ActivityLineup[]
   // media         Media[]
-
   // tickets       Ticket[]
-  // types         Type[]
+  type  ActivityTicketType[]
 }
 
 model ActivityCategory {
@@ -246,6 +245,15 @@ model ActivityLineup {
   activity    Activity @relation(fields: [activity_id], references: [id])
   bands       String   @db.VarChar(255)
 }
+model ActivityTicketType {
+  id          Int      @id @default(autoincrement())
+  activity_id Int
+  name        String   @db.VarChar(255)
+  amount      Int
+  price       Int
+  activity    Activity @relation(fields: [activity_id], references: [id])
+  // tickets     Ticket[]
+}
 
 // model Media {
 //   id          Int      @id @default(autoincrement())
@@ -264,16 +272,6 @@ model ActivityLineup {
 //   qrcode       String   @db.VarChar(255)
 //   activity     Activity @relation(fields: [activity_id], references: [id])
 //   type         Type     @relation(fields: [type_id], references: [id])
-// }
-
-// model Type {
-//   id          Int      @id @default(autoincrement())
-//   activity_id Int
-//   name        String   @db.VarChar(255)
-//   amount      Int
-//   price       Int
-//   activity    Activity @relation(fields: [activity_id], references: [id])
-//   tickets     Ticket[]
 // }
 
 /**

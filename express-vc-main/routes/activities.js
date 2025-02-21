@@ -9,7 +9,8 @@ const prisma = new PrismaClient()
 const includeType = {
   category: true,
   genre: true,
-  lineup: true
+  lineup: true,
+  type: true
 }
 
 

@@ -2,16 +2,16 @@
 
 import { useState } from 'react'
 
-export default function PurchaseAside({ ticket }) {
+export default function PurchaseAside({ ticket=[{}] }) {
   const [total, setTotal] = useState(1)
-  const isFree = ticket.price != 0
+  const isFree = ticket[0].price != 0
 
   return (
     <aside className="b-aside">
       <h3 className="mb-4">{isFree ? '購買門票' : '領取門票'}</h3>
       <form>
       <div className="b-price h3 pb-3">
-        {isFree ? `NT$ ${ticket.price} / 人` : '本活動免費入場'}
+        {isFree ? `NT$ ${ticket[0].price} / 人` : '本活動免費入場'}
       </div>
       <div className="b-amount row gx-4">
         <div className="col-auto d-flex align-items-center">
