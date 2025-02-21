@@ -2,11 +2,13 @@
 
 import './detail.scss'
 import { useState, useEffect } from 'react'
+import { useMyCart } from '@/hooks/use-cart'
 import { useParams } from 'next/navigation'
 
 export default function ProductDetailIdPage() {
   const [colorName, setColorName] = useState()
   const [selectedSku, setSelectedSku] = useState()
+  const { onAdd } = useMyCart()
 
   // const [selectedSku, setSelectedSku] = useState()
 
@@ -190,7 +192,7 @@ export default function ProductDetailIdPage() {
                     ))}
                   </div>
                 </div>
-                <button className="g-add-to-cart d-flex justify-content-center align-items-center">
+                <button className="g-add-to-cart d-flex justify-content-center align-items-center" onClick={()=>{onAdd(detailData[0])}}>
                   <h6 className="m-0">加入購物車</h6>
                 </button>
                 <div className="g-stock d-flex align-items-center gap-2">
