@@ -105,4 +105,15 @@ a:link {
 .m-sec2-card {
   display: flex;
   align-items: center;
+  max-height: 350px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  img {
+    height: 100%;
+    object-fit: cover;
+  }
+  @media (max-width: 768px) {
+    margin-bottom: 32px;
+  }
 }
