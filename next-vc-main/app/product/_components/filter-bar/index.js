@@ -30,7 +30,7 @@ export default function FilterBar({
   const { colors } = useGetColors()
   const { colorpalette } = useGetColorPalette()
 
-  // 執行篩選查詢 問題-queryString沒同步
+  // 執行篩選查詢
   const handleSearch = () => {
     //更新查詢字串queryString
     // setQueryString(generateQueryString(criteria))
@@ -38,7 +38,6 @@ export default function FilterBar({
     console.log(criteria)
     //fetch取得產品資訊
     getPdData(queryString)
-
     setFilterOpen(false)
   }
 

@@ -12,7 +12,7 @@ const defaultCriteria = {
   priceGte: 0,
   priceLte: 1000000,
   sort: 'price',
-  order: 'DESC',
+  order: 'ASC',
 }
 
 //使用CONTEXT記錄搜尋條件，勾子名稱為useProductState

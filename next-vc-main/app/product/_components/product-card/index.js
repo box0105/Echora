@@ -3,7 +3,7 @@ import { useState } from 'react'
 import './product-card.scss'
 
 export default function ProductCard({ data = {} }) {
-  const [mainImage, setMainImage] = useState(data.defaultImage)
+  const [mainImage, setMainImage] = useState(data.image)
   return (
     <>
       <div className="col p-2">
@@ -18,14 +18,14 @@ export default function ProductCard({ data = {} }) {
           <div className="g-pd-text">
             <h6 className="h6">{data.name}</h6>
             <div className="d-flex gap-3">
-              <h6 className="h6">${data.price}</h6>
+              <h6 className="h6">${data.price.toLocaleString()}</h6>
             </div>
             <div className="g-color-row">
               {data.colors.map((color) => (
                 <div
                   key={color.id}
                   onMouseEnter={() => setMainImage(data.images[color.skuId])}
-                  onMouseLeave={() => setMainImage(data.defaultImage)}
+                  onMouseLeave={() => setMainImage(data.image)}
                 >
                   <img
                     width="22px"
@@ -35,7 +35,7 @@ export default function ProductCard({ data = {} }) {
                 </div>
               ))}
             </div>
-            <p className="p g-color-text">{data.colors.length} colors</p>
+            <p className="p g-color-text">{data.colors.length} {data.colors.length > 1 ? 'colors' : 'color'}</p>
           </div>
         </div>
       </div>

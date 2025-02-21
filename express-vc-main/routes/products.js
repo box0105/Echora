@@ -29,7 +29,7 @@ router.get('/', async (req, res) => {
 
   //排序參數
   const sort = req.query.sort || 'price'
-  const order = req.query.order || 'DESC'
+  const order = req.query.order || 'ASC'
   // const sortBy = { sort, order }
 
   try{

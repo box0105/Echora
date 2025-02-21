@@ -81,6 +81,75 @@ export default function ProductListPage(props) {
     return new URLSearchParams(query).toString()
   }
 
+  // 整理資料用的函式
+  function group(arr, key) {
+    return [
+      ...arr
+        .reduce(
+          (acc, o) => acc.set(o[key], (acc.get(o[key]) || []).concat(o)),
+          new Map()
+        )
+        .values(),
+    ]
+  }
+
+  const convertData = async (data) => {
+    // 擴充原始資料的索引值(不一定需要)，方便後續操作例如排序…
+    const arr = data.map((v, i) => ({ ...v, originalIndex: i }))
+  
+    // 進行資料分組
+    const groupedArr = group(arr, 'id')
+    // console.log('groupedArr', groupedArr)
+  
+    let tmpData = []
+  
+    for (let i = 0; i < groupedArr.length; i++) {
+      // grouped values
+      if (groupedArr[i].length > 1) {
+        const newObj = { ...groupedArr[i][0] }
+        newObj.colors = []
+        newObj.images = {}
+        newObj.defaultImage = ''
+        for (let j = 0; j < groupedArr[i].length; j++) {
+          newObj.colors.push({
+            name: groupedArr[i][j].color_name,
+            image: groupedArr[i][j].color_image,
+            skuId: groupedArr[i][j].product_sku_id,
+          })
+  
+          newObj.images[groupedArr[i][j].product_sku_id] =
+            groupedArr[i][j].image
+          newObj.defaultImage = groupedArr[i][j].image
+        }
+        tmpData.push(newObj)
+      } else {
+        const newObj = { ...groupedArr[i][0] }
+        newObj.colors = []
+        newObj.images = {}
+        newObj.defaultImage = ''
+  
+        newObj.colors.push({
+          name: groupedArr[i][0].color_name,
+          image: groupedArr[i][0].color_image,
+          skuId: groupedArr[i][0].product_sku_id,
+        })
+        newObj.images[groupedArr[i][0].product_sku_id] =
+          groupedArr[i][0].image
+        newObj.defaultImage = groupedArr[i][0].image
+  
+        tmpData.push(newObj)
+      }
+    }
+    // console.log('tmpData', tmpData)
+    // 平坦化陣列
+    const finalData = tmpData.flat()
+  
+    // console.log('finalData', finalData)
+  
+    return finalData
+  }
+
+
   // fetch db
   const [pdData, setPdData] = useState([])
 
@@ -88,44 +157,47 @@ export default function ProductListPage(props) {
     try {
       const res = await fetch(`http://localhost:3005/api/products?${queryString}`)
       const data = await res.json()
-      console.log(data.data);
-      // 資料整理(符合product card UI)
-      const products = {}
-      data?.data.forEach((item) => {
-        const {
-          id,
-          name,
-          price,
-          brand_name,
-          product_sku_id,
-          color_id,
-          color_name,
-          color_image,
-          color_palette_id,
-          image,
-        } = item
+      const finalData = await convertData(data.data)
+      setPdData(finalData)
+      
+      // console.log(data.data);
+      // // 資料整理(符合product card UI)
+      // const products = {}
+      // data?.data.forEach((item) => {
+      //   const {
+      //     id,
+      //     name,
+      //     price,
+      //     brand_name,
+      //     product_sku_id,
+      //     color_id,
+      //     color_name,
+      //     color_image,
+      //     color_palette_id,
+      //     image,
+      //   } = item
 
-        if (!products[id]) {
-          products[id] = {
-            id,
-            name,
-            price,
-            brand: brand_name,
-            colors: [],
-            images: {},
-            defaultImage: image,
-          }
-        }
-        products[id].colors.push({
-          id: color_id,
-          name: color_name,
-          image: color_image,
-          skuId: product_sku_id,
-        })
-        products[id].images[product_sku_id] = image
-      })
-      // console.log(Object.values(products))
-      setPdData(Object.values(products))
+      //   if (!products[id]) {
+      //     products[id] = {
+      //       id,
+      //       name,
+      //       price,
+      //       brand: brand_name,
+      //       colors: [],
+      //       images: {},
+      //       defaultImage: image,
+      //     }
+      //   }
+      //   products[id].colors.push({
+      //     id: color_id,
+      //     name: color_name,
+      //     image: color_image,
+      //     skuId: product_sku_id,
+      //   })
+      //   products[id].images[product_sku_id] = image
+      // })
+      // // console.log(Object.values(products))
+      // setPdData(Object.values(products))
     } catch (err) {
       console.log(err)
     }
