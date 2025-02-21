@@ -5,14 +5,12 @@ import '../_styles/nav.scss'
 import '../_styles/globals.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useState, useEffect } from 'react'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
 import { useMyCoupon } from '@/hooks/use-coupon'
 
 export default async function CouponPage() {
   const [coupon, setCoupon] = useState([])
-  const {claimCoupon} = useMyCoupon();
-  
+  const { notifyAndGet } = useMyCoupon();
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,31 +45,8 @@ export default async function CouponPage() {
     return readableDate
   }
 
-  // 領取提示
-  const notifyAndGet = (itemId) => {
-    const MySwal = withReactContent(Swal)
 
-    MySwal.fire({
-      title: '要領取優惠券嗎?',
-      text: '優惠券將加入會員-我的優惠券',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      cancelButtonText: '取消',
-      confirmButtonText: '確定',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: '領取成功',
-          text: `優惠券已領取`,
-          icon: 'success',
-        })
 
-        // 進行領取
-        claimCoupon(100,itemId) //需要user.id
-      }
-    })
-  }
 
   return (
     <>
@@ -113,7 +88,7 @@ export default async function CouponPage() {
                   <button
                     className="btn btn-dark"
                     onClick={() => {
-                      notifyAndGet(coupon.map((item)=> item.id))
+                      notifyAndGet(item.id)
                     }}
                   >
                     領取
@@ -124,9 +99,10 @@ export default async function CouponPage() {
 
           </div>
           <div className="k-btn">
-            <button className="btn btn-outline-dark" onClick={()=>{
-              coupon.map((item)=>{
-                notifyAndGet(item.id)
+            <button className="btn btn-outline-dark" onClick={() => {
+              coupon.map((item) => {
+                notifyAndGet(coupon.map((item) =>
+                  item.id))
               })
             }}>全部領取</button>
           </div>
