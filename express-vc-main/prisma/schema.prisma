@@ -210,6 +210,7 @@ model Rent {
   time_end    DateTime?
   created_at  DateTime        @default(now())
   rentImges   RentImges[] // 一個 Rent 可以有多個圖片
+  OrderItem   OrderItem[]
 }
 
 model RentBrand {
@@ -219,10 +220,10 @@ model RentBrand {
 }
 
 model RentColor {
-  id             Int             @id @default(autoincrement())
-  name           String
-  rentColorImages      String
-  rentItemColors RentItemColor[] // 修改關聯名稱，保持一致性
+  id              Int             @id @default(autoincrement())
+  name            String
+  rentColorImages String
+  rentItemColors  RentItemColor[] // 修改關聯名稱，保持一致性
 }
 
 model RentItemColor {
