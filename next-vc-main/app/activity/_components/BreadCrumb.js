@@ -5,6 +5,7 @@ export default function BreadCrumb({ breads }) {
     <nav aria-label="breadcrumb">
       <ol className="breadcrumb">
         {breads.map((bread, i) => {
+          const breadText = bread?.split(',')[0];
           return (
             <li
               key={i}
@@ -12,7 +13,7 @@ export default function BreadCrumb({ breads }) {
                 i == breads.length - 1 ? 'active' : ''
               }`}
             >
-              <a href="/activity">{bread}</a>
+              <a href="/activity">{breadText}</a>
             </li>
           )
         })}
