@@ -55,7 +55,7 @@ export default function Footer(props) {
           </div>
           <hr />
           <div className={styles.mise}>
-            <p className>Copyright © 2025 Echora Company</p>
+            <p>Copyright © 2025 Echora Company</p>
             <button className={`btn btn-outline-dark ${styles['k-btn']}`}>
               <i className="fa-solid fa-location-dot " /> 查找專門店
             </button>

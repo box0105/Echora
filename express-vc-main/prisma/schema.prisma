@@ -187,10 +187,120 @@ model DiscountType {
   coupon Coupon[]
 }
 
+model UserCoupons {
+  id       Int     @id @default(autoincrement())
+  userId   Int
+  user     User    @relation(fields: [userId], references: [id])
+  couponId Int
+  coupon   Coupon  @relation(fields: [couponId], references: [id])
+  claimed  Boolean @default(true)
+  isDelete Boolean @default(false)
+}
+
+/**
+ * Activity box Start
+ */
+
 model Activity {
-  id           Int    @id @default(autoincrement())
-  name         String @unique
-  ticket_price Int    @default(0)
+  id             Int              @id @default(autoincrement())
+  name           String           @db.VarChar(255)
+  // 活動類別 n:1
+  category_id    Int              @map("category_id")
+  category       ActivityCategory @relation(fields: [category_id], references: [id])
+  // 音樂類別 n:1
+  music_genre_id Int
+  genre          ActivityGenre    @relation(fields: [music_genre_id], references: [id])
+  date_start     DateTime
+  date_end       DateTime?
+  signup_start   DateTime?
+  signup_end     DateTime?
+  city           String           @db.VarChar(255)
+  dist           String           @db.VarChar(255)
+  address        String           @db.VarChar(255)
+  intro          String           @db.Text
+  article        String           @db.Text
+
+  // 1:n
+  lineup ActivityLineup[]
+  // media         Media[]
+
+  // tickets       Ticket[]
+  // types         Type[]
+}
+
+model ActivityCategory {
+  id         Int        @id @default(autoincrement())
+  name       String     @db.VarChar(255)
+  activities Activity[]
+}
+
+model ActivityGenre {
+  id         Int        @id @default(autoincrement())
+  name       String     @db.VarChar(255)
+  activities Activity[]
+}
+
+model ActivityLineup {
+  id          Int      @id @default(autoincrement())
+  activity_id Int
+  activity    Activity @relation(fields: [activity_id], references: [id])
+  bands       String   @db.VarChar(255)
+}
+
+// model Media {
+//   id          Int      @id @default(autoincrement())
+//   activity_id Int
+//   image       String   @db.VarChar(255)
+//   activity    Activity @relation(fields: [activity_id], references: [id])
+// }
+
+// model Ticket {
+//   id           Int      @id @default(autoincrement())
+//   user_id      Int
+//   activity_id  Int
+//   purchase_date DateTime
+//   type_id      Int
+//   available    Boolean
+//   qrcode       String   @db.VarChar(255)
+//   activity     Activity @relation(fields: [activity_id], references: [id])
+//   type         Type     @relation(fields: [type_id], references: [id])
+// }
+
+// model Type {
+//   id          Int      @id @default(autoincrement())
+//   activity_id Int
+//   name        String   @db.VarChar(255)
+//   amount      Int
+//   price       Int
+//   activity    Activity @relation(fields: [activity_id], references: [id])
+//   tickets     Ticket[]
+// }
+
+/**
+ * Activity box End
+ */
+
+model MyOrder {
+  id              Int      @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
+  recipient       String
+  phone           String
+  email           String
+  shippingAddress String // 配送地址，儲存訂單的配送地址
+  shippingMethod  String
+  paymentMethod   String
+  totalAmount     Int
+  createdAt       DateTime @default(now()) // 訂單創建時間
+}
+
+model MyOrderItem {
+  id      Int     @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
+  orderId Int
+  name    String
+  color   String?
+  image   String
+  price   String
+  count   String
+  total   String
 }
 
 model Rent {
@@ -219,10 +329,10 @@ model RentBrand {
 }
 
 model RentColor {
-  id             Int             @id @default(autoincrement())
-  name           String
-  rentColorImages      String
-  rentItemColors RentItemColor[] // 修改關聯名稱，保持一致性
+  id              Int             @id @default(autoincrement())
+  name            String
+  rentColorImages String?
+  rentItemColors  RentItemColor[] // 修改關聯名稱，保持一致性
 }
 
 model RentItemColor {

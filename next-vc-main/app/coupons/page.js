@@ -7,8 +7,7 @@ import { useMyCoupon } from '@/hooks/use-coupon'
 
 export default async function CouponPage() {
   const [coupon, setCoupon] = useState([])
-  const { notifyAndGet } = useMyCoupon();
-
+  const { notifyAndGet } = useMyCoupon()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,9 +29,7 @@ export default async function CouponPage() {
   const time = (time) => {
     if (!time) {
       console.log('沒有時間')
-    } else (
-      console.log('輸入時間')
-    )
+    } else console.log('輸入時間')
     const isoDateString = time
     const date = new Date(isoDateString)
 
@@ -42,9 +39,6 @@ export default async function CouponPage() {
     // console.log(readableDate); 輸出：2024/7/27 （或 2024年7月27日，取決於地區設定）
     return readableDate
   }
-
-
-
 
   return (
     <>
@@ -69,7 +63,6 @@ export default async function CouponPage() {
             </h1>
           </div>
           <div className="row row-cols-lg-4 row-cols-md-4 row-cols-sm-1 row-cols-xm-1 row-cols-xxm-1  ">
-
             {coupon.map((item) => (
               <li
                 key={item.id}
@@ -94,15 +87,18 @@ export default async function CouponPage() {
                 </div>
               </li>
             ))}
-
           </div>
           <div className="k-btn">
-            <button className="btn btn-outline-dark" onClick={() => {
-              coupon.map((item) => {
-                notifyAndGet(coupon.map((item) =>
-                  item.id))
-              })
-            }}>全部領取</button>
+            <button
+              className="btn btn-outline-dark"
+              onClick={() => {
+                coupon.map((item) => {
+                  notifyAndGet(coupon.map((item) => item.id))
+                })
+              }}
+            >
+              全部領取
+            </button>
           </div>
         </article>
         <hr />
