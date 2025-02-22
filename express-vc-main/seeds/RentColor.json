@@ -1,47 +1,45 @@
 [
     {
-        "name": "Sky Blue"
+        "name": "gray",
+        "rentColorImages": "/images/Rent/circle-gray.png"
     },
     {
-        "name": "Dark Blue"
-    },
-    {
-        "name": "Modern Purple"
+        "name": "black",
+        "rentColorImages": "/images/Rent/circle-black.png"
 
     },
     {
-        "name": "Fire Red"
+        "name": "blue",
+        "rentColorImages": "/images/Rent/circle-blue.png"
+        
 
     },
     {
-        "name": "Golden Yellow"
+        "name": "brown",
+        "rentColorImages": "/images/Rent/circle-brown.png"
+
 
     },
     {
-        "name": "Tangerine"
+        "name": " Yellow",
+        "rentColorImages": "/images/Rent/circle-yellow.png"
+
 
     },
     {
-        "name": "Brown"
+        "name": "red",
+        "rentColorImages": "/images/Rent/circle-red.png"
+
 
     },
     {
-        "name": "Dark Brown"
+        "name": "purple",
+        "rentColorImages": "/images/Rent/circle-purple.png"
+
 
     },
     {
-        "name": "Marble White"
-
-    },
-    {
-        "name": "Slate Gray"
-
-    },
-    {
-        "name": "Ebony"
-
-    },
-    {
-        "name": "Forest Green"
+        "name": "Navy-Blue",
+        "rentColorImages": "/images/Rent/circle-Navy-Blue.png"
     }
 ]
