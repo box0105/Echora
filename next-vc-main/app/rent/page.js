@@ -22,50 +22,16 @@ export default function Page(props) {
   const getData = async () => {
     try {
       const res = await fetch('http://localhost:3005/api/rent')
-      const data = await res.json()
+      const redata = await res.json()
 
-      console.log('API 回應資料:', data)
-      const Rent = {}
-      data?.data.forEach((item) => {
-        const {
-          id,
-          name,
-          price,
-          rentbrand_name,
-          rentItemColors_id,
-          rentColor_id,
-          rentColor_name,
-          rentColor_images,
-          image,
-        } = item
-        if (!Rent[id]) {
-          Rent[id] = {
-            id,
-            name,
-            price,
-            brand: rentbrand_name,
-            colors: [],
-            images: {},
-            image: image,
-          }
-        }
+      console.log('API 回應資料:', redata)
 
-        Rent[id].colors.push({
-          id: rentColor_id,
-          name: rentColor_name,
-          image: rentColor_images,
-          rentItemColor: rentItemColors_id,
-        })
-
-        Rent[id].images[rentItemColors_id] = image
-      })
-
-      setData(Object.values(Rent))
+      setData(redata)
     } catch (err) {
       console.log(err)
       setIsError(true)
     } finally {
-      setIsLoading(false) // 確保無論成功或失敗都更新 isLoading
+      setIsLoading(false)
     }
   }
   useEffect(() => {
@@ -139,7 +105,7 @@ export default function Page(props) {
           {/* section2-body */}
           <div className="c-section2-body d-none d-md-block">
             <div className="container-fluid c-index-1 ;">
-              <List />
+              <List data={data} />
             </div>
           </div>
           {/* section-mod */}

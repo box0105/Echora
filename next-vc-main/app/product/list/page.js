@@ -18,43 +18,7 @@ export default function ProductListPage(props) {
       const res = await fetch('http://localhost:3005/api/products')
       const data = await res.json()
 
-      // 資料整理(符合product card UI)
-      const products = {}
-      data?.data.forEach((item) => {
-        const {
-          id,
-          name,
-          price,
-          brand_name,
-          product_sku_id,
-          color_id,
-          color_name,
-          color_image,
-          color_palette_name,
-          image,
-        } = item
-
-        if (!products[id]) {
-          products[id] = {
-            id,
-            name,
-            price,
-            brand: brand_name,
-            colors: [],
-            images: {},
-            defaultImage: image,
-          }
-        }
-        products[id].colors.push({
-          id: color_id,
-          name: color_name,
-          image: color_image,
-          skuId: product_sku_id,
-        })
-        products[id].images[product_sku_id] = image
-      })
-      // console.log(Object.values(products))
-      setPdData(Object.values(products))
+   
     } catch (err) {
       console.log(err)
     }
