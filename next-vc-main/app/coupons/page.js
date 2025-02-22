@@ -4,7 +4,7 @@ import './style.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useState, useEffect } from 'react'
 import { useMyCoupon } from '@/hooks/use-coupon'
-import { array } from 'prop-types'
+// import { array } from 'prop-types'
 
 export default async function CouponPage() {
   const [coupon, setCoupon] = useState([])
@@ -27,41 +27,25 @@ export default async function CouponPage() {
     fetchData()
   }, [])
 
-  
-
   useEffect(() => {
-    const fetchUserCoupon = async () => {
-      try {
-        const url = `http://localhost:3005/api/coupon/100`
-        const res = await fetch(url)
-        if (!res.ok) throw new Error('狀態錯誤')
-        const data = await res.json()
-        console.log(data.data)
-        setUserCoupons(data.data)
-  
-  
-      } catch (err) {
-        console.log('發生錯誤', err)
-      }
-    }
     fetchUserCoupon()
-
   }, [])
 
 
-  // 轉換時間格式
-  const time = (time) => {
-    if (!time) {
-      console.log('沒有時間')
-    } else console.log('輸入時間')
-    const isoDateString = time
-    const date = new Date(isoDateString)
 
-    const options = { year: 'numeric', month: 'numeric', day: 'numeric' }
-    const readableDate = date.toLocaleDateString('zh-TW', options) // 繁體中文
+  const fetchUserCoupon = async () => {
+    try {
+      const url = `http://localhost:3005/api/coupon/100`
+      const res = await fetch(url)
+      if (!res.ok) throw new Error('狀態錯誤')
+      const data = await res.json()
+      console.log(data.data)
+      setUserCoupons(data.data)
+    } catch (err) {
+      console.log('發生錯誤', err)
+    }
+    // fetchUserCoupon()
 
-    // console.log(readableDate); 輸出：2024/7/27 （或 2024年7月27日，取決於地區設定）
-    return readableDate
   }
 
   return (
@@ -100,17 +84,31 @@ export default async function CouponPage() {
                   </div>
                   <br />
 
-                  <button
-                    className="btn btn-dark"
-                    onClick={async () => {
-                     await notifyAndGet(item.id,)
-                    //  await fetchUserCoupon()
-                    }}
-                  >
-                    {userCoupons.map(v => v.couponId).includes(item.id) ? '已領取' : '領取'}
-                    {/* 領取 */}
-
-                  </button>
+                  {userCoupons.map((v) => v.couponId).includes(item.id) ? (
+                    <button
+                      className="btn btn-secondary "
+                      onClick={async () => {
+                        await notifyAndGet(item.id)
+                        await fetchUserCoupon()
+                      }}
+                    >
+                      {userCoupons.map((v) => v.couponId).includes(item.id)
+                        ? '已領取'
+                        : '領取'}
+                    </button>
+                  ) : (
+                    <button
+                      className="btn btn-dark "
+                      onClick={async () => {
+                        await notifyAndGet(item.id)
+                        await fetchUserCoupon()
+                      }}
+                    >
+                      {userCoupons.map((v) => v.couponId).includes(item.id)
+                        ? '已領取'
+                        : '領取'}
+                    </button>
+                  )}
                 </div>
               </li>
             ))}

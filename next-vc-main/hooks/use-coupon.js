@@ -1,9 +1,7 @@
-
 // POST /api/users/:userId/coupons
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect } from 'react'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-
 
 const CouponContext = createContext(null)
 
@@ -11,12 +9,10 @@ const CouponContext = createContext(null)
 CouponContext.displayName = 'CouponContext'
 
 export function MyCouponProvider({ children }) {
-
   // 錯誤物件
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null)
 
   const claimCoupon = async (userId, couponId) => {
-
     try {
       // http://localhost:3005/api/coupon/resource
       const res = await fetch(`http://localhost:3005/api/coupon/100/100`, {
@@ -24,18 +20,17 @@ export function MyCouponProvider({ children }) {
         headers: {
           'Content-type': 'application/json',
         },
-        body: JSON.stringify({ userId: userId, couponId: couponId })
+        body: JSON.stringify({ userId: userId, couponId: couponId }),
       })
 
-      const data = await res.json();
+      const data = await res.json()
 
-      console.log(data);
-      return data;
+      console.log(data)
+      return data
     } catch (err) {
       setError(err.message)
-      console.log(err.message);
+      console.log(err.message)
       return { status: 'fail' }
-
     }
   }
 
@@ -55,14 +50,14 @@ export function MyCouponProvider({ children }) {
       if (result.isConfirmed) {
         // 進行領取
         const res = await claimCoupon(100, itemId)
-        console.log(res);
+        console.log(res)
         // callback()
 
         if (res.status == 'fail') {
           MySwal.fire({
             title: '無法領取',
             text: `已經擁有優惠券`,
-            icon: 'notice',
+            icon: 'warning',
           })
         } else {
           MySwal.fire({
@@ -73,21 +68,33 @@ export function MyCouponProvider({ children }) {
         }
       }
     } catch (err) {
-      console.error("領取優惠券時發生錯誤:", err);
-      setError(err.message);
+      console.error('領取優惠券時發生錯誤:', err)
+      setError(err.message)
       MySwal.fire({
         title: '領取失敗',
         text: `領取優惠券時發生錯誤: ${err.message}`,
         icon: 'error',
       })
     }
-
   }
 
+  // 轉換時間格式
+  const time = (time) => {
+    if (!time) {
+      console.log('沒有時間')
+    } else console.log('輸入時間')
+    const isoDateString = time
+    const date = new Date(isoDateString)
 
+    const options = { year: 'numeric', month: 'numeric', day: 'numeric' }
+    const readableDate = date.toLocaleDateString('zh-TW', options) // 繁體中文
+
+    // console.log(readableDate); 輸出：2024/7/27 （或 2024年7月27日，取決於地區設定）
+    return readableDate
+  }
 
   return (
-    <CouponContext.Provider value={{ claimCoupon, notifyAndGet }}>
+    <CouponContext.Provider value={{ claimCoupon, notifyAndGet, time }}>
       {children}
     </CouponContext.Provider>
   )
