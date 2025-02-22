@@ -48,10 +48,10 @@ export default function ProfilePage() {
           setUserProfile(resData.data)
           console.log('User profile data:', resData.data)
         } else {
-          toast.error(`獲取會員資料失敗: ${resData.message}`)
+          // toast.error(`獲取會員資料失敗: ${resData.message}`)
         }
       } catch (err) {
-        toast.error(`獲取會員資料失敗: ${err.message}`)
+        // toast.error(`獲取會員資料失敗: ${err.message}`)
       }
     }
 

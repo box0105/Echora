@@ -21,11 +21,11 @@ export function Providers({ children }) {
     <SWRDevTools>
       <LoaderProvider close={2} CustomLoader={CatLoader}>
         <MyCouponProvider>
-        {/* <AuthProvider> */}
-          <MyCartProvider>
-            <ProductProvider>{children}</ProductProvider>
-          </MyCartProvider>
-        {/* </AuthProvider> */}
+          <AuthProvider>
+            <MyCartProvider>
+              <ProductProvider>{children}</ProductProvider>
+            </MyCartProvider>
+          </AuthProvider>
         </MyCouponProvider>
       </LoaderProvider>
     </SWRDevTools>
