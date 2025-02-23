@@ -11,6 +11,8 @@ export default function ProductListPage(props) {
   const [filterOpen, setFilterOpen] = useState(false)
   const [comparisionOpen, setComparisionOpen] = useState(false)
   const comparisionToggle = () => setComparisionOpen(!comparisionOpen)
+  // 排序狀態
+  const [selectedSort, setSelectedSort] = useState({sort: 'price', order: 'ASC'})
 
   // 搜尋條件
   const [queryString, setQueryString] = useState('')
@@ -96,13 +98,13 @@ export default function ProductListPage(props) {
   const convertData = async (data) => {
     // 擴充原始資料的索引值(不一定需要)，方便後續操作例如排序…
     const arr = data.map((v, i) => ({ ...v, originalIndex: i }))
-  
+
     // 進行資料分組
     const groupedArr = group(arr, 'id')
     // console.log('groupedArr', groupedArr)
-  
+
     let tmpData = []
-  
+
     for (let i = 0; i < groupedArr.length; i++) {
       // grouped values
       if (groupedArr[i].length > 1) {
@@ -116,7 +118,7 @@ export default function ProductListPage(props) {
             image: groupedArr[i][j].color_image,
             skuId: groupedArr[i][j].product_sku_id,
           })
-  
+
           newObj.images[groupedArr[i][j].product_sku_id] =
             groupedArr[i][j].image
           newObj.defaultImage = groupedArr[i][j].image
@@ -127,39 +129,40 @@ export default function ProductListPage(props) {
         newObj.colors = []
         newObj.images = {}
         newObj.defaultImage = ''
-  
+
         newObj.colors.push({
           name: groupedArr[i][0].color_name,
           image: groupedArr[i][0].color_image,
           skuId: groupedArr[i][0].product_sku_id,
         })
-        newObj.images[groupedArr[i][0].product_sku_id] =
-          groupedArr[i][0].image
+        newObj.images[groupedArr[i][0].product_sku_id] = groupedArr[i][0].image
         newObj.defaultImage = groupedArr[i][0].image
-  
+
         tmpData.push(newObj)
       }
     }
     // console.log('tmpData', tmpData)
     // 平坦化陣列
     const finalData = tmpData.flat()
-  
+
     // console.log('finalData', finalData)
-  
+
     return finalData
   }
-
 
   // fetch db
   const [pdData, setPdData] = useState([])
 
   const getPdData = async (queryString) => {
     try {
-      const res = await fetch(`http://localhost:3005/api/products?${queryString}`)
+      const res = await fetch(
+        `http://localhost:3005/api/products?${queryString}`
+      )
       const data = await res.json()
       const finalData = await convertData(data.data)
       setPdData(finalData)
-      
+      console.log(finalData)
+
       // console.log(data.data);
       // // 資料整理(符合product card UI)
       // const products = {}
@@ -203,7 +206,6 @@ export default function ProductListPage(props) {
     }
   }
 
-  
   // 執行篩選查詢
   // const handleSearch = () => {
   //   //更新查詢字串queryString
@@ -214,63 +216,71 @@ export default function ProductListPage(props) {
   //   getPdData(queryString)
   // }
 
-    // fetch db
-    // const [pdData, setPdData] = useState([])
+  // fetch db
+  // const [pdData, setPdData] = useState([])
 
-    // const getPdData = async () => {
-    //   try {
-    //     const res = await fetch('http://localhost:3005/api/products')
-    //     const data = await res.json()
-  
-    //     // 資料整理(符合product card UI)
-    //     const products = {}
-    //     data?.data.forEach((item) => {
-    //       const {
-    //         id,
-    //         name,
-    //         price,
-    //         brand_name,
-    //         product_sku_id,
-    //         color_id,
-    //         color_name,
-    //         color_image,
-    //         color_palette_id,
-    //         image,
-    //       } = item
-  
-    //       if (!products[id]) {
-    //         products[id] = {
-    //           id,
-    //           name,
-    //           price,
-    //           brand: brand_name,
-    //           colors: [],
-    //           images: {},
-    //           defaultImage: image,
-    //         }
-    //       }
-    //       products[id].colors.push({
-    //         id: color_id,
-    //         name: color_name,
-    //         image: color_image,
-    //         skuId: product_sku_id,
-    //       })
-    //       products[id].images[product_sku_id] = image
-    //     })
-    //     // console.log(Object.values(products))
-    //     setPdData(Object.values(products))
-    //   } catch (err) {
-    //     console.log(err)
-    //   }
-    // }
+  // const getPdData = async () => {
+  //   try {
+  //     const res = await fetch('http://localhost:3005/api/products')
+  //     const data = await res.json()
+
+  //     // 資料整理(符合product card UI)
+  //     const products = {}
+  //     data?.data.forEach((item) => {
+  //       const {
+  //         id,
+  //         name,
+  //         price,
+  //         brand_name,
+  //         product_sku_id,
+  //         color_id,
+  //         color_name,
+  //         color_image,
+  //         color_palette_id,
+  //         image,
+  //       } = item
+
+  //       if (!products[id]) {
+  //         products[id] = {
+  //           id,
+  //           name,
+  //           price,
+  //           brand: brand_name,
+  //           colors: [],
+  //           images: {},
+  //           defaultImage: image,
+  //         }
+  //       }
+  //       products[id].colors.push({
+  //         id: color_id,
+  //         name: color_name,
+  //         image: color_image,
+  //         skuId: product_sku_id,
+  //       })
+  //       products[id].images[product_sku_id] = image
+  //     })
+  //     // console.log(Object.values(products))
+  //     setPdData(Object.values(products))
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
   // didmount後執行getPdData()
   useEffect(() => {
-    setQueryString(generateQueryString(criteria))
+    // setQueryString(generateQueryString(criteria))
     // console.log('產生字串:', generateQueryString(criteria));
     // console.log('查詢字串:', queryString);
     getPdData(queryString)
   }, [])
+
+  useEffect(() => {
+    setQueryString(generateQueryString(criteria))
+  }, [criteria])
+
+  // useEffect(() => {
+  //   getPdData(queryString)
+  // }, [queryString])
 
   return (
     <>
@@ -317,19 +327,67 @@ export default function ProductListPage(props) {
               <div className="g-order d-flex">
                 <img src="/images/product/list/order.svg" />
                 <h6 className="mb-0">排序</h6>
-                {/* order sec  要修改(參考mou)*/}
+                {/* order sec */}
                 <div className="g-order-sec">
                   <a href>
-                    <h6>價格由高至低</h6>
+                    <h6
+                      className={selectedSort.sort === 'price' && selectedSort.order === 'DESC' ? 'active' : ''}
+                      onClick={() => {
+                          const updatedCriteria = {...criteria, sort: 'price', order: 'DESC'}
+                          const newQueryString = generateQueryString(updatedCriteria)
+                          setCriteria(updatedCriteria)
+                          setQueryString(newQueryString)
+                          getPdData(newQueryString)
+                          setSelectedSort({sort: 'price', order: 'DESC'})
+                      }}
+                    >
+                      價格由高至低
+                    </h6>
                   </a>
                   <a href>
-                    <h6>價格由低至高</h6>
+                    <h6
+                      className={selectedSort.sort === 'price' && selectedSort.order === 'ASC' ? 'active' : ''}
+                      onClick={() => {
+                          const updatedCriteria = {...criteria, sort: 'price', order: 'ASC'}
+                          const newQueryString = generateQueryString(updatedCriteria)
+                          setCriteria(updatedCriteria)
+                          setQueryString(newQueryString)
+                          getPdData(newQueryString)
+                          setSelectedSort({sort: 'price', order: 'ASC'})
+                      }}
+                    >
+                      價格由低至高
+                    </h6>
                   </a>
                   <a href>
-                    <h6>商品名稱 A - Z</h6>
+                    <h6
+                      className={selectedSort.sort === 'name' && selectedSort.order === 'ASC' ? 'active' : ''}
+                      onClick={() => {
+                          const updatedCriteria = {...criteria, sort: 'name', order: 'ASC'}
+                          const newQueryString = generateQueryString(updatedCriteria)
+                          setCriteria(updatedCriteria)
+                          setQueryString(newQueryString)
+                          getPdData(newQueryString)
+                          setSelectedSort({sort: 'name', order: 'ASC'})
+                      }}
+                    >
+                      商品名稱 A - Z
+                    </h6>
                   </a>
                   <a href>
-                    <h6>商品名稱 Z - A</h6>
+                    <h6
+                      className={selectedSort.sort === 'name' && selectedSort.order === 'DESC' ? 'active' : ''}
+                      onClick={() => {
+                          const updatedCriteria = {...criteria, sort: 'name', order: 'DESC'}
+                          const newQueryString = generateQueryString(updatedCriteria)
+                          setCriteria(updatedCriteria)
+                          setQueryString(newQueryString)
+                          getPdData(newQueryString)
+                          setSelectedSort({sort: 'name', order: 'DESC'})
+                      }}
+                    >
+                      商品名稱 Z - A
+                    </h6>
                   </a>
                 </div>
               </div>
@@ -366,6 +424,10 @@ export default function ProductListPage(props) {
           setColorPids={(value) => setCriteriaByName('colorPids', value)}
           colorIds={colorIds}
           setColorIds={(value) => setCriteriaByName('colorIds', value)}
+          priceGte={priceGte}
+          setPriceGte={(value) => setCriteriaByName('priceGte', value)}
+          priceLte={priceLte}
+          setPriceLte={(value) => setCriteriaByName('priceLte', value)}
         />
         {/* comparision sec */}
         <section

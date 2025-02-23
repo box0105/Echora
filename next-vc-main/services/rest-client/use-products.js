@@ -9,8 +9,8 @@ const defaultCriteria = {
   brandIds: [],
   colorPids: [],
   colorIds: [],
-  priceGte: 0,
-  priceLte: 1000000,
+  priceGte: 1,
+  priceLte: 700000,
   sort: 'price',
   order: 'ASC',
 }

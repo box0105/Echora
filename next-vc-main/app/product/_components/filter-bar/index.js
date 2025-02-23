@@ -1,5 +1,7 @@
 'use client'
 
+import Slider from '@mui/material/Slider'
+import { grey } from '@mui/material/colors'
 import { useEffect, useState } from 'react'
 import './filter-bar.scss'
 import {
@@ -13,7 +15,7 @@ export default function FilterBar({
   setFilterOpen,
   generateQueryString,
   criteria,
-  // setCriteria,
+  setCriteria,
   queryString,
   setQueryString,
   brandIds,
@@ -23,7 +25,10 @@ export default function FilterBar({
   colorIds,
   setColorIds,
   getPdData,
-  // handleSearch,
+  priceGte,
+  setPriceGte,
+  priceLte,
+  setPriceLte
 }) {
   // fetch brands, colors, colorpalette
   const { brands } = useGetBrands()
@@ -42,14 +47,25 @@ export default function FilterBar({
   }
 
   //criteria改變時即時更新查詢字串queryString
-  useEffect(() => {
-    setQueryString(generateQueryString(criteria))
-  }, [criteria])
+  // useEffect(() => {
+  //   setQueryString(generateQueryString(criteria))
+  // }, [criteria])
 
   //設定color palette狀態
   const [colorSeries, setColorSeries] = useState({})
   //設定color狀態
   const [colorActive, setColorActive] = useState({})
+
+  //price slider
+  const [value, setValue] = useState([priceGte, priceLte])
+  const handleChange = (event, newValue) => {
+    setValue(newValue)
+  }
+
+  useEffect(() => {
+    setPriceGte(value[0])
+    setPriceLte(value[1])
+  },[value])
 
   return (
     <>
@@ -149,10 +165,10 @@ export default function FilterBar({
                 </div>
                 <div className="g-color-filter pt-4 pb-3">
                   {colors.map((color) => (
-                    <div 
-                    key={color.id}
-                    onClick={()=>{
-                      setColorActive((prev) => {
+                    <div
+                      key={color.id}
+                      onClick={() => {
+                        setColorActive((prev) => {
                           const updatedColor = {
                             ...prev,
                             [color.id]: !prev[color.id],
@@ -166,17 +182,62 @@ export default function FilterBar({
                           }
                           return updatedColor
                         })
-                    }}>
-                      <img src={`/images/product/list/${color.color_image}`} className={colorActive[color.id] ?"active" : ""}/>
+                      }}
+                    >
+                      <img
+                        src={`/images/product/list/${color.color_image}`}
+                        className={colorActive[color.id] ? 'active' : ''}
+                      />
                     </div>
                   ))}
                 </div>
               </div>
               <div className="g-price-sec">
                 <div className="g-filter-title py-4">
-                  <h6 className="mb-0">價錢</h6>
+                  <h6 className="mb-0">價格</h6>
                 </div>
-                <ul className="list-unstyled mt-4">
+                <div className="pt-4 pb-3">
+                  <h6 className="h7 g-price-range mb-3">
+                    價格區間 : NT${value[0].toLocaleString()} - $
+                    {value[1].toLocaleString()}
+                  </h6>
+                  <div className="px-2">
+                    <Slider
+                      value={value}
+                      onChange={handleChange}
+                      min={1}
+                      max={700000}
+                      step={50000}
+                      sx={{
+                        color: 'black', // 滑塊和選中的軌道
+                        '& .MuiSlider-thumb': {
+                          backgroundColor: 'rgb(58, 58, 58)',
+                          width: 16, // 調整滑塊大小
+                          height: 16, // 調整滑塊大小
+                          '&:focus, &:hover, &.Mui-active': {
+                            outline: '6px solid rgba(166, 166, 166, 0.3)',
+                            boxShadow: 'none',
+                          },
+                        },
+                        '& .MuiSlider-thumb.Mui-focusVisible': {
+                            boxShadow: 'none', // **固定 focus ring，移除漸層**
+                        },
+                        '& .MuiSlider-track': {
+                          backgroundColor: 'rgb(58, 58, 58)', // 選中的範圍
+                        },
+                        '& .MuiSlider-rail': {
+                          backgroundColor: 'gray', // 未選中的範圍
+                        },
+                      }}
+                      // valueLabelDisplay="auto"
+                    />
+                  </div>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <h6 className="h7 g-price-range">1 min</h6>
+                    <h6 className="h7 g-price-range">700,000 max</h6>
+                  </div>
+                </div>
+                {/* <ul className="list-unstyled mt-4">
                   <li className="pb-3">
                     <div className="form-check mb-0">
                       <input
@@ -253,7 +314,7 @@ export default function FilterBar({
                       </label>
                     </div>
                   </li>
-                </ul>
+                </ul> */}
               </div>
             </div>
             <div className="g-action pt-4 text-center">

@@ -101,10 +101,6 @@
   display: block;
 }
 
-.g-order:hover .g-order-sec{
-    display: block;
-}
-
 /* order section */
 .g-order-sec {
   display: none;
@@ -123,10 +119,15 @@
     margin: 0;
     text-align: center;
 
-    &:hover {
+    &.active {
       background-color: var(--grey900);
       color: var(--white);
     }
+
+    // &:hover {
+    //   background-color: var(--grey900);
+    //   color: var(--white);
+    // }
   }
 }
 
