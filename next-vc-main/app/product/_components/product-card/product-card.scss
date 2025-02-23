@@ -13,6 +13,36 @@
   @media screen and (max-width: 576px) {
     height: 280px;
   }
+
+  @media screen and (max-width: 391px) {
+    padding: 20px 12px;
+  }
+
+}
+
+.g-brand-name {
+  min-width: 66px;
+  height: 25px;
+  padding-top: 1px;
+  color: var(--white);
+  background-color: var(--grey900);
+  border-radius: 1px;
+  top: 20px;
+  left: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: "Poppins";
+
+  @media screen and (max-width: 576px) {
+    min-width: 50px;
+    height: 20px;
+    font-size: 11px;
+  }
+
+  @media screen and (max-width: 391px) {
+    top: 12px;
+    left: 12px;
+  }
 }
 
 .g-pd-text {
@@ -20,6 +50,16 @@
 
   p {
     margin-block: 8px;
+  }
+
+  @media screen and (max-width: 391px) {
+    padding: 12px;
+  }
+
+  @media screen and (max-width: 391px) {
+    .h6{
+      font-size: 14px;
+    }
   }
 }
 
@@ -49,16 +89,22 @@
     background: var(--white);
   }
 
+  .g-brand-name {
+    // background-color: var(--grey700);
+  }
+
   .g-color-text {
     display: none;
   }
 
   .g-color-row {
     display: flex;
-    gap: 8px;
+    // gap: 8px;
     margin-block: 6px;
+    margin-left: -4px;
 
-    img {
+    div {
+      padding-inline: 4px;
       cursor: pointer;
     }
   }

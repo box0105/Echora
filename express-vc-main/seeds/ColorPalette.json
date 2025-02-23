@@ -1,14 +1,18 @@
 [
-    {
-        "name": "jshine"
-    },
-    {
-        "name": "sunrise wood"
-    },
-    {
-        "name": "grey white"
-    },
-    {
-        "name": "midnight"
-    }
+  {
+    "name": "jshine",
+    "cname": "曜彩系列"
+  },
+  {
+    "name": "sunrise wood",
+    "cname": "晨曦木韻系列"
+  },
+  {
+    "name": "grey white",
+    "cname": "石韻白系列"
+  },
+  {
+    "name": "midnight",
+    "cname": "夜晚城市系列"
+  }
 ]

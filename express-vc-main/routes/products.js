@@ -6,41 +6,145 @@ const router = express.Router()
 // 得到所有商品資料
 // GET /api/products
 
-// router.get('/', async (req, res) => {
-//   // type決定是否取得資料
-//   // type=data 需取得資料; type=count 不需取得資料
-//   const type = req.query.type || 'all'
-
-//   const page = Number(req.query.page) || 1
-//   const perPage = Number(req.query.perpage) || 8
-
-//   //搜尋參數
-//   const nameLike = req.query.name_like || ""
-
-//   //篩選參數
-//   const brandIds = req.query.brand_ids ? req.query.brand_ids.split(",").map((id)=>Number(id)) : []
-//   const colorPids = req.query.color_pids ? req.query.color_pids.split(",").map((id)=>Number(id)) : []
-//   const colorIds = req.query.color_ids ? req.query.color_ids.split(",").map((id)=>Number(id)) : []
-
-//   const priceGte = Number(req.query.price_gte) || 0
-//   const priceLte = Number(req.query.price_lte) || 1000000
-
-//   const conditions = {nameLike, brandIds, colorPids, colorIds, priceGte, priceLte}
-
-//   //排序參數
-//   const sort = req.query.sort || 'price'
-//   const order = req.query.order || 'desc'
-//   const sortBy = { sort, order }
-
-//   console.log(conditions);
-
-//   // 從這裡開始 try catch (從資料庫拿資料)
-// })
-
 router.get('/', async (req, res) => {
+  // type決定是否取得資料
+  // type=data 需取得資料; type=count 不需取得資料
+  const type = req.query.type || 'all'
+
+  const page = Number(req.query.page) || 1
+  const perPage = Number(req.query.perpage) || 8
+
+  //搜尋參數
+  const nameLike = req.query.name_like || ''
+
+  //篩選參數
+  const brandIds = req.query.brand_ids
+    ? req.query.brand_ids.split(',').map((id) => Number(id))
+    : []
+  const colorPids = req.query.color_pids
+    ? req.query.color_pids.split(',').map((id) => Number(id))
+    : []
+  const colorIds = req.query.color_ids
+    ? req.query.color_ids.split(',').map((id) => Number(id))
+    : []
+
+  const priceGte = Number(req.query.price_gte) || 1
+  const priceLte = Number(req.query.price_lte) || 700000
+
+  // const conditions = {nameLike, brandIds, colorPids, colorIds, priceGte, priceLte}
+
+  //排序參數
+  const sort = req.query.sort || 'price'
+  const order = req.query.order || 'ASC'
+  // const sortBy = { sort, order }
+
   try {
-    const sql =
-      'SELECT product.*, brand.name AS brand_name, product_sku.id AS product_sku_id, product_sku.stock, color.id As color_id ,color.name AS color_name, color.color_image, color_palette.name AS color_palette_name, image.image FROM product JOIN brand ON product.brand_id = brand.id JOIN product_sku ON product.id = product_sku.product_id JOIN color ON product_sku.color_id = color.id JOIN color_palette ON color.color_palette_id = color_palette.id JOIN image ON product_sku.id = image.product_sku_id WHERE image.sort_order = 1;'
+    // let sql =
+    //   `SELECT product.*, brand.name AS brand_name, product_sku.id AS product_sku_id, product_sku.stock, color.name AS color_name, color.color_image, color_palette.id AS color_palette_id, image.image FROM product JOIN brand ON product.brand_id = brand.id JOIN product_sku ON product.id = product_sku.product_id JOIN color ON product_sku.color_id = color.id JOIN color_palette ON color.color_palette_id = color_palette.id JOIN image ON product_sku.id = image.product_sku_id WHERE 1=1`
+    //   if(nameLike) sql += ` AND product.name LIKE '%${nameLike}%'`
+    //   if(brandIds.length>0) sql +=` AND brand.id IN (${brandIds.join(", ")})`
+    //   if(colorPids.length>0) sql +=` AND color_palette.id IN (${colorPids.join(", ")})`
+    //   if(colorIds.length>0) sql +=` AND color.id IN (${colorIds.join(", ")})`
+    //   if(priceGte && priceLte) sql +=` AND product.price BETWEEN ${priceGte} AND ${priceLte}`
+    //   sql += ` AND image.sort_order = 1`
+    //   sql += ` ORDER BY product.${sort} ${order}`
+
+    let sql = `SELECT product.*, 
+    brand.name AS brand_name, 
+    product_sku.id AS product_sku_id, 
+    product_sku.stock, 
+    color.name AS color_name, 
+    color.color_image, 
+    color_palette.id AS color_palette_id, 
+    image.image,
+    CASE 
+        WHEN ${colorPids.length > 0 ? `color_palette.id IN (${colorPids.join(',')})`: '0'}
+        AND ${colorIds.length > 0 ? `color.id IN (${colorIds.join(',')})` : '0'} THEN 1
+        WHEN ${colorIds.length > 0 ? `color.id IN (${colorIds.join(',')})` : '0'} THEN 2
+        WHEN ${colorPids.length > 0 ? `color_palette.id IN (${colorPids.join(',')})`: '0'} THEN 3
+        ELSE 4 
+    END AS sort_priority
+    FROM product 
+    JOIN brand ON product.brand_id = brand.id 
+    JOIN product_sku ON product.id = product_sku.product_id 
+    JOIN color ON product_sku.color_id = color.id 
+    JOIN color_palette ON color.color_palette_id = color_palette.id 
+    JOIN image ON product_sku.id = image.product_sku_id WHERE 1=1`
+    if (colorPids.length > 0 || colorIds.length > 0) {
+      sql += ` AND product.id IN (
+        SELECT DISTINCT product.id FROM product
+          JOIN product_sku ON product.id = product_sku.product_id
+          JOIN color ON product_sku.color_id = color.id
+          JOIN color_palette ON color.color_palette_id = color_palette.id
+          WHERE 1=1 
+          ${colorPids.length > 0 ? `AND color_palette.id IN (${colorPids.join(",")})` : ""}
+          ${colorIds.length > 0 ? `AND color.id IN (${colorIds.join(",")})` : ""}
+      )`;
+    }
+    if(nameLike) sql += ` AND product.name LIKE '%${nameLike}%'`
+    if(brandIds.length>0) sql +=` AND brand.id IN (${brandIds.join(", ")})`
+    if(priceGte && priceLte) sql +=` AND product.price BETWEEN ${priceGte} AND ${priceLte}`
+    sql += ` AND image.sort_order = 1`
+    sql += ` ORDER BY sort_priority ASC, product.${sort} ${order}`
+
+    console.log("Generated SQL:", sql);
+    const [rows] = await db.query(sql)
+    res.status(200).json({
+      status: 'success',
+      data: rows,
+      message: '取得資料成功',
+    })
+  } catch (err) {
+    console.log(err)
+    res.status(400).json({
+      status: 'error',
+      message: err.message ? err.message : '取得資料失敗',
+    })
+  }
+})
+
+//brands
+router.get('/brands', async (req, res) => {
+  try {
+    const sql = `SELECT * FROM brand`
+    const [rows] = await db.query(sql)
+    res.status(200).json({
+      status: 'success',
+      data: rows,
+      message: '取得資料成功',
+    })
+  } catch (err) {
+    console.log(err)
+    res.status(400).json({
+      status: 'error',
+      message: err.message ? err.message : '取得資料失敗',
+    })
+  }
+})
+
+//colors
+router.get('/colors', async (req, res) => {
+  try {
+    const sql = `SELECT * FROM color`
+    const [rows] = await db.query(sql)
+    res.status(200).json({
+      status: 'success',
+      data: rows,
+      message: '取得資料成功',
+    })
+  } catch (err) {
+    console.log(err)
+    res.status(400).json({
+      status: 'error',
+      message: err.message ? err.message : '取得資料失敗',
+    })
+  }
+})
+
+//color palette
+router.get('/colorpalette', async (req, res) => {
+  try {
+    const sql = `SELECT * FROM color_palette`
     const [rows] = await db.query(sql)
     res.status(200).json({
       status: 'success',
