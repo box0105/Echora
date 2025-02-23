@@ -9,6 +9,7 @@ const prisma = new PrismaClient()
 const includeType = {
   category: true,
   genre: true,
+  article: true,
   lineup: true,
   type: true
 }
@@ -22,7 +23,7 @@ router.get('/', async (req, res) => {
     const activities = await prisma.activity.findMany({
       include: includeType
     })
-
+    
     successResponse(res, { activities })
   } catch (error) {
     errorResponse(res, error)

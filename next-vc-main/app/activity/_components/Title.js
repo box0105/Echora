@@ -1,7 +1,7 @@
 'use client'
 
-export default function Title({ _title = '主標題' }) {
-  const [title, subTitle] = _title.split(',')
+export default function Title({ _title='主標題' }) {
+  const [title, subTitle] = _title.split(', ')
 
   // 只要有包含任意中文字符
   const isTitleCh = /[\u4e00-\u9fff]/.test(title)

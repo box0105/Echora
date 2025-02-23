@@ -1,6 +1,7 @@
 import Image from 'next/image'
 
-export default function ActivityCardSm({ data }) {
+export default function ActivityCardSm({ data}) {
+  const src = '/images/activity/';
   return (
     <div className="col">
       <div className="card">
@@ -8,8 +9,8 @@ export default function ActivityCardSm({ data }) {
           <div className="col-4 col-xl-3">
             <Image
               className="object-fit-cover w-100 h-100"
-              src={data.image}
-              alt={data.name}
+              src={`${src}${data?.media?.split(',')[0]}`}
+              alt={data.name || '照片載入失敗'}
               width={500}
               height={300}
             />

@@ -3,7 +3,7 @@
 import ReactHtmlParser from 'html-react-parser'
 import { NumberZh } from 'number-zh'
 
-export default function IntroCard({ isOpen, onClose, act }) {
+export default function IntroCard({ isOpen, onClose, formatDate, act }) {
   const numberZh = new NumberZh()
 
   return (
@@ -27,8 +27,10 @@ export default function IntroCard({ isOpen, onClose, act }) {
               活動資訊
             </h3>
             <div className="b-card-text d-flex flex-column gap-2">
-              <h5 className="b-date">{`活動日期 : ${act.date_start} ~ ${act.date_end}`}</h5>
-              <h5 className="b-enroll-date">{`報名日期 : ${act.signup_start} ~ ${act.signup_end}`}</h5>
+              <h5 className="b-date">{`活動日期 : ${formatDate(act.date_start)}${act.date_end ? ` ~ ${formatDate(act.date_end)}` : ''}`}</h5>
+              <h5 className="b-enroll-date">{act.signup_start 
+              ? `報名日期 : ${formatDate(act.signup_start)}${act.signup_end ? ` ~ ${formatDate(act.signup_end)}` : ''}`
+              : '報名日期 : 無期限'}</h5>
               <h5 className="b-address">{`地址 : ${act.city}${act.dist}${act.address}`}</h5>
               <a
                 className="b-btn b-sm-none mt-2"
