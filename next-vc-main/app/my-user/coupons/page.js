@@ -6,15 +6,14 @@ import './style.scss'
 import MemberLayout from '../layouts/memberLayout'
 import React, { useState, useEffect } from 'react'
 
-// import 'bootstrap/dist/css/bootstrap.min.css'
 
-export default function OrderPage() {
+export default async function OrderPage() {
   const [coupon, setCoupon] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = 'http://localhost:3005/api/coupon'
+        const url = 'http://localhost:3005/api/coupon/100'
         const res = await fetch(url)
         if (!res.ok) throw new Error('狀態錯誤')
         const data = await res.json()
@@ -73,10 +72,7 @@ export default function OrderPage() {
                 width={48}
                 height={48}
               />
-              <li
-                key={item.id}
-                id={item.id}
-              >
+              <li key={item.id} id={item.id}>
                 <div className="image-col">
                   <div className="text">
                     <strong>{item.name}</strong>
@@ -99,6 +95,43 @@ export default function OrderPage() {
               </li>
             </div>
           ))}
+
+          {/* {coupon.map((v) =>
+            v.isDelete == true ? (
+              <div className="gary-line div">
+                <Image
+                  className="image"
+                  src="/images/coupon/Vector.svg"
+                  alt="Vector"
+                  width={48}
+                  height={48}
+                />
+                <li key={v.id} id={v.id}>
+                  <div className="image-col">
+                    <div className="text">
+                      <strong>{v.name}</strong>
+                      <br />
+                      使用日期: {time(v.startTime)}~{time(v.endTime)}
+                      <br />
+                      折扣: ${v.discount}
+                    </div>
+                    <br />
+
+                    <button
+                      className="btn btn-dark"
+                      onClick={() => {
+                        notifyAndGet(v.name)
+                      }}
+                    >
+                      領取
+                    </button>
+                  </div>
+                </li>
+              </div>
+            ) : (
+              ''
+            )
+          )} */}
         </section>
       </div>
     </MemberLayout>
