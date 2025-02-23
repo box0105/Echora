@@ -3,16 +3,22 @@ import './list.scss'
 import ProductCard from '../_components/product-card'
 import FilterBar from '../_components/filter-bar'
 
+import { useSearchParams } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { useProductState } from '@/services/rest-client/use-products'
 
 export default function ProductListPage(props) {
+  //header search
+  const searchParams = useSearchParams()
+  const name_like = searchParams.get('name_like')
+
   // 設定點擊事件
   const [filterOpen, setFilterOpen] = useState(false)
   const [comparisionOpen, setComparisionOpen] = useState(false)
   const comparisionToggle = () => setComparisionOpen(!comparisionOpen)
   // 排序狀態
   const [selectedSort, setSelectedSort] = useState({sort: 'price', order: 'ASC'})
+
 
   // 搜尋條件
   const [queryString, setQueryString] = useState('')
@@ -206,15 +212,6 @@ export default function ProductListPage(props) {
     }
   }
 
-  // 執行篩選查詢
-  // const handleSearch = () => {
-  //   //更新查詢字串queryString
-  //   setQueryString(generateQueryString(criteria))
-  //   console.log('查詢字串:', queryString)
-
-  //   //fetch取得產品資訊
-  //   getPdData(queryString)
-  // }
 
   // fetch db
   // const [pdData, setPdData] = useState([])
@@ -268,9 +265,6 @@ export default function ProductListPage(props) {
 
   // didmount後執行getPdData()
   useEffect(() => {
-    // setQueryString(generateQueryString(criteria))
-    // console.log('產生字串:', generateQueryString(criteria));
-    // console.log('查詢字串:', queryString);
     getPdData(queryString)
   }, [])
 
@@ -278,9 +272,21 @@ export default function ProductListPage(props) {
     setQueryString(generateQueryString(criteria))
   }, [criteria])
 
-  // useEffect(() => {
-  //   getPdData(queryString)
-  // }, [queryString])
+  useEffect(() => {
+    getPdData(queryString)
+  },[queryString])
+
+  useEffect(() => {
+    if(name_like){
+      setCriteria((prev) => ({
+        ...prev,
+        nameLike: name_like,
+    }))
+    const newQueryString = generateQueryString({...criteria, nameLike: name_like})
+    setQueryString(newQueryString)
+    getPdData(newQueryString)
+    }
+  }, [name_like])
 
   return (
     <>

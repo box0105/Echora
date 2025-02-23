@@ -3,12 +3,25 @@ import styles from './header.module.scss'
 import CartOffcanvas from '../cart-offcanvas'
 import { useMyCart } from '@/hooks/use-cart'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
 export default function Header() {
   const { totalQty } = useMyCart()
-  const [menuOpen, setMenuOpen] = useState(false)
   const [showCart, setShowCart] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  // search
+  const router = useRouter()
+  const [searchName, setSearchName ] = useState('')
+  
+  const handleSearch = (e) => {
+    if(e.key === 'Enter' && searchName.trim() !== ''){
+      // console.log("導航至:", `/product/list?name_like=${encodeURIComponent(searchName)}`);
+      router.push(`/product/list?name_like=${searchName}`);
+      // window.location.href = `/product/list?name_like=${encodeURIComponent(searchName)}`
+    }
+  }
 
   return (
     <>
@@ -26,7 +39,10 @@ export default function Header() {
               <input
                 type="text"
                 className={`form-control focus-ring ${styles['g-search-field']}`}
-                placeholder="搜尋商品關鍵字"
+                placeholder="搜尋商品名稱關鍵字"
+                value={searchName}
+                onChange={(e)=>setSearchName(e.target.value)}
+                onKeyDown={handleSearch}
               />
             </form>
             <div className={`${styles['g-right-menu']} d-flex gap-4 col-lg-4 col-6 order-2 d-flex justify-content-end align-items-center p-0`}>

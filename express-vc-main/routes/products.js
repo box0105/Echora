@@ -39,16 +39,6 @@ router.get('/', async (req, res) => {
   // const sortBy = { sort, order }
 
   try {
-    // let sql =
-    //   `SELECT product.*, brand.name AS brand_name, product_sku.id AS product_sku_id, product_sku.stock, color.name AS color_name, color.color_image, color_palette.id AS color_palette_id, image.image FROM product JOIN brand ON product.brand_id = brand.id JOIN product_sku ON product.id = product_sku.product_id JOIN color ON product_sku.color_id = color.id JOIN color_palette ON color.color_palette_id = color_palette.id JOIN image ON product_sku.id = image.product_sku_id WHERE 1=1`
-    //   if(nameLike) sql += ` AND product.name LIKE '%${nameLike}%'`
-    //   if(brandIds.length>0) sql +=` AND brand.id IN (${brandIds.join(", ")})`
-    //   if(colorPids.length>0) sql +=` AND color_palette.id IN (${colorPids.join(", ")})`
-    //   if(colorIds.length>0) sql +=` AND color.id IN (${colorIds.join(", ")})`
-    //   if(priceGte && priceLte) sql +=` AND product.price BETWEEN ${priceGte} AND ${priceLte}`
-    //   sql += ` AND image.sort_order = 1`
-    //   sql += ` ORDER BY product.${sort} ${order}`
-
     let sql = `SELECT product.*, 
     brand.name AS brand_name, 
     product_sku.id AS product_sku_id, 
@@ -87,7 +77,7 @@ router.get('/', async (req, res) => {
     sql += ` AND image.sort_order = 1`
     sql += ` ORDER BY sort_priority ASC, product.${sort} ${order}`
 
-    console.log("Generated SQL:", sql);
+    // console.log("Generated SQL:", sql);
     const [rows] = await db.query(sql)
     res.status(200).json({
       status: 'success',
