@@ -1,7 +1,6 @@
 'use client'
 
 import '../_styles/member.scss'
-// import 'bootstrap/dist/css/bootstrap.min.css'
 import MemberLayout from '../layouts/memberLayout'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import { useState, useEffect } from 'react'
@@ -11,19 +10,22 @@ import 'react-toastify/dist/ReactToastify.css'
 import { useUserUpdatePassword } from '@/services/rest-client/use-user'
 import { useAuth } from '@/hooks/use-auth'
 
-// 定義要在此頁呈現/編輯的會員資料初始物件
 const initUserPassword = {
   current: '', // 原本密碼，要比對成功才能修改
   new: '', // 新密碼
   confirm: '', //確認新密碼用(前端檢查用，不送後端)
 }
 
-export default function PasswordPasswordPage() {
+export default function PasswordPage() {
   const { updatePassword } = useUserUpdatePassword()
   const { user, isAuth, setIsAuth } = useAuth()
   const [userPasswordInput, setUserPasswordInput] = useState(initUserPassword)
+  const [showPassword, setShowPassword] = useState({
+    current: false,
+    new: false,
+    confirm: false,
+  })
 
-  // 檢查登入狀態
   useEffect(() => {
     const userId = localStorage.getItem('userId')
     if (userId) {
@@ -31,7 +33,6 @@ export default function PasswordPasswordPage() {
     }
   }, [setIsAuth])
 
-  // 輸入資料用
   const handleFieldChange = (e) => {
     setUserPasswordInput({
       ...userPasswordInput,
@@ -39,12 +40,17 @@ export default function PasswordPasswordPage() {
     })
   }
 
-  // 送出表單用
+  const toggleShowPassword = (field) => {
+    setShowPassword((prevState) => ({
+      ...prevState,
+      [field]: !prevState[field],
+    }))
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     const userId = localStorage.getItem('userId')
 
-    // 表單驗証 - START
     if (
       !userPasswordInput.new ||
       !userPasswordInput.current ||
@@ -58,7 +64,6 @@ export default function PasswordPasswordPage() {
       toast.error('新密碼與確認密碼不同')
       return
     }
-    // 表單驗証 - END
 
     try {
       const res = await fetch(
@@ -86,7 +91,6 @@ export default function PasswordPasswordPage() {
     }
   }
 
-  // 未登入時，不會出現頁面內容
   if (!isAuth) return <></>
 
   return (
@@ -98,12 +102,12 @@ export default function PasswordPasswordPage() {
           </div>
           <div className="change-password-body">
             <form onSubmit={handleSubmit}>
-              <div className="mb-4">
+              <div className="mb-4 position-relative">
                 <label htmlFor="current" className="form-label">
                   舊密碼
                 </label>
                 <input
-                  type="password"
+                  type={showPassword.current ? 'text' : 'password'}
                   className="form-control"
                   id="current"
                   name="current"
@@ -111,13 +115,22 @@ export default function PasswordPasswordPage() {
                   onChange={handleFieldChange}
                   required
                 />
+                <i
+                  className={`fa ${
+                    showPassword.current
+                      ? 'fa-regular fa-eye-slash'
+                      : ' fa-regular fa-eye'
+                  } position-absolute`}
+                  style={{ top: '60%', right: '10px', cursor: 'pointer' }}
+                  onClick={() => toggleShowPassword('current')}
+                ></i>
               </div>
-              <div className="mb-4">
+              <div className="mb-4 position-relative">
                 <label htmlFor="new" className="form-label">
                   新密碼
                 </label>
                 <input
-                  type="password"
+                  type={showPassword.new ? 'text' : 'password'}
                   className="form-control"
                   id="new"
                   name="new"
@@ -125,13 +138,22 @@ export default function PasswordPasswordPage() {
                   onChange={handleFieldChange}
                   required
                 />
+                <i
+                  className={`fa ${
+                    showPassword.new
+                      ? 'fa-regular fa-eye-slash'
+                      : ' fa-regular fa-eye'
+                  } position-absolute`}
+                  style={{ top: '60%', right: '10px', cursor: 'pointer' }}
+                  onClick={() => toggleShowPassword('new')}
+                ></i>
               </div>
-              <div className="mb-4">
+              <div className="mb-4 position-relative">
                 <label htmlFor="confirm" className="form-label">
                   確認新密碼
                 </label>
                 <input
-                  type="password"
+                  type={showPassword.confirm ? 'text' : 'password'}
                   className="form-control"
                   id="confirm"
                   name="confirm"
@@ -139,6 +161,15 @@ export default function PasswordPasswordPage() {
                   onChange={handleFieldChange}
                   required
                 />
+                <i
+                  className={`fa ${
+                    showPassword.confirm
+                      ? 'fa-regular fa-eye-slash'
+                      : ' fa-regular fa-eye'
+                  } position-absolute`}
+                  style={{ top: '60%', right: '10px', cursor: 'pointer' }}
+                  onClick={() => toggleShowPassword('confirm')}
+                ></i>
               </div>
               <button type="submit" className="submit-btn">
                 確認修改
