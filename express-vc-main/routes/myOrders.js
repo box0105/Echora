@@ -22,6 +22,7 @@ router.post('/', upload.none(), async function (req, res) {
       shippingMethod,
       paymentMethod,
       totalAmount,
+      orderNumber,
     } = userData
 
     // 組合配送地址
@@ -29,8 +30,9 @@ router.post('/', upload.none(), async function (req, res) {
 
     // 插入 orders 表格（先新增訂單）
     const orderSql =
-      'INSERT INTO `myorder` (`shippingAddress`, `recipient`, `phone`, `email`, `shippingMethod`, `paymentMethod`, `totalAmount`) VALUES (?, ?, ?, ?, ?, ?, ?)'
+      'INSERT INTO `myorder` (`orderNumber`,`shippingAddress`, `recipient`, `phone`, `email`, `shippingMethod`, `paymentMethod`, `totalAmount`) VALUES (?, ?, ?, ?, ?, ?, ?,?)'
     const [orderResult] = await db.execute(orderSql, [
+      orderNumber,
       shippingAddress,
       recipient,
       phone,
@@ -47,12 +49,12 @@ router.post('/', upload.none(), async function (req, res) {
 
     // 插入 order_items 表格（新增購物車商品）
     const items = cartItems.map((item) => {
-      const { name, color, image, price, count } = item
+      const { name, color, image, price, count, brand, rentDate } = item
       const total = price * count
-      return [orderId, name, color, image, price, count, total]
+      return [orderId, name, color, image, price, count, total, brand, rentDate]
     })
     const itemSql =
-      'INSERT INTO `myorderitem` (orderId, name, color, image, price, count, total) VALUES ?'
+      'INSERT INTO `myorderitem` (orderId, name, color, image, price, count, total, brand, rentDate) VALUES ?'
 
     db.query(itemSql, [items])
 

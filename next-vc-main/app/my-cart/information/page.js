@@ -10,6 +10,7 @@ import { useSearchParams, useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { isDev, apiURL } from '@/config'
+import { customAlphabet } from 'nanoid'
 // 載入loading元件
 
 export default function InformationPage() {
@@ -111,6 +112,7 @@ export default function InformationPage() {
     event.preventDefault()
 
     const target = event.target
+    const nanoid = customAlphabet('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 10) // 生成 10 碼的隨機字母數字
 
     // 從表單中獲取用戶資料
     const userData = {
@@ -123,6 +125,7 @@ export default function InformationPage() {
       shippingMethod: target.shippingMethod.value,
       paymentMethod: target.paymentMethod.value,
       totalAmount: totalAmount,
+      orderNumber: nanoid(),
     }
 
     // 將 userData 寫入 localStorage
