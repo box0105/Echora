@@ -56,7 +56,6 @@ router.get('/:userId', async (req, res) => {
       code: data.coupon.code,
       typeId: data.coupon.typeId,
       discount: data.coupon.discount,
-      discountTypeId: data.coupon.discountTypeId,
       minPurchase: data.coupon.minPurchase,
       description: data.coupon.description,
       startTime: data.coupon.startTime,

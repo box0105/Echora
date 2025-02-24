@@ -48,8 +48,8 @@ export default async function OrderPage() {
         <div className="section-title h4 ">我的優惠券</div>
         <section className="section">
 
-          {coupon.map((item) => (
-            <div className="gary-line div">
+        {coupon.map((item) =>  item.isDeleted == false ?
+             <div className="gary-line div">
               <Image
                 className="image"
                 src="/images/coupon/Vector.svg"
@@ -78,11 +78,11 @@ export default async function OrderPage() {
                   </button> */}
                 </div>
               </li>
-            </div>
-          ))}
+            </div> : ''
+          )}
 
-        <div className="section-title h4 mb-0">已使用/已失效</div>
-        <div className='clear'>全部清除</div>
+          <div className="section-title h4 mb-0">已使用/已失效</div>
+          <div className='clear'>全部清除</div>
           {coupon.map((item) => item.isDeleted == true ?
             <div className="gary-line div garybg">
               <Image
@@ -103,18 +103,20 @@ export default async function OrderPage() {
                   </div>
                   <br />
 
-                  <button
+                  {/* <button
                     className="btn btn-light"
                     onClick={() => {
                       notifyAndGet(item.name)
                     }}
                   >
                     刪除
-                  </button>
+                  </button> */}
                 </div>
               </li>
             </div>
-            : '' )}
+            :
+            ''
+          )}
 
         </section>
       </div>

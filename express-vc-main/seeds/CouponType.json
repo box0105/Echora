@@ -1,14 +1,17 @@
 [
   {
     "id": 1,
-    "category": "固定折扣"
+    "category": "固定折扣",
+    "name": "金額"
   },
   {
     "id": 2,
-    "category": "百分比折扣"
+    "category": "百分比折扣",
+    "name": "折"
   },
   {
     "id": 3,
-    "category": "免運費"
+    "category": "免運費",
+    "name": "折"
   }
 ]
