@@ -3,74 +3,69 @@
 import React from 'react'
 import './card.scss'
 
-export default function RentcardCard({ item }) {
-  // 確保 item 不為 undefined，再進行解構
-  if (!item) {
-    return null // 如果 item 為 undefined，返回 null，不渲染卡片
-  }
-
-  const { imageUrl, name, price, colors, inStock } = item || {}
-
-  // 渲染顏色選項
-  const renderColorOptions = () => {
-    if (colors && colors.length > 0) {
-      return colors.map((color, idx) => (
-        <img key={idx} src={color} alt={`color-${idx}`} />
-      ))
-    }
-    return (
-      <>
-        <img src="/images/Rent/circle-gray.png" alt="default-gray" />
-        <img src="/images/Rent/circle-blue.png" alt="default-blue" />
-      </>
-    )
-  }
-
-  // 渲染庫存狀態
-  const renderStockStatus = () => {
-    if (inStock) {
-      return (
-        <div className="in-stock d-flex align-items-center">
-          <img src="/images/Rent/instock-green.png" alt="in-stock" />
-          <p className="m-0">有庫存</p>
-        </div>
-      )
-    } else {
-      return (
-        <div className="out-stock d-flex align-items-center">
-          <img src="/images/Rent/instock-red.png" alt="out-stock" />
-          <p className="m-0">無庫存</p>
-        </div>
-      )
-    }
+export default function RentCards({ data }) {
+  if (!data || data.length === 0) {
+    return <p>目前沒有租賃商品。</p>
   }
 
   return (
-    <div className="col-6 col-sm-6 col-md-4">
-      <div className="card-top">
-        <div className="c-card-img d-flex justify-content-center align-items-center">
-          <img
-            src={imageUrl || '/images/Rent/card23-img.png'}
-            className="card-img-top"
-            alt={name || 'Product Image'}
-          />
-        </div>
+    <>
+      {data.map((item) => {
+        console.log('RentCards 組件的 item:', JSON.stringify(item, null, 2)) // 添加這行
+        return <RentcardCard key={item.id} {...item} /> // 確保這裡正確傳遞 props
+      })}
+    </>
+  )
+}
 
-        <div className="card-body">
-          <h3 className="card-title">{name || 'Product Name'}</h3>
-          <div className="d-flex">
-            <h5 className="card-text">${price || '0'}</h5>
+function RentcardCard({ name, price, images, rentitemColors }) {
+  console.log(
+    'RentcardCard 組件的 rentitemColors:',
+    JSON.stringify(rentitemColors, null, 2)
+  ) // 添加這行
+  // 修改這裡
+  console.log(rentitemColors)
+  const rentColors = rentitemColors?.map((color) => color.colorName) || []
+  const stock = rentitemColors?.[0]?.stock || 0
+  const image = images?.[0]?.image_url || '/images/Rent/default.jpg' // 添加預設圖片
+
+  return (
+    <>
+      <div className="col-6 col-sm-6 col-md-4">
+        <div className="card-top">
+          <div className="c-card-img d-flex justify-content-center align-items-center">
+            <img src={image} className="card-img-top" alt={name} />
           </div>
 
-          {/* 顏色選項 */}
-          <div className="c-card-color pt-2 d-flex gap-1">
-            {renderColorOptions()}
+          <div className="card-body">
+            <h3 className="card-title">{name}</h3>
+            <div className="d-flex">
+              <h5 className="card-text">${parseFloat(price).toFixed(2)}</h5>
+            </div>
+            <div className="c-card-color pt-2 d-flex gap-1">
+              {rentColors && // 修改這裡
+                rentColors.map((color, index) => (
+                  <img
+                    key={index}
+                    src={`/images/Rent/circle-${color.toLowerCase()}.png`}
+                    alt={color.colorName}
+                  />
+                ))}
+            </div>
+            <div className="stock pt-2">
+              <div className={stock > 0 ? 'in-stock' : 'out-stock'}>
+                <img
+                  src={`/images/Rent/instock-${
+                    stock > 0 ? 'green' : 'red'
+                  }.png`}
+                  alt={stock > 0 ? '有庫存' : '無庫存'}
+                />
+                <p className="m-0">{stock > 0 ? '有庫存' : '無庫存'}</p>
+              </div>
+            </div>
           </div>
-
-          {/* 庫存狀態 */}
-          <div className="stock pt-2">{renderStockStatus()}</div>
         </div>
       </div>
-    </div>
+    </>
   )
 }

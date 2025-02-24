@@ -13,7 +13,8 @@ export default function RentList() {
       try {
         const res = await fetch('http://localhost:3005/api/rent')
         const jsonData = await res.json()
-        setData(jsonData)
+        console.log('API 回傳的資料:', JSON.stringify(jsonData.data, null, 2))
+        setData(jsonData.data)
       } catch (err) {
         console.error('錯誤:', err)
         setIsError(true)
@@ -37,6 +38,10 @@ export default function RentList() {
             <div className="caa info">
               <div className="c-section3">
                 <div className="card-group gap-3">
+                  {console.log(
+                    'RentList data state:',
+                    JSON.stringify(data, null, 2)
+                  )}
                   <RentCards data={data} />
                 </div>
               </div>

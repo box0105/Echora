@@ -1,45 +1,49 @@
 [
-    {
-        "name": "gray",
-        "rentColorImages": "/images/Rent/circle-gray.png"
-    },
-    {
-        "name": "black",
-        "rentColorImages": "/images/Rent/circle-black.png"
+  {
+    "name": "gray",
+    "rentColorImages": "/images/Rent/circle-gray.png"
+  },
+  {
+    "name": "black",
+    "rentColorImages": "/images/Rent/circle-black.png"
+  },
+  {
+    "name": "blue",
+    "rentColorImages": "/images/Rent/circle-blue.png"
+  },
+  {
+    "name": "brown",
+    "rentColorImages": "/images/Rent/circle-brown.png"
+  },
+  {
 
-    },
-    {
-        "name": "blue",
-        "rentColorImages": "/images/Rent/circle-blue.png"
-        
+    "name": "yellow",
+    "rentColorImages": "/images/Rent/circle-yellow.png"
+  },
+  {
+    "name": "red",
+    "rentColorImages": "/images/Rent/circle-red.png"
+  },
+  {
 
-    },
-    {
-        "name": "brown",
-        "rentColorImages": "/images/Rent/circle-brown.png"
+    "name": "purple",
+    "rentColorImages": "/images/Rent/circle-purple.png"
+  },
+  {
 
-
-    },
-    {
-        "name": " Yellow",
-        "rentColorImages": "/images/Rent/circle-yellow.png"
-
-
-    },
-    {
-        "name": "red",
-        "rentColorImages": "/images/Rent/circle-red.png"
-
-
-    },
-    {
-        "name": "purple",
-        "rentColorImages": "/images/Rent/circle-purple.png"
-
-
-    },
-    {
-        "name": "Navy-Blue",
-        "rentColorImages": "/images/Rent/circle-Navy-Blue.png"
-    }
+    "name": "Navy-Blue",
+    "rentColorImages": "/images/Rent/circle-Navy-Blue.png"
+  },
+  {
+    "name": "orange",
+    "rentColorImages": "/images/Rent/circle-orange.png"
+  },
+  {
+    "name": "green",
+    "rentColorImages": "/images/Rent/circle-green.png"
+  },
+  {
+    "name": "white",
+    "rentColorImages": "/images/Rent/circle-white.png"
+  }
 ]

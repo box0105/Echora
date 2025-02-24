@@ -6,12 +6,52 @@ const router = express.Router()
 import { successResponse, errorResponse } from '../lib/utils.js'
 
 //router prefix: /api/rent
+// router.get('/', async (req, res) => {
+//   try {
+//     const [rows] = await db.execute('SELECT * FROM `rent`')
+//     res.status(200).json({
+//       status: 'success',
+//       data: rows,
+//       message: '取得資料成功',
+//     })
+//   } catch (error) {
+//     errorResponse(res, error)
+//   }
+// })
 router.get('/', async (req, res) => {
   try {
-    const [rows] = await db.execute('SELECT * FROM `rent`')
+    const [rows] = await db.execute(`
+      SELECT 
+        rent.*, 
+        rentColor.name AS colorName, 
+        rentItemColor.stock AS stock
+      FROM rent
+      LEFT JOIN rentItemColor ON rent.id = rentItemColor.rentId
+      LEFT JOIN rentColor ON rentItemColor.rentColorId = rentColor.id
+    `)
+
+    // 格式化查詢結果，將顏色和庫存資訊合併到 rentitemColors 陣列中
+    const formattedData = rows.reduce((acc, row) => {
+      let existingRent = acc.find((item) => item.id === row.id)
+      if (existingRent) {
+        existingRent.rentitemColors.push({
+          colorName: row.colorName,
+          stock: row.stock,
+        })
+      } else {
+        acc.push({
+          ...row,
+          rentitemColors: row.colorName
+            ? [{ colorName: row.colorName, stock: row.stock }]
+            : [],
+        })
+      }
+      return acc
+    }, [])
+
     res.status(200).json({
       status: 'success',
-      data: rows,
+      data: formattedData,
       message: '取得資料成功',
     })
   } catch (error) {
@@ -23,22 +63,24 @@ router.get('/search', async (req, res) => {
   try {
     // SQL 查询语句
     let sql = `
-    SELECT 
-      rent.id, 
-      rent.name AS rent_name, 
-      rent.price, 
-      stores.name AS store_name, 
-      stores.address,
-      rentBrand.name AS brand_name,
-      rentColor.name AS color_name,
-      rentItemColor.stock AS color_stock
-    FROM rent
-    JOIN stores ON rent.stores_id = stores.id
-    JOIN rentBrand ON rent.rentBrandId = rentBrand.id
-    JOIN rentItemColor ON rent.id = rentItemColor.rentId
-    JOIN rentColor ON rentItemColor.rentColorId = rentColor.id
-    WHERE 1=1
-  `
+      SELECT 
+        rent.id, 
+        rent.name AS rent_name, 
+        rent.price, 
+        stores.name AS store_name, 
+        stores.address,
+        rentBrand.name AS brand_name,
+        rentColor.name AS color_name,
+        rentItemColor.stock AS color_stock,
+        rentImges.image AS image_url
+      FROM rent
+      JOIN stores ON rent.stores_id = stores.id
+      JOIN rentBrand ON rent.rentBrandId = rentBrand.id
+      JOIN rentItemColor ON rent.id = rentItemColor.rentId
+      JOIN rentColor ON rentItemColor.rentColorId = rentColor.id
+      JOIN rentImges ON rent.id = rentImges.rentId
+      WHERE 1=1
+    `
 
     const params = []
 
@@ -81,37 +123,66 @@ router.get('/search', async (req, res) => {
     // 执行查询
     const [rows] = await db.execute(sql, params)
 
-    console.log('SQL:', sql)
-    console.log('Params:', params)
-    res.status(200).json({ status: 'success', data: rows, message: '搜尋成功' })
+    // 格式化查询结果
+    const formattedRows = rows.reduce((acc, row) => {
+      const existingRent = acc.find((rent) => rent.id === row.id)
+
+      if (existingRent) {
+        // 檢查如果顏色已經存在，不要重複新增
+        if (
+          !existingRent.rentitemColors.some(
+            (color) => color.colorName === row.color_name
+          )
+        ) {
+          existingRent.rentitemColors.push({
+            colorName: row.color_name,
+            stock: row.color_stock,
+          })
+        }
+        // 檢查如果圖片已經存在，不要重複新增
+        if (
+          !existingRent.images.some(
+            (image) => image.image_url === row.image_url
+          )
+        ) {
+          existingRent.images.push({
+            image_url: row.image_url,
+          })
+        }
+      } else {
+        acc.push({
+          id: row.id,
+          name: row.rent_name, // 修改為前端使用的 name
+          price: row.price,
+          store_name: row.store_name,
+          address: row.address,
+          brand_name: row.brand_name,
+          rentitemColors: [
+            {
+              colorName: row.color_name,
+              stock: row.color_stock,
+            },
+          ],
+          images: [
+            {
+              image_url: row.image_url,
+            },
+          ],
+        })
+      }
+      return acc
+    }, [])
+    console.log('格式化後的資料:', JSON.stringify(formattedRows, null, 2))
+    res.status(200).json({
+      status: 'success',
+      data: formattedRows,
+      message: '搜尋成功',
+    })
   } catch (err) {
     console.error('錯誤:', err)
     res.status(500).json({ status: 'error', message: '伺服器錯誤' })
   }
 })
-
-// router.get('/search', async (req, res) => {
-//   const { q } = req.query
-//   console.log(req.query)
-//   try {
-//     if (!q) throw new Error('請提供查詢字串')
-
-//     let sql = `
-//       SELECT rent.id, rent.name AS rent_name, rent.price, stores.name AS store_name, stores.address
-//       FROM rent
-//       JOIN stores ON rent.stores_id = stores.id
-//       WHERE rent.name LIKE ? OR stores.name LIKE ?
-//     `
-//     const searchQuery = `%${q}%`
-
-//     const [rows] = await db.execute(sql, [searchQuery, searchQuery])
-//     res.status(200).json({ status: 'success', data: rows, message: '搜尋成功' })
-//   } catch (err) {
-//     console.error('錯誤:', err)
-//     res.status(500).json({ status: 'error', message: '伺服器錯誤' })
-//   }
-// })
-// router prefix: /api/rent/:pid
 router.get('/:pid', async (req, res) => {
   const { pid } = req.params
   try {

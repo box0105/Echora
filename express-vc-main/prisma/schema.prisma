@@ -303,7 +303,6 @@ model MyOrderItem {
   total   String
 }
 
-
 model Rent {
   id          Int             @id @default(autoincrement())
   name        String
@@ -338,8 +337,9 @@ model RentColor {
 }
 
 model RentItemColor {
-  id          Int       @id @default(autoincrement())
+  id          String    @id @db.VarChar(20)
   rentId      Int
+  name        String    @db.VarChar(100)
   rent        Rent      @relation(fields: [rentId], references: [id])
   rentColorId Int
   rentColor   RentColor @relation(fields: [rentColorId], references: [id])
@@ -359,13 +359,13 @@ model RentList {
 }
 
 model RentImges {
-  id    Int    @id @default(autoincrement())
-  name  String @db.VarChar(150)
-  image String @db.VarChar(300)
-
+  id              Int    @id @default(autoincrement())
+  rentItemColorId String
+  image           String @db.VarChar(300)
+  sortOrder       Int?
   // 外鍵，指向 Rent 的 id
-  rentId Int
-  rent   Rent? @relation(fields: [rentId], references: [id], onDelete: Cascade)
+  rentId          Int
+  rent            Rent?  @relation(fields: [rentId], references: [id], onDelete: Cascade)
 }
 
 model Stores {
