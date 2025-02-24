@@ -13,6 +13,7 @@ router.post('/', upload.none(), async function (req, res) {
     const userData = JSON.parse(req.body.userData)
 
     const {
+      userId,
       city,
       country,
       address,
@@ -30,8 +31,9 @@ router.post('/', upload.none(), async function (req, res) {
 
     // 插入 orders 表格（先新增訂單）
     const orderSql =
-      'INSERT INTO `myorder` (`orderNumber`,`shippingAddress`, `recipient`, `phone`, `email`, `shippingMethod`, `paymentMethod`, `totalAmount`) VALUES (?, ?, ?, ?, ?, ?, ?,?)'
+      'INSERT INTO `myorder` (`userId`,`orderNumber`,`shippingAddress`, `recipient`, `phone`, `email`, `shippingMethod`, `paymentMethod`, `totalAmount`) VALUES (?,?, ?, ?, ?, ?, ?, ?,?)'
     const [orderResult] = await db.execute(orderSql, [
+      userId,
       orderNumber,
       shippingAddress,
       recipient,

@@ -113,9 +113,11 @@ export default function InformationPage() {
 
     const target = event.target
     const nanoid = customAlphabet('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 10) // 生成 10 碼的隨機字母數字
+    const userId = localStorage.getItem('userId')
 
     // 從表單中獲取用戶資料
     const userData = {
+      userId: userId,
       recipient: target.recipient.value,
       phone: target.phone.value,
       email: target.email.value,
