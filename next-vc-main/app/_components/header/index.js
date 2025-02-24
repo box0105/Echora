@@ -42,7 +42,6 @@ export default function Header() {
   const [showDropdown, setShowDropdown] = useState(false)
   const { user, isAuth, setIsAuth } = useAuth()
   const [userProfile, setUserProfile] = useState(initUserProfile)
-  // const router = useRouter()
   // const { loginGoogle, logoutFirebase } = useFirebase()
   const { logout } = useAuthLogout()
   const { mutate } = useAuthGet()
