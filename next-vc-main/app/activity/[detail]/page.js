@@ -15,7 +15,7 @@ import Title from '../_components/Title'
 import IntroCard from '../_components/IntroCard'
 import ArticleCard from '../_components/ArticleCard'
 import PurchaseAside from '../_components/PurchaseAside'
-import ActivityListSm from '../_components/ActivityListSm'
+import ActivityList from '../_components/ActivityList'
 
 import { dateFormat } from '../_utils/dateFormat'
 
@@ -71,13 +71,13 @@ export default function ActivityDetailPage() {
             </article>
           </div>
           <div className="col-12 col-xl-3 order-first order-xl-last">
-            <PurchaseAside ticket={act?.type} />
+            <PurchaseAside data={act}/>
           </div>
         </div>
 
         <section className="b-other-act">
           <Title _title="YOU MAY ALSO LIKE, 您可能也會喜歡" />
-          <ActivityListSm data={acts} id={activityId} />
+          <ActivityList data={acts} id={activityId} isSmall={true} />
         </section>
       </main>
     </div>

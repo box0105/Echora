@@ -76,7 +76,7 @@ export default function ActivityPage() {
           isOpen={isFilterOpen}
           onClose={() => setIsFilterOpen(!isFilterOpen)}
         />
-        <ActivityList data={acts} />
+        <ActivityList data={acts} numPerPage={6}/>
       </div>
     </div>
   )
