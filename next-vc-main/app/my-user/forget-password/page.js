@@ -29,6 +29,9 @@ export default function ForgetPasswordPage() {
   const [token, setToken] = useState('')
   const [password, setPassword] = useState('')
 
+  // 新增狀態來追蹤輸入欄是否有資料
+  const [isEmailFilled, setIsEmailFilled] = useState(false)
+
   // 載入loading元件
   const [loadingStep1, setLoadingStep1] = useState(false)
   const [loadingStep2, setLoadingStep2] = useState(false)
@@ -57,7 +60,7 @@ export default function ForgetPasswordPage() {
   const handleRequestOtpToken = async (e) => {
     e.preventDefault()
     try {
-      const response = await fetch('http://localhost:3005/api/users/otp', {
+      const response = await fetch('http://localhost:3005/api/mail', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -137,12 +140,20 @@ export default function ForgetPasswordPage() {
         <input
           type="text"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {
+            setEmail(e.target.value)
+            setIsEmailFilled(e.target.value !== '')
+          }}
           disabled={!showStep1}
         />
       </label>
       <br />
-      <button onClick={handleRequestOtpToken}>取得驗証碼</button>
+      <button
+        onClick={handleRequestOtpToken}
+        className={`login-button ${isEmailFilled ? 'hover' : ''}`}
+      >
+        取得驗証碼
+      </button>
       <p>
         注意驗証碼有效期間為
         <span style={{ fontWeight: 700, color: 'red' }}>5分鐘</span>
@@ -216,14 +227,20 @@ export default function ForgetPasswordPage() {
                 type="email"
                 id="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value)
+                  setIsEmailFilled(e.target.value !== '')
+                }}
                 className="form-input"
                 placeholder="請輸入電子郵件"
                 required
                 aria-label="電子郵件"
               />
             </div>
-            <button onClick={handleRequestOtpToken} className="login-button">
+            <button
+              onClick={handleRequestOtpToken}
+              className={`login-button ${isEmailFilled ? 'hover' : ''}`}
+            >
               獲取驗證碼
             </button>
           </form>

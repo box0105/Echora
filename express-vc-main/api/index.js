@@ -20,7 +20,7 @@ import { pathToFileURL } from 'url'
 // const __dirname = path.dirname(__filename)
 
 import 'dotenv/config.js'
-
+import mailRoutes from '../routes/mail.js'
 // 建立 Express 應用程式
 const app = express()
 
@@ -166,8 +166,13 @@ app.use(function (err, req, res) {
   res.status(500).send({ error: err })
 })
 
+// 使用 mail 路由
+app.use('/api/users', mailRoutes)
+
 const port = process.env.PORT || 3000
 
-app.listen(port, () => console.log(`Server ready on port http://localhost:${port}.`))
+app.listen(port, () =>
+  console.log(`Server ready on port http://localhost:${port}.`)
+)
 
 export default app

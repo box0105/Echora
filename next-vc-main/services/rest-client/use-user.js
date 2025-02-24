@@ -251,7 +251,7 @@ export const lineLogout = async (line_uid) => {
  */
 export const useAuthGetOtpToken = () => {
   const { trigger, isMutating, isError } = useMutation(
-    `${apiURL}/auth/otp`,
+    `${apiURL}/users/otp`,
     'POST'
   )
   // POST方法時，要利用requestOtpToken(email)
