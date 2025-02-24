@@ -54,20 +54,28 @@ export default function ForgetPasswordPage() {
   }
 
   // 處理要求一次性驗証碼用
-  const handleRequestOtpToken = async () => {
-    const res = await requestOtpToken(email)
-    const resData = await res.json()
+  const handleRequestOtpToken = async (e) => {
+    e.preventDefault()
+    try {
+      const response = await fetch('http://localhost:3005/api/users/otp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      })
 
-    // 除錯用
-    console.log(resData)
-
-    if (resData.status === 'success') {
-      toast.success('資訊 - 驗証碼已寄送到電子郵件中')
-    } else {
-      toast.error(`錯誤 - ${resData.message}`)
+      const resData = await response.json()
+      if (resData.status === 'success') {
+        toast.success('驗證碼已發送到您的電子郵件')
+      } else {
+        toast.error(resData.message)
+      }
+    } catch (err) {
+      toast.error('無法發送驗證碼')
+      console.log(err.message)
     }
   }
-
   // 處理重設密碼用
   const handleResetPassword = async () => {
     const res = await resetPassword(email, password, token)
@@ -79,7 +87,7 @@ export default function ForgetPasswordPage() {
       toast.success('資訊 - 密碼已成功修改，導向使用者登入頁面')
 
       setTimeout(() => {
-        router.push('/user')
+        router.push('/my-user')
       }, 2000)
     } else {
       toast.error(`錯誤 - ${resData.message}`)
@@ -94,7 +102,7 @@ export default function ForgetPasswordPage() {
         setLoadingStep1(false)
         setShowStep1(false)
         setShowStep2(true)
-      }, 2000)
+      }, 5000)
     }
   }, [isRequesting])
 
@@ -104,7 +112,7 @@ export default function ForgetPasswordPage() {
       setLoadingStep2(false)
       setTimeout(() => {
         setLoadingStep2(false)
-      }, 2000)
+      }, 5000)
     }
   }, [isResetting])
 
@@ -207,18 +215,21 @@ export default function ForgetPasswordPage() {
               <input
                 type="email"
                 id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="form-input"
                 placeholder="請輸入電子郵件"
                 required
                 aria-label="電子郵件"
               />
             </div>
-            <button type="submit" className="login-button">
+            <button onClick={handleRequestOtpToken} className="login-button">
               獲取驗證碼
             </button>
           </form>
         </div>
       </div>
+      <ToastContainer />
     </>
   )
 }
