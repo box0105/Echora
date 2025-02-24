@@ -277,17 +277,17 @@ export default function ProductListPage(props) {
     getPdData(queryString)
   },[queryString])
 
-  useEffect(() => {
-    if(name_like){
-      setCriteria((prev) => ({
-        ...prev,
-        nameLike: name_like,
-    }))
-    const newQueryString = generateQueryString({...criteria, nameLike: name_like})
-    setQueryString(newQueryString)
-    getPdData(newQueryString)
-    }
-  }, [name_like])
+  // useEffect(() => {
+  //   if(name_like){
+  //     setCriteria((prev) => ({
+  //       ...prev,
+  //       nameLike: name_like,
+  //   }))
+  //   const newQueryString = generateQueryString({...criteria, nameLike: name_like})
+  //   setQueryString(newQueryString)
+  //   getPdData(newQueryString)
+  //   }
+  // }, [name_like])
 
   return (
     <>

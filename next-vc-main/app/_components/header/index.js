@@ -4,6 +4,7 @@ import CartOffcanvas from '../cart-offcanvas'
 import { useMyCart } from '@/hooks/use-cart'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useProductState } from '@/services/rest-client/use-products'
 import Link from 'next/link'
 
 export default function Header() {
@@ -14,12 +15,15 @@ export default function Header() {
   // search
   const router = useRouter()
   const [searchName, setSearchName ] = useState('')
+  const { criteria, setCriteria, defaultCriteria } = useProductState()
   
   const handleSearch = (e) => {
-    if(e.key === 'Enter' && searchName.trim() !== ''){
-      // console.log("導航至:", `/product/list?name_like=${encodeURIComponent(searchName)}`);
-      router.push(`localhost:3000/product/list?name_like=${searchName}`);
-      // window.location.href = `/product/list?name_like=${encodeURIComponent(searchName)}`
+    if(e.key === 'Enter'){
+      router.push(`/product/list`);
+      setCriteria((prev) => ({
+        ...prev,
+        nameLike: searchName
+      }))
     }
   }
 
@@ -33,13 +37,13 @@ export default function Header() {
               <img className={styles['g-mb-logo']} src="/images/header/logo-mb.svg" />
             </div>
             <form
-              action
+              onSubmit={(e) => e.preventDefault()}
               className="col-lg-4 col-12 order-lg-2 order-3 d-flex align-items-center p-0 mt-lg-0 mt-3"
             >
               <input
                 type="text"
                 className={`form-control focus-ring ${styles['g-search-field']}`}
-                placeholder="搜尋商品名稱關鍵字"
+                placeholder="搜尋電吉他商品名"
                 value={searchName}
                 onChange={(e)=>setSearchName(e.target.value)}
                 onKeyDown={handleSearch}

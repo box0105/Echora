@@ -43,6 +43,7 @@ model userLike {
 
   // 複合主鍵
   @@id([userId, productId])
+  @@map("user_like")
 }
 
 model Order {
