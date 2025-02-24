@@ -4,9 +4,11 @@ import './_styles/cart-checkkist.scss'
 import './_styles/index.scss'
 import './_styles/cart-information.scss'
 import './_styles/cart-finish.scss'
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
-export default function FinishPage(props) {
+export default function FinishPage() {
+
+
   return (
     <>
       <div className="m-background">
@@ -53,7 +55,10 @@ export default function FinishPage(props) {
           </div>
         </div>
         <div className="m-finish-section4 d-flex justify-content-center">
-          <button type="button" className="btn btn-dark px-5 py-2 mt-lg-5 mt-3 mb-5">
+          <button
+            type="button"
+            className="btn btn-dark px-5 py-2 mt-lg-5 mt-3 mb-5"
+          >
             查看訂單
           </button>
         </div>

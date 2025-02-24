@@ -3,17 +3,19 @@
 import { useEffect, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { useAuth } from '@/hooks/use-auth'
-import Link from 'next/link'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Image from 'next/image'
 import { isDev, apiURL } from '@/config'
+import { useMyCart } from '@/hooks/use-cart'
 // 載入loading元件
 import { RotatingLines } from 'react-loader-spinner'
 
 export default function LinePayPage() {
   // 檢查是否登入
-  const { isAuth } = useAuth()
+  // const { isAuth } = useAuth()
+
+  const { clearCart } = useMyCart()
 
   // 從line-pay回來後要進行loading，確認交易需要一小段時間
   const [loading, setLoading] = useState(true)
@@ -84,21 +86,40 @@ export default function LinePayPage() {
     console.log(resData)
 
     if (resData.status === 'success') {
+      const submitOrder = async () => {
+        // 從 localStorage 讀取購物車資料
+        const cartItems = localStorage.getItem('cartItem')
+        const userData = localStorage.getItem('userData')
+
+        const formData = new FormData()
+        formData.append('userData', userData)
+        formData.append('cartItems', cartItems)
+
+        // 發送 POST 請求到後端 API 儲存資料
+        try {
+          const response = await fetch('http://localhost:3005/api/myOrders', {
+            method: 'POST',
+            body: formData,
+          })
+
+          if (response.ok) {
+            clearCart()
+            router.replace('/my-cart/finish')
+          } else {
+            alert('訂單提交失敗！')
+          }
+        } catch (error) {
+          console.error('錯誤:', error)
+          alert('訂單提交過程中出現錯誤')
+        }
+      }
+      submitOrder()
       // 呈現結果
       setResult(resData.data)
       // 顯示成功訊息
-      toast.success('付款成功')
     } else {
       toast.error('付款失敗')
     }
-
-    // 關閉loading動畫
-    setTimeout(() => {
-      // 關閉loading動畫
-      setLoading(false)
-      // 導向至訂單頁
-      router.replace('/my-cart/finish')
-    }, 3000)
   }
 
   // confirm回來用的
@@ -163,8 +184,5 @@ export default function LinePayPage() {
       </>
     )
 
-  return (
-    <>
-    </>
-  )
+  return <></>
 }

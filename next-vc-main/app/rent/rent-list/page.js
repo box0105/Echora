@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from 'react'
 // import 'bootstrap/dist/css/bootstrap.min.css'
-import './list.scss'
-
+import '../_styles/list.scss'
+import Main from './_components/ListMain'
+import Boottom from './_components/ListBottom'
 export default function Page(props) {
   return (
     <>
@@ -13,36 +14,14 @@ export default function Page(props) {
           <div className="container-fluid c-index">
             <div className="row">
               <div className="col-7">
-                <div className="c-pict d-flex justify-content-center c-card">
-                  <div
-                    className="c-pic  d-flex flex-column align-items-center d-none d-lg-flex"
-                    style={{ paddingTop: '4.5rem' }}
-                  >
-                    <i className="fa-solid fa-angle-up " />
-                    <img src="/images/Rent/small-img.png" alt="小圖" />
-                    <img src="/images/Rent/small-img-2.png" alt="小圖" />
-                    <img src="/images/Rent/small-img-3.png" alt="小圖" />
-                    <img src="/images/Rent/small-img4.png" alt="小圖" />
-                    <i className="fa-solid fa-angle-down" />
-                  </div>
-                  <div className="c-bpiv">
-                    <img
-                      className="main-pic img-fluid "
-                      src="/images/Rent/main-img.png"
-                      alt="主圖"
-                    />
-                  </div>
-                </div>
+                <Main />
               </div>
               <div className="col-5 c-left">
                 <div className="c-text">
                   <div className="c-title d-flex justify-content-start align-items-center">
                     <h2 className="title-text">Les Paul Mondern Lite</h2>
-                    <div>
-                      <div className="h5 icon text-success d-none d-md-block"><i className="bi bi-box-seam" />尚有庫存</div>
-                      <div className="h6 icon text-success d-block d-md-none"><i className="bi bi-box-seam" />尚有庫存</div>
-                    </div>
                   </div>
+
                   <div className="c-price">
                     <h3 className="c-price-1 m-0">NT$ 1,000</h3>
                   </div>
@@ -60,19 +39,34 @@ export default function Page(props) {
                         <div className="h5 pe-3">顏色 :</div>
                         <h5>Sky Blue</h5>
                       </div>
-                    <div className="math d-flex align-items-center pb-3">數量<input type="number" id="quantity" className="form-control text-center mx-2" style={{width: 60}} defaultValue={1} min={1} /></div>
+                      <div className="math d-flex align-items-center pb-3">
+                        數量
+                        <input
+                          type="number"
+                          id="quantity"
+                          className="form-control text-center mx-2"
+                          style={{ width: 60 }}
+                          defaultValue={1}
+                          min={1}
+                        />
+                      </div>
                       <div className="c-body-co">
                         <div className="circle d-flex gap-3">
-                          <img src="/images/Rent/circle.jpg" alt />
-                          <img src="/images/Rent/cricleBroder.jpg" alt />
-                          <img src="/images/Rent/circle list.png" alt />
-                          <img src="/images/Rent/circle.jpg" alt />
-                          <img src="/images/Rent/circle.jpg" alt />
+                          <img
+                            className="color-img"
+                            src="/images/Rent/circle-black.png"
+                            alt
+                          />
+                          <img
+                            className="color-img"
+                            src="/images/Rent/circle-brown.png"
+                            alt
+                          />
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="c-start gap-2 py-3">
+                  <div className="c-start gap-2 py-3 ">
                     <div className="c-sdata">
                       <div className="h4 title-start">租借起始日</div>
                     </div>
@@ -267,209 +261,7 @@ export default function Page(props) {
               <h4 className>YOU MAY ALSO LIKE</h4>
               <div className=" h7"> / 您可能也會喜歡</div>
             </div>
-            <div className=" card-group d-none d-sm-flex">
-              <div className="icon ">
-                <i className="fa-solid fa-circle-chevron-left ic-1" />
-              </div>
-              <div className="card" style={{ width: '18rem' }}>
-                <img
-                  src="/images/Rent/card3-img.png"
-                  className="card-img-top"
-                  alt="..."
-                />
-                <div className="card-body">
-                  <h3 className="card-title">Product Name</h3>
-                  <h4 className="card-text">Product</h4>
-                  <div className="d-flex">
-                    <h5 className="card-text">$1000</h5>
-                  </div>
-                  <p>2 COLORS</p>
-                </div>
-              </div>
-              <div className="card" style={{ width: '18rem' }}>
-                <img
-                  src="/images/Rent/card2-img.png"
-                  className="card-img-top"
-                  alt="..."
-                />
-                <div className="card-body">
-                  <h3 className="card-title">Product Name</h3>
-                  <h4 className="card-text">Product</h4>
-                  <div className="d-flex">
-                    <h5 className="card-text">$1000</h5>
-                  </div>
-                  <p>2 COLORS</p>
-                </div>
-              </div>
-              <div className="card" style={{ width: '18rem' }}>
-                <img
-                  src="/images/Rent/card4-img.png"
-                  className="card-img-top"
-                  alt="..."
-                />
-                <div className="card-body">
-                  <h3 className="card-title">Product Name</h3>
-                  <h4 className="card-text">Product</h4>
-                  <div className="d-flex">
-                    <h5 className="card-text">$1200</h5>
-                  </div>
-                  <p>2 COLORS</p>
-                </div>
-              </div>
-              <div className="card" style={{ width: '18rem' }}>
-                <img
-                  src="/images/Rent/card5-img.png"
-                  className="card-img-top"
-                  alt="..."
-                />
-                <div className="card-body">
-                  <h3 className="card-title">Product Name</h3>
-                  <h4 className="card-text">Product</h4>
-                  <div className="d-flex">
-                    <h5 className="card-text">$1500</h5>
-                  </div>
-                  <p>2 COLORS</p>
-                </div>
-              </div>
-              <div className="icon d-none d-md-block">
-                <i className="fa-solid fa-circle-chevron-right ic-1" />
-              </div>
-            </div>
-            <div
-              id="productCarousel"
-              className="carousel slide d-block d-md-none"
-              data-bs-ride="carousel"
-            >
-              {/* Carousel indicators */}
-              <div className="carousel-indicators">
-                <button
-                  type="button"
-                  data-bs-target="#productCarousel"
-                  data-bs-slide-to={0}
-                  className="active"
-                  aria-current="true"
-                  aria-label="Slide 1"
-                />
-                <button
-                  type="button"
-                  data-bs-target="#productCarousel"
-                  data-bs-slide-to={1}
-                  aria-label="Slide 2"
-                />
-                <button
-                  type="button"
-                  data-bs-target="#productCarousel"
-                  data-bs-slide-to={2}
-                  aria-label="Slide 3"
-                />
-                <button
-                  type="button"
-                  data-bs-target="#productCarousel"
-                  data-bs-slide-to={3}
-                  aria-label="Slide 4"
-                />
-              </div>
-              {/* Carousel items (cards) */}
-              <div className="carousel-inner">
-                {/* Card 1 */}
-                <div className="carousel-item active">
-                  <div className="card" style={{ width: '18rem' }}>
-                    <img
-                      src="/images/Rent/card3-img.png"
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h3 className="card-title">Product Name</h3>
-                      <h4 className="card-text">Product</h4>
-                      <div className="d-flex">
-                        <h5 className="card-text">$1000</h5>
-                      </div>
-                      <p>2 COLORS</p>
-                    </div>
-                  </div>
-                </div>
-                {/* Card 2 */}
-                <div className="carousel-item">
-                  <div className="card" style={{ width: '18rem' }}>
-                    <img
-                      src="/images/Rent/card2-img.png"
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h3 className="card-title">Product Name</h3>
-                      <h4 className="card-text">Product</h4>
-                      <div className="d-flex">
-                        <h5 className="card-text">$1000</h5>
-                      </div>
-                      <p>2 COLORS</p>
-                    </div>
-                  </div>
-                </div>
-                {/* Card 3 */}
-                <div className="carousel-item">
-                  <div className="card" style={{ width: '18rem' }}>
-                    <img
-                      src="/images/Rent/card4-img.png"
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h3 className="card-title">Product Name</h3>
-                      <h4 className="card-text">Product</h4>
-                      <div className="d-flex">
-                        <h5 className="card-text">$1200</h5>
-                      </div>
-                      <p>2 COLORS</p>
-                    </div>
-                  </div>
-                </div>
-                {/* Card 4 */}
-                <div className="carousel-item">
-                  <div className="card" style={{ width: '18rem' }}>
-                    <img
-                      src="/images/Rent/card5-img.png"
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h3 className="card-title">Product Name</h3>
-                      <h4 className="card-text">Product</h4>
-                      <div className="d-flex">
-                        <h5 className="card-text">$1500</h5>
-                      </div>
-                      <p>2 COLORS</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* Carousel controls */}
-              <button
-                className="carousel-control-prev"
-                type="button"
-                data-bs-target="#productCarousel"
-                data-bs-slide="prev"
-              >
-                <span
-                  className="carousel-control-prev-icon"
-                  aria-hidden="true"
-                />
-                <span className="visually-hidden">Previous</span>
-              </button>
-              <button
-                className="carousel-control-next"
-                type="button"
-                data-bs-target="#productCarousel"
-                data-bs-slide="next"
-              >
-                <span
-                  className="carousel-control-next-icon"
-                  aria-hidden="true"
-                />
-                <span className="visually-hidden">Next</span>
-              </button>
-            </div>
+            <Boottom />
             {/* Bootstrap 5 JS */}
           </div>
         </div>

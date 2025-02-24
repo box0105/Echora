@@ -46,6 +46,14 @@ body {
     padding: 1.25rem 1rem;
   }
 }
+.circle {
+  .color-img:hover {
+    outline: 2px solid var(--black);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+
 .btn1 {
   width: 100%;
   padding: 2.5rem 0 3.375rem 0;

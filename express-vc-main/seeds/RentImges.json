@@ -1,0 +1,13 @@
+[
+    {
+      "name": "Image 1",
+      "image": "http://example.com/image1.jpg",
+      "rentId": 1
+    },
+    {
+      "name": "Image 2",
+      "image": "http://example.com/image2.jpg",
+      "rentId": 1
+    }
+  ]
+  

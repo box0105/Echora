@@ -1,15 +1,13 @@
 'use client'
 
 import './style.scss'
-import '../_styles/nav.scss'
-import '../_styles/globals.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useState, useEffect } from 'react'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import { useMyCoupon } from '@/hooks/use-coupon'
 
-export default async function CouponPage(props) {
+export default async function CouponPage() {
   const [coupon, setCoupon] = useState([])
+  const { notifyAndGet } = useMyCoupon()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,7 +16,7 @@ export default async function CouponPage(props) {
         const res = await fetch(url)
         if (!res.ok) throw new Error('狀態錯誤')
         const data = await res.json()
-        console.log(data.data)
+        // console.log(data.data)
         setCoupon(data.data)
       } catch (err) {
         console.log('發生錯誤', err)
@@ -29,11 +27,9 @@ export default async function CouponPage(props) {
 
   // 轉換時間格式
   const time = (time) => {
-    if(!time){
+    if (!time) {
       console.log('沒有時間')
-    }else(
-      console.log('輸入時間')
-    )
+    } else console.log('輸入時間')
     const isoDateString = time
     const date = new Date(isoDateString)
 
@@ -42,31 +38,6 @@ export default async function CouponPage(props) {
 
     // console.log(readableDate); 輸出：2024/7/27 （或 2024年7月27日，取決於地區設定）
     return readableDate
-  }
-
-  // 領取提示
-  const notifyAndGet = (itemName) => {
-    const MySwal = withReactContent(Swal)
-
-    MySwal.fire({
-      title: '要領取優惠券嗎?',
-      text: '優惠券將加入會員-我的優惠券',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      cancelButtonText: '取消',
-      confirmButtonText: '確定',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: '領取成功',
-          text: `優惠券已領取`,
-          icon: 'success',
-        })
-
-        // 進行領取
-      }
-    })
   }
 
   return (
@@ -92,26 +63,13 @@ export default async function CouponPage(props) {
             </h1>
           </div>
           <div className="row row-cols-lg-4 row-cols-md-4 row-cols-sm-1 row-cols-xm-1 row-cols-xxm-1  ">
-            <div className="col image-col">
-              <div className=""></div>
-              <button className="btn btn-dark">領取</button>
-            </div>
-            <div className="col image-col">
-              <div className=""></div>
-              <button className="btn btn-dark">領取</button>
-            </div>
-            <div className="col image-col">
-              <div className=""></div>
-              <button className="btn btn-dark">領取</button>
-            </div>
-
             {coupon.map((item) => (
               <li
                 key={item.id}
                 id={item.id}
-                className="col-xxl-3 col-lg-4 col-md-6 col-sm-12"
+                className=" col-lg-3 col-md-6 col-sm-12 col-xxl-3 image-col"
               >
-                <div className="col image-col">
+                <div className="col ">
                   <div className="text">
                     {item.name}
                     <br />${item.discount}
@@ -121,7 +79,7 @@ export default async function CouponPage(props) {
                   <button
                     className="btn btn-dark"
                     onClick={() => {
-                      notifyAndGet(item.name)
+                      notifyAndGet(item.id)
                     }}
                   >
                     領取
@@ -129,45 +87,18 @@ export default async function CouponPage(props) {
                 </div>
               </li>
             ))}
-
-            <div className="col image-col">
-              <div className="">
-                {coupon.name}, 優惠代碼:{coupon.code}, 折抵${coupon.discount} |
-                使用期間:{time(coupon.startTime)}~{time(coupon.endTime)}.
-              </div>
-              <button
-                className="btn btn-dark"
-                onClick={() => {
-                  alert('已領取')
-                }}
-              >
-                領取
-              </button>
-            </div>
-            {/* test */}
-            {/* <div>
-              <h1>優惠券列表</h1>
-              <ul>
-                {coupon.map((item) => (
-                  <li key={item.id} id={item.id}>
-                    <strong>{item.name}</strong>
-                    <br></br> ${item.discount}
-                    <br></br>
-                    <button
-                      className="btn btn-primary"
-                      onClick={() => {
-                        notifyAndGet(item.name)
-                      }}
-                    >
-                      領取
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div> */}
           </div>
           <div className="k-btn">
-            <button className="btn btn-outline-dark">全部領取</button>
+            <button
+              className="btn btn-outline-dark"
+              onClick={() => {
+                coupon.map((item) => {
+                  notifyAndGet(coupon.map((item) => item.id))
+                })
+              }}
+            >
+              全部領取
+            </button>
           </div>
         </article>
         <hr />

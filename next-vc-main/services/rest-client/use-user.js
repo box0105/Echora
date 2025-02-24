@@ -45,7 +45,8 @@ export const useAuthGet = () => {
 
 export const useUserUpdatePassword = () => {
   const { trigger, isMutating, isError } = useMutation(
-    `${apiURL}/users/me/password`,
+    `${apiURL}/users/profile-password`,
+
     'PUT'
   )
   // 要利用updateProfile(data)來更新會員資料
@@ -109,7 +110,7 @@ export const useUserRegister = () => {
 
 export const useAuthLogin = () => {
   const { trigger, isMutating, isError } = useMutation(
-    `${apiURL}/auth/login`,
+    `${apiURL}/users/login`,
     'POST'
   )
   // POST方法時，要利用login({ username, password })來登入
@@ -136,7 +137,7 @@ export const useAuthGoogleLogin = () => {
 // 登出用
 export const useAuthLogout = () => {
   const { trigger, isMutating, isError } = useMutation(
-    `${apiURL}/auth/logout`,
+    `${apiURL}/users/logout`,
     'POST'
   )
   // POST方法時，要利用logout()來登出

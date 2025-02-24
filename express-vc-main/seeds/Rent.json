@@ -1,12 +1,68 @@
 [
-    {
-      "id": 1,
-      "name": "浮現祭",
-      "price": 500
-    },
-    {
-      "id": 2,
-      "name": "共生音樂節",
-      "price": 1000
-    }
-  ]
+  {
+    "name": "Les Paul Junior Double Cut",
+    "level": 1,
+    "description": "雙切角桃花心木琴身，搭配 SlimTaper 輕薄琴頸輪廓的桃花心木琴頸，玫瑰木指板，配備 22 個中號加大品格及壓克力圓點鑲嵌，Dogear P-90 單線圈拾音器，並附硬殼琴盒。",
+    "rentBrandId": 1,
+    "stores_id": 3,
+    "price": 1000,
+    "RentList_id": 4,
+    "time_start": "2024-07-27T10:00:00.000Z",
+    "time_end": "2024-08-03T10:00:00.000Z"
+  },
+  {
+    "name": "1960 Gibson ES-335 Sunburst",
+    "level": 1,
+    "description": "Rounded“C”桃花心木琴頸與玫瑰木指板上的珍珠圓點鑲嵌提醒演奏者一切是從哪裡開始。Gibson 的 T 型雙線圈拾音器與我們的手焊接線控制組件搭配，為演奏者帶來 60 多年來一直渴望的多功能 Gibson ES 音色。其它如 Keystone 按鈕的 Vintage Deluxe 調音器提供調音穩定性和精確音調，搭配輕質鋁製 ABR-1 琴橋和 Stop Bar 止弦板。",
+    "rentBrandId": 1,
+    "stores_id": 3,
+    "price": 1000,
+    "RentList_id": 4,
+    "time_start": "2024-07-27T10:00:00.000Z",
+    "time_end": "2024-08-03T10:00:00.000Z"
+  },
+  {
+    "name": "1981 Gibson ES-347 Left-Handed - SOLD - LEARN MORE",
+    "level": 1,
+    "description": "採用罕見的櫻桃色旭日飾面，全部原始且近乎完好。 Gibson ES-335 的短命且用途廣泛的豪華版，更像是帶有烏木指板、MOP 嵌體和多彈邊定制琴頭的 ES-355。有一些非常輕微的磨損，但沒有天氣檢查，沒有裂縫、損壞或任何其他隱藏的維修。這把吉他有一個工廠內置的線圈抽頭，為演奏者提供了一些美妙的單線圈聲音的額外選擇。這把吉他實際上聽起來真的非常非常好，線圈抽頭功能 100% 可用，聽起來很棒 - 不薄，但透明且更清晰，非常適合過載的聲音！包括它的原始情況。",
+    "rentBrandId": 1,
+    "stores_id": 3,
+    "price": 1000,
+    "RentList_id": 4,
+    "time_start": "2024-07-27T10:00:00.000Z",
+    "time_end": "2024-08-03T10:00:00.000Z"
+  },
+  {
+    "name": "ES-345 Gold Hardware Dark Walnut",
+    "level": 3,
+    "description": "Rounded“C”桃花心木琴頸與玫瑰木指板上的珍珠圓點鑲嵌提醒演奏者一切是從哪裡開始。Gibson 的 T 型雙線圈拾音器與我們的手焊接線控制組件搭配，為演奏者帶來 60 多年來一直渴望的多功能 Gibson ES 音色。其它如 Keystone 按鈕的 Vintage Deluxe 調音器提供調音穩定性和精確音調，搭配輕質鋁製 ABR-1 琴橋和 Stop Bar 止弦板",
+    "rentBrandId": 1,
+    "stores_id": 2,
+    "price": 1300,
+    "RentList_id": 5,
+    "time_start": "2024-07-27T10:00:00.000Z",
+    "time_end": "2024-08-03T10:00:00.000Z"
+  },
+  {
+    "name": "ES-330 Ebony",
+    "level": 2,
+    "description": "薄型全空心電吉他，採用3 層楓木/楊木/楓木琴體，採用圓形C 型材的桃花心木琴頸，採用小塊丙烯酸鑲嵌的印度紅木指板，以及手工連接至500k 電位器和Orange Drop 電容器的Dogear P-90 拾音器，包括硬殼盒",
+    "rentBrandId": 1,
+    "stores_id": 2,
+    "price": 1100,
+    "RentList_id": 6,
+    "time_start": "2024-07-27T10:00:00.000Z",
+    "time_end": "2024-08-03T10:00:00.000Z"
+  },
+  {
+    "name": "ES-345 Gold Hardware Dark Walnut",
+    "level": 1,
+    "description": "三層楓木/楊木/楓木半空心琴體，實心楓木中板，桃花心木琴頸，圓形“C”型材，紅木指板，亞克力分裂平行四邊形鑲嵌，校準的T 型拾音器，以及硬殼琴盒",
+    "rentBrandId": 1,
+    "stores_id": 2,
+    "price": 1000,
+    "RentList_id": 7,
+    "time_start": "2024-07-27T10:00:00.000Z",
+    "time_end": "2024-08-03T10:00:00.000Z"
+  }
+]

@@ -12,11 +12,11 @@ import { isDev } from '../lib/utils.js'
 
 // 定義表關聯在這裡，目的是按正確順序的匯入種子資料，否則會出現外鍵約束錯誤或無法匯入的問題
 // foreignKey is in the second table
-const oneToOne = []
-// // foreignKey is in the second table
-const oneToMany = ['CouponType:Coupon','DiscountType:Coupon']
-// // foreignKey is in the third table
-const manyToMany = ['Coupon:User:UserCoupons'] //'Coupon:User:UserCoupons'
+const oneToOne = ['Rent:RentItemColor']
+// foreignKey is in the second table
+const oneToMany = ['Rent:RentItemColor', 'Rent:RentImges', 'CouponType:Coupon','DiscountType:Coupon', 'ActivityCategory:Activity', 'ActivityGenre:Activity', 'Activity:ActivityLineup']
+// foreignKey is in the third table
+const manyToMany = []
 
 // seed檔案種類(副檔名)seed files extension (csv| json)
 const fileExtension = 'json'
@@ -37,7 +37,7 @@ async function main() {
   const seedsPath = path.join(process.cwd(), seedsFolder)
   const filenames = await fs.promises.readdir(seedsPath)
 
-  const relations = [...oneToOne, ...oneToMany, ...manyToMany]
+  const relations = [...oneToOne, ...oneToMany,...manyToMany ]
 
   let relationFileList = []
 
@@ -60,7 +60,7 @@ async function main() {
         return -1
       }
 
-  //     // manyToMany
+      // manyToMany
       if (tmp.length === 3 && a.includes(tmp[0]) && b.includes(tmp[2])) {
         return -1
       }
@@ -94,6 +94,7 @@ async function main() {
   //  重建seed檔案 re structure seeders
   const seedFileList = [...restFileList, ...relationFileList]
 
+  
   // console.log(seedFileList)
 
   for (const filename of seedFileList) {
