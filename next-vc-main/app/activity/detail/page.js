@@ -1,8 +1,7 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
-import Image from 'next/image'
 
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import '../_styles/act.scss'
@@ -20,45 +19,42 @@ import ActivityCardSm from '../_components/ActivityCardSm'
 export default function DetailPage() {
   const searchParams = useSearchParams()
   const activityId = searchParams?.get('id')
-  console.log(activityId)
 
-  // test data
-  const activityData = [
-    {
-      id: 1,
-      title: '裂變景觀',
-      category: '音樂祭',
-      date_start: '114/01/05',
-      date_end: '114/03/02',
-      genre: '流行音樂',
-      price: '免費入場',
-      address: 'Project Space 110 新店藝術空間',
-      image: '/images/activity/浮現祭/main-1.jpg',
-    },
-    {
-      id: 2,
-      title: '新北耶誕城',
-      category: '音樂活動',
-      date_start: '114/01/05',
-      date_end: '114/03/02',
-      genre: '搖滾樂',
-      price: 'NT$ 1,500',
-      address: '台北小巨蛋',
-      image: '/images/activity/共生音樂節/main-2.jpg',
-    },
-    {
-      id: 3,
-      title: '新北耶誕城',
-      category: '音樂活動',
-      date_start: '114/01/05',
-      date_end: '114/03/02',
-      genre: '搖滾樂',
-      price: 'NT$ 1,500',
-      address: '台北小巨蛋',
-      image: '/images/activity/共生音樂節/main-2.jpg',
-    },
-  ]
-  const coverImages = ['/浮現祭/main-1.jpg']
+  const [act, setActivity] = useState({ category: {}, genre: {}, lineup: [{}] });
+  const [acts, setActivities] = useState([{ category: {}, genre: {}, lineup: [{}] }])
+
+  // 網址上的單一活動
+  useEffect(() => {
+    if (activityId) {
+      fetch(`http://localhost:3005/api/activities/${activityId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status === 'success') {
+            setActivity(data.data.activity);
+          } else {
+            setError('活動資料載入失敗')
+          }
+        })
+        .catch((err) => console.log(err))
+    }
+  }, [activityId])
+
+  // 所有活動
+  useEffect(() => {
+    if (activityId) {
+      fetch(`http://localhost:3005/api/activities`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status === 'success') {
+            setActivities(data.data.activities);
+          } else {
+            setError('活動資料載入失敗')
+          }
+        })
+        .catch((err) => console.log(err))
+    }
+  }, [])
+
   const breadcrumb = ['音樂祭', '流行音樂', '台中市', '浮現祭']
   const intro = `
     ❝ 浮現祭，一場名為冒險的音樂祭。 ❞
@@ -176,6 +172,8 @@ export default function DetailPage() {
       images: ['浮現祭/3-1.jpg', '浮現祭/3-2.jpg'],
     },
   ]
+  // test data
+  const coverImages = ['/浮現祭/main-1.jpg']
   const ticket = [
     { name: '冒險先知單人雙日票', amount: 2, price: 2466 },
     { name: '冒險旅人單人雙日票 ', amount: 2, price: 2666 },
@@ -187,18 +185,18 @@ export default function DetailPage() {
 
   return (
     <div className="b-container">
+      {/* 開發測試 */}
+      {/* <pre>{JSON.stringify(acts, null, 2)}</pre> */}
       <HeroSection images={coverImages} />
 
       <main>
         <section className="b-main-info">
-          <BreadCrumb breads={breadcrumb} />
-          <Title title="浮現祭" subTitle=", EMERGE FEST 2025" />
+          <BreadCrumb breads={[act.category.name, act.genre.name, act.city, act.name]} />
+          <Title _title={act.name} />
           <IntroCard
             isOpen={isInfoOpen}
             onClose={() => setIsInfoOpen(!isInfoOpen)}
-            intro={intro}
-            info={info}
-            lineup={lineup}
+            act={act}
           />
         </section>
 
@@ -226,9 +224,9 @@ export default function DetailPage() {
 
           <div className="b-act-list d-flex flex-column">
             <div className="row row-cols-1 row-cols-lg-2 row-cols-xl-3 gx-4 gy-5">
-              {activityData.map((data) => {
+              {/* {acts.map((data) => {
                 return <ActivityCardSm key={data.id} data={data} />
-              })}
+              })} */}
             </div>
             <button className="b-btn b-load-btn">瀏覽更多</button>
           </div>

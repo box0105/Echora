@@ -43,6 +43,7 @@ model userLike {
 
   // 複合主鍵
   @@id([userId, productId])
+  @@map("user_like")
 }
 
 model Order {
@@ -102,6 +103,7 @@ model Color {
 model ColorPalette {
   id   Int    @id @default(autoincrement())
   name String @db.VarChar(50)
+  cname String @db.VarChar(50)
 
   @@map("color_palette")
 }

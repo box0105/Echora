@@ -49,7 +49,13 @@ export function MyCartProvider({ children }) {
   }
 
   // 加入商品到購物車
-  const onAdd = (product) => {
+  const onAdd = (product, selectedColor) => {
+    console.log(product.images[selectedColor.skuId][0])
+    //box
+    const color = selectedColor.name
+    const stock = product.stock[selectedColor.skuId]
+    const image = `/images/product/pd-images/${product.images[selectedColor.skuId][0]}`
+
     // 判斷此商品是否已經在購物車裡
     const foundIndex = cartItems.findIndex((v) => v.id === product.id)
 
@@ -59,7 +65,8 @@ export function MyCartProvider({ children }) {
     } else {
       // 沒找到===>新增商品到購物車
       // product和item(購物車項目)相比，少了一個數量屬性count
-      const newItem = { ...product, count: 1 }
+      const newItem = { ...product, color, stock, image, count: 1 }
+
       // 加到購物車最前面
       const nextCartItems = [newItem, ...cartItems]
       // 設定到狀態

@@ -101,10 +101,6 @@
   display: block;
 }
 
-.g-order:hover .g-order-sec{
-    display: block;
-}
-
 /* order section */
 .g-order-sec {
   display: none;
@@ -123,74 +119,17 @@
     margin: 0;
     text-align: center;
 
-    &:hover {
+    &.active {
       background-color: var(--grey900);
       color: var(--white);
     }
+
+    // &:hover {
+    //   background-color: var(--grey900);
+    //   color: var(--white);
+    // }
   }
 }
-
-/* product card */
-
-// .g-pd-img {
-//     height: 460px;
-//     padding: 30px 20px;
-//     background: radial-gradient(111.92% 179.77% at -76.41% -9.75%, #E5E5E5 0%, #F9F9F9 100%);
-//     overflow: hidden;
-
-//     @media screen and (max-width: 576px) {
-//         height: 280px;
-//     }
-// }
-
-// .g-pd-text {
-//     padding: 20px;
-
-//     p {
-//         margin-block: 8px;
-//     }
-// }
-
-// .g-color-row {
-//     display: none;
-// }
-
-// .g-product-card:hover {
-//     outline: 1px solid var(--grey300);
-//     box-shadow: 0px 0px 10px 5px rgba(200, 200, 200, 0.20);
-
-//     .g-pd-text {
-//         position: relative;
-//     }
-
-//     .g-pd-text:before {
-//         position: absolute;
-//         top: 0;
-//         left: 20px;
-//         right: 20px;
-//         content: "";
-//         height: 1px;
-//         background-color: var(--grey300);
-//     }
-
-//     .g-pd-img {
-//         background: var(--white);
-//     }
-
-//     .g-color-text {
-//         display: none;
-//     }
-
-//     .g-color-row {
-//         display: flex;
-//         gap: 8px;
-//         margin-block: 6px;
-
-//         img {
-//             cursor: pointer;
-//         }
-//     }
-// }
 
 /* more section */
 .g-more-sec {
@@ -203,158 +142,168 @@
   background-color: #ffffff00;
   padding: 12px 24px;
   width: 240px;
-}
+  transition: all 0.15s ease-out;
 
-/* filter side bar */
-.g-filter-sec {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 999;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: none;
-
-  &.active {
-    display: block;
-  }
-}
-
-.g-filter-bar {
-  /* overflow-y: auto; */
-  width: 460px;
-  height: 100vh;
-  background-color: var(--white);
-  padding-top: 28px;
-
-  .g-clear {
-    padding-block: 24px;
-    padding-inline: 48px;
-
-    .g-clear-link {
-      color: var(--grey200);
-      text-decoration: underline;
-
-      &:hover {
-        /* react 改成有篩選條件時觸發 */
-        color: var(--black);
-      }
-    }
-
-    img {
-      cursor: pointer;
-      opacity: 0.6;
-    }
-  }
-
-  @media screen and (max-width: 460px) {
-    width: 100%;
-  }
-}
-
-.g-filter-scroll {
-  height: calc(100% - 157.6px);
-  padding-inline: 48px;
-  overflow-y: scroll;
-
-  li {
-    user-select: none;
-  }
-}
-
-.g-filter-title {
-  border-bottom: 1px solid var(--grey200);
-}
-
-.form-check-input[type='checkbox'] {
-  border-color: var(--grey300);
-  border-radius: 2px;
-  cursor: pointer;
-}
-
-.form-check-input:checked {
-  background-color: var(--black);
-  border-color: var(--black);
-}
-
-.g-color-filter {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-
-  img {
-    width: 24px;
-    cursor: pointer;
-
-    &:hover {
-      outline: 2px solid var(--black);
-      border-radius: 50%;
-    }
-  }
-}
-
-.g-series {
-  color: var(--white);
-  padding: 10px 16px;
-  min-width: 171px;
-  transition: all 0.2s;
-
-  &:hover {
-    /* react 改成hover & click事件 */
-    color: var(--black);
-    scale: 1.015;
-    outline: 1.5px solid var(--black);
-  }
-}
-
-@media screen and (max-width: 460px) {
-  .g-series {
-    display: flex;
-    gap: 6px;
-    width: 100%;
-  }
-}
-
-.g-series1 {
-  background: linear-gradient(
-    90deg,
-    rgba(18, 194, 233, 0.7) 0%,
-    rgba(196, 113, 237, 0.7) 50%,
-    rgba(246, 79, 89, 0.7) 100%
-  );
-}
-
-.g-series2 {
-  opacity: 0.9;
-  background: linear-gradient(90deg, #ff9f51 0%, #f9d024 100%);
-}
-
-.g-series3 {
-  background: linear-gradient(
-    90deg,
-    #ada996 0%,
-    #f2f2f2 33.9%,
-    #fff 58.5%,
-    #dbdbdb 95.9%
-  );
-}
-
-.g-series4 {
-  background: linear-gradient(90deg, #414345 0%, #232526 100%);
-}
-
-.g-action {
-  padding-block: 24px 28px;
-
-  .g-action-btn {
+  &:hover{
     background-color: var(--black);
-    border-radius: 100px;
-    border: none;
     color: var(--white);
-    padding-block: 12px;
-    width: 240px;
   }
 }
+
+.g-all{
+  color: var(--grey900);
+}
+
+// /* filter side bar */
+// .g-filter-sec {
+//   position: fixed;
+//   top: 0;
+//   width: 100%;
+//   height: 100vh;
+//   z-index: 999;
+//   background-color: rgba(0, 0, 0, 0.7);
+//   display: none;
+
+//   &.active {
+//     display: block;
+//   }
+// }
+
+// .g-filter-bar {
+//   /* overflow-y: auto; */
+//   width: 460px;
+//   height: 100vh;
+//   background-color: var(--white);
+//   padding-top: 28px;
+
+//   .g-clear {
+//     padding-block: 24px;
+//     padding-inline: 48px;
+
+//     .g-clear-link {
+//       color: var(--grey200);
+//       text-decoration: underline;
+
+//       &:hover {
+//         /* react 改成有篩選條件時觸發 */
+//         color: var(--black);
+//       }
+//     }
+
+//     img {
+//       cursor: pointer;
+//       opacity: 0.6;
+//     }
+//   }
+
+//   @media screen and (max-width: 460px) {
+//     width: 100%;
+//   }
+// }
+
+// .g-filter-scroll {
+//   height: calc(100% - 157.6px);
+//   padding-inline: 48px;
+//   overflow-y: scroll;
+
+//   li {
+//     user-select: none;
+//   }
+// }
+
+// .g-filter-title {
+//   border-bottom: 1px solid var(--grey200);
+// }
+
+// .form-check-input[type='checkbox'] {
+//   border-color: var(--grey300);
+//   border-radius: 2px;
+//   cursor: pointer;
+// }
+
+// .form-check-input:checked {
+//   background-color: var(--black);
+//   border-color: var(--black);
+// }
+
+// .g-color-filter {
+//   display: flex;
+//   flex-wrap: wrap;
+//   gap: 16px;
+
+//   img {
+//     width: 24px;
+//     cursor: pointer;
+
+//     &:hover {
+//       outline: 2px solid var(--black);
+//       border-radius: 50%;
+//     }
+//   }
+// }
+
+// .g-series {
+//   color: var(--white);
+//   padding: 10px 16px;
+//   min-width: 171px;
+//   transition: all 0.2s;
+
+//   &:hover {
+//     /* react 改成hover & click事件 */
+//     color: var(--black);
+//     scale: 1.015;
+//     outline: 1.5px solid var(--black);
+//   }
+// }
+
+// @media screen and (max-width: 460px) {
+//   .g-series {
+//     display: flex;
+//     gap: 6px;
+//     width: 100%;
+//   }
+// }
+
+// .g-series1 {
+//   background: linear-gradient(
+//     90deg,
+//     rgba(18, 194, 233, 0.7) 0%,
+//     rgba(196, 113, 237, 0.7) 50%,
+//     rgba(246, 79, 89, 0.7) 100%
+//   );
+// }
+
+// .g-series2 {
+//   opacity: 0.9;
+//   background: linear-gradient(90deg, #ff9f51 0%, #f9d024 100%);
+// }
+
+// .g-series3 {
+//   background: linear-gradient(
+//     90deg,
+//     #ada996 0%,
+//     #f2f2f2 33.9%,
+//     #fff 58.5%,
+//     #dbdbdb 95.9%
+//   );
+// }
+
+// .g-series4 {
+//   background: linear-gradient(90deg, #414345 0%, #232526 100%);
+// }
+
+// .g-action {
+//   padding-block: 24px 28px;
+
+//   .g-action-btn {
+//     background-color: var(--black);
+//     border-radius: 100px;
+//     border: none;
+//     color: var(--white);
+//     padding-block: 12px;
+//     width: 240px;
+//   }
+// }
 
 /* compare section */
 .g-compare-sec {

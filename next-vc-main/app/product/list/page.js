@@ -1,32 +1,297 @@
 'use client'
 import './list.scss'
 import ProductCard from '../_components/product-card'
+import FilterBar from '../_components/filter-bar'
 
+import { useSearchParams } from 'next/navigation'
 import { useState, useEffect } from 'react'
+import { useProductState } from '@/services/rest-client/use-products'
 
 export default function ProductListPage(props) {
+  //header search
+  const searchParams = useSearchParams()
+  const name_like = searchParams.get('name_like')
+
   // 設定點擊事件
   const [filterOpen, setFilterOpen] = useState(false)
   const [comparisionOpen, setComparisionOpen] = useState(false)
   const comparisionToggle = () => setComparisionOpen(!comparisionOpen)
+  // 排序狀態
+  const [selectedSort, setSelectedSort] = useState({sort: 'price', order: 'ASC'})
+  // 瀏覽更多 狀態
+  const [visibleCount, setVisibleCount] = useState(12)
+
+  // 搜尋條件
+  const [queryString, setQueryString] = useState('')
+
+  // 在不同頁面之間共享條件(列表頁、商品頁)
+  const { criteria, setCriteria, defaultCriteria } = useProductState()
+  // 從context中取得目前記錄的共享條件的值
+  const {
+    // page,
+    // perpage,
+    nameLike,
+    brandIds,
+    colorPids,
+    colorIds,
+    priceGte,
+    priceLte,
+    sort,
+    order,
+  } = criteria
+
+  // 用於設定條件
+  // (當 setCriteria 傳入函式時，React 會自動把「當前的 criteria 狀態」當成函式的參數（這裡是 prev）)
+  const setCriteriaByName = (name, value) => {
+    setCriteria((prev) => {
+      return { ...prev, [name]: value }
+    })
+  }
+
+  // 產生查詢字串
+  const generateQueryString = (criteria) => {
+    const query = {}
+    for (const key in criteria) {
+      // 略過page
+      // if (key === 'page' && exceptPage) continue
+
+      // 這裡是將數字陣列轉為字串，轉換為snake_case名稱
+      if (key === 'brandIds') {
+        query['brand_ids'] = criteria[key].join(',')
+        continue
+      }
+      if (key === 'colorPids') {
+        query['color_pids'] = criteria[key].join(',')
+        continue
+      }
+      if (key === 'colorIds') {
+        query['color_ids'] = criteria[key].join(',')
+        continue
+      }
+      // 轉換為snake_case
+      if (key === 'nameLike') {
+        query['name_like'] = criteria[key]
+        continue
+      }
+
+      if (key === 'priceGte') {
+        query['price_gte'] = criteria[key]
+        continue
+      }
+
+      if (key === 'priceLte') {
+        query['price_lte'] = criteria[key]
+        continue
+      }
+
+      query[key] = criteria[key]
+    }
+
+    return new URLSearchParams(query).toString()
+  }
+
+  // 整理資料用的函式
+  function group(arr, key) {
+    return [
+      ...arr
+        .reduce(
+          (acc, o) => acc.set(o[key], (acc.get(o[key]) || []).concat(o)),
+          new Map()
+        )
+        .values(),
+    ]
+  }
+  const convertData = async (data) => {
+    // 擴充原始資料的索引值(不一定需要)，方便後續操作例如排序…
+    const arr = data.map((v, i) => ({ ...v, originalIndex: i }))
+
+    // 進行資料分組
+    const groupedArr = group(arr, 'id')
+    // console.log('groupedArr', groupedArr)
+
+    let tmpData = []
+
+    for (let i = 0; i < groupedArr.length; i++) {
+      // grouped values
+      if (groupedArr[i].length > 1) {
+        const newObj = { ...groupedArr[i][0] }
+        newObj.colors = []
+        newObj.images = {}
+        newObj.defaultImage = ''
+        for (let j = 0; j < groupedArr[i].length; j++) {
+          newObj.colors.push({
+            name: groupedArr[i][j].color_name,
+            image: groupedArr[i][j].color_image,
+            skuId: groupedArr[i][j].product_sku_id,
+          })
+
+          newObj.images[groupedArr[i][j].product_sku_id] =
+            groupedArr[i][j].image
+          newObj.defaultImage = groupedArr[i][j].image
+        }
+        tmpData.push(newObj)
+      } else {
+        const newObj = { ...groupedArr[i][0] }
+        newObj.colors = []
+        newObj.images = {}
+        newObj.defaultImage = ''
+
+        newObj.colors.push({
+          name: groupedArr[i][0].color_name,
+          image: groupedArr[i][0].color_image,
+          skuId: groupedArr[i][0].product_sku_id,
+        })
+        newObj.images[groupedArr[i][0].product_sku_id] = groupedArr[i][0].image
+        newObj.defaultImage = groupedArr[i][0].image
+
+        tmpData.push(newObj)
+      }
+    }
+    // console.log('tmpData', tmpData)
+    // 平坦化陣列
+    const finalData = tmpData.flat()
+
+    // console.log('finalData', finalData)
+
+    return finalData
+  }
 
   // fetch db
   const [pdData, setPdData] = useState([])
 
-  const getPdData = async () => {
+  const getPdData = async (queryString) => {
     try {
-      const res = await fetch('http://localhost:3005/api/products')
+      const res = await fetch(
+        `http://localhost:3005/api/products?${queryString}`
+      )
       const data = await res.json()
+      const finalData = await convertData(data.data)
+      setPdData(finalData)
+      // console.log(finalData)
 
+<<<<<<< HEAD
    
+=======
+      // console.log(data.data);
+      // // 資料整理(符合product card UI)
+      // const products = {}
+      // data?.data.forEach((item) => {
+      //   const {
+      //     id,
+      //     name,
+      //     price,
+      //     brand_name,
+      //     product_sku_id,
+      //     color_id,
+      //     color_name,
+      //     color_image,
+      //     color_palette_id,
+      //     image,
+      //   } = item
+
+      //   if (!products[id]) {
+      //     products[id] = {
+      //       id,
+      //       name,
+      //       price,
+      //       brand: brand_name,
+      //       colors: [],
+      //       images: {},
+      //       defaultImage: image,
+      //     }
+      //   }
+      //   products[id].colors.push({
+      //     id: color_id,
+      //     name: color_name,
+      //     image: color_image,
+      //     skuId: product_sku_id,
+      //   })
+      //   products[id].images[product_sku_id] = image
+      // })
+      // // console.log(Object.values(products))
+      // setPdData(Object.values(products))
+>>>>>>> dev
     } catch (err) {
       console.log(err)
     }
   }
-  //didmount後執行getPdData()
+
+
+  // fetch db
+  // const [pdData, setPdData] = useState([])
+
+  // const getPdData = async () => {
+  //   try {
+  //     const res = await fetch('http://localhost:3005/api/products')
+  //     const data = await res.json()
+
+  //     // 資料整理(符合product card UI)
+  //     const products = {}
+  //     data?.data.forEach((item) => {
+  //       const {
+  //         id,
+  //         name,
+  //         price,
+  //         brand_name,
+  //         product_sku_id,
+  //         color_id,
+  //         color_name,
+  //         color_image,
+  //         color_palette_id,
+  //         image,
+  //       } = item
+
+  //       if (!products[id]) {
+  //         products[id] = {
+  //           id,
+  //           name,
+  //           price,
+  //           brand: brand_name,
+  //           colors: [],
+  //           images: {},
+  //           defaultImage: image,
+  //         }
+  //       }
+  //       products[id].colors.push({
+  //         id: color_id,
+  //         name: color_name,
+  //         image: color_image,
+  //         skuId: product_sku_id,
+  //       })
+  //       products[id].images[product_sku_id] = image
+  //     })
+  //     // console.log(Object.values(products))
+  //     setPdData(Object.values(products))
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+
+  // didmount後執行getPdData()
   useEffect(() => {
-    getPdData()
+    getPdData(queryString)
   }, [])
+
+  useEffect(() => {
+    setQueryString(generateQueryString(criteria))
+    setVisibleCount(12)
+  }, [criteria])
+
+  useEffect(() => {
+    getPdData(queryString)
+  },[queryString])
+
+  // useEffect(() => {
+  //   if(name_like){
+  //     setCriteria((prev) => ({
+  //       ...prev,
+  //       nameLike: name_like,
+  //   }))
+  //   const newQueryString = generateQueryString({...criteria, nameLike: name_like})
+  //   setQueryString(newQueryString)
+  //   getPdData(newQueryString)
+  //   }
+  // }, [name_like])
 
   return (
     <>
@@ -42,7 +307,7 @@ export default function ProductListPage(props) {
         <div className="g-pdlist-topbar px-modified">
           <div className="container-fluid d-flex justify-content-between p-0">
             <div className="g-left d-flex align-items-center">
-              <h6 className="g-amount mb-0">00 商品</h6>
+              <h6 className="g-amount mb-0">{pdData.length} 件商品</h6>
               <div
                 className="g-fliter d-sm-flex d-none"
                 onClick={() => {
@@ -73,19 +338,67 @@ export default function ProductListPage(props) {
               <div className="g-order d-flex">
                 <img src="/images/product/list/order.svg" />
                 <h6 className="mb-0">排序</h6>
-                {/* order sec  要修改(參考mou)*/}
+                {/* order sec */}
                 <div className="g-order-sec">
                   <a href>
-                    <h6>價格由高至低</h6>
+                    <h6
+                      className={selectedSort.sort === 'price' && selectedSort.order === 'DESC' ? 'active' : ''}
+                      onClick={() => {
+                          const updatedCriteria = {...criteria, sort: 'price', order: 'DESC'}
+                          const newQueryString = generateQueryString(updatedCriteria)
+                          setCriteria(updatedCriteria)
+                          setQueryString(newQueryString)
+                          getPdData(newQueryString)
+                          setSelectedSort({sort: 'price', order: 'DESC'})
+                      }}
+                    >
+                      價格由高至低
+                    </h6>
                   </a>
                   <a href>
-                    <h6>價格由低至高</h6>
+                    <h6
+                      className={selectedSort.sort === 'price' && selectedSort.order === 'ASC' ? 'active' : ''}
+                      onClick={() => {
+                          const updatedCriteria = {...criteria, sort: 'price', order: 'ASC'}
+                          const newQueryString = generateQueryString(updatedCriteria)
+                          setCriteria(updatedCriteria)
+                          setQueryString(newQueryString)
+                          getPdData(newQueryString)
+                          setSelectedSort({sort: 'price', order: 'ASC'})
+                      }}
+                    >
+                      價格由低至高
+                    </h6>
                   </a>
                   <a href>
-                    <h6>商品名稱 A - Z</h6>
+                    <h6
+                      className={selectedSort.sort === 'name' && selectedSort.order === 'ASC' ? 'active' : ''}
+                      onClick={() => {
+                          const updatedCriteria = {...criteria, sort: 'name', order: 'ASC'}
+                          const newQueryString = generateQueryString(updatedCriteria)
+                          setCriteria(updatedCriteria)
+                          setQueryString(newQueryString)
+                          getPdData(newQueryString)
+                          setSelectedSort({sort: 'name', order: 'ASC'})
+                      }}
+                    >
+                      商品名稱 A - Z
+                    </h6>
                   </a>
                   <a href>
-                    <h6>商品名稱 Z - A</h6>
+                    <h6
+                      className={selectedSort.sort === 'name' && selectedSort.order === 'DESC' ? 'active' : ''}
+                      onClick={() => {
+                          const updatedCriteria = {...criteria, sort: 'name', order: 'DESC'}
+                          const newQueryString = generateQueryString(updatedCriteria)
+                          setCriteria(updatedCriteria)
+                          setQueryString(newQueryString)
+                          getPdData(newQueryString)
+                          setSelectedSort({sort: 'name', order: 'DESC'})
+                      }}
+                    >
+                      商品名稱 Z - A
+                    </h6>
                   </a>
                 </div>
               </div>
@@ -95,240 +408,40 @@ export default function ProductListPage(props) {
         <section className="g-pdlist px-modified">
           <div className="container-fluid p-1">
             <div className="row row-cols-xl-4 row-cols-2">
-              {/* <ProductCard /> */}
-              {pdData.map((product, i) => (
+              {pdData.slice(0, visibleCount).map((product, i) => (
                 <ProductCard key={product.id} data={product} />
               ))}
             </div>
           </div>
         </section>
         <div className="g-more-sec d-flex justify-content-center align-items-center">
-          <button className="g-more-btn">
+        {visibleCount < pdData.length ? (
+          <button className="g-more-btn" onClick={() => {setVisibleCount((prev) => prev + 12)}}>
             <h6 className="mb-0">瀏覽更多</h6>
-          </button>
+          </button> ) : (<h6 className="mb-0 g-all">- 已顯示所有商品 -</h6>)
+        }
         </div>
-        {/* filter bar sec */}
-        <section className={`g-filter-sec ${filterOpen ? 'active' : ''}`}>
-          <div className="container-fluid p-0">
-            <div className="g-filter-bar">
-              <div className="g-clear d-flex justify-content-between">
-                <a href="">
-                  <h6 className="g-clear-link mb-0">清除篩選條件</h6>
-                </a>
-                <img
-                  width="16px"
-                  src="/images/product/list/x.svg"
-                  onClick={() => {
-                    setFilterOpen(false)
-                  }}
-                />
-              </div>
-              <div className="g-filter-scroll">
-                <div className="g-brand-sec">
-                  <div className="g-filter-title py-4">
-                    <h6 className="mb-0">品牌</h6>
-                  </div>
-                  <ul className="list-unstyled mt-4">
-                    <li className="pb-3">
-                      <div className="form-check mb-0">
-                        <input
-                          className="form-check-input focus-ring"
-                          style={{
-                            '--bsFocusRingColor': 'rgba(var(--white), 0)',
-                          }}
-                          type="checkbox"
-                          defaultValue
-                          id="gibson"
-                        />
-                        <label className="form-check-label" htmlFor="gibson">
-                          <h6 className="h7">Gibson</h6>
-                        </label>
-                      </div>
-                    </li>
-                    <li className="pb-3">
-                      <div className="form-check mb-0">
-                        <input
-                          className="form-check-input focus-ring"
-                          style={{
-                            '--bsFocusRingColor': 'rgba(var(--white), 0)',
-                          }}
-                          type="checkbox"
-                          defaultValue
-                          id="fender"
-                        />
-                        <label className="form-check-label" htmlFor="fender">
-                          <h6 className="h7">Fender</h6>
-                        </label>
-                      </div>
-                    </li>
-                    <li className="pb-3">
-                      <div className="form-check mb-0">
-                        <input
-                          className="form-check-input focus-ring"
-                          style={{
-                            '--bsFocusRingColor': 'rgba(var(--white), 0)',
-                          }}
-                          type="checkbox"
-                          defaultValue
-                          id="yamaha"
-                        />
-                        <label className="form-check-label" htmlFor="yamaha">
-                          <h6 className="h7">Yamaha</h6>
-                        </label>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div className="g-palette-sec">
-                  <div className="g-filter-title py-4">
-                    <h6 className="mb-0">色系類別</h6>
-                  </div>
-                  <div className="g-series-sec d-flex flex-wrap gap-1 pt-4 pb-3">
-                    <div className="g-series g-series1">
-                      <h6 className="h7 mb-0">JSHINE</h6>
-                      <p className="mb-0" style={{ fontWeight: 500 }}>
-                        曜彩系列
-                      </p>
-                    </div>
-                    <div className="g-series g-series2">
-                      <h6 className="h7 mb-0">SUNRISE WOOD</h6>
-                      <p className="mb-0" style={{ fontWeight: 500 }}>
-                        晨曦木韻系列
-                      </p>
-                    </div>
-                    <div className="g-series g-series3">
-                      <h6 className="h7 mb-0">GREY &amp; WHITE</h6>
-                      <p className="mb-0" style={{ fontWeight: 500 }}>
-                        石韻白系列
-                      </p>
-                    </div>
-                    <div className="g-series g-series4">
-                      <h6 className="h7 mb-0">MIDNIGHT CITY</h6>
-                      <p className="mb-0" style={{ fontWeight: 500 }}>
-                        夜晚城市系列
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="g-color-sec">
-                  <div className="g-filter-title py-4">
-                    <h6 className="mb-0">顏色</h6>
-                  </div>
-                  <div className="g-color-filter pt-4 pb-3">
-                    <img src="/images/product/list/lightblue.svg" />
-                    <img src="/images/product/list/darkblue.svg" />
-                    <img src="/images/product/list/purple.svg" />
-                    <img src="/images/product/list/green.svg" />
-                    <img src="/images/product/list/red.svg" />
-                    <img src="/images/product/list/yellow.svg" />
-                    <img src="/images/product/list/orange.svg" />
-                    <img src="/images/product/list/brown.svg" />
-                    <img src="/images/product/list/dark-brown.svg" />
-                    <img src="/images/product/list/white.svg" />
-                    <img src="/images/product/list/grey.svg" />
-                    <img src="/images/product/list/black.svg" />
-                  </div>
-                </div>
-                <div className="g-price-sec">
-                  <div className="g-filter-title py-4">
-                    <h6 className="mb-0">價錢</h6>
-                  </div>
-                  <ul className="list-unstyled mt-4">
-                    <li className="pb-3">
-                      <div className="form-check mb-0">
-                        <input
-                          className="form-check-input focus-ring"
-                          style={{
-                            '--bsFocusRingColor': 'rgba(var(--white), 0)',
-                          }}
-                          type="checkbox"
-                          defaultValue
-                          id="price1"
-                        />
-                        <label className="form-check-label" htmlFor="price1">
-                          <h6>
-                            NT$50,000以下{' '}
-                            <span style={{ color: 'var(--grey500)' }}>
-                              (171)
-                            </span>
-                          </h6>
-                        </label>
-                      </div>
-                    </li>
-                    <li className="pb-3">
-                      <div className="form-check mb-0">
-                        <input
-                          className="form-check-input focus-ring"
-                          style={{
-                            '--bsFocusRingColor': 'rgba(var(--white), 0)',
-                          }}
-                          type="checkbox"
-                          defaultValue
-                          id="price2"
-                        />
-                        <label className="form-check-label" htmlFor="price2">
-                          <h6>
-                            NT$50,000 - NT$100,000{' '}
-                            <span style={{ color: 'var(--grey500)' }}>
-                              (171)
-                            </span>
-                          </h6>
-                        </label>
-                      </div>
-                    </li>
-                    <li className="pb-3">
-                      <div className="form-check mb-0">
-                        <input
-                          className="form-check-input focus-ring"
-                          style={{
-                            '--bsFocusRingColor': 'rgba(var(--white), 0)',
-                          }}
-                          type="checkbox"
-                          defaultValue
-                          id="price3"
-                        />
-                        <label className="form-check-label" htmlFor="price3">
-                          <h6>
-                            NT$100,000 - NT$150,000{' '}
-                            <span style={{ color: 'var(--grey500)' }}>
-                              (171)
-                            </span>
-                          </h6>
-                        </label>
-                      </div>
-                    </li>
-                    <li className="pb-3">
-                      <div className="form-check mb-0">
-                        <input
-                          className="form-check-input focus-ring"
-                          style={{
-                            '--bsFocusRingColor': 'rgba(var(--white), 0)',
-                          }}
-                          type="checkbox"
-                          defaultValue
-                          id="price4"
-                        />
-                        <label className="form-check-label" htmlFor="price4">
-                          <h6>
-                            NT$200,000以上{' '}
-                            <span style={{ color: 'var(--grey500)' }}>
-                              (171)
-                            </span>
-                          </h6>
-                        </label>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="g-action pt-4 text-center">
-                <button className="g-action-btn">
-                  <h6 className="mb-0">顯示產品</h6>
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
+        <FilterBar
+          filterOpen={filterOpen}
+          setFilterOpen={setFilterOpen}
+          criteria={criteria}
+          setCriteria={setCriteria}
+          generateQueryString={generateQueryString}
+          queryString={queryString}
+          setQueryString={setQueryString}
+          // handleSearch={handleSearch}
+          getPdData={getPdData}
+          brandIds={brandIds}
+          setBrandIds={(value) => setCriteriaByName('brandIds', value)}
+          colorPids={colorPids}
+          setColorPids={(value) => setCriteriaByName('colorPids', value)}
+          colorIds={colorIds}
+          setColorIds={(value) => setCriteriaByName('colorIds', value)}
+          priceGte={priceGte}
+          setPriceGte={(value) => setCriteriaByName('priceGte', value)}
+          priceLte={priceLte}
+          setPriceLte={(value) => setCriteriaByName('priceLte', value)}
+        />
         {/* comparision sec */}
         <section
           className={`g-compare-sec px-modified ${

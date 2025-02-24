@@ -33,7 +33,7 @@ export default function UserPage() {
   const { logout } = useAuthLogout()
 
   // 取得登入狀態
-  const { isAuth } = useAuth()
+  const { isAuth, setIsAuth } = useAuth()
   const router = useRouter()
   const [isClient, setIsClient] = useState(false)
 
@@ -91,7 +91,7 @@ export default function UserPage() {
 
       if (resData?.status === 'success') {
         localStorage.setItem('userId', resData.data.user.id)
-
+        setIsAuth(true)
         mutate()
         toast.success('已成功登入')
         if (isClient) {
@@ -143,6 +143,13 @@ export default function UserPage() {
       toast.error('登出失敗')
     }
   }
+
+  // 如果已登入，重定向到首頁
+  useEffect(() => {
+    if (isAuth) {
+      router.push('/')
+    }
+  }, [isAuth, router])
 
   return (
     <>
@@ -246,11 +253,11 @@ export default function UserPage() {
               </span>
             </div>
           </form>
-          {isAuth && (
+          {/* {isAuth && (
             <button className="logout-button" onClick={handleLogout}>
               登出
             </button>
-          )}
+          )} */}
         </div>
       </div>
       <ToastContainer />

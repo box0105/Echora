@@ -84,7 +84,7 @@ const otpMailHtml = (otpToken, secret) => `<!DOCTYPE html>
 
     <div class="container">
         <div class="header">
-            <img src="${serverConfig.nextUrl}/kawaii_next.png" alt="Company Logo" width="150"> 
+            <img src="${serverConfig.nextUrl}/images/user/logo.svg" alt="Company Logo" width="150"> 
             <h1 style="color: #ffffff;">重設登入密碼的一次性驗証碼(OTP)</h1>
         </div>
         <div class="content">
@@ -96,7 +96,7 @@ const otpMailHtml = (otpToken, secret) => `<!DOCTYPE html>
             <p>請注意驗証碼將於寄送後5分鐘後到期，如有任何問題請洽網站客服人員。</p>
         </div>
         <div class="footer">
-            <p>&copy; 2024 台灣 NextJS Inc. 網站.</p>
+            <p>&copy; Echora 拾光</p>
         </div>
     </div>
 
@@ -118,7 +118,7 @@ ${otpToken}
 
 敬上
 
-台灣 NextJS Inc. 網站`
+Echora 拾光`
 
 // 測試用一般寄送
 export const sendOtpMail = async (to, otpToken, secret = '') => {

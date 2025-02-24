@@ -118,5 +118,17 @@
     "postcode": "970",
     "emailValidated": false,
     "googleUid": null
+  },
+  {
+    "id": 100,
+    "username": "wabi",
+    "password": "12345",
+    "email": "test@example.com",
+    "sex": "female",
+    "phone": "0906985221",
+    "address": "新北市三峽區國慶路",
+    "postcode": null,
+    "emailValidated": false,
+    "googleUid": null
   }
 ]
