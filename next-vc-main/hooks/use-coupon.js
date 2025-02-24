@@ -12,15 +12,15 @@ export function MyCouponProvider({ children }) {
   // 錯誤物件
   const [error, setError] = useState(null)
 
-  const claimCoupon = async (userId, couponId) => {
+  const claimCoupon = async (userId, couponId, typeId) => {
     try {
       // http://localhost:3005/api/coupon/resource
-      const res = await fetch(`http://localhost:3005/api/coupon/100/100`, {
+      const res = await fetch(`http://localhost:3005/api/coupon/100`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
         },
-        body: JSON.stringify({ userId: userId, couponId: couponId }),
+        body: JSON.stringify({ userId: userId, couponId: couponId, typeId: typeId }),
       })
 
       const data = await res.json()
@@ -35,7 +35,7 @@ export function MyCouponProvider({ children }) {
   }
 
   // 領取提示
-  const notifyAndGet = async (itemId) => {
+  const notifyAndGet = async (itemId,typeId) => {
     const MySwal = withReactContent(Swal)
     try {
       const result = await MySwal.fire({
@@ -49,7 +49,7 @@ export function MyCouponProvider({ children }) {
       })
       if (result.isConfirmed) {
         // 進行領取
-        const res = await claimCoupon(100, itemId)
+        const res = await claimCoupon(100, itemId, typeId)
         console.log(res)
         // callback()
 

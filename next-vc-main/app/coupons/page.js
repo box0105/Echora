@@ -18,7 +18,7 @@ export default async function CouponPage() {
         const res = await fetch(url)
         if (!res.ok) throw new Error('狀態錯誤')
         const data = await res.json()
-        // console.log(data.data)
+        console.log(data.data)
         setCoupon(data.data)
       } catch (err) {
         console.log('發生錯誤', err)
@@ -35,7 +35,7 @@ export default async function CouponPage() {
 
   const fetchUserCoupon = async () => {
     try {
-      const url = `http://localhost:3005/api/coupon/100`
+      const url = `http://localhost:3005/api/coupon/100/`
       const res = await fetch(url)
       if (!res.ok) throw new Error('狀態錯誤')
       const data = await res.json()
@@ -80,7 +80,7 @@ export default async function CouponPage() {
                 <div className="col ">
                   <div className="text">
                     {item.name}
-                    <br />${item.discount}
+                    <br />${item.discount} 
                   </div>
                   <br />
 
@@ -88,7 +88,7 @@ export default async function CouponPage() {
                     <button
                       className="btn btn-secondary "
                       onClick={async () => {
-                        await notifyAndGet(item.id)
+                        await notifyAndGet(item.id,item.typeId)
                         await fetchUserCoupon()
                       }}
                     >
@@ -100,7 +100,7 @@ export default async function CouponPage() {
                     <button
                       className="btn btn-dark "
                       onClick={async () => {
-                        await notifyAndGet(item.id)
+                        await notifyAndGet(item.id,item.typeId)
                         await fetchUserCoupon()
                       }}
                     >
@@ -117,9 +117,7 @@ export default async function CouponPage() {
             <button
               className="btn btn-outline-dark"
               onClick={() => {
-                coupon.map((item) => {
                   notifyAndGet(coupon.map((item) => item.id))
-                })
               }}
             >
               全部領取

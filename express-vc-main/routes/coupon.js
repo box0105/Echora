@@ -44,6 +44,7 @@ router.get('/:userId', async (req, res) => {
         // user: true, 有需要才回傳使用者的資料 較敏感
         coupon: true,
       },
+
     })
 
     // 2. 轉換資料結構
@@ -74,18 +75,22 @@ router.get('/:userId', async (req, res) => {
   }
 })
 
-// user取得優惠券
-router.post('/:userId/:couponId', async (req, res) => {
+// user取得單張優惠券
+router.post('/:userId', async (req, res) => {
   // const {userId} = req.params; 如果ID有在路徑 可以用此
   const userId = Number(req.params.userId)
+  // const typeId = Number(req.params.typeId)
   // const { couponId } = req.body //送來的資料要包含ID
   // const couponId = Number(req.params.couponId)
 
   // 請求主體的資料會儲存在 req.body 物件中
   const data = req.body
   const { couponId } = data
+  const { typeId } = data
   console.log(couponId)
-  // console.log(Array.isArray(couponId));
+  console.log(typeId);
+  console.log(Array.isArray(couponId));
+
 
   try {
     // 驗證使用者是否存在
@@ -112,14 +117,17 @@ router.post('/:userId/:couponId', async (req, res) => {
     if (Array.isArray(couponId)) {
       console.log('陣列')
       couponId.forEach(async (id) => {
-        const sql = `INSERT INTO usercoupons (userId,couponId,claimed,isDelete) VALUES (?,?,?,?)`
-        const values = [userId, id, true, false]
+        const [row] = await db.query(`SELECT typeId FROM coupon WHERE id = ?`, [id])
+        const typeId = row[0];
+        console.log(typeId);
+        const sql = `INSERT INTO usercoupons (userId,couponId,couponTypeId,claimed,isDelete) VALUES (?,?,?,?,?)`
+        const values = [userId, id, typeId, true, false]
         await db.query(sql, values)
       })
     } else {
       console.log('不是陣列')
-      const sql = `INSERT INTO usercoupons (userId,couponId,claimed,isDelete) VALUES (?,?,?,?)`
-      const values = [userId, couponId, true, false]
+      const sql = `INSERT INTO usercoupons (userId,couponId,couponTypeId,claimed,isDelete) VALUES (?,?,?,?,?)`
+      const values = [userId, couponId, typeId, true, false]
       await db.query(sql, values)
     }
 
