@@ -18,7 +18,7 @@ export default function Header() {
   const handleSearch = (e) => {
     if(e.key === 'Enter' && searchName.trim() !== ''){
       // console.log("導航至:", `/product/list?name_like=${encodeURIComponent(searchName)}`);
-      router.push(`/product/list?name_like=${searchName}`);
+      router.push(`localhost:3000/product/list?name_like=${searchName}`);
       // window.location.href = `/product/list?name_like=${encodeURIComponent(searchName)}`
     }
   }

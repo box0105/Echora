@@ -18,7 +18,8 @@ export default function ProductListPage(props) {
   const comparisionToggle = () => setComparisionOpen(!comparisionOpen)
   // 排序狀態
   const [selectedSort, setSelectedSort] = useState({sort: 'price', order: 'ASC'})
-
+  // 瀏覽更多 狀態
+  const [visibleCount, setVisibleCount] = useState(12)
 
   // 搜尋條件
   const [queryString, setQueryString] = useState('')
@@ -27,8 +28,8 @@ export default function ProductListPage(props) {
   const { criteria, setCriteria, defaultCriteria } = useProductState()
   // 從context中取得目前記錄的共享條件的值
   const {
-    page,
-    perpage,
+    // page,
+    // perpage,
     nameLike,
     brandIds,
     colorPids,
@@ -48,11 +49,11 @@ export default function ProductListPage(props) {
   }
 
   // 產生查詢字串
-  const generateQueryString = (criteria, exceptPage = false) => {
+  const generateQueryString = (criteria) => {
     const query = {}
     for (const key in criteria) {
       // 略過page
-      if (key === 'page' && exceptPage) continue
+      // if (key === 'page' && exceptPage) continue
 
       // 這裡是將數字陣列轉為字串，轉換為snake_case名稱
       if (key === 'brandIds') {
@@ -100,7 +101,6 @@ export default function ProductListPage(props) {
         .values(),
     ]
   }
-
   const convertData = async (data) => {
     // 擴充原始資料的索引值(不一定需要)，方便後續操作例如排序…
     const arr = data.map((v, i) => ({ ...v, originalIndex: i }))
@@ -167,7 +167,7 @@ export default function ProductListPage(props) {
       const data = await res.json()
       const finalData = await convertData(data.data)
       setPdData(finalData)
-      console.log(finalData)
+      // console.log(finalData)
 
       // console.log(data.data);
       // // 資料整理(符合product card UI)
@@ -270,6 +270,7 @@ export default function ProductListPage(props) {
 
   useEffect(() => {
     setQueryString(generateQueryString(criteria))
+    setVisibleCount(12)
   }, [criteria])
 
   useEffect(() => {
@@ -302,7 +303,7 @@ export default function ProductListPage(props) {
         <div className="g-pdlist-topbar px-modified">
           <div className="container-fluid d-flex justify-content-between p-0">
             <div className="g-left d-flex align-items-center">
-              <h6 className="g-amount mb-0">00 商品</h6>
+              <h6 className="g-amount mb-0">{pdData.length} 件商品</h6>
               <div
                 className="g-fliter d-sm-flex d-none"
                 onClick={() => {
@@ -403,16 +404,18 @@ export default function ProductListPage(props) {
         <section className="g-pdlist px-modified">
           <div className="container-fluid p-1">
             <div className="row row-cols-xl-4 row-cols-2">
-              {pdData.map((product, i) => (
+              {pdData.slice(0, visibleCount).map((product, i) => (
                 <ProductCard key={product.id} data={product} />
               ))}
             </div>
           </div>
         </section>
         <div className="g-more-sec d-flex justify-content-center align-items-center">
-          <button className="g-more-btn">
+        {visibleCount < pdData.length ? (
+          <button className="g-more-btn" onClick={() => {setVisibleCount((prev) => prev + 12)}}>
             <h6 className="mb-0">瀏覽更多</h6>
-          </button>
+          </button> ) : (<h6 className="mb-0 g-all">- 已顯示所有商品 -</h6>)
+        }
         </div>
         <FilterBar
           filterOpen={filterOpen}

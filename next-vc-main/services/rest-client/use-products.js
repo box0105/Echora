@@ -3,8 +3,8 @@ import { createContext, useContext, useState } from 'react'
 
 // 預設搜尋條件
 const defaultCriteria = {
-  page: 1,
-  perpage: 8,
+  // page: 1,
+  // perpage: 8,
   nameLike: '',
   brandIds: [],
   colorPids: [],

@@ -142,6 +142,16 @@
   background-color: #ffffff00;
   padding: 12px 24px;
   width: 240px;
+  transition: all 0.15s ease-out;
+
+  &:hover{
+    background-color: var(--black);
+    color: var(--white);
+  }
+}
+
+.g-all{
+  color: var(--grey900);
 }
 
 // /* filter side bar */
