@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 
 export default function PriceSlider({ max = 10000, percent = 0.3, step = 0.05 }) {

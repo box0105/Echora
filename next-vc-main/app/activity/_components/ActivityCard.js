@@ -1,3 +1,5 @@
+"use client";
+
 import ActivityCardBase from './ActivityCardBase';
 
 export default function ActivityCard({ data }) {

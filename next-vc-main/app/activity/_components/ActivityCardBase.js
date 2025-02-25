@@ -1,4 +1,7 @@
+"use client";
+
 import Image from 'next/image';
+import Link from 'next/link'
 import { dateFormat } from '../_utils/dateFormat';
 
 export default function ActivityCardBase({ data, imageSize, showCategory, showLocation, children }) {
@@ -24,7 +27,7 @@ export default function ActivityCardBase({ data, imageSize, showCategory, showLo
               <div className="b-text d-flex flex-column">
                 {showCategory && <h4 className="b-sm-none">{data?.category.name}</h4>}
                 <h2 className="card-title">
-                  <a href={`data/detail?id=${data?.id}`}>{data?.name}</a>
+                  <Link href={`/activity/${data?.id}`}>{data?.name}</Link>
                 </h2>
                 <h5>
                   {`日期 : ${dateFormat(data.date_start)} ${data.date_end ? ` ~ ${dateFormat(data.date_end)}` : ''}`}
