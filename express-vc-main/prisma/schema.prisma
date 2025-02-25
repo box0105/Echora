@@ -29,11 +29,11 @@ model User {
   emailValidated Boolean       @default(false) @map("email_validated")
   googleUid      String?       @unique @map("google_uid")
   // 關聯: User:Product = n:m 透過 Favorite
-  userLike       userLike[]
+  favorite       favorite[]
   usercoupons    UserCoupons[]
 }
 
-model userLike {
+model favorite {
   // 關聯: User:userLike = 1:n 
   user      User    @relation(fields: [userId], references: [id])
   userId    Int     @map("user_id")
@@ -43,7 +43,6 @@ model userLike {
 
   // 複合主鍵
   @@id([userId, productId])
-  @@map("user_like")
 }
 
 model Order {
@@ -126,7 +125,7 @@ model Product {
   price         Int         @default(0)
   discountPrice Int?        @map("discount_price")
   createdAt     DateTime    @default(now()) @map("created_at")
-  userLike      userLike[]
+  favorite      favorite[]
   OrderItem     OrderItem[]
 
   @@map("product")

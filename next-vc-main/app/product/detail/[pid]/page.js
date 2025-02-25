@@ -4,6 +4,7 @@ import './detail.scss'
 import { useState, useEffect } from 'react'
 import { useMyCart } from '@/hooks/use-cart'
 import { useParams } from 'next/navigation'
+import { method } from 'lodash'
 
 export default function ProductDetailIdPage() {
   //box
@@ -19,7 +20,7 @@ export default function ProductDetailIdPage() {
   const [detailData, setDetailData] = useState([])
   // 取得網址上的動態參數
   const params = useParams()
-  const pid = params.pid
+  const pid = Number(params.pid)
   const getDetailData = async () => {
     try {
       const res = await fetch(`http://localhost:3005/api/products/${pid}`)
@@ -93,9 +94,80 @@ export default function ProductDetailIdPage() {
     }
   }
 
+  //favorite
+  const [favIcon, setFavIcon] = useState("heart.svg")
+  const [favItems, setFavItems] = useState([]);
+  const [uid, setUid] = useState(null);
+  const toggleFav = () => {
+    if(uid){
+      if(favItems.includes(pid)){
+        setFavIcon("heart.svg")
+        removeFromFav(uid,pid)
+      }else{
+        setFavIcon("heart-solid.svg")
+        addToFav(uid,pid)
+      }
+      getFav(uid)
+    }else{
+      alert("請先登入")
+    }
+  }
+  const getFav = async (uid) => {
+    try{
+      const res = await fetch(`http://localhost:3005/api/favorite/${uid}`)
+      const data = await res.json()
+      setFavItems(data.data)
+      if(data.data.includes(pid)){
+        setFavIcon("heart-solid.svg")
+      }
+    }catch(err){
+      console.log(err);
+    }
+  }
+
+  const addToFav = async (uid, pid) => {
+    try {
+      const res = await fetch(
+        `http://localhost:3005/api/favorite/${uid}/${pid}`,
+        {
+          method: 'PUT'
+        }
+      )
+      const result = await res.json()
+      if(result.status === "success"){
+        alert("已加入我的收藏")
+      }
+    } catch (err) {
+      alert("加入失敗")
+      console.log(err);
+    }
+  }
+
+  const removeFromFav = async (uid, pid) => {
+    try {
+      const res = await fetch(
+        `http://localhost:3005/api/favorite/${uid}/${pid}`,
+        {
+          method: 'DELETE'
+        }
+      )
+      const result = await res.json()
+      if(result.status === "success"){
+        alert("已從我的收藏移除商品")
+      }
+    } catch (err) {
+      alert("移除失敗")
+      console.log(err);
+    }
+  }
+
+
   //didmount後執行getDetailData()
   useEffect(() => {
     getDetailData()
+    const storedUid = localStorage.getItem("userId")
+    setUid(storedUid)
+    getFav(storedUid)
   }, [])
 
   if (!detailData.length) {
@@ -160,8 +232,9 @@ export default function ProductDetailIdPage() {
               <div className="g-pd-discrip col-lg-5 h-100">
                 <img
                   className="g-heart"
-                  src="/images/product/detail/heart.svg"
+                  src={`/images/product/detail/${favIcon}`}
                   alt=""
+                  onClick={toggleFav}
                 />
                 <h3 className="h3 mb-0 me-5">{detailData[0].name}</h3>
                 <h6 className="g-price h6 m-0">NT$ {detailData[0].price}</h6>

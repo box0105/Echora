@@ -9,10 +9,10 @@ const router = express.Router()
 router.get('/', async (req, res) => {
   // type決定是否取得資料
   // type=data 需取得資料; type=count 不需取得資料
-  const type = req.query.type || 'all'
+  // const type = req.query.type || 'all'
 
-  const page = Number(req.query.page) || 1
-  const perPage = Number(req.query.perpage) || 8
+  // const page = Number(req.query.page) || 1
+  // const perPage = Number(req.query.perpage) || 8
 
   //搜尋參數
   const nameLike = req.query.name_like || ''

@@ -1,6 +1,8 @@
 import { useQuery } from './use-fetcher'
 import { createContext, useContext, useState } from 'react'
 
+
+//products
 // 預設搜尋條件
 const defaultCriteria = {
   // page: 1,
@@ -71,3 +73,6 @@ export const useGetColorPalette = () => {
 
   return { colorpalette, error, isloading }
 }
+
+//favorite
+
