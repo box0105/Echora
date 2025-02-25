@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-// import { useMyCart } from '@/hooks/use-cart'
+import { useMyCart } from '@/hooks/use-cart'
 import { dateFormat } from '../_utils/dateFormat'
 
 export default function PurchaseAside({ data }) {
