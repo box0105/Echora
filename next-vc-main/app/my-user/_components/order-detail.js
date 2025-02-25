@@ -36,11 +36,11 @@ export default function ComponentsOrderDetail() {
 
   return (
     <>
-      <div>
+      <div className=''>
         <br />
-        <div className="row">
+        <div className="row w-100 ">
           <div className="col col-6">
-            <h4>訂單編號 : {order.orderNumber}</h4>
+            <h3>訂單編號 : {order.orderNumber}</h3>
             <br />
             <p>建單日期 : {order.createdAt.split('.')[0]}</p>
             <p>收件人 : {order.recipient}</p>
@@ -84,6 +84,11 @@ export default function ComponentsOrderDetail() {
                           <h6 className="card-text">
                             <strong>商品名稱 :</strong> {item.name}
                           </h6>
+                          {item.status && (
+                            <h6 className="card-text">
+                              <strong>票種 :</strong> {item.status}
+                            </h6>
+                          )}
                           <h6 className="card-text">
                             <strong>數量 :</strong> {item.count}
                           </h6>
