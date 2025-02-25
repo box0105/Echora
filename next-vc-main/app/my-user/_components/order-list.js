@@ -55,7 +55,7 @@ export default function OrderList() {
               <td><h6>{order.createdAt.split('.')[0]}</h6></td>
               <td><h6>{order.paymentMethod}</h6></td>
               <td><h6>{order.shippingMethod}</h6></td>
-              <td><h6>{order.totalAmount}</h6></td>
+              <td><h6>NT$ {order.totalAmount}</h6></td>
             </tr>
           ))}
         </tbody>

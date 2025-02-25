@@ -88,7 +88,7 @@ export default function ComponentsOrderDetail() {
                             <strong>數量 :</strong> {item.count}
                           </h6>
                           <h6 className="card-text">
-                            <strong>價錢 :</strong> {item.price}
+                            <strong>價錢 : </strong>NT$ {item.price}
                           </h6>
                         </div>
                       </div>
