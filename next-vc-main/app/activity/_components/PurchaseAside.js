@@ -7,10 +7,10 @@ import { dateFormat } from '../_utils/dateFormat'
 export default function PurchaseAside({ data }) {
   const tickets = data?.type
   const isFree = tickets[0]?.price != 0
-  
+
   const [selectedTickets, setSelectedTickets] = useState(new Set())
   const [error, setError] = useState('')
-  const {onAdd} = useMyCart();
+  const { onAddActivity } = useMyCart()
 
   // 選取的票卷
   const toggleTicketSelection = (ticketId) => {
@@ -21,7 +21,7 @@ export default function PurchaseAside({ data }) {
       } else {
         newSelection.add(ticketId)
       }
-      setError('');
+      setError('')
       return newSelection
     })
   }
@@ -33,7 +33,7 @@ export default function PurchaseAside({ data }) {
 
     if (!selectedTicketData.length) {
       setError('請選擇票卷方案')
-      return;
+      return
     }
 
     const cartData = {
@@ -44,11 +44,11 @@ export default function PurchaseAside({ data }) {
       city: data.city,
       dist: data.dist,
       address: data.address,
-      image: data.media.split(',')[0],
+      image: `/images/activity/${data.media.split(',')[0]}`,
       selectedTickets: selectedTicketData, // 選擇的票券
     }
-    
-    // onAdd(cartData)
+
+    onAddActivity(cartData)
     console.log(JSON.stringify(cartData, null, 2))
   }
 
