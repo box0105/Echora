@@ -66,9 +66,13 @@ export default function MemberLayout({ children }) {
                   <Link href="/my-user/order"> 我的訂單</Link>
                 </h5>
                 <h5 className="tab-link" data-tab="favorites">
-                  我的收藏
+                  <Link href="/my-user/favorites"> 我的收藏</Link>
                 </h5>
-                <Link href="/my-user/coupons" className="tab-link" data-tab="coupons">
+                <Link
+                  href="/my-user/coupons"
+                  className="tab-link"
+                  data-tab="coupons"
+                >
                   我的優惠券
                 </Link>
               </div>
@@ -102,10 +106,14 @@ export default function MemberLayout({ children }) {
                 </h2>
               </div>
               <div className="sidebar-section">
-                <h2 className="sidebar-title">我的收藏</h2>
+                <h2 className="sidebar-title">
+                  <Link href="/my-user/favorites"> 我的收藏</Link>
+                </h2>
               </div>
               <div className="sidebar-section">
-                <Link href="/my-user/coupons" className="sidebar-title">我的優惠券</Link>
+                <Link href="/my-user/coupons" className="sidebar-title">
+                  我的優惠券
+                </Link>
               </div>
             </aside>
             <div className="profile-content">{children}</div>

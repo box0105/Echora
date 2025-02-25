@@ -88,87 +88,100 @@ export default function ProductDetailIdPage() {
       })
 
       console.log(Object.values(products))
+      console.log(Object.values(products)[0].defaultSelectedSku)
       setDetailData(Object.values(products))
+      setSelectedSku(Object.values(products)[0].defaultSelectedSku)
     } catch (err) {
       console.log(err)
     }
   }
 
   //favorite
-  const [favIcon, setFavIcon] = useState("heart.svg")
-  const [favItems, setFavItems] = useState([]);
-  const [uid, setUid] = useState(null);
+  const [favIcon, setFavIcon] = useState('heart.svg')
+  const [favItems, setFavItems] = useState([])
+  const [uid, setUid] = useState(null)
   const toggleFav = () => {
-    if(uid){
-      if(favItems.includes(pid)){
-        setFavIcon("heart.svg")
-        removeFromFav(uid,pid)
-      }else{
-        setFavIcon("heart-solid.svg")
-        addToFav(uid,pid)
-      }
-      getFav(uid)
-    }else{
-      alert("請先登入")
+    if (!uid) {
+      alert('請先登入')
+      return
     }
+
+    if (!selectedSku) {
+      alert('請先選擇顏色')
+      return
+    }
+
+    if (favItems.includes(selectedSku)) {
+      setFavIcon('heart.svg')
+      removeFromFav(uid, selectedSku)
+    } else {
+      setFavIcon('heart-solid.svg')
+      addToFav(uid, selectedSku)
+    }
+    getFav(uid)
   }
   const getFav = async (uid) => {
-    try{
+    try {
       const res = await fetch(`http://localhost:3005/api/favorite/${uid}`)
       const data = await res.json()
       setFavItems(data.data)
-      if(data.data.includes(pid)){
-        setFavIcon("heart-solid.svg")
+      if (selectedSku && data.data.includes(selectedSku)) {
+        setFavIcon('heart-solid.svg')
+      }else{
+        setFavIcon('heart.svg')
       }
-    }catch(err){
-      console.log(err);
+    } catch (err) {
+      console.log(err)
     }
   }
 
-  const addToFav = async (uid, pid) => {
+  const addToFav = async (uid, skuid) => {
     try {
       const res = await fetch(
-        `http://localhost:3005/api/favorite/${uid}/${pid}`,
+        `http://localhost:3005/api/favorite/${uid}/${skuid}`,
         {
-          method: 'PUT'
+          method: 'PUT',
         }
       )
       const result = await res.json()
-      if(result.status === "success"){
-        alert("已加入我的收藏")
+      if (result.status === 'success') {
+        alert('已加入我的收藏')
       }
     } catch (err) {
-      alert("加入失敗")
-      console.log(err);
+      alert('加入失敗')
+      console.log(err)
     }
   }
 
-  const removeFromFav = async (uid, pid) => {
+  const removeFromFav = async (uid, skuid) => {
     try {
       const res = await fetch(
-        `http://localhost:3005/api/favorite/${uid}/${pid}`,
+        `http://localhost:3005/api/favorite/${uid}/${skuid}`,
         {
-          method: 'DELETE'
+          method: 'DELETE',
         }
       )
       const result = await res.json()
-      if(result.status === "success"){
-        alert("已從我的收藏移除商品")
+      if (result.status === 'success') {
+        alert('已從我的收藏移除商品')
       }
     } catch (err) {
-      alert("移除失敗")
-      console.log(err);
+      alert('移除失敗')
+      console.log(err)
     }
   }
-
 
   //didmount後執行getDetailData()
   useEffect(() => {
     getDetailData()
-    const storedUid = localStorage.getItem("userId")
+    const storedUid = localStorage.getItem('userId')
     setUid(storedUid)
-    getFav(storedUid)
+    // getFav(storedUid)
   }, [])
+
+  useEffect(() => {
+    getFav(uid)
+  },[selectedSku, uid])
 
   if (!detailData.length) {
     return (

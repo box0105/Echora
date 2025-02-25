@@ -151,30 +151,30 @@ router.get('/colorpalette', async (req, res) => {
 })
 
 // GET /api/products/search?q=
-router.get('/search', async (req, res) => {
-  const { q } = req.query
-  console.log(req.query)
-  try {
-    if (!q) throw new Error('請提供查詢字串')
+// router.get('/search', async (req, res) => {
+//   const { q } = req.query
+//   console.log(req.query)
+//   try {
+//     if (!q) throw new Error('請提供查詢字串')
 
-    const sql =
-      'SELECT product.*, brand.name AS brand_name FROM product JOIN brand ON product.brand_id = brand.id WHERE product.name LIKE ? OR brand.name LIKE ?'
-    const searchQuery = `%${q}%`
-    const [rows] = await db.query(sql, [searchQuery, searchQuery])
+//     const sql =
+//       'SELECT product.*, brand.name AS brand_name FROM product JOIN brand ON product.brand_id = brand.id WHERE product.name LIKE ? OR brand.name LIKE ?'
+//     const searchQuery = `%${q}%`
+//     const [rows] = await db.query(sql, [searchQuery, searchQuery])
 
-    res.status(200).json({
-      status: 'success',
-      data: rows,
-      message: `搜尋成功, 條件: ${q}`,
-    })
-  } catch (err) {
-    console.log(err)
-    res.status(400).json({
-      status: 'error',
-      message: err.message ? err.message : '搜尋失敗',
-    })
-  }
-})
+//     res.status(200).json({
+//       status: 'success',
+//       data: rows,
+//       message: `搜尋成功, 條件: ${q}`,
+//     })
+//   } catch (err) {
+//     console.log(err)
+//     res.status(400).json({
+//       status: 'error',
+//       message: err.message ? err.message : '搜尋失敗',
+//     })
+//   }
+// })
 
 // 得到單筆資料
 // GET /api/products/:pid

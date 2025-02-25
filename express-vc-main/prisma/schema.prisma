@@ -38,11 +38,11 @@ model favorite {
   user      User    @relation(fields: [userId], references: [id])
   userId    Int     @map("user_id")
   // 關聯: Product:userLike = 1:n 
-  product   Product @relation(fields: [productId], references: [id])
-  productId Int     @map("product_id")
+  // product   Product @relation(fields: [productSkuId], references: [id])
+  productSkuId String @db.VarChar(20) @map("product_sku_id")
 
   // 複合主鍵
-  @@id([userId, productId])
+  @@id([userId, productSkuId])
 }
 
 model Order {
@@ -125,7 +125,7 @@ model Product {
   price         Int         @default(0)
   discountPrice Int?        @map("discount_price")
   createdAt     DateTime    @default(now()) @map("created_at")
-  favorite      favorite[]
+  // favorite      favorite[]
   OrderItem     OrderItem[]
 
   @@map("product")
