@@ -251,7 +251,7 @@ export default function InformationPage() {
                     type="radio"
                     name="shippingMethod"
                     id="flexRadioDefault1"
-                    value="homeDelivery"
+                    value="宅配到府"
                     defaultChecked
                   />
                   <label
@@ -266,7 +266,7 @@ export default function InformationPage() {
                     type="radio"
                     name="shippingMethod"
                     id="flexRadioDefault2"
-                    value="storePickup"
+                    value="來店自取"
                   />
                   <label
                     className="form-check-label ps-2"

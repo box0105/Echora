@@ -5,7 +5,53 @@ import multer from 'multer'
 const router = express.Router()
 const upload = multer()
 
-// POST http://loaclhost:3005/api/myOrders
+router.get('/', async (req, res) => {
+  const { userId } = req.query
+
+  try {
+    const sql = 'SELECT * FROM `myorder` WHERE userId = ?'
+    const [rows] = await db.query(sql, [userId])
+    res.status(200).json({
+      status: 'success',
+      data: rows,
+      message: '取得資料成功',
+    })
+  } catch (err) {
+    console.log(err)
+    res.status(400).json({
+      status: 'error',
+      message: err.message ? err.message : '取得資料失敗',
+    })
+  }
+})
+
+router.get('/:id', async (req, res) => {
+  const { id } = req.params // 🔹 讀取 orderId
+
+  try {
+    const sql = 'SELECT * FROM `myorderitem` WHERE orderId = ?'
+    const [rows] = await db.query(sql, [id])
+
+    // 取得訂單資訊（假設訂單存放在 `myorders` 表）
+    const orderSql = 'SELECT * FROM `myorder` WHERE id = ?'
+    const [orderRows] = await db.query(orderSql, [id])
+
+    res.status(200).json({
+      status: 'success',
+      order: orderRows[0], // 訂單資訊
+      data: rows, // 訂單商品
+      message: '取得訂單商品成功',
+    })
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({
+      status: 'error',
+      message: '取得訂單商品失敗',
+    })
+  }
+})
+
+// POST http://localhost:3005/api/myOrders
 router.post('/', upload.none(), async function (req, res) {
   try {
     // 解析 localStorage & 表單 傳來的資料
