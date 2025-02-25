@@ -2,7 +2,8 @@
   --article-height: 36rem;
 }
 
-.card-body, .b-card-text {
+.card-body,
+.b-card-text {
   white-space: pre-line;
 }
 
@@ -89,6 +90,33 @@
       width: 100%;
     }
 
+    .b-ticket {
+      border: 2px solid transparent;
+      position: relative;
+      transition: 0.2s;
+
+      &:hover {
+        border-color: var(--grey200);
+      }
+
+      &.active {
+        border-color: var(--grey700);
+        z-index: 5;
+
+        &::before {
+          content: '';
+          position: absolute;
+          background: url('/check-lg.svg') no-repeat;
+          background-size: cover;
+          width: 1.6rem;
+          height: 1.6rem;
+          top: -12;
+          right: -12;
+          z-index: 6;
+        }
+      }
+    }
+
     .b-purchaseBtn {
       margin-top: 3.5rem;
     }
@@ -109,7 +137,8 @@
     }
 
     .b-act-list {
-      padding-block: 2.5rem;
+      padding-top: 1.5rem;
+      padding-bottom: 9rem;
     }
   }
 }

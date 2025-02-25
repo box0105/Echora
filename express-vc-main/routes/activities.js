@@ -9,7 +9,9 @@ const prisma = new PrismaClient()
 const includeType = {
   category: true,
   genre: true,
-  lineup: true
+  article: true,
+  lineup: true,
+  type: true
 }
 
 
@@ -18,11 +20,11 @@ const includeType = {
 // get All
 router.get('/', async (req, res) => {
   try {
-    const activities = await prisma.activity.findMany({
+    const data = await prisma.activity.findMany({
       include: includeType
     })
-
-    successResponse(res, { activities })
+    
+    successResponse(res, { data })
   } catch (error) {
     errorResponse(res, error)
   }
@@ -33,12 +35,12 @@ router.get('/:id', async (req, res) => {
   const { id } = req.params
 
   try {
-    const activity = await prisma.activity.findUnique({
+    const data = await prisma.activity.findUnique({
       where: { id: Number(id) },
       include: includeType
     })
 
-    successResponse(res, { activity })
+    successResponse(res, { data })
   } catch (error) {
     errorResponse(res, error)
   }

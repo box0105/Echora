@@ -14,22 +14,19 @@ import 'swiper/css/pagination'
 import 'swiper/css/effect-fade'
 import 'swiper/css/autoplay'
 
-export default function HeroSection({
-  title = '',
-  subTitle = '',
-  images,
-  isLoop = false,
-}) {
+export default function HeroSection({ title = '', subTitle = '', images }) {
   const src = '/images/activity/'
+  const imageArr = typeof images == 'string' ? images.split(',') : images
+  console.log('Hero', imageArr)
 
   return (
     <Swiper
       navigation={true}
       modules={[Navigation, Pagination, EffectFade, Autoplay]}
       effect="fade" // fade effect
-      loop={isLoop} // 巡迴播放
+      loop={imageArr?.length > 1 ? true : false} // 巡迴播放
       autoplay={{
-        delay: 3000, // 每 3 秒自動播放一次
+        delay: 5000, // 每 3 秒自動播放一次
         disableOnInteraction: false, // 用戶交互後保持自動播放
       }}
       pagination={{
@@ -37,15 +34,16 @@ export default function HeroSection({
       }}
       className="b-swiper"
     >
-      {images?.map((img, i) => (
+      {imageArr?.map((img, i) => (
         <SwiperSlide key={i}>
           <div className="b-swiper-text position-relative b-sm-none">
             <div className="b-swiper-title">{title}</div>
             <div className="b-swiper-subtitle">{subTitle}</div>
           </div>
+
           <Image
             src={`${src}${img}`}
-            alt={`Image ${i}`}
+            alt={`${img}`}
             fill
             className="object-fit-cover"
             priority

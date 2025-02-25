@@ -191,14 +191,13 @@ model Activity {
   dist           String           @db.VarChar(255)
   address        String           @db.VarChar(255)
   intro          String           @db.Text
-  article        String           @db.Text
+  media          String           @db.Text // 多個照片路徑
 
   // 1:n
-  lineup ActivityLineup[]
-  // media         Media[]
-
+  lineup  ActivityLineup[]
+  article ActivityArticle[]
   // tickets       Ticket[]
-  // types         Type[]
+  type    ActivityTicketType[]
 }
 
 model ActivityCategory {
@@ -220,6 +219,25 @@ model ActivityLineup {
   bands       String   @db.VarChar(255)
 }
 
+model ActivityArticle {
+  id          Int      @id @default(autoincrement())
+  activity_id Int
+  activity    Activity @relation(fields: [activity_id], references: [id])
+  title       String   @db.VarChar(255)
+  content     String   @db.Text
+  images      String   @db.Text // 多個照片路徑
+}
+
+model ActivityTicketType {
+  id          Int      @id @default(autoincrement())
+  activity_id Int
+  name        String   @db.VarChar(255)
+  amount      Int
+  price       Int
+  activity    Activity @relation(fields: [activity_id], references: [id])
+  // tickets     Ticket[]
+}
+
 // model Media {
 //   id          Int      @id @default(autoincrement())
 //   activity_id Int
@@ -237,16 +255,6 @@ model ActivityLineup {
 //   qrcode       String   @db.VarChar(255)
 //   activity     Activity @relation(fields: [activity_id], references: [id])
 //   type         Type     @relation(fields: [type_id], references: [id])
-// }
-
-// model Type {
-//   id          Int      @id @default(autoincrement())
-//   activity_id Int
-//   name        String   @db.VarChar(255)
-//   amount      Int
-//   price       Int
-//   activity    Activity @relation(fields: [activity_id], references: [id])
-//   tickets     Ticket[]
 // }
 
 /**
