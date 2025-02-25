@@ -68,7 +68,7 @@ body {
   flex-grow: 1;
   width: 25%;
   max-width: 500px;
-  margin: 140px 0;
+  margin: auto 0;
   padding: 80px 60px 0;
 }
 
@@ -134,6 +134,7 @@ body {
   background: #fff;
   position: relative;
   display: flex;
+  flex-direction: column;
   min-height: 44px;
   color: #595959;
   justify-content: center;
@@ -141,13 +142,10 @@ body {
   font: 500 16px Noto Sans TC, sans-serif;
   border: 1px solid #ccc;
   box-sizing: border-box;
-  margin-top: 10px;
+  margin: 10px;
 }
 
-.input-field {
-  flex-direction: column;
-  margin-top: 16px;
-}
+
 
 .input-field-signup {
   flex: 1;
@@ -167,7 +165,7 @@ body {
   background: #fff;
   z-index: 0;
   display: flex;
-  min-height: 44px;
+  // min-height: 44px;
   width: 100%;
   border: none;
   outline: none;

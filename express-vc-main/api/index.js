@@ -3,6 +3,7 @@ import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import createError from 'http-errors'
 import express from 'express'
+import bodyParser from 'body-parser'
 import logger from 'morgan'
 import path from 'path'
 import session from 'express-session'
@@ -21,6 +22,7 @@ import { pathToFileURL } from 'url'
 
 import 'dotenv/config.js'
 import mailRoutes from '../routes/mail.js'
+import resetPasswordRoutes from '../routes/resetPassword.js'
 // 建立 Express 應用程式
 const app = express()
 
@@ -149,8 +151,15 @@ for (const filename of filenames) {
 }
 // 載入routes中的各路由檔案，並套用api路由 END
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+// 使用 mail 路由
+app.use('/api/', mailRoutes)
+// 使用 resetPassword 路由
+app.use('/api/reset-password', resetPasswordRoutes) // 新增這行
+
 // 捕抓404錯誤處理
-app.use(function (req, res, next) {
+app.use(function (err, req, res, next) {
   next(createError(404))
 })
 
@@ -165,9 +174,6 @@ app.use(function (err, req, res) {
   // 更改為錯誤訊息預設為JSON格式
   res.status(500).send({ error: err })
 })
-
-// 使用 mail 路由
-app.use('/api/users', mailRoutes)
 
 const port = process.env.PORT || 3000
 
