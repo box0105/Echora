@@ -190,7 +190,7 @@ export default function Header() {
                 </a>
               </li>
               <li>
-                <a href="true">
+                <a href="/activity">
                   <div className="d-flex">
                     <h6 className="h7">MUSIC FESTIVALS</h6>
                     <p className="px-1">/</p>
