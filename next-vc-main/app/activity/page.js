@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useFetch } from '@/hooks/use-fetch'
 
 import '@fortawesome/fontawesome-free/css/all.min.css'
@@ -19,26 +19,44 @@ export default function ActivityPage() {
     `http://localhost:3005/api/activities/`
   )
 
+  const [displayActs, setDisplayActs] = useState([])
+  useEffect(() => {
+    if (acts) {
+      setDisplayActs(acts)
+    }
+  }, [acts])
+
   // Filter Switch
   const [isFilterOpen, setIsFilterOpen] = useState(false)
 
   if (isLoading) return <h3>網頁載入中，請稍後...</h3>
 
+  const sortPrice = (order) => {
+    const sorted = [...acts].sort((a, b) => {
+      const priceA = a.type[0].price
+      const priceB = b.type[0].price
+      return order === 'desc' ? priceB - priceA : priceA - priceB
+    })
+    setDisplayActs(sorted)
+  }
+
   // 隨機選取封面照
   const getRandomPhotos = (acts, num) => {
-    const randomIndices = new Set();
-    
+    const randomIndices = new Set()
+
     // C(全部, num)
     while (randomIndices.size < num) {
-      const randomIndex = Math.floor(Math.random() * acts.length);
-      randomIndices.add(randomIndex);
+      const randomIndex = Math.floor(Math.random() * acts.length)
+      randomIndices.add(randomIndex)
     }
 
-    const photos = Array.from(randomIndices).map(index => acts[index].media.split(',')[0]);
-    
-    return photos;
-  };
-  const randomPhotos = getRandomPhotos(acts, 3);
+    const photos = Array.from(randomIndices).map(
+      (index) => acts[index].media.split(',')[0]
+    )
+
+    return photos
+  }
+  const randomPhotos = getRandomPhotos(acts, 3)
 
   return (
     <div className="b-container px-0">
@@ -49,7 +67,7 @@ export default function ActivityPage() {
       />
 
       <div className="b-container">
-        <Title _title="音樂祭/ 流行音樂"/>
+        <Title _title="音樂祭/ 流行音樂" />
       </div>
 
       <div className="b-filter-bar">
@@ -63,7 +81,10 @@ export default function ActivityPage() {
               <i className="fa-solid fa-filter" />
               <h4>篩選</h4>
             </button>
-            <button className="b-order b-btn-unstyled d-flex align-items-baseline">
+            <button
+              className="b-order b-btn-unstyled d-flex align-items-baseline"
+              onClick={() => sortPrice('desc')}
+            >
               <i className="fa-solid fa-arrow-up-wide-short" />
               <h4>排序</h4>
             </button>
@@ -76,7 +97,7 @@ export default function ActivityPage() {
           isOpen={isFilterOpen}
           onClose={() => setIsFilterOpen(!isFilterOpen)}
         />
-        <ActivityList data={acts} numPerPage={6}/>
+        <ActivityList data={displayActs} numPerPage={6} />
       </div>
     </div>
   )
