@@ -54,14 +54,17 @@ export function MyCartProvider({ children }) {
     //box
     const color = selectedColor.name
     const stock = product.stock[selectedColor.skuId]
-    const image = `/images/product/pd-images/${product.images[selectedColor.skuId][0]}`
+    const image = `/images/product/pd-images/${
+      product.images[selectedColor.skuId][0]
+    }`
 
     // 判斷此商品是否已經在購物車裡
     const foundIndex = cartItems.findIndex((v) => v.id === product.id)
 
     if (foundIndex !== -1) {
       // 如果有找到==>遞增商品數量
-      onIncrease(product.id)
+      // onIncrease(product.id)
+      alert('已有相同商品在購物車內')
     } else {
       // 沒找到===>新增商品到購物車
       // product和item(購物車項目)相比，少了一個數量屬性count

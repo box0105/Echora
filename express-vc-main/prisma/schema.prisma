@@ -46,34 +46,6 @@ model userLike {
   @@map("user_like")
 }
 
-model Order {
-  id              Int      @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
-  orderNumber     String?  @unique // 訂單編號
-  userId          Int? // 用戶 ID，代表誰下的訂單
-  // user            User     @relation(fields: [userId], references: [id]) // 關聯到 User 資料表
-  status          String? // 訂單狀態，如：'pending', 'shipped', 'completed'
-  totalAmount     Float? // 訂單總金額
-  paymentMethod   String? // 付款方式，如 'credit_card', 'cash_on_delivery' 等
-  shippingAddress String? // 配送地址，儲存訂單的配送地址
-  shippingMethod  String? // 配送方式，如 'standard', 'express' 等
-  createdAt       DateTime @default(now()) // 訂單創建時間
-  updatedAt       DateTime @updatedAt // 訂單更新時間，自動更新
-
-  // 關聯 OrderItem 資料表，表示一個訂單可以有多個商品
-  items OrderItem[]
-}
-
-model OrderItem {
-  id        Int   @id @default(autoincrement()) // 訂單商品唯一識別碼
-  orderId   Int // 關聯到 Order 資料表的訂單 ID
-  productId Int // 產品 ID
-  quantity  Int // 商品數量
-  price     Float // 商品單價
-
-  order   Order   @relation(fields: [orderId], references: [id]) // 關聯 Order 資料表
-  product Product @relation(fields: [productId], references: [id]) // 關聯 Product 資料表
-}
-
 model Otp {
   id        Int      @id @default(autoincrement())
   email     String
@@ -119,15 +91,14 @@ model Image {
 }
 
 model Product {
-  id            Int         @id @default(autoincrement())
-  name          String      @db.VarChar(100)
-  brandId       Int         @map("brand_id")
-  discription   String      @db.Text
-  price         Int         @default(0)
-  discountPrice Int?        @map("discount_price")
-  createdAt     DateTime    @default(now()) @map("created_at")
+  id            Int        @id @default(autoincrement())
+  name          String     @db.VarChar(100)
+  brandId       Int        @map("brand_id")
+  discription   String     @db.Text
+  price         Int        @default(0)
+  discountPrice Int?       @map("discount_price")
+  createdAt     DateTime   @default(now()) @map("created_at")
   userLike      userLike[]
-  OrderItem     OrderItem[]
 
   @@map("product")
 }
@@ -284,6 +255,8 @@ model ActivityLineup {
 
 model MyOrder {
   id              Int      @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
+  userId          Int?
+  orderNumber     String   @unique
   recipient       String
   phone           String
   email           String
@@ -295,14 +268,16 @@ model MyOrder {
 }
 
 model MyOrderItem {
-  id      Int     @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
-  orderId Int
-  name    String
-  color   String?
-  image   String
-  price   String
-  count   String
-  total   String
+  id       Int     @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
+  orderId  Int
+  name     String
+  rentDate String?
+  color    String?
+  brand    String?
+  image    String
+  price    String
+  count    String
+  total    String
 }
 
 model Rent {

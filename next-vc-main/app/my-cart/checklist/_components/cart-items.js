@@ -22,6 +22,7 @@ export default function CartItem({ item }) {
             <div className="d-flex flex-column justify-content-between flex-grow-1">
               <div>
                 <h4 className="h3 p-lg-x-2 p-lg-1">{item.name}</h4>
+                {item.brand && <h5 className="p-lg-1">品牌: {item.brand}</h5>}
                 {item.rentDate && (
                   <div className="d-flex align-items-end p-lg-1">
                     <h5>租借日期: {item.rentDate}</h5>
