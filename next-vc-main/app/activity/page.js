@@ -33,37 +33,55 @@ export default function ActivityPage() {
 
   const sortPrice = (order) => {
     const sorted = [...acts].sort((a, b) => {
-      const priceA = a.type[0].price
-      const priceB = b.type[0].price
-      return order === 'desc' ? priceB - priceA : priceA - priceB
+      const x = a.type[0].price
+      const y = b.type[0].price
+      return order === 'desc' ? y - x : x - y
+    })
+    setDisplayActs(sorted)
+  }
+
+  const sortId = (order) => {
+    const sorted = [...acts].sort((a, b) => {
+      const x = a.id
+      const y = b.id
+      return order === 'desc' ? y - x : x - y
+    })
+    setDisplayActs(sorted)
+  }
+
+  const sortDate = (order) => {
+    const sorted = [...acts].sort((a, b) => {
+      const x = new Date(a.date_start).getTime()
+      const y = new Date(b.date_start).getTime()
+      return order === 'desc' ? y - x : x - y
     })
     setDisplayActs(sorted)
   }
 
   // 隨機選取封面照
-  const getRandomPhotos = (acts, num) => {
-    const randomIndices = new Set()
+  // const getRandomPhotos = (acts, num) => {
+  //   const randomIndices = new Set()
 
-    // C(全部, num)
-    while (randomIndices.size < num) {
-      const randomIndex = Math.floor(Math.random() * acts.length)
-      randomIndices.add(randomIndex)
-    }
+  //   // C(全部, num)
+  //   while (randomIndices.size < num) {
+  //     const randomIndex = Math.floor(Math.random() * acts.length)
+  //     randomIndices.add(randomIndex)
+  //   }
 
-    const photos = Array.from(randomIndices).map(
-      (index) => acts[index].media.split(',')[0]
-    )
+  //   const photos = Array.from(randomIndices).map(
+  //     (index) => acts[index].media.split(',')[0]
+  //   )
 
-    return photos
-  }
-  const randomPhotos = getRandomPhotos(acts, 3)
+  //   return photos
+  // }
+  // const randomPhotos = getRandomPhotos(acts, 3)
 
   return (
     <div className="b-container px-0">
       <HeroSection
         title="2025 全台音樂祭"
         subTitle="一同締造屬於你的冒險拾光"
-        images={randomPhotos}
+        // images={randomPhotos}
       />
 
       <div className="b-container">
@@ -76,6 +94,7 @@ export default function ActivityPage() {
           <div className="b-filters d-flex align-items-baseline">
             <button
               className="b-filter b-btn-unstyled d-flex align-items-baseline"
+              type="button"
               onClick={() => setIsFilterOpen(!isFilterOpen)}
             >
               <i className="fa-solid fa-filter" />
@@ -83,7 +102,8 @@ export default function ActivityPage() {
             </button>
             <button
               className="b-order b-btn-unstyled d-flex align-items-baseline"
-              onClick={() => sortPrice('desc')}
+              type="button"
+              onClick={() => sortDate('desc')}
             >
               <i className="fa-solid fa-arrow-up-wide-short" />
               <h4>排序</h4>
