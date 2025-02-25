@@ -1,5 +1,6 @@
 'use client'
 import '../../_styles/login_signup.scss'
+import '@fortawesome/fontawesome-free/css/all.min.css'
 import React, { useState, useEffect } from 'react'
 import {
   useAuthResetPasswordHash,
@@ -27,6 +28,8 @@ export default function HashTokenPage() {
   const [isSecretValid, setIsSecretValid] = useState(false)
   // 新增狀態來追蹤輸入欄是否有資料
   const [isEmailFilled, setIsEmailFilled] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const { isAuth } = useAuth()
   // 取得網址參數，例如: ?secret=xxxxxx
   const searchParams = useSearchParams()
@@ -128,7 +131,7 @@ export default function HashTokenPage() {
                 新密碼
               </label>
               <input
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -137,13 +140,25 @@ export default function HashTokenPage() {
                 required
                 aria-label="新密碼"
               />
+              <button
+                type="button"
+                className="show-password"
+                aria-label="顯示密碼"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                <i
+                  className={`fa-solid ${
+                    showPassword ? 'fa-eye-slash' : 'fa-eye'
+                  }`}
+                ></i>
+              </button>
             </div>
             <div className="input-field">
               <label htmlFor="confirm-password" className="visually-hidden">
                 確認密碼
               </label>
               <input
-                type="password"
+                type={showConfirmPassword ? 'text' : 'password'}
                 id="confirm-password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
@@ -152,6 +167,18 @@ export default function HashTokenPage() {
                 required
                 aria-label="確認密碼"
               />
+              <button
+                type="button"
+                className="show-password"
+                aria-label="顯示確認密碼"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                <i
+                  className={`fa-solid ${
+                    showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'
+                  }`}
+                ></i>
+              </button>
             </div>
             <button
               type="submit"
