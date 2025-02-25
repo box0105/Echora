@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useMyCart } from '@/hooks/use-cart'
+// import { useMyCart } from '@/hooks/use-cart'
 import { dateFormat } from '../_utils/dateFormat'
 
 export default function PurchaseAside({ data }) {
@@ -10,7 +10,7 @@ export default function PurchaseAside({ data }) {
   
   const [selectedTickets, setSelectedTickets] = useState(new Set())
   const [error, setError] = useState('')
-  const {onAdd} = useMyCart();
+  // const {onAdd} = useMyCart();
 
   // 選取的票卷
   const toggleTicketSelection = (ticketId) => {
@@ -54,7 +54,7 @@ export default function PurchaseAside({ data }) {
 
   return (
     <aside className="b-aside">
-      <h3 className="mb-4">{isFree ? '購買門票' : '領取門票'}</h3>
+      <h3 className="mb-4">門票方案</h3>
       <form>
         <div className="row row-cols-1 gy-2">
           {tickets.map((ticket, i) => (
@@ -74,11 +74,12 @@ export default function PurchaseAside({ data }) {
           ))}
         </div>
         <button
-          type="button"
           className="b-purchaseBtn b-btn b-load-btn w-100"
           onClick={onCart}
+          disabled={!isFree}
+          style={{ cursor: !isFree ? 'not-allowed' : 'pointer', opacity: !isFree ? 0.5 : 1 }}
         >
-          {isFree ? '購買門票' : '領取門票'}
+          加入購物車
         </button>
         <div className="mt-2 text-center text-danger">{error}</div>
 

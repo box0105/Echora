@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 // 可以在這找想加上想要的效果 https://swiperjs.com/demos
 import { Navigation, Pagination, EffectFade, Autoplay } from 'swiper/modules'
 import Image from 'next/image'
+import Link from 'next/link'
 
 // import swiper css
 import 'swiper/css'
@@ -14,10 +15,16 @@ import 'swiper/css/pagination'
 import 'swiper/css/effect-fade'
 import 'swiper/css/autoplay'
 
-export default function HeroSection({ title = '', subTitle = '', images }) {
+export default function HeroSection({
+  title = '',
+  subTitle = '',
+  images,
+  ids,
+}) {
   const src = '/images/activity/'
   const imageArr = typeof images == 'string' ? images.split(',') : images
   console.log('Hero', imageArr)
+  console.log('ids', ids)
 
   return (
     <Swiper
@@ -36,18 +43,22 @@ export default function HeroSection({ title = '', subTitle = '', images }) {
     >
       {imageArr?.map((img, i) => (
         <SwiperSlide key={i}>
-          <div className="b-swiper-text position-relative b-sm-none">
-            <div className="b-swiper-title">{title}</div>
-            <div className="b-swiper-subtitle">{subTitle}</div>
-          </div>
+          <Link href={ids ? `/activity/${ids[i] + 1}` : ''}>
+            <div className="position-relative w-100 h-100">
+              <div className="b-swiper-text position-relative b-sm-none">
+                <div className="b-swiper-title">{title}</div>
+                <div className="b-swiper-subtitle">{subTitle}</div>
+              </div>
 
-          <Image
-            src={`${src}${img}`}
-            alt={`${img}`}
-            fill
-            className="object-fit-cover"
-            priority
-          />
+              <Image
+                src={`${src}${img}`}
+                alt={`${img}`}
+                fill
+                className="object-fit-cover"
+                priority
+              />
+            </div>
+          </Link>
         </SwiperSlide>
       ))}
     </Swiper>

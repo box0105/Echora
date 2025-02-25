@@ -12,21 +12,35 @@ export const useActivity = (url) => {
     }
   }, [acts])
 
-  // sort 通用
-  const sortByKey = (key='id', order='asc') => {
-    const sorted = [...displayActs].sort((a, b) => {
-      let x
-      let y
+  // filter
+  const filterByCategoryAndGenre = (categoryIds = [], genreIds = []) => {
+    if (!acts) return
+    let filtered = acts
 
+    // 篩選活動類別
+    if (categoryIds.length > 0) {
+      filtered = filtered.filter((act) => categoryIds.includes(act.category_id))
+    }
+
+    // 篩選音樂類型
+    if (genreIds.length > 0) {
+      filtered = filtered.filter((act) => genreIds.includes(act.music_genre_id))
+    }
+    setDisplayActs(filtered)
+  }
+
+  // sort 通用
+  const sortByKey = (key = 'id', order = 'asc') => {
+    const sorted = [...displayActs].sort((x, y) => {
       if (key === 'price') {
-        x = a.type[0].price
-        y = b.type[0].price
+        x = x.type[0].price
+        y = y.type[0].price
       } else if (key === 'date') {
-        x = new Date(a.date_start).getTime()
-        y = new Date(b.date_start).getTime()
+        x = new Date(x.date_start).getTime()
+        y = new Date(y.date_start).getTime()
       } else {
-        x = a.id
-        y = b.id
+        x = x.id
+        y = y.id
       }
 
       return order === 'desc' ? y - x : x - y
@@ -42,16 +56,19 @@ export const useActivity = (url) => {
       randomIndices.add(randomIndex)
     }
 
-    const photos = Array.from(randomIndices).map(
+    const randomIndicesArray = Array.from(randomIndices);
+    const randomImages = randomIndicesArray.map(
       (index) => acts[index].media.split(',')[0]
     )
 
-    return photos
+    // console.log(randomIndices);
+    return {randomImages, randomIds:randomIndicesArray}
   }
 
   return {
     displayActs,
     isLoading,
+    filterByCategoryAndGenre,
     sortByKey,
     getRandomPhotos,
   }

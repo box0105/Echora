@@ -73,8 +73,8 @@ model Color {
 }
 
 model ColorPalette {
-  id   Int    @id @default(autoincrement())
-  name String @db.VarChar(50)
+  id    Int    @id @default(autoincrement())
+  name  String @db.VarChar(50)
   cname String @db.VarChar(50)
 
   @@map("color_palette")
@@ -232,7 +232,7 @@ model ActivityTicketType {
   id          Int      @id @default(autoincrement())
   activity_id Int
   name        String   @db.VarChar(255)
-  amount      Int
+  stock       Int
   price       Int
   activity    Activity @relation(fields: [activity_id], references: [id])
   // tickets     Ticket[]

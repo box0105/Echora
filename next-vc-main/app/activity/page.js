@@ -18,25 +18,25 @@ export default function ActivityPage() {
   const {
     displayActs,
     isLoading,
+    filterByCategoryAndGenre,
     sortByKey,
     getRandomPhotos,
-  } = useActivity(`http://localhost:3005/api/activities/`);
-
+  } = useActivity(`http://localhost:3005/api/activities/`)
 
   // Filter Switch
   const [isFilterOpen, setIsFilterOpen] = useState(false)
 
   if (isLoading) return <h3>網頁載入中，請稍後...</h3>
 
-   // Get random photos
-   const randomPhotos = getRandomPhotos(3);
+  // Get random photos
+  const {randomImages, randomIds} = getRandomPhotos(3)
 
   return (
     <div className="b-container px-0">
       <HeroSection
         title="2025 全台音樂祭"
         subTitle="一同締造屬於你的冒險拾光"
-        images={randomPhotos}
+        images={randomImages} ids={randomIds}
       />
 
       <div className="b-container">
@@ -71,6 +71,7 @@ export default function ActivityPage() {
         <FilterPanel
           isOpen={isFilterOpen}
           onClose={() => setIsFilterOpen(!isFilterOpen)}
+          onFilterChange={filterByCategoryAndGenre}
         />
         <ActivityList data={displayActs} numPerPage={6} />
       </div>
