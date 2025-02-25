@@ -44,7 +44,6 @@ router.get('/:userId', async (req, res) => {
         // user: true, 有需要才回傳使用者的資料 較敏感
         coupon: true,
       },
-
     })
 
     // 2. 轉換資料結構
@@ -88,9 +87,8 @@ router.post('/:userId', async (req, res) => {
   const { couponId } = data
   const { typeId } = data
   console.log(couponId)
-  console.log(typeId);
-  console.log(Array.isArray(couponId));
-
+  console.log(typeId)
+  console.log(Array.isArray(couponId))
 
   try {
     // 驗證使用者是否存在
@@ -117,9 +115,11 @@ router.post('/:userId', async (req, res) => {
     if (Array.isArray(couponId)) {
       console.log('陣列')
       couponId.forEach(async (id) => {
-        const [row] = await db.query(`SELECT typeId FROM coupon WHERE id = ?`, [id])
-        const typeId = row[0];
-        console.log(typeId);
+        const [row] = await db.query(`SELECT typeId FROM coupon WHERE id = ?`, [
+          id,
+        ])
+        const typeId = row[0]
+        console.log(typeId)
         const sql = `INSERT INTO usercoupons (userId,couponId,couponTypeId,claimed,isDelete) VALUES (?,?,?,?,?)`
         const values = [userId, id, typeId, true, false]
         await db.query(sql, values)
@@ -133,6 +133,48 @@ router.post('/:userId', async (req, res) => {
 
     // 更新優惠券的 usersClaimed 數量(如有需要)
     //  await coupon.update({ usersClaimed: coupon.usersClaimed + 1 });
+
+    res
+      .status(200)
+      .json({ status: 'success', message: '優惠券已成功添加到您的帳戶' })
+  } catch (err) {
+    console.log(err)
+    res.json({ status: 'fail', message: err.message })
+  }
+})
+// user取得所有優惠券
+router.post('/:userId/all', async (req, res) => {
+  const userId = Number(req.params.userId)
+
+  const [A] = await db.query( `SELECT * FROM coupon WHERE isDelete = ?`,[false])
+  const [B] = await db.query( `SELECT * FROM usercoupons WHERE claimed = ?`,[true])
+console.log(A);
+console.log(B);
+
+  // 自訂比較函數，判斷兩個物件是否重複 (根據 id 判斷)
+  function areObjectsEqual(obj1, obj2) {
+    return obj1.id === obj2.id // 修改此處以符合您的比較邏輯
+  }
+
+  const newA = A.filter(
+    (objA) => !B.some((objB) => areObjectsEqual(objA, objB))
+  )
+  // console.log(newA) 
+
+  try {
+    // 驗證使用者是否存在
+    const [row] = await db.query(`SELECT * FROM user WHERE id = ?`, [userId])
+    const user = row[0]
+    if (!user) throw new Error('請先登入!')
+    // console.log(user);
+
+    if(!newA.length > 0) throw new Error('您已經全部領取了!')
+
+    newA.forEach(async (item) => {
+      const sql = 'INSERT INTO usercoupons (userId,couponId,couponTypeId,claimed,isDelete) VALUES (?,?,?,?,?)'
+      const values = [userId, item.id, item.typeId, true, false]
+      await db.query(sql, values)
+    })
 
     res
       .status(200)

@@ -9,7 +9,7 @@ import { useMyCoupon } from '@/hooks/use-coupon'
 export default async function CouponPage() {
   const [coupon, setCoupon] = useState([])
   const [userCoupons, setUserCoupons] = useState([])
-  const { notifyAndGet } = useMyCoupon()
+  const { notifyAndGet, notifyAndGetAll } = useMyCoupon()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,8 +31,6 @@ export default async function CouponPage() {
     fetchUserCoupon()
   }, [])
 
-
-
   const fetchUserCoupon = async () => {
     try {
       const url = `http://localhost:3005/api/coupon/100/`
@@ -45,7 +43,6 @@ export default async function CouponPage() {
       console.log('發生錯誤', err)
     }
     // fetchUserCoupon()
-
   }
 
   return (
@@ -80,7 +77,7 @@ export default async function CouponPage() {
                 <div className="col ">
                   <div className="text">
                     {item.name}
-                    <br />${item.discount} 
+                    <br />${item.discount}
                   </div>
                   <br />
 
@@ -88,7 +85,7 @@ export default async function CouponPage() {
                     <button
                       className="btn btn-secondary "
                       onClick={async () => {
-                        await notifyAndGet(item.id,item.typeId)
+                        await notifyAndGet(item.id, item.typeId)
                         await fetchUserCoupon()
                       }}
                     >
@@ -100,7 +97,7 @@ export default async function CouponPage() {
                     <button
                       className="btn btn-dark "
                       onClick={async () => {
-                        await notifyAndGet(item.id,item.typeId)
+                        await notifyAndGet(item.id, item.typeId)
                         await fetchUserCoupon()
                       }}
                     >
@@ -116,8 +113,9 @@ export default async function CouponPage() {
           <div className="k-btn">
             <button
               className="btn btn-outline-dark"
-              onClick={() => {
-                  notifyAndGet(coupon.map((item) => item.id))
+              onClick={async () => {
+                await notifyAndGetAll()
+                await fetchUserCoupon()
               }}
             >
               全部領取

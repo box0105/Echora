@@ -34,6 +34,27 @@ export function MyCouponProvider({ children }) {
     }
   }
 
+  const claimCoupons = async (userId) => {
+    try {
+      const res = await fetch(`http://localhost:3005/api/coupon/100/all`, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({ userId: userId}),
+      })
+
+      const data = await res.json()
+
+      console.log(data)
+      return data
+    } catch (err) {
+      setError(err.message)
+      console.log(err.message)
+      return { status: 'fail' }
+    }
+  }
+
   // 領取提示
   const notifyAndGet = async (itemId,typeId) => {
     const MySwal = withReactContent(Swal)
@@ -78,6 +99,50 @@ export function MyCouponProvider({ children }) {
     }
   }
 
+  //全部領取提示
+  const notifyAndGetAll = async () => {
+    const MySwal = withReactContent(Swal)
+    try {
+      const result = await MySwal.fire({
+        title: '要領取全部優惠券嗎?',
+        text: '優惠券將加入會員-我的優惠券',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: '取消',
+        confirmButtonText: '確定',
+      })
+      if (result.isConfirmed) {
+        // 進行領取
+        const res = await claimCoupons(100)
+        console.log(res)
+        // callback()
+
+        if (res.status == 'fail') {
+          MySwal.fire({
+            title: '無法領取',
+            text: `已經擁有優惠券`,
+            icon: 'warning',
+          })
+        } else {
+          MySwal.fire({
+            title: '領取成功',
+            text: `優惠券已領取`,
+            icon: 'success',
+          })
+        }
+      }
+    } catch (err) {
+      console.error('領取優惠券時發生錯誤:', err)
+      setError(err.message)
+      MySwal.fire({
+        title: '領取失敗',
+        text: `領取優惠券時發生錯誤: ${err.message}`,
+        icon: 'error',
+      })
+    }
+  }
+
   // 轉換時間格式
   const time = (time) => {
     if (!time) {
@@ -94,7 +159,7 @@ export function MyCouponProvider({ children }) {
   }
 
   return (
-    <CouponContext.Provider value={{ claimCoupon, notifyAndGet, time }}>
+    <CouponContext.Provider value={{ claimCoupon, notifyAndGet,notifyAndGetAll, time }}>
       {children}
     </CouponContext.Provider>
   )
