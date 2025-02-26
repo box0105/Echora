@@ -97,12 +97,23 @@ router.post('/', upload.none(), async function (req, res) {
 
     // 插入 order_items 表格（新增購物車商品）
     const items = cartItems.map((item) => {
-      const { name, color, image, price, count, brand, rentDate } = item
+      const { name, color, image, price, count, brand, rentDate, status } = item
       const total = price * count
-      return [orderId, name, color, image, price, count, total, brand, rentDate]
+      return [
+        orderId,
+        name,
+        color,
+        image,
+        price,
+        count,
+        total,
+        brand,
+        rentDate,
+        status,
+      ]
     })
     const itemSql =
-      'INSERT INTO `myorderitem` (orderId, name, color, image, price, count, total, brand, rentDate) VALUES ?'
+      'INSERT INTO `myorderitem` (orderId, name, color, image, price, count, total, brand, rentDate, status) VALUES ?'
 
     db.query(itemSql, [items])
 

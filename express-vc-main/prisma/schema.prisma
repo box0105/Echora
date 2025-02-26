@@ -282,6 +282,7 @@ model MyOrderItem {
   rentDate String?
   color    String?
   brand    String?
+  status   String?
   image    String
   price    String
   count    String
