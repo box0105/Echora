@@ -28,6 +28,7 @@ model User {
   // 關聯 User:Profile = 1:1 
   emailValidated Boolean       @default(false) @map("email_validated")
   googleUid      String?       @unique @map("google_uid")
+  avatar         String?
   // 關聯: User:Product = n:m 透過 Favorite
   userLike       userLike[]
   usercoupons    UserCoupons[]
