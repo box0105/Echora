@@ -3,7 +3,7 @@ import db from '../config/mysql.js'
 
 const router = express.Router()
 
-//取得會員的收藏商品清單 0226改
+//取得會員的收藏商品清單 0226改 //brand_name, product_name, color_name, price, image(sort_order_1)
 router.get('/list/:uid', async (req, res) => {
   const {uid} = req.params
   try {
@@ -13,7 +13,6 @@ router.get('/list/:uid', async (req, res) => {
     product_sku.stock, 
     color.name AS color_name, 
     color.color_image, 
-    color_palette.id AS color_palette_id, 
     image.image
     FROM product
     JOIN brand ON product.brand_id = brand.id 
