@@ -25,6 +25,10 @@ export default function InformationPage() {
     setCost(cost)
   }, [])
 
+  const backtochecklist = ()=>{
+    router.push("/my-cart/checklist")
+  }
+
   //#region EC Pay
   const payFormDiv = useRef(null)
   const createEcpayForm = (params, action) => {
@@ -390,14 +394,13 @@ export default function InformationPage() {
                 <button type="submit" className="btn btn-dark w-100 mt-5">
                   下訂單
                 </button>
-                <Link href="/my-cart/checklist">
                   <button
                     type="button"
                     className="btn btn-outline-secondary w-100 mt-3"
+                    onClick={backtochecklist}
                   >
                     返回確認商品
                   </button>
-                </Link>
               </div>
             </div>
           </form>

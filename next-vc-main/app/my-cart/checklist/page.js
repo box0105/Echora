@@ -35,30 +35,6 @@ export default function ChecklistPage() {
   // }, [totalAmount])
 
   useEffect(() => {
-    const storedCoupon = localStorage.getItem('coupon')
-    const selectedCoupon = storedCoupon ? JSON.parse(storedCoupon) : null
-  
-    if (!selectedCoupon) {
-      setDiscountedAmount(0)
-      setCountedAmount(totalAmount)
-      return
-    }
-  
-    if (selectedCoupon.typeId == 2) {
-      // 百分比折扣
-      const discountAmount = Math.round((totalAmount * selectedCoupon.discount) / 100)
-      setDiscountedAmount(totalAmount - discountAmount)
-      setCountedAmount(discountAmount)
-    } else if (selectedCoupon.typeId == 1) {
-      // 固定金額折扣
-      const discountAmount = Math.round(selectedCoupon.discount)
-      setDiscountedAmount(discountAmount)
-      setCountedAmount(totalAmount - discountAmount)
-    }
-  }, [totalAmount]) // 監聽 totalAmount 變化
-  
-
-  useEffect(() => {
     if (isAuth) {
       fetchUserCoupon()
     }
@@ -106,21 +82,64 @@ export default function ChecklistPage() {
   //   localStorage.setItem('coupon', JSON.stringify(selectedCoupon))
   // }
 
+  //#region  GPT寫的
+
+  // 返回時重新選擇優惠券
+  useEffect(() => {
+    const storedCoupon = localStorage.getItem('coupon')
+    if (storedCoupon) {
+      const selectedCoupon = JSON.parse(storedCoupon)
+      // 當優惠券存在，設置選項為已選擇的優惠券
+      setDiscountedAmount(0) // 清除原先的折扣
+      setCountedAmount(totalAmount) // 清除原先的金額
+      handleCouponChange({ target: { value: selectedCoupon.name } }) // 呼叫 handleCouponChange 函式
+    }
+  }, [totalAmount]) // 監聽 totalAmount 變化
+
+  useEffect(() => {
+    const storedCoupon = localStorage.getItem('coupon')
+    const selectedCoupon = storedCoupon ? JSON.parse(storedCoupon) : null
+
+    if (!selectedCoupon) {
+      setDiscountedAmount(0)
+      setCountedAmount(totalAmount)
+      return
+    }
+
+    if (selectedCoupon.typeId == 2) {
+      // 百分比折扣
+      const discountAmount = Math.round(
+        (totalAmount * selectedCoupon.discount) / 100
+      )
+      setDiscountedAmount(totalAmount - discountAmount)
+      setCountedAmount(discountAmount)
+    } else if (selectedCoupon.typeId == 1) {
+      // 固定金額折扣
+      const discountAmount = Math.round(selectedCoupon.discount)
+      setDiscountedAmount(discountAmount)
+      setCountedAmount(totalAmount - discountAmount)
+    }
+  }, [totalAmount]) // 監聽 totalAmount 變化
+
   const handleCouponChange = (e) => {
-    const selectedCoupon = userCoupons.find((coupon) => coupon.name === e.target.value)
-  
+    const selectedCoupon = userCoupons.find(
+      (coupon) => coupon.name === e.target.value
+    )
+
     if (!selectedCoupon) {
       setDiscountedAmount(0)
       setCountedAmount(totalAmount)
       localStorage.removeItem('coupon')
       return
     }
-  
+
     localStorage.setItem('coupon', JSON.stringify(selectedCoupon))
-  
+
     if (selectedCoupon.typeId == 2) {
       // 百分比折扣
-      const discountAmount = Math.round((totalAmount * selectedCoupon.discount) / 100)
+      const discountAmount = Math.round(
+        (totalAmount * selectedCoupon.discount) / 100
+      )
       setDiscountedAmount(totalAmount - discountAmount)
       setCountedAmount(discountAmount)
     } else if (selectedCoupon.typeId == 1) {
@@ -130,7 +149,8 @@ export default function ChecklistPage() {
       setCountedAmount(totalAmount - discountAmount)
     }
   }
-  
+  //#endregion
+  // ------------------
 
   //#endregion
   // ------------------
@@ -180,9 +200,11 @@ export default function ChecklistPage() {
                   aria-label="Small select example"
                   onChange={handleCouponChange}
                 >
-                  <option selected>請選擇優惠券</option>
+                  <option value="">請選擇優惠券</option>
                   {userCoupons.map((coupon) => (
-                    <option key={coupon.id}>{coupon.name}</option>
+                    <option key={coupon.id} value={coupon.name}>
+                      {coupon.name}
+                    </option>
                   ))}
                 </select>
               </div>
