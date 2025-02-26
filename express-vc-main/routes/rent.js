@@ -5,44 +5,93 @@ const router = express.Router()
 
 import { successResponse, errorResponse } from '../lib/utils.js'
 
-//router prefix: /api/rent
-// router.get('/', async (req, res) => {
-//   try {
-//     const [rows] = await db.execute('SELECT * FROM `rent`')
-//     res.status(200).json({
-//       status: 'success',
-//       data: rows,
-//       message: '取得資料成功',
-//     })
-//   } catch (error) {
-//     errorResponse(res, error)
-//   }
-// })
 router.get('/', async (req, res) => {
-  try {
-    const [rows] = await db.execute(`
-      SELECT 
-        rent.*, 
-        rentColor.name AS colorName, 
-        rentItemColor.stock AS stock
-      FROM rent
-      LEFT JOIN rentItemColor ON rent.id = rentItemColor.rentId
-      LEFT JOIN rentColor ON rentItemColor.rentColorId = rentColor.id
-    `)
+  const type = req.query.type || 'all'
+  const page = Number(req.query.page) || 1
+  const perPage = Number(req.query.perpage) || 8
 
-    // 格式化查詢結果，將顏色和庫存資訊合併到 rentitemColors 陣列中
+  const nameLike = req.query.name_like || ''
+  const brandIds = req.query.brand_ids
+    ? req.query.brand_ids.split(',').map(Number)
+    : []
+  const color_ids = req.query.color_ids
+    ? req.query.color_ids.split(',').map(Number)
+    : []
+
+  const priceGte = Number(req.query.price_gte) || 1
+  const priceLte = Number(req.query.price_lte) || 700000
+
+  const sort = req.query.sort || 'price'
+  const order = req.query.order || 'ASC'
+
+  try {
+    let sql = `
+      SELECT
+  rent.*,
+  RentBrand.name AS brand_name,
+  RentItemColor.id AS rent_item_color_id,
+  RentItemColor.stock,
+  RentColor.name AS color_name,
+  RentColor.rentColor_image AS color_image,
+  RentImges.image,
+  RentImges.sort_order
+FROM Rent
+LEFT JOIN RentBrand ON Rent.rentBrandId = RentBrand.id
+LEFT JOIN RentItemColor ON Rent.id = RentItemColor.rentId
+LEFT JOIN RentColor ON RentItemColor.color_id = RentColor.id
+LEFT JOIN RentImges ON RentItemColor.id = RentImges.RentItemcolor_id
+WHERE 1=1
+    `
+
+    if (nameLike) sql += ` AND Rent.name LIKE '%${nameLike}%'`
+    if (brandIds.length > 0)
+      sql += ` AND RentBrand.id IN (${brandIds.join(',')})`
+    if (priceGte && priceLte)
+      sql += ` AND Rent.price BETWEEN ${priceGte} AND ${priceLte}`
+    if (color_ids.length > 0)
+      sql += ` AND RentItemColor.color_id IN (${color_ids.join(',')})`
+
+    sql += ` ORDER BY Rent.${sort} ${order}, RentImges.sort_order ASC`
+
+    const [rows] = await db.query(sql)
+
+    // 格式化查詢結果，將顏色、庫存和圖片資訊合併到 rentitemColors 和 images 陣列中
     const formattedData = rows.reduce((acc, row) => {
       let existingRent = acc.find((item) => item.id === row.id)
       if (existingRent) {
-        existingRent.rentitemColors.push({
-          colorName: row.colorName,
-          stock: row.stock,
-        })
+        const existingColor = existingRent.rentitemColors.find(
+          (color) => color.rent_item_color_id === row.rent_item_color_id
+        )
+        if (existingColor) {
+          if (row.image) {
+            if (!existingColor.images) {
+              existingColor.images = [row.image]
+            } else {
+              existingColor.images.push(row.image)
+            }
+          }
+        } else {
+          existingRent.rentitemColors.push({
+            rent_item_color_id: row.rent_item_color_id,
+            stock: row.stock,
+            color_name: row.color_name,
+            color_image: row.color_image,
+            images: row.image ? [row.image] : [],
+          })
+        }
       } else {
         acc.push({
           ...row,
-          rentitemColors: row.colorName
-            ? [{ colorName: row.colorName, stock: row.stock }]
+          rentitemColors: row.rent_item_color_id
+            ? [
+                {
+                  rent_item_color_id: row.rent_item_color_id,
+                  stock: row.stock,
+                  color_name: row.color_name,
+                  color_image: row.color_image,
+                  images: row.image ? [row.image] : [],
+                },
+              ]
             : [],
         })
       }
@@ -54,8 +103,12 @@ router.get('/', async (req, res) => {
       data: formattedData,
       message: '取得資料成功',
     })
-  } catch (error) {
-    errorResponse(res, error)
+  } catch (err) {
+    console.log(err)
+    res.status(400).json({
+      status: 'error',
+      message: err.message ? err.message : '取得資料失敗',
+    })
   }
 })
 // 修改后的 /api/rent/search 路由
@@ -77,7 +130,7 @@ router.get('/search', async (req, res) => {
       JOIN stores ON rent.stores_id = stores.id
       JOIN rentBrand ON rent.rentBrandId = rentBrand.id
       JOIN rentItemColor ON rent.id = rentItemColor.rentId
-      JOIN rentColor ON rentItemColor.rentColorId = rentColor.id
+      JOIN rentColor ON rentItemColor.rentcolor_id = rentColor.id
       JOIN rentImges ON rent.id = rentImges.rentId
       WHERE 1=1
     `
@@ -185,19 +238,130 @@ router.get('/search', async (req, res) => {
 })
 router.get('/:pid', async (req, res) => {
   const { pid } = req.params
+
+  if (!pid) {
+    return res.status(400).json({
+      status: 'error',
+      message: '缺少 pid 參數',
+    })
+  }
+
   try {
-    const [rows] = await db.query(`SELECT * FROM rent WHERE id = ${pid}`)
-    const row = rows[0]
+    // 使用參數化查詢
+    const [rows] = await db.query(
+      `SELECT
+    r.*,
+    rb.name AS rentBrandName,
+    ric.id AS rentItemcolor_id,
+    ric.stock AS rentItemColorStock,
+    rc.name AS rentColorNames,
+    rc.rentColor_image AS rentColorImages,
+    ri.image AS rentImage,
+    ri.sort_order AS rentImageSortOrder,
+    rl.neck_pickup AS rentListNeckPickup,
+    rl.middle_pickup AS rentListMiddlePickup,
+    rl.bridge_pickup AS rentListBridgePickup,
+    rl.controls AS rentListControls,
+    rl.switching AS rentListSwitching,
+    s.name AS storeName
+  FROM Rent r
+  LEFT JOIN RentBrand rb ON r.rentBrandId = rb.id
+  LEFT JOIN RentItemColor ric ON r.id = ric.rentId
+  LEFT JOIN RentColor rc ON ric.RentColor_id = rc.id
+  LEFT JOIN RentImges ri ON ric.id = ri.RentItemColorId
+  LEFT JOIN RentList rl ON r.RentList_id = rl.id
+  LEFT JOIN Stores s ON r.stores_id = s.id
+  WHERE r.id = ?
+  ORDER BY ri.sort_order;
+  `,
+      [pid]
+    )
+
+    if (!rows || rows.length === 0) {
+      return res.status(404).json({
+        status: 'error',
+        message: '找不到資料',
+      })
+    }
+
+    // 將多行資料聚合成一個物件
+    const formattedData = rows.reduce((acc, row) => {
+      if (!acc) {
+        acc = {
+          id: row.id,
+          name: row.name,
+          level: row.level,
+          description: row.description,
+          price: row.price,
+          rentBrandName: row.rentBrandName,
+          storeName: row.storeName,
+          rentList: row.rentListNeckPickup
+            ? {
+                neckPickup: row.rentListNeckPickup,
+                middlePickup: row.rentListMiddlePickup,
+                bridgePickup: row.rentListBridgePickup,
+                controls: row.rentListControls,
+                switching: row.rentListSwitching,
+              }
+            : null,
+          colors: [], // 顏色資訊
+          images: [], // 通用圖片資訊
+          rentItemColor: row.rentItemcolor_id,
+        }
+      }
+
+      // 處理顏色資訊
+      if (row.rentColorNames && row.rentColorImages) {
+        const colorExists = acc.colors.find(
+          (color) => color.name === row.rentColorNames
+        )
+        if (!colorExists) {
+          acc.colors.push({
+            name: row.rentColorNames,
+            image: row.rentColorImages,
+            stock: row.rentItemColorStock,
+            images: [], // 每個顏色對應的圖片
+          })
+        }
+      }
+
+      // 處理圖片資訊，根據顏色進行分配
+      if (row.rentImage) {
+        const colorIndex = acc.colors.findIndex(
+          (color) => color.name === row.rentColorNames
+        )
+        if (colorIndex !== -1) {
+          acc.colors[colorIndex].images.push({
+            url: row.rentImage,
+            sortOrder: row.rentImageSortOrder,
+          })
+        } else {
+          acc.images.push({
+            url: row.rentImage,
+            sortOrder: row.rentImageSortOrder,
+          })
+        }
+      }
+
+      return acc
+    }, null)
+
+    // 排序圖片
+    formattedData.colors.forEach((color) => {
+      color.images.sort((a, b) => a.sortOrder - b.sortOrder)
+    })
+
+    formattedData.images.sort((a, b) => a.sortOrder - b.sortOrder)
     res.status(200).json({
       status: 'success',
-      data: row,
+      data: formattedData,
       message: '取得資料成功',
     })
   } catch (err) {
-    console.log(err)
-    res.status(400).json({
+    console.error(err)
+    res.status(500).json({
       status: 'error',
-      message: err.message ? err.message : '取得資料失敗',
+      message: err.message || '取得資料失敗',
     })
   }
 })

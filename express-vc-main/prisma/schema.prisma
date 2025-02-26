@@ -101,8 +101,8 @@ model Color {
 }
 
 model ColorPalette {
-  id   Int    @id @default(autoincrement())
-  name String @db.VarChar(50)
+  id    Int    @id @default(autoincrement())
+  name  String @db.VarChar(50)
   cname String @db.VarChar(50)
 
   @@map("color_palette")
@@ -315,13 +315,12 @@ model Rent {
   rentColors  RentItemColor[]
   stores_id   Int?
   stores      Stores?         @relation(fields: [stores_id], references: [id])
-  price       Decimal?
+  price       Int             @default(0)
   RentList_id Int?
   RentList    RentList?       @relation(fields: [RentList_id], references: [id])
   time_start  DateTime?
   time_end    DateTime?
   created_at  DateTime        @default(now())
-  rentImges   RentImges[] // 一個 Rent 可以有多個圖片
   // OrderItem   OrderItem[]
 }
 
@@ -332,20 +331,18 @@ model RentBrand {
 }
 
 model RentColor {
-  id              Int             @id @default(autoincrement())
-  name            String
-  rentColorImages String
-  rentItemColors  RentItemColor[] // 修改關聯名稱，保持一致性
+  id         Int    @id @default(autoincrement())
+  name       String @db.VarChar(50)
+  colorImage String @map("rentColor_image") @db.VarChar(150)
 }
 
 model RentItemColor {
-  id          String    @id @db.VarChar(20)
-  rentId      Int
-  name        String    @db.VarChar(100)
-  rent        Rent      @relation(fields: [rentId], references: [id])
-  rentColorId Int
-  rentColor   RentColor @relation(fields: [rentColorId], references: [id])
-  stock       Int
+  id      String @id @db.VarChar(20)
+  rentId  Int
+  name    String @db.VarChar(100)
+  colorId Int    @map("RentColor_id")
+  stock   Int    @default(0)
+  Rent    Rent   @relation(fields: [rentId], references: [id])
 }
 
 model RentList {
@@ -362,12 +359,10 @@ model RentList {
 
 model RentImges {
   id              Int    @id @default(autoincrement())
-  rentItemColorId String
+  RentItemColorId String @db.VarChar(20)
+  name            String @db.VarChar(150)
   image           String @db.VarChar(300)
-  sortOrder       Int?
-  // 外鍵，指向 Rent 的 id
-  rentId          Int
-  rent            Rent?  @relation(fields: [rentId], references: [id], onDelete: Cascade)
+  sortOrder       Int    @map("sort_order")
 }
 
 model Stores {
