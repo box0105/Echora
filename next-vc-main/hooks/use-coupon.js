@@ -15,7 +15,7 @@ export function MyCouponProvider({ children }) {
   const claimCoupon = async (userId, couponId, typeId) => {
     try {
       // http://localhost:3005/api/coupon/resource
-      const res = await fetch(`http://localhost:3005/api/coupon/100`, {
+      const res = await fetch(`http://localhost:3005/api/coupon/${userId}`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
@@ -36,7 +36,7 @@ export function MyCouponProvider({ children }) {
 
   const claimCoupons = async (userId) => {
     try {
-      const res = await fetch(`http://localhost:3005/api/coupon/100/all`, {
+      const res = await fetch(`http://localhost:3005/api/coupon/${userId}/all`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
@@ -56,7 +56,7 @@ export function MyCouponProvider({ children }) {
   }
 
   // 領取提示
-  const notifyAndGet = async (itemId,typeId) => {
+  const notifyAndGet = async (userId,itemId,typeId) => {
     const MySwal = withReactContent(Swal)
     try {
       const result = await MySwal.fire({
@@ -70,11 +70,11 @@ export function MyCouponProvider({ children }) {
       })
       if (result.isConfirmed) {
         // 進行領取
-        const res = await claimCoupon(100, itemId, typeId)
+        const res = await claimCoupon(userId, itemId, typeId)
         console.log(res)
         // callback()
 
-        if (res.status == 'fail') {
+        if (res.status == 'fail' || res.status == 'error') {
           MySwal.fire({
             title: '無法領取',
             text: `已經擁有優惠券`,
@@ -100,7 +100,7 @@ export function MyCouponProvider({ children }) {
   }
 
   //全部領取提示
-  const notifyAndGetAll = async () => {
+  const notifyAndGetAll = async (userId) => {
     const MySwal = withReactContent(Swal)
     try {
       const result = await MySwal.fire({
@@ -114,7 +114,7 @@ export function MyCouponProvider({ children }) {
       })
       if (result.isConfirmed) {
         // 進行領取
-        const res = await claimCoupons(100)
+        const res = await claimCoupons(userId)
         console.log(res)
         // callback()
 

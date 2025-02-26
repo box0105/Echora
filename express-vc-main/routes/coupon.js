@@ -10,7 +10,7 @@ const prisma = new PrismaClient()
 
 router.use(express.json())
 
-// 測試取得所有優惠券
+// 取得所有優惠券
 router.get('/', async (req, res) => {
   try {
     const [rows] = await db.execute('SELECT * FROM `coupon`')
@@ -27,8 +27,9 @@ router.get('/', async (req, res) => {
 // user的優惠券
 router.get('/:userId', async (req, res) => {
   const userId = Number(req.params.userId)
-  // const user = await db.query(`SELECT user FROM user WHERE id = ${userId}`)
-  // if (!user) throw new Error('請先登入!') 不確定是否要驗證
+
+  const user = await db.query(`SELECT username FROM user WHERE id = ${userId}`)
+  if (!user) throw new Error('請先登入!') //不確定是否要驗證
 
   const [rows] = await db.query(
     `SELECT * FROM usercoupons WHERE userId = ${userId}`
@@ -48,7 +49,7 @@ router.get('/:userId', async (req, res) => {
 
     // 2. 轉換資料結構
     const userCheckCoupons = datas.map((data) => ({
-      userId: rows[0].userId,
+      userId: userId,
       couponId: data.couponId,
       claimed: data.claimed,
       isDeleted: data.isDelete,
@@ -146,10 +147,10 @@ router.post('/:userId', async (req, res) => {
 router.post('/:userId/all', async (req, res) => {
   const userId = Number(req.params.userId)
 
-  const [A] = await db.query( `SELECT * FROM coupon WHERE isDelete = ?`,[false])
-  const [B] = await db.query( `SELECT * FROM usercoupons WHERE claimed = ?`,[true])
-console.log(A);
-console.log(B);
+  const [A] = await db.query(`SELECT * FROM coupon WHERE isDelete = ?`, [false])
+  const [B] = await db.query(`SELECT * FROM usercoupons WHERE claimed = ?`, [true])
+  console.log(A);
+  console.log(B);
 
   // 自訂比較函數，判斷兩個物件是否重複 (根據 id 判斷)
   function areObjectsEqual(obj1, obj2) {
@@ -168,7 +169,7 @@ console.log(B);
     if (!user) throw new Error('請先登入!')
     // console.log(user);
 
-    if(!newA.length > 0) throw new Error('您已經全部領取了!')
+    if (!newA.length > 0) throw new Error('您已經全部領取了!')
 
     newA.forEach(async (item) => {
       const sql = 'INSERT INTO usercoupons (userId,couponId,couponTypeId,claimed,isDelete) VALUES (?,?,?,?,?)'

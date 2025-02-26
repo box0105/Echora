@@ -9,11 +9,12 @@ import React, { useState, useEffect } from 'react'
 
 export default async function OrderPage() {
   const [coupon, setCoupon] = useState([])
+  const userId = localStorage.getItem('userId')
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = 'http://localhost:3005/api/coupon/100'
+        const url = `http://localhost:3005/api/coupon/${userId}`
         const res = await fetch(url)
         if (!res.ok) throw new Error('狀態錯誤')
         const data = await res.json()
