@@ -271,6 +271,8 @@ model MyOrder {
   shippingAddress String // 配送地址，儲存訂單的配送地址
   shippingMethod  String
   paymentMethod   String
+  cost            String
+  coupon          String
   totalAmount     Int
   createdAt       DateTime @default(now()) // 訂單創建時間
 }

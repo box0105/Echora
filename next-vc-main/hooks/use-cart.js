@@ -114,6 +114,10 @@ export function MyCartProvider({ children }) {
   // 清空購物車
   const clearCart = () => {
     setCartItems([])
+    localStorage.removeItem('coupon')
+    localStorage.removeItem('userData')
+    localStorage.removeItem('total')
+    localStorage.removeItem('cost')
   }
 
   // 計算總數量&總金額(使用reduce, 累加/歸納)

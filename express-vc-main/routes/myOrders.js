@@ -70,6 +70,8 @@ router.post('/', upload.none(), async function (req, res) {
       paymentMethod,
       totalAmount,
       orderNumber,
+      cost,
+      coupon,
     } = userData
 
     // 組合配送地址
@@ -77,7 +79,7 @@ router.post('/', upload.none(), async function (req, res) {
 
     // 插入 orders 表格（先新增訂單）
     const orderSql =
-      'INSERT INTO `myorder` (`userId`,`orderNumber`,`shippingAddress`, `recipient`, `phone`, `email`, `shippingMethod`, `paymentMethod`, `totalAmount`) VALUES (?,?, ?, ?, ?, ?, ?, ?,?)'
+      'INSERT INTO `myorder` (`userId`,`orderNumber`,`shippingAddress`, `recipient`, `phone`, `email`, `shippingMethod`, `paymentMethod`, `totalAmount`, `cost`, `coupon`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
     const [orderResult] = await db.execute(orderSql, [
       userId,
       orderNumber,
@@ -88,6 +90,8 @@ router.post('/', upload.none(), async function (req, res) {
       shippingMethod,
       paymentMethod,
       totalAmount,
+      cost,
+      coupon || "",
     ])
 
     console.log('新增訂單成功:', orderResult)

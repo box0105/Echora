@@ -13,7 +13,7 @@ export default async function CouponPage() {
   const { notifyAndGet, notifyAndGetAll } = useMyCoupon()
   const { isAuth } = useAuth()
 
-  console.log();
+  console.log()
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -38,7 +38,7 @@ export default async function CouponPage() {
 
   const fetchUserCoupon = async () => {
     const userId = localStorage.getItem('userId')
-    console.log(userId);
+    console.log(userId)
     try {
       const url = `http://localhost:3005/api/coupon/${userId}`
       const res = await fetch(url)
