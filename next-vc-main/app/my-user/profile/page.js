@@ -9,6 +9,7 @@ import Link from 'next/link'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useAuth } from '@/hooks/use-auth'
+import { useRouter } from 'next/navigation'
 import PreviewUploadImage from './_components/preview-upload-image'
 import TWZipCode from './_components/tw-zipcode'
 import { Oval } from 'react-loader-spinner'
@@ -26,15 +27,22 @@ export default function ProfilePage() {
   const { user, isAuth } = useAuth()
   const [userProfile, setUserProfile] = useState(initUserProfile)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const router = useRouter()
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen)
   }
 
   useEffect(() => {
+    if (!isAuth) {
+      router.push('/my-user')
+      return
+      // 重定向到登入頁面
+    }
+
     const userId = localStorage.getItem('userId')
-    // console.log('Current token:', userId)
-    // if (!isAuth || !user?.id) return
+    if (!userId) return
+
     const fetchUserProfile = async () => {
       try {
         const res = await fetch(`http://localhost:3005/api/users/${userId}`, {
@@ -48,15 +56,15 @@ export default function ProfilePage() {
           setUserProfile(resData.data)
           console.log('User profile data:', resData.data)
         } else {
-          // toast.error(`獲取會員資料失敗: ${resData.message}`)
+          toast.error(`獲取會員資料失敗: ${resData.message}`)
         }
       } catch (err) {
-        // toast.error(`獲取會員資料失敗: ${err.message}`)
+        toast.error(`獲取會員資料失敗: ${err.message}`)
       }
     }
 
     fetchUserProfile()
-  }, [user, isAuth])
+  }, [isAuth, router])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
