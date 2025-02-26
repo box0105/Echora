@@ -83,13 +83,13 @@ export default function CartOffcanvas({ show, onClose }) {
             </Link>
           ) : (
             <Link href="/my-user">
-              <butaton
+              <button
                 type="button"
                 className="btn btn-dark w-100 mt-3"
                 onClick={onClose}
               >
                 請先登入會員
-              </butaton>
+              </button>
             </Link>
           )}
           <button
