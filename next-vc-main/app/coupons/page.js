@@ -44,7 +44,7 @@ export default async function CouponPage() {
       const res = await fetch(url)
       if (!res.ok) throw new Error('狀態錯誤')
       const data = await res.json()
-      console.log(data.data)
+      console.log(data)
       setUserCoupons(data.data)
     } catch (err) {
       console.log('發生錯誤', err)
@@ -92,7 +92,7 @@ export default async function CouponPage() {
                     <button
                       className="btn btn-secondary "
                       onClick={async () => {
-                        await notifyAndGet(userId, item.id, item.typeId)
+                        await notifyAndGet(item.id, item.typeId)
                         await fetchUserCoupon()
                       }}
                     >
@@ -104,7 +104,7 @@ export default async function CouponPage() {
                     <button
                       className="btn btn-dark "
                       onClick={async () => {
-                        await notifyAndGet(userId, item.id, item.typeId)
+                        await notifyAndGet(item.id, item.typeId)
                         await fetchUserCoupon()
                       }}
                     >
@@ -121,7 +121,7 @@ export default async function CouponPage() {
             <button
               className="btn btn-outline-dark"
               onClick={async () => {
-                await notifyAndGetAll(userId)
+                await notifyAndGetAll()
                 await fetchUserCoupon()
               }}
             >

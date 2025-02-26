@@ -99,7 +99,7 @@ router.post('/:userId', async (req, res) => {
     // console.log(user);
 
     // 驗證優惠券是否存在且有效
-    const [ticket] = await db.query(`SELECT * FROM coupon WHERE id IN (?)`, [
+    const [ticket] = await db.query(`SELECT * FROM coupon WHERE id = ?`, [
       couponId,
     ])
     const coupon = ticket[0]
@@ -107,7 +107,7 @@ router.post('/:userId', async (req, res) => {
 
     // 驗證已擁有
     const [results] = await db.query(
-      'SELECT * FROM UserCoupons WHERE userId = ? AND couponId IN (?)',
+      'SELECT * FROM userCoupons WHERE userId = ? AND couponId = ?',
       [userId, couponId]
     )
     if (results.length > 0) throw new Error('您已經領取過此優惠券!')
@@ -149,18 +149,18 @@ router.post('/:userId/all', async (req, res) => {
 
   const [A] = await db.query(`SELECT * FROM coupon WHERE isDelete = ?`, [false])
   const [B] = await db.query(`SELECT * FROM usercoupons WHERE claimed = ?`, [true])
-  console.log(A);
-  console.log(B);
+  // console.log(A);
+  // console.log(B);
 
   // 自訂比較函數，判斷兩個物件是否重複 (根據 id 判斷)
   function areObjectsEqual(obj1, obj2) {
-    return obj1.id === obj2.id // 修改此處以符合您的比較邏輯
+    return obj1.id === obj2.couponId // 修改此處以符合您的比較邏輯
   }
 
   const newA = A.filter(
     (objA) => !B.some((objB) => areObjectsEqual(objA, objB))
   )
-  // console.log(newA) 
+  console.log(newA) 
 
   try {
     // 驗證使用者是否存在
@@ -169,7 +169,8 @@ router.post('/:userId/all', async (req, res) => {
     if (!user) throw new Error('請先登入!')
     // console.log(user);
 
-    if (!newA.length > 0) throw new Error('您已經全部領取了!')
+    //驗證已領取
+    if (newA.length == 0) throw new Error('您已經全部領取了!')
 
     newA.forEach(async (item) => {
       const sql = 'INSERT INTO usercoupons (userId,couponId,couponTypeId,claimed,isDelete) VALUES (?,?,?,?,?)'
