@@ -49,7 +49,7 @@ model userLike {
 model Otp {
   id        Int      @id @default(autoincrement())
   email     String
-  token     String
+  otp       String
   hash      String?
   createdAt DateTime @default(now()) @map("created_at")
   expiredAt DateTime @map("expired_at")
