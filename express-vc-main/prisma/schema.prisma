@@ -130,44 +130,44 @@ model Spec {
 
 // 問題:開啟關聯部分無法寫入資料
 model Coupon {
-  id             Int           @id @default(autoincrement())
-  name           String
-  code           String?       @unique // 優惠券代碼 (例如：SUMMER20)
-  typeId         Int //type fk
-  type           CouponType    @relation(fields: [typeId], references: [id]) // 優惠券類型 (關係)
-  discount       Int // 折扣金額或百分比 (根據 discount_type 決定)
-  discountTypeId Int // discountType fk
-  discountType   DiscountType  @relation(fields: [discountTypeId], references: [id]) // 折扣類型 (關係)
-  minPurchase    Decimal? //最低消費金額
-  description    String? // 優惠券描述 (nullable)
-  startTime      DateTime
-  endTime        DateTime
-  isDelete       Boolean       @default(false)
-  usercoupons    UserCoupons[]
+  id          Int           @id @default(autoincrement())
+  name        String
+  code        String?       @unique // 優惠券代碼 (例如：SUMMER20)
+  typeId      Int //type fk
+  type        CouponType    @relation(fields: [typeId], references: [id]) // 優惠券類型 (關係)
+  discount    Int // 折扣金額或百分比 (根據 discount_type 決定)
+  minPurchase Decimal? //最低消費金額
+  description String? // 優惠券描述 (nullable)
+  startTime   DateTime
+  endTime     DateTime
+  isDelete    Boolean       @default(false)
+  usercoupons UserCoupons[]
 
   @@index([code]) // 建立 code 索引
 }
 
 model CouponType {
-  id       Int      @id @default(autoincrement())
-  category String
-  coupon   Coupon[]
-}
-
-model DiscountType {
-  id     Int      @id @default(autoincrement())
-  name   String
-  coupon Coupon[]
+  id          Int           @id @default(autoincrement())
+  category    String
+  name        String
+  coupon      Coupon[]
+  userCoupons UserCoupons[]
 }
 
 model UserCoupons {
-  id       Int     @id @default(autoincrement())
-  userId   Int
-  user     User    @relation(fields: [userId], references: [id])
-  couponId Int
-  coupon   Coupon  @relation(fields: [couponId], references: [id])
-  claimed  Boolean @default(true)
-  isDelete Boolean @default(false)
+  id           Int        @id @default(autoincrement())
+  userId       Int
+  user         User       @relation(fields: [userId], references: [id])
+  couponId     Int
+  coupon       Coupon     @relation(fields: [couponId], references: [id])
+  couponTypeId Int
+  couponType   CouponType @relation(fields: [couponTypeId], references: [id])
+  claimed      Boolean    @default(true)
+  isDelete     Boolean    @default(false)
+
+  @@index([couponId])
+  @@index([userId])
+  @@index([couponTypeId])
 }
 
 /**
