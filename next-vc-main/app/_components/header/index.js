@@ -181,7 +181,7 @@ export default function Header() {
           <div className={styles['g-nav-bottom']}>
             <ul className="d-flex justify-content-center gap-5 list-unstyled">
               <li>
-                <a href="true">
+                <a href="/product">
                   <div className="d-flex">
                     <h6 className="h7">ELECTRIC GUITARS</h6>
                     <p className="px-1">/</p>
@@ -199,7 +199,7 @@ export default function Header() {
                 </a>
               </li>
               <li>
-                <a href="true">
+                <a href="/rent">
                   <div className="d-flex">
                     <h6 className="h7">RENTAL SERVICE</h6>
                     <p className="px-1">/</p>
@@ -208,7 +208,7 @@ export default function Header() {
                 </a>
               </li>
               <li>
-                <a href="true">
+                <a href="/coupons">
                   <div className="d-flex">
                     <h6 className="h7">SPECIAL EVENTS</h6>
                     <p className="px-1">/</p>
