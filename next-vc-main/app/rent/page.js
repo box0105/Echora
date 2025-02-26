@@ -24,6 +24,7 @@ export default function Page(props) {
       const res = await fetch('http://localhost:3005/api/rent')
       const data = await res.json()
       console.log(data)
+      setData(data.data)
     } catch (err) {
       console.log(err)
       setIsError(true)

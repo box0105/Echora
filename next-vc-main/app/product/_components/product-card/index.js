@@ -15,7 +15,9 @@ export default function ProductCard({ data = {} }) {
       <div className="col p-2">
         <div className="g-product-card">
           <div className="g-pd-img d-flex justify-content-center align-items-center position-relative">
-            <div className="g-brand-name d-flex justify-content-center align-items-center position-absolute">{data.brand_name}</div>
+            <div className="g-brand-name d-flex justify-content-center align-items-center position-absolute">
+              {data.brand_name}
+            </div>
             <img
               className="h-100"
               src={`/images/product/pd-images/${mainImage}`}

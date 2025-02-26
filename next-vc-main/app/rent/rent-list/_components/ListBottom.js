@@ -3,6 +3,7 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper/modules'
+import card from '../../../product/_components/product-card'
 
 // Swiper 樣式
 import 'swiper/css'

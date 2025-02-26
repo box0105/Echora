@@ -11,23 +11,30 @@ export default function RentCards({ data }) {
   return (
     <>
       {data.map((item) => {
-        console.log('RentCards 組件的 item:', JSON.stringify(item, null, 2)) // 添加這行
+        {
+          /* console.log('RentCards 組件的 item:', JSON.stringify(item, null, 2)) // 添加這行 */
+        }
         return <RentcardCard key={item.id} {...item} /> // 確保這裡正確傳遞 props
       })}
     </>
   )
 }
 
-function RentcardCard({ name, price, images, rentitemColors }) {
-  console.log(
-    'RentcardCard 組件的 rentitemColors:',
-    JSON.stringify(rentitemColors, null, 2)
-  ) // 添加這行
-  // 修改這裡
+function RentcardCard({ name, price, rentitemColors }) {
   console.log(rentitemColors)
-  const rentColors = rentitemColors?.map((color) => color.colorName) || []
+  console.log('rentitemColors[0].images[0]:', rentitemColors[0]?.images[0])
+
   const stock = rentitemColors?.[0]?.stock || 0
-  const image = images?.[0]?.image_url || '/images/Rent/default.jpg' // 添加預設圖片
+  const image = rentitemColors?.[0]?.images?.[0]
+    ? `/images/Rent/pd-images/${rentitemColors[0].images[0]}`
+    : '/images/Rent/default.jpg'
+
+  const colorImage = rentitemColors?.[0]?.color_image
+    ? `/images/Rent/color-images/${rentitemColors[0].color_image}`
+    : '/images/Rent/default-color.svg'
+
+  console.log('image type:', typeof image)
+  console.log('image value:', image)
 
   return (
     <>
@@ -43,14 +50,7 @@ function RentcardCard({ name, price, images, rentitemColors }) {
               <h5 className="card-text">${parseFloat(price).toFixed(2)}</h5>
             </div>
             <div className="c-card-color pt-2 d-flex gap-1">
-              {rentColors && // 修改這裡
-                rentColors.map((color, index) => (
-                  <img
-                    key={index}
-                    src={`/images/Rent/circle-${color.toLowerCase()}.png`}
-                    alt={color.colorName}
-                  />
-                ))}
+              <img src={colorImage} alt={rentitemColors?.[0]?.color_name} />
             </div>
             <div className="stock pt-2">
               <div className={stock > 0 ? 'in-stock' : 'out-stock'}>
