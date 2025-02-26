@@ -3,7 +3,7 @@ import './_styles/bootstrap.scss'
 import './_styles/cart-checkkist.scss'
 import './_styles/index.scss'
 import './_styles/cart-information.scss'
-import React, { useRef } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { useMyCart } from '@/hooks/use-cart'
 import Link from 'next/link'
 import { useSearchParams, useRouter } from 'next/navigation'
@@ -14,7 +14,16 @@ import { customAlphabet } from 'nanoid'
 // 載入loading元件
 
 export default function InformationPage() {
-  const { totalAmount, clearCart, cartItems } = useMyCart()
+  const { totalAmount, cartItems } = useMyCart()
+  const [total, setTotal] = useState()
+  const [cost, setCost] = useState()
+
+  useEffect(() => {
+    const total = JSON.parse(localStorage.getItem('total'))
+    const cost = JSON.parse(localStorage.getItem('cost'))
+    setTotal(total)
+    setCost(cost)
+  }, [])
 
   //#region EC Pay
   const payFormDiv = useRef(null)
@@ -37,15 +46,18 @@ export default function InformationPage() {
 
   const goEcpay = async () => {
     // 先連到node伺服器後端，取得EC Pay付款網址
-    const res = await fetch(`${apiURL}/ecpay-test-only?amount=${totalAmount}`, {
-      method: 'GET',
-      // 讓fetch能夠傳送cookie
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-    })
+    const res = await fetch(
+      `${apiURL}/ecpay-test-only?amount=${totalAmount - cost}`,
+      {
+        method: 'GET',
+        // 讓fetch能夠傳送cookie
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+      }
+    )
 
     const resData = await res.json()
 
@@ -114,6 +126,7 @@ export default function InformationPage() {
     const target = event.target
     const nanoid = customAlphabet('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 10) // 生成 10 碼的隨機字母數字
     const userId = localStorage.getItem('userId')
+    const coupon = JSON.parse(localStorage.getItem('coupon')) || []
 
     // 從表單中獲取用戶資料
     const userData = {
@@ -126,8 +139,10 @@ export default function InformationPage() {
       address: target.address.value,
       shippingMethod: target.shippingMethod.value,
       paymentMethod: target.paymentMethod.value,
-      totalAmount: totalAmount,
+      totalAmount: total,
       orderNumber: nanoid(),
+      cost: cost,
+      coupon: coupon.name,
     }
 
     // 將 userData 寫入 localStorage
@@ -362,12 +377,12 @@ export default function InformationPage() {
                 </div>
                 <div className="d-flex justify-content-between py-2">
                   <h5>折扣 :</h5>
-                  <h5>-20%</h5>
+                  <h5>{cost == 0 ? '' : `- NT$ ${cost}`}</h5>
                 </div>
                 <hr />
                 <div className="d-flex justify-content-between py-3">
                   <h4 className="h4">總計 :</h4>
-                  <h4 className="h4">NT$ {totalAmount}</h4>
+                  <h4 className="h4">NT$ {totalAmount - cost}</h4>
                 </div>
                 {/* <div className="row row-cols-1 pt-4 d-md-block d-none">
                 <CartList cartItems={cartItems} />

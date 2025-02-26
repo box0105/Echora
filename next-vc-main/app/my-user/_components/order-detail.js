@@ -36,7 +36,7 @@ export default function ComponentsOrderDetail() {
 
   return (
     <>
-      <div className=''>
+      <div className="">
         <br />
         <div className="row w-100 ">
           <div className="col col-6">
@@ -49,6 +49,10 @@ export default function ComponentsOrderDetail() {
             <p>地址 : {order.shippingAddress}</p>
             <p>付款方式 : {order.paymentMethod}</p>
             <p>取貨方式 : {order.shippingMethod}</p>
+            <p>
+              {order.coupon == '' ? '使用的優惠券 : 無' : `使用的優惠券 : ${order.coupon}`}
+            </p>
+            <p>{order.cost == 0 ? '折扣 : 無' : `折扣 : - NT$ ${order.cost}`}</p>
             <br />
             <hr />
             <h5>總金額 : NT$ {order.totalAmount}</h5>

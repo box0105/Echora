@@ -1,7 +1,7 @@
 'use client'
 
 import './style.scss'
-import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useState, useEffect } from 'react'
 import { useMyCoupon } from '@/hooks/use-coupon'
 import { useAuth } from '@/hooks/use-auth'
@@ -13,7 +13,7 @@ export default async function CouponPage() {
   const { notifyAndGet, notifyAndGetAll } = useMyCoupon()
   const { isAuth } = useAuth()
 
-  console.log();
+  console.log()
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -38,7 +38,7 @@ export default async function CouponPage() {
 
   const fetchUserCoupon = async () => {
     const userId = localStorage.getItem('userId')
-    console.log(userId);
+    console.log(userId)
     try {
       const url = `http://localhost:3005/api/coupon/${userId}`
       const res = await fetch(url)
