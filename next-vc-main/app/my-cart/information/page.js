@@ -91,7 +91,7 @@ export default function InformationPage() {
   const goLinePay = async () => {
     // 先連到node伺服器後端，取得LINE Pay付款網址
     const res = await fetch(
-      `${apiURL}/line-pay-test-only/reserve?amount=${totalAmount}&items=${cartItems.name}`,
+      `${apiURL}/line-pay-test-only/reserve?amount=${totalAmount - cost}&items=${cartItems.name}`,
       {
         method: 'GET',
         // 讓fetch能夠傳送cookie

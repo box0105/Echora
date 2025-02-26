@@ -30,9 +30,33 @@ export default function ChecklistPage() {
     localStorage.setItem('total', JSON.stringify(countedAmount))
   }, [discountedAmount])
 
+  // useEffect(() => {
+  //   setCountedAmount(totalAmount)
+  // }, [totalAmount])
+
   useEffect(() => {
-    setCountedAmount(totalAmount)
-  }, [totalAmount])
+    const storedCoupon = localStorage.getItem('coupon')
+    const selectedCoupon = storedCoupon ? JSON.parse(storedCoupon) : null
+  
+    if (!selectedCoupon) {
+      setDiscountedAmount(0)
+      setCountedAmount(totalAmount)
+      return
+    }
+  
+    if (selectedCoupon.typeId == 2) {
+      // 百分比折扣
+      const discountAmount = Math.round((totalAmount * selectedCoupon.discount) / 100)
+      setDiscountedAmount(totalAmount - discountAmount)
+      setCountedAmount(discountAmount)
+    } else if (selectedCoupon.typeId == 1) {
+      // 固定金額折扣
+      const discountAmount = Math.round(selectedCoupon.discount)
+      setDiscountedAmount(discountAmount)
+      setCountedAmount(totalAmount - discountAmount)
+    }
+  }, [totalAmount]) // 監聽 totalAmount 變化
+  
 
   useEffect(() => {
     if (isAuth) {
@@ -54,33 +78,59 @@ export default function ChecklistPage() {
     // fetchUserCoupon()
   }
 
-  const handleCouponChange = (e) => {
-    const selectedCoupon = userCoupons.find(
-      (coupon) => coupon.name === e.target.value
-    )
+  // const handleCouponChange = (e) => {
+  //   const selectedCoupon = userCoupons.find(
+  //     (coupon) => coupon.name === e.target.value
+  //   )
 
+  //   if (!selectedCoupon) {
+  //     // 如果沒有選擇優惠券，回復原始價格
+  //     setDiscountedAmount(0)
+  //     setCountedAmount(totalAmount)
+  //     return
+  //   }
+
+  //   if (selectedCoupon.typeId == 2) {
+  //     // 假設 discount 是百分比
+  //     const discountAmount = Math.round(
+  //       (totalAmount * selectedCoupon.discount) / 100
+  //     )
+  //     setDiscountedAmount(totalAmount - discountAmount)
+  //     setCountedAmount(discountAmount)
+  //   } else if (selectedCoupon.typeId == 1) {
+  //     const discountAmount = Math.round(totalAmount - selectedCoupon.discount)
+  //     setDiscountedAmount(totalAmount - discountAmount)
+  //     setCountedAmount(discountAmount)
+  //   }
+
+  //   localStorage.setItem('coupon', JSON.stringify(selectedCoupon))
+  // }
+
+  const handleCouponChange = (e) => {
+    const selectedCoupon = userCoupons.find((coupon) => coupon.name === e.target.value)
+  
     if (!selectedCoupon) {
-      // 如果沒有選擇優惠券，回復原始價格
       setDiscountedAmount(0)
       setCountedAmount(totalAmount)
+      localStorage.removeItem('coupon')
       return
     }
-
+  
+    localStorage.setItem('coupon', JSON.stringify(selectedCoupon))
+  
     if (selectedCoupon.typeId == 2) {
-      // 假設 discount 是百分比
-      const discountAmount = Math.round(
-        (totalAmount * selectedCoupon.discount) / 100
-      )
+      // 百分比折扣
+      const discountAmount = Math.round((totalAmount * selectedCoupon.discount) / 100)
       setDiscountedAmount(totalAmount - discountAmount)
       setCountedAmount(discountAmount)
     } else if (selectedCoupon.typeId == 1) {
-      const discountAmount = Math.round(totalAmount - selectedCoupon.discount)
-      setDiscountedAmount(totalAmount - discountAmount)
-      setCountedAmount(discountAmount)
+      // 固定金額折扣
+      const discountAmount = Math.round(selectedCoupon.discount)
+      setDiscountedAmount(discountAmount)
+      setCountedAmount(totalAmount - discountAmount)
     }
-
-    localStorage.setItem('coupon', JSON.stringify(selectedCoupon))
   }
+  
 
   //#endregion
   // ------------------

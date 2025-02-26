@@ -114,6 +114,7 @@ export function MyCartProvider({ children }) {
   // 清空購物車
   const clearCart = () => {
     setCartItems([])
+    localStorage.removeItem('cartItem')
     localStorage.removeItem('coupon')
     localStorage.removeItem('userData')
     localStorage.removeItem('total')
