@@ -40,8 +40,8 @@ export default function MemberLayout({ children }) {
     <div>
       <main className="main">
         <div className="container">
-          <h2 className="page-title">{getPageTitle()}</h2>
-          <hr />
+          {/* <h2 className="page-title">{getPageTitle()}</h2> */}
+          {/* <hr /> */}
 
           <div className="hamburger-member" id="hamburger-member">
             <div
@@ -68,7 +68,11 @@ export default function MemberLayout({ children }) {
                 <h5 className="tab-link" data-tab="favorites">
                   我的收藏
                 </h5>
-                <Link href="/my-user/coupons" className="tab-link" data-tab="coupons">
+                <Link
+                  href="/my-user/coupons"
+                  className="tab-link"
+                  data-tab="coupons"
+                >
                   我的優惠券
                 </Link>
               </div>
@@ -78,23 +82,16 @@ export default function MemberLayout({ children }) {
           <div className="content">
             <aside className="sidebar">
               <div className="sidebar-section">
-                <h2 className="sidebar-title">
-                  <Link href="/my-user/profile"> 關於我</Link>
+                <h2 className={`sidebar-title ${isActive('/my-user/profile')}`}>
+                  <Link href="/my-user/profile">個人資料</Link>
                 </h2>
-                <ul className="sidebar-menu">
-                  <li
-                    className={`sidebar-item ${isActive('/my-user/profile')}`}
-                  >
-                    <Link href="/my-user/profile"> 個人資料</Link>
-                  </li>
-                  <li
-                    className={`sidebar-item ${isActive(
-                      '/my-user/profile-password'
-                    )}`}
-                  >
-                    <Link href="/my-user/profile-password"> 修改密碼</Link>
-                  </li>
-                </ul>
+                <h2
+                  className={`sidebar-title ${isActive(
+                    '/my-user/profile-password'
+                  )}`}
+                >
+                  <Link href="/my-user/profile-password">修改密碼</Link>
+                </h2>
               </div>
               <div className="sidebar-section">
                 <h2 className={`sidebar-title ${isActive('/my-user/order')}`}>
@@ -105,7 +102,9 @@ export default function MemberLayout({ children }) {
                 <h2 className="sidebar-title">我的收藏</h2>
               </div>
               <div className="sidebar-section">
-                <Link href="/my-user/coupons" className="sidebar-title">我的優惠券</Link>
+                <Link href="/my-user/coupons" className="sidebar-title">
+                  我的優惠券
+                </Link>
               </div>
             </aside>
             <div className="profile-content">{children}</div>

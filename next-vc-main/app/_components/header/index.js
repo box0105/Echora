@@ -95,10 +95,10 @@ export default function Header() {
         toast.success('已成功登出')
         router.push('/')
       } else {
-        toast.error('登出失敗:', resData.message)
+        toast.error(`登出失敗: ${resData.message}`)
       }
     } catch (err) {
-      toast.error('登出失敗:', err)
+      toast.error(`登出失敗: ${err.message}`)
     }
   }
 
@@ -294,7 +294,7 @@ export default function Header() {
       </section>
       {/* Offcanvas：根據 showCart 控制顯示，並傳入 onClose 用於關閉 */}
       <CartOffcanvas show={showCart} onClose={() => setShowCart(false)} />
-      <ToastContainer />
+      <ToastContainer autoClose={3000} />
     </>
   )
 }
