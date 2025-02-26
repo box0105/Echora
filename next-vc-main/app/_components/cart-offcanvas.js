@@ -7,9 +7,17 @@ import { useEffect, useState } from 'react'
 export default function CartOffcanvas({ show, onClose }) {
   const { cartItems, totalAmount, totalQty, clearCart } = useMyCart()
   const { isAuth } = useAuth()
-
-  // 控制 visibility 狀態
   const [isVisible, setIsVisible] = useState(show)
+  // const [clientCartItems, setClientCartItems] = useState([])
+  // const [clientAuth, setClientAuth] = useState(false)
+
+  // useEffect(() => {
+  //   setClientAuth(isAuth)
+  // }, [isAuth])
+
+  // useEffect(() => {
+  //   setClientCartItems(cartItems)
+  // }, [cartItems])
 
   useEffect(() => {
     if (show) {
