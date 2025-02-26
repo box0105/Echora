@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 // 可以在這找想加上想要的效果 https://swiperjs.com/demos
 import { Navigation, Pagination, EffectFade, Autoplay } from 'swiper/modules'
 import Image from 'next/image'
+import Link from 'next/link'
 
 // import swiper css
 import 'swiper/css'
@@ -18,18 +19,21 @@ export default function HeroSection({
   title = '',
   subTitle = '',
   images,
-  isLoop = false,
+  ids,
 }) {
   const src = '/images/activity/'
+  const imageArr = typeof images == 'string' ? images.split(',') : images
+  console.log('Hero', imageArr)
+  console.log('ids', ids)
 
   return (
     <Swiper
       navigation={true}
       modules={[Navigation, Pagination, EffectFade, Autoplay]}
       effect="fade" // fade effect
-      loop={isLoop} // 巡迴播放
+      loop={imageArr?.length > 1 ? true : false} // 巡迴播放
       autoplay={{
-        delay: 3000, // 每 3 秒自動播放一次
+        delay: 5000, // 每 3 秒自動播放一次
         disableOnInteraction: false, // 用戶交互後保持自動播放
       }}
       pagination={{
@@ -37,19 +41,24 @@ export default function HeroSection({
       }}
       className="b-swiper"
     >
-      {images?.map((img, i) => (
+      {imageArr?.map((img, i) => (
         <SwiperSlide key={i}>
-          <div className="b-swiper-text position-relative b-sm-none">
-            <div className="b-swiper-title">{title}</div>
-            <div className="b-swiper-subtitle">{subTitle}</div>
-          </div>
-          <Image
-            src={`${src}${img}`}
-            alt={`Image ${i}`}
-            fill
-            className="object-fit-cover"
-            priority
-          />
+          <Link href={ids ? `/activity/${ids[i] + 1}` : ''}>
+            <div className="position-relative w-100 h-100">
+              <div className="b-swiper-text position-relative b-sm-none">
+                <div className="b-swiper-title">{title}</div>
+                <div className="b-swiper-subtitle">{subTitle}</div>
+              </div>
+
+              <Image
+                src={`${src}${img}`}
+                alt={`${img}`}
+                fill
+                className="object-fit-cover"
+                priority
+              />
+            </div>
+          </Link>
         </SwiperSlide>
       ))}
     </Swiper>

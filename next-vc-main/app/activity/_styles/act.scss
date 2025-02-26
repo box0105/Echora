@@ -6,9 +6,9 @@
 .b-hero {
   width: auto;
   height: 520px;
-  background: url('../../../public/images/activity/cover.jpeg') center center /
-    cover no-repeat;
-  opacity: 0.9;
+  // background: url('../../../public/images/activity/cover.jpeg') center center /
+  //   cover no-repeat;
+  opacity: 0.1;
 
   .b-text {
     top: 50%;
@@ -182,7 +182,8 @@
 }
 
 .b-act-list {
-  padding-block: 4rem;
+  padding-top: 4rem;
+  padding-bottom: 8rem;
 
   .card {
     background: var(

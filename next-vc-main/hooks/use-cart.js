@@ -48,20 +48,25 @@ export function MyCartProvider({ children }) {
     setCartItems(nextCartItems)
   }
 
-  // 加入商品到購物車
+  // -------- 加入購物車 --------
+
+  // 商品加入購物車
   const onAdd = (product, selectedColor) => {
     console.log(product.images[selectedColor.skuId][0])
     //box
     const color = selectedColor.name
     const stock = product.stock[selectedColor.skuId]
-    const image = `/images/product/pd-images/${product.images[selectedColor.skuId][0]}`
+    const image = `/images/product/pd-images/${
+      product.images[selectedColor.skuId][0]
+    }`
 
     // 判斷此商品是否已經在購物車裡
     const foundIndex = cartItems.findIndex((v) => v.id === product.id)
 
     if (foundIndex !== -1) {
       // 如果有找到==>遞增商品數量
-      onIncrease(product.id)
+      // onIncrease(product.id)
+      alert('已有相同商品在購物車內')
     } else {
       // 沒找到===>新增商品到購物車
       // product和item(購物車項目)相比，少了一個數量屬性count
@@ -72,6 +77,38 @@ export function MyCartProvider({ children }) {
       // 設定到狀態
       setCartItems(nextCartItems)
     }
+  }
+
+  // 活動票加入購物車
+  const onAddActivity = (activity) => {
+    // 取出票券列表
+    const actTickets = activity.selectedTickets
+
+    // 檢查購物車內是否已經有相同的票券
+    const existingTickets = cartItems.filter((item) =>
+      actTickets.some((ticket) => ticket.id === item.id)
+    )
+    if (existingTickets.length > 0) {
+      alert('已有相同商品在購物車內')
+      return
+    }
+
+    // 將所有票券新增到購物車，每張票券預設 count: 1
+    const newTickets = actTickets.map((ticket) => ({
+      ...ticket,
+      count: 1,
+      status: ticket.name,
+      activityId: activity.id, // 活動 ID
+      name: activity.name, // 活動名稱
+      activityDateStart: activity.date_start, // 活動開始時間
+      activityDateEnd: activity.date_end, // 活動結束時間
+      activityCity: activity.city, // 活動城市
+      activityAddress: activity.address, // 活動地址
+      image: activity.image, // 活動圖片
+    }))
+
+    // 更新購物車 (展開舊的購物車內容)
+    setCartItems([...newTickets, ...cartItems])
   }
 
   // 清空購物車
@@ -112,6 +149,7 @@ export function MyCartProvider({ children }) {
         onIncrease,
         onRemove,
         clearCart,
+        onAddActivity,
       }}
     >
       {children}

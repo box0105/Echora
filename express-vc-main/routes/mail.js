@@ -1,17 +1,44 @@
 import express from 'express'
+import db from '../db3.js'
 const router = express.Router()
 
 // 寄送email函式
 import { sendOtpMail } from '../lib/mail.js'
 
 router.post('/', async function (req, res) {
-  // 寄送email
+  const { email } = req.body
+
   try {
-    // 寄送otp信件(注意這個操作會耗時)
-    // 如果要使用ethereal收信測試: https://ethereal.email/login
-    // user: 'mittie.daniel91@ethereal.email',pass: 'b6en9s7EqjP9EPVKkd'
-    // 使用gmail前要先設定應用程式密碼，並在server.config.js中設定好
-    await sendOtpMail('hsuabby2@gmail.com', '123456', 'xxxyyy123')
+    // 查詢資料庫中的用戶
+    const [user] = await db.query('SELECT * FROM user WHERE email = ?', [email])
+
+    if (!user.length) {
+      return res.status(404).json({ status: 'error', message: '用戶不存在' })
+    }
+
+    // 檢查是否有未過期的 OTP
+    const [existingOtp] = await db.query(
+      'SELECT * FROM otp WHERE email = ? AND expired_at > NOW()',
+      [email]
+    )
+
+    if (existingOtp.length > 0) {
+      return res
+        .status(400)
+        .json({ status: 'error', message: '有尚未過期的otp，請稍後再試。' })
+    }
+
+    // 生成新的 OTP
+    const otp = Math.floor(100000 + Math.random() * 900000).toString()
+
+    // 保存 OTP 到資料庫
+    await db.query(
+      'INSERT INTO otp (email, otp, expired_at) VALUES (?, ?, DATE_ADD(NOW(), INTERVAL 10 MINUTE))',
+      [email, otp]
+    )
+
+    // 寄送 OTP 信件
+    await sendOtpMail(email, otp)
 
     return res.status(200).json({ status: 'success', data: null })
   } catch (err) {

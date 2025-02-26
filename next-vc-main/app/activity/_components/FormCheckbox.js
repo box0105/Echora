@@ -1,6 +1,8 @@
+"use client";
+
 import React, { useState } from 'react';
 
-export default function FormCheckbox({ title, options }) {
+export default function FormCheckbox({ title, options, onChange }) {
     const initState = options.map((v, i) => {
         return { id: i + 1, name: v, checked: false };
     });
@@ -16,6 +18,10 @@ export default function FormCheckbox({ title, options }) {
             else return v;
         });
         setChecks(nextChecks);
+
+         // 回傳所有被選中的 category_id 陣列
+         const selectedIds = nextChecks.filter(v => v.checked).map(v => v.id);
+         onChange(selectedIds);
     };
 
     return (

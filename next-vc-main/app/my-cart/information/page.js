@@ -10,6 +10,7 @@ import { useSearchParams, useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { isDev, apiURL } from '@/config'
+import { customAlphabet } from 'nanoid'
 // 載入loading元件
 
 export default function InformationPage() {
@@ -111,9 +112,12 @@ export default function InformationPage() {
     event.preventDefault()
 
     const target = event.target
+    const nanoid = customAlphabet('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 10) // 生成 10 碼的隨機字母數字
+    const userId = localStorage.getItem('userId')
 
     // 從表單中獲取用戶資料
     const userData = {
+      userId: userId,
       recipient: target.recipient.value,
       phone: target.phone.value,
       email: target.email.value,
@@ -123,6 +127,7 @@ export default function InformationPage() {
       shippingMethod: target.shippingMethod.value,
       paymentMethod: target.paymentMethod.value,
       totalAmount: totalAmount,
+      orderNumber: nanoid(),
     }
 
     // 將 userData 寫入 localStorage
@@ -246,7 +251,7 @@ export default function InformationPage() {
                     type="radio"
                     name="shippingMethod"
                     id="flexRadioDefault1"
-                    value="homeDelivery"
+                    value="宅配到府"
                     defaultChecked
                   />
                   <label
@@ -261,7 +266,7 @@ export default function InformationPage() {
                     type="radio"
                     name="shippingMethod"
                     id="flexRadioDefault2"
-                    value="storePickup"
+                    value="來店自取"
                   />
                   <label
                     className="form-check-label ps-2"

@@ -70,7 +70,7 @@ export default function RegisterPage() {
       const res = await register(userInput)
       const resData = await res.json()
       if (resData.status === 'success') {
-        toast.success('資訊 - 會員註冊成功')
+        toast.success('註冊成功，請重新登入')
         if (isClient) {
           router.push('/') // 重定向到首頁
         }

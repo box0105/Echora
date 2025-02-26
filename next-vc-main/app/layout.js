@@ -12,6 +12,7 @@ export default function RootLayout({ children }) {
     '/my-user',
     '/my-user/register',
     '/my-user/forget-password',
+    '/my-user/forget-password-2p/reset',
   ]
 
   return (

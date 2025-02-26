@@ -1,15 +1,15 @@
 'use client'
 import { useMyCart } from '@/hooks/use-cart'
+import { stringify } from 'querystring'
 
 export default function CartItem({ item }) {
   const { cartItems, onDecrease, onIncrease, onRemove } = useMyCart()
 
   return (
     <div className="card card1 mb-3 p-0">
+      {/* <pre>{JSON.stringify(item, null, 2)}</pre> */}
       <div className="row g-0">
-        <div
-          className="col-md-3 m-sec2-card py-3 px-0"
-        >
+        <div className="col-md-3 m-sec2-card py-3 px-0">
           <img
             src={item.image}
             className="img-fluid"
@@ -22,12 +22,16 @@ export default function CartItem({ item }) {
             <div className="d-flex flex-column justify-content-between flex-grow-1">
               <div>
                 <h4 className="h3 p-lg-x-2 p-lg-1">{item.name}</h4>
+                {item.brand && <h5 className="p-lg-1">品牌 : {item.brand}</h5>}
+                {item.status && (
+                  <h5 className="p-lg-1">票種 : {item.status}</h5>
+                )}
                 {item.rentDate && (
                   <div className="d-flex align-items-end p-lg-1">
-                    <h5>租借日期: {item.rentDate}</h5>
+                    <h5>租借日期 : {item.rentDate}</h5>
                   </div>
                 )}
-                {item.color && <h5 className="p-lg-1">顏色: {item.color}</h5>}
+                {item.color && <h5 className="p-lg-1">顏色 : {item.color}</h5>}
                 <div className="d-flex align-items-end p-lg-1">
                   {item.stock >= item.count ? (
                     <img src="/images/cart/box-icon.svg" alt="stock icon" />

@@ -9,7 +9,7 @@ import { useAuth } from '@/hooks/use-auth'
 
 export default function EcpayPage() {
   // 檢查是否登入
-  const { isAuth } = useAuth()
+  // const { isAuth } = useAuth()
   // 建立ref，用來放置form表單
   const payFormDiv = useRef(null)
   // 建立ref，用來放置金額
@@ -74,7 +74,7 @@ export default function EcpayPage() {
       <h1>ECPay(綠界金流)測試頁</h1>
       <p>本功能目前與資料庫無關。</p>
       <p>
-        會員登入狀態: {isAuth ? '已登入' : '未登入'}
+        {/* 會員登入狀態: {isAuth ? '已登入' : '未登入'} */}
         <br />
         <Link href="/user">連至會員登入頁</Link>
       </p>

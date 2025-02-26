@@ -251,7 +251,7 @@ export const lineLogout = async (line_uid) => {
  */
 export const useAuthGetOtpToken = () => {
   const { trigger, isMutating, isError } = useMutation(
-    `${apiURL}/auth/otp`,
+    `${apiURL}/users/otp`,
     'POST'
   )
   // POST方法時，要利用requestOtpToken(email)
@@ -267,7 +267,7 @@ export const useAuthGetOtpToken = () => {
  */
 export const useAuthResetPassword = () => {
   const { trigger, isMutating, isError } = useMutation(
-    `${apiURL}/auth/reset-password`,
+    `${apiURL}/users/reset-password`,
     'POST'
   )
   // POST方法時，要利用resetPassword(email, password, token)
@@ -283,7 +283,7 @@ export const useAuthResetPassword = () => {
  */
 export const useAuthResetPasswordHash = () => {
   const { trigger, isMutating, isError } = useMutation(
-    `${apiURL}/auth/reset-password-hash`,
+    `${apiURL}/users/reset-password-hash`,
     'POST'
   )
   // POST方法時，要利用resetPasswordHash(secret, password, token)
@@ -298,7 +298,7 @@ export const useAuthResetPasswordHash = () => {
  */
 export const useAuthCheckSecret = () => {
   const { trigger, isMutating, isError } = useMutation(
-    `${apiURL}/auth/check-secret`,
+    `${apiURL}/users/check-secret`,
     'POST'
   )
   // POST方法時，要利用checkSecret(secret)

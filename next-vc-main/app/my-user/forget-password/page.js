@@ -29,6 +29,10 @@ export default function ForgetPasswordPage() {
   const [token, setToken] = useState('')
   const [password, setPassword] = useState('')
 
+  // 新增狀態來追蹤輸入欄是否有資料
+  const [isEmailFilled, setIsEmailFilled] = useState(false)
+  const [isOtpSent, setIsOtpSent] = useState(false)
+
   // 載入loading元件
   const [loadingStep1, setLoadingStep1] = useState(false)
   const [loadingStep2, setLoadingStep2] = useState(false)
@@ -54,17 +58,27 @@ export default function ForgetPasswordPage() {
   }
 
   // 處理要求一次性驗証碼用
-  const handleRequestOtpToken = async () => {
-    const res = await requestOtpToken(email)
-    const resData = await res.json()
+  const handleRequestOtpToken = async (e) => {
+    e.preventDefault()
+    try {
+      const response = await fetch('http://localhost:3005/api/mail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      })
 
-    // 除錯用
-    console.log(resData)
-
-    if (resData.status === 'success') {
-      toast.success('資訊 - 驗証碼已寄送到電子郵件中')
-    } else {
-      toast.error(`錯誤 - ${resData.message}`)
+      const resData = await response.json()
+      if (resData.status === 'success') {
+        toast.success('驗證碼已發送到您的電子郵件')
+        setIsOtpSent(true) // 更新狀態以顯示驗證碼已寄送的訊息
+      } else {
+        toast.error(resData.message)
+      }
+    } catch (err) {
+      toast.error('無法發送驗證碼')
+      console.log(err.message)
     }
   }
 
@@ -79,7 +93,7 @@ export default function ForgetPasswordPage() {
       toast.success('資訊 - 密碼已成功修改，導向使用者登入頁面')
 
       setTimeout(() => {
-        router.push('/user')
+        router.push('/my-user')
       }, 2000)
     } else {
       toast.error(`錯誤 - ${resData.message}`)
@@ -94,7 +108,7 @@ export default function ForgetPasswordPage() {
         setLoadingStep1(false)
         setShowStep1(false)
         setShowStep2(true)
-      }, 2000)
+      }, 5000)
     }
   }, [isRequesting])
 
@@ -104,7 +118,7 @@ export default function ForgetPasswordPage() {
       setLoadingStep2(false)
       setTimeout(() => {
         setLoadingStep2(false)
-      }, 2000)
+      }, 5000)
     }
   }, [isResetting])
 
@@ -129,12 +143,20 @@ export default function ForgetPasswordPage() {
         <input
           type="text"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {
+            setEmail(e.target.value)
+            setIsEmailFilled(e.target.value.includes('@'))
+          }}
           disabled={!showStep1}
         />
       </label>
       <br />
-      <button onClick={handleRequestOtpToken}>取得驗証碼</button>
+      <button
+        onClick={handleRequestOtpToken}
+        className={`login-button ${isEmailFilled ? 'hover' : ''}`}
+      >
+        取得驗証碼
+      </button>
       <p>
         注意驗証碼有效期間為
         <span style={{ fontWeight: 700, color: 'red' }}>5分鐘</span>
@@ -200,25 +222,44 @@ export default function ForgetPasswordPage() {
             </div>
             <div className="login">忘記密碼</div>
 
-            <div className="input-field">
-              <label htmlFor="email" className="visually-hidden">
-                電子郵件
-              </label>
-              <input
-                type="email"
-                id="email"
-                className="form-input"
-                placeholder="請輸入電子郵件"
-                required
-                aria-label="電子郵件"
-              />
-            </div>
-            <button type="submit" className="login-button">
-              獲取驗證碼
-            </button>
+            {!isOtpSent ? (
+              <>
+                <div className="input-field">
+                  <label htmlFor="email" className="visually-hidden">
+                    電子郵件
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value)
+                      setIsEmailFilled(e.target.value.includes('@'))
+                    }}
+                    className="form-input"
+                    placeholder="請輸入電子郵件"
+                    required
+                    aria-label="電子郵件"
+                  />
+                </div>
+                <button
+                  onClick={handleRequestOtpToken}
+                  className={`login-button ${isEmailFilled ? 'hover' : ''}`}
+                  disabled={!isEmailFilled}
+                >
+                  獲取驗證碼
+                </button>
+              </>
+            ) : (
+              <p className="h6" style={{ fontWeight: 400 }}>
+                驗證碼已寄出，請透過郵件連結使用該碼重設密碼。
+              </p>
+            )}
           </form>
+          s
         </div>
       </div>
+      <ToastContainer />
     </>
   )
 }
