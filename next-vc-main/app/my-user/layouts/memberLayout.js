@@ -99,12 +99,16 @@ export default function MemberLayout({ children }) {
                 </h2>
               </div>
               <div className="sidebar-section">
-                <h2 className="sidebar-title">我的收藏</h2>
+                <h2
+                  className={`sidebar-title ${isActive('/my-user/userlike')}`}
+                >
+                  <Link href="/my-user/userlike"> 我的收藏</Link>
+                </h2>
               </div>
               <div className="sidebar-section">
-                <Link href="/my-user/coupons" className="sidebar-title">
-                  我的優惠券
-                </Link>
+                <h2 className={`sidebar-title ${isActive('/my-user/coupons')}`}>
+                  <Link href="/my-user/coupons"> 我的優惠券</Link>
+                </h2>
               </div>
             </aside>
             <div className="profile-content">{children}</div>
