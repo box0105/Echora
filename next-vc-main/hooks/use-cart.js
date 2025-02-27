@@ -115,7 +115,7 @@ export function MyCartProvider({ children }) {
   const clearCart = () => {
     setCartItems([])
     localStorage.removeItem('cartItem')
-    localStorage.removeItem('coupon')
+    // localStorage.removeItem('coupon')
     localStorage.removeItem('userData')
     localStorage.removeItem('total')
     localStorage.removeItem('cost')
