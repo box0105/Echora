@@ -6,10 +6,6 @@ const router = express.Router()
 import { successResponse, errorResponse } from '../lib/utils.js'
 
 router.get('/', async (req, res) => {
-  const type = req.query.type || 'all'
-  const page = Number(req.query.page) || 1
-  const perPage = Number(req.query.perpage) || 8
-
   const nameLike = req.query.name_like || ''
   const brandIds = req.query.brand_ids
     ? req.query.brand_ids.split(',').map(Number)
@@ -27,20 +23,20 @@ router.get('/', async (req, res) => {
   try {
     let sql = `
       SELECT
-  rent.*,
-  RentBrand.name AS brand_name,
-  RentItemColor.id AS rent_item_color_id,
-  RentItemColor.stock,
-  RentColor.name AS color_name,
-  RentColor.rentColor_image AS color_image,
-  RentImges.image,
-  RentImges.sort_order
-FROM Rent
-LEFT JOIN RentBrand ON Rent.rentBrandId = RentBrand.id
-LEFT JOIN RentItemColor ON Rent.id = RentItemColor.rentId
-LEFT JOIN RentColor ON RentItemColor.color_id = RentColor.id
-LEFT JOIN RentImges ON RentItemColor.id = RentImges.RentItemcolor_id
-WHERE 1=1
+        rent.*,
+        RentBrand.name AS brand_name,  -- 加入 brand_name
+        RentItemColor.id AS rent_item_color_id,
+        RentItemColor.stock,
+        RentColor.name AS color_name,
+        RentColor.rentColor_image AS color_image,
+        RentImges.image,
+        RentImges.sort_order
+      FROM Rent
+      LEFT JOIN RentBrand ON Rent.rentBrandId = RentBrand.id
+      LEFT JOIN RentItemColor ON Rent.id = RentItemColor.rentId
+      LEFT JOIN RentColor ON RentItemColor.RentColor_id = RentColor.id
+      LEFT JOIN RentImges ON RentItemColor.id = RentImges.RentItemColorId
+      WHERE 1=1
     `
 
     if (nameLike) sql += ` AND Rent.name LIKE '%${nameLike}%'`
@@ -49,7 +45,7 @@ WHERE 1=1
     if (priceGte && priceLte)
       sql += ` AND Rent.price BETWEEN ${priceGte} AND ${priceLte}`
     if (color_ids.length > 0)
-      sql += ` AND RentItemColor.color_id IN (${color_ids.join(',')})`
+      sql += ` AND RentItemColor.RentColor_id IN (${color_ids.join(',')})`
 
     sql += ` ORDER BY Rent.${sort} ${order}, RentImges.sort_order ASC`
 
@@ -82,6 +78,7 @@ WHERE 1=1
       } else {
         acc.push({
           ...row,
+          brand_name: row.brand_name, // 加入 brand_name
           rentitemColors: row.rent_item_color_id
             ? [
                 {
@@ -111,6 +108,7 @@ WHERE 1=1
     })
   }
 })
+
 // 修改后的 /api/rent/search 路由
 router.get('/search', async (req, res) => {
   try {
@@ -236,6 +234,7 @@ router.get('/search', async (req, res) => {
     res.status(500).json({ status: 'error', message: '伺服器錯誤' })
   }
 })
+
 router.get('/:pid', async (req, res) => {
   const { pid } = req.params
 
@@ -249,21 +248,24 @@ router.get('/:pid', async (req, res) => {
   try {
     // 使用參數化查詢
     const [rows] = await db.query(
-      `SELECT
-    r.*,
-    rb.name AS rentBrandName,
-    ric.id AS rentItemcolor_id,
-    ric.stock AS rentItemColorStock,
-    rc.name AS rentColorNames,
-    rc.rentColor_image AS rentColorImages,
-    ri.image AS rentImage,
-    ri.sort_order AS rentImageSortOrder,
-    rl.neck_pickup AS rentListNeckPickup,
-    rl.middle_pickup AS rentListMiddlePickup,
-    rl.bridge_pickup AS rentListBridgePickup,
-    rl.controls AS rentListControls,
-    rl.switching AS rentListSwitching,
-    s.name AS storeName
+      `
+      SELECT
+      r.*,
+      rb.name AS rentBrandName,
+      ric.id AS rentItemcolor_id,
+      ric.stock AS rentItemColorStock,
+      rc.name AS rentColorNames,
+      rc.rentColor_image AS rentColorImages,
+      ri.image AS rentImage,
+      ri.sort_order AS rentImageSortOrder,
+      rl.neck_pickup AS rentListNeckPickup,
+      rl.middle_pickup AS rentListMiddlePickup,
+      rl.bridge_pickup AS rentListBridgePickup,
+      rl.controls AS rentListControls,
+      rl.switching AS rentListSwitching,
+      s.name AS storeName,
+      r.time_start AS rentTimeStart,
+      r.time_end AS rentTimeEnd
   FROM Rent r
   LEFT JOIN RentBrand rb ON r.rentBrandId = rb.id
   LEFT JOIN RentItemColor ric ON r.id = ric.rentId
@@ -272,8 +274,7 @@ router.get('/:pid', async (req, res) => {
   LEFT JOIN RentList rl ON r.RentList_id = rl.id
   LEFT JOIN Stores s ON r.stores_id = s.id
   WHERE r.id = ?
-  ORDER BY ri.sort_order;
-  `,
+  ORDER BY ri.sort_order;`,
       [pid]
     )
 
@@ -295,6 +296,7 @@ router.get('/:pid', async (req, res) => {
           price: row.price,
           rentBrandName: row.rentBrandName,
           storeName: row.storeName,
+          stock: row.rentItemColorStock,
           rentList: row.rentListNeckPickup
             ? {
                 neckPickup: row.rentListNeckPickup,
@@ -304,9 +306,11 @@ router.get('/:pid', async (req, res) => {
                 switching: row.rentListSwitching,
               }
             : null,
-          colors: [], // 顏色資訊
-          images: [], // 通用圖片資訊
+          colors: [],
+          images: [],
           rentItemColor: row.rentItemcolor_id,
+          rentTimeStart: row.time_start,
+          rentTimeEnd: row.time_end,
         }
       }
 
