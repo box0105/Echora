@@ -10,14 +10,14 @@ export default function OrderPage() {
   return (
     <MemberLayout>
       <div className="order-form">
-        <botton
+        <button
           className="btn btn-light btn-sm"
           onClick={() => {
             router.push('/my-user/order')
           }}
         >
           返回
-        </botton>
+        </button>
         {/* <div className="order-header">
           <div className="order-title section-title h4">訂單詳情</div>
         </div> */}

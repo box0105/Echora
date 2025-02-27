@@ -63,45 +63,6 @@
     }
   }
 
-  button {
-    position: absolute;
-    top: 48%;
-    right: 1rem;
-    transform: translate(-50%, -50%);
-
-    @media (max-width: 770px) {
-      right: 8rem;
-    }
-
-    @media (max-width: 720px) {
-      right: 7rem;
-    }
-
-    @media (max-width: 680px) {
-      right: 6rem;
-    }
-
-    @media (max-width: 640px) {
-      right: 5rem;
-    }
-
-    @media (max-width: 600px) {
-      right: 3rem;
-    }
-
-    @media (max-width: 540px) {
-      right: 1rem;
-    }
-
-    @media (max-width: 520px) {
-      right: 1rem;
-    }
-
-    @media (max-width: 480px) {
-      display: none;
-    }
-  }
-
   .garybg {
     background-color: darkgray;
 
@@ -113,12 +74,18 @@
   .gary-line {
     border: 1px solid #ccc;
   }
-  .clear{
+
+  .clear {
     display: flex;
     justify-content: flex-end;
-    // width: fit-content;
-    margin-left:88% ;
+    width: 20%;
+    margin-left: 80%;
     margin-bottom: .5rem;
     cursor: pointer
+  }
+
+  .btn {
+    display: inline-block;
+    width: 100%;
   }
 }

@@ -7,13 +7,12 @@ import { useMyCoupon } from '@/hooks/use-coupon'
 import { useAuth } from '@/hooks/use-auth'
 // import { array } from 'prop-types'
 
-export default async function CouponPage() {
+export default function CouponPage() {
   const [coupon, setCoupon] = useState([])
   const [userCoupons, setUserCoupons] = useState([])
   const { notifyAndGet, notifyAndGetAll } = useMyCoupon()
   const { isAuth } = useAuth()
 
-  console.log()
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -34,7 +33,7 @@ export default async function CouponPage() {
     if (isAuth) {
       fetchUserCoupon()
     }
-  }, [])
+  }, [isAuth])
 
   const fetchUserCoupon = async () => {
     const userId = localStorage.getItem('userId')
