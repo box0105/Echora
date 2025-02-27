@@ -26,14 +26,8 @@ const initUserProfile = {
 
 export default function ProfilePage() {
   const { user, isAuth } = useAuth()
-  const { userProfile, setUserProfile } = useUser()
   const [profileInput, setProfileInput] = useState(initUserProfile)
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const router = useRouter()
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen)
-  }
 
   useEffect(() => {
     if (!isAuth) {
@@ -55,7 +49,6 @@ export default function ProfilePage() {
         const resData = await res.json()
         console.log('API 回傳資料:', resData)
         if (resData.status === 'success') {
-          setUserProfile(resData.data)
           setProfileInput(resData.data)
           console.log('User profile data:', resData.data)
         } else {
@@ -67,7 +60,7 @@ export default function ProfilePage() {
     }
 
     fetchUserProfile()
-  }, [isAuth, router, setUserProfile])
+  }, [isAuth, router])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -91,7 +84,7 @@ export default function ProfilePage() {
       })
       const resData = await res.json()
       if (resData.status === 'success') {
-        setUserProfile(profileInput)
+        // 移除更新 Header 中的用戶名功能
         toast.success('會員資料更新成功')
       } else {
         toast.error(`更新會員資料失敗: ${resData.message}`)

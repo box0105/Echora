@@ -46,7 +46,6 @@ export default function MemberLayout({ children }) {
           <div className="hamburger-member" id="hamburger-member">
             <div
               className="dropdown-content no-border"
-              type="button"
               onClick={toggleDropdown}
               aria-expanded={isDropdownOpen}
             >
