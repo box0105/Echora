@@ -3,6 +3,7 @@
 import { useEffect } from 'react'
 import { useMyCart } from '@/hooks/use-cart'
 import { useSearchParams, useRouter } from 'next/navigation'
+import { PuffLoader } from 'react-spinners'
 
 export default function PayOKPage() {
   const { clearCart } = useMyCart()
@@ -29,8 +30,9 @@ export default function PayOKPage() {
 
           if (response.ok) {
             clearCart()
-            console.log('OK')
-            router.replace('/my-cart/finish')
+            setTimeout(() => {
+              router.replace('/my-cart/finish')
+            }, 3000)
           } else {
             alert('訂單提交失敗！')
           }
@@ -42,4 +44,17 @@ export default function PayOKPage() {
       submitOrder()
     }
   }, [])
+
+  return (
+    <>
+      <div className="d-flex flex-column align-items-center justify-content-center pt-5 mt-5">
+        <div className="mb-4">
+          <PuffLoader color="#00b853" size={70} />
+        </div>
+        <div>
+          <h4>確認付款中，請稍後...</h4>
+        </div>
+      </div>
+    </>
+  )
 }

@@ -1,47 +1,62 @@
 [
-    {
-        "name": "Sky Blue"
-    },
-    {
-        "name": "Dark Blue"
-    },
-    {
-        "name": "Modern Purple"
+  {
+    "name": "Sky Blue",
+    "colorImage": "lightblue.svg"
 
-    },
-    {
-        "name": "Fire Red"
+  },
+  {
+    "name": "Dark Blue",
+    "colorImage": "darkblue.svg"
 
-    },
-    {
-        "name": "Golden Yellow"
+  },
+  {
+    "name": "Modern Purple",
+    "colorImage": "purple.svg"
 
-    },
-    {
-        "name": "Tangerine"
+  },
+  {
+    "name": "Fire Red",
+    "colorImage": "red.svg"
 
-    },
-    {
-        "name": "Brown"
+  },
+  {
+    "name": "Golden Yellow",
+    "colorImage": "yellow.svg"
 
-    },
-    {
-        "name": "Dark Brown"
+  },
+  {
+    "name": "Tangerine",
+    "colorImage": "orange.svg"
 
-    },
-    {
-        "name": "Marble White"
+  },
+  {
+    "name": "Brown",
+    "colorImage": "brown.svg"
 
-    },
-    {
-        "name": "Slate Gray"
+  },
+  {
+    "name": "Dark Brown",
+    "colorImage": "dark-brown.svg"
 
-    },
-    {
-        "name": "Ebony"
+  },
+  {
+    "name": "Marble White",
+    "colorImage": "white.svg"
 
-    },
-    {
-        "name": "Forest Green"
-    }
+  },
+  {
+    "name": "Slate Gray",
+    "colorImage": "grey.svg"
+
+  },
+  {
+    "name": "Ebony",
+    "colorImage": "black.svg"
+
+  },
+  {
+    "name": "Forest Green",
+    "colorImage": "green.svg"
+
+  }
 ]
