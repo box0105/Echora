@@ -1,7 +1,7 @@
 'use client'
 
 import './style.scss'
-import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useState, useEffect } from 'react'
 import { useMyCoupon } from '@/hooks/use-coupon'
 import { useAuth } from '@/hooks/use-auth'
@@ -13,7 +13,7 @@ export default async function CouponPage() {
   const { notifyAndGet, notifyAndGetAll } = useMyCoupon()
   const { isAuth } = useAuth()
 
-  console.log();
+  console.log()
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -38,13 +38,13 @@ export default async function CouponPage() {
 
   const fetchUserCoupon = async () => {
     const userId = localStorage.getItem('userId')
-    console.log(userId);
+    console.log(userId)
     try {
       const url = `http://localhost:3005/api/coupon/${userId}`
       const res = await fetch(url)
       if (!res.ok) throw new Error('狀態錯誤')
       const data = await res.json()
-      console.log(data.data)
+      console.log(data)
       setUserCoupons(data.data)
     } catch (err) {
       console.log('發生錯誤', err)
@@ -92,7 +92,7 @@ export default async function CouponPage() {
                     <button
                       className="btn btn-secondary "
                       onClick={async () => {
-                        await notifyAndGet(userId, item.id, item.typeId)
+                        await notifyAndGet(item.id, item.typeId)
                         await fetchUserCoupon()
                       }}
                     >
@@ -104,7 +104,7 @@ export default async function CouponPage() {
                     <button
                       className="btn btn-dark "
                       onClick={async () => {
-                        await notifyAndGet(userId, item.id, item.typeId)
+                        await notifyAndGet(item.id, item.typeId)
                         await fetchUserCoupon()
                       }}
                     >
@@ -121,7 +121,7 @@ export default async function CouponPage() {
             <button
               className="btn btn-outline-dark"
               onClick={async () => {
-                await notifyAndGetAll(userId)
+                await notifyAndGetAll()
                 await fetchUserCoupon()
               }}
             >

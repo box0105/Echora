@@ -11,7 +11,7 @@ export default function OrderPage() {
         <div className="order-header">
           <div className="order-title section-title h4 ms-2">我的訂單</div>
         </div>
-        <div className="row order-summary">
+        <div className="row order-summary w-100">
           <OrderList />
         </div>
       </div>

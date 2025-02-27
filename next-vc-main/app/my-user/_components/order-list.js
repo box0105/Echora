@@ -41,6 +41,7 @@ export default function OrderList() {
             <th scope="col">付款方式</th>
             <th scope="col">寄件方式</th>
             <th scope="col">總金額</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -65,6 +66,15 @@ export default function OrderList() {
               </td>
               <td>
                 <h6>NT$ {order.totalAmount}</h6>
+              </td>
+              <td>
+                <button className='btn'>
+                  <img
+                    style={{ width: 20 }}
+                    src="/images/cart/BoxArrowInUpRight.svg"
+                    alt=""
+                  />
+                </button>
               </td>
             </tr>
           ))}

@@ -18,10 +18,10 @@ export default function OrderPage() {
         >
           返回
         </botton>
-        <div className="order-header">
+        {/* <div className="order-header">
           <div className="order-title section-title h4">訂單詳情</div>
-        </div>
-        <div className="row order-summary">
+        </div> */}
+        <div className="row order-summary m-0">
           <ComponentsOrderDetail />
         </div>
       </div>

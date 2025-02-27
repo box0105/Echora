@@ -11,8 +11,13 @@ CouponContext.displayName = 'CouponContext'
 export function MyCouponProvider({ children }) {
   // 錯誤物件
   const [error, setError] = useState(null)
+  const [userId, setUserId] = useState()
 
-  const claimCoupon = async (userId, couponId, typeId) => {
+  useEffect(() => {
+    const userId = localStorage.getItem('userId')
+    setUserId(userId)
+  }, [])
+  const claimCoupon = async (couponId, typeId) => {
     try {
       // http://localhost:3005/api/coupon/resource
       const res = await fetch(`http://localhost:3005/api/coupon/${userId}`, {
@@ -34,14 +39,14 @@ export function MyCouponProvider({ children }) {
     }
   }
 
-  const claimCoupons = async (userId) => {
+  const claimCoupons = async () => {
     try {
       const res = await fetch(`http://localhost:3005/api/coupon/${userId}/all`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
         },
-        body: JSON.stringify({ userId: userId}),
+        body: JSON.stringify({ userId: userId }),
       })
 
       const data = await res.json()
@@ -56,7 +61,7 @@ export function MyCouponProvider({ children }) {
   }
 
   // 領取提示
-  const notifyAndGet = async (userId,itemId,typeId) => {
+  const notifyAndGet = async (itemId, typeId) => {
     const MySwal = withReactContent(Swal)
     try {
       const result = await MySwal.fire({
@@ -70,7 +75,7 @@ export function MyCouponProvider({ children }) {
       })
       if (result.isConfirmed) {
         // 進行領取
-        const res = await claimCoupon(userId, itemId, typeId)
+        const res = await claimCoupon(itemId, typeId)
         console.log(res)
         // callback()
 
@@ -100,7 +105,7 @@ export function MyCouponProvider({ children }) {
   }
 
   //全部領取提示
-  const notifyAndGetAll = async (userId) => {
+  const notifyAndGetAll = async () => {
     const MySwal = withReactContent(Swal)
     try {
       const result = await MySwal.fire({
@@ -114,7 +119,7 @@ export function MyCouponProvider({ children }) {
       })
       if (result.isConfirmed) {
         // 進行領取
-        const res = await claimCoupons(userId)
+        const res = await claimCoupons()
         console.log(res)
         // callback()
 
@@ -159,7 +164,7 @@ export function MyCouponProvider({ children }) {
   }
 
   return (
-    <CouponContext.Provider value={{ claimCoupon, notifyAndGet,notifyAndGetAll, time }}>
+    <CouponContext.Provider value={{ claimCoupon, notifyAndGet, notifyAndGetAll, time }}>
       {children}
     </CouponContext.Provider>
   )
