@@ -3,7 +3,7 @@ import db from '../config/mysql.js'
 
 const router = express.Router()
 
-//取得會員的收藏商品清單 0226改 //brand_name, product_name, color_name, price, image(sort_order_1)
+//取得會員的收藏商品清單
 router.get('/list/:uid', async (req, res) => {
   const {uid} = req.params
   try {

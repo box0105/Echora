@@ -7,11 +7,6 @@
   opacity: 0.6;
   z-index: 10;
   display: none;
-  // &:hover{
-  //   .overlay{
-  //     opacity: 1;
-  //   }
-  // }
 }
 
 .overlay {
@@ -21,13 +16,19 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0; 
-  transition: opacity 0.3s ease;
+  display: none; 
+  transition: all 0.3s ease;
   z-index: 9;
+  h6{
+    color: var(--white);
+    letter-spacing: 2px;
+  }
 }
 
 .g-x:hover + .overlay {
-  opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .g-pd-img {
@@ -144,19 +145,3 @@
       color: var(--white);
     }
 }
-
-// .g-add-to-cart {
-//   width: 100%;
-//   background-color: var(--white);
-//   color: var(--black);
-//   border: 1px solid var(--black);
-//   border-radius: 30px;
-//   padding: 12px 24px;
-//   margin-top: 16px;
-//   transition: all 0.2s ease-in-out;
-
-//   &:hover{
-//     background-color: var(--black);
-//     color: var(--white);
-//   }
-// }

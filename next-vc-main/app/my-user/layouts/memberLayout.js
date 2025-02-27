@@ -116,7 +116,7 @@ export default function MemberLayout({ children }) {
                 </Link>
               </div>
             </aside>
-            <div className="profile-content">{children}</div>
+            <div className="profile-content w-100">{children}</div>
           </div>
         </div>
       </main>
