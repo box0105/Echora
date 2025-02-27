@@ -3,7 +3,6 @@ import React, { useState, useEffect, useMemo } from 'react'
 import '../_styles/list.scss'
 import Main from './_components/ListMain'
 import Boottom from './_components/ListBottom'
-import 'react-datepicker/dist/react-datepicker.css'
 import { useParams } from 'next/navigation'
 import { useMyCart } from '@/hooks/use-cart'
 
@@ -129,10 +128,11 @@ export default function Page(props) {
       date_end: endDate.toISOString().split('T')[0],
       total_price: totalPrice,
       color: selectedColor?.name || '無顏色',
-      image: selectedImages[0] || '/images/default_image.jpg',
+      image: `/images/Rent/pd-images/${selectedImages[0]}` || '/images/default_image.jpg',
       description: ListData.description,
       specifications: ListData.rentList,
-      store: ListData.stock,
+      stock: ListData.stock,
+      rentStore: selectedStore,
     }
 
     // 在這裡打印 cartData
@@ -142,11 +142,8 @@ export default function Page(props) {
     console.log('Formatted Cart Data:', JSON.stringify(cartData, null, 2))
 
     // 確保這裡的 onAddRent 是一個有效的函數（如果有的話）
-    if (typeof onAddRent === 'function') {
-      onAddRent(cartData)
-    } else {
-      console.error('onAddRent is not a function')
-    }
+
+    onAddRent(cartData)
   }
   // useMemo 保证选中颜色后能正确更新图片
   const selectedImages = useMemo(() => {
