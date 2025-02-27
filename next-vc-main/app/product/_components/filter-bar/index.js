@@ -76,13 +76,13 @@ export default function FilterBar({
               <a href="">
                 <h6 className="g-clear-link mb-0">清除篩選條件</h6>
               </a>
-              <img
+              {/* <img
                 width="16px"
                 src="/images/product/list/x.svg"
                 onClick={() => {
                   setFilterOpen(false)
                 }}
-              />
+              /> */}
             </div>
             <div className="g-filter-scroll">
               <div className="g-brand-sec">

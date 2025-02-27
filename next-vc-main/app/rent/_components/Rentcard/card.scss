@@ -2,23 +2,59 @@
   outline: 1px solid var(--grey300);
   box-shadow: 0px 0px 10px 5px rgba(200, 200, 200, 0.2);
 }
+
 .c-card-img {
-  height: 460px;
-  padding: 30px 20px;
+  width: 100%; /* 卡片寬度為100% */
+  height: 460px; /* 固定卡片高度 */
   background: radial-gradient(
     111.92% 179.77% at -76.41% -9.75%,
     #e5e5e5 0%,
     #f9f9f9 100%
   );
-  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   @media screen and (max-width: 576px) {
-    height: 280px;
+    height: 280px; /* 小螢幕下高度調整 */
+  }
+
+  /* 設定圖片填滿卡片並且不會超出卡片邊界 */
+  img {
+    object-fit: contain; /* 使用 cover 讓圖片填滿容器，並裁剪過多部分 */
+    width: 100%;
+    height: 100%;
+  }
+}
+.c-brand-name {
+  min-width: 66px;
+  height: 25px;
+  padding-top: 1px;
+  color: var(--white);
+  background-color: var(--grey900);
+  border-radius: 1px;
+  top: 20px;
+  left: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: "Poppins";
+
+  @media screen and (max-width: 576px) {
+    min-width: 50px;
+    height: 20px;
+    font-size: 11px;
+  }
+
+  @media screen and (max-width: 391px) {
+    top: 12px;
+    left: 12px;
   }
 }
 .card-body {
   position: relative;
 }
+
 .card-top:hover .card-body:before {
   position: absolute;
   top: 0;
@@ -32,15 +68,16 @@
 .card-top:hover .c-card-img {
   background: white !important;
 }
+
 .c-card-color {
   img {
-
     &:hover {
       outline: 2px solid var(--black);
       border-radius: 50%;
     }
   }
 }
+
 .in-stock {
   color: rgb(0, 207, 0);
   display: flex;
@@ -49,6 +86,7 @@
     width: 24px;
   }
 }
+
 .out-stock {
   display: none;
   color: rgb(255, 0, 0);

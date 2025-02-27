@@ -37,7 +37,7 @@ async function main() {
   const seedsPath = path.join(process.cwd(), seedsFolder)
   const filenames = await fs.promises.readdir(seedsPath)
 
-  const relations = [...oneToOne, ...oneToMany,...manyToMany ]
+  const relations = [...oneToOne, ...oneToMany, ...manyToMany]
 
   let relationFileList = []
 
@@ -65,13 +65,13 @@ async function main() {
         return -1
       }
 
-  //     // manyToMany
+      //     // manyToMany
       if (tmp.length === 3 && a.includes(tmp[1]) && b.includes(tmp[2])) {
         return -1
       }
     }
 
-  //   // others
+    //   // others
     return 0
   })
 
@@ -94,7 +94,6 @@ async function main() {
   //  重建seed檔案 re structure seeders
   const seedFileList = [...restFileList, ...relationFileList]
 
-  
   // console.log(seedFileList)
 
   for (const filename of seedFileList) {
@@ -183,14 +182,18 @@ async function main() {
 
     const model = filename.split('.')[0]
     const prop = convertToCamelCase(model)
-
+ 
     // console.log('prop', prop, 'data', data)
+   
 
+    
     // this maybe anti typescript way
     const result = await prisma[prop].createMany({
       data,
       skipDuplicates: true,
+      
     })
+    console.log(result);
 
     // 如果是開發環境，顯示訊息
     if (isDev)

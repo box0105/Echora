@@ -1,7 +1,4 @@
-/* 全域 */
-body {
-  font-family: 'Noto Sans TC', Arial, Helvetica, sans-serif;
-}
+
 /* sextion1 */
 .c-index {
   padding-inline: 64px;
@@ -15,9 +12,14 @@ body {
   padding-top: 4rem;
   gap: 10rem;
 }
+.c-main {
+  overflow: hidden;
+  height: 100%;
+}
 .c-bpiv .main-pic {
   width: 30rem;
   height: 44rem;
+  object-fit: cover;
 }
 .c-left {
   padding: 6rem 9rem 0 9rem;
@@ -56,7 +58,7 @@ body {
 
 .btn1 {
   width: 100%;
-  padding: 2.5rem 0 3.375rem 0;
+  padding: 2.5rem 0 2rem 0;
   border-bottom: 1px solid hsl(0, 0%, 59%);
 }
 
