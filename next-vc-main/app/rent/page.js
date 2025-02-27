@@ -6,6 +6,7 @@ import './_styles/first.scss'
 import HeroSection from './_components/HeroSection'
 import RentalProcess from './_components/RentalProcess'
 import Cardmod from './_components/Rentcard/card-mod'
+import Card from './_components/Rentcard/card'
 import List from './_components/List'
 
 export default function Page(props) {
@@ -19,60 +20,30 @@ export default function Page(props) {
   const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState(false)
 
-  // const getData = async () => {
-  //   try {
-  //     const res = fetch('http://localhost:3005/api/Rent')
-  //     const data = await res.json()
-  //     const Rent = {}
-  //     data?.data.forEach((item) => {
-  //       const {
-  //         id,
-  //         name,
-  //         price,
-  //         rentbrand_name,
-  //         rentItemColors_id,
-  //         rentColor_id,
-  //         rentColor_name,
-  //         rentColor_images,
-  //         image,
-  //       } = item
-  //       if (!Rent[id]) {
-  //         Rent[id] = {
-  //           id,
-  //           name,
-  //           price,
-  //           brand: rentbrand_name,
-  //           colors: [],
-  //           images: {},
-  //           image: image,
-  //         }
-  //       }
+  const getData = async () => {
+    try {
+      const res = await fetch('http://localhost:3005/api/rent')
+      const data = await res.json()
+      console.log(data)
+      setData(data.data)
+    } catch (err) {
+      console.log(err)
+      setIsError(true)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+  useEffect(() => {
+    getData()
+  }, [])
 
-  //       Rent[id].colors.push({
-  //         id: rentColor_id,
-  //         name: rentColor_name,
-  //         image: rentColor_images,
-  //         rentItemColor: rentItemColors_id,
-  //       })
+  console.log(data)
 
-  //       Rent[id].images[rentItemColors_id] = image
-  //     })
+  if (isError) return <div>發生錯誤</div>
 
-  //     setData(Object.values(Rent))
-  //   } catch (err) {
-  //     console.log(err)
-  //     setIsError(true)
-  //   }
-  // }
-  // useEffect(() => {
-  //   getData()
-  // }, [])
-  // if (isError) return <div>發生錯誤</div>
-
-  // const loadingRender = <div>載入中...</div>
   return (
     <>
-      {/* {isLoading ? (
+      {isLoading ? (
         <div
           style={{
             display: 'flex',
@@ -83,7 +54,7 @@ export default function Page(props) {
         >
           <div>載入中...</div>
         </div>
-      ) : ( */}
+      ) : (
         <div>
           <div className="c-backgrund">
             {/* section1 */}
@@ -135,7 +106,7 @@ export default function Page(props) {
           {/* section2-body */}
           <div className="c-section2-body d-none d-md-block">
             <div className="container-fluid c-index-1 ;">
-              <List />
+              <List data={data} />
             </div>
           </div>
           {/* section-mod */}
@@ -412,7 +383,7 @@ export default function Page(props) {
                     </button>
                   </div>
                 </div>
-                <Cardmod />
+                <Cardmod data={data} />
               </div>
               <div className="btn1 d-flex justify-content-center ">
                 <button
@@ -430,7 +401,7 @@ export default function Page(props) {
             </div>
           </div>
         </div>
-      {/* )} */}
+      )}
     </>
   )
 }

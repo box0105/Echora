@@ -7,6 +7,7 @@ import { useProductState } from '@/services/rest-client/use-products'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useAuth } from '@/hooks/use-auth'
+import { useUser } from '@/hooks/use-profile'
 import {
   useAuthGoogleLogin,
   useAuthGet,
@@ -16,10 +17,6 @@ import {
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-const initUserProfile = {
-  username: '',
-}
-
 export default function Header() {
   const { totalQty } = useMyCart()
   const [showCart, setShowCart] = useState(false)
@@ -27,29 +24,32 @@ export default function Header() {
 
   // search
   const router = useRouter()
-  const [searchName, setSearchName ] = useState('')
+  const [searchName, setSearchName] = useState('')
   const { criteria, setCriteria, defaultCriteria } = useProductState()
-  
+
   const handleSearch = (e) => {
-    if(e.key === 'Enter'){
-      router.push(`/product/list`);
+    if (e.key === 'Enter') {
+      router.push(`/product/list`)
       setCriteria((prev) => ({
         ...prev,
-        nameLike: searchName
+        nameLike: searchName,
       }))
     }
   }
   const [showDropdown, setShowDropdown] = useState(false)
   const { user, isAuth, setIsAuth } = useAuth()
-  const [userProfile, setUserProfile] = useState(initUserProfile)
+  const { userProfile, setUserProfile } = useUser()
   // const { loginGoogle, logoutFirebase } = useFirebase()
   const { logout } = useAuthLogout()
   const { mutate } = useAuthGet()
 
   useEffect(() => {
     const userId = localStorage.getItem('userId')
-    // console.log('Current token:', userId)
-    // if (!isAuth || !user?.id) return
+    if (!userId) {
+      setIsAuth(false)
+      return
+    }
+
     const fetchUserProfile = async () => {
       try {
         const res = await fetch(`http://localhost:3005/api/users/${userId}`, {
@@ -63,15 +63,15 @@ export default function Header() {
           setUserProfile(resData.data)
           console.log('User profile data:', resData.data)
         } else {
-          // toast.error(`獲取會員資料失敗: ${resData.message}`)
+          toast.error(`獲取會員資料失敗: ${resData.message}`)
         }
       } catch (err) {
-        // toast.error(`獲取會員資料失敗: ${err.message}`)
+        toast.error(`獲取會員資料失敗: ${err.message}`)
       }
     }
 
     fetchUserProfile()
-  }, [user, isAuth])
+  }, [isAuth])
 
   // **處理登出（支援 Google + 一般帳號）**
   const handleLogout = async () => {
@@ -92,12 +92,13 @@ export default function Header() {
         toast.success('已成功登出')
         router.push('/')
       } else {
-        toast.error('登出失敗:', resData.message)
+        toast.error(`登出失敗: ${resData.message}`)
       }
     } catch (err) {
-      toast.error('登出失敗:', err)
+      toast.error(`登出失敗: ${err.message}`)
     }
   }
+
   return (
     <>
       <nav className={`${styles['g-header']} ${styles['px-modified']}`}>
@@ -124,7 +125,7 @@ export default function Header() {
                 className={`form-control focus-ring ${styles['g-search-field']}`}
                 placeholder="搜尋電吉他商品名"
                 value={searchName}
-                onChange={(e)=>setSearchName(e.target.value)}
+                onChange={(e) => setSearchName(e.target.value)}
                 onKeyDown={handleSearch}
               />
             </form>
@@ -133,7 +134,7 @@ export default function Header() {
             >
               <Link href={isAuth ? '/my-user/profile' : '/my-user'}>
                 <div className="position-relative">
-                  {isAuth && (
+                  {isAuth && userProfile.username && (
                     <div className={`${styles['username']}`}>
                       Hi! {userProfile.username}
                     </div>
@@ -290,7 +291,7 @@ export default function Header() {
       </section>
       {/* Offcanvas：根據 showCart 控制顯示，並傳入 onClose 用於關閉 */}
       <CartOffcanvas show={showCart} onClose={() => setShowCart(false)} />
-      <ToastContainer />
+      <ToastContainer autoClose={3000} />
     </>
   )
 }

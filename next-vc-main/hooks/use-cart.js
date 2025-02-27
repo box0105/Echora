@@ -111,6 +111,33 @@ export function MyCartProvider({ children }) {
     setCartItems([...newTickets, ...cartItems])
   }
 
+  // 租借加入購物車
+  const onAddRent = (rent) => {
+    const rents = rent
+
+    // 檢查購物車內是否已經有相同的租借
+    const existingTickets = cartItems.filter((item) => rents.id === item.id)
+    if (existingTickets.length > 0) {
+      alert('已有相同商品在購物車內')
+      return
+    }
+
+    // 將所有票券新增到購物車，每張票券預設 count: 1
+    const newRents = {
+      count: 1,
+      id: rents.id,
+      name: `(租借)${rents.name}`,
+      rentDate: `${rents.date_start} - ${rents.date_end}`,
+      stock: rents.stock,
+      rentStore: rents.rentStore,
+      image: rents.image,
+      price: rents.total_price,
+    }
+
+    // 更新購物車 (展開舊的購物車內容)
+    setCartItems([newRents, ...cartItems])
+  }
+
   // 清空購物車
   const clearCart = () => {
     setCartItems([])
@@ -154,6 +181,7 @@ export function MyCartProvider({ children }) {
         onIncrease,
         onRemove,
         clearCart,
+        onAddRent,
         onAddActivity,
       }}
     >
