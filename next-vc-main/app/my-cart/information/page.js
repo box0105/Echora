@@ -5,16 +5,24 @@ import './_styles/index.scss'
 import './_styles/cart-information.scss'
 import React, { useRef, useEffect, useState } from 'react'
 import { useMyCart } from '@/hooks/use-cart'
-import Link from 'next/link'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { isDev, apiURL } from '@/config'
 import { customAlphabet } from 'nanoid'
+import { useAuth } from '@/hooks/use-auth'
+
 // 載入loading元件
 
 export default function InformationPage() {
   const { totalAmount, cartItems } = useMyCart()
+  const { isAuth } = useAuth()
+
+  const backtochecklist = () => {
+    router.push('/my-cart/checklist')
+  }
+
+  //#region 寫入折扣及金額
   const [total, setTotal] = useState()
   const [cost, setCost] = useState()
 
@@ -24,10 +32,74 @@ export default function InformationPage() {
     setTotal(total)
     setCost(cost)
   }, [])
+  //#endregion
+  // ---------------------------------------
 
-  const backtochecklist = ()=>{
-    router.push("/my-cart/checklist")
+  //#region 處理表單輸入變更
+  const [formData, setFormData] = useState({
+    recipient: '',
+    phone: '',
+    email: '',
+    city: '',
+    country: '',
+    address: '',
+  })
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }))
   }
+
+  const handleFillUserData = (event) => {
+    if (event.target.checked) {
+      setFormData({
+        recipient: userInf.username || '',
+        phone: userInf.phone || '',
+        email: userInf.email || '',
+        city: userInf.address.slice(0, 3) || '',
+        country: userInf.address.slice(3, 6) || '',
+        address: userInf.address.slice(6) || '',
+      })
+    } else {
+      setFormData({
+        recipient: '',
+        phone: '',
+        email: '',
+        city: '',
+        country: '',
+        address: '',
+      })
+    }
+  }
+  //#endregion
+  // ---------------------------------------
+
+  //#region 提取使用者資料
+  const [userInf, setUserInf] = useState([])
+
+  useEffect(() => {
+    if (isAuth) {
+      fetchUserInf()
+    }
+  }, [isAuth])
+
+  const fetchUserInf = async () => {
+    const userId = localStorage.getItem('userId')
+    try {
+      const url = `http://localhost:3005/api/users/${userId}`
+      const res = await fetch(url)
+      if (!res.ok) throw new Error('提取資料失敗')
+      const data = await res.json()
+      setUserInf(data.data)
+    } catch (err) {
+      console.log('發生錯誤', err)
+    }
+  }
+  //#endregion
+  // ---------------------------------------
 
   //#region EC Pay
   const payFormDiv = useRef(null)
@@ -95,7 +167,9 @@ export default function InformationPage() {
   const goLinePay = async () => {
     // 先連到node伺服器後端，取得LINE Pay付款網址
     const res = await fetch(
-      `${apiURL}/line-pay-test-only/reserve?amount=${totalAmount - cost}&items=${cartItems.name}`,
+      `${apiURL}/line-pay-test-only/reserve?amount=${
+        totalAmount - cost
+      }&items=${cartItems.name}`,
       {
         method: 'GET',
         // 讓fetch能夠傳送cookie
@@ -163,7 +237,7 @@ export default function InformationPage() {
 
   return (
     <>
-      <div className="m-background">
+      <div className="m-background mb-5">
         <div className="m-checklist-section1">
           <div className="container-fluid d-flex justify-content-center m-index1">
             <div className="m-sec1-img w-75 ">
@@ -189,6 +263,7 @@ export default function InformationPage() {
                       type="checkbox"
                       name="user-information"
                       id="user-information"
+                      onChange={handleFillUserData}
                     />
                     <label className="ps-1" htmlFor="user-information">
                       <h4>填入使用者資料</h4>
@@ -203,6 +278,8 @@ export default function InformationPage() {
                       placeholder="收件人姓名"
                       id="recipient"
                       name="recipient"
+                      value={formData.recipient}
+                      onChange={handleInputChange}
                       required
                     />
                   </div>
@@ -213,6 +290,8 @@ export default function InformationPage() {
                       placeholder="手機"
                       id="phone"
                       name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
                       required
                     />
                   </div>
@@ -223,6 +302,8 @@ export default function InformationPage() {
                       placeholder="E-mail"
                       id="email"
                       name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
                       required
                     />
                   </div>
@@ -238,6 +319,8 @@ export default function InformationPage() {
                       placeholder="縣市"
                       id="city"
                       name="city"
+                      value={formData.city}
+                      onChange={handleInputChange}
                       required
                     />
                   </div>
@@ -248,6 +331,8 @@ export default function InformationPage() {
                       placeholder="鄉鎮 / 市區"
                       id="country"
                       name="country"
+                      value={formData.country}
+                      onChange={handleInputChange}
                       required
                     />
                   </div>
@@ -258,6 +343,8 @@ export default function InformationPage() {
                       placeholder="地址"
                       id="address"
                       name="address"
+                      value={formData.address}
+                      onChange={handleInputChange}
                       required
                     />
                   </div>
@@ -394,13 +481,13 @@ export default function InformationPage() {
                 <button type="submit" className="btn btn-dark w-100 mt-5">
                   下訂單
                 </button>
-                  <button
-                    type="button"
-                    className="btn btn-outline-secondary w-100 mt-3"
-                    onClick={backtochecklist}
-                  >
-                    返回確認商品
-                  </button>
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary w-100 mt-3"
+                  onClick={backtochecklist}
+                >
+                  返回確認商品
+                </button>
               </div>
             </div>
           </form>

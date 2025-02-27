@@ -157,7 +157,7 @@ export default function ChecklistPage() {
 
   return (
     <>
-      <div className="m-background">
+      <div className="m-background mb-5">
         <div className="m-checklist-section1">
           <div className="container-fluid d-flex justify-content-center m-index1">
             <div className="m-sec1-img w-75">
@@ -225,7 +225,7 @@ export default function ChecklistPage() {
             </div>
           </div>
         </form>
-        <div className="m-section3 w-100">
+        {/* <div className="m-section3 w-100">
           <div className="container-fluid m-index">
             <div className="m-index-title">
               <h1 className="h3">
@@ -307,7 +307,7 @@ export default function ChecklistPage() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   )
