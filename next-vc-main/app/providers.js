@@ -22,13 +22,6 @@ export function Providers({ children }) {
     <SWRDevTools>
       <LoaderProvider close={2} CustomLoader={CatLoader}>
         <MyCouponProvider>
-<<<<<<< HEAD
-        <AuthProvider>
-          <MyCartProvider>
-            <ProductProvider>{children}</ProductProvider>
-          </MyCartProvider>
-        </AuthProvider>
-=======
           <AuthProvider>
             <UserProvider>
               <MyCartProvider>
@@ -36,7 +29,6 @@ export function Providers({ children }) {
               </MyCartProvider>
             </UserProvider>
           </AuthProvider>
->>>>>>> abby
         </MyCouponProvider>
       </LoaderProvider>
     </SWRDevTools>

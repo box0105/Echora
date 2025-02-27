@@ -106,15 +106,9 @@ export default function MemberLayout({ children }) {
                 </h2>
               </div>
               <div className="sidebar-section">
-<<<<<<< HEAD
-                <Link href="/my-user/coupons" className="sidebar-title">
-                  我的優惠券
-                </Link>
-=======
                 <h2 className={`sidebar-title ${isActive('/my-user/coupons')}`}>
                   <Link href="/my-user/coupons"> 我的優惠券</Link>
                 </h2>
->>>>>>> abby
               </div>
             </aside>
             <div className="profile-content flex-grow-1">{children}</div>
