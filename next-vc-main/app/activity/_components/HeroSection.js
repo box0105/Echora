@@ -19,12 +19,11 @@ export default function HeroSection({
   title = '',
   subTitle = '',
   images,
-  ids,
+  ids = [],
 }) {
   const src = '/images/activity/'
+  // 如果是字串，則分割為陣列 (*輸入也有丟陣列的)
   const imageArr = typeof images == 'string' ? images.split(',') : images
-  console.log('Hero', imageArr)
-  console.log('ids', ids)
 
   return (
     <Swiper
@@ -43,7 +42,10 @@ export default function HeroSection({
     >
       {imageArr?.map((img, i) => (
         <SwiperSlide key={i}>
-          <Link href={ids ? `/activity/${ids[i] + 1}` : ''}>
+          <Link
+            href={ids.length ? `/activity/${ids[i] + 1}` : '#'}
+            style={{ cursor: ids.length ? 'pointer' : 'default' }}
+          >
             <div className="position-relative w-100 h-100">
               <div className="b-swiper-text position-relative b-sm-none">
                 <div className="b-swiper-title">{title}</div>
@@ -52,7 +54,7 @@ export default function HeroSection({
 
               <Image
                 src={`${src}${img}`}
-                alt={`${img}`}
+                alt={img || '輪播圖片'}
                 fill
                 className="object-fit-cover"
                 priority

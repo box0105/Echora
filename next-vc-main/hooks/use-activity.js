@@ -5,29 +5,15 @@ import { useFetch } from './use-fetch'
 export const useActivity = (url) => {
   const { data: acts, isLoading } = useFetch(url)
   const [displayActs, setDisplayActs] = useState([])
+  const [randomImages, setRandomImages] = useState([])
+  const [randomIds, setRandomIds] = useState([])
 
   useEffect(() => {
     if (acts) {
       setDisplayActs(acts)
+      updateRandomPhotos(3)
     }
-  }, [acts])
-
-  // filter
-  const filterByCategoryAndGenre = (categoryIds = [], genreIds = []) => {
-    if (!acts) return
-    let filtered = acts
-
-    // 篩選活動類別
-    if (categoryIds.length > 0) {
-      filtered = filtered.filter((act) => categoryIds.includes(act.category_id))
-    }
-
-    // 篩選音樂類型
-    if (genreIds.length > 0) {
-      filtered = filtered.filter((act) => genreIds.includes(act.music_genre_id))
-    }
-    setDisplayActs(filtered)
-  }
+  }, [isLoading])
 
   // sort 通用
   const sortByKey = (key = 'id', order = 'asc') => {
@@ -49,27 +35,29 @@ export const useActivity = (url) => {
   }
 
   // 隨機產生照片
-  const getRandomPhotos = (num) => {
+  const updateRandomPhotos = (num) => {
     const randomIndices = new Set()
     while (randomIndices.size < num) {
       const randomIndex = Math.floor(Math.random() * acts.length)
       randomIndices.add(randomIndex)
     }
 
-    const randomIndicesArray = Array.from(randomIndices);
+    const randomIndicesArray = Array.from(randomIndices)
     const randomImages = randomIndicesArray.map(
       (index) => acts[index].media.split(',')[0]
     )
 
-    // console.log(randomIndices);
-    return {randomImages, randomIds:randomIndicesArray}
+    console.log('封面照', randomImages);
+    console.log('對應id', randomIndicesArray);
+    setRandomImages(randomImages)
+    setRandomIds(randomIndicesArray)
   }
 
   return {
     displayActs,
     isLoading,
-    filterByCategoryAndGenre,
     sortByKey,
-    getRandomPhotos,
+    randomImages,
+    randomIds,
   }
 }

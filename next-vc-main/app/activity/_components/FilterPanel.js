@@ -1,30 +1,28 @@
 "use client";
 
-import React, {useState} from 'react';
+import React from 'react';
 
 import FormCheckbox from './FormCheckbox';
 import FormDate from './FormDate';
 import FormSelect from './FormSelect';
 import PriceSlider from './PriceSlider';
 
-export default function FilterPanel({ isOpen, onClose, onFilterChange }) {
-    const [selectedCategories, setSelectedCategories] = useState([]);
-    const [selectedGenres, setSelectedGenres] = useState([]);
+export default function FilterPanel({ isOpen, onClose }) {
+    // const [selectedCategories, setSelectedCategories] = useState([]);
+    // const [selectedGenres, setSelectedGenres] = useState([]);
 
     // 控制 FilterPanel 開啟關閉
     if (!isOpen) return <></>
 
-    // 當活動類別變更時
-    const handleCategoryChange = (ids) => {
-        setSelectedCategories(ids);
-        onFilterChange(ids, selectedGenres); // 傳遞最新的篩選條件
-    };
+    // // 當活動類別變更時
+    // const handleCategoryChange = (ids) => {
+    //     setSelectedCategories(ids);
+    // };
 
-    // 當音樂類型變更時
-    const handleGenreChange = (ids) => {
-        setSelectedGenres(ids);
-        onFilterChange(ids, selectedCategories); // 傳遞最新的篩選條件
-    };
+    // // 當音樂類型變更時
+    // const handleGenreChange = (ids) => {
+    //     setSelectedGenres(ids);
+    // };
 
     const categories = ['音樂祭', '音樂活動'];
     const genres = ['流行音樂', '古典音樂', '交響樂', '搖滾樂', '嘻哈', '動漫', 'R&B', 'K-POP', 'J-POP'];
@@ -40,8 +38,8 @@ export default function FilterPanel({ isOpen, onClose, onFilterChange }) {
             </div>
 
             <form className="w-100 b-filter-conds d-flex flex-column align-items-start align-self-stretch">
-                <FormCheckbox title="活動類型" options={categories} onChange={handleCategoryChange} />
-                <FormCheckbox title="音樂類型" options={genres} onChange={handleGenreChange}/>
+                <FormCheckbox title="活動類型" options={categories} />
+                <FormCheckbox title="音樂類型" options={genres}/>
                 <FormDate title="活動時間" />
                 <FormSelect title="城市" options={city} />
                 <PriceSlider max={5000} percent={0.5} />
