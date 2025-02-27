@@ -6,6 +6,7 @@ import './_styles/first.scss'
 import HeroSection from './_components/HeroSection'
 import RentalProcess from './_components/RentalProcess'
 import Cardmod from './_components/Rentcard/card-mod'
+import Card from './_components/Rentcard/card'
 import List from './_components/List'
 
 export default function Page(props) {
@@ -35,6 +36,9 @@ export default function Page(props) {
   useEffect(() => {
     getData()
   }, [])
+
+  console.log(data)
+
   if (isError) return <div>發生錯誤</div>
 
   return (
@@ -379,7 +383,7 @@ export default function Page(props) {
                     </button>
                   </div>
                 </div>
-                <Cardmod />
+                <Cardmod data={data} />
               </div>
               <div className="btn1 d-flex justify-content-center ">
                 <button

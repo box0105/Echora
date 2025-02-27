@@ -38,10 +38,10 @@ export default function RentList() {
             <div className="caa info">
               <div className="c-section3">
                 <div className="card-group gap-3">
-                  {console.log(
+                  {/* {console.log(
                     'RentList data state:',
                     JSON.stringify(data, null, 2)
-                  )}
+                  )} */}
                   <RentCards data={data} />
                 </div>
               </div>

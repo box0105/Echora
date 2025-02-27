@@ -15,7 +15,6 @@ export default function ListMain({ images }) {
   }, [images])
 
   const [activeIndex, setActiveIndex] = useState(0)
-  console.log(images)
 
   const handleImageClick = (img, index) => {
     setMainImage(img || 'default-image.jpg')

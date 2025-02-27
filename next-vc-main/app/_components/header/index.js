@@ -27,15 +27,15 @@ export default function Header() {
 
   // search
   const router = useRouter()
-  const [searchName, setSearchName ] = useState('')
+  const [searchName, setSearchName] = useState('')
   const { criteria, setCriteria, defaultCriteria } = useProductState()
-  
+
   const handleSearch = (e) => {
-    if(e.key === 'Enter'){
-      router.push(`/product/list`);
+    if (e.key === 'Enter') {
+      router.push(`/product/list`)
       setCriteria((prev) => ({
         ...prev,
-        nameLike: searchName
+        nameLike: searchName,
       }))
     }
   }
@@ -124,7 +124,7 @@ export default function Header() {
                 className={`form-control focus-ring ${styles['g-search-field']}`}
                 placeholder="搜尋電吉他商品名"
                 value={searchName}
-                onChange={(e)=>setSearchName(e.target.value)}
+                onChange={(e) => setSearchName(e.target.value)}
                 onKeyDown={handleSearch}
               />
             </form>
@@ -199,7 +199,11 @@ export default function Header() {
                 </a>
               </li>
               <li>
-                <a href="true">
+                <a
+                  href="http://localhost:3000/rent"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <div className="d-flex">
                     <h6 className="h7">RENTAL SERVICE</h6>
                     <p className="px-1">/</p>
