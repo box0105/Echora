@@ -7,6 +7,7 @@ import { useProductState } from '@/services/rest-client/use-products'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useAuth } from '@/hooks/use-auth'
+import { useUser } from '@/hooks/use-profile'
 import {
   useAuthGoogleLogin,
   useAuthGet,
@@ -15,10 +16,6 @@ import {
 } from '@/services/rest-client/use-user'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
-const initUserProfile = {
-  username: '',
-}
 
 export default function Header() {
   const { totalQty } = useMyCart()
@@ -41,7 +38,7 @@ export default function Header() {
   }
   const [showDropdown, setShowDropdown] = useState(false)
   const { user, isAuth, setIsAuth } = useAuth()
-  const [userProfile, setUserProfile] = useState(initUserProfile)
+  const { userProfile, setUserProfile } = useUser()
   // const { loginGoogle, logoutFirebase } = useFirebase()
   const { logout } = useAuthLogout()
   const { mutate } = useAuthGet()

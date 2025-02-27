@@ -236,7 +236,7 @@ router.post('/google-login', async function (req, res) {
 
     if (!googleUidUser && !emailUser) {
       const newUser = {
-        username: String(googleUid),
+        username: String(displayName),
         name: displayName,
         password: crypto.randomBytes(10).toString('hex'),
         email: email,
