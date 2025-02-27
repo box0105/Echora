@@ -1,33 +1,26 @@
-.card-top:hover {
-  outline: 1px solid var(--grey300);
-  box-shadow: 0px 0px 10px 5px rgba(200, 200, 200, 0.2);
-}
+/* product card */
 
-.c-card-img {
-  width: 100%; /* 卡片寬度為100% */
-  height: 460px; /* 固定卡片高度 */
+.g-pd-img {
+  height: 460px;
+  padding: 30px 20px;
   background: radial-gradient(
     111.92% 179.77% at -76.41% -9.75%,
     #e5e5e5 0%,
     #f9f9f9 100%
   );
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  overflow: hidden;
 
   @media screen and (max-width: 576px) {
-    height: 280px; /* 小螢幕下高度調整 */
+    height: 280px;
   }
 
-  /* 設定圖片填滿卡片並且不會超出卡片邊界 */
-  img {
-    object-fit: contain; /* 使用 cover 讓圖片填滿容器，並裁剪過多部分 */
-    width: 100%;
-    height: 100%;
+  @media screen and (max-width: 391px) {
+    padding: 20px 12px;
   }
+
 }
-.c-brand-name {
+
+.g-brand-name {
   min-width: 66px;
   height: 25px;
   padding-top: 1px;
@@ -51,47 +44,68 @@
     left: 12px;
   }
 }
-.card-body {
-  position: relative;
-}
 
-.card-top:hover .card-body:before {
-  position: absolute;
-  top: 0;
-  left: 2px;
-  right: 2px;
-  content: ''; /* 加上顯示內容來檢查效果 */
-  height: 1px;
-  background-color: rgb(236, 236, 236);
-}
+.g-pd-text {
+  padding: 20px;
 
-.card-top:hover .c-card-img {
-  background: white !important;
-}
+  p {
+    margin-block: 8px;
+  }
 
-.c-card-color {
-  img {
-    &:hover {
-      outline: 2px solid var(--black);
-      border-radius: 50%;
+  @media screen and (max-width: 391px) {
+    padding: 12px;
+  }
+
+  @media screen and (max-width: 391px) {
+    .h6{
+      font-size: 14px;
     }
   }
 }
 
-.in-stock {
-  color: rgb(0, 207, 0);
-  display: flex;
-  align-items: center;
-  img {
-    width: 24px;
-  }
+.g-color-row {
+  display: none;
 }
 
-.out-stock {
-  display: none;
-  color: rgb(255, 0, 0);
-  align-items: center;
-  img {
-    width: 24px;
+.g-product-card:hover {
+  outline: 1px solid var(--grey300);
+  box-shadow: 0px 0px 10px 5px rgba(200, 200, 200, 0.2);
+
+  .g-pd-text {
+    position: relative;
   }
+
+  .g-pd-text:before {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    content: '';
+    height: 1px;
+    background-color: var(--grey300);
+  }
+
+  .g-pd-img {
+    background: var(--white);
+  }
+
+  // .g-brand-name {
+  //   // background-color: var(--grey700);
+  // }
+
+  .g-color-text {
+    display: none;
+  }
+
+  .g-color-row {
+    display: flex !important;  /* 强制生效 */
+    margin-block: 6px !important;
+    margin-left: -4px !important;
+
+    div {
+      padding-inline: 4px !important;
+      cursor: pointer !important;
+    }
+}
+
 }

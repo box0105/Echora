@@ -1,9 +1,10 @@
 [
   {
-    "name": "1981 Gibson ES-347 Left-Handed - SOLD - LEARN MORE",
+    
+    "name": "Player II Jaguar®",
     "level": 1,
-    "description": "採用罕見的櫻桃色旭日飾面，全部原始且近乎完好。 Gibson ES-335 的短命且用途廣泛的豪華版，更像是帶有烏木指板、MOP 嵌體和多彈邊定制琴頭的 ES-355。有一些非常輕微的磨損，但沒有天氣檢查，沒有裂縫、損壞或任何其他隱藏的維修。這把吉他有一個工廠內置的線圈抽頭，為演奏者提供了一些美妙的單線圈聲音的額外選擇。這把吉他實際上聽起來真的非常非常好，線圈抽頭功能 100% 可用，聽起來很棒 - 不薄，但透明且更清晰，非常適合過載的聲音！包括它的原始情況。",
-    "rentBrandId": 1,
+    "description": "Player II Jaguar 散發著永恆的 Fender 魅力，琴頸的所有部件均專為快速、流暢的演奏而設計，從背面帶有絲滑緞面聚氨酯飾面的現代“C”型材，到帶有光滑捲邊和22 個中號大號品絲的舒適的9.5 英吋半徑板狀紅木。 Player 系列 Alnico V（琴橋）和 Alnico II（琴頸）單線圈 Jaguar 拾音器提供水晶般的高音、富有音樂感的中音和緊湊的低音，可提升任何流派的音質。 3 向刀片開關可讓您輕鬆調整從玻璃琴頸拾音器鈴聲到切割琴橋拾音器咬合以及其間的所有點，而帶有浮動顫音的6 鞍座Jaguar 琴橋、升級的Mustang® 鞍座和ClassicGear™ 調音器可確保精確調音穩定性和靈活性，並探索無限的聲音可能性。",
+    "rentBrandId": 2,
     "stores_id": 3,
     "price": 1000,
     "RentList_id": 1,
@@ -11,9 +12,9 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "1960 Gibson ES-335 Sunburst",
+    "name": "SG Standard Dark Walnut",
     "level": 1,
-    "description": " Rounded“C”桃花心木琴頸與玫瑰木指板上的珍珠圓點鑲嵌提醒演奏者一切是從哪裡開始。Gibson 的 T 型雙線圈拾音器與我們的手焊接線控制組件搭配， 為演奏者帶來 60 多年來一直渴望的多功能 Gibson ES 音色。 其它如 Keystone 按鈕的 Vintage Deluxe 調音器提供調音穩定性和精確音調，搭配輕質鋁製 ABR-1 琴橋和 Stop Bar 止弦板。",
+    "description": "桃花心木琴身，圓弧輪廓的桃花心木琴頸，帶有包邊的玫瑰木指板，長榫接合於第 19 品格的琴頸連接處，配備 490R 和 490T Alnico 2（鋁鎳鈷 2）拾音器，以及全覆蓋式護板設計。",
     "rentBrandId": 1,
     "stores_id": 3,
     "price": 1000,
@@ -22,9 +23,9 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "1952 Gibson ES-295 - SOLD - LEARN MORE Gold",
+    "name": "SG Supreme Ebony, 3-Pickup",
     "level": 3,
-    "description": "標準配置相同的環繞式梯形拉弦板。[ 1 ]整把吉他（包括琴頸）均採用金色飾面，並配有像牙包邊和護板。這把吉他有兩個單線圈 P-90，帶有奶油色拾音器蓋。吉他有一個三向開關，帶有兩個音調旋鈕和兩個音量旋鈕。金屬部件全部採用金色處理。",
+    "description": "它採用了桃花心木琴身搭配枫木面板，帶來飽滿且均衡的音色。琴頸為桃花心木材質，配有圓形半徑的烏木指板，擁有 24 顆中型加大品格及超級分裂區塊的珍珠母鑲嵌。琴頭裝飾有一個引人注目的全新珍珠母「吊燈鑲嵌」，靈感來自於 1940 年代的設計，該設計於 Gibson 檔案中被發現。配備 Burstbucker™ Pro（琴頸和中間位置）與 Burstbucker Pro +（琴橋位置）拾音器，並搭載推/拉音量控制，可實現線圈分接，此外還有一個手工接線的主音控，搭配 Orange Drop® 電容器。",
     "rentBrandId": 1,
     "stores_id": 1,
     "price": 1300,
@@ -33,9 +34,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "ES-330 Ebony",
+
+    "name": "70s Flying V",
     "level": 3,
-    "description": "薄型全空心電吉他，採用3 層楓木/楊木/楓木琴體，採用圓形C 型材的桃花心木琴頸，採用小塊丙烯酸鑲嵌的印度紅木指板，以及手工連接至500k 電位器和Orange Drop 電容器的Dogear P-90 拾音器，包括硬殼盒",
+    "description": "桃花心木琴身，搭配 SlimTaper 輕薄輪廓的桃花心木琴頸，玫瑰木指板，配有 22 顆中型加大品格，70s Tribute 雙線圈拾音器，手工接線至 CTS 音量/音調電位器，鍍鉻硬體，並附有硬殼琴盒。",
     "rentBrandId": 1,
     "stores_id": 2,
     "price": 1300,
@@ -44,10 +46,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "ES-345 Gold Hardware Dark Walnut",
+    "name": "Chris Shiflett Cleaver Telecaster® Deluxe",
     "level": 2,
-    "description": "薄型全空心電吉他，採用3 層楓木/楊木/楓木琴體，採用圓形C 型材的桃花心木琴頸，採用小塊丙烯酸鑲嵌的印度紅木指板，以及手工連接至500k 電位器和Orange Drop 電容器的Dogear P-90 拾音器，包括硬殼盒",
-    "rentBrandId": 1,
+    "description": "共鳴的榿木琴體為震撼人心的體育場音色奠定了完美的基礎。這款榿木琴體採用硝基纖維素漆面，還具有“腹部切割”，可在最長的演奏中提供卓越的舒適度。紅木指板和21 個中型巨型品絲，可帶來火熱的演奏引線和絲質彎曲為這款Tele® 增添了一絲意想不到的優雅感- 它是一款主力產品，但這並不意味著它的真正魅力在於拾音器：兩個定制的Chris Shiflett“Cleaver”。 「型調音器、骨質螺母和帶有尼龍墊片的翼弦樹使一切保持音調穿過馬拉松組，而穿弦琴身的硬尾琴橋增強了共鳴和延音。\n\nChris Shiflett Cleaver Telecaster® Deluxe 憑藉其主力結構、多功能聲音和經過實際測試的設計，是需要動態、不妥協音色的吉他手的必備品。隨時隨地插入電源並開闢自己的道路。",
+    "rentBrandId": 2,
     "stores_id": 2,
     "price": 1100,
     "RentList_id": 5,
@@ -55,10 +57,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "ES Supreme Ebony, 3-Pickup",
+    "name": "American Ultra II Stratocaster®",
     "level": 1,
-    "description": "桃花心木琴體提供豐富、平衡的音色。桃花心木琴頸採用複合半徑烏木指板、24 個中型巨型品絲和超分割塊珍珠母貝鑲嵌。琴頭採用引人注目的全新珍珠母貝“吊燈鑲嵌”，其靈感源自 Gibson 檔案中的 20 世紀 40 年代設計。三個拾音器、兩個Burst Backer Pro（琴頸和中間位置）和Burst Backer Pro Plus（琴橋位置）拾音器組合在一起，帶有用於線圈敲擊的推/拉音量控制和手動連接到Orange Drop 電容器的主音控制。烏木飾面優雅地搭配金色硬件，使其成為一款音質優美、靈活的樂器，也是一款外觀絕對漂亮的現代搖滾機器。",
-    "rentBrandId": 1,
+    "description": "Fender® American Ultra II Stratocaster® 採用精選的榿木琴體，具有雕刻般的琴體輪廓。為了輕鬆演奏，四分之一鋸切楓木琴頸採用現代 D 型材和光滑的超緞面表面。烏木或四分之一鋸楓木 10”-14” 複合半徑指板具有超捲邊、中型巨型品絲、Luminlay® 側點和 Graph Tech® TUSQ® 琴枕。錐形頸跟和雕刻的身體輪廓允許無與倫比的更高音域。\n\n在引擎蓋下，三個 Ultra II Noiseless™ Vintage Strat® 拾音器可提供從甜美水晶般的清音到灼熱主音的一切聲音，而且沒有一絲嗡嗡聲。我們專利的 S-1™ 開關巧妙地解鎖了額外的拾音器配置，以獲得更多音色變化。其他適合公路使用的功能包括帶有彈出臂的 2 點 American Ultra 同步顫音、拋光不銹鋼塊鞍座、冷軋鋼塊、豪華鎖定調諧器、軟觸旋鈕和單層陽極氧化鋁護板。",
+    "rentBrandId": 2,
     "stores_id": 2,
     "price": 1000,
     "RentList_id": 6,
@@ -66,10 +68,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "ES-335 Dark Purple Burst",
+    "name": "American Ultra II Telecaster®",
     "level": 2,
-    "description": "半空心楓木/楊木/楓木琴體，楓木中心塊，桃花心木琴頸，圓形 C 型材和紅木指板，T 型拾音器，帶手動控制裝置",
-    "rentBrandId": 1,
+    "description": "Fender® American Ultra II Telecaster® 採用精選的榿木琴體，具有雕刻般的琴體輪廓。為了輕鬆演奏，四分之一鋸切楓木琴頸採用現代 D 型材和光滑的超緞面表面。烏木或四分之一鋸楓木 10”-14” 複合半徑指板具有超捲邊、中型巨型品絲、Luminlay® 側點和 Graph Tech® TUSQ® 琴枕。錐形頸跟和雕刻的身體輪廓允許無與倫比的更高音域。\n\n在引擎蓋下，Ultra II Noiseless™ Vintage Tele® 拾音器可提供甜美的水晶般的清音、活潑的鼻音和強勁的咆哮聲，所有這些都沒有一絲嗡嗡聲。我們專利的 S-1™ 開關巧妙地採用串聯接線選項，以獲得更多音色變化。其他適合公路使用的功能包括帶有鍍鉻黃銅弦枕的 6 弦枕穿弦琴橋、豪華鎖定調音器、滾花鋁製旋鈕和單層陽極氧化鋁製護板。",
+    "rentBrandId": 2,
     "stores_id": 2,
     "price": 1200,
     "RentList_id": 7,
@@ -77,10 +79,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "ES-339 Cherry",
+    "name": "XJ-1 HT",
     "level": 1,
-    "description": "手工捲製的圓形「C」桃花心木琴頸上的珍珠圓點鑲嵌紅木指板提醒演奏者這一切的起點。 57 / 57 Classic + 雙線圈拾音器與我們的手工接線音色電路相結合，展現了演奏者 60 多年來所渴望的多功能 Gibson ES 音色。 ",
-    "rentBrandId": 1,
+    "description": " XJ-1 HT 採用 25.5 英吋大小的螺栓固定式結構，其沼澤梣木車身採用紋理噴砂 Black Blast 飾面。它採用堅固可靠的螺栓固定式三片式薄 U 形烤楓木琴頸，以及向後傾斜的反向琴頭，非常適合在較低調音時保持琴弦張力。 XJ-1 HT 配備了帶有珍珠塊狀鑲嵌的望加錫烏木指板和 22 個特大號不銹鋼品絲。這款出色樂器的組件包括 LTD 鎖定調音器和帶有琴弦穿過琴體的 Hipshot 硬尾琴橋。 XJ-1 HT 靈活的聲音特性來自其 Fluence Open Core Classic 琴橋拾音器，可透過推拉控制存取多種聲音。 Voice 1 為您提供傳奇的琴橋拾音器雙線圈音色以及當代音樂表演所需的輸出電平。您還可以獲得令人垂涎的稍微過度纏繞的單線圈音色。",
+    "rentBrandId": 3,
     "stores_id": 2,
     "price": 1000,
     "RentList_id": 8,
@@ -88,10 +90,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "B.B. King-ES-335-Argentine-Grey",
+    "name": "HORIZON CUSTOM '87",
     "level": 3,
-    "description": "有阿根廷灰色旭日紋飾面、Bigsby 顫音和 Varitone 開關。它還具有 Grover“牛奶瓶”旋轉調音器、覆蓋止桿孔的珍珠圓點以及紅木指板上的硝化纖維素圓點鑲嵌。硬體和硝基漆面均經過墨菲實驗室專業老化。",
-    "rentBrandId": 1,
+    "description": "這款吉他採用 25.5 吋尺寸的琴頸貫穿琴體結構，搭配榿木琴體和超薄三片楓木琴頸，可提供強烈的延音效果。 Horizo​​n Custom ’87 採用望加錫烏木指板，配有 24 個特大品絲，無鑲嵌；側面位置點可協助您找到方向。其組件包括 Floyd Rose 1000 雙鎖顫音器、琴馬處的 Seymour Duncan TB-5 Custom Trembucker 以及琴頸處的 Seymour Duncan Hot Rails。透過音量和音調旋鈕上的推拉控制，可以在一個或兩個拾音器上實現單線圈音調的線圈噴射。",
+    "rentBrandId": 3,
     "stores_id": 2,
     "price": 1300,
     "RentList_id": 9,
@@ -99,9 +101,9 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "1964 Trini Lopez Standard Reissue Ebony",
+    "name": "Les Paul Standard 60s Plain Top",
     "level": 1,
-    "description": "3 層楓木/楊木/楓木琴體製成，帶有堅固的楓木中心塊，有助於提供出色的反饋阻力。機身採用經典的黑檀木硝基纖維飾面琴頸很特別，由桃花心木製成，配有華麗的紅木指板，飾有裂片鑽石硝酸纖維素鑲嵌物，半徑為 12 英寸，琴弦長度為 24.75 英寸，琴枕寬度為 42.85 毫米。非常舒適。",
+    "description": "實心電吉他，採用單切面實心桃花心木琴體、實心楓木琴蓋、採用 SlimTaper 輪廓的桃花心木琴頸和紅木指板、兩個 60 年代 Burstbucker 雙線圈拾音器、硬殼琴盒",
     "rentBrandId": 1,
     "stores_id": 2,
     "price": 1000,
@@ -110,9 +112,9 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "B.B.King1974-ES-355-Walnut",
+    "name": "Les Paul Standard 50s Mahogany Top",
     "level": 3,
-    "description": "限量版 100 把吉他，Murphy Lab Light Aging、珍珠母鑲嵌、T 型 Custombucker 拾音器、單聲道 Varitone 開關和 Maestro™ Vibrola™ 拉弦板",
+    "description": "桃花心木琴體，桃花心木面板，桃花心木琴頸，具有 50 年代復古輪廓，帶有梯形鑲嵌的紅木指板，Burstbucker 1 和 2 拾音器，音頻錐形盆，Orange Drop 電容器和硬殼琴盒",
     "rentBrandId": 1,
     "stores_id": 2,
     "price": 1300,
@@ -121,9 +123,9 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "ES-335 P-90 Ebony",
+    "name": "Les Paul Modern Koa ",
     "level": 3,
-    "description": "Rounded“C”桃花心木琴頸與玫瑰木指板上的珍珠圓點鑲嵌提醒演奏者一切是從哪裡開始。Gibson 的 T 型雙線圈拾音器與我們的手焊接線控制組件搭配， 為演奏者帶來 60 多年來一直渴望的多功能 Gibson ES 音色。 其它如 Keystone 按鈕的 Vintage Deluxe 調音器提供調音穩定性和精確音調，搭配輕質鋁製 ABR-1 琴橋和 Stop Bar 止弦板。",
+    "description": "減輕重量的桃花心木琴體，帶花紋相思木面板，不對稱 SlimTaper 琴頸輪廓，複合半徑烏木指板，現代輪廓後跟，Grover 鎖定調音器，帶 4 個推/拉電位器的 Burstbucker Pro 拾音器",
     "rentBrandId": 1,
     "stores_id": 2,
     "price": 1300,
@@ -132,9 +134,9 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "1959-ES-355 Reissue",
+    "name": "Les Paul Modern Studio",
     "level": 3,
-    "description": "Gibson Custom Select 半空心琴體，烏木指板，帶有 MOP 塊狀鑲嵌、MOP 分裂鑽石琴頭鑲嵌、Custombucker 拾音器和鑽石形 F 孔",
+    "description": "桃花心木琴體，楓木帽和超現代減重，桃花心木琴頸，圓形輪廓，複合半徑包邊烏木指板，現代輪廓鞋跟，帶線圈攻絲的 490R 和 498T 拾音器",
     "rentBrandId": 1,
     "stores_id": 2,
     "price": 1300,
@@ -143,9 +145,9 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "B.B.King-Lucille-Legacy",
+    "name": "Les Paul Modern Lite",
     "level": 3,
-    "description": "這款 Gibson BB King Lucille Legacy 整體狀況極佳。從外觀上看，它非常乾淨，只顯示出一些輕微的磨損。請參閱下面的詳細說明。露西爾擁有適合國王的所有高端任命。亮點包括金色硬件，包括刻有金色“BB King”字樣的桁架桿蓋和帶有微調器的 TP-6 拉弦板。它已經徹底檢查，安裝良好，保證到貨後能發揮出色。裝在原廠包裝盒中。",
+    "description": "Les Paul Modern Lite 體現了 Les Paul™ 的經典風格，採用了全新、更薄的全桃花心木琴身，既輕巧又平衡。琴體後部還設有腹部切口，以增加演奏舒適度。桃花心木琴頸採用紅木指板和快速演奏的 SlimTaper™ 輪廓。 Les Paul Modern Lite 由開放式線圈 490R 和 498T humbucker™ 拾音器提供動力，可提供廣泛的聲音功能，非常適合任何風格的音樂。",
     "rentBrandId": 1,
     "stores_id": 2,
     "price": 1300,
@@ -154,9 +156,9 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "B.B.King-Lucille-Legacy",
+    "name": "Les Paul Supreme",
     "level": 3,
-    "description": "這款 Gibson BB King Lucille Legacy 整體狀況極佳。從外觀上看，它非常乾淨，只顯示出一些輕微的磨損。請參閱下面的詳細說明。露西爾擁有適合國王的所有高端任命。亮點包括金色硬件，包括刻有金色“BB King”字樣的桁架桿蓋和帶有微調器的 TP-6 拉弦板。它已經徹底檢查，安裝良好，保證到貨後能發揮出色。裝在原廠包裝盒中。",
+    "description": "減輕重量的桃花心木琴體、純楓木面板、帶有 Super Split-Block MOP 鑲嵌的複合半徑烏木指板和 3 個 Burstbucker 拾音器。",
     "rentBrandId": 1,
     "stores_id": 2,
     "price": 1300,
@@ -165,9 +167,9 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "1961-ES-335-Reissue-Heavy-Aged-Sixties-Cherry",
+    "name": "Les Paul Standard 50s Figured Top",
     "level": 2,
-    "description": "Rounded“C”桃花心木琴頸與玫瑰木指板上的珍珠圓點鑲嵌提醒演奏者一切是從哪裡開始。Gibson 的 T 型雙線圈拾音器與我們的手焊接線控制組件搭配， 為演奏者帶來 60 多年來一直渴望的多功能 Gibson ES 音色。 其它如 Keystone 按鈕的 Vintage Deluxe 調音器提供調音穩定性和精確音調，搭配輕質鋁製 ABR-1 琴橋和 Stop Bar 止弦板。",
+    "description": "Les Paul™ 標準 50 年代花紋面板回歸經典設計，使其具有相關性、演奏性和喜愛性 - 塑造跨世代和音樂流派的聲音。它向 Gibson 的創新黃金時代致敬，讓真實性重新煥發活力。它擁有實心桃花心木琴體、AA 花紋楓木面板和獨特的半透明訂製彩色硝基漆飾面，展示了花紋楓木面板。桃花心木琴頸具有 50 年代復古輪廓，玫瑰木指板帶有梯形鑲嵌。 Les Paul 標準 50 年代花紋面板配備了 ABR-1、經典風格的 Tune-O-Matic™ 琴橋、鋁製 Stop Bar 拉弦板、帶 Keystone 按鈕的 Vintage Deluxe 調音器和金色禮帽旋鈕。經過校準的 Burstbucker™ 1（琴頸）和 Burstbucker 2（琴橋）拾音器裝有 Alnico 2 磁鐵，並連接到音頻錐度電位器和 Orange Drop® 電容器。",
     "rentBrandId": 1,
     "stores_id": 2,
     "price": 1200,
@@ -176,9 +178,9 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "1958-ES-335-Reissue-Murphy-Lab-Heavy-Aged-Dirty-Blonde",
+    "name": "Les Paul Standard 60s Figured Top",
     "level": 2,
-    "description": "它採用 3 層楓木/楊木/楓木琴體，表面採用光滑的厚重老化臟金發硝基漆，這把吉他所表現出的對細節和工藝的關注令人驚嘆。墨菲實驗室團隊確實做到了復古氛圍！琴頸很特別，由桃花心木製成。它採用華麗的未包邊印度玫瑰木指板，並飾有硝化纖維鑲嵌物。擁有22 個歷史悠久的窄/高品絲、12 英寸半徑、1.687 英寸琴枕寬度和24.75 英寸音階長度，感覺光滑舒適！ 得益於正宗的'58",
+    "description": "Les Paul Standard 60 年代花紋面板採用實心桃花心木琴體，在新型令人頭暈的半透明定制彩色硝基漆飾面下方可見 AA 花紋楓木面板。桃花心木琴頸具有 60 年代風格的 SlimTaper™ 輪廓和帶有梯形鑲嵌的紅木指板。 Les Paul Standard 60s 花紋面板配備了經典的ABR-1 Tune-O-Matic™ 琴橋、鋁製Stop Bar 拉弦板、Grover® Rotomatic® “腎型”調音器以及帶有銀色反光鏡的金色禮帽旋鈕。 60 年代的 Burstbucker™ 拾音器裝有 Alnico 5 磁鐵，並連接到音頻錐度電位器和 Orange Drop® 電容器。",
     "rentBrandId": 1,
     "stores_id": 2,
     "price": 1200,
@@ -187,9 +189,9 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "80s Explorer Ebony",
+    "name": "Les Paul Classic",
     "level": 1,
-    "description": "Explorer™ 於 1958 年首次推出，隨著時間的推移，吉他手發現了它的許多魅力。到 20 世紀 70 年代，搖滾樂隊開始接受其未來派的外形和強勁的聲音，但在硬搖滾 80 年代，該模型開始發揮自己的作用，並被該十年中一些最偉大的演奏家所採用。新款 80 年代 Explorer 以流行的 1984 年車型為基礎。它採用快速演奏的 SlimTaper™ 桃花心木琴頸和紅木指板。標誌性造型的桃花心木琴身配備了全新 80 年代 Tribute 拾音器，可準確捕捉那個時代型號獨特的厚重聲音和豐富的延音。現在有烏木版本。還包括一個硬殼盒。",
+    "description": "Gibson Les Paul™ Classic 將 60 年代早期風格的 Les Paul 型號與一些功能性且經過時間考驗的修改相結合。正如預期的那樣，Les Paul Classic 採用桃花心木背板和楓木面板，搭配 SlimTaper 桃花心木琴頸和包邊紅木指板。 Burstbucker™ 61R 和 61T 斑馬紋開放線圈拾音器提供了那個時代的經典 Gibson 音色，並且由於開放線圈而具有額外的衝擊力。控制組件具有 4 個推拉電位器，可提供線圈抽頭、相位切換和純旁路的選擇，以實現功能性和多功能的聲音變化。",
     "rentBrandId": 1,
     "stores_id": 2,
     "price": 1000,
@@ -198,9 +200,9 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "Lzzy Hale Explorerbird Cardinal Red",
+    "name": "Les Paul Custom, Nickel Hardware",
     "level": 2,
-    "description": "Lzzy Hale 是 Gibson 的首位女性品牌大使，以其樂團 Halestorm 的爆炸性現場表演而聞名。她的新 Explorerbird 是一款風格硬朗、外觀精美的吉他，專為重型音樂打造。它將經典 Explorer™ 的琴體形狀和 Non-Reverse Firebird™ 琴頭結合成藝術家模型，一定會吸引觀眾的注意並激發觀眾的興趣。紅衣主教紅色硝化纖維素漆飾面與金色五金和品絲相得益彰……甚至強大的 70 年代 Tribute 拾音器上的金色螺絲和桿也是如此。還包括一個 Modern 系列硬殼盒。",
+    "description": "Gibson Custom Select Les Paul Custom 具有光澤烏木色和阿爾卑斯白飾面、鎳製五金、490R 和 498T 雙線圈拾音器以及烏木指板",
     "rentBrandId": 1,
     "stores_id": 2,
     "price": 1200,
@@ -209,9 +211,9 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "1958 Korina Explorer (White Pickguard), Ebony, Murphy Lab Light Aged Ebony",
+    "name": "Les Paul Standard 50s P-90",
     "level": 3,
-    "description": "這款來自Gibson Custom 和Murphy Lab 的1958 年Korina Explorer™ 與Flying V™ 同類產品的風格相呼應，重新構想了開創性、未來派的Explorer 設計，作為發布第一年的特別訂單，當時櫻桃色和烏木色是唯一的客製化顏色選擇。這款夢幻版本採用優雅的烏木色，配有金色五金件和白色塑料，賦予其精緻的“燕尾服”外觀。這也標誌著自 2021 年推出最初的高度限量珍藏版 Korina 重新發行批次以來，墨菲實驗室老化已應用於 Korina Explorer 和 Flying V 型號的首次生產。 ",
+    "description": "新款 Les Paul Standard 回歸了使其聞名的經典設計。它向 Gibson 的創新黃金時代致敬，讓真實性重新煥發活力。 Les Paul Standard 50s P-90 採用實心桃花心木琴體，配有楓木面板和圓形 50s 風格桃花心木琴頸，配有紅木指板和梯形鑲嵌。它配備了 ABR-1、經典風格的 Tune-O-Matic™ 琴馬、鋁製 Stop Bar 拉弦板、帶 Keystone 按鈕的 Vintage Deluxe 調音器和 Top Hat 旋鈕。經典的 P-90 拾音器（琴頸和琴馬）裝有 Alnico 5 磁鐵、音頻錐度電位器和 Orange Drop® 電容器。",
     "rentBrandId": 1,
     "stores_id": 2,
     "price": 1300,
@@ -220,9 +222,9 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "1958 Korina Explorer Reissue (White Pickguard) Natural",
+    "name": "Mary Ford Les Paul Standard",
     "level": 1,
-    "description": "Gibson Explorer™ 在 1958 年推出時遠遠領先於時代，當年僅發貨了 19 台，但從那時起它就變得非常受歡迎。這款歷史性的重新發行型號精心再現了經典的復古探險家功能。配備ABR-1 琴橋和Stop Bar 拉弦板、Korina 琴體、Custombucker 拾音器、Korina 琴頸、印度紅木指板、帶CTS® 電位器的兩個音量和一個音調控制以及電話簿電容器、金色硬體、 Kluson® 調音器和4 層護板。包括一個符合歷史的盒子，具有經典的棕色外觀和豪華的粉紅色內部。",
+    "description": "首次公開發行黃金時代的超罕見標誌性型號，配有桃花心木琴體、楓木琴蓋、ES-295 風格的花卉護板和配套扶手、帶紅木指板的 SlimTaper 桃花心木琴頸以及 Burstbucker 拾音器",
     "rentBrandId": 1,
     "stores_id": 1,
     "price": 1000,
@@ -231,9 +233,9 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "Explorer Custom w/ Ebony Fingerboard Gloss Ebony",
+    "name": "Adam Jones Les Paul Standard",
     "level": 1,
-    "description": "經典的 Gibson Explorer 憑藉這款定製版本進入了新的美學和聲音領域，配有多層包邊、珍珠裝飾、金色硬件和實心烏木指板。這是一種令人興奮的高檔外觀，帶來了 Gibson 標誌性的演奏性能、立即可識別的聲音以及 Gibson Custom 堅定不移地致力於打造世界上最好的吉他。",
+    "description": "Gibson USA 很榮幸與 Adam Jones 合作推出一款新的 Artist 型號，Adam Jones 是搖滾界最有才華和聲音創新的吉他手之一，來自多白金銷量和多次格萊美獎®獲獎樂隊 Tool。他的新款 Les Paul™ Standard 採用 Antique Silverburst 材質，烏木指板帶有珍珠母梯形鑲嵌，Grover® Rotomatic® 調音器配有現代風格的按鈕。它在琴頸位置配備了鍍鉻的 Burstbucker™ 1，在琴橋位置配備了未覆蓋的 DC High-Gain Humbucker™。控制採用 Orange Drop® 電容器手工接線。它還在桁架桿蓋上印有 Adam 的簽名，在琴頭背面印有定制的 Adam Jones 藝術品，並配有現代硬殼琴盒。",
     "rentBrandId": 1,
     "stores_id": 3,
     "price": 1000,
@@ -242,9 +244,9 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "1965 Non-Reverse Firebird V 12-String Reissue Aqua Mist VOS",
+    "name": "SG Modern",
     "level": 3,
-    "description": "自 1960 年代中期以來，12 弦電吉他一直是流行音樂的中流砥柱，其獨特的叮噹聲受到披頭四 (The Beatles) 和 The Byrds 等樂團的青睞。 Gibson 標誌性的EDS-1275 曾出現在世界各地的許多經典唱片和音樂會舞台上，但對於那些喜歡彈奏不附加六弦的12 弦電吉他的人來說，Gibson Custom 很自豪地推出1965 Non -反向 Firebird V 12 弦重新發行。這款極具收藏價值的 1965 年型號的重新製作仍然忠實於其靈感來源的吉他，並進行了一項關鍵改進 - 琴頸寬度達到 1 11/16 英寸，而不是原版上較窄的琴頸。我們還回顧了 1959 年的經典 Oldsmobile 顏色圖表，該圖表是一些歷史悠久的 Gibson 定制顏色的來源，用於美麗的 Aqua Mist VOS 飾面。它配備了一對帶有 Alnico 5 磁鐵的 Firebird 拾音器，可在平衡良好、可演奏性高、復古風格的 12 弦電動琴中提供您所需的所有閃光和鈴聲。",
+    "description": "桃花心木琴體，帶有 AA 花紋楓木面板，不對稱桃花心木琴頸，帶 SlimTaper 輪廓和 24 品烏木指板，Burstbucker Pro 拾音器帶推/拉線圈抽頭開關",
     "rentBrandId": 1,
     "stores_id": 2,
     "price": 1300,
@@ -253,9 +255,9 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "1963 Firebird V Vintage Sunburst",
+    "name": "1962 Les Paul SG Standard, Short Maestro, Ebony Block",
     "level": 1,
-    "description": "當吉布森 (Gibson) 聘請著名汽車設計師雷·迪特里希 (Ray Dietrich) 打造一款激進的新型實心吉他時，搖滾樂的歷史隨之而來。憑藉其偏置形狀、頸穿式結構和灼熱的迷你雙線圈拾音器，'63 Firebird V 立即成為經典。 Custom Shop 很自豪地推出這款復古原作的精確複製品，它採用真實的輪廓、尺寸和構造方法，帶來令人難以置信的擁有和遊戲體驗。",
+    "description": "Gibson Custom Select 採用桃花心木琴身，搭配桃花心木琴頸，配有玫瑰木指板及 60 年代 SlimTaper 輕薄輪廓設計，搭載 Ebony Block 短型 Maestro Vibrola 搖座系統，配備 2 顆 Custombucker 拾音器，並經由 Murphy Lab 輕度老化處理，呈現復古質感。Gibson Custom 的 1962 Les Paul™ SG 標準版的這個迭代配備了 Murphy Lab Light Aging。吉他還包括熱沖壓 2 層「Les Paul」桁架桿蓋、Kluson 單線、雙環調音器和一對未封裝的 Custombucker 雙線圈拾音器等正宗功能，確保歷史準確性和卓越品質的融合。這款 Gibson 獨家產​​品數量非常有限",
     "rentBrandId": 1,
     "stores_id": 2,
     "price": 1300,
@@ -264,9 +266,9 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "1965 Non-Reverse Firebird V w/ Vibrola Vintage Sunburst",
+    "name": "SG Special",
     "level": 2,
-    "description": "Firebird 的第二個版本將偏移平台帶入了新的聲音領域。憑藉其輕盈的固定琴頸結構以及琴頸和琴身的翻轉方向，'65 Firebird V 因其功能和風格而受到喜愛和推崇。這款客製化商店遊戲使用真實的型材和構造方法來提供無可否認的外觀、感覺和聲音樂器。",
+    "description": "SG™ Special 回歸經典設計，其影響力、受歡迎程度以及跨越世代與音樂類型的深遠影響使其廣受喜愛。這款 60 年代早期風格的 SG Special 擁有無數經典搖滾錄音中熟悉的氛圍與音色。舒適的 SlimTaper™ 桃花心木琴頸與帶有包邊的玫瑰木指板，以流暢且輕鬆的演奏感聞名。兩顆 P-90 拾音器因其在過載時飽滿且帶有野性吼聲的音色，以及在乾淨音色下的甜美平滑音質而廣受推崇。SG Special 配備三段式切換開關，並採用手工接線的控制電路，搭配 Orange Drop® 電容器。附贈硬殼琴盒。",
     "rentBrandId": 1,
     "stores_id": 1,
     "price": 1200,
@@ -275,9 +277,9 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "Firebird Custom w/ Ebony Fingerboard Gloss Ebony",
+    "name": "60th Anniversary 1961 Les Paul SG Custom With Sideways Vibrola",
     "level": 3,
-    "description": "Firebird Custom 保留了標誌性的流線型形狀，使其成為 Gibson 最具視覺吸引力的吉他之一，同時添加了高檔定製配置和強大的雙線圈拾音器，以增加視覺和聲音衝擊力。實心桃花心木結構飾有多層包邊、金色五金、珍珠鑲嵌和實心烏木指板。它大膽、美麗，而且是一次非常有趣的旅程。",
+    "description": "1961 年，Gibson Les Paul™ 系列迎來了重大變革，最顯著的特點是全新流線型雙切角設計的桃花心木琴身，後來被命名為 SG™。這款來自 Gibson Custom Shop 的型號，完美重現了首批 Les Paul SG Custom 的設計，配備 Custom 風格的外觀裝飾、金色硬體，以及 Sideways Vibrola™ 搖座，一種側拉式的顫音系統，類似 1960 年代早期型號中的配置。\n\n此外，它擁有 Authentic 61 薄輪廓桃花心木琴頸，帶包邊設計，搭載 Grover® 弦鍵、ABR-1 Tune-O-Matic™ 琴橋、三顆 Custombucker 拾音器、CTS® 復古音量電位器以及 Black Beauty 電容器，完美呈現經典音色與現代工藝的結合。",
     "rentBrandId": 1,
     "stores_id": 1,
     "price": 1300,
@@ -286,24 +288,13 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "1963 Firebird V With Maestro Vibrola Pelham Blue Ultra Light Aged Pelham Blue",
+    "name": "Les Paul Junior Double Cut",
     "level": 1,
-    "description": "當吉布森 (Gibson) 聘請著名汽車設計師雷·迪特里希 (Ray Dietrich) 打造一款激進的新型實心吉他時，搖滾樂的歷史隨之而來。憑藉其偏置形狀、頸穿結構和灼熱的迷你雙線圈拾音器™，'63 Firebird™ V 立即成為經典。 Gibson Custom Shop 很自豪地推出這款復古原件的精確複製品，它採用真實的輪廓、尺寸和構造方法，帶來令人難以置信的擁有和演奏體驗。它採用墨菲實驗室熟練工匠的超輕老化技術。 Murphy Lab Ultra Light Aged 飾面處理與輕度老化的五金搭配，模擬數十年的輕度玩耍磨損，賦予其獨特的個性、氛圍和 Gibson Golden Era 原始示例的感覺。",
+    "description": "雙切角桃花心木琴身，搭配 SlimTaper 輕薄琴頸輪廓的桃花心木琴頸，玫瑰木指板，配備 22 個中號加大品格及壓克力圓點鑲嵌，Dogear P-90 單線圈拾音器，並附硬殼琴盒。",
     "rentBrandId": 1,
     "stores_id": 1,
     "price": 1000,
     "RentList_id": 26,
-    "time_start": "2024-02-24T10:00:00Z",
-    "time_end": "2024-03-02T10:00:00Z"
-  },
-  {
-    "name": "1963 Firebird V Reissue with Maestro Vibrola Light Aged Cardinal Red",
-    "level": 2,
-    "description": "當吉布森 (Gibson) 聘請著名汽車設計師雷·迪特里希 (Ray Dietrich) 打造一款激進的新型實心吉他時，搖滾樂的歷史隨之而來。憑藉其偏置形狀、頸穿結構和灼熱的迷你雙線圈拾音器™，'63 Firebird™ V 立即成為經典。 Gibson Custom Shop 很自豪地推出這款復古原件的精確複製品，它採用真實的輪廓、尺寸和構造方法，帶來令人難以置信的擁有和演奏體驗。它採用墨菲實驗室技術精湛的工匠進行的光老化處理。 Murphy Lab Light Aged 飾面處理與輕度老化的五金搭配，模擬數十年的自然玩耍磨損，賦予其獨特的個性、氛圍和吉布森黃金時代原創範例的感覺。",
-    "rentBrandId": 1,
-    "stores_id": 3,
-    "price": 1200,
-    "RentList_id": 27,
     "time_start": "2024-02-24T10:00:00Z",
     "time_end": "2024-03-02T10:00:00Z"
   },
@@ -314,14 +305,14 @@
     "rentBrandId": 1,
     "stores_id": 3,
     "price": 1200,
-    "RentList_id": 28,
+    "RentList_id": 27,
     "time_start": "2024-02-24T10:00:00Z",
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "Joe Bonamassa Amos 1958 Flying V Collector's Edition Antique Natural",
+    "name": "Joe Bonamassa \"Amos\" 1958 Flying V Collector's Edition Antique Natural",
     "level": 1,
-    "description": "在 Joe Bonamassa 的史詩級吉他收藏中，其中最珍貴且著名的一把吉他是“Amos”，一把原版的1958年 Gibson Flying V™。Amos 這個名字以及客製化的琴頸調節桿蓋，來自於一位名叫 Amos Arthur 的紳士，他是印第安納州印第安納波利斯 Arthur’s Music 店的擁有者。根據 Gibson 的記錄，這把 Flying V 於1958年5月29日運送到他的店鋪。這把吉他最終售予 Ernest Tubb 樂隊的 Pete Mitchell，而在1970年代中期，它輾轉到了 Norman’s Rare Guitars 的 Norm Harris 手中。多年來，這把吉他出現在許多著名的吉他書籍中，甚至在1984年的電影《This Is Spinal Tap》中亮相。Joe 在近十年前從 Norm Harris 手中購得 Amos，這把美麗的樂器至今仍持續激勵著他，經常在現場演出和錄音室中亮相。",
+    "description": "在 Joe Bonamassa 的史詩級吉他收藏中，其中最珍貴且著名的一把吉他是“Amos”，一把原版的1958年 Gibson Flying V™。Amos 這個名字以及客製化的琴頸調節桿蓋，來自於一位名叫 Amos Arthur 的紳士，他是印第安納州印第安納波利斯 Arthur’s Music 店的擁有者。根據 Gibson 的記錄，這把 Flying V 於1958年5月29日運送到他的店鋪。這把吉他最終售予 Ernest Tubb 樂隊的 Pete Mitchell，而在1970年代中期，它輾轉到了 Norman’s Rare Guitars 的 Norm Harris 手中。多年來，這把吉他出現在許多著名的吉他書籍中，甚至在1984年的電影《This Is Spinal Tap》中亮相。Joe 在近十年前從 Norm Harris 手中購得 Amos，這把美麗的樂器至今仍持續激勵著他，經常在現場演出和錄音室中亮相。\n\n這款特別的收藏家版限量復刻系列，運用了全新的3D掃描技術和極為精準的 Murphy Lab 老化技術，以手工打造出 Amos 的高仿製品。每一個細節都被精心復刻，從精確的演奏磨損痕跡到聲音特性以及實心巴西玫瑰木指板。僅有50把這樣非凡的樂器由位於田納西州納什維爾的 Gibson Custom Shop 和 Murphy Lab 的專業製琴師手工製作，作為這個非凡收藏家版系列的一部分。",
     "rentBrandId": 1,
     "stores_id": 1,
     "price": 1000,
@@ -407,9 +398,9 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "Flying V Custom w/ Ebony Fingerboard Gloss Ebony",
+    "name": "1958 Korina Flying V (White Pickguard), Ebony, Murphy Lab Light Aged Ebony\nGibson Custom Sele",
     "level": 3,
-    "description": "Flying V Custom 為 Gibson 最大膽、最具傳奇色彩的設計之一增添了高端的「黑美人」細節。最終的結果是一把散發風格和獨特性的吉他——一件以無可比擬的 Gibson 音色和演奏性為支撐的聲明之作。從實心的烏木指板到分裂鑽石形狀的琴頭嵌片，它無可否認地是一把現代經典，當之無愧地擁有「Custom」的名稱",
+    "description": "幾位著名的吉他英雄——Albert King、Keith Richards、Slash——曾將 Korina Flying V™ 包含在他們的吉他收藏中，但他們從未擁有過像這把這樣的吉他。Gibson Custom 和 Murphy Lab 重構了這個具有開創性、經典的設計，並將其作為特殊訂單，回到首次發佈的年份，當時 Cherry 和 Ebony 是唯一的定制顏色選項。這款夢幻版本優雅地以 Ebony 漆面搭配金色硬體和白色塑料，呈現出一種精緻的「燕尾服」外觀。\n\n這把吉他完成於 Murphy Lab 老化 Nitrocellulose 漆面，並採用了 50年代復古琴頸輪廓，是一款真正吸引目光的 Flying V，搭載 ABR-1 音橋、穿弦設計的兩片 Korina 琴身，以及帶有 22品印度玫瑰木指板的 Korina 琴頸。配備了一對 Custombucker 拾音器，並帶有 True Historic 老化金色覆蓋，此外，在四層擋板下，您會發現 CTS® 電位器和復古風格的「電話簿」音調電容器。隨吉他附贈的是一個歷史準確的 Flying V 吉他盒，外觀為經典的棕色外殼，內部為柔軟的粉紅色內襯，提升了復古風格的體驗",
     "rentBrandId": 1,
     "stores_id": 2,
     "price": 1300,
@@ -418,9 +409,9 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "1958 Mahogany Flying V Walnut",
+    "name": "Flying V Custom Ebony Fingerboard Gloss Ebony",
     "level": 1,
-    "description": "這款忠實致敬於原版 1958 年 Korina 材質 Flying V 模型的吉他，改為使用桃花心木製作，並採用美麗的胡桃木漆面，為這一超越時代的經典設計增添了一層優雅的氛圍",
+    "description": "Flying V Custom 為 Gibson 最大膽、最具傳奇色彩的設計之一增添了高端的「黑美人」細節。最終的結果是一把散發風格和獨特性的吉他——一件以無可比擬的 Gibson 音色和演奏性為支撐的聲明之作。從實心的烏木指板到分裂鑽石形狀的琴頭嵌片，它無可否認地是一把現代經典，當之無愧地擁有「Custom」的名稱",
     "rentBrandId": 1,
     "stores_id": 2,
     "price": 1000,
@@ -430,10 +421,10 @@
   },
 
   {
-    "name": "Player Plus Meteora® HH",
+    "name": "1958 Mahogany Flying V Walnut",
     "level": 1,
-    "description": "一組強勁的 Fireball® 雙線圈拾音器，完美結合適當的增益與清晰的弦間音符表現。S-1™ 開關啟動後可切換為單線圈模式，展現純淨透明的單線圈音色。絲滑的霧面現代 C 型琴頸貼合手掌，搭配平滑的滾邊設計，提供極致舒適感。12 弧度指板和22個中大型品絲讓領奏更加流暢，音彎毫不受阻。順暢且靈敏的雙點式搖座提供經典的顫音效果，而鎖定式弦準器則確保穩固的音準並讓換弦快速且輕鬆。",
-    "rentBrandId": 2,
+    "description": "這款忠實致敬於原版 1958 年 Korina 材質 Flying V 模型的吉他，改為使用桃花心木製作，並採用美麗的胡桃木漆面，為這一超越時代的經典設計增添了一層優雅的氛圍",
+    "rentBrandId": 1,
     "stores_id": 1,
     "price": 1000,
     "RentList_id": 39,
@@ -441,10 +432,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "Limited Edition Paranormal Jazzmaster® XII",
+    "name": "1958 Korina Flying V Reissue (White Pickguard) Natural",
     "level": 1,
-    "description": "擁有標誌性的偏移琴身設計與豐富的諧波特性，Squier® Jazzmaster® XII 鼓勵最具冒險精神的玩家開創全新的吉他探索之路。這款12弦吉他搭載由 Fender 設計的雙 Alnico 單線圈 Jazzmaster 拾音器，配備三檔切換開關，以及復古風格的 冰球桿 式琴頭設計，展現明亮清澈的音色與經典永恆的風格。",
-    "rentBrandId": 2,
+    "description": "Gibson Flying V™ 在 1958 年推出時遠遠超前於其時代，那一年僅出貨 81 把，但自那以後，它已經變得非常受歡迎。這款歷史再版型號精心重現了經典復古 Flying V 的特徵。該吉他配有 ABR-1 音橋，搭配穿弦 Korina 琴身、Custombucker 拾音器、Korina 琴頸、印度玫瑰木指板、兩個音量和一個音調控制，配有 CTS® 電位器和電話簿電容器、金色硬體、Kluson® 調音鈕、四層擋板。隨附的歷史準確吉他盒擁有經典的棕色外殼和柔軟的粉紅色內襯。",
+    "rentBrandId": 1,
     "stores_id": 1,
     "price": 1000,
     "RentList_id": 40,
@@ -452,10 +443,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "layer II Jazzmaster®",
+    "name": "80s Explorer Ebony",
     "level": 1,
-    "description": "Player II Jazzmaster 散發著永恆的 Fender 魅力，但在其背後，它是為當今的演奏者做好準備的。琴頸的所有部件均專為快速、流暢的演奏而設計，從背面帶有絲滑緞面聚氨酯飾面的現代“C”型材，到帶有光滑捲邊和22 個中號大號品絲的舒適9.5 吋半徑板狀紅木指板。經典的榿木琴體有永恆的 Fender 飾面和從檔案中發掘出來的前所未見的顏色。 Player 系列 Alnico V 單線圈 Jazzmaster 拾音器提供水晶般的高音、音樂般的中音和緊緻的低音，可提升任何流派的品質。 3 向撥動開關可讓您輕鬆調整從玻璃琴頸拾音器鈴聲到切割琴橋拾音器咬合以及其間的所有點，而帶有浮動顫音的6 鞍座Jazzmaster 琴橋、升級的Mustang® 鞍座和ClassicGear™調音器可確保精確調音穩定性和靈活性，並探索無限的聲音可能性。",
-    "rentBrandId": 2,
+    "description": "Explorer™ 於 1958 年首次推出，隨著時間的推移，吉他手發現了它的許多魅力。到 20 世紀 70 年代，搖滾樂隊開始接受其未來派的外形和強勁的聲音，但在硬搖滾 80 年代，該模型開始發揮自己的作用，並被該十年中一些最偉大的演奏家所採用。新款 80 年代 Explorer 以流行的 1984 年車型為基礎。它採用快速演奏的 SlimTaper™ 桃花心木琴頸和紅木指板。標誌性造型的桃花心木琴身配備了全新 80 年代 Tribute 拾音器，可準確捕捉那個時代型號獨特的厚重聲音和豐富的延音。現在有烏木版本。還包括一個硬殼盒。",
+    "rentBrandId": 1,
     "stores_id": 2,
     "price": 1000,
     "RentList_id": 41,
@@ -463,10 +454,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "Limited Edition Vintera® II '50s Jazzmaster®, 3-Color Sunburst",
+    "name": "Lzzy Hale Explorerbird Cardinal Red",
     "level": 2,
-    "description": "喚醒 50 年代經典的聲音，透過 Vintera II '50s Jazzmaster® 體驗 Fender 獨有的標誌性外觀、激發靈感的手感，以及無與倫比的音色。",
-    "rentBrandId": 2,
+    "description": "Lzzy Hale 是 Gibson 的首位女性品牌大使，以其樂團 Halestorm 的爆炸性現場表演而聞名。她的新 Explorerbird 是一款風格硬朗、外觀精美的吉他，專為重型音樂打造。它將經典 Explorer™ 的琴體形狀和 Non-Reverse Firebird™ 琴頭結合成藝術家模型，一定會吸引觀眾的注意並激發觀眾的興趣。紅衣主教紅色硝化纖維素漆飾面與金色五金和品絲相得益彰……甚至強大的 70 年代 Tribute 拾音器上的金色螺絲和桿也是如此。還包括一個 Modern 系列硬殼盒。",
+    "rentBrandId": 1,
     "stores_id": 2,
     "price": 1200,
     "RentList_id": 42,
@@ -474,10 +465,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "Gold Foil Jazzmaster®",
+    "name": "1958 Korina Explorer (White Pickguard) Ebony",
     "level": 2,
-    "description": "Gold Foil Jazzmaster® 配備了帶邊條的烏木指板、珍珠塊嵌條、桃花心木琴體、Bigsby® B50 顫音器和三個 Gold Foil 迷你線圈拾音器。其他特徵包括與琴身匹配的彩繪琴頭、帶白色按鈕的復古風格調音器、21 顆窄高品格和靈感來自 Fender® Jaguar® 的開關板。",
-    "rentBrandId": 2,
+    "description": "這款來自Gibson Custom 和Murphy Lab 的1958 年Korina Explorer™ 與Flying V™ 同類產品的風格相呼應，重新構想了開創性、未來派的Explorer 設計，作為發布第一年的特別訂單，當時櫻桃色和烏木色是唯一的客製化顏色選擇。這款夢幻版本採用優雅的烏木色，配有金色五金件和白色塑料，賦予其精緻的“燕尾服”外觀。這也標誌著自 2021 年推出最初的高度限量珍藏版 Korina 重新發行批次以來，墨菲實驗室老化已應用於 Korina Explorer 和 Flying V 型號的首次生產。 \n\n這款優雅的 Explorer 採用 ABR-1 琴橋、輕質鋁製止動桿拉弦板和 2 件式 Korina 琴體。它配備了未封裝的 Custombucker 拾音器、Korina 琴頸和印度玫瑰木指板。控制包括兩個音量和一個音調，帶有 CTS® 電位器和復古風格的“電話簿”電容器。它配備了歷史準確的錶殼，具有經典的棕色外觀和豪華的粉紅色內飾。",
+    "rentBrandId": 1,
     "stores_id": 2,
     "price": 1200,
     "RentList_id": 43,
@@ -485,10 +476,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "American Performer Jazzmaster®",
+    "name": "\n1958 Korina Explorer Reissue (White Pickguard) Natural",
     "level": 3,
-    "description": "誕生於加利福尼亞州的科羅納，優雅的 American Performer Jazzmaster 提供了你所期待的正宗 Fender 音色和精緻手感，並擁有全新的以玩家為導向的功能，讓演奏更加激發靈感。",
-    "rentBrandId": 2,
+    "description": "Gibson Explorer™ 在 1958 年推出時遠遠領先於時代，當年僅發貨了 19 台，但從那時起它就變得非常受歡迎。這款歷史性的重新發行型號精心再現了經典的復古探險家功能。配備ABR-1 琴橋和Stop Bar 拉弦板、Korina 琴體、Custombucker 拾音器、Korina 琴頸、印度紅木指板、帶CTS® 電位器的兩個音量和一個音調控制以及電話簿電容器、金色硬體、 Kluson® 調音器和4 層護板。包括一個符合歷史的盒子，具有經典的棕色外觀和豪華的粉紅色內部。",
+    "rentBrandId": 1,
     "stores_id": 3,
     "price": 1300,
     "RentList_id": 44,
@@ -496,10 +487,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "Troy Van Leeuwen Jazzmaster®",
+    "name": "Explorer Custom Ebony Fingerboard Gloss Ebony",
     "level": 3,
-    "description": "Troy Van Leeuwen 為一些最受讚譽且前衛的另類搖滾樂隊貢獻了精湛的質感吉他演奏和氛圍音效。從 Failure 到 A Perfect Circle、Queens of the Stone Age、Eagles of Death Metal、Puscifer 等樂隊，Van Leeuwen 的多重樂器專長為過去三十年來一些最具創意和人氣的搖滾音樂增添了色彩和力量。",
-    "rentBrandId": 2,
+    "description": "經典的 Gibson Explorer 憑藉這款定製版本進入了新的美學和聲音領域，配有多層包邊、珍珠裝飾、金色硬件和實心烏木指板。這是一種令人興奮的高檔外觀，帶來了 Gibson 標誌性的演奏性能、立即可識別的聲音以及 Gibson Custom 堅定不移地致力於打造世界上最好的吉他。",
+    "rentBrandId": 1,
     "stores_id": 3,
     "price": 1300,
     "RentList_id": 45,
@@ -507,10 +498,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "Jim Root Jazzmaster® V4®",
+    "name": "1965 Non-Reverse Firebird V 12-String Reissue Aqua Mist VOS",
     "level": 1,
-    "description": "這款 Jim Root Jazzmaster® V4 旨在提供強烈的金屬音色，並擁有全新的大膽外觀。我們與 Slipknot 的吉他手 Jim Root 密切合作，打造了一款聲音猛烈的簽名 Jazzmaster，完美契合他沉重的演奏風格——從專屬的 Daemonum™ 開放線圈 EMG® 主動拾音器，到可進行快速彈奏的 12 弧度指板，搭配巨型品格、簡潔的控制布局等等。",
-    "rentBrandId": 2,
+    "description": "自 1960 年代中期以來，12 弦電吉他一直是流行音樂的中流砥柱，其獨特的叮噹聲受到披頭四 (The Beatles) 和 The Byrds 等樂團的青睞。 Gibson 標誌性的EDS-1275 曾出現在世界各地的許多經典唱片和音樂會舞台上，但對於那些喜歡彈奏不附加六弦的12 弦電吉他的人來說，Gibson Custom 很自豪地推出1965 Non -反向 Firebird V 12 弦重新發行。這款極具收藏價值的 1965 年型號的重新製作仍然忠實於其靈感來源的吉他，並進行了一項關鍵改進 - 琴頸寬度達到 1 11/16 英寸，而不是原版上較窄的琴頸。我們還回顧了 1959 年的經典 Oldsmobile 顏色圖表，該圖表是一些歷史悠久的 Gibson 定制顏色的來源，用於美麗的 Aqua Mist VOS 飾面。它配備了一對帶有 Alnico 5 磁鐵的 Firebird 拾音器，可在平衡良好、可演奏性高、復古風格的 12 弦電動琴中提供您所需的所有閃光和鈴聲。",
+    "rentBrandId": 1,
     "stores_id": 1,
     "price": 1000,
     "RentList_id": 46,
@@ -518,10 +509,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "American Professional II Jazzmaster®",
+    "name": "1963 Firebird V Vintage Sunburst",
     "level": 1,
-    "description": "我們受歡迎的 Deep C 琴頸現在擁有光滑的圓邊指板邊緣、Super-Natural 啞光塗裝和新雕塑的琴頸頸部，帶來極其舒適的手感，並且輕鬆進入高品格區域。新的 V-Mod II Jazzmaster 單線圈拾音器比以往更具表現力，同時保留了 Jazzmaster 所知名的亮麗和清脆音色。橋拾音器擁有一個跳線功能，可實現強勁的沙啞音或較低輸出的復古音色。透過切換開關，節奏電路將兩個拾音器串聯，提供更厚重的音色和更強的輸出，並由獨立的音量和音色滾輪電位器控制。全新的 Panorama™ 顫音系統配備插入式顫音臂，極大增加了顫音的範圍，不僅能進行深度的 Strat 樣式俯衝，還能實現經典 Jazzmaster 的顫音效果。",
-    "rentBrandId": 2,
+    "description": "當吉布森 (Gibson) 聘請著名汽車設計師雷·迪特里希 (Ray Dietrich) 打造一款激進的新型實心吉他時，搖滾樂的歷史隨之而來。憑藉其偏置形狀、頸穿式結構和灼熱的迷你雙線圈拾音器，'63 Firebird V 立即成為經典。 Custom Shop 很自豪地推出這款復古原作的精確複製品，它採用真實的輪廓、尺寸和構造方法，帶來令人難以置信的擁有和遊戲體驗。",
+    "rentBrandId": 1,
     "stores_id": 2,
     "price": 1000,
     "RentList_id": 47,
@@ -529,10 +520,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "American Professional II Jazzmaster® American Ultra Jazzmaster®",
+    "name": "1965 Non-Reverse Firebird V Vibrola Vintage Sunburst",
     "level": 3,
-    "description": "我們受歡迎的 Deep C 琴頸現在擁有光滑的圓邊指板邊緣、Super-Natural 啞光塗裝和新雕塑的琴頸頸部，帶來極其舒適的手感，並且輕鬆進入高品格區域。新的 V-Mod II Jazzmaster 單線圈拾音器比以往更具表現力，同時保留了 Jazzmaster 所知名的亮麗和清脆音色。橋拾音器擁有一個跳線功能，可實現強勁的沙啞音或較低輸出的復古音色。透過切換開關，節奏電路將兩個拾音器串聯，提供更厚重的音色和更強的輸出，並由獨立的音量和音色滾輪電位器控制。全新的 Panorama™ 顫音系統配備插入式顫音臂，極大增加了顫音的範圍，不僅能進行深度的 Strat 樣式俯衝，還能實現經典 Jazzmaster 的顫音效果。",
-    "rentBrandId": 2,
+    "description": "Firebird 的第二個版本將偏移平台帶入了新的聲音領域。憑藉其輕盈的固定琴頸結構以及琴頸和琴身的翻轉方向，'65 Firebird V 因其功能和風格而受到喜愛和推崇。這款客製化商店遊戲使用真實的型材和構造方法來提供無可否認的外觀、感覺和聲音樂器。",
+    "rentBrandId": 1,
     "stores_id": 3,
     "price": 1300,
     "RentList_id": 48,
@@ -540,10 +531,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "American Vintage II 1966 Jazzmaster®",
+    "name": "Firebird Custom Ebony Fingerboard Gloss Ebony",
     "level": 3,
-    "description": "Fender® American Vintage II 系列呈現了對改變音樂歷史進程的革命性設計的極為準確的詮釋。這些吉他採用了符合時代準確的琴體、琴頸和硬體，並且具有高級的塗裝和精心調整的、具年特性的拾音器，每件樂器都捕捉了正宗 Fender 工藝和音色的精髓。",
-    "rentBrandId": 2,
+    "description": "Firebird Custom 保留了標誌性的流線型形狀，使其成為 Gibson 最具視覺吸引力的吉他之一，同時添加了高檔定製配置和強大的雙線圈拾音器，以增加視覺和聲音衝擊力。實心桃花心木結構飾有多層包邊、金色五金、珍珠鑲嵌和實心烏木指板。它大膽、美麗，而且是一次非常有趣的旅程。",
+    "rentBrandId": 1,
     "stores_id": 1,
     "price": 1300,
     "RentList_id": 49,
@@ -551,10 +542,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "American Ultra Luxe Stratocaster",
+    "name": "1963 Firebird V With Maestro Vibrola Pelham Blue Ultra Light Aged Pelham Blue",
     "level": 1,
-    "description": "American Ultra Luxe Stratocaster 配備獨特的 Augmented D 琴頸輪廓，並搭配超滑順的指板邊緣設計，提供無與倫比的演奏舒適度。同時，錐形琴頸根部讓您輕鬆觸及高音區。10-14 的復合指板弧度及 22 個不銹鋼中大型品絲，讓您在獨奏時更加輕鬆且精準。Ultra Noiseless™ Vintage 拾音器和先進的布線選項提供無限的音色可能性，並且完全無噪音干擾。雕塑感的背部輪廓設計兼具美觀與功能性，無論處於任何演奏姿勢都極為舒適。其他特點包括封閉式鎖定調音器、鍍鉻硬件以及 TUSQ™ 上弦枕。",
-    "rentBrandId": 2,
+    "description": "當吉布森 (Gibson) 聘請著名汽車設計師雷·迪特里希 (Ray Dietrich) 打造一款激進的新型實心吉他時，搖滾樂的歷史隨之而來。憑藉其偏置形狀、頸穿結構和灼熱的迷你雙線圈拾音器™，'63 Firebird™ V 立即成為經典。 Gibson Custom Shop 很自豪地推出這款復古原件的精確複製品，它採用真實的輪廓、尺寸和構造方法，帶來令人難以置信的擁有和演奏體驗。它採用墨菲實驗室熟練工匠的超輕老化技術。 Murphy Lab Ultra Light Aged 飾面處理與輕度老化的五金搭配，模擬數十年的輕度玩耍磨損，賦予其獨特的個性、氛圍和 Gibson Golden Era 原始示例的感覺。",
+    "rentBrandId": 1,
     "stores_id": 2,
     "price": 1000,
     "RentList_id": 50,
@@ -562,10 +553,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "American Ultra Luxe Stratocaster® Floyd Rose® HSS",
+    "name": "1963 Firebird V Reissue with Maestro Vibrola Light Aged Cardinal Red",
     "level": 2,
-    "description": "增強版 D 型琴頸輪廓，搭配 Ultra 滾邊指板邊緣和縮合型琴頸底座，提供無窮的演奏舒適感並讓高品位位置的指法變得輕鬆。速度感十足的 10-14 徑度指板搭配 22 顆不鏽鋼中型大品品格，讓獨奏變得輕鬆準確；而 Ultra Noiseless™ Hot 單線圈拾音器與 Ultra Double Tap™ 雙線圈拾音器，加上先進的接線選項，提供無限音色可能——且不會有雜音。原廠 Floyd Rose 顫音系統讓您能精確控制顫音效果，並保持完美的調音。這款多功能、最先進的樂器將激勵您將演奏提升到全新高度。",
-    "rentBrandId": 2,
+    "description": "當吉布森 (Gibson) 聘請著名汽車設計師雷·迪特里希 (Ray Dietrich) 打造一款激進的新型實心吉他時，搖滾樂的歷史隨之而來。憑藉其偏置形狀、頸穿結構和灼熱的迷你雙線圈拾音器™，'63 Firebird™ V 立即成為經典。 Gibson Custom Shop 很自豪地推出這款復古原件的精確複製品，它採用真實的輪廓、尺寸和構造方法，帶來令人難以置信的擁有和演奏體驗。它採用墨菲實驗室技術精湛的工匠進行的光老化處理。 Murphy Lab Light Aged 飾面處理與輕度老化的五金搭配，模擬數十年的自然玩耍磨損，賦予其獨特的個性、氛圍和吉布森黃金時代原創範例的感覺。",
+    "rentBrandId": 1,
     "stores_id": 3,
     "price": 1200,
     "RentList_id": 51,
@@ -573,10 +564,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "70th Anniversary American Vintage II 1954 Stratocaster",
+    "name": "1981 Gibson ES-347 Left-Handed",
     "level": 2,
-    "description": "增強版 D 型琴頸輪廓，搭配 Ultra 滾邊指板邊緣和縮合型琴頸底座，提供無窮的演奏舒適感並讓高品位位置的指法變得輕鬆。速度感十足的 10-14 徑度指板搭配 22 顆不鏽鋼中型大品品格，讓獨奏變得輕鬆準確；而 Ultra Noiseless™ Hot 單線圈拾音器與 Ultra Double Tap™ 雙線圈拾音器，加上先進的接線選項，提供無限音色可能——且不會有雜音。原廠 Floyd Rose 顫音系統讓您能精確控制顫音效果，並保持完美的調音。這款多功能、最先進的樂器將激勵您將演奏提升到全新高度。",
-    "rentBrandId": 2,
+    "description": "採用罕見的櫻桃色旭日飾面，全部原始且近乎完好。 Gibson ES-335 的短命且用途廣泛的豪華版，更像是帶有烏木指板、MOP 嵌體和多彈邊定制琴頭的 ES-355。有一些非常輕微的磨損，但沒有天氣檢查，沒有裂縫、損壞或任何其他隱藏的維修。這把吉他有一個工廠內置的線圈抽頭，為演奏者提供了一些美妙的單線圈聲音的額外選擇。這把吉他實際上聽起來真的非常非常好，線圈抽頭功能 100% 可用，聽起來很棒 - 不薄，但透明且更清晰，非常適合過載的聲音！包括它的原始情況。",
+    "rentBrandId": 1,
     "stores_id": 2,
     "price": 1200,
     "RentList_id": 52,
@@ -584,10 +575,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "Player II Stratocaster",
+    "name": "1960 Gibson ES-335 Sunburst",
     "level": 2,
-    "description": "Player II Stratocaster 擁有永恆的 Fender 魅力，但其內部卻為當今的玩家做了最佳設計。從現代 C 型的琴頸到光滑的背面絲綢質感聚氨酯塗層，再到舒適的 9.5” 弧度指板，配以圓滑的邊緣和 22 顆中型大號品絲，所有設計都專為快速流暢的演奏體驗而生。你可以選擇從雪松、輕質雪松或輕質桃花心木等材質的琴身，這些材質不僅傳承經典 Fender 音色，還包含了從檔案中發掘的全新顏色。Player 系列的 Alnico V 單線圈 Strat® 拾音器提供清晰的高頻、豐富的中頻和緊湊的低頻，能提升任何音樂風格的表現。5 檔刀片開關讓你可以調整從清亮的頸部拾音器音色到激烈的橋部拾音器音色，並涵蓋所有介於兩者之間的音色，同時，2 點浮動橋和 ClassicGear™ 音準器確保精確的音準穩定，讓你能夠自由探索無限的音色可能。",
-    "rentBrandId": 2,
+    "description": " Rounded“C”桃花心木琴頸與玫瑰木指板上的珍珠圓點鑲嵌提醒演奏者一切是從哪裡開始。\nGibson 的 T 型雙線圈拾音器與我們的手焊接線控制組件搭配， 為演奏者帶來 60 多年來一直渴望的多功能 Gibson ES 音色。 其它如 Keystone 按鈕的 Vintage Deluxe 調音器提供調音穩定性和精確音調，搭配輕質鋁製 ABR-1 琴橋和 Stop Bar 止弦板。",
+    "rentBrandId": 1,
     "stores_id": 1,
     "price": 1200,
     "RentList_id": 53,
@@ -595,10 +586,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "Player II Stratocaster HSS",
+    "name": "1952 Gibson ES-295",
     "level": 1,
-    "description": "Player II Stratocaster HSS 散發出 Fender 永恆的魅力，但內部設計專為現代玩家量身打造。琴頸的設計旨在提供快速流暢的演奏手感，包括背面的絲滑緞面聚氨酯塗層現代 “C” 型琴頸輪廓、舒適的 9.5 英寸半徑玫瑰木或楓木指板，並搭配圓潤的邊緣與 22 個中大型品絲。您可以選擇經典的 Fender 漆面以及首次亮相的復古新色，這些顏色運用於椴木、空心的白蠟木或空心的桃花心木琴身。",
-    "rentBrandId": 2,
+    "description": "標準配置相同的環繞式梯形拉弦板。[ 1 ]整把吉他（包括琴頸）均採用金色飾面，並配有像牙包邊和護板。這把吉他有兩個單線圈 P-90，帶有奶油色拾音器蓋。吉他有一個三向開關，帶有兩個音調旋鈕和兩個音量旋鈕。金屬部件全部採用金色處理。",
+    "rentBrandId": 1,
     "stores_id": 2,
     "price": 1000,
     "RentList_id": 54,
@@ -606,10 +597,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "Player Plus Stratocaster",
+    "name": "ES-330 Ebony",
     "level": 1,
-    "description": "這款 Strat® 的核心是一組 Player Plus Noiseless™ 拾音器——明亮且對觸感極為敏感，它們提供經典的 Strat 音色，且沒有雜音干擾。音色控制上的推拉旋鈕可在切換到 1 和 2 檔時添加頸拾音器，創造出 Strat® 上不常見的兩種音色。帶有絲滑緞面塗層的現代 C 型 Player Plus Strat® 琴頸，配合圓潤的邊緣設計，提供如手套般貼合的極致舒適手感。12 英寸指板半徑和 22 個中大型品絲，讓流暢的獨奏和無阻礙的彎音輕鬆實現。順滑且靈敏的 2 點式顫音系統可帶來經典的顫音效果，而鎖定式弦軸則確保了穩固的調音，並讓換弦快速又簡單。 ",
-    "rentBrandId": 2,
+    "description": "薄型全空心電吉他，採用3 層楓木/楊木/楓木琴體，採用圓形C 型材的桃花心木琴頸，採用小塊丙烯酸鑲嵌的印度紅木指板，以及手工連接至500k 電位器和Orange Drop 電容器的Dogear P-90 拾音器，包括硬殼盒",
+    "rentBrandId": 1,
     "stores_id": 1,
     "price": 1000,
     "RentList_id": 55,
@@ -617,10 +608,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "American Professional II Stratocaster",
+    "name": "ES-345 Gold Hardware Dark Walnut",
     "level": 3,
-    "description": "我們受歡迎的 Deep C 琴頸現在配備光滑圓潤的指板邊緣、Super-Natural 緞面塗層以及重新雕塑的琴頸腳，帶來極為舒適的手感和便捷的高品區操作。全新的 V-Mod II Stratocaster 單線圈拾音器比以往更加清晰，同時保留了鐘聲般的音色和溫暖感。升級版的 2 點顫音系統配備冷軋鋼琴塊，提升了延音、清晰度和高音的閃耀感。",
-    "rentBrandId": 2,
+    "description": "三層楓木/楊木/楓木半空心琴體，實心楓木中板，桃花心木琴頸，圓形“C”型材，紅木指板，亞克力分裂平行四邊形鑲嵌，校準的T 型拾音器，以及硬殼琴盒",
+    "rentBrandId": 1,
     "stores_id": 3,
     "price": 1300,
     "RentList_id": 56,
@@ -628,10 +619,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "American Vintage II 1973 Stratocaster",
+    "name": "ES Supreme Ebony, 3-Pickup",
     "level": 3,
-    "description": "Fender® American Vintage II 系列呈現了對那些改變音樂歷史的革命性設計的極致還原。這些樂器採用符合時期的琴身、琴頸和硬體，搭配高端的塗裝和精心調音的年份專屬拾音器，每一件樂器都捕捉到正宗 Fender 工藝和音色的精髓。",
-    "rentBrandId": 2,
+    "description": "桃花心木琴體提供豐富、平衡的音色。\n桃花心木琴頸採用複合半徑烏木指板、24 個中型巨型品絲和超分割塊珍珠母貝鑲嵌。\n琴頭採用引人注目的全新珍珠母貝“吊燈鑲嵌”，其靈感源自 Gibson 檔案中的 20 世紀 40 年代設計。\n三個拾音器、兩個Burst Backer Pro（琴頸和中間位置）和Burst Backer Pro Plus（琴橋位置）拾音器組合在一起，帶有用於線圈敲擊的推/拉音量控制和手動連接到Orange Drop 電容器的主音控制。\n烏木飾面優雅地搭配金色硬件，使其成為一款音質優美、靈活的樂器，也是一款外觀絕對漂亮的現代搖滾機器。",
+    "rentBrandId": 1,
     "stores_id": 2,
     "price": 1300,
     "RentList_id": 57,
@@ -639,10 +630,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "American Vintage II 1961 Stratocaster",
+    "name": "ES-335 Dark Purple Burst\n",
     "level": 1,
-    "description": "Fender® American Vintage II 系列呈現了對那些改變音樂歷史的革命性設計的極致還原。這些樂器採用了符合時期的琴身、琴頸和硬體，搭配高端的塗裝和精心調音的年份專屬拾音器，每一件樂器都捕捉到正宗 Fender 工藝和音色的精髓。",
-    "rentBrandId": 2,
+    "description": "半空心楓木/楊木/楓木琴體，楓木中心塊，桃花心木琴頸，圓形 C 型材和紅木指板，T 型拾音器，帶手動控制裝置",
+    "rentBrandId": 1,
     "stores_id": 2,
     "price": 1000,
     "RentList_id": 58,
@@ -650,10 +641,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "American Professional II Stratocaster®, Anniversary 2-Color Sunburst",
+    "name": "ES-339 Cherry",
     "level": 2,
-    "description": "我們受歡迎的 Deep C 琴頸現在配備光滑圓潤的指板邊緣、Super-Natural 緞面塗層以及重新雕塑的琴頸腳，帶來極為舒適的手感和便捷的高品區操作。全新的 V-Mod II Stratocaster 單線圈拾音器比以往更加清晰，同時保留了鐘聲般的音色和溫暖感。升級版的 2 點顫音系統配備冷軋鋼琴塊，提升了延音、清晰度和高音的閃耀感。",
-    "rentBrandId": 2,
+    "description": "手工捲製的圓形「C」桃花心木琴頸上的珍珠圓點鑲嵌紅木指板提醒演奏者這一切的起點。 57 / 57 Classic + 雙線圈拾音器與我們的手工接線音色電路相結合，展現了演奏者 60 多年來所渴望的多功能 Gibson ES 音色。 ",
+    "rentBrandId": 1,
     "stores_id": 2,
     "price": 1200,
     "RentList_id": 59,
@@ -661,10 +652,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "Limited Edition American Performer Timber Stratocaster",
+    "name": "B.B. King \"Live at the Regal\" ES-335 Argentine Grey",
     "level": 2,
-    "description": "這把吉他配備了三顆 Yosemite™ 單線圈拾音器，設計上注重豐富且表現力強的音色。拾音器使用平滑錯排磁極來提升輸出，並且採用膠質塗層，讓線圈呼吸並控制反饋，產生動態的聲音，適合各種音樂情境。推拉音色控制能在任何切換位置加入頸拾音器，解鎖新的、音樂上有用的音色。其「現代C」形狀的頸部設計，搭配9.5英寸弧度的指板，幾乎適合任何演奏風格，並配有22顆特大品格品絲，便於準確且輕鬆的彎音。",
-    "rentBrandId": 2,
+    "description": "有阿根廷灰色旭日紋飾面、Bigsby 顫音和 Varitone 開關。它還具有 Grover“牛奶瓶”旋轉調音器、覆蓋止桿孔的珍珠圓點以及紅木指板上的硝化纖維素圓點鑲嵌。硬體和硝基漆面均經過墨菲實驗室專業老化。",
+    "rentBrandId": 1,
     "stores_id": 2,
     "price": 1200,
     "RentList_id": 60,
@@ -672,10 +663,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "American Vintage II 1957 Stratocaster",
+    "name": "1964 Trini Lopez Standard Reissue Ebony",
     "level": 1,
-    "description": "Fender® American Vintage II 系列呈現了對那些改變音樂歷史的革命性設計的極致還原。這些樂器採用了符合時期的琴身、琴頸和硬體，搭配高端的塗裝和精心調音的年份專屬拾音器，每一件樂器都捕捉到正宗 Fender 工藝和音色的精髓。",
-    "rentBrandId": 2,
+    "description": "3 層楓木/楊木/楓木琴體製成，帶有堅固的楓木中心塊，有助於提供出色的反饋阻力。機身採用經典的黑檀木硝基纖維飾面\n琴頸很特別，由桃花心木製成，配有華麗的紅木指板，飾有裂片鑽石硝酸纖維素鑲嵌物，半徑為 12 英寸，琴弦長度為 24.75 英寸，琴枕寬度為 42.85 毫米。非常舒適。",
+    "rentBrandId": 1,
     "stores_id": 1,
     "price": 1000,
     "RentList_id": 61,
@@ -683,10 +674,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "Mike McCready Stratocaster",
+    "name": "B.B. King “Rumble in the Jungle” 1974 ES-355 Walnut",
     "level": 3,
-    "description": "Mike McCready Stratocaster® 捕捉了搖滾界最具影響力且長久不衰的樂隊之一的獨特音色和永恆精神。這款吉他是與 Pearl Jam 吉他手 Mike McCready 合作設計的，對於任何想要捕捉這位 grunge 吉他偶像強大力量和激盪熱情的吉他手來說，Mike McCready Stratocaster® 是終極選擇。",
-    "rentBrandId": 2,
+    "description": "限量版 100 把吉他，Murphy Lab Light Aging、珍珠母鑲嵌、T 型 Custombucker 拾音器、單聲道 Varitone 開關和 Maestro™ Vibrola™ 拉弦板",
+    "rentBrandId": 1,
     "stores_id": 1,
     "price": 1300,
     "RentList_id": 62,
@@ -694,10 +685,10 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "Yngwie Malmsteen Stratocaster",
+    "name": "ES-335 P-90 Ebony",
     "level": 2,
-    "description": "強大的切割風格  作為這個類型的最傑出和最強大的實踐者，Yngwie Malmsteen 幾乎是單槍匹馬創造了新古典切割風格。他一直使用的吉他是 Stratocaster，而對於那些渴望模仿 Malmsteen 那種華麗又迅捷的指法風格的人來說，Yngwie Malmsteen Stratocaster 是基於這位瑞典金屬大師最喜愛的 Strat® 打造的，甚至連特製拾音器和凹槽指板也一應俱全。這款獨特設計的吉他，是為了致敬全球最具代表性的 Strat 大師之一",
-    "rentBrandId": 2,
+    "description": "Rounded“C”桃花心木琴頸與玫瑰木指板上的珍珠圓點鑲嵌提醒演奏者一切是從哪裡開始。\nGibson 的 T 型雙線圈拾音器與我們的手焊接線控制組件搭配， 為演奏者帶來 60 多年來一直渴望的多功能 Gibson ES 音色。 其它如 Keystone 按鈕的 Vintage Deluxe 調音器提供調音穩定性和精確音調，搭配輕質鋁製 ABR-1 琴橋和 Stop Bar 止弦板。",
+    "rentBrandId": 1,
     "stores_id": 2,
     "price": 1200,
     "RentList_id": 63,
@@ -705,13 +696,398 @@
     "time_end": "2024-03-02T10:00:00Z"
   },
   {
-    "name": "Eric Clapton Stratocaster",
+    "name": "1959 ES-355 Reissue, Diamond F-Holes Gold Sparkle Heavy Flake Gloss",
     "level": 1,
-    "description": "體驗慢手（Eric Clapton）本人無與倫比的Strat®風格，這款Eric Clapton Stratocaster是我們最受推崇且持久的藝術家簽名款之一。這款吉他擁有經典設計和特殊功能，提供卓越的音色多樣性和輕鬆的手感，完美詮釋了搖滾與藍調界的偉大人物之一Eric Clapton的Stratocaster音色和手感。其特色包括：一個楓木身體，三個Vintage Noiseless™拾音器，25分貝的中頻增強（active mid-boost），TBX電路，特殊的軟“V”形頸，並且配有封鎖原始的復古同步顫音橋（synchronized tremolo）。",
-    "rentBrandId": 2,
+    "description": "Gibson Custom Select 半空心琴體，烏木指板，帶有 MOP 塊狀鑲嵌、MOP 分裂鑽石琴頭鑲嵌、Custombucker 拾音器和鑽石形 F 孔",
+    "rentBrandId": 1,
     "stores_id": 3,
     "price": 1000,
     "RentList_id": 64,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "BB King Lucille Legacy",
+    "level": 2,
+    "description": "這款 Gibson BB King Lucille Legacy 整體狀況極佳。從外觀上看，它非常乾淨，只顯示出一些輕微的磨損。請參閱下面的詳細說明。露西爾擁有適合國王的所有高端任命。亮點包括金色硬件，包括刻有金色“BB King”字樣的桁架桿蓋和帶有微調器的 TP-6 拉弦板。它已經徹底檢查，安裝良好，保證到貨後能發揮出色。裝在原廠包裝盒中。",
+    "rentBrandId": 1,
+    "stores_id": 2,
+    "price": 1200,
+    "RentList_id": 65,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "1961 ES-335 Reissue Heavy Aged Sixties Cherry",
+    "level": 3,
+    "description": "Rounded“C”桃花心木琴頸與玫瑰木指板上的珍珠圓點鑲嵌提醒演奏者一切是從哪裡開始。\nGibson 的 T 型雙線圈拾音器與我們的手焊接線控制組件搭配， 為演奏者帶來 60 多年來一直渴望的多功能 Gibson ES 音色。 其它如 Keystone 按鈕的 Vintage Deluxe 調音器提供調音穩定性和精確音調，搭配輕質鋁製 ABR-1 琴橋和 Stop Bar 止弦板。",
+    "rentBrandId": 1,
+    "stores_id": 1,
+    "price": 1300,
+    "RentList_id": 66,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "1958 ES-335 Reissue Murphy Lab Heavy Aged",
+    "level": 2,
+    "description": "它採用 3 層楓木/楊木/楓木琴體，表面採用光滑的厚重老化臟金發硝基漆，這把吉他所表現出的對細節和工藝的關注令人驚嘆。墨菲實驗室團隊確實做到了復古氛圍！\n琴頸很特別，由桃花心木製成。它採用華麗的未包邊印度玫瑰木指板，並飾有硝化纖維鑲嵌物。擁有22 個歷史悠久的窄/高品絲、12 英寸半徑、1.687 英寸琴枕寬度和24.75 英寸音階長度，感覺光滑舒適！ 得益於正宗的'58",
+    "rentBrandId": 1,
+    "stores_id": 2,
+    "price": 1200,
+    "RentList_id": 67,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "American Ultra Luxe Stratocaster®",
+    "level": 1,
+    "description": "適合追求極致表現與音色的玩家，American Ultra 是我們最先進的吉他與貝斯系列。該系列採用不銹鋼品絲，並搭配引人注目的訂製顏色及同色系手工噴塗琴頭，American Ultra Luxe Stratocaster 將「Ultra」升級至全新境界。\n\nAmerican Ultra Luxe Stratocaster 配備獨特的 Augmented \"D\" 琴頸輪廓，並搭配超滑順的指板邊緣設計，提供無與倫比的演奏舒適度。同時，錐形琴頸根部讓您輕鬆觸及高音區。10\"-14\" 的復合指板弧度及 22 個不銹鋼中大型品絲，讓您在獨奏時更加輕鬆且精準。Ultra Noiseless™ Vintage 拾音器和先進的布線選項提供無限的音色可能性，並且完全無噪音干擾。雕塑感的背部輪廓設計兼具美觀與功能性，無論處於任何演奏姿勢都極為舒適。其他特點包括封閉式鎖定調音器、鍍鉻硬件以及 TUSQ™ 上弦枕。\n\n這款多功能、技術先進的樂器將激勵您挑戰自我，將演奏推向全新高度。\n\n隨附高級硬殼琴盒。",
+    "rentBrandId": 2,
+    "stores_id": 2,
+    "price": 1000,
+    "RentList_id": 68,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "American Ultra Luxe Stratocaster® Floyd Rose® HSS",
+    "level": 2,
+    "description": "對於追求極致性能和音色的演奏者來說，American Ultra 系列是我們最先進的吉他和貝斯系列。配備原廠 Floyd Rose 顫音系統、不鏽鋼品 fret 和引人注目的定制顏色，搭配塗漆的琴頭蓋，American Ultra Luxe Stratocaster Floyd Rose HSS 是超越的象徵。\n\n增強版 \"D\" 型琴頸輪廓，搭配 Ultra 滾邊指板邊緣和縮合型琴頸底座，提供無窮的演奏舒適感並讓高品位位置的指法變得輕鬆。速度感十足的 10\"-14\" 徑度指板搭配 22 顆不鏽鋼中型大品品格，讓獨奏變得輕鬆準確；而 Ultra Noiseless™ Hot 單線圈拾音器與 Ultra Double Tap™ 雙線圈拾音器，加上先進的接線選項，提供無限音色可能——且不會有雜音。原廠 Floyd Rose 顫音系統讓您能精確控制顫音效果，並保持完美的調音。這款多功能、最先進的樂器將激勵您將演奏提升到全新高度。\n\n附帶高級模塑硬殼箱。",
+    "rentBrandId": 2,
+    "stores_id": 3,
+    "price": 1200,
+    "RentList_id": 69,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "Player II Stratocaster®",
+    "level": 1,
+    "description": "\n走進聚光燈，體驗標誌性的 Fender® 音色和風格，選擇 Player II Stratocaster® —— 一款準備上台的吉他，經過現代化升級，助力你的演出並激發你的演奏靈感。\n\nPlayer II Stratocaster 擁有永恆的 Fender 魅力，但其內部卻為當今的玩家做了最佳設計。從現代 \"C\" 型的琴頸到光滑的背面絲綢質感聚氨酯塗層，再到舒適的 9.5” 弧度指板，配以圓滑的邊緣和 22 顆中型大號品絲，所有設計都專為快速流暢的演奏體驗而生。你可以選擇從雪松、輕質雪松或輕質桃花心木等材質的琴身，這些材質不僅傳承經典 Fender 音色，還包含了從檔案中發掘的全新顏色。Player 系列的 Alnico V 單線圈 Strat® 拾音器提供清晰的高頻、豐富的中頻和緊湊的低頻，能提升任何音樂風格的表現。5 檔刀片開關讓你可以調整從清亮的頸部拾音器音色到激烈的橋部拾音器音色，並涵蓋所有介於兩者之間的音色，同時，2 點浮動橋和 ClassicGear™ 音準器確保精確的音準穩定，讓你能夠自由探索無限的音色可能。\n\n完美的工具來打造屬於你的音色，Player II Stratocaster 擁有只有 Fender 才能帶來的外觀、音色和手感。\n\n購買 Player II 系列。",
+    "rentBrandId": 2,
+    "stores_id": 3,
+    "price": 1000,
+    "RentList_id": 70,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "Player II Stratocaster® HSS",
+    "level": 1,
+    "description": "踏上舞台，盡情體驗具有標誌性的 Fender® 聲音與風格，全新 Player II Stratocaster® HSS 電吉他為您的表演注入動力，激發您的音樂靈感。\n\nPlayer II Stratocaster HSS 散發出 Fender 永恆的魅力，但內部設計專為現代玩家量身打造。琴頸的設計旨在提供快速流暢的演奏手感，包括背面的絲滑緞面聚氨酯塗層現代 “C” 型琴頸輪廓、舒適的 9.5 英寸半徑玫瑰木或楓木指板，並搭配圓潤的邊緣與 22 個中大型品絲。您可以選擇經典的 Fender 漆面以及首次亮相的復古新色，這些顏色運用於椴木、空心的白蠟木或空心的桃花心木琴身。\n\nPlayer 系列的 Alnico V 單線圈 Strat® 拾音器與 Alnico II 雙線圈拾音器，帶來明亮清澈的高音、悅耳的中音和緊實的低音，適合各種音樂風格。五檔拾音切換開關，讓您在明亮的頸拾音器音色、狂野的橋拾音器音色及其間的多種音色中隨意切換；而 2 點式顫音系統與 ClassicGear™ 弦軸則確保了精準的調音穩定性，讓您探索無限的聲音可能性。\n\n完美適合打造屬於自己的聲音，Player II Stratocaster HSS 擁有 Fender 獨有的外觀、音色與手感。\n\n探索全新 Player II 系列吧！",
+    "rentBrandId": 2,
+    "stores_id": 1,
+    "price": 1000,
+    "RentList_id": 71,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "Player Plus Stratocaster®",
+    "level": 1,
+    "description": "將經典的 Fender® 設計與以玩家為中心的功能和令人興奮的新配色融合在一起，Player Plus Stratocaster® 帶來卓越的可演奏性和無可挑剔的風格。  \n\n這款 Strat® 的核心是一組 Player Plus Noiseless™ 拾音器——明亮且對觸感極為敏感，它們提供經典的 Strat 音色，且沒有雜音干擾。音色控制上的推拉旋鈕可在切換到 1 和 2 檔時添加頸拾音器，創造出 Strat® 上不常見的兩種音色。帶有絲滑緞面塗層的現代 \"C\" 型 Player Plus Strat® 琴頸，配合圓潤的邊緣設計，提供如手套般貼合的極致舒適手感。12 英寸指板半徑和 22 個中大型品絲，讓流暢的獨奏和無阻礙的彎音輕鬆實現。順滑且靈敏的 2 點式顫音系統可帶來經典的顫音效果，而鎖定式弦軸則確保了穩固的調音，並讓換弦快速又簡單。 \n\n結合經典 Fender 風格、先進功能和驚艷的新配色，Player Plus Stratocaster 是激發您創意並讓您在人群中脫穎而出的完美工具。",
+    "rentBrandId": 2,
+    "stores_id": 3,
+    "price": 1000,
+    "RentList_id": 72,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "Player Plus Stratocaster® HSS",
+    "level": 1,
+    "description": "將經典的 Fender 設計與以玩家為中心的功能和令人興奮的新配色融合在一起，Player Plus Stratocaster HSS 提供卓越的可演奏性和無可挑剔的風格。強大的 Fireball® 雙線圈拾音器完美平衡了增益與清晰度，而 Player Plus Noiseless Strat® 拾音器則明亮且對觸感極為敏感，呈現無雜音的經典 Strat 音色。\n\n音色控制上的推拉旋鈕可啟用雙線圈拾音器的分線模式，帶來清澈透明的單線圈音色。帶有絲滑緞面塗層的現代 \"C\" 型 Player Plus Strat® 琴頸，結合圓潤的邊緣設計，提供如手套般的極致舒適手感。\n\n12 英寸指板半徑和 22 個中大型品絲，讓流暢的獨奏與無阻礙的彎音輕鬆實現。順滑且靈敏的 2 點式顫音系統提供經典的顫音效果，而鎖定式弦軸則確保穩定的調音，並讓換弦快速又簡便。\n\n結合經典 Fender 風格、先進功能和令人驚艷的新配色，Player Plus Stratocaster HSS 是激發您創意並讓您在人群中脫穎而出的完美工具。",
+    "rentBrandId": 2,
+    "stores_id": 2,
+    "price": 1000,
+    "RentList_id": 73,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "American Performer Stratocaster® HSS",
+    "level": 2,
+    "description": "American Performer Stratocaster HSS 出生於加州科羅納，帶來您對正宗 Fender 所期望的卓越音色與手感。同時，新增的 Double Tap™ 雙線圈拾音器等升級功能，使演奏更加令人振奮與靈感滿滿。",
+    "rentBrandId": 2,
+    "stores_id": 1,
+    "price": 1200,
+    "RentList_id": 74,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "American Professional II Stratocaster®",
+    "level": 2,
+    "description": "American Professional II Stratocaster® 融合了超過六十年的創新、啟發與演變，旨在滿足當今專業演奏者的需求。\n\n我們受歡迎的 Deep \"C\" 琴頸現在配備光滑圓潤的指板邊緣、\"Super-Natural\" 緞面塗層以及重新雕塑的琴頸腳，帶來極為舒適的手感和便捷的高品區操作。全新的 V-Mod II Stratocaster 單線圈拾音器比以往更加清晰，同時保留了鐘聲般的音色和溫暖感。升級版的 2 點顫音系統配備冷軋鋼琴塊，提升了延音、清晰度和高音的閃耀感。\n\nAmerican Pro II Stratocaster 提供即刻熟悉且多變的音色，您會立刻感受到並聽到，全面改進的設計讓它成為專業樂器的新標準。",
+    "rentBrandId": 2,
+    "stores_id": 3,
+    "price": 1200,
+    "RentList_id": 75,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "American Professional II Stratocaster®",
+    "level": 2,
+    "description": "American Professional II Stratocaster® 融合了超過六十年的創新、啟發與演變，旨在滿足當今專業演奏者的需求。\n\n我們受歡迎的 Deep \"C\" 琴頸現在配備光滑圓潤的指板邊緣、\"Super-Natural\" 緞面塗層以及重新雕塑的琴頸腳，帶來極為舒適的手感和便捷的高品區操作。全新的 V-Mod II Stratocaster 單線圈拾音器比以往更加清晰，同時保留了鐘聲般的音色和溫暖感。升級版的 2 點顫音系統配備冷軋鋼琴塊，提升了延音、清晰度和高音的閃耀感。\n\nAmerican Pro II Stratocaster 提供即刻熟悉且多變的音色，您會立刻感受到並聽到，全面改進的設計讓它成為專業樂器的新標準。",
+    "rentBrandId": 2,
+    "stores_id": 3,
+    "price": 1200,
+    "RentList_id": 76,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "American Vintage II 1973 Stratocaster®",
+    "level": 3,
+    "description": "Fender® American Vintage II 系列呈現了對那些改變音樂歷史的革命性設計的極致還原。這些樂器採用符合時期的琴身、琴頸和硬體，搭配高端的塗裝和精心調音的年份專屬拾音器，每一件樂器都捕捉到正宗 Fender 工藝和音色的精髓。\n\n到了 1973 年，經典的 CBS 設計元素已經成為標準規格，並廣泛被全球搖滾、放克、融合和前衛音樂的演奏者使用。像 Don Kirshner's Rock Concert、In Concert 和 Midnight Special 等每週深夜音樂節目，為 Fender 樂器提供了前所未有的曝光，進一步鞏固了 Stratocaster 作為流行文化現象的主導地位。\n\nAmerican Vintage II 1973 Stratocaster® 散發著那個時代的精神，配備了三顆 Pure Vintage '73 齒輪型拾音器、大型琴頭與雙弦樹、便利的“Bullet”式琴頸調節螺母，以及三螺栓琴頸板與 Micro-Tilt™ 調整機制。 \"C\" 型楓木琴頸手感如夢，配有 7.25\" 半徑的玫瑰木或楓木指板和復古高品絲。該吉他提供三種經典的顏色搭配椴木琴身：Aged Natural、Lake Placid Blue 和 Mocha，後者是首次在 Strat® 上使用黑色撥片板的自訂顏色。其他特點還包括復古風格的 \"F\" 印刻弦軸和配有彎鋼鞍座及冷軋鋼塊的同步顫音系統。\n\nAmerican Vintage II 系列的樂器是原版 Fender 的直接後代：專為那些對復古 Fender 音色與手感有精細品味的玩家設計，並且在每個細節上都採用無與倫比的品質，從每一顆螺絲到每一個部件。這些樂器是 Fender 電吉他的純粹形態：Fender American Vintage II，傳奇的象徵。",
+    "rentBrandId": 2,
+    "stores_id": 2,
+    "price": 1300,
+    "RentList_id": 77,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "American Vintage II 1961 Stratocaster®",
+    "level": 3,
+    "description": "Fender® American Vintage II 系列呈現了對那些改變音樂歷史的革命性設計的極致還原。這些樂器採用了符合時期的琴身、琴頸和硬體，搭配高端的塗裝和精心調音的年份專屬拾音器，每一件樂器都捕捉到正宗 Fender 工藝和音色的精髓。\n\n在 50 年代末期和 60 年代初期，Fender 音樂樂器的受歡迎程度達到巔峰，儘管 Fender 的產品線已經擴展，包含了許多優秀的新樂器，但 Stratocaster® 仍然是無可爭議的王者。到了 1961 年，Stratocaster 擁有了更精緻的外觀，3 顏色日落漸變色經過重新配方，呈現出更加鮮豔的紅色和更加鮮明的黑色邊緣，並搭配了強調 Strat 特徵曲線的 3 層撥片板。\n\n美國復古 II 1961 Stratocaster 配備了高端椴木琴身、三顆 Pure Vintage 1961 Stratocaster 拾音器，以及中等 \"C\" 型楓木琴頸，搭配 7.25\" 半徑的玫瑰木平板指板，完美重現了原始吉他的音色和手感。其他特色包括復古準確的同步顫音系統，搭配冷軋鋼琴塊和彎鋼鞍座、單行 \"Fender Deluxe\" 弦軸和 3 層撥片板。\n\nAmerican Vintage II 系列的樂器是原版 Fender 的直接後代：專為那些對復古 Fender 音色和手感有精細品味的玩家設計，並且在每一個細節上都採用了無與倫比的品質，從每一顆螺絲到每一個部件。這些樂器是 Fender 電吉他的純粹形態：Fender American Vintage II，傳奇的象徵。",
+    "rentBrandId": 2,
+    "stores_id": 1,
+    "price": 1300,
+    "RentList_id": 78,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "American Professional II Stratocaster®, Anniversary 2-Color Sunburst",
+    "level": 2,
+    "description": "American Professional II Stratocaster® 融合了超過六十年的創新、啟發與演變，旨在滿足當今專業演奏者的需求。\n\n我們受歡迎的 Deep \"C\" 琴頸現在配備光滑圓潤的指板邊緣、\"Super-Natural\" 緞面塗層以及重新雕塑的琴頸腳，帶來極為舒適的手感和便捷的高品區操作。全新的 V-Mod II Stratocaster 單線圈拾音器比以往更加清晰，同時保留了鐘聲般的音色和溫暖感。升級版的 2 點顫音系統配備冷軋鋼琴塊，提升了延音、清晰度和高音的閃耀感。\n\nAmerican Pro II Stratocaster 提供即刻熟悉且多變的音色，您會立刻感受到並聽到，全面改進的設計讓它成為專業樂器的新標準。",
+    "rentBrandId": 2,
+    "stores_id": 2,
+    "price": 1200,
+    "RentList_id": 79,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "70th Anniversary American Vintage II 1954 Stratocaster®",
+    "level": 3,
+    "description": "介紹 70 周年 Stratocaster® 系列：慶祝七十年來的經典音色和標誌性風格。每一款 70 周年 Stratocaster 型號都展示了 Strat® 所擁有的豐富傳承和傳奇音色，使它成為無可匹敵的經典。無論是復古音色愛好者還是尋求前沿功能的現代玩家，都能找到一款適合自己的模型。讓自己沉浸於 Stratocaster 的傳奇中，擁有一件 Fender® 歷史的象徵，盡在 70 周年 Stratocaster 系列。\n\n與 70 周年 American Vintage II 1954 Stratocaster 一同慶祝這款傳奇的誕生。這款樂器採用共鳴的 2 件式椴木琴身，並使用 nitrocellulose 漆面，散發著復古魅力。1 件式楓木琴頸和 7.25\" 半徑的指板搭配復古品絲，提供了玩家多年來所喜愛的流暢演奏感。70 周年 1954 單線圈 Strat® 拾音器提供真實的音色，當音量推高時能夠發出閃亮和爆發的音效。其他特色包括復古準確的同步顫音系統，搭配冷軋鋼琴塊和彎鋼鞍座、單行 \"Fender Deluxe\" 弦軸和單層撥片板，搭配與時期相符的拾音器蓋、開關頭和旋鈕。隨附的復古風格 Tweed 箱包內還附有大量時期配件，完善整體包裝。這款限量版模型完美捕捉了原始 Stratocaster 的精髓，是收藏家和 Strat 愛好者必備之選。\n\n70 周年 Stratocaster 系列的樂器數量有限，請立即選擇您的 70 周年 Stratocaster。",
+    "rentBrandId": 2,
+    "stores_id": 3,
+    "price": 1300,
+    "RentList_id": 80,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "American Vintage II 1957 Stratocaster®",
+    "level": 3,
+    "description": "Fender® American Vintage II 系列呈現了對那些改變音樂歷史的革命性設計的極致還原。這些樂器採用了符合時期的琴身、琴頸和硬體，搭配高端的塗裝和精心調音的年份專屬拾音器，每一件樂器都捕捉到正宗 Fender 工藝和音色的精髓。\n\nFender 全新的 1954 Stratocaster® 以其迷人的曲線、閃亮的音色和開創性的顫音橋成為了一個現象，這是世界上前所未見的。到了 1957 年，Stratocaster 已經成為一件中世紀的傑作。\n\n美國復古 II 1957 Stratocaster 配備了三顆 Pure Vintage '57 Stratocaster 拾音器、流暢的琴身曲線和一個極為舒適的 \"V\" 型琴頸，搭配 7.25\" 半徑的楓木指板，完美重現了原始吉他的音色和手感。其他特色包括復古準確的同步顫音系統，搭配冷軋鋼琴塊和彎鋼鞍座、單行 \"Fender Deluxe\" 弦軸和單層撥片板。\n\n此款樂器提供三種迷人的 nitrocellulose 漆面：2 色日落漸變和海泡綠（椴木琴身），以及復古金髮色（椴木琴身），美國復古 II 1957 Stratocaster 讚美了 Fender 樂器設計的真正經典。\n\nAmerican Vintage II 系列的樂器是原版 Fender 的直接後代：專為那些對復古 Fender 音色和手感有精細品味的玩家設計，並且在每一個細節上都採用了無與倫比的品質，從每一顆螺絲到每一個部件。這些樂器是 Fender 電吉他的純粹形態：Fender American Vintage II，傳奇的象徵。",
+    "rentBrandId": 2,
+    "stores_id": 1,
+    "price": 1300,
+    "RentList_id": 81,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "Stevie Ray Vaughan Stratocaster®",
+    "level": 3,
+    "description": "純正 SRV 音色與風格 \n如果有一座 Stratocaster 的拉什莫山，Stevie Ray Vaughan 肯定是其中的偉大人物之一。Fender 的 Stevie Ray Vaughan Stratocaster 是一把精心打造的全新版本，模仿 Vaughan 最愛的吉他——著名的 \"Number One\" Strat®，正是這把吉他讓他在全世界震撼了聽眾，並將炙熱的德州藍調灼熱地烙印在排行榜的頂端。對於追求純正 SRV 音色與風格，這把吉他無疑是「最佳之選」。",
+    "rentBrandId": 2,
+    "stores_id": 2,
+    "price": 1300,
+    "RentList_id": 82,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "Jeff Beck Stratocaster®",
+    "level": 3,
+    "description": "純正 Jeff Beck 音色與風格 \n從震撼的英國入侵起步，到長久且備受推崇的個人事業，Jeff Beck 以其非凡的風格多樣性，將 Stratocaster 帶到了難以置信的音效高度，並從這把吉他中引出了最具特色的音樂聲音。以經典風格和特殊功能，讓他的音色與風格成為你自己的，擁有 Jeff Beck Stratocaster，它是 Fender 最受歡迎且長久的藝術家系列之一。",
+    "rentBrandId": 2,
+    "stores_id": 1,
+    "price": 1300,
+    "RentList_id": 83,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "Limited Edition American Performer Timber Stratocaster®",
+    "level": 2,
+    "description": "誕生於加利福尼亞州的科羅納，限量版美國表演者 Timber Stratocaster 提供您從正宗 Fender 所期望的卓越音色與手感。\n\n這把吉他配備了三顆 Yosemite™ 單線圈拾音器，設計上注重豐富且表現力強的音色。拾音器使用平滑錯排磁極來提升輸出，並且採用膠質塗層，讓線圈呼吸並控制反饋，產生動態的聲音，適合各種音樂情境。推拉音色控制能在任何切換位置加入頸拾音器，解鎖新的、音樂上有用的音色。其「現代C」形狀的頸部設計，搭配9.5英寸弧度的指板，幾乎適合任何演奏風格，並配有22顆特大品格品絲，便於準確且輕鬆的彎音。\n\n限量版美國表演者 Timber Stratocaster 提供三種美麗的音色木材選擇：Sassafras木材搭配啞光摩卡色飾面、Sugar Pine木材搭配啞光雙色日落色飾面，或是Spruce木材搭配啞光蜂蜜日落色飾面。",
+    "rentBrandId": 2,
+    "stores_id": 2,
+    "price": 1200,
+    "RentList_id": 84,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "Mike McCready Stratocaster®",
+    "level": 3,
+    "description": "Mike McCready Stratocaster® 捕捉了搖滾界最具影響力且長久不衰的樂隊之一的獨特音色和永恆精神。這款吉他是與 Pearl Jam 吉他手 Mike McCready 合作設計的，對於任何想要捕捉這位 grunge 吉他偶像強大力量和激盪熱情的吉他手來說，Mike McCready Stratocaster® 是終極選擇。\n\nMike McCready Stratocaster® 擁有手工製作的、經過 Road Worn® 風格處理的漆面，並搭配一個樺木木材的吉他體，重新創造了 Mike 自己的 Strat 在三十年的辛苦巡演和傳奇演出中所累積的戰痕。這款吉他搭配舒適的 9.5 英寸弧度玫瑰木指板和纖細的 \"C\" 形桦木頸部，設計上與 McCready 珍藏的 1960 Strat 相匹配，而定制的 Mike McCready Stratocaster 拾音器則聲音上模仿 Mike 的復古單線圈拾音器，呈現出與他標誌性音色一樣的永恆音調、熱情和能量。復古風格的同步顫音器、彎鋼弦橋和冷軋鋼塊確保了最純正的 Fender 音色和演奏性能。\n\n這款吉他擁有經典的磨損漆面和大膽的音色，Mike McCready Stratocaster® 充滿了那股傳奇 Strat 的靈魂精髓，這股音色已經驅動了 Pearl Jam 在無數錄音室和舞台上的排行榜冠軍歌曲及超凡現場演出。",
+    "rentBrandId": 2,
+    "stores_id": 1,
+    "price": 1300,
+    "RentList_id": 85,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "Eric Clapton Stratocaster®",
+    "level": 3,
+    "description": "**慢手（Slowhand）音色與風格** \n體驗慢手（Eric Clapton）本人無與倫比的Strat®風格，這款Eric Clapton Stratocaster是我們最受推崇且持久的藝術家簽名款之一。這款吉他擁有經典設計和特殊功能，提供卓越的音色多樣性和輕鬆的手感，完美詮釋了搖滾與藍調界的偉大人物之一Eric Clapton的Stratocaster音色和手感。其特色包括：一個楓木身體，三個Vintage Noiseless™拾音器，25分貝的中頻增強（active mid-boost），TBX電路，特殊的軟“V”形頸，並且配有封鎖原始的復古同步顫音橋（synchronized tremolo）。",
+    "rentBrandId": 2,
+    "stores_id": 2,
+    "price": 1300,
+    "RentList_id": 86,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "Player Plus Meteora® HH",
+    "level": 1,
+    "description": "融合創新的 Fender 設計、以玩家為中心的功能以及令人興奮的新配色，Player Plus Meteora® 提供卓越的演奏性能與無可取代的風格。\n\n一組強勁的 Fireball® 雙線圈拾音器，完美結合適當的增益與清晰的弦間音符表現。S-1™ 開關啟動後可切換為單線圈模式，展現純淨透明的單線圈音色。絲滑的霧面現代 \"C\" 型琴頸貼合手掌，搭配平滑的滾邊設計，提供極致舒適感。12\" 弧度指板和22個中大型品絲讓領奏更加流暢，音彎毫不受阻。順暢且靈敏的雙點式搖座提供經典的顫音效果，而鎖定式弦準器則確保穩固的音準並讓換弦快速且輕鬆。\n\n結合經典 Fender 風格、先進功能以及令人驚艷的新配色，Player Plus Meteora® 是激發創意並讓您在人群中脫穎而出的完美工具。",
+    "rentBrandId": 2,
+    "stores_id": 2,
+    "price": 1000,
+    "RentList_id": 87,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "Limited Edition Paranormal Jazzmaster® XII",
+    "level": 1,
+    "description": "擁有標誌性的偏移琴身設計與豐富的諧波特性，Squier® Jazzmaster® XII 鼓勵最具冒險精神的玩家開創全新的吉他探索之路。這款12弦吉他搭載由 Fender 設計的雙 Alnico 單線圈 Jazzmaster 拾音器，配備三檔切換開關，以及復古風格的 \"冰球桿\" 式琴頭設計，展現明亮清澈的音色與經典永恆的風格。\n\n其他玩家友好的細節包括：石墨加強的 \"C\" 型琴頸，提供最佳穩定性與輕鬆的演奏體驗；混合式琴橋，結合穿弦與頂載設計，確保穩定的音準；復古風格的調音機，帶來順暢的調音操作；以及光滑的琴頸表面處理，提供流暢且穩定的手感。",
+    "rentBrandId": 2,
+    "stores_id": 1,
+    "price": 1000,
+    "RentList_id": 88,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "Player Jazzmaster®",
+    "level": 1,
+    "description": "真實經典風格\nPlayer Jazzmaster 擁有其獨特的渾厚音色與流線優雅的設計，在聚光燈下格外耀眼。這是一把充滿靈感的樂器，具備靈活且純正的 Fender 音色——一種適合任何音樂風格的聲音。Jazzmaster 經常出現在音樂創想家和叛逆者的手中，是打造您專屬音色的理想基礎。堅固、原始且充滿力量，這把吉他已準備好與您一起大展身手。",
+    "rentBrandId": 2,
+    "stores_id": 3,
+    "price": 1000,
+    "RentList_id": 89,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "Player II Jazzmaster®",
+    "level": 1,
+    "description": "使用 Player II Jazzmaster® 步入聚光燈下，體驗標誌性的 Fender® 聲音和風格 — 這是一款舞台就緒的吉他，採用現代更新，為您的表演提供動力並激發您的演奏靈感。\n\nPlayer II Jazzmaster 散發著永恆的 Fender 魅力，但在其背後，它是為當今的演奏者做好準備的。琴頸的所有部件均專為快速、流暢的演奏而設計，從背面帶有絲滑緞面聚氨酯飾面的現代“C”型材，到帶有光滑捲邊和22 個中號大號品絲的舒適9.5 吋半徑板狀紅木指板。經典的榿木琴體有永恆的 Fender 飾面和從檔案中發掘出來的前所未見的顏色。 Player 系列 Alnico V 單線圈 Jazzmaster 拾音器提供水晶般的高音、音樂般的中音和緊緻的低音，可提升任何流派的品質。 3 向撥動開關可讓您輕鬆調整從玻璃琴頸拾音器鈴聲到切割琴橋拾音器咬合以及其間的所有點，而帶有浮動顫音的6 鞍座Jazzmaster 琴橋、升級的Mustang® 鞍座和ClassicGear™調音器可確保精確調音穩定性和靈活性，並探索無限的聲音可能性。\n\nPlayer II Jazzmaster 非常適合打造自己的聲音，具有隻有 Fender 才能提供的外觀、音色和感覺。",
+    "rentBrandId": 2,
+    "stores_id": 2,
+    "price": 1000,
+    "RentList_id": 90,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "Limited Edition Vintera® II '50s Jazzmaster®",
+    "level": 2,
+    "description": "喚醒 50 年代經典的聲音，透過 Vintera II '50s Jazzmaster® 體驗 Fender 獨有的標誌性外觀、激發靈感的手感，以及無與倫比的音色。\n\nVintera® II '50s Jazzmaster® 採用椴木琴身與楓木琴頸，搭配玫瑰木指板，帶來充滿力量與清晰度的經典 Fender 音色。晚 50 年代的 \"C\" 型琴頸提供舒適且熟悉的握感，讓手感自然貼合；7.25\" 弧度指板搭配復古高品絲，提供復古舒適感，同時為大幅音彎與表現力十足的顫音留有充足空間。內部配置了一對復古風格的 50 年代單線圈拾音器，展現 Fender 聲名遠播的甜美、明亮、溫暖且木質感十足的音色。復古風格的浮動搖座讓您自由發揮顫音效果，而復古設計的調音機則以精細齒輪比例與更高的調音穩定性完成這款經典之作。\n\n立即體驗 Vintera® II '50s Jazzmaster® 獨特的復古手感與無與倫比的經典 Fender 音色，開始創造屬於您的音樂歷史！",
+    "rentBrandId": 2,
+    "stores_id": 3,
+    "price": 1200,
+    "RentList_id": 91,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "Gold Foil Jazzmaster®",
+    "level": 2,
+    "description": "\n受到六十年代車庫搖滾樂隊和他們所彈奏的經典吉他的啟發，Gold Foil 系列將經典的 Fender® 設計與過去時代的華麗風格相結合。\n\nGold Foil Jazzmaster® 配備了帶邊條的烏木指板、珍珠塊嵌條、桃花心木琴體、Bigsby® B50 顫音器和三個 Gold Foil 迷你線圈拾音器。其他特徵包括與琴身匹配的彩繪琴頭、帶白色按鈕的復古風格調音器、21 顆窄高品格和靈感來自 Fender® Jaguar® 的開關板。\n\n無論外觀還是音色都表現出色，Fender Gold Foil 系列將中世紀郵購吉他的持久魅力與正宗 Fender 的風格和可玩性完美結合。",
+    "rentBrandId": 2,
+    "stores_id": 1,
+    "price": 1200,
+    "RentList_id": 91,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "American Performer Jazzmaster®",
+    "level": 2,
+    "description": "誕生於加利福尼亞州的科羅納，優雅的 American Performer Jazzmaster 提供了你所期待的正宗 Fender 音色和精緻手感，並擁有全新的以玩家為導向的功能，讓演奏更加激發靈感。",
+    "rentBrandId": 2,
+    "stores_id": 3,
+    "price": 1200,
+    "RentList_id": 92,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "Troy Van Leeuwen Jazzmaster®",
+    "level": 2,
+    "description": "Troy Van Leeuwen 為一些最受讚譽且前衛的另類搖滾樂隊貢獻了精湛的質感吉他演奏和氛圍音效。從 Failure 到 A Perfect Circle、Queens of the Stone Age、Eagles of Death Metal、Puscifer 等樂隊，Van Leeuwen 的多重樂器專長為過去三十年來一些最具創意和人氣的搖滾音樂增添了色彩和力量。\n\n配有個性化的特徵，包括定制的顏色塗裝、特殊的切換功能和升級的橋樑——Troy Van Leeuwen Jazzmaster 的獨特性與他從中創造出的聲音同樣鮮明。",
+    "rentBrandId": 2,
+    "stores_id": 3,
+    "price": 1200,
+    "RentList_id": 93,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "Jim Root Jazzmaster® V4",
+    "level": 2,
+    "description": "這款 Jim Root Jazzmaster® V4 旨在提供強烈的金屬音色，並擁有全新的大膽外觀。我們與 Slipknot 的吉他手 Jim Root 密切合作，打造了一款聲音猛烈的簽名 Jazzmaster，完美契合他沉重的演奏風格——從專屬的 Daemonum™ 開放線圈 EMG® 主動拾音器，到可進行快速彈奏的 12\" 弧度指板，搭配巨型品格、簡潔的控制布局等等。\n\nJim Root Jazzmaster II 去除了許多不必要的功能，如顫音器、節奏電路和音色控制，僅保留了最基本的控制元件：音量控制、三檔開關和硬尾橋，使這款吉他成為一個專注於重擊音色的武器。擁有桃花心木琴體，帶來強烈的低頻和中頻，搭配閃亮的 Polar White 啞光塗裝，楓木琴頸，帶邊條的烏木指板和珍珠塊嵌條，這款強力機器將帶來猛烈的音色和驚人的新外觀。",
+    "rentBrandId": 2,
+    "stores_id": 1,
+    "price": 1200,
+    "RentList_id": 94,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "American Professional II Jazzmaster®",
+    "level": 3,
+    "description": "American Professional II Jazzmaster® 以超過六十年的創新、靈感和發展為基礎，滿足當今專業玩家的需求。\n\n我們受歡迎的 Deep \"C\" 琴頸現在擁有光滑的圓邊指板邊緣、\"Super-Natural\" 啞光塗裝和新雕塑的琴頸頸部，帶來極其舒適的手感，並且輕鬆進入高品格區域。新的 V-Mod II Jazzmaster 單線圈拾音器比以往更具表現力，同時保留了 Jazzmaster 所知名的亮麗和清脆音色。橋拾音器擁有一個跳線功能，可實現強勁的沙啞音或較低輸出的復古音色。透過切換開關，節奏電路將兩個拾音器串聯，提供更厚重的音色和更強的輸出，並由獨立的音量和音色滾輪電位器控制。全新的 Panorama™ 顫音系統配備插入式顫音臂，極大增加了顫音的範圍，不僅能進行深度的 Strat 樣式俯衝，還能實現經典 Jazzmaster 的顫音效果。\n\nAmerican Pro II Jazzmaster 提供即時的熟悉感和聲音多樣性，無論是從手感還是音色上，你都能立刻感受到，並且這些廣泛的改進共同成就了專業樂器的新標準。",
+    "rentBrandId": 2,
+    "stores_id": 1,
+    "price": 1300,
+    "RentList_id": 95,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "American Ultra Jazzmaster®",
+    "level": 3,
+    "description": "American Ultra 是我們為挑剔的玩家打造的最先進的吉他和貝斯系列，專為那些要求精確度、性能和音色極致的演奏者設計。American Ultra Jazzmaster 配備獨特的 \"Modern D\" 琴頸輪廓，帶來長時間舒適的演奏感受，而逐漸收窄的琴頸底部使得高品格區域的演奏更加輕鬆。快速的 10\"-14\" 從圓弧到平弧指板，搭配 21 顆中型巨型品格，讓獨奏更加輕鬆精確，同時 Ultra Noiseless™ Vintage 拾音器和先進的接線選項提供無盡的音色可能——沒有雜音。這款多功能、先進的樂器將激發你將演奏帶向新的高峰。\n\n其他特徵包括密封鎖定調音機、鉻金屬硬體和象牙琴枕。隨附高級模具硬殼箱。",
+    "rentBrandId": 2,
+    "stores_id": 3,
+    "price": 1300,
+    "RentList_id": 96,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "Jim Root Jazzmaster®",
+    "level": 3,
+    "description": "無常規的 Jazzmaster 風格\n簡潔、暗黑且具威脅感，強烈的 Jim Root Jazzmaster 吉他無疑是這款樂器歷史上最具辨識度且極簡的版本。在 Slipknot 吉他手的要求下，雙音色電路和繁多的控制元件被移除。音品位置標記和巨大的鉻金屬橋也不見了。事實上，幾乎所有典型的 Jazzmaster 特徵都被去除，取而代之的是可怕的 EMG® 雙線圈拾音器，配有拉絲鎳金屬蓋、單一三檔開關、單一音量旋鈕、硬尾橋，除此之外幾乎沒有其他東西。",
+    "rentBrandId": 2,
+    "stores_id": 1,
+    "price": 1300,
+    "RentList_id": 97,
+    "time_start": "2024-02-24T10:00:00Z",
+    "time_end": "2024-03-02T10:00:00Z"
+  },
+  {
+    "name": "American Vintage II 1966 Jazzmaster®",
+    "level": 3,
+    "description": "Fender® American Vintage II 系列呈現了對改變音樂歷史進程的革命性設計的極為準確的詮釋。這些吉他採用了符合時代準確的琴體、琴頸和硬體，並且具有高級的塗裝和精心調整的、具年特性的拾音器，每件樂器都捕捉了正宗 Fender 工藝和音色的精髓。\n\nJazzmaster® 最初被宣傳為一款包含「所有著名的 Fender 發展」的吉他，「每一項便利設施都已提供」。它旨在為吉他手提供奢華的演奏體驗，並誘惑爵士吉他手開始彈奏固體電吉他，這款未來感十足且具舒適輪廓的偏置吉他與方正的拱頂吉他幾乎是完全不同的。也許並不令人驚訝，這款吉他未能在爵士圈中流行起來，但卻在60年代的衝浪音樂中獲得了早期的認可，隨後被獨立搖滾、另類音樂甚至是鄉村音樂的演奏者所接受。\n\nAmerican Vintage II 1966 Jazzmaster 配備舒適的「C」型楓木琴頸，搭配 7.25\" 弧度的圓形玫瑰木指板和復古高品格，演奏如夢。這款吉他具有1966年生產特徵，包括白色琴頸邊條、珍珠塊、單線「Fender Deluxe」調音機和匹配塗裝的琴頭（僅限定制顏色）。專利的「浮動」顫音系統、帶有螺紋鞍座的可調橋和 Pure Vintage '66 Jazzmaster 拾音器，接線至標誌性的節奏和主音電路，提供經典音色和正宗的 Fender 手感。\n\nAmerican Vintage II 系列中的樂器是原版 Fender 的直系後代：為那些對復古 Fender 音色和手感有著深刻理解的玩家設計，並以無與倫比的品質打造，直至最後一顆螺絲。這些是最純粹形式的 Fender 電吉他：Fender American Vintage II，傳奇的象徵。",
+    "rentBrandId": 2,
+    "stores_id": 1,
+    "price": 1300,
+    "RentList_id": 98,
     "time_start": "2024-02-24T10:00:00Z",
     "time_end": "2024-03-02T10:00:00Z"
   }

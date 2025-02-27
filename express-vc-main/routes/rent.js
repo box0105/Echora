@@ -54,10 +54,12 @@ router.get('/', async (req, res) => {
     // 格式化查詢結果，將顏色、庫存和圖片資訊合併到 rentitemColors 和 images 陣列中
     const formattedData = rows.reduce((acc, row) => {
       let existingRent = acc.find((item) => item.id === row.id)
+    
       if (existingRent) {
         const existingColor = existingRent.rentitemColors.find(
           (color) => color.rent_item_color_id === row.rent_item_color_id
         )
+    
         if (existingColor) {
           if (row.image) {
             if (!existingColor.images) {
@@ -67,6 +69,7 @@ router.get('/', async (req, res) => {
             }
           }
         } else {
+          // 如果此顏色還沒加入，將顏色和圖片正確加入
           existingRent.rentitemColors.push({
             rent_item_color_id: row.rent_item_color_id,
             stock: row.stock,
@@ -76,9 +79,10 @@ router.get('/', async (req, res) => {
           })
         }
       } else {
+        // 新增 Rent 物品
         acc.push({
           ...row,
-          brand_name: row.brand_name, // 加入 brand_name
+          brand_name: row.brand_name, 
           rentitemColors: row.rent_item_color_id
             ? [
                 {
@@ -94,6 +98,7 @@ router.get('/', async (req, res) => {
       }
       return acc
     }, [])
+    
 
     res.status(200).json({
       status: 'success',
