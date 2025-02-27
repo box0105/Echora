@@ -148,13 +148,72 @@ router.post('/login', upload.none(), async (req, res) => {
   }
 })
 
+// router.post('/google-login', async function (req, res) {
+//   // 如果是開發環境，顯示訊息
+//   if (isDev) console.log(req.body)
+
+//   const { providerId, displayName, email, uid, photoURL } = req.body
+
+//   // 檢查從react來的資料
+//   if (!providerId || !uid) {
+//     return errorResponse(res, { message: '缺少google登入資料' })
+//   }
+
+//   const googleUid = uid
+
+//   try {
+//     // 查詢資料庫是否有同email的會員資料
+//     // const emailUser = await getUserByEmail(email)
+//     const emailUser = await getUserByField({ email })
+
+//     // 查詢資料庫是否有同googleUid的資料
+//     // const googleUidUser = await getUserByGoogleUid(googleUid)
+//     const googleUidUser = await getUserByField({ google_uid: googleUid })
+//     // 最後要加到JWT的會員資料
+//     let user = null
+
+//     // 特殊流程: google登入時查詢到已經有同樣gmail的資料，這時要先進行更新(連結)後再登入
+//     // 有emailUser，但沒有googleUidUser  ==> 進行更新googleUid ==> 登入
+//     if (!googleUidUser && emailUser) {
+//       // user = await updateUserGoogleUidByEmail(email, googleUid)
+//       user = await updateUserDataByField({ email }, { google_uid: googleUid })
+//     }
+
+//     // 兩者都有存在(代表是有已存在的會員) -> 登入
+//     if (googleUidUser && emailUser) {
+//       user = googleUidUser
+//     }
+
+//     // 兩者都不存在 -> 建立一個新會員資料(無帳號與密碼) -> 登入
+//     if (!googleUidUser && !emailUser) {
+//       const newUser = {
+//         // 用googleUid當帳號(因為帳號是必要的，這裡不會用到)
+//         username: String(googleUid),
+//         name: displayName,
+//         // 用亂數產生密碼(因為密碼是必要的，這裡不會用到)，長度20
+//         password: crypto.randomBytes(10).toString('hex'),
+//         email: email,
+//         google_uid: googleUid,
+//         avatar: photoURL,
+//       }
+
+//       // 新增會員資料
+//       user = await createUser(newUser)
+//     }
+
+//     if (isDev) console.log('user', user)
+
+//     // 產生存取令牌(access token)，其中包含會員資料，會回應到前端
+//     await generateAccessToken(res, user)
+//   } catch (error) {
+//     errorResponse(res, error)
+//   }
+// })
 router.post('/google-login', async function (req, res) {
-  // 如果是開發環境，顯示訊息
   if (isDev) console.log(req.body)
 
   const { providerId, displayName, email, uid, photoURL } = req.body
 
-  // 檢查從react來的資料
   if (!providerId || !uid) {
     return errorResponse(res, { message: '缺少google登入資料' })
   }
@@ -162,52 +221,38 @@ router.post('/google-login', async function (req, res) {
   const googleUid = uid
 
   try {
-    // 查詢資料庫是否有同email的會員資料
-    // const emailUser = await getUserByEmail(email)
     const emailUser = await getUserByField({ email })
-
-    // 查詢資料庫是否有同googleUid的資料
-    // const googleUidUser = await getUserByGoogleUid(googleUid)
     const googleUidUser = await getUserByField({ googleUid })
 
-    // 最後要加到JWT的會員資料
     let user = null
 
-    // 特殊流程: google登入時查詢到已經有同樣gmail的資料，這時要先進行更新(連結)後再登入
-    // 有emailUser，但沒有googleUidUser  ==> 進行更新googleUid ==> 登入
     if (!googleUidUser && emailUser) {
-      // user = await updateUserGoogleUidByEmail(email, googleUid)
       user = await updateUserDataByField({ email }, { googleUid })
     }
 
-    // 兩者都有存在(代表是有已存在的會員) -> 登入
     if (googleUidUser && emailUser) {
       user = googleUidUser
     }
 
-    // 兩者都不存在 -> 建立一個新會員資料(無帳號與密碼) -> 登入
     if (!googleUidUser && !emailUser) {
       const newUser = {
-        // 用googleUid當帳號(因為帳號是必要的，這裡不會用到)
-        username: String(googleUid),
+        username: String(displayName),
         name: displayName,
-        // 用亂數產生密碼(因為密碼是必要的，這裡不會用到)，長度20
         password: crypto.randomBytes(10).toString('hex'),
         email: email,
         googleUid,
         avatar: photoURL,
       }
 
-      // 新增會員資料
       user = await createUser(newUser)
     }
 
     if (isDev) console.log('user', user)
 
-    // 產生存取令牌(access token)，其中包含會員資料，會回應到前端
     await generateAccessToken(res, user)
   } catch (error) {
-    errorResponse(res, error)
+    console.error('Google login error:', error)
+    errorResponse(res, { message: '資料庫查詢錯誤' })
   }
 })
 
@@ -249,7 +294,7 @@ router.get('/line-logout', async function (req, res) {
 
 // 此api路由為line登入後，從前端(react/next)callback的對應路由頁面，即真正登入處理路由
 router.get(
-  '/line-callback',
+  '/line-callback'
   // LineLogin.callback(
   //   // 登入成功的回調函式 Success callback
   //   async (req, res, next, token_response) => {

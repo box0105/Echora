@@ -17,22 +17,18 @@ import {
 import { useRouter } from 'next/navigation'
 
 export default function UserPage() {
-  // 輸入表單用的狀態
   const [userInput, setUserInput] = useState({ email: '', password: '' })
   const [errorMessage, setErrorMessage] = useState('')
-  const [showPassword, setShowPassword] = useState(false) // 用於切換密碼顯示
-  const [isFormValid, setIsFormValid] = useState(false) // 用於控制按鈕樣式
+  const [showPassword, setShowPassword] = useState(false)
+  const [isFormValid, setIsFormValid] = useState(false)
 
-  // Firebase Google 登入
   const { loginGoogle, logoutFirebase } = useFirebase()
   const { googleLogin } = useAuthGoogleLogin()
 
-  // 登入後設定全域的會員資料用
   const { mutate } = useAuthGet()
   const { login } = useAuthLogin()
   const { logout } = useAuthLogout()
 
-  // 取得登入狀態
   const { isAuth, setIsAuth } = useAuth()
   const router = useRouter()
   const [isClient, setIsClient] = useState(false)
@@ -41,7 +37,6 @@ export default function UserPage() {
     setIsClient(true)
   }, [])
 
-  // 檢查表單是否有效
   const checkFormValidity = (email, password) => {
     if (email.length > 0 && password.length > 0) {
       setIsFormValid(true)
@@ -50,7 +45,6 @@ export default function UserPage() {
     }
   }
 
-  // 輸入帳號與密碼框用
   const handleFieldChange = (e) => {
     const { name, value } = e.target
     setUserInput((prevState) => ({ ...prevState, [name]: value }))
@@ -60,12 +54,10 @@ export default function UserPage() {
     )
   }
 
-  // 切換密碼顯示
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword)
   }
 
-  // **處理一般登入**
   const handleLogin = async () => {
     if (isAuth) {
       toast.error('錯誤 - 會員已登入')
@@ -95,7 +87,7 @@ export default function UserPage() {
         mutate()
         toast.success('已成功登入')
         if (isClient) {
-          router.push('/') // 重定向到首頁
+          router.push('/')
         }
       } else {
         toast.error(`登入失敗: ${resData.message}`)
@@ -105,33 +97,47 @@ export default function UserPage() {
     }
   }
 
-  // **處理 Google 登入**
-  const handleGoogleLogin = () => {
+  const handleGoogleLogin = async () => {
     if (isAuth) {
       toast.error('錯誤 - 會員已登入')
       return
     }
-    loginGoogle(async (providerData) => {
-      console.log(providerData)
 
-      const res = await googleLogin(providerData)
-      const resData = await res.json()
+    try {
+      loginGoogle(async (providerData) => {
+        console.log(providerData)
 
-      if (resData.status === 'success') {
-        mutate()
-        toast.success('已成功登入')
-        if (isClient) {
-          router.push('/') // 重定向到首頁
+        const res = await fetch('http://localhost:3005/api/auth/google-login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(providerData),
+        })
+
+        const resData = await res.json()
+
+        if (resData.status === 'success') {
+          localStorage.setItem('userId', resData.data.user.id)
+          setIsAuth(true)
+          mutate()
+          toast.success('已成功登入')
+          if (isClient) {
+            router.push('/')
+          }
+        } else {
+          toast.error('Google 登入失敗')
+          console.log('Google login error:', resData.message)
         }
-      } else {
-        toast.error('Google 登入失敗')
-      }
-    })
+      })
+    } catch (error) {
+      toast.error('Google 登入失敗')
+      console.error('Google login error:', error)
+    }
   }
 
-  // **處理登出（支援 Google + 一般帳號）**
   const handleLogout = async () => {
-    logoutFirebase() // Google 登出 Firebase
+    logoutFirebase()
 
     const res = await logout()
     const resData = await res.json()
@@ -144,7 +150,6 @@ export default function UserPage() {
     }
   }
 
-  // 如果已登入，重定向到首頁
   useEffect(() => {
     if (isAuth) {
       router.push('/')
@@ -253,11 +258,6 @@ export default function UserPage() {
               </span>
             </div>
           </form>
-          {/* {isAuth && (
-            <button className="logout-button" onClick={handleLogout}>
-              登出
-            </button>
-          )} */}
         </div>
       </div>
       <ToastContainer />
