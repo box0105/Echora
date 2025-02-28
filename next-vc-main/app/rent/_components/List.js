@@ -4,7 +4,7 @@ import RentCards from './Rentcard/card.js'
 export default function RentList() {
   return (
     <div className="c-section2-body d-none d-md-block">
-      <div className="container-fluid ">
+      <div className="container-fluid p-0">
         <div className="row">
           <FilterTitle />
           <div className="col-6 col-sm-6 col-md-9 col-lg-9 clo-2 ">

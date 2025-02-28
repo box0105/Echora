@@ -11,7 +11,7 @@ export default function Page(props) {
       <div>
         {/* section1 */}
         <div className="c-section1">
-          <div className="container-fluid c-index">
+          <div className="container-fluid c-index px-3">
             <div className="row">
               <div className="col-7">
                 <Main />
@@ -111,7 +111,7 @@ export default function Page(props) {
           </div>
         </div>
         <div className="c-section2">
-          <div className="container-fluid c-index1">
+          <div className="container-fluid c-index1 px-3">
             <div className="row">
               <div className="col-7 c-prduct">
                 <div className="product-top">
@@ -246,7 +246,7 @@ export default function Page(props) {
           </div>
         </div>
         <div className="c-section3">
-          <div className="container-fluid c-index">
+          <div className="container-fluid c-index px-3">
             <div className="c-index-title d-none d-md-block">
               <div className="row align-items-center gap-0">
                 <div className="col-3 ps-4 pe-0">

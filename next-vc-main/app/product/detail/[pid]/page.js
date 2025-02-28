@@ -14,8 +14,6 @@ export default function ProductDetailIdPage() {
   const [selectedSku, setSelectedSku] = useState()
   const { onAdd } = useMyCart()
 
-  // const [selectedSku, setSelectedSku] = useState()
-
   // fetch db
   const [detailData, setDetailData] = useState([])
   // 取得網址上的動態參數
@@ -363,7 +361,7 @@ export default function ProductDetailIdPage() {
             </div>
           </div>
         </section>
-        <section className="g-also-like px-modified">
+        <section className="g-also-like d-px-modified">
           <div className="container-fluid">
             <div className="g-like-title d-flex align-items-baseline gap-1">
               <h1 className="h1">YOU MAY ALSO LIKE</h1>

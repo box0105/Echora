@@ -154,9 +154,9 @@ export default function Header() {
                   </div>
                 )}
               </div>
-              <a href="">
+              <Link href="/my-user/favorites">
                 <img src="/images/header/heart.svg" />
-              </a>
+              </Link>
               <a
                 className={styles['m-cart']}
                 href="true"
@@ -181,40 +181,40 @@ export default function Header() {
           <div className={styles['g-nav-bottom']}>
             <ul className="d-flex justify-content-center gap-5 list-unstyled">
               <li>
-                <a href="true">
+                <Link href="/product/list">
                   <div className="d-flex">
                     <h6 className="h7">ELECTRIC GUITARS</h6>
                     <p className="px-1">/</p>
                     <p style={{ fontWeight: 500 }}>電吉他商品</p>
                   </div>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="true">
+                <Link href="/activity">
                   <div className="d-flex">
                     <h6 className="h7">MUSIC FESTIVALS</h6>
                     <p className="px-1">/</p>
                     <p style={{ fontWeight: 500 }}>音樂活動</p>
                   </div>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="true">
+                <Link href="/rent">
                   <div className="d-flex">
                     <h6 className="h7">RENTAL SERVICE</h6>
                     <p className="px-1">/</p>
                     <p style={{ fontWeight: 500 }}>商品租借</p>
                   </div>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="true">
+                <Link href="/coupons">
                   <div className="d-flex">
                     <h6 className="h7">SPECIAL EVENTS</h6>
                     <p className="px-1">/</p>
                     <p style={{ fontWeight: 500 }}>特別優惠</p>
                   </div>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -239,9 +239,11 @@ export default function Header() {
                 }}
               />
             </div>
-            <ul className="list-unstyled">
+            <ul className="list-unstyled"
+            onClick={() => setMenuOpen(false)}
+            >
               <li>
-                <a href="true">
+                <Link href="/product/list">
                   <div className="d-flex">
                     <h6 className="h7 mb-0">ELECTRIC GUITARS</h6>
                     <p className="px-1 mb-0">/</p>
@@ -249,10 +251,10 @@ export default function Header() {
                       電吉他商品
                     </p>
                   </div>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="true">
+                <Link href="/activity">
                   <div className="d-flex">
                     <h6 className="h7 mb-0">MUSIC FESTIVALS</h6>
                     <p className="px-1 mb-0">/</p>
@@ -260,10 +262,10 @@ export default function Header() {
                       音樂活動
                     </p>
                   </div>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="true">
+                <Link href="/rent">
                   <div className="d-flex">
                     <h6 className="h7 mb-0">RENTAL SERVICE</h6>
                     <p className="px-1 mb-0">/</p>
@@ -271,10 +273,10 @@ export default function Header() {
                       商品租借
                     </p>
                   </div>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="true">
+                <Link href="/coupons">
                   <div className="d-flex">
                     <h6 className="h7 mb-0">SPECIAL EVENTS</h6>
                     <p className="px-1 mb-0">/</p>
@@ -282,7 +284,7 @@ export default function Header() {
                       特別優惠
                     </p>
                   </div>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

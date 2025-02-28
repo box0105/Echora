@@ -1,7 +1,7 @@
 // /* Bootstrap的style調整 */
-.container-fluid {
-  padding: 0;
-}
+// .container-fluid {
+//   padding: 0;
+// }
 .card {
   border-radius: 0;
   border: none;
@@ -10,9 +10,9 @@
   }
 }
 /* 全域 */
-body {
-  font-family: 'Noto Sans TC', Arial, Helvetica, sans-serif;
-}
+// body {
+//   font-family: 'Noto Sans TC', Arial, Helvetica, sans-serif;
+// }
 
 /* 自訂 */
 .c-background {
@@ -206,12 +206,17 @@ c-filter-img {
   }
 }
 
-.row {
-  display: flex;
-  flex-wrap: wrap;
-}
+// .row {
+//   display: flex;
+//   flex-wrap: wrap;
+// }
 
-.col {
+// .col {
+//   width: 50%; /* 讓每行顯示兩張卡片 */
+//   box-sizing: border-box; /* 確保元素寬度計算正常 */
+// }
+
+.c-col{
   width: 50%; /* 讓每行顯示兩張卡片 */
   box-sizing: border-box; /* 確保元素寬度計算正常 */
 }
