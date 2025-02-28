@@ -2,6 +2,7 @@
 import styles from './header.module.scss'
 import CartOffcanvas from '../cart-offcanvas'
 import { useMyCart } from '@/hooks/use-cart'
+import { useActivity } from '@/hooks/use-activity'
 import { useRouter, usePathname } from 'next/navigation'
 import { useProductState } from '@/services/rest-client/use-products'
 import { useState, useEffect } from 'react'
@@ -29,7 +30,7 @@ export default function Header() {
   const pathName = usePathname()
   const getSearchPlaceholder = () => {
     if (pathName.includes("/product")) return "搜尋電吉他商品名";
-    if (pathName.includes("/activity")) return "搜尋活動名稱";
+    if (pathName.includes("/activity")) return "搜尋活動名稱或表演樂團";
     return "搜尋";
   };
 
@@ -37,6 +38,7 @@ export default function Header() {
   const router = useRouter()
   const [searchName, setSearchName] = useState('')
   const { criteria, setCriteria, defaultCriteria } = useProductState()
+  const { updateQueryParams } = useActivity();
 
   const handleSearch = (e) => {
     if (e.key === 'Enter') {
@@ -47,7 +49,7 @@ export default function Header() {
           nameLike: searchName,
         }))
       } else if (pathName.includes('/activity')) {
-        router.push(`/activity?search=${searchName}`)
+        updateQueryParams({ search: searchName })
       }
     }
   }

@@ -19,11 +19,11 @@ export default function HeroSection({
   title = '',
   subTitle = '',
   images,
-  ids = [],
+  ids = [0],
 }) {
   const src = '/images/activity/'
   // 如果是字串，則分割為陣列 (*輸入也有丟陣列的)
-  const imageArr = typeof images == 'string' ? images.split(',') : images
+  const imageArr = (typeof images == 'string') ? images.split(',') : images
 
   return (
     <Swiper

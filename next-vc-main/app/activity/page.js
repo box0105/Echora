@@ -14,11 +14,10 @@ import FilterPanel from './_components/FilterPanel'
 import HeroSection from './_components/HeroSection'
 
 export default function ActivityPage() {
-  // Fetch Data
-  const { displayActs, isLoading, sortByKey, randomImages, randomIds } =
-    useActivity(`http://localhost:3005/api/activities/`)
+  // Fetch Data, sort & filter & search
+  const { acts, isLoading, updateQueryParams, randomImages, randomIds } = useActivity()
 
-  // Filter Switch
+  // Filter Aside Switch
   const [isFilterOpen, setIsFilterOpen] = useState(false)
 
   if (isLoading) return <h3>網頁載入中，請稍後...</h3>
@@ -30,14 +29,12 @@ export default function ActivityPage() {
         images={randomImages}
         ids={randomIds}
       />
-      {/* <div className="b-container">
-        <Title _title="音樂祭/ 流行音樂" />
-      </div> */}
 
       <FilterBar
-        actNum={displayActs.length}
+        actNum={acts.length}
         onOpen={() => setIsFilterOpen(!isFilterOpen)}
-        sort={sortByKey}
+        onChange={updateQueryParams}
+        // onChange={()=>updateQueryParams({ search: '共生音樂節' })
       />
 
       <div className="b-container">
@@ -45,7 +42,7 @@ export default function ActivityPage() {
           isOpen={isFilterOpen}
           onClose={() => setIsFilterOpen(!isFilterOpen)}
         />
-        <ActivityList data={displayActs} numPerPage={3} />
+        <ActivityList data={acts} numPerPage={4} />
       </div>
     </div>
   )

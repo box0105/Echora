@@ -3,14 +3,15 @@
 import Image from 'next/image'
 import '../../../app/product/list/list.scss' // Guan style'
 
-export default function FilterBar({ actNum, onOpen, sort }) {
+export default function FilterBar({ actNum, onOpen, onChange }) {
   const activeSortBtn = (e, type, order) => {
     if (document.querySelector('.b-btn-unstyled .active'))
       document
         .querySelector('.b-btn-unstyled .active')
         .classList.remove('active')
     e.target.classList.add('active')
-    sort(type, order)
+    
+    onChange({ orderBy: type, order: order })
   }
 
   return (
@@ -70,9 +71,21 @@ export default function FilterBar({ actNum, onOpen, sort }) {
                 </button>
                 <button
                   className="b-btn-unstyled w-100"
+                  onClick={(e) => activeSortBtn(e, 'date', 'asc')}
+                >
+                  <h6>日期由小到大</h6>
+                </button>
+                <button
+                  className="b-btn-unstyled w-100"
+                  onClick={(e) => activeSortBtn(e, 'date', 'desc')}
+                >
+                  <h6>日期由大到小</h6>
+                </button>
+                <button
+                  className="b-btn-unstyled w-100"
                   onClick={(e) => activeSortBtn(e, 'id', 'asc')}
                 >
-                  <h6>活動編號 1 - 9</h6>
+                  <h6 className="active">活動編號 1 - 9</h6>
                 </button>
                 <button
                   className="b-btn-unstyled w-100"

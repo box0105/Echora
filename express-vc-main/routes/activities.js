@@ -5,26 +5,71 @@ import { successResponse, errorResponse } from '../lib/utils.js'
 
 const router = express.Router()
 const prisma = new PrismaClient()
-// 要關聯的資料表
-const includeType = {
-  category: true,
-  genre: true,
-  article: true,
-  lineup: true,
-  type: true
-}
-
 
 /* router prefix: /api/activities */
 
 // get All
 router.get('/', async (req, res) => {
   try {
+    const search = req.query.search
+    const orderType = req.query.orderBy
+    const order = req.query.order
+
     const data = await prisma.activity.findMany({
-      include: includeType
+      // orderBy: {
+      //   [orderType]: order,
+      // },
+
+      // orderBy: {
+      //   type: {
+      //     where: { id: 1},
+      //     price: 'desc',
+      //   },
+      // },
+
+      where: {
+        // Search name or bands
+        OR: [
+          {
+            lineup: {
+              some: {
+                bands: {
+                  contains: search,
+                },
+              },
+            },
+          },
+          { name: { contains: search } },
+        ],
+      },
+
+      include: {
+        // 關聯資料表
+        category: true,
+        genre: true,
+        article: true,
+        lineup: true,
+        type: true,
+      },
     })
-    
-    successResponse(res, { data })
+
+    // Sort
+    const sorted = [...data].sort((x, y) => {
+      if (orderType === 'price') {
+        x = x.type[0].price
+        y = y.type[0].price
+      } else if (orderType === 'date') {
+        x = new Date(x.date_start).getTime()
+        y = new Date(y.date_start).getTime()
+      } else {
+        x = x.id
+        y = y.id
+      }
+
+      return order === 'desc' ? y - x : x - y
+    })
+
+    successResponse(res, { data: sorted })
   } catch (error) {
     errorResponse(res, error)
   }
@@ -37,7 +82,14 @@ router.get('/:id', async (req, res) => {
   try {
     const data = await prisma.activity.findUnique({
       where: { id: Number(id) },
-      include: includeType
+      // 關聯資料表
+      include: {
+        category: true,
+        genre: true,
+        article: true,
+        lineup: true,
+        type: true,
+      },
     })
 
     successResponse(res, { data })
