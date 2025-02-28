@@ -84,8 +84,7 @@ export default function ProfilePage() {
       })
       const resData = await res.json()
       if (resData.status === 'success') {
-        // 移除更新 Header 中的用戶名功能
-        toast.success('會員資料更新成功')
+        toast.success('會員資料更新成功', { autoClose: 1500 })
       } else {
         toast.error(`更新會員資料失敗: ${resData.message}`)
       }
