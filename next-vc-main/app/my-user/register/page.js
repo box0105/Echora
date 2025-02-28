@@ -70,10 +70,12 @@ export default function RegisterPage() {
       const res = await register(userInput)
       const resData = await res.json()
       if (resData.status === 'success') {
-        toast.success('註冊成功，請重新登入')
-        if (isClient) {
-          router.push('/') // 重定向到首頁
-        }
+        toast.success('註冊成功，請重新登入', { autoClose: 2000 })
+        setTimeout(() => {
+          if (isClient) {
+            router.push('/my-user')
+          }
+        }, 2000)
       } else {
         if (resData.message.includes('重複的 email')) {
           setErrorMessage('此 email 已被使用')
@@ -114,7 +116,7 @@ export default function RegisterPage() {
       const resData = await res.json()
 
       if (resData.status === 'success') {
-        toast.success('已成功登入')
+        toast.success('已成功登入', { autoClose: 2000 })
         if (isClient) {
           router.push('/') // 重定向到首頁
         }
