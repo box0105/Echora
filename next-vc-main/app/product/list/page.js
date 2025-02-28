@@ -168,7 +168,7 @@ export default function ProductListPage(props) {
       const data = await res.json()
       const finalData = await convertData(data.data)
       setPdData(finalData)
-      // console.log(finalData)
+      console.log(finalData)
 
       // console.log(data.data);
       // // 資料整理(符合product card UI)

@@ -2,9 +2,11 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import styles from './product-card.module.scss'
+import { useProductState } from '@/services/rest-client/use-products'
 
-export default function ProductCard({ data = {} }) {
+export default function ProductCard({ data = {}}) {
   const [mainImage, setMainImage] = useState(data.image)
+  const { setFirstSkuId } = useProductState()
   const router = useRouter()
 
   // 當 data.image 變更時，更新 mainImage
@@ -15,11 +17,21 @@ export default function ProductCard({ data = {} }) {
   return (
     <>
       <div className="col p-2">
-        <div className={styles['g-product-card']}
-         onClick={() => router.push(`/product/detail/${data.id}`)}
+        <div
+          className={styles['g-product-card']}
+          onClick={() => {
+            setFirstSkuId(data.product_sku_id)
+            router.push(`/product/detail/${data.id}`)
+            }}
         >
-          <div className={`${styles['g-pd-img']} d-flex justify-content-center align-items-center position-relative`}>
-            <div className={`${styles['g-brand-name']} d-flex justify-content-center align-items-center position-absolute`}>{data.brand_name}</div>
+          <div
+            className={`${styles['g-pd-img']} d-flex justify-content-center align-items-center position-relative`}
+          >
+            <div
+              className={`${styles['g-brand-name']} d-flex justify-content-center align-items-center position-absolute`}
+            >
+              {data.brand_name}
+            </div>
             <img
               className="h-100"
               src={`/images/product/pd-images/${mainImage}`}

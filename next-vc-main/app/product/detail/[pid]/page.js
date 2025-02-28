@@ -4,7 +4,7 @@ import './detail.scss'
 import { useState, useEffect } from 'react'
 import { useMyCart } from '@/hooks/use-cart'
 import { useParams } from 'next/navigation'
-import { method } from 'lodash'
+import { useProductState } from '@/services/rest-client/use-products'
 
 export default function ProductDetailIdPage() {
   //box
@@ -14,6 +14,9 @@ export default function ProductDetailIdPage() {
   const [selectedSku, setSelectedSku] = useState()
   const { onAdd } = useMyCart()
 
+  //用useProductState()取得firstSkuId
+  const { firstSkuId } = useProductState()
+
   // fetch db
   const [detailData, setDetailData] = useState([])
   // 取得網址上的動態參數
@@ -21,7 +24,7 @@ export default function ProductDetailIdPage() {
   const pid = Number(params.pid)
   const getDetailData = async () => {
     try {
-      const res = await fetch(`http://localhost:3005/api/products/${pid}`)
+      const res = await fetch(`http://localhost:3005/api/products/${pid}/${firstSkuId}`)
       const data = await res.json()
       // 資料整理
       const products = {}
@@ -87,6 +90,7 @@ export default function ProductDetailIdPage() {
 
       console.log(Object.values(products))
       console.log(Object.values(products)[0].defaultSelectedSku)
+      console.log(`http://localhost:3005/api/products/${pid}/${firstSkuId}`)
       setDetailData(Object.values(products))
       setSelectedSku(Object.values(products)[0].defaultSelectedSku)
     } catch (err) {
@@ -175,7 +179,7 @@ export default function ProductDetailIdPage() {
     const storedUid = localStorage.getItem('userId')
     setUid(storedUid)
     // getFav(storedUid)
-  }, [])
+  }, [firstSkuId])
 
   useEffect(() => {
     getFav(uid)

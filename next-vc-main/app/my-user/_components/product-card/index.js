@@ -2,25 +2,39 @@
 
 import styles from './product-card.module.scss'
 import { useRouter } from 'next/navigation'
+import { useProductState } from '@/services/rest-client/use-products'
 
 export default function ProductCard({ data = {}, removeFavItem }) {
   const router = useRouter()
+  const { setFirstSkuId } = useProductState()
   return (
     <>
       <div className="col p-2">
-        <div className={`${styles['g-product-card']} position-relative`}
-        onClick={() => router.push(`/product/detail/${data.id}`)}
+        <div
+          className={`${styles['g-product-card']} position-relative`}
+          onClick={() => {
+            setFirstSkuId(data.product_sku_id)
+            router.push(`/product/detail/${data.id}`)
+          }}
         >
-          <div className={`${styles['g-x']} position-absolute`}
-          onClick={(e) => {
-            e.stopPropagation()
-            removeFavItem(data.product_sku_id)
-            }}>
+          <div
+            className={`${styles['g-x']} position-absolute`}
+            onClick={(e) => {
+              e.stopPropagation()
+              removeFavItem(data.product_sku_id)
+            }}
+          >
             <img width="13px" src="/images/product/list/x.svg"></img>
           </div>
-          <div className={`${styles['g-overlay']} position-absolute`}><h6>移除此商品</h6></div>
-          <div className={`${styles['g-pd-img']} d-flex justify-content-center align-items-center position-relative`}>
-            <div className={`${styles['g-brand-name']} d-flex justify-content-center align-items-center position-absolute`}>
+          <div className={`${styles['g-overlay']} position-absolute`}>
+            <h6>移除此商品</h6>
+          </div>
+          <div
+            className={`${styles['g-pd-img']} d-flex justify-content-center align-items-center position-relative`}
+          >
+            <div
+              className={`${styles['g-brand-name']} d-flex justify-content-center align-items-center position-absolute`}
+            >
               {data.brand_name}
             </div>
             <img
