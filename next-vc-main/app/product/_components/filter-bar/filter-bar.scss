@@ -5,7 +5,7 @@
     width: 100%;
     height: 100vh;
     z-index: 999;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.5);
     display: none;
   
     &.active {
@@ -27,9 +27,10 @@
       .g-clear-link {
         color: var(--grey200);
         text-decoration: underline;
+        cursor: pointer;
+        transition: color 0.15s ease-out;
   
         &:hover {
-          /* react 改成有篩選條件時觸發 */
           color: var(--black);
         }
       }

@@ -277,18 +277,6 @@ export default function ProductListPage(props) {
     getPdData(queryString)
   },[queryString])
 
-  // useEffect(() => {
-  //   if(name_like){
-  //     setCriteria((prev) => ({
-  //       ...prev,
-  //       nameLike: name_like,
-  //   }))
-  //   const newQueryString = generateQueryString({...criteria, nameLike: name_like})
-  //   setQueryString(newQueryString)
-  //   getPdData(newQueryString)
-  //   }
-  // }, [name_like])
-
   return (
     <>
       <div>
@@ -422,6 +410,7 @@ export default function ProductListPage(props) {
           setFilterOpen={setFilterOpen}
           criteria={criteria}
           setCriteria={setCriteria}
+          defaultCriteria={defaultCriteria}
           generateQueryString={generateQueryString}
           queryString={queryString}
           setQueryString={setQueryString}
@@ -437,6 +426,7 @@ export default function ProductListPage(props) {
           setPriceGte={(value) => setCriteriaByName('priceGte', value)}
           priceLte={priceLte}
           setPriceLte={(value) => setCriteriaByName('priceLte', value)}
+          setSelectedSort={(value) => setSelectedSort(value)}
         />
         {/* comparision sec */}
         <section

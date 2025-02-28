@@ -1,7 +1,6 @@
 'use client'
 
 import Slider from '@mui/material/Slider'
-import { grey } from '@mui/material/colors'
 import { useEffect, useState } from 'react'
 import './filter-bar.scss'
 import {
@@ -16,6 +15,7 @@ export default function FilterBar({
   generateQueryString,
   criteria,
   setCriteria,
+  defaultCriteria,
   queryString,
   setQueryString,
   brandIds,
@@ -28,7 +28,8 @@ export default function FilterBar({
   priceGte,
   setPriceGte,
   priceLte,
-  setPriceLte
+  setPriceLte,
+  setSelectedSort
 }) {
   // fetch brands, colors, colorpalette
   const { brands } = useGetBrands()
@@ -45,11 +46,6 @@ export default function FilterBar({
     getPdData(queryString)
     setFilterOpen(false)
   }
-
-  //criteria改變時即時更新查詢字串queryString
-  // useEffect(() => {
-  //   setQueryString(generateQueryString(criteria))
-  // }, [criteria])
 
   //設定color palette狀態
   const [colorSeries, setColorSeries] = useState({})
@@ -69,13 +65,25 @@ export default function FilterBar({
 
   return (
     <>
-      <section className={`g-filter-sec ${filterOpen ? 'active' : ''}`}>
+      <section className={`g-filter-sec ${filterOpen ? 'active' : ''}`}
+      onClick={() => setFilterOpen(false)}
+      >
         <div className="container-fluid p-0">
-          <div className="g-filter-bar">
+          <div className="g-filter-bar"
+          onClick={(e) => {
+            e.stopPropagation()
+          }}
+          >
             <div className="g-clear d-flex justify-content-between">
-              <a href="">
-                <h6 className="g-clear-link mb-0">清除篩選條件</h6>
-              </a>
+                <h6 className="g-clear-link mb-0"
+                onClick={()=>{
+                  setCriteria(defaultCriteria)
+                  setColorSeries({})
+                  setColorActive({})
+                  setValue([1,700000])
+                  setSelectedSort({sort: 'price', order: 'ASC'})
+                  }}
+                >清除篩選條件</h6>
               <img
                 width="16px"
                 src="/images/product/list/x.svg"
