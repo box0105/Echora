@@ -5,14 +5,36 @@ import { useState, useEffect } from 'react'
 import { useMyCart } from '@/hooks/use-cart'
 import { useParams } from 'next/navigation'
 import { useProductState } from '@/services/rest-client/use-products'
+import { ClientPageRoot } from 'next/dist/client/components/client-page'
 
 export default function ProductDetailIdPage() {
-  //box
-  const [selectedColor, setSelectedColor] = useState()
+  //for 購物車
+  let skuSelected = {}
+  const getSku = (skuId) => {
+    if(!detailData[0]){
+      return;
+    }
+    const {name, brand, discription, price, discountPrice} = detailData[0]
+    const selectedColorInfo = detailData[0].colors.find(color => color.skuId === skuId)
+    skuSelected = {
+      name,
+      brand_name : brand,
+      price,
+      discount_price: discountPrice,
+      discription,
+      color_name : selectedColorInfo.name,
+      color_image : selectedColorInfo.image,
+      product_sku_id : skuId,
+      image : detailData[0].images[skuId][0],
+      stock : detailData[0].stock[skuId]
+    }
+    return skuSelected
+  }
+  const { onAdd } = useMyCart()
+  // const [selectedColor, setSelectedColor] = useState()
 
   const [colorName, setColorName] = useState()
   const [selectedSku, setSelectedSku] = useState()
-  const { onAdd } = useMyCart()
 
   //用useProductState()取得firstSkuId
   const { firstSkuId } = useProductState()
@@ -46,6 +68,7 @@ export default function ProductDetailIdPage() {
           color_name,
           color_image,
           image,
+          discount_price,
         } = item
 
         if (!products[id]) {
@@ -53,6 +76,7 @@ export default function ProductDetailIdPage() {
             id,
             name,
             price,
+            discountPrice: discount_price,
             brand: brand_name,
             discription,
             neckPickup: neck_pickup,
@@ -89,7 +113,6 @@ export default function ProductDetailIdPage() {
       })
 
       console.log(Object.values(products))
-      console.log(Object.values(products)[0].defaultSelectedSku)
       console.log(`http://localhost:3005/api/products/${pid}/${firstSkuId}`)
       setDetailData(Object.values(products))
       setSelectedSku(Object.values(products)[0].defaultSelectedSku)
@@ -183,7 +206,9 @@ export default function ProductDetailIdPage() {
 
   useEffect(() => {
     getFav(uid)
+    // getSku(selectedSku)
   },[selectedSku, uid])
+
 
   if (!detailData.length) {
     return (
@@ -268,15 +293,16 @@ export default function ProductDetailIdPage() {
                       <>
                         <button
                           key={color.skuId}
+                          className={selectedSku === color.skuId ? 'selected' : ''}
                           onClick={() => {
-                            console.log(color)
-                            // box
-                            setSelectedColor(color)
-                            setColorName(color.name)
                             setSelectedSku(color.skuId)
+                            setColorName(color.name)
+                            // console.log(color)
+                            // box
+                            // setSelectedColor(color)
                           }}
                         >
-                          <img
+                          <img className=''
                             width="26px"
                             src={`/images/product/color-images/${color.image}`}
                             alt={color.name}
@@ -289,7 +315,8 @@ export default function ProductDetailIdPage() {
                 <button
                   className="g-add-to-cart d-flex justify-content-center align-items-center"
                   onClick={() => {
-                    onAdd(detailData[0], selectedColor)
+                    console.log(getSku(selectedSku))
+                    // onAdd(detailData[0], selectedColor)
                   }}
                 >
                   <h6 className="m-0">加入購物車</h6>
