@@ -1,11 +1,11 @@
 'use client'
 
 import './detail.scss'
+import ProductCardCarousel from '../../_components/product-card-carousel'
 import { useState, useEffect } from 'react'
 import { useMyCart } from '@/hooks/use-cart'
 import { useParams } from 'next/navigation'
 import { useProductState } from '@/services/rest-client/use-products'
-import { ClientPageRoot } from 'next/dist/client/components/client-page'
 
 export default function ProductDetailIdPage() {
   //for 購物車
@@ -32,6 +32,7 @@ export default function ProductDetailIdPage() {
   }
   const { onAdd } = useMyCart()
   // const [selectedColor, setSelectedColor] = useState()
+  // 購物車 end
 
   const [colorName, setColorName] = useState()
   const [selectedSku, setSelectedSku] = useState()
@@ -392,184 +393,7 @@ export default function ProductDetailIdPage() {
             </div>
           </div>
         </section>
-        <section className="g-also-like d-px-modified">
-          <div className="container-fluid">
-            <div className="g-like-title d-flex align-items-baseline gap-1">
-              <h1 className="h1">YOU MAY ALSO LIKE</h1>
-              <h5 className="h5 px-1">/</h5>
-              <h4>您可能也會喜歡</h4>
-            </div>
-            {/* react找套件 下方產品卡輪播欄 */}
-            <div className="g-like-row row row-cols-4">
-              <img
-                className="g-left-arrow p-0"
-                src="/images/product/detail/arrow.svg"
-                alt=""
-              />
-              <div className="col p-0">
-                <div className="g-product-card">
-                  <div className="g-pd-img d-flex justify-content-center align-items-center">
-                    {/* <img
-                      className="h-100"
-                      src="/images/product/detail/LPCS00NYNH1_front.png"
-                      alt=""
-                    /> */}
-                  </div>
-                  <div className="g-pd-text">
-                    {/* <hr> */}
-                    <h6 className="h6">
-                      Product Name Product Name Product Name
-                    </h6>
-                    <div className="d-flex gap-3">
-                      <h6 className="h6">$79000</h6>
-                      {/* <h6 class="h6">$72900</h6> */}
-                    </div>
-                    <div className="g-color-row">
-                      {/* <img
-                        width="22px"
-                        src="./product-list-imgs/lightblue.svg"
-                        alt=""
-                      />
-                      <img
-                        width="22px"
-                        src="./product-list-imgs/darkblue.svg"
-                        alt=""
-                      />
-                      <img
-                        width="22px"
-                        src="./product-list-imgs/purple.svg"
-                        alt=""
-                      /> */}
-                    </div>
-                    <p className="p g-color-text">2 colors</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col p-0">
-                <div className="g-product-card">
-                  <div className="g-pd-img d-flex justify-content-center align-items-center">
-                    {/* <img
-                      className="h-100"
-                      src="/images/product/detail/LPCS00NYNH1_front.png"
-                      alt=""
-                    /> */}
-                  </div>
-                  <div className="g-pd-text">
-                    {/* <hr> */}
-                    <h6 className="h6">
-                      Product Name Product Name Product Name
-                    </h6>
-                    <div className="d-flex gap-3">
-                      <h6 className="h6">$79000</h6>
-                      {/* <h6 class="h6">$72900</h6> */}
-                    </div>
-                    <div className="g-color-row">
-                      {/* <img
-                        width="22px"
-                        src="./product-list-imgs/lightblue.svg"
-                        alt=""
-                      />
-                      <img
-                        width="22px"
-                        src="./product-list-imgs/darkblue.svg"
-                        alt=""
-                      />
-                      <img
-                        width="22px"
-                        src="./product-list-imgs/purple.svg"
-                        alt=""
-                      /> */}
-                    </div>
-                    <p className="p g-color-text">2 colors</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col p-0">
-                <div className="g-product-card">
-                  <div className="g-pd-img d-flex justify-content-center align-items-center">
-                    {/* <img
-                      className="h-100"
-                      src="/images/product/detail/LPCS00NYNH1_front.png"
-                      alt=""
-                    /> */}
-                  </div>
-                  <div className="g-pd-text">
-                    {/* <hr> */}
-                    <h6 className="h6">
-                      Product Name Product Name Product Name
-                    </h6>
-                    <div className="d-flex gap-3">
-                      <h6 className="h6">$79000</h6>
-                      {/* <h6 class="h6">$72900</h6> */}
-                    </div>
-                    <div className="g-color-row">
-                      {/* <img
-                        width="22px"
-                        src="./product-list-imgs/lightblue.svg"
-                        alt=""
-                      />
-                      <img
-                        width="22px"
-                        src="./product-list-imgs/darkblue.svg"
-                        alt=""
-                      />
-                      <img
-                        width="22px"
-                        src="./product-list-imgs/purple.svg"
-                        alt=""
-                      /> */}
-                    </div>
-                    <p className="p g-color-text">2 colors</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col p-0">
-                <div className="g-product-card">
-                  <div className="g-pd-img d-flex justify-content-center align-items-center">
-                    {/* <img
-                      className="h-100"
-                      src="/images/product/detail/LPCS00NYNH1_front.png"
-                      alt=""
-                    /> */}
-                  </div>
-                  <div className="g-pd-text">
-                    {/* <hr> */}
-                    <h6 className="h6">
-                      Product Name Product Name Product Name
-                    </h6>
-                    <div className="d-flex gap-3">
-                      <h6 className="h6">$79000</h6>
-                      {/* <h6 class="h6">$72900</h6> */}
-                    </div>
-                    <div className="g-color-row">
-                      {/* <img
-                        width="22px"
-                        src="./product-list-imgs/lightblue.svg"
-                        alt=""
-                      />
-                      <img
-                        width="22px"
-                        src="./product-list-imgs/darkblue.svg"
-                        alt=""
-                      />
-                      <img
-                        width="22px"
-                        src="./product-list-imgs/purple.svg"
-                        alt=""
-                      /> */}
-                    </div>
-                    <p className="p g-color-text">2 colors</p>
-                  </div>
-                </div>
-              </div>
-              <img
-                className="g-right-arrow p-0"
-                src="/images/product/detail/arrow-right.svg"
-                alt=""
-              />
-            </div>
-          </div>
-        </section>
+        <ProductCardCarousel />
       </div>
     </>
   )
