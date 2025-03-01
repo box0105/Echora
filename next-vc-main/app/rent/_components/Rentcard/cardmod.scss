@@ -1,8 +1,6 @@
-.card-top-mod:hover {
-  outline: 1px solid var(--grey300);
-  box-shadow: 0px 0px 10px 5px rgba(200, 200, 200, 0.2);
-}
-.c-card-img {
+/* product card */
+
+.g-pd-img {
   height: 460px;
   padding: 30px 20px;
   background: radial-gradient(
@@ -11,48 +9,103 @@
     #f9f9f9 100%
   );
   overflow: hidden;
-}
-.card-body {
-  position: relative;
-}
-.card-top-mod:hover .card-body:before {
-  position: absolute;
-  top: 0;
-  left: 2px;
-  right: 2px;
-  content: ''; /* 加上顯示內容來檢查效果 */
-  height: 1px;
-  background-color: rgb(236, 236, 236);
+
+  @media screen and (max-width: 576px) {
+    height: 280px;
+  }
+
+  @media screen and (max-width: 391px) {
+    padding: 20px 12px;
+  }
+
 }
 
-.card-top-mod:hover .c-card-img {
-  background: white !important;
-}
+.g-brand-name {
+  min-width: 66px;
+  height: 25px;
+  padding-top: 1px;
+  color: var(--white);
+  background-color: var(--grey900);
+  border-radius: 1px;
+  top: 20px;
+  left: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: "Poppins";
 
-.card-top-mod-mod {
-  width: 167px;
-}
+  @media screen and (max-width: 576px) {
+    min-width: 50px;
+    height: 20px;
+    font-size: 11px;
+  }
 
-.c-card-color-mod {
-  img {
-    width: 25px;
-    padding-right: 5px;
+  @media screen and (max-width: 391px) {
+    top: 12px;
+    left: 12px;
   }
 }
-.in-stock {
-  margin-top: 2px;
-  color: rgb(0, 207, 0);
-  display: flex;
-  align-items: center;
-  img {
-    width: 15px;
+
+.g-pd-text {
+  padding: 20px;
+
+  p {
+    margin-block: 8px;
+  }
+
+  @media screen and (max-width: 391px) {
+    padding: 12px;
+  }
+
+  @media screen and (max-width: 391px) {
+    .h6{
+      font-size: 14px;
+    }
   }
 }
-.out-stock {
+
+.g-color-row {
   display: none;
-  color: rgb(255, 0, 0);
-  align-items: center;
-  img {
-    width: 15px;
+}
+
+.g-product-card:hover {
+  outline: 1px solid var(--grey300);
+  box-shadow: 0px 0px 10px 5px rgba(200, 200, 200, 0.2);
+
+  .g-pd-text {
+    position: relative;
+  }
+
+  .g-pd-text:before {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    content: '';
+    height: 1px;
+    background-color: var(--grey300);
+  }
+
+  .g-pd-img {
+    background: var(--white);
+  }
+
+  .g-brand-name {
+    // background-color: var(--grey700);
+  }
+
+  .g-color-text {
+    display: none;
+  }
+
+  .g-color-row {
+    display: flex;
+    // gap: 8px;
+    margin-block: 6px;
+    margin-left: -4px;
+
+    div {
+      padding-inline: 4px;
+      cursor: pointer;
+    }
   }
 }

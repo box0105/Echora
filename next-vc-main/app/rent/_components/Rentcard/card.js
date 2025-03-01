@@ -10,30 +10,22 @@ export default function RentCards({ data }) {
 
   return (
     <>
-      {data.map((item) => {
-        console.log('Rendering item:', item)
-        return <RentcardCard key={item.id} {...item} /> // 确保正确传递 props
-      })}
+      {data.map((item) => (
+        <RentcardCard key={item.id} {...item} />
+      ))}
     </>
   )
 }
 
 function RentcardCard({ name, price, rentitemColors, brand_name }) {
-  // 确保使用 useState 来管理图片
-  const [mainImage, setMainImage] = useState(
+  // 取得預設圖片
+  const defaultImage =
     rentitemColors?.[0]?.images?.[0]
       ? `/images/Rent/pd-images/${rentitemColors[0].images[0]}`
       : '/images/Rent/default.jpg'
-  )
 
-  const stock = rentitemColors?.[0]?.stock || 0
-  const image = rentitemColors?.[0]?.images?.[0]
-    ? `/images/Rent/pd-images/${rentitemColors[0].images[0]}`
-    : '/images/Rent/default.jpg'
-
-  const colorImage = (color) => color?.color_image || 'default-color.svg';
-
-
+  // 設定主圖片狀態，初始值為 defaultImage
+  const [mainImage, setMainImage] = useState(defaultImage)
 
   return (
     <div className="col p-2">
@@ -42,30 +34,44 @@ function RentcardCard({ name, price, rentitemColors, brand_name }) {
           <div className="g-brand-name d-flex justify-content-center align-items-center position-absolute">
             {brand_name}
           </div>
-          <img
-            className="h-100"
-            src={mainImage} // 使用state来管理主要图片
-            alt={name}
-          />
+          <img className="h-100" src={mainImage} alt={name} />
         </div>
         <div className="g-pd-text">
           <h6 className="h6">{name}</h6>
           <div className="d-flex gap-3">
             <h6 className="h6">${price.toLocaleString()}</h6>
-            <p className="stock-text">Stock: {stock}</p>
           </div>
           <div className="g-color-row">
-  {rentitemColors?.map((color) => (
-    <div key={color.id}>
-      <img
-        width="22px"
-        src={`/images/Rent/color-images/${color.color_image || 'default-color.svg'}`}
-        alt={color.name || '颜色'}
-      />
-    </div>
-  ))}
-</div>
-
+            {rentitemColors?.map((color) => (
+              <div
+                key={color.id}
+                onMouseEnter={() =>
+                  setMainImage(
+                    color.images?.[0]
+                      ? `/images/Rent/pd-images/${color.images[0]}`
+                      : '/images/Rent/default.jpg'
+                  )
+                }
+                onMouseLeave={() => setMainImage(defaultImage)}
+                onClick={() =>
+                  setMainImage(
+                    color.images?.[0]
+                      ? `/images/Rent/pd-images/${color.images[0]}`
+                      : '/images/Rent/default.jpg'
+                  )
+                }
+                style={{ cursor: 'pointer' }}
+              >
+                <img
+                  width="22px"
+                  src={`/images/Rent/color-images/${
+                    color.color_image || 'default-color.svg'
+                  }`}
+                  alt={color.name || '顏色'}
+                />
+              </div>
+            ))}
+          </div>
           <p className="p g-color-text">
             {rentitemColors?.length} {rentitemColors?.length > 1 ? 'colors' : 'color'}
           </p>

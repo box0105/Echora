@@ -17,14 +17,21 @@ router.get('/', async (req, res) => {
   const priceGte = Number(req.query.price_gte) || 1
   const priceLte = Number(req.query.price_lte) || 700000
 
-  const sort = req.query.sort || 'price'
-  const order = req.query.order || 'ASC'
+  // **加入排序參數**
+  const sort = req.query.sort || 'price_asc'
+  const sortOptions = {
+    name_asc: 'Rent.name ASC',
+    name_desc: 'Rent.name DESC',
+    price_asc: 'Rent.price ASC',
+    price_desc: 'Rent.price DESC',
+  }
+  const orderBy = sortOptions[sort] || 'Rent.price ASC' // 預設價格低到高
 
   try {
     let sql = `
       SELECT
-        rent.*,
-        RentBrand.name AS brand_name,  -- 加入 brand_name
+        Rent.*,
+        RentBrand.name AS brand_name,
         RentItemColor.id AS rent_item_color_id,
         RentItemColor.stock,
         RentColor.name AS color_name,
@@ -47,29 +54,25 @@ router.get('/', async (req, res) => {
     if (color_ids.length > 0)
       sql += ` AND RentItemColor.RentColor_id IN (${color_ids.join(',')})`
 
-    sql += ` ORDER BY Rent.${sort} ${order}, RentImges.sort_order ASC`
+    // **加入排序條件**
+    sql += ` ORDER BY ${orderBy}, RentImges.sort_order ASC`
 
     const [rows] = await db.query(sql)
 
-    // 格式化查詢結果，將顏色、庫存和圖片資訊合併到 rentitemColors 和 images 陣列中
+    // 格式化數據
     const formattedData = rows.reduce((acc, row) => {
       let existingRent = acc.find((item) => item.id === row.id)
-    
+
       if (existingRent) {
         const existingColor = existingRent.rentitemColors.find(
           (color) => color.rent_item_color_id === row.rent_item_color_id
         )
-    
+
         if (existingColor) {
           if (row.image) {
-            if (!existingColor.images) {
-              existingColor.images = [row.image]
-            } else {
-              existingColor.images.push(row.image)
-            }
+            existingColor.images.push(row.image)
           }
         } else {
-          // 如果此顏色還沒加入，將顏色和圖片正確加入
           existingRent.rentitemColors.push({
             rent_item_color_id: row.rent_item_color_id,
             stock: row.stock,
@@ -79,10 +82,10 @@ router.get('/', async (req, res) => {
           })
         }
       } else {
-        // 新增 Rent 物品
         acc.push({
           ...row,
-          brand_name: row.brand_name, 
+          brand_name: row.brand_name,
+          color_name: row.color_name,
           rentitemColors: row.rent_item_color_id
             ? [
                 {
@@ -98,7 +101,6 @@ router.get('/', async (req, res) => {
       }
       return acc
     }, [])
-    
 
     res.status(200).json({
       status: 'success',
@@ -109,10 +111,11 @@ router.get('/', async (req, res) => {
     console.log(err)
     res.status(400).json({
       status: 'error',
-      message: err.message ? err.message : '取得資料失敗',
+      message: err.message || '取得資料失敗',
     })
   }
 })
+
 
 // 修改后的 /api/rent/search 路由
 router.get('/search', async (req, res) => {

@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import './cardmod.scss'
 
 export default function RentcardCardMod({ data }) {
@@ -10,55 +10,51 @@ export default function RentcardCardMod({ data }) {
 
   return (
     <div className="row row-cols-1 row-cols-sm-2 g-3 mt-0">
-      {data.map((item, index) => (
-        <div className="col-6 col-sm-6 col-md-4" key={index}>
-          <div className="card-top-mod">
-            <div className="c-card-img d-flex justify-content-center align-items-center">
-              <img
-                src={
-                  item.image
-                    ? `/images/Rent/pd-images/${item.image}`
-                    : '/images/Rent/default.jpg'
-                } // 使用傳遞的圖片
-                className="card-img-top img-fluid"
-                alt={item.name || 'Product Image'}
-              />
-            </div>
+      {data.map((item, index) => {
+        const [mainImage, setMainImage] = useState(item.image)
 
-            <div className="card-body">
-              <h4 className="card-title">{item.name || 'Product Name'}</h4>
-              <div className="d-flex">
-                <h5 className="card-text">
-                  ${parseFloat(item.price).toFixed(2) || '0'}
-                </h5>
-              </div>
-
-              <div className="c-card-color-mod pt-2">
-                {/* 顯示顏色圖片 */}
-                {item.colorImages?.map((colorImage, idx) => (
-                  <img
-                    key={idx}
-                    src={`/images/Rent/color-images/${colorImage}`}
-                    alt={`Color ${idx}`}
-                  />
-                ))}
-              </div>
-
-              <div className="stock-status pt-2">
-                <div className={item.stock > 0 ? 'in-stock' : 'out-stock'}>
-                  <img
-                    src={`/images/Rent/instock-${
-                      item.stock > 0 ? 'green' : 'red'
-                    }.png`}
-                    alt={item.stock > 0 ? 'In Stock' : 'Out of Stock'}
-                  />
-                  <p className="m-0">{item.stock > 0 ? '有庫存' : '無庫存'}</p>
+        return (
+          <div key={index} className="col p-2">
+            <div className="g-product-card">
+              <div className="g-pd-img d-flex justify-content-center align-items-center position-relative">
+                <div className="g-brand-name d-flex justify-content-center align-items-center position-absolute">
+                  {item.brand_name}
                 </div>
+                <img
+                  className="h-100"
+                  src={`/images/Rent/pd-images/${mainImage}`}
+                  alt={item.name}
+                />
+              </div>
+              <div className="g-pd-text">
+                <h6 className="h6">{item.name}</h6>
+                <div className="d-flex gap-3">
+                  <h6 className="h6">${item.price.toLocaleString()}</h6>
+                </div>
+                <div className="g-color-row">
+                  {item.colors.map((color) => (
+                    <div
+                      key={color.id}
+                      onMouseEnter={() => setMainImage(item.images[color.skuId])}
+                      onMouseLeave={() => setMainImage(item.image)}
+                    >
+                      <img
+                        width="22px"
+                        src={`/images/product/color-images/${color.image}`}
+
+                        alt={color.name}
+                      />
+                    </div>
+                  ))}
+                </div>
+                <p className="p g-color-text">
+                  {item.colors.length} {item.colors.length > 1 ? 'colors' : 'color'}
+                </p>
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        )
+      })}
     </div>
   )
-}
+} 

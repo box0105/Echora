@@ -20,6 +20,10 @@ export default function Page(props) {
   const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState(false)
 
+
+  //
+  const [visibleCount, setVisibleCount] = useState(12)
+
   const getData = async () => {
     try {
       const res = await fetch('http://localhost:3005/api/rent')
@@ -383,7 +387,9 @@ export default function Page(props) {
                     </button>
                   </div>
                 </div>
-                <Cardmod data={data} />
+                <div className="row row-cols-xl-4 row-cols-2">
+                <Card data={data.slice(0, visibleCount)} />
+                </div>
               </div>
               <div className="btn1 d-flex justify-content-center ">
                 <button
@@ -394,6 +400,11 @@ export default function Page(props) {
                     width: '15rem',
                     height: '3rem',
                   }}
+                  onClick={() =>
+                      setVisibleCount((prev) =>
+                        Math.min(prev + 10, data.length)
+                      )
+                    }
                 >
                   <div className="h5">瀏覽更多</div>
                 </button>
