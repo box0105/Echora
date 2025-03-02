@@ -77,6 +77,10 @@ export default function Page(props) {
     if (ListData && startDate && endDate) {
       const start = new Date(startDate)
       const end = new Date(endDate)
+      if (end < start) {
+        alert('結束日期不能早於起始日期！')
+        return
+      }
       const timeDiff = end.getTime() - start.getTime() // 获取时间差
       const dayDiff = timeDiff / (1000 * 3600 * 24) // 转换为天数
       const pricePerDay = ListData.price // 单日租金
