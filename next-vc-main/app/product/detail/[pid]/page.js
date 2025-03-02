@@ -2,31 +2,36 @@
 
 import './detail.scss'
 import ProductCardCarousel from '../../_components/product-card-carousel'
-import { useState, useEffect } from 'react'
+import ProductImagesCarousel from '../../_components/product-images-carousel'
+import { useState, useEffect, useRef } from 'react'
 import { useMyCart } from '@/hooks/use-cart'
 import { useParams } from 'next/navigation'
 import { useProductState } from '@/services/rest-client/use-products'
 
+
 export default function ProductDetailIdPage() {
+
   //for 購物車
   let skuSelected = {}
   const getSku = (skuId) => {
-    if(!detailData[0]){
-      return;
+    if (!detailData[0]) {
+      return
     }
-    const {name, brand, discription, price, discountPrice} = detailData[0]
-    const selectedColorInfo = detailData[0].colors.find(color => color.skuId === skuId)
+    const { name, brand, discription, price, discountPrice } = detailData[0]
+    const selectedColorInfo = detailData[0].colors.find(
+      (color) => color.skuId === skuId
+    )
     skuSelected = {
       name,
-      brand_name : brand,
+      brand_name: brand,
       price,
       discount_price: discountPrice,
       discription,
-      color_name : selectedColorInfo.name,
-      color_image : selectedColorInfo.image,
-      product_sku_id : skuId,
-      image : detailData[0].images[skuId][0],
-      stock : detailData[0].stock[skuId]
+      color_name: selectedColorInfo.name,
+      color_image: selectedColorInfo.image,
+      product_sku_id: skuId,
+      image: detailData[0].images[skuId][0],
+      stock: detailData[0].stock[skuId],
     }
     return skuSelected
   }
@@ -47,7 +52,9 @@ export default function ProductDetailIdPage() {
   const pid = Number(params.pid)
   const getDetailData = async () => {
     try {
-      const res = await fetch(`http://localhost:3005/api/products/${pid}/${firstSkuId}`)
+      const res = await fetch(
+        `http://localhost:3005/api/products/${pid}/${firstSkuId}`
+      )
       const data = await res.json()
       // 資料整理
       const products = {}
@@ -153,7 +160,7 @@ export default function ProductDetailIdPage() {
       setFavItems(data.data)
       if (selectedSku && data.data.includes(selectedSku)) {
         setFavIcon('heart-solid.svg')
-      }else{
+      } else {
         setFavIcon('heart.svg')
       }
     } catch (err) {
@@ -202,14 +209,12 @@ export default function ProductDetailIdPage() {
     getDetailData()
     const storedUid = localStorage.getItem('userId')
     setUid(storedUid)
-    // getFav(storedUid)
   }, [firstSkuId])
 
   useEffect(() => {
     getFav(uid)
     // getSku(selectedSku)
-  },[selectedSku, uid])
-
+  }, [selectedSku, uid])
 
   if (!detailData.length) {
     return (
@@ -226,49 +231,10 @@ export default function ProductDetailIdPage() {
           <div className="container-fluid h-100">
             <div className="row h-100">
               <div className="g-pd-imgs col-lg-7 h-100">
-                <div className="row h-100">
-                  {/* react找套件 側邊圖片輪播 */}
-                  <div className="g-side-scroll col-lg-3 d-lg-block d-none h-100">
-                    <div className="w-100 h-100 d-flex flex-column justify-content-between gap-3">
-                      {selectedSku
-                        ? detailData[0]?.images[selectedSku].map((img) => (
-                            <>
-                              <div className="g-img-box w-100 h-100">
-                                <img
-                                  className="h-100 w-100 object-fit-cover"
-                                  src={`/images/product/pd-images/${img}`}
-                                  alt={detailData[0].name}
-                                />
-                              </div>
-                            </>
-                          ))
-                        : detailData[0]?.images[
-                            detailData[0]?.defaultSelectedSku
-                          ].map((img) => (
-                            <>
-                              <div className="g-img-box w-100 h-100">
-                                <img
-                                  className="h-100 w-100 object-fit-cover"
-                                  src={`/images/product/pd-images/${img}`}
-                                  alt={detailData[0].name}
-                                />
-                              </div>
-                            </>
-                          ))}
-                    </div>
-                  </div>
-                  <div className="g-main-img col-lg-9 text-center">
-                    <img
-                      className="h-100 object-fit-contain"
-                      src={`/images/product/pd-images/${
-                        selectedSku
-                          ? detailData[0]?.images[selectedSku][0]
-                          : detailData[0]?.defaultImage
-                      }`}
-                      alt={detailData[0].name}
-                    />
-                  </div>
-                </div>
+              <ProductImagesCarousel 
+                detailData = {detailData}
+                selectedSku = {selectedSku}
+              />
               </div>
               <div className="g-pd-discrip col-lg-5 h-100">
                 <img
@@ -294,7 +260,9 @@ export default function ProductDetailIdPage() {
                       <>
                         <button
                           key={color.skuId}
-                          className={selectedSku === color.skuId ? 'selected' : ''}
+                          className={
+                            selectedSku === color.skuId ? 'selected' : ''
+                          }
                           onClick={() => {
                             setSelectedSku(color.skuId)
                             setColorName(color.name)
@@ -303,7 +271,8 @@ export default function ProductDetailIdPage() {
                             // setSelectedColor(color)
                           }}
                         >
-                          <img className=''
+                          <img
+                            className=""
                             width="26px"
                             src={`/images/product/color-images/${color.image}`}
                             alt={color.name}
