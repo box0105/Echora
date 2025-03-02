@@ -160,7 +160,7 @@ router.post('/:userId/all', async (req, res) => {
   const newA = A.filter(
     (objA) => !B.some((objB) => areObjectsEqual(objA, objB))
   )
-  console.log(newA) 
+  console.log(newA)
 
   try {
     // 驗證使用者是否存在
@@ -188,13 +188,19 @@ router.post('/:userId/all', async (req, res) => {
 })
 
 // user刪除優惠券
-router.delete('/:userId/:couponId', async (req, res) => {
-  const couponId = req.params.couponId
-  const userId = req.params.userId
+router.delete('/', async (req, res) => {
+  // const userId = req.body.userId
+  const userId = 100
+  const [rows] = await db.query(`SELECT * FROM usercoupons WHERE userId = ? AND isDelete = ?`, [userId, true])
+  // console.log(rows);
 
   try {
-    // const deletecoupon = await db.query("DELETE FROM usercoupons WHERE userId = ? AND couponId = ?",
-    //   [userId, couponId])
+    rows.forEach(async (item) => {
+      const sql = 'DELETE FROM usercoupons WHERE userId = ? AND isDelete = ?'
+      const values = [item.userId, true]
+      await db.query(sql, values)
+    })
+
     res.status(200).json({ status: 'success', message: '刪除成功!' })
   } catch (err) {
     console.log(err)
@@ -203,12 +209,14 @@ router.delete('/:userId/:couponId', async (req, res) => {
 })
 
 // 使用優惠券
-router.put('/:userId/:couponId', async (req, res) => {
+router.put('/', async (req, res) => {
   // 更新使用者已使用優惠券的狀態
   //await db.query(UPDATE user_coupons SET isDelete = 1 WHERE user_id = 'user_id' AND coupon_id = 'coupon_id')
-  const { cartItem } = req.body
-  const couponId = req.params.couponId
-  const userId = req.params.userId
+  // const { cartItem } = req.body
+  const couponId = req.body.couponId
+  const userId = req.body.userId
+  console.log(couponId);
+  console.log(userId);
 
   try {
     // if (!cartItem) throw new Error("沒有可以使用優惠券的商品!")
@@ -241,18 +249,18 @@ router.put('/re/:userId/:couponId', async (req, res) => {
   }
 })
 
-router.post('/resource', (req, res) => {
-  // 請求主體的資料會儲存在 req.body 物件中
-  const data = req.body
-  const { couponId } = data
-  console.log(couponId)
-  // console.log(Array.isArray(couponId));
-  if (Array.isArray(couponId)) {
-    console.log('陣列')
-    return
-  }
-  console.log(data) // { key1: 'value1', key2: 'value2' }
-  res.status(200).json({ status: 'success', message: '測試成功' })
-})
+// router.post('/resource', (req, res) => {
+//   // 請求主體的資料會儲存在 req.body 物件中
+//   const data = req.body
+//   const { couponId } = data
+//   console.log(couponId)
+//   // console.log(Array.isArray(couponId));
+//   if (Array.isArray(couponId)) {
+//     console.log('陣列')
+//     return
+//   }
+//   console.log(data) // { key1: 'value1', key2: 'value2' }
+//   res.status(200).json({ status: 'success', message: '測試成功' })
+// })
 
 export default router

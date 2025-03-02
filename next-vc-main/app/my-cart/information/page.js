@@ -55,14 +55,18 @@ export default function InformationPage() {
 
   const handleFillUserData = (event) => {
     if (event.target.checked) {
-      setFormData({
-        recipient: userInf.username || '',
-        phone: userInf.phone || '',
-        email: userInf.email || '',
-        city: userInf.address.slice(0, 3) || '',
-        country: userInf.address.slice(3, 6) || '',
-        address: userInf.address.slice(6) || '',
-      })
+      if (userInf?.address) {
+        setFormData({
+          recipient: userInf?.username || '',
+          phone: userInf?.phone || '',
+          email: userInf?.email || '',
+          city: userInf.address.slice(0, 3) || '',
+          country: userInf.address.slice(3, 6) || '',
+          address: userInf.address.slice(6) || '',
+        })
+      } else {
+        toast.error('使用者資料未填寫完整')
+      }
     } else {
       setFormData({
         recipient: '',

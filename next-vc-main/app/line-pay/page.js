@@ -2,18 +2,16 @@
 
 import { useEffect, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
-import { useAuth } from '@/hooks/use-auth'
-import { toast, ToastContainer } from 'react-toastify'
+import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Image from 'next/image'
 import { isDev, apiURL } from '@/config'
 import { useMyCart } from '@/hooks/use-cart'
 // 載入loading元件
-import { RotatingLines } from 'react-loader-spinner'
+import { PuffLoader } from 'react-spinners'
 
 export default function LinePayPage() {
   // 檢查是否登入
-  // const { isAuth } = useAuth()
 
   const { clearCart } = useMyCart()
 
@@ -104,7 +102,9 @@ export default function LinePayPage() {
 
           if (response.ok) {
             clearCart()
-            router.replace('/my-cart/finish')
+            setTimeout(() => {
+              router.replace('/my-cart/finish')
+            }, 3000)
           } else {
             alert('訂單提交失敗！')
           }
@@ -178,9 +178,14 @@ export default function LinePayPage() {
   if (loading)
     return (
       <>
-        <RotatingLines eight={40} width={40} />
-        載入中，請稍後...
-        <ToastContainer />
+        <div className="d-flex flex-column align-items-center justify-content-center pt-5 mt-5">
+          <div className="mb-4">
+            <PuffLoader color="#00b853" size={70} />
+          </div>
+          <div>
+            <h4>確認付款中，請稍後...</h4>
+          </div>
+        </div>
       </>
     )
 

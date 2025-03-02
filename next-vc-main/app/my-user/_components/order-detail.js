@@ -74,7 +74,7 @@ export default function ComponentsOrderDetail() {
                     <div className="row g-0">
                       <div
                         className="col-md-3 d-flex align-items-center justify-content-center"
-                        style={{ maxHeight: 100 }}
+                        // style={{ maxHeight: 100 }}
                       >
                         <img
                           src={item.image}
@@ -88,6 +88,11 @@ export default function ComponentsOrderDetail() {
                           <h6 className="card-text">
                             <strong>商品名稱 :</strong> {item.name}
                           </h6>
+                          {item.rentDate && (
+                            <h6 className="card-text">
+                              <strong>租借日期 :</strong> {item.rentDate}
+                            </h6>
+                          )}
                           {item.status && (
                             <h6 className="card-text">
                               <strong>票種 :</strong> {item.status}

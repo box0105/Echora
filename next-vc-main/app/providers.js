@@ -15,17 +15,20 @@ import { MyCouponProvider } from '@/hooks/use-coupon'
 
 // 載入swr-devtools使用
 import { SWRDevTools } from 'swr-devtools'
+import { UserProvider } from '@/hooks/use-profile'
 
 export function Providers({ children }) {
   return (
     <SWRDevTools>
       <LoaderProvider close={2} CustomLoader={CatLoader}>
         <MyCouponProvider>
-        <AuthProvider>
-          <MyCartProvider>
-            <ProductProvider>{children}</ProductProvider>
-          </MyCartProvider>
-        </AuthProvider>
+          <AuthProvider>
+            <UserProvider>
+              <MyCartProvider>
+                <ProductProvider>{children}</ProductProvider>
+              </MyCartProvider>
+            </UserProvider>
+          </AuthProvider>
         </MyCouponProvider>
       </LoaderProvider>
     </SWRDevTools>
