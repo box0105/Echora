@@ -11,7 +11,7 @@ export default function Carousel() {
     <Swiper
       modules={[Autoplay, Pagination, EffectFade]}
       autoplay={{
-        delay: 5000,
+        delay: 4000,
         disableOnInteraction: false,
       }}
       loop={true}
@@ -27,7 +27,7 @@ export default function Carousel() {
     >
       <SwiperSlide>
         <img
-          src="/images/index/slide1.webp"
+          src="/images/index/slide1.png"
           alt="Slide 1"
           className={styles.slideImage}
         />
@@ -41,7 +41,7 @@ export default function Carousel() {
       </SwiperSlide>
       <SwiperSlide>
         <img
-          src="/images/index/slide3.png"
+          src="/images/index/slide3.webp"
           alt="Slide 3"
           className={styles.slideImage}
         />
