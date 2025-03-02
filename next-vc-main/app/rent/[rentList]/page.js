@@ -128,11 +128,14 @@ export default function Page(props) {
     const cartData = {
       id: ListData.id,
       name: ListData.name,
+      brand: ListData.brand,
       date_start: startDate.toISOString().split('T')[0],
       date_end: endDate.toISOString().split('T')[0],
       total_price: totalPrice,
       color: selectedColor?.name || '無顏色',
-      image: `/images/Rent/pd-images/${selectedImages[0]}` || '/images/default_image.jpg',
+      image:
+        `/images/Rent/pd-images/${selectedImages[0]}` ||
+        '/images/default_image.jpg',
       description: ListData.description,
       specifications: ListData.rentList,
       stock: ListData.stock,

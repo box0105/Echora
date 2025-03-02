@@ -182,40 +182,40 @@ export default function Header() {
           <div className={styles['g-nav-bottom']}>
             <ul className="d-flex justify-content-center gap-5 list-unstyled">
               <li>
-                <a href="/product">
+                <Link href="/product">
                   <div className="d-flex">
                     <h6 className="h7">ELECTRIC GUITARS</h6>
                     <p className="px-1">/</p>
                     <p style={{ fontWeight: 500 }}>電吉他商品</p>
                   </div>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/activity">
+                <Link href="/activity">
                   <div className="d-flex">
                     <h6 className="h7">MUSIC FESTIVALS</h6>
                     <p className="px-1">/</p>
                     <p style={{ fontWeight: 500 }}>音樂活動</p>
                   </div>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/rent">
+                <Link href="/rent">
                   <div className="d-flex">
                     <h6 className="h7">RENTAL SERVICE</h6>
                     <p className="px-1">/</p>
                     <p style={{ fontWeight: 500 }}>商品租借</p>
                   </div>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/coupons">
+                <Link href="/coupons">
                   <div className="d-flex">
                     <h6 className="h7">SPECIAL EVENTS</h6>
                     <p className="px-1">/</p>
                     <p style={{ fontWeight: 500 }}>特別優惠</p>
                   </div>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
