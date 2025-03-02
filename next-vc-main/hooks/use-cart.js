@@ -69,7 +69,7 @@ export function MyCartProvider({ children }) {
     }`
 
     // 生成該商品的唯一 key（以 product-{id} 為例）
-    const productKey = `product-${product.id}`
+    const productKey = `product-${product.id}-${color}`
 
     // 檢查購物車中是否已經存在這個 key 的商品
     const foundIndex = cartItems.findIndex((item) => item.key === productKey)
@@ -131,7 +131,7 @@ export function MyCartProvider({ children }) {
   // 租借加入購物車
   const onAddRent = (rent) => {
     // 產生租借項目的唯一 key
-    const rentKey = `rent-${rent.id}-${rent.date_start}-${rent.date_end}`
+    const rentKey = `rent-${rent.id}-${rent.date_start}-${rent.date_end}-${rent.color}`
 
     // 檢查購物車內是否已經有相同的租借項目
     const existingRent = cartItems.some((item) => item.key === rentKey)
@@ -147,7 +147,9 @@ export function MyCartProvider({ children }) {
       rentDate: `${rent.date_start} - ${rent.date_end}`,
       stock: rent.stock,
       rentStore: rent.rentStore,
+      brand: rent.brand,
       image: rent.image,
+      color: rent.color,
       price: rent.total_price,
       key: rentKey,
     }
