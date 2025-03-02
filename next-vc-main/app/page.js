@@ -1,10 +1,10 @@
 'use client'
 import './_styles/bootstrap.scss'
 import './_styles/index.scss'
-import '@fortawesome/fontawesome-free/css/all.min.css';
-
+import '@fortawesome/fontawesome-free/css/all.min.css'
 
 import Cart from './_components/cart-offcanvas'
+import Carousel from './_components/mainSection'
 
 import React, { useState, useEffect } from 'react'
 
@@ -12,22 +12,19 @@ export default function AppPage(props) {
   return (
     <>
       <div className="m-background">
-        <div className="container-fluid m-section1 p-0">
-          <div className="card text-bg-dark m-section1-card1">
-            <img src="/images/cart/section1-img2.png" className="card-img" alt="..." />
-            <div className="card-img-overlay d-flex justify-content-end align-items-center">
-              {/* <div class="col-4 m-section1-card1-text">
-        <h5 class="card-title">SPECIAL OFFER</h5>
-        <p class="card-text">聖誕季優惠活動 LES系列9折優惠</p>
-        <button class="card-text btn btn-outline-light m-section1-btn">
-          <small>SHOP NOW</small>
-        </button>
-      </div> */}
-            </div>
+        <div className="m-section1 container-fluid p-0">
+          <Carousel />
+          {/* <div className="card text-bg-dark m-section1-card1">
+            <img
+              src="/images/cart/section1-img2.png"
+              className="card-img"
+              alt="..."
+            />
+            <div className="card-img-overlay d-flex justify-content-end align-items-center"></div>
           </div>
           <div className="m-section1-mobile">
             <img src="/images/cart/section1-img2.png" alt />
-          </div>
+          </div> */}
         </div>
         <div className="m-section2">
           <div className="container-fluid m-index">
