@@ -2,7 +2,8 @@
 import styles from './header.module.scss'
 import CartOffcanvas from '../cart-offcanvas'
 import { useMyCart } from '@/hooks/use-cart'
-import { useRouter } from 'next/navigation'
+import { useActivity } from '@/hooks/use-activity'
+import { useRouter, usePathname } from 'next/navigation'
 import { useProductState } from '@/services/rest-client/use-products'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
@@ -22,20 +23,34 @@ export default function Header() {
   const [showCart, setShowCart] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
+  // 在不同路徑改變搜尋框的文字
+  const pathName = usePathname()
+  const getSearchPlaceholder = () => {
+    if (pathName.includes("/product")) return "搜尋電吉他商品名";
+    if (pathName.includes("/activity")) return "搜尋活動名稱或表演樂團";
+    return "搜尋";
+  };
+
   // search
   const router = useRouter()
   const [searchName, setSearchName] = useState('')
   const { criteria, setCriteria, defaultCriteria } = useProductState()
+  const { updateQueryParams } = useActivity();
 
   const handleSearch = (e) => {
     if (e.key === 'Enter') {
-      router.push(`/product/list`)
-      setCriteria((prev) => ({
-        ...prev,
-        nameLike: searchName,
-      }))
+      if (pathName.includes('/product')) {
+        router.push(`/product/list`)
+        setCriteria((prev) => ({
+          ...prev,
+          nameLike: searchName,
+        }))
+      } else if (pathName.includes('/activity')) {
+        updateQueryParams({ search: searchName })
+      }
     }
   }
+
   const [showDropdown, setShowDropdown] = useState(false)
   const { user, isAuth, setIsAuth } = useAuth()
   const { userProfile, setUserProfile } = useUser()
@@ -123,7 +138,7 @@ export default function Header() {
               <input
                 type="text"
                 className={`form-control focus-ring ${styles['g-search-field']}`}
-                placeholder="搜尋電吉他商品名"
+                placeholder={getSearchPlaceholder()}
                 value={searchName}
                 onChange={(e) => setSearchName(e.target.value)}
                 onKeyDown={handleSearch}
@@ -182,7 +197,7 @@ export default function Header() {
           <div className={styles['g-nav-bottom']}>
             <ul className="d-flex justify-content-center gap-5 list-unstyled">
               <li>
-                <Link href="/product">
+                <Link href="/product/list">
                   <div className="d-flex">
                     <h6 className="h7">ELECTRIC GUITARS</h6>
                     <p className="px-1">/</p>

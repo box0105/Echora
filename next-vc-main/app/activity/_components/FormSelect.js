@@ -1,15 +1,11 @@
 'use client';
 
-import { useState } from 'react';
-
-export default function FormSelect({ title, options }) {
-  const [city, setCity] = useState('');
-
+export default function FormSelect({ title, options, selected, onChange }) {
   return (
     <div className="d-flex flex-column align-self-stretch">
       <h4>{title}</h4>
-      <select className="b-form-select" value={city} onChange={e => {
-        setCity(e.target.value);
+      <select className="b-form-select" value={selected} onChange={e => {
+        onChange(e.target.value);
       }}>
         <option value="" disabled>請選擇城市</option>
         {options.map((v, i) => {

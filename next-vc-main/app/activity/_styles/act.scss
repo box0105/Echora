@@ -1,6 +1,6 @@
 /* 活動列表頁 */
 .b-container {
-  padding-inline: 4rem;
+  padding-inline: 4rem; 
 }
 
 .b-hero {
@@ -92,7 +92,7 @@
 }
 
 .b-filter-slide {
-  z-index: 4;
+  z-index: 101;
   width: 37.5rem;
 
   /* 側邊欄滾動 */
@@ -182,8 +182,8 @@
 }
 
 .b-act-list {
-  padding-top: 4rem;
-  padding-bottom: 8rem;
+  padding-top: 1rem;
+  padding-bottom: 3.5rem;
 
   .card {
     background: var(
