@@ -13,6 +13,7 @@
 
 .g-also-like {
     padding-block: 100px 64px;
+    overflow: hidden;
   
     @media screen and (max-width: 430px) {
       padding-block: 64px;
@@ -20,7 +21,7 @@
   }
   
   .g-like-title {
-    margin: 0px 0px 32px -12px;
+    margin-bottom: 32px;
   
     @media screen and (max-width: 768px) {
       h1 {
@@ -83,13 +84,13 @@
     );
     overflow: hidden;
 
-    @media screen and (max-width: 576px) {
-        height: 280px;
-      }
+    // @media screen and (max-width: 576px) {
+    //     height: 280px;
+    //   }
     
-      @media screen and (max-width: 391px) {
-        padding: 20px 12px;
-      }
+    //   @media screen and (max-width: 391px) {
+    //     padding: 20px 12px;
+    //   }
     
   }
 
@@ -183,32 +184,52 @@
   
   /* product-card-end */
 
+  /* swiper-custom */
+  .g-swiper-sec{
+    position: relative;
+    // overflow: visible;
+  }
+
+  .g-my-swiper{
+    overflow: visible !important;
+  }
+
   .custom-swiper-button-prev,
   .custom-swiper-button-next {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    // top: 50%;
+    top: 305px;
+    // transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     z-index: 10;
+
+    @media screen and (max-width: 576px) {
+      display: none;
+    }
   }
   
   .custom-swiper-button-prev {
-    left: -5px;
+    left: -15px;
   }
   
   .custom-swiper-button-next {
-    right: -5px;
+    right: -15px;
   }
   
   .custom-swiper-button-prev:hover,
   .custom-swiper-button-next:hover {
     background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .g-swiper-slide:hover {
+    overflow: visible !important;
+    z-index: 5;
   }
