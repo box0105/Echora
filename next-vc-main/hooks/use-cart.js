@@ -1,5 +1,6 @@
 // 1.建⽴與導出它
 import { createContext, useContext, useState, useEffect } from 'react'
+import { toast } from 'react-toastify'
 
 const CartContext = createContext(null)
 
@@ -14,10 +15,10 @@ export function MyCartProvider({ children }) {
   const [didMount, setDidMount] = useState(false)
 
   // 遞增商品數量
-  const onIncrease = (cartItemId) => {
+  const onIncrease = (cartItemKey) => {
     const nextCartItems = cartItems.map((v) => {
       // 在陣列中找到id為cartItemId的物件，將count屬性+1
-      if (v.id === cartItemId) return { ...v, count: v.count + 1 }
+      if (v.key === cartItemKey) return { ...v, count: v.count + 1 }
       // 其它沒有影響的物件值直接返回
       else return v
     })
@@ -27,10 +28,10 @@ export function MyCartProvider({ children }) {
   }
 
   // 遞減商品數量
-  const onDecrease = (cartItemId) => {
+  const onDecrease = (cartItemKey) => {
     const nextCartItems = cartItems.map((v) => {
       // 在陣列中找到id為cartItemId的物件，將count屬性+1
-      if (v.id === cartItemId) return { ...v, count: v.count - 1 }
+      if (v.key === cartItemKey) return { ...v, count: v.count - 1 }
       // 其它沒有影響的物件值直接返回
       else return v
     })
@@ -40,42 +41,56 @@ export function MyCartProvider({ children }) {
   }
 
   // 刪除商品
-  const onRemove = (cartItemId) => {
-    const nextCartItems = cartItems.filter((v) => {
-      return v.id !== cartItemId
-    })
-    // 設定到狀態
+  const onRemove = (cartItemKey) => {
+    const nextCartItems = cartItems.filter((item) => item.key !== cartItemKey)
     setCartItems(nextCartItems)
   }
 
   // -------- 加入購物車 --------
 
+  const fristToast = () => {
+    toast.success('加入購物車成功', {
+      position: 'bottom-right',
+    })
+  }
+  const nextToast = () => {
+    toast.info('已有相同商品在購物車內！', {
+      position: 'bottom-right',
+    })
+  }
+
   // 商品加入購物車
   const onAdd = (product, selectedColor) => {
-    console.log(product.images[selectedColor.skuId][0])
-    //box
+    // 從 selectedColor 取得所需資訊
     const color = selectedColor.name
     const stock = product.stock[selectedColor.skuId]
     const image = `/images/product/pd-images/${
       product.images[selectedColor.skuId][0]
     }`
 
-    // 判斷此商品是否已經在購物車裡
-    const foundIndex = cartItems.findIndex((v) => v.id === product.id)
+    // 生成該商品的唯一 key（以 product-{id} 為例）
+    const productKey = `product-${product.id}`
+
+    // 檢查購物車中是否已經存在這個 key 的商品
+    const foundIndex = cartItems.findIndex((item) => item.key === productKey)
 
     if (foundIndex !== -1) {
-      // 如果有找到==>遞增商品數量
-      // onIncrease(product.id)
-      alert('已有相同商品在購物車內')
+      // 若已有相同商品，則顯示提示訊息（或依需求遞增數量）
+      nextToast()
     } else {
-      // 沒找到===>新增商品到購物車
-      // product和item(購物車項目)相比，少了一個數量屬性count
-      const newItem = { ...product, color, stock, image, count: 1 }
+      // 若沒有相同商品，則新增到購物車，並預設數量為 1
+      const newItem = {
+        ...product,
+        color,
+        stock,
+        image,
+        count: 1,
+        key: productKey,
+      }
 
-      // 加到購物車最前面
-      const nextCartItems = [newItem, ...cartItems]
-      // 設定到狀態
-      setCartItems(nextCartItems)
+      // 將新商品加入購物車（加到最前面）
+      setCartItems([newItem, ...cartItems])
+      fristToast()
     }
   }
 
@@ -83,15 +98,6 @@ export function MyCartProvider({ children }) {
   const onAddActivity = (activity) => {
     // 取出票券列表
     const actTickets = activity.selectedTickets
-
-    // 檢查購物車內是否已經有相同的票券
-    const existingTickets = cartItems.filter((item) =>
-      actTickets.some((ticket) => ticket.id === item.id)
-    )
-    if (existingTickets.length > 0) {
-      alert('已有相同商品在購物車內')
-      return
-    }
 
     // 將所有票券新增到購物車，每張票券預設 count: 1
     const newTickets = actTickets.map((ticket) => ({
@@ -105,37 +111,49 @@ export function MyCartProvider({ children }) {
       activityCity: activity.city, // 活動城市
       activityAddress: activity.address, // 活動地址
       image: activity.image, // 活動圖片
+      key: `activity-${activity.id}-${ticket.id}`,
     }))
 
+    // 檢查購物車內是否已經有相同的票券
+    const existingTickets = cartItems.some((item) =>
+      newTickets.some((ticket) => ticket.key === item.key)
+    )
+    if (existingTickets) {
+      nextToast()
+      return
+    }
+
+    fristToast()
     // 更新購物車 (展開舊的購物車內容)
     setCartItems([...newTickets, ...cartItems])
   }
 
   // 租借加入購物車
   const onAddRent = (rent) => {
-    const rents = rent
+    // 產生租借項目的唯一 key
+    const rentKey = `rent-${rent.id}-${rent.date_start}-${rent.date_end}`
 
-    // 檢查購物車內是否已經有相同的租借
-    const existingTickets = cartItems.filter((item) => rents.id === item.id)
-    if (existingTickets.length > 0) {
-      alert('已有相同商品在購物車內')
+    // 檢查購物車內是否已經有相同的租借項目
+    const existingRent = cartItems.some((item) => item.key === rentKey)
+    if (existingRent) {
+      nextToast()
       return
     }
 
-    // 將所有票券新增到購物車，每張票券預設 count: 1
-    const newRents = {
+    const newRent = {
       count: 1,
-      id: rents.id,
-      name: `(租借)${rents.name}`,
-      rentDate: `${rents.date_start} - ${rents.date_end}`,
-      stock: rents.stock,
-      rentStore: rents.rentStore,
-      image: rents.image,
-      price: rents.total_price,
+      id: rent.id,
+      name: `(租借)${rent.name}`,
+      rentDate: `${rent.date_start} - ${rent.date_end}`,
+      stock: rent.stock,
+      rentStore: rent.rentStore,
+      image: rent.image,
+      price: rent.total_price,
+      key: rentKey,
     }
 
-    // 更新購物車 (展開舊的購物車內容)
-    setCartItems([newRents, ...cartItems])
+    setCartItems([newRent, ...cartItems])
+    fristToast()
   }
 
   // 清空購物車

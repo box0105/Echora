@@ -54,7 +54,7 @@ export default function CartItem({ item }) {
                       className="btn"
                       onClick={() => {
                         if (item.count > 1) {
-                          onDecrease(item.id)
+                          onDecrease(item.key)
                         }
                       }}
                     >
@@ -68,7 +68,7 @@ export default function CartItem({ item }) {
                       className="btn"
                       onClick={() => {
                         if (item.stock > item.count) {
-                          onIncrease(item.id)
+                          onIncrease(item.key)
                         }
                       }}
                     >
@@ -83,7 +83,7 @@ export default function CartItem({ item }) {
                   type="button"
                   className="btn"
                   onClick={() => {
-                    onRemove(item.id)
+                    onRemove(item.key)
                   }}
                 >
                   移除商品
