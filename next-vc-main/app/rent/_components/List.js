@@ -51,7 +51,7 @@ export default function RentList() {
     let filtered = [...data];
   
   
-    console.log('筛选后的数据:', filtered);
+    // console.log('筛选后的数据:', filtered);
     if (filters?.brands?.length) {
       filtered = filtered.filter(item => filters.brands.includes(item.brand_name));
     }
@@ -67,9 +67,6 @@ export default function RentList() {
         item.rentitemColors.some(color => filters.colors.includes(color.color_name))
       );
     }
-    console.log('数据:', data);
-    console.log('当前筛选条件:', filters);
-    console.log('数据中的每一项品牌:', data.map(item => item.brand));
     // 排序
     const sorted = filtered.sort((a, b) => {
       if (sortOrder.field === 'price') {
