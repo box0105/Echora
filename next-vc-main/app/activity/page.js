@@ -31,7 +31,7 @@ export default function ActivityPage() {
       />
 
       <FilterBar
-        actNum={acts.length}
+        actNum={acts?.length}
         onOpen={() => setIsFilterOpen(!isFilterOpen)}
         onChange={updateQueryParams}
         // onChange={()=>updateQueryParams({ search: '共生音樂節' })
@@ -41,6 +41,7 @@ export default function ActivityPage() {
         <FilterPanel
           isOpen={isFilterOpen}
           onClose={() => setIsFilterOpen(!isFilterOpen)}
+          onChange={updateQueryParams}
         />
         <ActivityList data={acts} numPerPage={4} />
       </div>

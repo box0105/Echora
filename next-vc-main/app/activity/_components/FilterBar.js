@@ -71,13 +71,13 @@ export default function FilterBar({ actNum, onOpen, onChange }) {
                 </button>
                 <button
                   className="b-btn-unstyled w-100"
-                  onClick={(e) => activeSortBtn(e, 'date', 'asc')}
+                  onClick={(e) => activeSortBtn(e, 'date_start', 'asc')}
                 >
                   <h6>日期由小到大</h6>
                 </button>
                 <button
                   className="b-btn-unstyled w-100"
-                  onClick={(e) => activeSortBtn(e, 'date', 'desc')}
+                  onClick={(e) => activeSortBtn(e, 'date_start', 'desc')}
                 >
                   <h6>日期由大到小</h6>
                 </button>

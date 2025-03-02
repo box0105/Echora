@@ -8,40 +8,69 @@ const prisma = new PrismaClient()
 
 /* router prefix: /api/activities */
 
-// get All
+// get All datas
 router.get('/', async (req, res) => {
   try {
     const search = req.query.search
     const orderType = req.query.orderBy
     const order = req.query.order
+    const categoryIds = req.query.categoryIds
+      ? req.query.categoryIds.split(',').map(Number)
+      : [] // 支援多個 ID
+    const genreIds = req.query.genreIds
+      ? req.query.genreIds.split(',').map(Number)
+      : [] // 支援多個 ID
+    const city = req.query.city
+    const startDate = req.query.startDate ? new Date(req.query.startDate) : null
+    const endDate = req.query.endDate ? new Date(req.query.endDate) : null
+    const price = req.query.price ? Number(req.query.price) : null
 
-    const data = await prisma.activity.findMany({
-      // orderBy: {
-      //   [orderType]: order,
-      // },
+    // 初始條件
+    const whereCondition = {}
+    const orderCondition = {}
 
-      // orderBy: {
-      //   type: {
-      //     where: { id: 1},
-      //     price: 'desc',
-      //   },
-      // },
+    // Filter : 活動種類 & 音樂類型 & 城市 & 日期 & 價錢
+    if (categoryIds.length > 0) {
+      whereCondition.category_id = { in: categoryIds } // 使用 in 過濾多選
+    }
+    if (genreIds.length > 0) {
+      whereCondition.music_genre_id = { in: genreIds } // 使用 in 過濾多選
+    }
+    if (city) {
+      whereCondition.city = city
+    }
+    if (startDate && endDate) {
+      whereCondition.date_start = { gte: startDate, lte: endDate }
+    }
+    if (price) {
+      whereCondition.type = {
+        some: { price: { lte: price } }
+      }
+    }
 
-      where: {
-        // Search name or bands
-        OR: [
-          {
-            lineup: {
-              some: {
-                bands: {
-                  contains: search,
-                },
+    // Sort : id, date, price(有bug)
+    if (orderType && order) {
+      orderCondition[orderType] = order
+    }
+
+    // Search : name, bands
+    if (search) {
+      whereCondition.OR = [
+        {
+          lineup: {
+            some: {
+              bands: {
+                contains: search,
               },
             },
           },
-          { name: { contains: search } },
-        ],
-      },
+        },
+        { name: { contains: search } },
+      ]
+    }
+
+    const data = await prisma.activity.findMany({
+      where: whereCondition,
 
       include: {
         // 關聯資料表
@@ -51,6 +80,16 @@ router.get('/', async (req, res) => {
         lineup: true,
         type: true,
       },
+
+      // Sort
+      // orderBy: orderCondition,
+      // orderBy: {
+      //   type: {
+      //     orderBy: {
+      //       price: 'desc', // 按票價降序排列
+      //     },
+      //   },
+      // },
     })
 
     // Sort
@@ -58,7 +97,7 @@ router.get('/', async (req, res) => {
       if (orderType === 'price') {
         x = x.type[0].price
         y = y.type[0].price
-      } else if (orderType === 'date') {
+      } else if (orderType === 'date_start') {
         x = new Date(x.date_start).getTime()
         y = new Date(y.date_start).getTime()
       } else {
@@ -75,7 +114,19 @@ router.get('/', async (req, res) => {
   }
 })
 
-// get One
+// get 所有選項
+router.get('/options', async (req, res) => {
+  try {
+    const categories = await prisma.activityCategory.findMany()
+    const genres = await prisma.activityGenre.findMany()
+
+    successResponse(res, { data: { categories, genres } })
+  } catch (error) {
+    errorResponse(res, error)
+  }
+})
+
+// get One data
 router.get('/:id', async (req, res) => {
   const { id } = req.params
 
