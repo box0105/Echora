@@ -1,4 +1,4 @@
-const BrandFilter = ({ onChange, selectedBrands }) => (
+const BrandFilter = ({ selectedBrands = [], onChange }) => (
     <div className="brand">
       <div className="h5 c-lenav">品牌</div>
       <div className="brand-check pt-3">

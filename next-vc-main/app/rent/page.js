@@ -5,9 +5,9 @@ import React, { useState, useEffect } from 'react'
 import './_styles/first.scss'
 import HeroSection from './_components/HeroSection'
 import RentalProcess from './_components/RentalProcess'
-import Cardmod from './_components/Rentcard/card-mod'
 import Card from './_components/Rentcard/card'
 import List from './_components/List'
+import Modfiter from "./_components/fit/fiteerMod"
 
 export default function Page(props) {
   const [isOpen, setIsOpen] = useState(false)
@@ -43,6 +43,10 @@ export default function Page(props) {
 
   console.log(data)
 
+
+
+
+  
   if (isError) return <div>發生錯誤</div>
 
   return (
@@ -121,7 +125,8 @@ export default function Page(props) {
           >
             <div className="container-fluid c-index-mod-1">
               <div className="row">
-                <div className="col-12 col-md-3 d-flex flex-column c-lerf-mod c-filter-scroll">
+              <Modfiter/>
+                {/* <div className="col-12 col-md-3 d-flex flex-column c-lerf-mod c-filter-scroll">
                   <div className="sort ">
                     <div className="row">
                       <div className=" col-11 h5 c-lenav">排序</div>
@@ -386,7 +391,7 @@ export default function Page(props) {
                       <div className="h6 m-0">清除塞選</div>
                     </button>
                   </div>
-                </div>
+                </div> */}
                 <div className="row row-cols-xl-4 row-cols-2">
                 <Card data={data.slice(0, visibleCount)} />
                 </div>
