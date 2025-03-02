@@ -150,9 +150,7 @@ export function MyCouponProvider({ children }) {
 
   // 轉換時間格式
   const time = (time) => {
-    if (!time) {
-      console.log('沒有時間')
-    } else console.log('輸入時間')
+
     const isoDateString = time
     const date = new Date(isoDateString)
 
@@ -163,8 +161,31 @@ export function MyCouponProvider({ children }) {
     return readableDate
   }
 
+  //全部刪除
+  const clear = async (userId) => {
+    try {
+      // http://localhost:3005/api/coupon/resource
+      const res = await fetch(`http://localhost:3005/api/coupon/`, {
+        method: 'DELETE',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({ userId: userId}),
+      })
+
+      const data = await res.json()
+
+      console.log(data)
+      return data
+    } catch (err) {
+      setError(err.message)
+      console.log(err.message)
+      return { status: 'fail' }
+    }
+  }
+
   return (
-    <CouponContext.Provider value={{ claimCoupon, notifyAndGet, notifyAndGetAll, time }}>
+    <CouponContext.Provider value={{ claimCoupon, notifyAndGet, notifyAndGetAll, time, clear}}>
       {children}
     </CouponContext.Provider>
   )

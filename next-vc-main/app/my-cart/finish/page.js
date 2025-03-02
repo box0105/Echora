@@ -4,10 +4,40 @@ import './_styles/cart-checkkist.scss'
 import './_styles/index.scss'
 import './_styles/cart-information.scss'
 import './_styles/cart-finish.scss'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
 
+
+
 export default function FinishPage() {
+
+  useEffect(() => {
+    const userId = localStorage.getItem('userId')
+    const couponObj = localStorage.getItem('coupon')
+    const couponId = JSON.parse(couponObj).couponId
+    console.log(couponId);
+    const useCoupon = async () => {
+      try {
+        const res = await fetch(`http://localhost:3005/api/coupon/`, {
+          method: 'PUT',
+          headers: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify({ userId: userId, couponId: couponId }),
+        })
+        const data = await res.json()
+        console.log(data)
+        return data
+      } catch (err) {
+        setError(err.message)
+        console.log(err.message)
+        return { status: 'fail' }
+      }
+    }
+    useCoupon()
+    localStorage.removeItem('coupon');
+  }, [])
+
   return (
     <>
       <div className="m-background mb-5">

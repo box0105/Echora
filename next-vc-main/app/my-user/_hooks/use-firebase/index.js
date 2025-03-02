@@ -76,12 +76,20 @@ const loginGoogle = async (callback) => {
   const auth = getAuth()
 
   signInWithPopup(auth, provider)
-    .then(async (result) => {
+    .then((result) => {
       const user = result.user
       console.log(user)
-
-      // user後端寫入資料庫等等的操作
-      callback(user.providerData[0])
+      if (callback && typeof callback === 'function') {
+        callback({
+          providerId: 'google',
+          displayName: user.displayName,
+          email: user.email,
+          uid: user.uid,
+          photoURL: user.photoURL,
+        })
+      }
+      // // user後端寫入資料庫等等的操作
+      // callback(user.providerData[0])
     })
     .catch((error) => {
       console.log(error)
