@@ -494,7 +494,7 @@ export const getUserFavorites = async (userId) => {
   validatedParamId(userId)
 
   // 使用findMany方法取得所有使用者的最愛商品資料
-  const favorites = await prisma.userLike.findMany({
+  const favorites = await prisma.favorite.findMany({
     where: {
       userId: userId,
     },
