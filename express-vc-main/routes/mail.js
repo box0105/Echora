@@ -25,7 +25,7 @@ router.post('/', async function (req, res) {
     if (existingOtp.length > 0) {
       return res
         .status(400)
-        .json({ status: 'error', message: '有尚未過期的otp，請稍後再試。' })
+        .json({ status: 'error', message: '有尚未過期的驗證碼，請稍後再試。' })
     }
 
     // 生成新的 OTP

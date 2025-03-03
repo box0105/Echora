@@ -382,7 +382,7 @@ router.post('/otp', upload.none(), async (req, res) => {
     const hasUnexpiredOtp = await hasUnexpiredOtpByEmail(email)
 
     if (hasUnexpiredOtp) {
-      return errorResponse(res, { message: '有尚未過期的otp，請稍後再試。' })
+      return errorResponse(res, { message: '有尚未過期的驗證碼，請稍後再試。' })
     }
 
     // 產生一筆新的totp

@@ -235,6 +235,14 @@ export default function ProfilePage() {
                 </label>
               </fieldset>
             </div>
+            {/* <div className="section-header">
+              <h4 className="form-label">頭貼</h4>
+              <img
+                src={profileInput.avatar || '../images/user/article-2'}
+                alt="頭貼"
+              />
+              <input type="file" name="avatar" onChange={handleFileChange} />
+            </div> */}
           </div>
           <button type="submit" className="submit-btn">
             變更儲存

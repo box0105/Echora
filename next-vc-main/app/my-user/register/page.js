@@ -78,16 +78,16 @@ export default function RegisterPage() {
         }, 2000)
       } else {
         if (resData.message.includes('重複的 email')) {
-          setErrorMessage('此 email 已被使用')
+          toast.error('此 email 已被使用')
         } else {
-          setErrorMessage(`錯誤 - 註冊失敗: ${resData.message}`)
+          toast.error(`錯誤 - 註冊失敗: ${resData.message}`)
         }
       }
     } catch (err) {
       if (err.response?.data?.message.includes('重複的 email')) {
-        setErrorMessage('此 email 已被使用')
+        toast.error('此 email 已被使用')
       } else {
-        setErrorMessage(
+        toast.error(
           `錯誤 - 註冊失敗: ${err.response?.data?.message || err.message}`
         )
       }
@@ -161,9 +161,9 @@ export default function RegisterPage() {
               </div>
             </div>
             <div className="login">創建帳戶</div>
-            {errorMessage && (
+            {/* {errorMessage && (
               <div className="error-message">{errorMessage}</div>
-            )}
+            )} */}
             <div className="name-container">
               <div className="input-field-signup">
                 <label htmlFor="name" className="visually-hidden">
