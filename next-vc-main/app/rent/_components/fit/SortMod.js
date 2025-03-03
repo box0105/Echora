@@ -35,7 +35,7 @@ const SortMod = ({ setIsOpen, onKeyPressHandler, onChange, selectedSort }) => {
                   type="radio"
                   id={option.id}
                   name="sortOption"
-                  checked={selectedSort === option.id}
+                  checked={selectedSort?.id === option.id}
                   onChange={() => onChange(option)}
                 />
                 <label className="form-check-label" htmlFor={option.id}>

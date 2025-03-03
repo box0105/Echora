@@ -9,16 +9,17 @@ import FilterButtonsMod from './FilterButtonsMod';
 const FilterSidebar = ({ 
   setIsOpen, 
   onKeyPressHandler, 
-  onSortChange,      // 父組件傳入的排序改變處理函數
-  onFilterChange,    // 父組件傳入的篩選條件改變處理函數
+  onSortChange,      
+  onFilterChange,    
+  selectedSort, // 这里新增 selectedSort 传入当前排序状态
   filters = { brands: [], addresses: [], levels: [], colors: [] }
 }) => {
-  // 定義排序變化處理函數
   const handleSortChange = (sortOption) => {
     if (typeof onSortChange === 'function') {
-      onSortChange(sortOption.field, sortOption.direction);
+      onSortChange(sortOption); // 直接传递排序对象
     }
   };
+  console.log("當前選中的排序:", selectedSort);
 
   // 定義通用的篩選條件切換函數
   const toggleFilterValue = (category, value) => {
@@ -42,22 +43,30 @@ const handleSubmit = () => {
 
   // 清除篩選條件
   const handleClear = () => {
-    console.log("清除篩選");  // Debugging
+    console.log("清除篩選與排序");  // Debugging
   
     // 清空所有篩選條件
     if (typeof onFilterChange === 'function') {
       onFilterChange({ brands: [], addresses: [], levels: [], colors: [] });
     }
+
+    // **重置排序為隨機**
+    if (typeof onSortChange === 'function') {
+      onSortChange({ field: 'random', direction: 'asc' });  // 這裡設置默認排序
+    }
+
     setIsOpen(false);
-  };
+};
+
 
 
   return (
     <div className="col-12 col-md-3 d-flex flex-column c-lerf-mod c-filter-scroll">
-      <SortMod setIsOpen={setIsOpen} onChange={handleSortChange} />
+      <SortMod setIsOpen={setIsOpen} onChange={handleSortChange} selectedSort={selectedSort}/>
       <BrandMod 
         onChange={(value) => toggleFilterValue('brands', value)}
         selectedBrands={filters.brands}
+        
       />
       <AddressMod 
         onChange={(value) => toggleFilterValue('addresses', value)}

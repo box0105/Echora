@@ -7,7 +7,7 @@ import HeroSection from './_components/HeroSection'
 import RentalProcess from './_components/RentalProcess'
 import Card from './_components/Rentcard/card'
 import List from './_components/List'
-import Modfiter from "./_components/fit/fiteerMod"
+import Modfiter from './_components/fit/fiteerMod'
 
 export default function Page(props) {
   const [isOpen, setIsOpen] = useState(false)
@@ -21,7 +21,10 @@ export default function Page(props) {
   const [isError, setIsError] = useState(false)
 
   const [visibleCount, setVisibleCount] = useState(12)
-  const [sortOrder, setSortOrder] = useState({ field: 'price', direction: 'asc' })
+  const [sortOrder, setSortOrder] = useState({
+    field: 'price',
+    direction: 'asc',
+  })
   const [filteredData, setFilteredData] = useState([])
   const [filters, setFilters] = useState({
     brands: [],
@@ -49,60 +52,56 @@ export default function Page(props) {
   }, [])
 
   const storeMapping = {
-    '台北店': 1,
-    '台中店': 2,
-    '高雄店': 3
+    台北店: 1,
+    台中店: 2,
+    高雄店: 3,
   }
   const levelMap = {
-    '初級': 1,
-    '中級': 2,
-    '高級': 3,
+    初級: 1,
+    中級: 2,
+    高級: 3,
   }
 
   useEffect(() => {
-    let filtered = [...data]
+    let filtered = [...data];
 
+    // **篩選邏輯 (品牌、地址、顏色、等級)**
     if (filters?.brands?.length) {
-      filtered = filtered.filter(item => filters.brands.includes(item.brand_name))
+      filtered = filtered.filter(item => filters.brands.includes(item.brand_name));
     }
     if (filters?.addresses?.length) {
-      const selectedStoreIds = filters.addresses.map(name => storeMapping[name]) 
-      filtered = filtered.filter(item => selectedStoreIds.includes(item.stores_id))
-    }    
+      const selectedStoreIds = filters.addresses.map(name => storeMapping[name]);
+      filtered = filtered.filter(item => selectedStoreIds.includes(item.stores_id));
+    }
     if (filters?.levels?.length) {
-      filtered = filtered.filter(item => filters.levels.map(lvl => levelMap[lvl]).includes(item.level))
+      filtered = filtered.filter(item => filters.levels.map(lvl => levelMap[lvl]).includes(item.level));
     }
     if (filters?.colors?.length) {
-      filtered = filtered.filter(item => 
-        item.rentitemColors.some(color => filters.colors.includes(color.color_name))
-      )
+      filtered = filtered.filter(item => item.rentitemColors.some(color => filters.colors.includes(color.color_name)));
     }
 
-    // 排序
-    const sorted = filtered.sort((a, b) => {
-      if (sortOrder.field === 'price') {
-        return sortOrder.direction === 'asc' ? a.price - b.price : b.price - a.price
-      } else if (sortOrder.field === 'name') {
-        return sortOrder.direction === 'asc'
-          ? a.name.localeCompare(b.name)
-          : b.name.localeCompare(a.name)
-      }
-      return 0
-    })
+    // **排序邏輯**
+    if (sortOrder.field === 'random') {
+      filtered = filtered.sort(() => Math.random() - 0.5);  // **隨機排序**
+    } else if (sortOrder.field === 'price') {
+      filtered = filtered.sort((a, b) => sortOrder.direction === 'asc' ? a.price - b.price : b.price - a.price);
+    } else if (sortOrder.field === 'name') {
+      filtered = filtered.sort((a, b) => sortOrder.direction === 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name));
+    }
 
-    setFilteredData(sorted)
-  }, [data, filters, sortOrder])
+    setFilteredData(filtered);
+}, [data, filters, sortOrder]);
 
   const handleFilterChange = (newFilters) => {
-    console.log("接收到新篩選條件:", newFilters);
+    // console.log('接收到新篩選條件:', newFilters)
     setFilters(newFilters)
   }
 
-  const handleSortChange = (field, direction) => {
-    setSortOrder({ field, direction })
-  }
-  
-  
+  const handleSortChange = (sortOption) => {
+    // console.log("選擇的排序:", sortOption); 
+    setSortOrder(sortOption); // 确保更新状态
+  };
+
   if (isError) return <div>發生錯誤</div>
 
   return (
@@ -178,15 +177,19 @@ export default function Page(props) {
 
           {/* section-mod */}
           <div
-            className={`c-section2-body Mod d-block d-md-none ${isOpen ? 'filter-open' : ''}`}
+            className={`c-section2-body Mod d-block d-md-none ${
+              isOpen ? 'filter-open' : ''
+            }`}
           >
             <div className="container-fluid c-index-mod-1">
               <div className="row">
-              <Modfiter
+                <Modfiter
                   data={filteredData}
                   setIsOpen={setIsOpen}
                   onFilterChange={handleFilterChange}
                   onSortChange={handleSortChange}
+                  selectedSort={sortOrder} // 这里传递当前的排序状态
+                  filters={filters}
                 />
               </div>
               <div className="row row-cols-xl-4 row-cols-2">
@@ -201,7 +204,9 @@ export default function Page(props) {
                     width: '15rem',
                     height: '3rem',
                   }}
-                  onClick={() => setVisibleCount((prev) => Math.min(prev + 10, data.length))}
+                  onClick={() =>
+                    setVisibleCount((prev) => Math.min(prev + 10, data.length))
+                  }
                 >
                   <div className="h5">瀏覽更多</div>
                 </button>

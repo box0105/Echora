@@ -17,7 +17,7 @@ export default function RentalProcess() {
 const ProcessStepsDesktop = () => (
   <>
     <div className="col-1 d-flex justify-content-center align-items-center iconf">
-      <img src="/images/Rent/light.png" className="img-fluid  bolt" alt />
+      <img src="/images/Rent/light.png" className="img-fluid bolt" alt />
     </div>
     <div className="col-3 text-white pt-3">
       <h2>Rental Process</h2>
@@ -34,6 +34,6 @@ const ProcessStepsDesktop = () => (
 
 const ProcessStepsMobile = () => (
   <div className="col-12">
-    <img src="/images/Rent/Process-mod.png" alt />
+    <img src="/images/Rent/process-380.png" alt />
   </div>
 );
