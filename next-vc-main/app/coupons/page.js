@@ -51,16 +51,6 @@ export default function CouponPage() {
     // fetchUserCoupon()
   }
 
-  const xxxwww =  () => {
-    if (isAuth) {
-      // await notifyAndGet(item.id, item.typeId)
-      // await fetchUserCoupon()
-alert('以登入')
-    }else{
-      alert('為登入')
-    }
-  }
-
   return (
     <>
       <div className="container-fluid k-container">
@@ -93,14 +83,25 @@ alert('以登入')
                 <div className="col">
                   <div className="text">
                     <div className="d-flex ">
-                      <div className='h3'><b>{item.name}</b></div>
-                      <div className='ms-3'>
+                      <div className="h3">
+                        <b>{item.name}</b>
+                      </div>
+                      <div className="ms-3">
                         {userCoupons
                           .map((v) => v.couponId)
                           .includes(item.id) ? (
                           <button
                             className="btn btn-secondary "
-                            onClick={xxxwww}
+                            onClick={async () => {
+                              event.preventDefault() // 阻止表單提交
+                              if (isAuth) {
+                                await notifyAndGet(item.id, item.typeId)
+                                await fetchUserCoupon()
+                                // alert('會員')
+                              } else {
+                                alert('請先登入')
+                              }
+                            }}
                           >
                             {userCoupons
                               .map((v) => v.couponId)
@@ -112,8 +113,14 @@ alert('以登入')
                           <button
                             className="btn btn-dark "
                             onClick={async () => {
-                              await notifyAndGet(item.id, item.typeId)
-                              await fetchUserCoupon()
+                              event.preventDefault() // 阻止表單提交
+                              if (isAuth) {
+                                await notifyAndGet(item.id, item.typeId)
+                                await fetchUserCoupon()
+                                // alert('會員')
+                              } else {
+                                alert('請先登入')
+                              }
                             }}
                           >
                             {userCoupons
