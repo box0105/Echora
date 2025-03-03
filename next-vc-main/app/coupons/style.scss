@@ -1,4 +1,4 @@
-.container-fluid {
+.k-container {
     padding: 0;
     width: 100%;
     height: auto;
@@ -10,7 +10,8 @@
 
 .k-main {
     display: flex;
-    width: auto;
+    width: 100%;
+    padding: 0;
     height: 70vh;
     /* background: url(./images/main.jpg) lightgray  no-repeat; */
     background: url(../../public/images/coupon/main.jpg) 0px -723.5px / 100% 251.836% no-repeat;

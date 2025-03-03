@@ -51,9 +51,19 @@ export default function CouponPage() {
     // fetchUserCoupon()
   }
 
+  const xxxwww =  () => {
+    if (isAuth) {
+      // await notifyAndGet(item.id, item.typeId)
+      // await fetchUserCoupon()
+alert('以登入')
+    }else{
+      alert('為登入')
+    }
+  }
+
   return (
     <>
-      <div className="container-fluid">
+      <div className="container-fluid k-container">
         <main className="k-main">
           <div className="content ">
             <div className="title flex-column">
@@ -90,10 +100,7 @@ export default function CouponPage() {
                           .includes(item.id) ? (
                           <button
                             className="btn btn-secondary "
-                            onClick={async () => {
-                              await notifyAndGet(item.id, item.typeId)
-                              await fetchUserCoupon()
-                            }}
+                            onClick={xxxwww}
                           >
                             {userCoupons
                               .map((v) => v.couponId)
