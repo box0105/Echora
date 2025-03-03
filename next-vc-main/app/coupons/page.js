@@ -93,11 +93,9 @@ export default function CouponPage() {
                           <button
                             className="btn btn-secondary "
                             onClick={async () => {
-                              event.preventDefault() // 阻止表單提交
                               if (isAuth) {
                                 await notifyAndGet(item.id, item.typeId)
                                 await fetchUserCoupon()
-                                // alert('會員')
                               } else {
                                 alert('請先登入')
                               }
@@ -113,11 +111,9 @@ export default function CouponPage() {
                           <button
                             className="btn btn-dark "
                             onClick={async () => {
-                              event.preventDefault() // 阻止表單提交
                               if (isAuth) {
                                 await notifyAndGet(item.id, item.typeId)
                                 await fetchUserCoupon()
-                                // alert('會員')
                               } else {
                                 alert('請先登入')
                               }
