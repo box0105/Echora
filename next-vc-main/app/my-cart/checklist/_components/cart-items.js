@@ -23,6 +23,7 @@ export default function CartItem({ item }) {
               <div>
                 <h4 className="h3 p-lg-x-2 p-lg-1">{item.name}</h4>
                 {item.brand && <h5 className="p-lg-1">品牌 : {item.brand}</h5>}
+                {item.color && <h5 className="p-lg-1">顏色 : {item.color}</h5>}
                 {item.status && (
                   <h5 className="p-lg-1">票種 : {item.status}</h5>
                 )}
@@ -31,7 +32,6 @@ export default function CartItem({ item }) {
                     <h5>租借日期 : {item.rentDate}</h5>
                   </div>
                 )}
-                {item.color && <h5 className="p-lg-1">顏色 : {item.color}</h5>}
                 <div className="d-flex align-items-end p-lg-1">
                   {item.stock >= item.count ? (
                     <img src="/images/cart/box-icon.svg" alt="stock icon" />
@@ -54,7 +54,7 @@ export default function CartItem({ item }) {
                       className="btn"
                       onClick={() => {
                         if (item.count > 1) {
-                          onDecrease(item.id)
+                          onDecrease(item.key)
                         }
                       }}
                     >
@@ -68,7 +68,7 @@ export default function CartItem({ item }) {
                       className="btn"
                       onClick={() => {
                         if (item.stock > item.count) {
-                          onIncrease(item.id)
+                          onIncrease(item.key)
                         }
                       }}
                     >
@@ -83,7 +83,7 @@ export default function CartItem({ item }) {
                   type="button"
                   className="btn"
                   onClick={() => {
-                    onRemove(item.id)
+                    onRemove(item.key)
                   }}
                 >
                   移除商品

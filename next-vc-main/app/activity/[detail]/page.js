@@ -38,7 +38,7 @@ export default function ActivityDetailPage() {
   if (isLoading) return <h3>網頁載入中，請稍後...</h3>
 
   return (
-    <div className="b-container">
+    <div className="b-container b-detail-page">
       {/* 開發測試 */}
       {/* <pre>{JSON.stringify(act, null, 2)}</pre> */}
       <HeroSection images={act?.media} />
