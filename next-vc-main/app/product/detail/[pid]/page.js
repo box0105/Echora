@@ -145,10 +145,10 @@ export default function ProductDetailIdPage() {
     }
 
     if (favItems.includes(selectedSku)) {
-      setFavIcon('heart.svg')
+      // setFavIcon('heart.svg')
       removeFromFav(uid, selectedSku)
     } else {
-      setFavIcon('heart-solid.svg')
+      // setFavIcon('heart-solid.svg')
       addToFav(uid, selectedSku)
     }
     getFav(uid)
@@ -178,10 +178,11 @@ export default function ProductDetailIdPage() {
       )
       const result = await res.json()
       if (result.status === 'success') {
-        alert('已加入我的收藏')
+        // alert('已加入我的收藏')
+        console.log('已加入我的收藏')
       }
     } catch (err) {
-      alert('加入失敗')
+      // alert('加入失敗')
       console.log(err)
     }
   }
@@ -196,10 +197,11 @@ export default function ProductDetailIdPage() {
       )
       const result = await res.json()
       if (result.status === 'success') {
-        alert('已從我的收藏移除商品')
+        // alert('已從我的收藏移除商品')
+        console.log('已從我的收藏移除商品')
       }
     } catch (err) {
-      alert('移除失敗')
+      // alert('移除失敗')
       console.log(err)
     }
   }
@@ -215,6 +217,8 @@ export default function ProductDetailIdPage() {
     getFav(uid)
     // getSku(selectedSku)
   }, [selectedSku, uid])
+
+  
 
   if (!detailData.length) {
     return (

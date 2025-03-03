@@ -267,16 +267,15 @@ export default function ProductListPage(props) {
   // didmount後執行getPdData()
   useEffect(() => {
     getPdData(queryString)
-  }, [])
-
+  },[queryString])
+  
   useEffect(() => {
     setQueryString(generateQueryString(criteria))
     setVisibleCount(12)
   }, [criteria])
 
-  useEffect(() => {
-    getPdData(queryString)
-  },[queryString])
+
+
 
   return (
     <>
