@@ -5,6 +5,7 @@ import './style.scss'
 import React, { useState, useEffect } from 'react'
 import { useMyCoupon } from '@/hooks/use-coupon'
 import { useAuth } from '@/hooks/use-auth'
+import Link from 'next/link'
 // import { array } from 'prop-types'
 
 export default function CouponPage() {
@@ -61,10 +62,41 @@ export default function CouponPage() {
               <span>聖誕季優惠活動 LES系列9折優惠</span>
             </div>
             <div className="title flex-column">
-              <h1 className="btn btn-outline-light">立即加入會員</h1>
+              <Link href="/my-user">
+                <h1 className=" btn btn-outline-light mt-2">立即加入會員</h1>
+
+              </Link>
               <h6>活動期間:2024/12/01 - 2025/01/31</h6>
             </div>
           </div>
+         
+           
+              <div id="carouselExampleControls" class="carousel slide pt-5" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item text-center active">
+                    <h1>New Way Travel</h1>
+                    <p>Lorem, ipsum dolor sit amet </p>
+                    <button type="button" class="btn btn-dark text-while">Learn More</button>
+                    <button type="button" class="btn btn-dark text-while">Contact Us</button>
+
+                  </div>
+                  <div class="carousel-item text-center">
+                    <h1>Travel Destination</h1>
+                    <p>Lorem, ipsum dolor sit amet </p>
+                    <button type="button" class="btn btn-dark text-while">Learn More</button>
+                    <button type="button" class="btn btn-dark text-while">Contact Us</button>
+                  </div>
+                  <div class="carousel-item text-center">
+                    <h1>Holiday Destination</h1>
+                    <p>Lorem, ipsum dolor sit amet </p>
+                    <button type="button" class="btn btn-dark text-while">Learn More</button>
+                    <button type="button" class="btn btn-dark text-while">Contact Us</button>
+                  </div>
+                </div>
+
+              </div>
+            
+          
         </main>
 
         <article className="k-article">
@@ -152,6 +184,7 @@ export default function CouponPage() {
           </div>
         </article>
       </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0/js/bootstrap.bundle.min.js"></script>
     </>
   )
 }
