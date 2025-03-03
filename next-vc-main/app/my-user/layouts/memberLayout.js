@@ -3,6 +3,7 @@
 import '../_styles/member.scss'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import '../_styles/style0.scss'
+import { useParams } from 'next/navigation'
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -10,7 +11,8 @@ import { usePathname } from 'next/navigation'
 export default function MemberLayout({ children }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const pathname = usePathname()
-
+  const params = useParams()
+  const orderId = Number(params?.orderId)
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen)
   }
@@ -93,7 +95,11 @@ export default function MemberLayout({ children }) {
                 </h2>
               </div>
               <div className="sidebar-section">
-                <h2 className={`sidebar-title ${isActive('/my-user/order')}`}>
+                <h2
+                  className={`sidebar-title ${isActive(
+                    '/my-user/order' ? `/my-user/order/${orderId}` : ''
+                  )}`}
+                >
                   <Link href="/my-user/order"> 我的訂單</Link>
                 </h2>
               </div>
