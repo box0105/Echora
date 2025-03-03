@@ -15,6 +15,7 @@ import {
   useAuthLogin,
 } from '@/services/rest-client/use-user'
 import { useRouter } from 'next/navigation'
+import { set } from 'lodash'
 
 export default function UserPage() {
   const [userInput, setUserInput] = useState({ email: '', password: '' })
@@ -83,12 +84,15 @@ export default function UserPage() {
 
       if (resData?.status === 'success') {
         localStorage.setItem('userId', resData.data.user.id)
-        setIsAuth(true)
-        mutate()
-        toast.success('已成功登入')
-        if (isClient) {
-          router.push('/')
-        }
+        toast.success('已成功登入', { autoClose: 2000 }) // 先顯示通知
+
+        setTimeout(() => {
+          setIsAuth(true) // 延遲改變 isAuth，避免 useEffect 立即觸發
+          mutate()
+          if (isClient) {
+            router.push('/')
+          }
+        }, 1500) // 確保 `toast` 先出現再跳轉
       } else {
         toast.error(`登入失敗: ${resData.message}`)
       }
@@ -96,7 +100,6 @@ export default function UserPage() {
       toast.error(`登入失敗: ${err.message}`)
     }
   }
-
   const handleGoogleLogin = async () => {
     if (isAuth) {
       toast.error('錯誤 - 會員已登入')
@@ -122,9 +125,11 @@ export default function UserPage() {
           setIsAuth(true)
           mutate()
           toast.success('已成功登入')
-          if (isClient) {
-            router.push('/')
-          }
+          setTimeout(() => {
+            if (isClient) {
+              router.push('/')
+            }
+          }, 2000)
         } else {
           toast.error('Google 登入失敗')
           console.log('Google login error:', resData.message)

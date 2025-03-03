@@ -29,6 +29,9 @@ model User {
   emailValidated Boolean       @default(false) @map("email_validated")
   googleUid      String?       @unique @map("google_uid")
   avatar         String?
+  failedAttempts Int           @default(0) @map("failed_attempts")
+  isLocked       Boolean       @default(false) @map("is_locked")
+  lockUntil      DateTime?     @map("lock_until")
   // 關聯: User:Product = n:m 透過 Favorite
   favorite       favorite[]
   usercoupons    UserCoupons[]
