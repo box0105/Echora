@@ -8,8 +8,8 @@ export default function Footer(props) {
     <footer className={styles.footer}>
       <hr />
       <div>
-        <ul className="nav justify-content-center d-flex row">
-          <li className="col-xxl-4">
+        <ul className="nav justify-content-center row">
+          <li className="col-12 col-lg-4">
             <h6 className="h7">NEWSLETTER</h6>
             <div className={styles.email}>
               <div className={styles.group}>
@@ -26,7 +26,7 @@ export default function Footer(props) {
               意接收時事通訊及其他如政策中所述的行銷資訊。
             </p>
           </li>
-          <li className="h7 col-xxl-1 col-lg-5 col-md-5 col-sm-5">
+          <li className="h7 col-6 col-lg-2">
             INFO
             <div>
               <p className="m-0">常見問題</p>
@@ -41,7 +41,7 @@ export default function Footer(props) {
               <p className="m-0">退貨流程</p>
             </div>
           </li>
-          <li className="h7 col-xxl-1 col-lg-5 col-md-5 col-sm-5">
+          <li className="h7 col-6 col-lg-2">
             COMPANY
             <div>
               <p className="m-0">關於我們</p>
@@ -56,7 +56,7 @@ export default function Footer(props) {
               <p className="m-0">服務條款</p>
             </div>
           </li>
-          <li className="h7 col-xxl-2 col-lg-5 col-md-5 col-sm-5">
+          <li className="h7 col-6 col-lg-2">
             GET IN TOUCH
             <div>
               <p className="m-0">service@echora.com</p>
@@ -68,7 +68,7 @@ export default function Footer(props) {
               <p className="m-0">165反詐騙諮詢專線</p>
             </div>
           </li>
-          <li className="h7 col-xxl-2 col-lg-5 col-md-5 col-sm-5">
+          <li className="h7 col-6 col-lg-2">
             ACCOUNT
             <div>
               <p className="m-0">我的帳戶</p>
