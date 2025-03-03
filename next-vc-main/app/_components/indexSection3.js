@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import IndexCardCarousel from './index-card-carousel'
 
 export default function IndexSection3(props) {
   return (
@@ -11,7 +12,8 @@ export default function IndexSection3(props) {
             TRENDING DEALS<span> / 熱門優惠商品</span>
           </h1>
         </div>
-        <div className="row row-cols-lg-4 row-cols-1">
+        <IndexCardCarousel />
+        {/* <div className="row row-cols-lg-4 row-cols-1">
           <div className="col card-group">
             <div className="card w-100" style={{ width: '18rem' }}>
               <img
@@ -84,7 +86,7 @@ export default function IndexSection3(props) {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   )

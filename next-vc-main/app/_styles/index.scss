@@ -207,3 +207,7 @@
   transform: translate(-8px, -5px);
   box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.6);
 }
+
+.m-section2-colx {
+  transition: transform 1s ease, filter 1s ease, opacity 1s ease;
+}

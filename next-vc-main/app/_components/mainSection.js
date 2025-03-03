@@ -41,7 +41,7 @@ export default function Carousel() {
       </SwiperSlide>
       <SwiperSlide>
         <img
-          src="/images/index/slide3.webp"
+          src="/images/index/slide5.jpg"
           alt="Slide 3"
           className={styles.slideImage}
         />

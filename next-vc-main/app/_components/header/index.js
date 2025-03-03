@@ -26,29 +26,27 @@ export default function Header() {
   // 在不同路徑改變搜尋框的文字
   const pathName = usePathname()
   const getSearchPlaceholder = () => {
-   
-    if (pathName.includes("/activity")) return "搜尋活動名稱或表演樂團";
-    else  return "搜尋電吉他商品";
-  };
+    if (pathName.includes('/activity')) return '搜尋活動名稱或表演樂團'
+    else return '搜尋電吉他商品'
+  }
 
   // search
   const router = useRouter()
   const [searchName, setSearchName] = useState('')
   const { criteria, setCriteria, defaultCriteria } = useProductState()
-  const { updateQueryParams } = useActivity();
+  const { updateQueryParams } = useActivity()
 
   const handleSearch = (e) => {
     if (e.key === 'Enter') {
       if (pathName.includes('/activity')) {
         updateQueryParams({ search: searchName })
-      }
-      else {
+      } else {
         router.push(`/product/list`)
         setCriteria((prev) => ({
           ...prev,
           nameLike: searchName,
         }))
-      } 
+      }
     }
   }
 
@@ -171,9 +169,12 @@ export default function Header() {
                   </div>
                 )}
               </div>
-              <Link href="/my-user/favorites">
-                <img src="/images/header/heart.svg" />
-              </Link>
+              {isAuth && (
+                <Link href="/my-user/favorites">
+                  <img src="/images/header/heart.svg" />
+                </Link>
+              )}
+
               <a
                 className={styles['m-cart']}
                 href="true"
@@ -256,9 +257,7 @@ export default function Header() {
                 }}
               />
             </div>
-            <ul className="list-unstyled"
-            onClick={() => setMenuOpen(false)}
-            >
+            <ul className="list-unstyled" onClick={() => setMenuOpen(false)}>
               <li>
                 <Link href="/product/list">
                   <div className="d-flex">
