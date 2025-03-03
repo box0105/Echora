@@ -8,9 +8,7 @@ import { useMyCart } from '@/hooks/use-cart'
 import { useParams } from 'next/navigation'
 import { useProductState } from '@/services/rest-client/use-products'
 
-
 export default function ProductDetailIdPage() {
-
   //for 購物車
   let skuSelected = {}
   const getSku = (skuId) => {
@@ -218,8 +216,6 @@ export default function ProductDetailIdPage() {
     // getSku(selectedSku)
   }, [selectedSku, uid])
 
-  
-
   if (!detailData.length) {
     return (
       <>
@@ -235,10 +231,10 @@ export default function ProductDetailIdPage() {
           <div className="container-fluid h-100">
             <div className="row h-100">
               <div className="g-pd-imgs col-lg-7 h-100">
-              <ProductImagesCarousel 
-                detailData = {detailData}
-                selectedSku = {selectedSku}
-              />
+                <ProductImagesCarousel
+                  detailData={detailData}
+                  selectedSku={selectedSku}
+                />
               </div>
               <div className="g-pd-discrip col-lg-5 h-100">
                 <img
@@ -290,6 +286,7 @@ export default function ProductDetailIdPage() {
                   className="g-add-to-cart d-flex justify-content-center align-items-center"
                   onClick={() => {
                     console.log(getSku(selectedSku))
+                    onAdd(getSku(selectedSku))
                     // onAdd(detailData[0], selectedColor)
                   }}
                 >
