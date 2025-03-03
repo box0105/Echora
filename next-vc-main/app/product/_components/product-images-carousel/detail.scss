@@ -34,6 +34,7 @@
 
 .g-side-scroll {
   padding: 160px 64px 160px 64px;
+  overflow: hidden;
 
   .g-img-box {
     background-color: var(--white);
@@ -51,14 +52,22 @@
 
   img {
     max-width: 100%;
-    /* height: 100%;
-                object-fit: contain; */
   }
 
   @media screen and (max-width: 992px) {
-    padding-inline: 0px;
-    height: 100vh;
-    min-height: 776px;
+    display: none;
+  }
+}
+
+.g-main-img2 {
+  padding-block: 100px;
+  height: 100vh;
+  min-height: 776px;
+  overflow: hidden;
+  display: none;
+
+  @media screen and (max-width: 992px) {
+    display: block;
   }
 }
 
@@ -306,12 +315,73 @@
     }
   }
 }
-
 /* product-card-end */
 
-.slick-prev, .slick-next {
-  color: black;
-  border: none;
-  background-color: #ffffff00;
-  font-size: 20px;
+
+/* swiper-custom1 */
+.g-swiper-sec {
+  position: relative;
+  height: 100%;
+}
+
+.g-my-swiper {
+  height: 100%;
+}
+
+.g-swiper-slide {
+  padding: 4px;
+  background-color: var(--white);
+  display: flex !important;
+  justify-content: center !important;
+  overflow: hidden;
+  &:hover {
+    border: 1px solid var(--grey300);
+  }
+}
+
+.custom-swiper-button-prev,
+.custom-swiper-button-next {
+  position: absolute;
+  left: calc(50% - 12px);
+  cursor: pointer;
+
+  // @media screen and (max-width: 576px) {
+  //   display: none;
+  // }
+}
+
+.custom-swiper-button-prev {
+  top: -60px;
+}
+
+.custom-swiper-button-next {
+  bottom: -60px;
+}
+
+/* swiper-custom2 */
+.g-swiper-slide2 {
+  padding: 4px;
+  display: flex !important;
+  justify-content: center !important;
+  overflow: hidden;
+}
+
+.custom-swiper-button-prev2,
+.custom-swiper-button-next2 {
+  position: absolute;
+  top: calc(50% - 12px);
+  cursor: pointer;
+}
+
+.custom-swiper-button-prev2 {
+  transform: rotate(90deg);
+  transform-origin: center;
+  // left: -60px;
+  // 右
+}
+
+.custom-swiper-button-next2 {
+  transform: rotate(90deg);
+  transform-origin: center;
+  // right: -60px;
 }

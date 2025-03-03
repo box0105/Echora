@@ -1,109 +1,66 @@
 'use client'
 
-import Slider from 'react-slick'
-import 'slick-carousel/slick/slick.css'
-// import "slick-carousel/slick/slick-theme.css";
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation } from 'swiper/modules'
 import './detail.scss'
+import 'swiper/css'
+import 'swiper/css/navigation'
 import { useState, useEffect, useRef } from 'react'
 
 export default function ProductImagesCarousel({ detailData, selectedSku }) {
-  function VerticalCarousel() {
-    const [mainImage, setMainImage] = useState()
-    const settings = {
-      dots: false,
-      infinite: true,
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      vertical: true,
-      verticalSwiping: true,
-      focusOnSelect: true,
-      beforeChange: function (currentSlide, nextSlide) {
-        console.log('before change', currentSlide, nextSlide)
-      },
-      afterChange: function (currentSlide) {
-        console.log('after change', currentSlide)
-      },
-    }
-    return (
-      <div className="slider-container">
-        <Slider {...settings}>
-          {selectedSku
-            ? detailData[0]?.images[selectedSku].map((img, index) => (
-                <>
-                  <div
-                    key={index}
-                    className="g-img-box w-100 h-100"
-                    onClick={() => {}}
-                  >
-                    <img
-                      className="h-100 w-100 object-fit-cover"
-                      src={`/images/product/pd-images/${img}`}
-                      alt={detailData[0].name}
-                    />
-                  </div>
-                </>
-              ))
-            : detailData[0]?.images[detailData[0]?.defaultSelectedSku].map(
-                (img, index) => (
-                  <>
-                    <div key={index} className="g-img-box w-100 h-100">
-                      <img
-                        className="h-100 w-100 object-fit-cover"
-                        src={`/images/product/pd-images/${img}`}
-                        alt={detailData[0].name}
-                      />
-                    </div>
-                  </>
-                )
-              )}
-        </Slider>
-      </div>
-    )
-  }
-  function HorizontalCarousel() {
-    const settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-    }
-    return (
-      <div className="slider-container">
-        <Slider {...settings}>
-          {selectedSku
-            ? detailData[0]?.images[selectedSku].map((img, index) => (
-                <>
-                  <img
-                    key={index}
-                    className="h-100 w-100 object-fit-contain"
-                    src={`/images/product/pd-images/${img}`}
-                    alt={detailData[0].name}
-                  />
-                </>
-              ))
-            : detailData[0]?.images[detailData[0]?.defaultSelectedSku].map(
-                (img, index) => (
-                  <>
-                    <img
-                      key={index}
-                      className="h-100 w-100 object-fit-contain"
-                      src={`/images/product/pd-images/${img}`}
-                      alt={detailData[0].name}
-                    />
-                  </>
-                )
-              )}
-        </Slider>
-      </div>
-    )
-  }
+  const [selectedImage, setSelectedImage] = useState(0)
+
+  const images = selectedSku
+    ? detailData[0]?.images[selectedSku]
+    : detailData[0]?.images[detailData[0]?.defaultSelectedSku]
+
   return (
     <>
       <div className="row h-100">
-        {/* react找套件 側邊圖片輪播 */}
         <div className="g-side-scroll col-lg-3 d-lg-block d-none h-100">
-          <VerticalCarousel />
+          {/* swiper */}
+          <div className="g-swiper-sec">
+            {/* 自定義左右箭頭按鈕 */}
+            <div className="custom-swiper-button-prev">
+              <img
+                className=""
+                src="/images/product/detail/arrow_up.svg"
+                alt=""
+              />
+            </div>
+            <div className="custom-swiper-button-next">
+              <img
+                className=""
+                src="/images/product/detail/arrow_down.svg"
+                alt=""
+              />
+            </div>
+            <Swiper
+              direction="vertical"
+              modules={[Navigation]}
+              spaceBetween={16}
+              slidesPerView={3}
+              navigation={{
+                nextEl: '.custom-swiper-button-next',
+                prevEl: '.custom-swiper-button-prev',
+              }}
+              className="mySwiper g-my-swiper"
+            >
+              {images.map((img, index) => (
+                <SwiperSlide
+                  key={index}
+                  className="g-swiper-slide"
+                  onClick={() => setSelectedImage(index)}
+                >
+                  <img
+                    className="h-100 object-fit-cover"
+                    src={`/images/product/pd-images/${img}`}
+                    alt={detailData[0].name}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
           {/* <div className="w-100 h-100 d-flex flex-column justify-content-between gap-3">
                       {selectedSku
                         ? detailData[0]?.images[selectedSku].map((img) => (
@@ -133,18 +90,74 @@ export default function ProductImagesCarousel({ detailData, selectedSku }) {
                     </div> */}
         </div>
         <div className="g-main-img col-lg-9 text-center">
-          {/* <HorizontalCarousel /> */}
           <img
             className="h-100 object-fit-contain"
             src={`/images/product/pd-images/${
               selectedSku
-                ? detailData[0]?.images[selectedSku][0]
+                ? detailData[0]?.images[selectedSku][selectedImage]
                 : detailData[0]?.defaultImage
             }`}
             alt={detailData[0].name}
           />
         </div>
+        <div className="g-main-img2 col-12 text-center">
+          <div className="custom-swiper-button-prev2">
+            <img
+              className=""
+              src="/images/product/detail/arrow_up.svg"
+              alt=""
+            />
+          </div>
+          <div className="custom-swiper-button-next2">
+            <img
+              className=""
+              src="/images/product/detail/arrow_down.svg"
+              alt=""
+            />
+          </div>
+          <Swiper
+            modules={[Navigation]}
+            navigation={{
+              nextEl: '.custom-swiper-button-next2',
+              prevEl: '.custom-swiper-button-prev2',
+            }}
+            className="mySwiper g-my-swiper"
+          >
+            {images.map((img, index) => (
+              <SwiperSlide key={index} className="g-swiper-slide2">
+                <img
+                  className="h-100 object-fit-cover"
+                  src={`/images/product/pd-images/${img}`}
+                  alt={detailData[0].name}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          {/* <img
+            className="h-100 object-fit-contain"
+            src={`/images/product/pd-images/${
+              selectedSku
+                ? detailData[0]?.images[selectedSku][selectedImage]
+                : detailData[0]?.defaultImage
+            }`}
+            alt={detailData[0].name}
+          /> */}
+        </div>
       </div>
     </>
   )
 }
+
+// {
+//   images.map((img, index) => (
+//     <SwiperSlide className={styles['g-swiper-slide']}>
+//       <div key={index} className={`g-img-box w-100 h-100 `} onClick={() => {}}>
+//         <img
+//           className="h-100 w-100 object-fit-cover"
+//           src={`/images/product/pd-images/${img}`}
+//           alt={detailData[0].name}
+//         />
+//       </div>
+//     </SwiperSlide>
+//   ))
+// }
