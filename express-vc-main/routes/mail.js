@@ -13,7 +13,9 @@ router.post('/', async function (req, res) {
     const [user] = await db.query('SELECT * FROM user WHERE email = ?', [email])
 
     if (!user.length) {
-      return res.status(404).json({ status: 'error', message: '用戶不存在' })
+      return res
+        .status(404)
+        .json({ status: 'error', message: '此email尚未註冊' })
     }
 
     // 檢查是否有未過期的 OTP
