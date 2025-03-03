@@ -120,7 +120,7 @@ router.post('/login', async (req, res) => {
     if (rows.length === 0) {
       return res.status(404).json({
         status: 'error',
-        message: '找不到該會員',
+        message: '此email尚未註冊',
       })
     }
 
