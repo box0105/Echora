@@ -10,7 +10,7 @@ import { useAuth } from '@/hooks/use-auth'
 export default function CouponPage() {
   const [coupon, setCoupon] = useState([])
   const [userCoupons, setUserCoupons] = useState([])
-  const { notifyAndGet, notifyAndGetAll } = useMyCoupon()
+  const { notifyAndGet, notifyAndGetAll, time } = useMyCoupon()
   const { isAuth } = useAuth()
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export default function CouponPage() {
 
   return (
     <>
-      <div className="container-fluid">
+      <div className="container-fluid k-container">
         <main className="k-main">
           <div className="content ">
             <div className="title flex-column">
@@ -80,38 +80,61 @@ export default function CouponPage() {
                 id={item.id}
                 className=" col-lg-3 col-md-6 col-sm-12 col-xxl-3 image-col"
               >
-                <div className="col ">
+                <div className="col">
                   <div className="text">
-                    {item.name}
-                    <br />${item.discount}
-                  </div>
-                  <br />
+                    <div className="d-flex ">
+                      <div className="h3">
+                        <b>{item.name}</b>
+                      </div>
+                      <div className="ms-3">
+                        {userCoupons
+                          .map((v) => v.couponId)
+                          .includes(item.id) ? (
+                          <button
+                            className="btn btn-secondary "
+                            onClick={async () => {
+                              if (isAuth) {
+                                await notifyAndGet(item.id, item.typeId)
+                                await fetchUserCoupon()
+                              } else {
+                                alert('請先登入')
+                              }
+                            }}
+                          >
+                            {userCoupons
+                              .map((v) => v.couponId)
+                              .includes(item.id)
+                              ? '已領取'
+                              : '領取'}
+                          </button>
+                        ) : (
+                          <button
+                            className="btn btn-dark "
+                            onClick={async () => {
+                              if (isAuth) {
+                                await notifyAndGet(item.id, item.typeId)
+                                await fetchUserCoupon()
+                              } else {
+                                alert('請先登入')
+                              }
+                            }}
+                          >
+                            {userCoupons
+                              .map((v) => v.couponId)
+                              .includes(item.id)
+                              ? '已領取'
+                              : '領取'}
+                          </button>
+                        )}
+                      </div>
+                    </div>
 
-                  {userCoupons.map((v) => v.couponId).includes(item.id) ? (
-                    <button
-                      className="btn btn-secondary "
-                      onClick={async () => {
-                        await notifyAndGet(item.id, item.typeId)
-                        await fetchUserCoupon()
-                      }}
-                    >
-                      {userCoupons.map((v) => v.couponId).includes(item.id)
-                        ? '已領取'
-                        : '領取'}
-                    </button>
-                  ) : (
-                    <button
-                      className="btn btn-dark "
-                      onClick={async () => {
-                        await notifyAndGet(item.id, item.typeId)
-                        await fetchUserCoupon()
-                      }}
-                    >
-                      {userCoupons.map((v) => v.couponId).includes(item.id)
-                        ? '已領取'
-                        : '領取'}
-                    </button>
-                  )}
+                    <div>
+                      使用時間:
+                      <br />
+                      {time(item.startTime)}~{time(item.endTime)}
+                    </div>
+                  </div>
                 </div>
               </li>
             ))}
@@ -128,7 +151,6 @@ export default function CouponPage() {
             </button>
           </div>
         </article>
-        <hr />
       </div>
     </>
   )

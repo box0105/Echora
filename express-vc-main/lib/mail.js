@@ -56,12 +56,25 @@ const otpMailHtml = (otpToken, secret) => `<!DOCTYPE html>
             overflow: hidden;
         }
         .header {
-            background-color: #007BFF; /* Corporate color */
+            background-color: black;
             padding: 20px;
             text-align: center;
         }
+        img{
+              margin: 10px 10px -5px 10px;
+        }
         .header img {
             max-width: 150px;
+            height: fit-content;
+        }
+        .header div{
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        span {
+            color: #ffffff;
+            font-size: 24px;
         }
         .content {
             padding: 20px;
@@ -84,11 +97,12 @@ const otpMailHtml = (otpToken, secret) => `<!DOCTYPE html>
 
     <div class="container">
         <div class="header">
-            <img src="${serverConfig.nextUrl}/images/user/logo.svg" alt="Company Logo" width="150"> 
+                <img src="https://i.imgur.com/YgnRq4G.png" alt="Echora" width="30"> 
+                <div style="display:inline-block;" >Echora • 拾光</div>
             <h1 style="color: #ffffff;">重設登入密碼的一次性驗証碼(OTP)</h1>
         </div>
         <div class="content">
-            <p>親愛的網站會員 您好，</p>
+            <p>親愛的Echora會員 您好，</p>
             <p>您的一次性驗証碼(OTP code)如下:</p>
             <div class="otp-code">${otpToken}</div>
             <p><a href="${serverConfig.nextUrl}/my-user/forget-password-2p/reset?secret=${secret}" target="_blank">請由此連結進入重設登入密碼頁面</a></p>
@@ -102,6 +116,7 @@ const otpMailHtml = (otpToken, secret) => `<!DOCTYPE html>
 </body>
 </html>
 `
+
 // 電子郵件文字訊息樣版
 const otpMailText = (otpToken, secret) => `親愛的網站會員 您好，
 通知重設密碼所需要的驗証碼，

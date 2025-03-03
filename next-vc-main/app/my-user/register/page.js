@@ -70,22 +70,24 @@ export default function RegisterPage() {
       const res = await register(userInput)
       const resData = await res.json()
       if (resData.status === 'success') {
-        toast.success('註冊成功，請重新登入')
-        if (isClient) {
-          router.push('/') // 重定向到首頁
-        }
+        toast.success('註冊成功，請重新登入', { autoClose: 2000 })
+        setTimeout(() => {
+          if (isClient) {
+            router.push('/my-user')
+          }
+        }, 2000)
       } else {
         if (resData.message.includes('重複的 email')) {
-          setErrorMessage('此 email 已被使用')
+          toast.error('此 email 已被使用')
         } else {
-          setErrorMessage(`錯誤 - 註冊失敗: ${resData.message}`)
+          toast.error(`錯誤 - 註冊失敗: ${resData.message}`)
         }
       }
     } catch (err) {
       if (err.response?.data?.message.includes('重複的 email')) {
-        setErrorMessage('此 email 已被使用')
+        toast.error('此 email 已被使用')
       } else {
-        setErrorMessage(
+        toast.error(
           `錯誤 - 註冊失敗: ${err.response?.data?.message || err.message}`
         )
       }
@@ -114,7 +116,7 @@ export default function RegisterPage() {
       const resData = await res.json()
 
       if (resData.status === 'success') {
-        toast.success('已成功登入')
+        toast.success('已成功登入', { autoClose: 2000 })
         if (isClient) {
           router.push('/') // 重定向到首頁
         }
@@ -159,9 +161,9 @@ export default function RegisterPage() {
               </div>
             </div>
             <div className="login">創建帳戶</div>
-            {errorMessage && (
+            {/* {errorMessage && (
               <div className="error-message">{errorMessage}</div>
-            )}
+            )} */}
             <div className="name-container">
               <div className="input-field-signup">
                 <label htmlFor="name" className="visually-hidden">

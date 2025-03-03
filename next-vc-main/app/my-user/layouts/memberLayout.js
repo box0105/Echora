@@ -116,7 +116,7 @@ export default function MemberLayout({ children }) {
                 </h2>
               </div>
             </aside>
-            <div className="profile-content flex-grow-1">{children}</div>
+            <div className="profile-content">{children}</div>
           </div>
         </div>
       </main>
