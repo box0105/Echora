@@ -3,8 +3,11 @@
 }
 
 
-.section {
-  width: 100%;
+.k-body {
+
+  .section {
+    width: 100%;
+  }
 
   .div {
     width: 100%;
@@ -18,18 +21,12 @@
     position: relative;
 
     /* 確保偽元素相對於容器定位 */
-    ul {
-      list-style: none;
-      padding-top: 25px;
-      li{
-        margin-bottom: 4px;
-      }
-    }
-    .image{
+
+    .image {
       position: absolute;
       top: 50%;
-      left: 10%;
-      transform: translate(-50%,-50%);
+      left: 3.25rem;
+      transform: translate(-50%, -50%);
     }
   }
 
@@ -46,8 +43,49 @@
     margin-inline: 100px 10px;
     /* 可選：添加左右間距 */
   }
-}
 
-.gary-line {
-  border: 1px solid #ccc;
+  ul {
+    list-style: none;
+    padding-top: 25px;
+  }
+
+  li {
+    margin-bottom: 4px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+
+    div .text {
+      top: 50%;
+      left: 40%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+    }
+  }
+
+  .garybg {
+    background-color: darkgray;
+
+    // .garybg-img {
+    //   background-color: aqua;
+    // }
+  }
+
+  .gary-line {
+    border: 1px solid #ccc;
+  }
+
+  .clear {
+    display: flex;
+    justify-content: flex-end;
+    width: 20%;
+    margin-left: 80%;
+    margin-bottom: .5rem;
+    cursor: pointer
+  }
+
+  .btn {
+    display: inline-block;
+    width: 100%;
+  }
 }

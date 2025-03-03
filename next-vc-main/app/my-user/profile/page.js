@@ -9,9 +9,11 @@ import Link from 'next/link'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useAuth } from '@/hooks/use-auth'
+import { useRouter } from 'next/navigation'
 import PreviewUploadImage from './_components/preview-upload-image'
 import TWZipCode from './_components/tw-zipcode'
 import { Oval } from 'react-loader-spinner'
+import { useUser } from '@/hooks/use-profile'
 
 const initUserProfile = {
   username: '',
@@ -24,17 +26,19 @@ const initUserProfile = {
 
 export default function ProfilePage() {
   const { user, isAuth } = useAuth()
-  const [userProfile, setUserProfile] = useState(initUserProfile)
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen)
-  }
+  const [profileInput, setProfileInput] = useState(initUserProfile)
+  const router = useRouter()
 
   useEffect(() => {
+    if (!isAuth) {
+      router.push('/my-user')
+      return
+      // 重定向到登入頁面
+    }
+
     const userId = localStorage.getItem('userId')
-    // console.log('Current token:', userId)
-    // if (!isAuth || !user?.id) return
+    if (!userId) return
+
     const fetchUserProfile = async () => {
       try {
         const res = await fetch(`http://localhost:3005/api/users/${userId}`, {
@@ -45,22 +49,22 @@ export default function ProfilePage() {
         const resData = await res.json()
         console.log('API 回傳資料:', resData)
         if (resData.status === 'success') {
-          setUserProfile(resData.data)
+          setProfileInput(resData.data)
           console.log('User profile data:', resData.data)
         } else {
-          // toast.error(`獲取會員資料失敗: ${resData.message}`)
+          toast.error(`獲取會員資料失敗: ${resData.message}`)
         }
       } catch (err) {
-        // toast.error(`獲取會員資料失敗: ${err.message}`)
+        toast.error(`獲取會員資料失敗: ${err.message}`)
       }
     }
 
     fetchUserProfile()
-  }, [user, isAuth])
+  }, [isAuth, router])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
-    setUserProfile((prevProfile) => ({
+    setProfileInput((prevProfile) => ({
       ...prevProfile,
       [name]: value,
     }))
@@ -76,10 +80,11 @@ export default function ProfilePage() {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${localStorage.getItem('userId')}`,
         },
-        body: JSON.stringify(userProfile),
+        body: JSON.stringify(profileInput),
       })
       const resData = await res.json()
       if (resData.status === 'success') {
+        // 移除更新 Header 中的用戶名功能
         toast.success('會員資料更新成功')
       } else {
         toast.error(`更新會員資料失敗: ${resData.message}`)
@@ -107,7 +112,7 @@ export default function ProfilePage() {
                   id="username"
                   name="username"
                   className="form-control"
-                  value={userProfile.username}
+                  value={profileInput.username}
                   onChange={handleInputChange}
                 />
               </div>
@@ -121,7 +126,7 @@ export default function ProfilePage() {
                   id="email"
                   name="email"
                   className="form-control"
-                  value={userProfile.email}
+                  value={profileInput.email}
                   readOnly
                 />
               </div>
@@ -156,7 +161,7 @@ export default function ProfilePage() {
                   id="phone"
                   name="phone"
                   className="form-control"
-                  value={userProfile.phone}
+                  value={profileInput.phone}
                   onChange={handleInputChange}
                   placeholder="請輸入電話號碼"
                 />
@@ -170,7 +175,7 @@ export default function ProfilePage() {
                   id="address"
                   name="address"
                   className="form-control"
-                  value={userProfile.address}
+                  value={profileInput.address}
                   onChange={handleInputChange}
                   placeholder="請輸入地址"
                 />
@@ -184,7 +189,7 @@ export default function ProfilePage() {
                   id="postcode"
                   name="postcode"
                   className="form-control"
-                  value={userProfile.postcode}
+                  value={profileInput.postcode}
                   onChange={handleInputChange}
                   placeholder="請輸入郵遞區號"
                 />
@@ -199,7 +204,7 @@ export default function ProfilePage() {
                     name="sex"
                     value="female"
                     className="visually-hidden"
-                    checked={userProfile.sex === 'female'}
+                    checked={profileInput.sex === 'female'}
                     onChange={handleInputChange}
                   />
                   <span className="gender-radio" />
@@ -211,7 +216,7 @@ export default function ProfilePage() {
                     name="sex"
                     value="male"
                     className="visually-hidden"
-                    checked={userProfile.sex === 'male'}
+                    checked={profileInput.sex === 'male'}
                     onChange={handleInputChange}
                   />
                   <span className="gender-radio" />
@@ -223,7 +228,7 @@ export default function ProfilePage() {
                     name="sex"
                     value="other"
                     className="visually-hidden"
-                    checked={userProfile.sex === 'other'}
+                    checked={profileInput.sex === 'other'}
                     onChange={handleInputChange}
                   />
                   <span className="gender-radio" />

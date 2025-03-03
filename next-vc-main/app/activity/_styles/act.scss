@@ -1,14 +1,14 @@
 /* 活動列表頁 */
 .b-container {
-  padding-inline: 4rem;
+  padding-inline: 4rem; 
 }
 
 .b-hero {
   width: auto;
   height: 520px;
-  background: url('../../../public/images/activity/cover.jpeg') center center /
-    cover no-repeat;
-  opacity: 0.9;
+  // background: url('../../../public/images/activity/cover.jpeg') center center /
+  //   cover no-repeat;
+  opacity: 0.1;
 
   .b-text {
     top: 50%;
@@ -92,7 +92,7 @@
 }
 
 .b-filter-slide {
-  z-index: 4;
+  z-index: 101;
   width: 37.5rem;
 
   /* 側邊欄滾動 */
@@ -182,7 +182,8 @@
 }
 
 .b-act-list {
-  padding-block: 4rem;
+  padding-top: 1rem;
+  padding-bottom: 3.5rem;
 
   .card {
     background: var(

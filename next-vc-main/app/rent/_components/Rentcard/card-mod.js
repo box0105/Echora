@@ -1,72 +1,60 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import './cardmod.scss'
 
-export default function RentcardCardMod(props) {
+export default function RentcardCardMod({ data }) {
+  if (!data || data.length === 0) {
+    return <p>目前沒有租賃商品。</p>
+  }
+
   return (
     <div className="row row-cols-1 row-cols-sm-2 g-3 mt-0">
-      {/* Card 1 */}
-      <div className="col-6 col-sm-6 col-md-4">
-        <div className="card-top-mod">
-          <div className="c-card-img d-flex justify-content-center align-items-center">
-            <img
-              src="/images/Rent/card23-img.png"
-              className="card-img-top img-fluid"
-              alt="..."
-            />
-          </div>
+      {data.map((item, index) => {
+        const [mainImage, setMainImage] = useState(item.image)
 
-          <div className="card-body">
-            <h4 className="card-title">Product Name</h4>
-            <div className="d-flex">
-              <h5 className="card-text">$1000</h5>
-            </div>
-            <div className="c-card-color-mod pt-2">
-              <img src="/images/Rent/circle-gray.png" alt="" />
-              <img src="/images/Rent/circle-blue.png" alt="" />
-            </div>
-            <div className="in-stock">
-              <img src="/images/Rent/instock-green.png" alt="" />
-              <p className="m-0">有庫存</p>
-            </div>
-            <div className="out-stock">
-              <img src="/images/Rent/instock-red.png" alt="" />
-              <p className="m-0">無庫存</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* Card 2 */}
-      <div className="col-6 col-sm-6 col-md-4">
-        <div className="card-top-mod">
-          <div className="c-card-img d-flex justify-content-center align-items-center">
-            <img
-              src="/images/Rent/card23-img.png"
-              className="card-img-top img-fluid"
-              alt="..."
-            />
-          </div>
-          <div className="card-body">
-            <h4 className="card-title">Product Name</h4>
-            <div className="d-flex">
-              <h5 className="card-text">$1000</h5>
-            </div>
-            <div className="c-card-color-mod pt-2">
-              <img src="/images/Rent/circle-gray.png" alt="" />
-              <img src="/images/Rent/circle-blue.png" alt="" />
-            </div>
-            <div className="in-stock">
-              <img src="/images/Rent/instock-green.png" alt="" />
-              <p className="m-0">有庫存</p>
-            </div>
-            <div className="out-stock">
-              <img src="/images/Rent/instock-red.png" alt="" />
-              <p className="m-0">無庫存</p>
+        return (
+          <div key={index} className="col p-2">
+            <div className="g-product-card">
+              <div className="g-pd-img d-flex justify-content-center align-items-center position-relative">
+                <div className="g-brand-name d-flex justify-content-center align-items-center position-absolute">
+                  {item.brand_name}
+                </div>
+                <img
+                  className="h-100"
+                  src={`/images/Rent/pd-images/${mainImage}`}
+                  alt={item.name}
+                />
+              </div>
+              <div className="g-pd-text">
+                <h6 className="h6">{item.name}</h6>
+                <div className="d-flex gap-3">
+                  <h6 className="h6">${item.price.toLocaleString()}</h6>
+                </div>
+                <div className="g-color-row">
+                  {item.colors.map((color) => (
+                    <div
+                      key={color.id}
+                      onMouseEnter={() => setMainImage(item.images[color.skuId])}
+                      onMouseLeave={() => setMainImage(item.image)}
+                    >
+                      <img
+                        width="22px"
+                        src={`/images/product/color-images/${color.image}`}
+
+                        alt={color.name}
+                      />
+                    </div>
+                  ))}
+                </div>
+                <p className="p g-color-text">
+                  {item.colors.length} {item.colors.length > 1 ? 'colors' : 'color'}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        )
+      })}
     </div>
   )
-}
+} 

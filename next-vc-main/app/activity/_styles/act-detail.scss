@@ -2,11 +2,12 @@
   --article-height: 36rem;
 }
 
-.card-body, .b-card-text {
+.card-body,
+.b-card-text {
   white-space: pre-line;
 }
 
-.b-container {
+.b-container.b-detail-page {
   padding-top: 2rem;
   padding-inline: 2rem;
 
@@ -89,6 +90,35 @@
       width: 100%;
     }
 
+    .b-ticket {
+      border: 2px solid transparent;
+      position: relative;
+      transition: 0.2s;
+
+      &:hover {
+        border-color: var(--grey200);
+      }
+
+      &.active {
+        border-color: var(--grey700);
+        z-index: 5;
+
+        &::before {
+          content: '';
+          position: absolute;
+          background: url('/check-lg.svg') no-repeat;
+          background-size: cover;
+          width: 1.7rem;
+          height: 1.7rem;
+          top: -16;
+          right: -13;
+          z-index: 6;
+          border-radius: 0.8rem;
+          background-color: var(--grey50);
+        }
+      }
+    }
+
     .b-purchaseBtn {
       margin-top: 3.5rem;
     }
@@ -109,7 +139,8 @@
     }
 
     .b-act-list {
-      padding-block: 2.5rem;
+      padding-top: 1.5rem;
+      padding-bottom: 6.25rem;
     }
   }
 }

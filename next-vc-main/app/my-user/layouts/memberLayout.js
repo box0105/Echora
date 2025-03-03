@@ -3,6 +3,7 @@
 import '../_styles/member.scss'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import '../_styles/style0.scss'
+import { useParams } from 'next/navigation'
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -10,7 +11,8 @@ import { usePathname } from 'next/navigation'
 export default function MemberLayout({ children }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const pathname = usePathname()
-
+  const params = useParams()
+  const orderId = Number(params?.orderId)
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen)
   }
@@ -40,13 +42,12 @@ export default function MemberLayout({ children }) {
     <div>
       <main className="main">
         <div className="container">
-          <h2 className="page-title">{getPageTitle()}</h2>
-          <hr />
+          {/* <h2 className="page-title">{getPageTitle()}</h2> */}
+          {/* <hr /> */}
 
           <div className="hamburger-member" id="hamburger-member">
             <div
               className="dropdown-content no-border"
-              type="button"
               onClick={toggleDropdown}
               aria-expanded={isDropdownOpen}
             >
@@ -82,41 +83,40 @@ export default function MemberLayout({ children }) {
           <div className="content">
             <aside className="sidebar">
               <div className="sidebar-section">
-                <h2 className="sidebar-title">
-                  <Link href="/my-user/profile"> 關於我</Link>
+                <h2 className={`sidebar-title ${isActive('/my-user/profile')}`}>
+                  <Link href="/my-user/profile">個人資料</Link>
                 </h2>
-                <ul className="sidebar-menu">
-                  <li
-                    className={`sidebar-item ${isActive('/my-user/profile')}`}
-                  >
-                    <Link href="/my-user/profile"> 個人資料</Link>
-                  </li>
-                  <li
-                    className={`sidebar-item ${isActive(
-                      '/my-user/profile-password'
-                    )}`}
-                  >
-                    <Link href="/my-user/profile-password"> 修改密碼</Link>
-                  </li>
-                </ul>
+                <h2
+                  className={`sidebar-title ${isActive(
+                    '/my-user/profile-password'
+                  )}`}
+                >
+                  <Link href="/my-user/profile-password">修改密碼</Link>
+                </h2>
               </div>
               <div className="sidebar-section">
-                <h2 className={`sidebar-title ${isActive('/my-user/order')}`}>
+                <h2
+                  className={`sidebar-title ${isActive(
+                    '/my-user/order' ? `/my-user/order/${orderId}` : ''
+                  )}`}
+                >
                   <Link href="/my-user/order"> 我的訂單</Link>
                 </h2>
               </div>
               <div className="sidebar-section">
-                <h2 className="sidebar-title">
+                <h2
+                  className={`sidebar-title ${isActive('/my-user/userlike')}`}
+                >
                   <Link href="/my-user/favorites"> 我的收藏</Link>
                 </h2>
               </div>
               <div className="sidebar-section">
-                <Link href="/my-user/coupons" className="sidebar-title">
-                  我的優惠券
-                </Link>
+                <h2 className={`sidebar-title ${isActive('/my-user/coupons')}`}>
+                  <Link href="/my-user/coupons"> 我的優惠券</Link>
+                </h2>
               </div>
             </aside>
-            <div className="profile-content w-100">{children}</div>
+            <div className="profile-content flex-grow-1">{children}</div>
           </div>
         </div>
       </main>

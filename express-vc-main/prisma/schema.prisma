@@ -28,6 +28,7 @@ model User {
   // 關聯 User:Profile = 1:1 
   emailValidated Boolean       @default(false) @map("email_validated")
   googleUid      String?       @unique @map("google_uid")
+  avatar         String?
   // 關聯: User:Product = n:m 透過 Favorite
   favorite       favorite[]
   usercoupons    UserCoupons[]
@@ -45,38 +46,10 @@ model favorite {
   @@id([userId, productSkuId])
 }
 
-model Order {
-  id              Int      @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
-  orderNumber     String?  @unique // 訂單編號
-  userId          Int? // 用戶 ID，代表誰下的訂單
-  // user            User     @relation(fields: [userId], references: [id]) // 關聯到 User 資料表
-  status          String? // 訂單狀態，如：'pending', 'shipped', 'completed'
-  totalAmount     Float? // 訂單總金額
-  paymentMethod   String? // 付款方式，如 'credit_card', 'cash_on_delivery' 等
-  shippingAddress String? // 配送地址，儲存訂單的配送地址
-  shippingMethod  String? // 配送方式，如 'standard', 'express' 等
-  createdAt       DateTime @default(now()) // 訂單創建時間
-  updatedAt       DateTime @updatedAt // 訂單更新時間，自動更新
-
-  // 關聯 OrderItem 資料表，表示一個訂單可以有多個商品
-  items OrderItem[]
-}
-
-model OrderItem {
-  id        Int   @id @default(autoincrement()) // 訂單商品唯一識別碼
-  orderId   Int // 關聯到 Order 資料表的訂單 ID
-  productId Int // 產品 ID
-  quantity  Int // 商品數量
-  price     Float // 商品單價
-
-  order   Order   @relation(fields: [orderId], references: [id]) // 關聯 Order 資料表
-  product Product @relation(fields: [productId], references: [id]) // 關聯 Product 資料表
-}
-
 model Otp {
   id        Int      @id @default(autoincrement())
   email     String
-  token     String
+  otp       String
   hash      String?
   createdAt DateTime @default(now()) @map("created_at")
   expiredAt DateTime @map("expired_at")
@@ -100,8 +73,8 @@ model Color {
 }
 
 model ColorPalette {
-  id   Int    @id @default(autoincrement())
-  name String @db.VarChar(50)
+  id    Int    @id @default(autoincrement())
+  name  String @db.VarChar(50)
   cname String @db.VarChar(50)
 
   @@map("color_palette")
@@ -126,7 +99,6 @@ model Product {
   discountPrice Int?        @map("discount_price")
   createdAt     DateTime    @default(now()) @map("created_at")
   // favorite      favorite[]
-  OrderItem     OrderItem[]
 
   @@map("product")
 }
@@ -158,44 +130,44 @@ model Spec {
 
 // 問題:開啟關聯部分無法寫入資料
 model Coupon {
-  id             Int           @id @default(autoincrement())
-  name           String
-  code           String?       @unique // 優惠券代碼 (例如：SUMMER20)
-  typeId         Int //type fk
-  type           CouponType    @relation(fields: [typeId], references: [id]) // 優惠券類型 (關係)
-  discount       Int // 折扣金額或百分比 (根據 discount_type 決定)
-  discountTypeId Int // discountType fk
-  discountType   DiscountType  @relation(fields: [discountTypeId], references: [id]) // 折扣類型 (關係)
-  minPurchase    Decimal? //最低消費金額
-  description    String? // 優惠券描述 (nullable)
-  startTime      DateTime
-  endTime        DateTime
-  isDelete       Boolean       @default(false)
-  usercoupons    UserCoupons[]
+  id          Int           @id @default(autoincrement())
+  name        String
+  code        String?       @unique // 優惠券代碼 (例如：SUMMER20)
+  typeId      Int //type fk
+  type        CouponType    @relation(fields: [typeId], references: [id]) // 優惠券類型 (關係)
+  discount    Int // 折扣金額或百分比 (根據 discount_type 決定)
+  minPurchase Decimal? //最低消費金額
+  description String? // 優惠券描述 (nullable)
+  startTime   DateTime
+  endTime     DateTime
+  isDelete    Boolean       @default(false)
+  usercoupons UserCoupons[]
 
   @@index([code]) // 建立 code 索引
 }
 
 model CouponType {
-  id       Int      @id @default(autoincrement())
-  category String
-  coupon   Coupon[]
-}
-
-model DiscountType {
-  id     Int      @id @default(autoincrement())
-  name   String
-  coupon Coupon[]
+  id          Int           @id @default(autoincrement())
+  category    String
+  name        String
+  coupon      Coupon[]
+  userCoupons UserCoupons[]
 }
 
 model UserCoupons {
-  id       Int     @id @default(autoincrement())
-  userId   Int
-  user     User    @relation(fields: [userId], references: [id])
-  couponId Int
-  coupon   Coupon  @relation(fields: [couponId], references: [id])
-  claimed  Boolean @default(true)
-  isDelete Boolean @default(false)
+  id           Int        @id @default(autoincrement())
+  userId       Int
+  user         User       @relation(fields: [userId], references: [id])
+  couponId     Int
+  coupon       Coupon     @relation(fields: [couponId], references: [id])
+  couponTypeId Int
+  couponType   CouponType @relation(fields: [couponTypeId], references: [id])
+  claimed      Boolean    @default(true)
+  isDelete     Boolean    @default(false)
+
+  @@index([couponId])
+  @@index([userId])
+  @@index([couponTypeId])
 }
 
 /**
@@ -219,14 +191,13 @@ model Activity {
   dist           String           @db.VarChar(255)
   address        String           @db.VarChar(255)
   intro          String           @db.Text
-  article        String           @db.Text
+  media          String           @db.Text // 多個照片路徑
 
   // 1:n
-  lineup ActivityLineup[]
-  // media         Media[]
-
+  lineup  ActivityLineup[]
+  article ActivityArticle[]
   // tickets       Ticket[]
-  // types         Type[]
+  type    ActivityTicketType[]
 }
 
 model ActivityCategory {
@@ -248,6 +219,25 @@ model ActivityLineup {
   bands       String   @db.VarChar(255)
 }
 
+model ActivityArticle {
+  id          Int      @id @default(autoincrement())
+  activity_id Int
+  activity    Activity @relation(fields: [activity_id], references: [id])
+  title       String   @db.VarChar(255)
+  content     String   @db.Text
+  images      String   @db.Text // 多個照片路徑
+}
+
+model ActivityTicketType {
+  id          Int      @id @default(autoincrement())
+  activity_id Int
+  name        String   @db.VarChar(255)
+  stock       Int
+  price       Int
+  activity    Activity @relation(fields: [activity_id], references: [id])
+  // tickets     Ticket[]
+}
+
 // model Media {
 //   id          Int      @id @default(autoincrement())
 //   activity_id Int
@@ -267,41 +257,38 @@ model ActivityLineup {
 //   type         Type     @relation(fields: [type_id], references: [id])
 // }
 
-// model Type {
-//   id          Int      @id @default(autoincrement())
-//   activity_id Int
-//   name        String   @db.VarChar(255)
-//   amount      Int
-//   price       Int
-//   activity    Activity @relation(fields: [activity_id], references: [id])
-//   tickets     Ticket[]
-// }
-
 /**
  * Activity box End
  */
 
 model MyOrder {
   id              Int      @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
+  userId          Int?
+  orderNumber     String   @unique
   recipient       String
   phone           String
   email           String
   shippingAddress String // 配送地址，儲存訂單的配送地址
   shippingMethod  String
   paymentMethod   String
+  cost            String
+  coupon          String
   totalAmount     Int
   createdAt       DateTime @default(now()) // 訂單創建時間
 }
 
 model MyOrderItem {
-  id      Int     @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
-  orderId Int
-  name    String
-  color   String?
-  image   String
-  price   String
-  count   String
-  total   String
+  id       Int     @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
+  orderId  Int
+  name     String
+  rentDate String?
+  color    String?
+  brand    String?
+  status   String?
+  image    String
+  price    String
+  count    String
+  total    String
 }
 
 model Rent {
@@ -314,13 +301,13 @@ model Rent {
   rentColors  RentItemColor[]
   stores_id   Int?
   stores      Stores?         @relation(fields: [stores_id], references: [id])
-  price       Decimal?
+  price       Int             @default(0)
   RentList_id Int?
   RentList    RentList?       @relation(fields: [RentList_id], references: [id])
   time_start  DateTime?
   time_end    DateTime?
   created_at  DateTime        @default(now())
-  rentImges   RentImges[] // 一個 Rent 可以有多個圖片
+  // OrderItem   OrderItem[]
 }
 
 model RentBrand {
@@ -330,19 +317,18 @@ model RentBrand {
 }
 
 model RentColor {
-  id              Int             @id @default(autoincrement())
-  name            String
-  rentColorImages String?
-  rentItemColors  RentItemColor[] // 修改關聯名稱，保持一致性
+  id         Int    @id @default(autoincrement())
+  name       String @db.VarChar(50)
+  colorImage String @map("rentColor_image") @db.VarChar(150)
 }
 
 model RentItemColor {
-  id          Int       @id @default(autoincrement())
-  rentId      Int
-  rent        Rent      @relation(fields: [rentId], references: [id])
-  rentColorId Int
-  rentColor   RentColor @relation(fields: [rentColorId], references: [id])
-  stock       Int
+  id      String @id @db.VarChar(20)
+  rentId  Int
+  name    String @db.VarChar(100)
+  colorId Int    @map("RentColor_id")
+  stock   Int    @default(0)
+  Rent    Rent   @relation(fields: [rentId], references: [id])
 }
 
 model RentList {
@@ -358,13 +344,11 @@ model RentList {
 }
 
 model RentImges {
-  id    Int    @id @default(autoincrement())
-  name  String @db.VarChar(150)
-  image String @db.VarChar(300)
-
-  // 外鍵，指向 Rent 的 id
-  rentId Int
-  rent   Rent? @relation(fields: [rentId], references: [id], onDelete: Cascade)
+  id              Int    @id @default(autoincrement())
+  RentItemColorId String @db.VarChar(20)
+  name            String @db.VarChar(150)
+  image           String @db.VarChar(300)
+  sortOrder       Int    @map("sort_order")
 }
 
 model Stores {

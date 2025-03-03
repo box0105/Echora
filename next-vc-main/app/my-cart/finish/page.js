@@ -4,14 +4,43 @@ import './_styles/cart-checkkist.scss'
 import './_styles/index.scss'
 import './_styles/cart-information.scss'
 import './_styles/cart-finish.scss'
-import React from 'react'
+import React, { useEffect } from 'react'
+import Link from 'next/link'
+
+
 
 export default function FinishPage() {
 
+  useEffect(() => {
+    const userId = localStorage.getItem('userId')
+    const couponObj = localStorage.getItem('coupon')
+    const couponId = JSON.parse(couponObj).couponId
+    console.log(couponId);
+    const useCoupon = async () => {
+      try {
+        const res = await fetch(`http://localhost:3005/api/coupon/`, {
+          method: 'PUT',
+          headers: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify({ userId: userId, couponId: couponId }),
+        })
+        const data = await res.json()
+        console.log(data)
+        return data
+      } catch (err) {
+        setError(err.message)
+        console.log(err.message)
+        return { status: 'fail' }
+      }
+    }
+    useCoupon()
+    localStorage.removeItem('coupon');
+  }, [])
 
   return (
     <>
-      <div className="m-background">
+      <div className="m-background mb-5">
         <div className="m-checklist-section1">
           <div className="container-fluid d-flex justify-content-center m-index1">
             <div className="m-sec1-img w-75">
@@ -55,12 +84,14 @@ export default function FinishPage() {
           </div>
         </div>
         <div className="m-finish-section4 d-flex justify-content-center">
-          <button
-            type="button"
-            className="btn btn-dark px-5 py-2 mt-lg-5 mt-3 mb-5"
-          >
-            查看訂單
-          </button>
+          <Link href="http://localhost:3000/my-user/order">
+            <button
+              type="button"
+              className="btn btn-dark px-5 py-2 mt-lg-5 mt-3 mb-5"
+            >
+              查看訂單
+            </button>
+          </Link>
         </div>
       </div>
     </>

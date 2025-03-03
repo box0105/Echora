@@ -40,7 +40,7 @@ userSchema.updateUser = z.object({
       bio: z.string().max(160).optional(), // 0-160個字元，可選填
       avatar: z.string().optional(), // 字串，可選填
       sex: z.enum(['男', '女', '其他']).optional(), // 列舉，可選填
-      birth: z.string().date().optional(), // 日期字串，可選填
+      // birth: z.string().date().optional(), // 日期字串，可選填
       phone: z.string().optional(), // 字串，可選填
       postcode: z.string().optional(), // 字串，可選填
       address: z.string().optional(), // 字串，可選填
@@ -93,9 +93,9 @@ export const getUserById = async (userId) => {
     where: {
       id: userId,
     },
-    include: {
-      profile: true,
-    },
+    // include: {
+    //   profile: true,
+    // },
   })
 
   // user=null，表示無此會員資料
@@ -103,10 +103,10 @@ export const getUserById = async (userId) => {
     throw new Error('會員資料不存在')
   }
 
-  if (user.profile.birth) {
-    // 將生日的日期格式轉為字串 yyyy-mm-dd
-    user.profile.birth = user.profile.birth.toISOString().split('T')[0]
-  }
+  // if (user.profile.birth) {
+  //   // 將生日的日期格式轉為字串 yyyy-mm-dd
+  //   user.profile.birth = user.profile.birth.toISOString().split('T')[0]
+  // }
 
   // 如果user的屬性中有null值，轉換為空字串
   if (user) {
@@ -298,10 +298,10 @@ export const createUser = async (newUser) => {
       password: passwordHash,
       username,
       googleUid: googleUid,
-      lineUid: lineUid,
-      profile: {
-        create: { name: name, avatar: avatar },
-      },
+      // lineUid: lineUid,
+      // profile: {
+      //   create: { name: name, avatar: avatar },
+      // },
     },
   })
 
@@ -494,7 +494,7 @@ export const getUserFavorites = async (userId) => {
   validatedParamId(userId)
 
   // 使用findMany方法取得所有使用者的最愛商品資料
-  const favorites = await prisma.favorite.findMany({
+  const favorites = await prisma.userLike.findMany({
     where: {
       userId: userId,
     },

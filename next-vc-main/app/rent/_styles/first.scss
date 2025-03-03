@@ -9,10 +9,6 @@
     border-radius: 0;
   }
 }
-/* 全域 */
-// body {
-//   font-family: 'Noto Sans TC', Arial, Helvetica, sans-serif;
-// }
 
 /* 自訂 */
 .c-background {
@@ -184,10 +180,6 @@ c-filter-img {
     color: #d52b1e;
     font-weight: 700;
   }
-  p {
-    font-size: 12px;
-    font-weight: 700;
-  }
 }
 .card-top {
   width: 18rem;
@@ -200,10 +192,6 @@ c-filter-img {
 .d-flex .mod-sel {
   width: 75px;
   height: 22px;
-  p {
-    font-size: 12px;
-    font-weight: 400;
-  }
 }
 
 // .row {
@@ -215,11 +203,6 @@ c-filter-img {
 //   width: 50%; /* 讓每行顯示兩張卡片 */
 //   box-sizing: border-box; /* 確保元素寬度計算正常 */
 // }
-
-.c-col{
-  width: 50%; /* 讓每行顯示兩張卡片 */
-  box-sizing: border-box; /* 確保元素寬度計算正常 */
-}
 
 .card-top-1 {
   width: 100%; /* 讓卡片容器寬度100% */
