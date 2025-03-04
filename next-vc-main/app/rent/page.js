@@ -21,6 +21,7 @@ export default function Page(props) {
   const [isError, setIsError] = useState(false)
 
   const [visibleCount, setVisibleCount] = useState(12)
+
   const [sortOrder, setSortOrder] = useState({
     field: 'price',
     direction: 'asc',

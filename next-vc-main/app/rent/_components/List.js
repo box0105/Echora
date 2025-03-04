@@ -8,7 +8,7 @@ export default function RentList() {
   const [filteredData, setFilteredData] = useState([]); // 存放过滤后的数据
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(20);
+  const [visibleCount, setVisibleCount] = useState(12);
   const [sortOrder, setSortOrder] = useState({ field: 'price', direction: 'asc' });
   const [filters, setFilters] = useState({
     brands: [],
