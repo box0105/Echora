@@ -48,10 +48,22 @@ router.get('/', async (req, res) => {
     color_palette.id AS color_palette_id, 
     image.image,
     CASE 
-        WHEN ${colorPids.length > 0 ? `color_palette.id IN (${colorPids.join(',')})`: '0'}
-        AND ${colorIds.length > 0 ? `color.id IN (${colorIds.join(',')})` : '0'} THEN 1
-        WHEN ${colorIds.length > 0 ? `color.id IN (${colorIds.join(',')})` : '0'} THEN 2
-        WHEN ${colorPids.length > 0 ? `color_palette.id IN (${colorPids.join(',')})`: '0'} THEN 3
+        WHEN ${
+          colorPids.length > 0
+            ? `color_palette.id IN (${colorPids.join(',')})`
+            : '0'
+        }
+        AND ${
+          colorIds.length > 0 ? `color.id IN (${colorIds.join(',')})` : '0'
+        } THEN 1
+        WHEN ${
+          colorIds.length > 0 ? `color.id IN (${colorIds.join(',')})` : '0'
+        } THEN 2
+        WHEN ${
+          colorPids.length > 0
+            ? `color_palette.id IN (${colorPids.join(',')})`
+            : '0'
+        } THEN 3
         ELSE 4 
     END AS sort_priority
     FROM product 
@@ -67,13 +79,20 @@ router.get('/', async (req, res) => {
           JOIN color ON product_sku.color_id = color.id
           JOIN color_palette ON color.color_palette_id = color_palette.id
           WHERE 1=1 
-          ${colorPids.length > 0 ? `AND color_palette.id IN (${colorPids.join(",")})` : ""}
-          ${colorIds.length > 0 ? `AND color.id IN (${colorIds.join(",")})` : ""}
-      )`;
+          ${
+            colorPids.length > 0
+              ? `AND color_palette.id IN (${colorPids.join(',')})`
+              : ''
+          }
+          ${
+            colorIds.length > 0 ? `AND color.id IN (${colorIds.join(',')})` : ''
+          }
+      )`
     }
-    if(nameLike) sql += ` AND product.name LIKE '%${nameLike}%'`
-    if(brandIds.length>0) sql +=` AND brand.id IN (${brandIds.join(", ")})`
-    if(priceGte && priceLte) sql +=` AND product.price BETWEEN ${priceGte} AND ${priceLte}`
+    if (nameLike) sql += ` AND product.name LIKE '%${nameLike}%'`
+    if (brandIds.length > 0) sql += ` AND brand.id IN (${brandIds.join(', ')})`
+    if (priceGte && priceLte)
+      sql += ` AND product.price BETWEEN ${priceGte} AND ${priceLte}`
     sql += ` AND image.sort_order = 1`
     sql += ` ORDER BY sort_priority ASC, product.${sort} ${order}`
 
@@ -150,6 +169,69 @@ router.get('/colorpalette', async (req, res) => {
   }
 })
 
+// 得到單筆資料
+// GET /api/products/:pid/:fskuid
+//for product detail page
+router.get('/:pid/:firstSkuId', async (req, res) => {
+  const { pid, firstSkuId } = req.params
+  const sql = `SELECT product.*, brand.name AS brand_name, product_sku.id AS product_sku_id, product_sku.stock, color.name AS color_name, color.color_image, image.image, image.sort_order, spec.neck_pickup, spec.middle_pickup, spec.bridge_pickup, spec.controls, spec.switching FROM product JOIN brand ON product.brand_id = brand.id JOIN product_sku ON product.id = product_sku.product_id JOIN color ON product_sku.color_id = color.id JOIN image ON product_sku.id = image.product_sku_id JOIN spec ON product.id = spec.product_id WHERE product.id = ? ORDER BY CASE WHEN product_sku.id = ? THEN 0 ELSE 1 END, image.sort_order;`
+  try {
+    const [rows] = await db.query(sql, [pid, firstSkuId])
+    // console.log(rows)
+    res.status(200).json({
+      status: 'success',
+      data: rows,
+      message: '取得資料成功',
+    })
+  } catch (err) {
+    console.log(err)
+    res.status(400).json({
+      status: 'error',
+      message: err.message ? err.message : '取得資料失敗',
+    })
+  }
+})
+
+//得到比較產品的資料
+// GET /api/products/comparison?products=
+router.get('/comparison', async (req, res) => {
+  const { products } = req.query
+  const productsString = products.split(",")
+  console.log(productsString)
+  try {
+    if (!products) throw new Error('請提供查詢字串')
+
+    const sql = `SELECT product.*,
+    brand.name AS brand_name, 
+    product_sku.id AS product_sku_id, 
+    product_sku.stock, 
+    color.name AS color_name, 
+    color.color_image, 
+    image.image
+    FROM product
+    JOIN brand ON product.brand_id = brand.id 
+    JOIN product_sku ON product.id = product_sku.product_id 
+    JOIN color ON product_sku.color_id = color.id 
+    JOIN image ON product_sku.id = image.product_sku_id
+    WHERE image.sort_order = 1
+    AND product_sku.id IN (?)`
+
+    const [rows] = await db.query(sql, [productsString])
+
+    res.status(200).json({
+      status: 'success',
+      data: rows,
+      message: '取得資料成功',
+    })
+  } catch (err) {
+    console.log(err)
+    res.status(400).json({
+      status: 'error',
+      message: err.message ? err.message : '取得資料失敗',
+    })
+  }
+})
+
 // GET /api/products/search?q=
 // router.get('/search', async (req, res) => {
 //   const { q } = req.query
@@ -175,30 +257,5 @@ router.get('/colorpalette', async (req, res) => {
 //     })
 //   }
 // })
-
-// 得到單筆資料
-// GET /api/products/:pid/:fskuid
-//for product detail page
-router.get('/:pid/:firstSkuId', async (req, res) => {
-  const { pid, firstSkuId } = req.params
-  const sql = `SELECT product.*, brand.name AS brand_name, product_sku.id AS product_sku_id, product_sku.stock, color.name AS color_name, color.color_image, image.image, image.sort_order, spec.neck_pickup, spec.middle_pickup, spec.bridge_pickup, spec.controls, spec.switching FROM product JOIN brand ON product.brand_id = brand.id JOIN product_sku ON product.id = product_sku.product_id JOIN color ON product_sku.color_id = color.id JOIN image ON product_sku.id = image.product_sku_id JOIN spec ON product.id = spec.product_id WHERE product.id = ? ORDER BY CASE WHEN product_sku.id = ? THEN 0 ELSE 1 END, image.sort_order;`
-  try {
-    const [rows] = await db.query(sql, [pid, firstSkuId])
-    // console.log(rows)
-    res.status(200).json({
-      status: 'success',
-      data: rows,
-      message: '取得資料成功',
-    })
-  } catch (err) {
-    console.log(err)
-    res.status(400).json({
-      status: 'error',
-      message: err.message ? err.message : '取得資料失敗',
-    })
-  }
-})
-
-// *ask: "比較功能"怎麼設路由? 從productlist的網址上拿pid參數?
 
 export default router
