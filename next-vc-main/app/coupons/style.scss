@@ -13,10 +13,9 @@
     /* 確保漸層疊加層的定位 */
     display: flex;
     width: 100%;
-    padding: 0;
     height: 70vh;
     /* background: url(./images/main.jpg) lightgray  no-repeat; */
-    background: url(../../public/images/coupon/pexels-monstera-4137785.png) 0px -723.5px / 100% 251.836% no-repeat;
+    background: url(../../public/images/coupon/pexels-monstera-4137785.png) 0px -680px / 100% 251.836% no-repeat;
     background-size:  auto; 
     /* 背景縮放問題先保留 */
     color: #fff;
@@ -24,7 +23,7 @@
 
     @media (max-width: 900px) {
         justify-content: center;
-        height: 80vh;
+        // height: 80vh;
     }
 
     /* mobile */
@@ -134,7 +133,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height:100%;
     background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
     /* 調整透明度 */
     z-index: 1;
@@ -282,29 +281,42 @@
     }
 }
 
-.carousel-item{
-    margin-top: 20%;
-
-}
-.carousel-item h1{
-    color: #f4f3e2;
-    font-family:  great vibes;
-    font-size: 80px;
-}
-.carousel-item p{
-    font-family: montserrat;
-}
-
-@media (min-width: 768px) and (max-width: 991px){
-    .carousel-item{
-        margin-top: 50%;
-    }
-}
-@media (max-width: 767px){
-    .carousel-item {
-        margin-top: 45%;
-    }
-    .carousel-item  h1{
-        font-size: 32px;
-    }
-}
+.swiper {
+    width: 100%;
+    height: 100%;
+    background: #000;
+  }
+  
+  .swiper-slide {
+    font-size: 18px;
+    color: #fff;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 40px 60px;
+  }
+  
+  .parallax-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 130%;
+    height: 100%;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .swiper-slide .title {
+    font-size: 41px;
+    font-weight: 300;
+  }
+  
+  .swiper-slide .subtitle {
+    font-size: 21px;
+  }
+  
+  .swiper-slide .text {
+    font-size: 14px;
+    max-width: 400px;
+    line-height: 1.3;
+  }

@@ -34,7 +34,7 @@ router.get('/:userId', async (req, res) => {
     return
   }
   const user = await db.query(`SELECT username FROM user WHERE id = ${userId}`)
-
+  console.log(user);
   const [rows] = await db.query(
     `SELECT * FROM usercoupons WHERE userId = ${userId}`
   )
@@ -45,6 +45,9 @@ router.get('/:userId', async (req, res) => {
   try {
     // 1. 使用 Prisma 查詢
     const datas = await prisma.userCoupons.findMany({
+      where:{
+        userId: userId,
+      },
       include: {
         // user: true, 有需要才回傳使用者的資料 較敏感
         coupon: true,
@@ -66,6 +69,7 @@ router.get('/:userId', async (req, res) => {
       startTime: data.coupon.startTime,
       endTime: data.coupon.endTime,
     }))
+    console.log(userCheckCoupons);
 
     res.json({
       status: 'success',
@@ -154,9 +158,9 @@ router.post('/:userId', async (req, res) => {
 // user取得所有優惠券
 router.post('/:userId/all', async (req, res) => {
   const userId = Number(req.params.userId)
-
-  const [A] = await db.query(`SELECT * FROM coupon WHERE isDelete = ?`, [false])
-  const [B] = await db.query(`SELECT * FROM usercoupons WHERE claimed = ?`, [true])
+  // console.log(userId);
+  const [A] = await db.query(`SELECT * FROM coupon WHERE isDelete = ? `, [false])
+  const [B] = await db.query(`SELECT * FROM usercoupons WHERE claimed = ? AND userId = ?`, [true,userId])
   // console.log(A);
   // console.log(B);
 
@@ -176,7 +180,7 @@ router.post('/:userId/all', async (req, res) => {
 
     const [row] = await db.query(`SELECT * FROM user WHERE id = ?`, [userId])
     const user = row[0]
-    // console.log(user);
+    console.log(user);
 
     //驗證已領取
     if (newA.length == 0) throw new Error('您已經全部領取了!')
