@@ -208,7 +208,7 @@ const CouponAdminTable = () => {
                     }
                   />
                 ) : (
-                  coupon.name
+                  coupon.start
                 )}
               </td>
               <td>
@@ -221,7 +221,7 @@ const CouponAdminTable = () => {
                     }
                   />
                 ) : (
-                  coupon.name
+                  coupon.end
                 )}
               </td>
               <td>
@@ -234,7 +234,7 @@ const CouponAdminTable = () => {
                     }
                   />
                 ) : (
-                  coupon.name
+                  coupon.status
                 )}
               </td>
               <td>
