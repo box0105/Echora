@@ -39,22 +39,17 @@ export default function Header() {
   const { updateQueryParams } = useActivity()
 
   const handleSearch = (e) => {
-    if (e.key === 'Enter') {
-      if (pathName.includes('/activity')) {
-        updateQueryParams({ search: searchName })
-      } else {
-        router.push(`/product/list`)
-        setCriteria((prev) => ({
-          ...prev,
-          nameLike: searchName,
-        }))
-      } else if (pathName.includes('/activity')) {
-        updateQueryParams({ search: searchName })
-      }else if (pathName.includes('/rent')) {
-        updateQueryParams({ search: searchName })
-      }
+    if (pathName.includes('/product')) {
+      setCriteria((prev) => ({
+        ...prev,
+        nameLike: searchName,
+      }));
+    } else if (pathName.includes('/activity')) {
+      updateQueryParams({ search: searchName });
+    } else if (pathName.includes('/rent')) {
+      updateQueryParams({ search: searchName });
     }
-  }
+    
 
   const [showDropdown, setShowDropdown] = useState(false)
   const { user, isAuth, setIsAuth } = useAuth()
