@@ -421,6 +421,12 @@ export default function ProfilePage() {
         const resData = await res.json()
         console.log('API 回傳資料:', resData)
         if (resData.status === 'success') {
+          const { address } = resData.data
+          const [city, district, ...rest] = address.split(' ')
+          const remainingAddress = rest.join(' ')
+          setSelectedCity(city)
+          setSelectedDistrict(district)
+          setRemainingAddress(remainingAddress)
           setProfileInput(resData.data)
           console.log('User profile data:', resData.data)
         } else {
@@ -446,6 +452,7 @@ export default function ProfilePage() {
     const city = e.target.value
     setSelectedCity(city)
     setSelectedDistrict('')
+    setRemainingAddress('')
     setProfileInput((prevProfile) => ({
       ...prevProfile,
       address: `${city}`,
@@ -515,7 +522,7 @@ export default function ProfilePage() {
                   id="username"
                   name="username"
                   className="form-control"
-                  value={profileInput.username}
+                  value={profileInput?.username}
                   onChange={handleInputChange}
                 />
               </div>
@@ -529,7 +536,7 @@ export default function ProfilePage() {
                   id="email"
                   name="email"
                   className="form-control"
-                  value={profileInput.email}
+                  value={profileInput?.email}
                   readOnly
                 />
               </div>
@@ -553,6 +560,47 @@ export default function ProfilePage() {
                   </button>
                 </div>
               </div>
+              <fieldset className="gender-group form-group">
+                <legend className="form-label">
+                  性別 <span>(選填)</span>
+                </legend>
+                <label className="gender-label">
+                  <input
+                    type="radio"
+                    name="sex"
+                    value="female"
+                    className="visually-hidden"
+                    checked={profileInput?.sex === 'female'}
+                    onChange={handleInputChange}
+                  />
+                  <span className="gender-radio" />
+                  <span>女</span>
+                </label>
+                <label className="gender-label">
+                  <input
+                    type="radio"
+                    name="sex"
+                    value="male"
+                    className="visually-hidden"
+                    checked={profileInput?.sex === 'male'}
+                    onChange={handleInputChange}
+                  />
+                  <span className="gender-radio" />
+                  <span>男</span>
+                </label>
+                <label className="gender-label">
+                  <input
+                    type="radio"
+                    name="sex"
+                    value="other"
+                    className="visually-hidden"
+                    checked={profileInput?.sex === 'other'}
+                    onChange={handleInputChange}
+                  />
+                  <span className="gender-radio" />
+                  <span>不便透露</span>
+                </label>
+              </fieldset>
             </div>
             <div className="right">
               <div className="form-group">
@@ -564,7 +612,7 @@ export default function ProfilePage() {
                   id="phone"
                   name="phone"
                   className="form-control"
-                  value={profileInput.phone}
+                  value={profileInput?.phone}
                   onChange={handleInputChange}
                   placeholder="請輸入電話號碼"
                 />
@@ -624,52 +672,11 @@ export default function ProfilePage() {
                   id="postcode"
                   name="postcode"
                   className="form-control"
-                  value={profileInput.postcode}
+                  value={profileInput?.postcode}
                   onChange={handleInputChange}
                   placeholder="請輸入郵遞區號"
                 />
               </div>
-              <fieldset className="gender-group form-group">
-                <legend className="form-label">
-                  性別 <span>(選填)</span>
-                </legend>
-                <label className="gender-label">
-                  <input
-                    type="radio"
-                    name="sex"
-                    value="female"
-                    className="visually-hidden"
-                    checked={profileInput.sex === 'female'}
-                    onChange={handleInputChange}
-                  />
-                  <span className="gender-radio" />
-                  <span>女</span>
-                </label>
-                <label className="gender-label">
-                  <input
-                    type="radio"
-                    name="sex"
-                    value="male"
-                    className="visually-hidden"
-                    checked={profileInput.sex === 'male'}
-                    onChange={handleInputChange}
-                  />
-                  <span className="gender-radio" />
-                  <span>男</span>
-                </label>
-                <label className="gender-label">
-                  <input
-                    type="radio"
-                    name="sex"
-                    value="other"
-                    className="visually-hidden"
-                    checked={profileInput.sex === 'other'}
-                    onChange={handleInputChange}
-                  />
-                  <span className="gender-radio" />
-                  <span>不便透露</span>
-                </label>
-              </fieldset>
             </div>
             {/* <div className="section-header">
               <h4 className="form-label">頭貼</h4>
