@@ -87,7 +87,8 @@
   }
 
   .section-title {
-    margin: 20px 0;
+    margin: 0px 0px 20px 0;
+    ;
     color: #000;
   }
 
@@ -228,6 +229,10 @@
 
   .tab-link {
     display: none;
+  }
+
+  .form-control {
+    margin-top: 10px;
   }
 
   // .tab-link.active {
