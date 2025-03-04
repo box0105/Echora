@@ -11,13 +11,16 @@ CouponContext.displayName = 'CouponContext'
 export function MyCouponProvider({ children }) {
   // 錯誤物件
   const [error, setError] = useState(null)
-  const [userId, setUserId] = useState()
+  // const [userId, setUserId] = useState()
 
-  useEffect(() => {
-    const userId = localStorage.getItem('userId')
-    setUserId(userId)
-  }, [])
+  // useEffect(() => {
+  //   const userId = localStorage.getItem('userId')
+  //   setUserId(userId)
+  // }, []) useEffect在元件渲染完後執行 會有時序問題 使用函式執行取值會是較好的做法 可以在要執行功能的時候才取值 
+  const getUserId = () => localStorage.getItem('userId')
+
   const claimCoupon = async (couponId, typeId) => {
+    const userId = getUserId()
     try {
       // http://localhost:3005/api/coupon/resource
       const res = await fetch(`http://localhost:3005/api/coupon/${userId}`, {
@@ -41,6 +44,7 @@ export function MyCouponProvider({ children }) {
   }
 
   const claimCoupons = async () => {
+    const userId = getUserId()
     try {
       const res = await fetch(`http://localhost:3005/api/coupon/${userId}/all`, {
         method: 'POST',
