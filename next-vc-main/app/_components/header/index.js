@@ -49,7 +49,7 @@ export default function Header() {
     } else if (pathName.includes('/rent')) {
       updateQueryParams({ search: searchName });
     }
-    
+  }
 
   const [showDropdown, setShowDropdown] = useState(false)
   const { user, isAuth, setIsAuth } = useAuth()
