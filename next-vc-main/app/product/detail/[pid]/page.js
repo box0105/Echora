@@ -234,13 +234,13 @@ export default function ProductDetailIdPage() {
         <section className="g-pd-details">
           <div className="container-fluid h-100">
             <div className="row h-100">
-              <div className="g-pd-imgs col-xxl-7 h-100">
+              <div className="g-pd-imgs col-lg-7 h-100">
               <ProductImagesCarousel 
                 detailData = {detailData}
                 selectedSku = {selectedSku}
               />
               </div>
-              <div className="g-pd-discrip col-xxl-5 h-100">
+              <div className="g-pd-discrip col-lg-5 h-100">
                 <img
                   className="g-heart"
                   src={`/images/product/detail/${favIcon}`}

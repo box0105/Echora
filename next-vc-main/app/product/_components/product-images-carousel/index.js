@@ -2,7 +2,7 @@
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules'
-import './detail.scss'
+import './product-images-carousel.scss'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import { useState, useEffect, useRef } from 'react'
@@ -61,33 +61,6 @@ export default function ProductImagesCarousel({ detailData, selectedSku }) {
               ))}
             </Swiper>
           </div>
-          {/* <div className="w-100 h-100 d-flex flex-column justify-content-between gap-3">
-                      {selectedSku
-                        ? detailData[0]?.images[selectedSku].map((img) => (
-                            <>
-                              <div className="g-img-box w-100 h-100">
-                                <img
-                                  className="h-100 w-100 object-fit-cover"
-                                  src={`/images/product/pd-images/${img}`}
-                                  alt={detailData[0].name}
-                                />
-                              </div>
-                            </>
-                          ))
-                        : detailData[0]?.images[
-                            detailData[0]?.defaultSelectedSku
-                          ].map((img) => (
-                            <>
-                              <div className="g-img-box w-100 h-100">
-                                <img
-                                  className="h-100 w-100 object-fit-cover"
-                                  src={`/images/product/pd-images/${img}`}
-                                  alt={detailData[0].name}
-                                />
-                              </div>
-                            </>
-                          ))}
-                    </div> */}
         </div>
         <div className="g-main-img col-lg-9 text-center">
           <img
@@ -133,15 +106,6 @@ export default function ProductImagesCarousel({ detailData, selectedSku }) {
               </SwiperSlide>
             ))}
           </Swiper>
-          {/* <img
-            className="h-100 object-fit-contain"
-            src={`/images/product/pd-images/${
-              selectedSku
-                ? detailData[0]?.images[selectedSku][selectedImage]
-                : detailData[0]?.defaultImage
-            }`}
-            alt={detailData[0].name}
-          /> */}
         </div>
       </div>
     </>
