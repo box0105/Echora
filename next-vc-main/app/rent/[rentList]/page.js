@@ -5,18 +5,29 @@ import Main from './_components/ListMain'
 import Boottom from './_components/ListBottom'
 import { useParams } from 'next/navigation'
 import { useMyCart } from '@/hooks/use-cart'
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import { FaCalendarAlt } from 'react-icons/fa'
 
 export default function Page(props) {
+  const CustomInput = ({ value, onClick }) => (
+    <div className="date-picker-container">
+      <input type="text" value={value} readOnly className="date-picker-input" onClick={onClick} />
+      <FaCalendarAlt className="calendar-icon" onClick={onClick} />
+    </div>
+  );
+  const initialStartDate = new Date()
+  initialStartDate.setDate(initialStartDate.getDate() + 3) // 開始日期為當前日期＋3天
+
+  const initialEndDate = new Date(initialStartDate)
+  initialEndDate.setDate(initialStartDate.getDate() + 1)
+
   const [ListData, setListData] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState(false)
   const [selectedColor, setSelectedColor] = useState(null)
-  const [startDate, setStartDate] = useState(new Date())
-  const [endDate, setEndDate] = useState(new Date())
+  const [startDate, setStartDate] = useState(initialStartDate)
+  const [endDate, setEndDate] = useState(initialEndDate)
   const [quantity, setQuantity] = useState(1)
   const [selectedStore, setSelectedStore] = useState('台北店')
   const [totalPrice, setTotalPrice] = useState(0)
@@ -77,74 +88,79 @@ export default function Page(props) {
   }
   // 计算日期差并更新租金
   const calculateTotalPrice = () => {
-    if (ListData && startDate && endDate) {
-      const start = new Date(startDate)
-      const end = new Date(endDate)
+    if (!ListData || !startDate || !endDate) return
 
-      const timeDiff = end.getTime() - start.getTime() // 获取时间差
-      const dayDiff = timeDiff / (1000 * 3600 * 24) // 转换为天数
-      const pricePerDay = ListData.price // 单日租金
-      const total = pricePerDay * dayDiff * quantity // 总价格
-      setTotalPrice(total)
-    }
+    const start = new Date(startDate)
+    const end = new Date(endDate)
+
+    if (end <= start) return // 確保結束日期大於開始日期
+
+    const timeDiff = end.getTime() - start.getTime()
+    const dayDiff = timeDiff / (1000 * 3600 * 24)
+    const pricePerDay = ListData.price || 0 // 確保價格存在
+    const total = pricePerDay * dayDiff * quantity
+
+    setTotalPrice(total)
   }
 
   // 验证开始日期合法性
   const minStartDate = useMemo(() => {
-    const now = new Date();
-    const minDate = new Date(now);
-    minDate.setDate(now.getDate() + 3); // 设置开始日期最小值为当前日期后3天
-    return minDate;
-  }, []);
+    const now = new Date()
+    const minDate = new Date(now)
+    minDate.setDate(now.getDate() + 3) // 设置开始日期最小值为当前日期后3天
+    return minDate
+  }, [])
 
   // 验证开始日期合法性
   const handleStartDateChange = (e) => {
-    const newStartDate = new Date(e.target.value);
+    const newStartDate = new Date(e.target.value)
 
     // 确保开始日期不能早于当前日期的三天后
     if (newStartDate < minStartDate) {
-      alert('麻煩預約租借必須要三天後才能預約');
-      return;
+      alert('麻煩預約租借必須要三天後才能預約')
+      return
     }
-  
+
     // 设置开始日期
-    setStartDate(newStartDate);
-  
+    setStartDate(newStartDate)
+
     // 计算结束日期，结束日期是开始日期的后一天
-    const newEndDate = new Date(newStartDate);
-    newEndDate.setDate(newStartDate.getDate() + 1); // 结束日期为开始日期后1天
-    setEndDate(newEndDate);
-  };
-  
+    const newEndDate = new Date(newStartDate)
+    newEndDate.setDate(newStartDate.getDate() + 1) // 结束日期为开始日期后1天
+    setEndDate(newEndDate)
+  }
+
   // 修改后的 handleEndDateChange
-  const handleEndDateChange = (e) => {
-    const newEndDate = new Date(e.target.value);
-  
-    // 结束日期不能小于开始日期
-    if (newEndDate <= startDate) {
-      alert('結束日期無法小於開始日期');
-      return;
+  const handleEndDateChange = (date) => {
+    if (!startDate) {
+      alert('請先選擇開始日期')
+      return
     }
-  
-    // 结束日期不能超过7天
-    const maxEndDate = new Date(startDate);
-    maxEndDate.setDate(startDate.getDate() + 7);
-    if (newEndDate > maxEndDate) {
-      alert('本網站租約最長為7日');
-      return;
+
+    if (date <= startDate) {
+      alert('結束日期無法小於或等於開始日期')
+      return
     }
-  
-    setEndDate(newEndDate);
-  };
-  
+
+    setEndDate(date)
+  }
+
+  // 計算結束日期的最大限制：起始日期＋7天
+  const maxEndDate = useMemo(() => {
+    if (!startDate) return new Date()
+    const mEnd = new Date(startDate)
+    mEnd.setDate(startDate.getDate() + 7)
+    return mEnd
+  }, [startDate])
+
   // 修改 minEndDate
-  const minEndDate = new Date(startDate);
-  minEndDate.setDate(startDate.getDate() + 1); // 设置结束日期最小值为起始日期的后一天
-//日期
-  useEffect(() => {
-    const today = new Date(); // 當前日期
-    setStartDate(today);
-  }, []);
+  const minEndDate = new Date(startDate)
+  minEndDate.setDate(startDate.getDate() + 1) // 设置结束日期最小值为起始日期的后一天
+  //日期
+  // useEffect(() => {
+  //   const today = new Date(); // 當前日期
+  //   setStartDate(today);
+  // }, []);
   useEffect(() => {
     calculateTotalPrice()
   }, [startDate, endDate, quantity, selectedColor])
@@ -230,10 +246,10 @@ export default function Page(props) {
         <div>
           {/* section1 */}
           <div className="c-section1">
-            <div className=" c-index1">
+            <div className=" c">
               <div className="container-fluid">
                 <div className="row">
-                  <div className="col-7 ">
+                  <div className="col-7 c-index1 ">
                     <Main images={selectedImages} />
                   </div>
                   <div className="col-5 c-left">
@@ -243,7 +259,7 @@ export default function Page(props) {
                       </div>
                       <div className="c-price">
                         <h3 className="c-price-1 m-0">
-                          價錢:{ListData.price}/天
+                          NT$:{ListData.price}/天
                         </h3>
                       </div>
                       <div className="c-brand">
@@ -299,8 +315,8 @@ export default function Page(props) {
                           minDate={minStartDate} // 设置开始日期最小值为当前日期的三天后
                           placeholderText="開始日期"
                           dateFormat="yyyy/MM/dd"
-                          className="w-100"
-
+                          disabled={!startDate}
+                          customInput={<CustomInput />}
                         />
                       </div>
 
@@ -308,14 +324,15 @@ export default function Page(props) {
                         <div className="c-edata">
                           <div className="h4 title-start">租借結束日</div>
                         </div>
-                        <DatePicker 
+                        <DatePicker
                           selected={endDate}
-                          onChange={(date) => setEndDate(date)}
-                          minDate={minEndDate} 
+                          onChange={(date) => handleEndDateChange(date)}
+                          minDate={minEndDate}
+                          maxDate={maxEndDate}
                           placeholderText="結束日期"
                           dateFormat="yyyy/MM/dd"
                           disabled={!startDate}
-                          className="w-100"
+                          customInput={<CustomInput />}
                         />
                       </div>
 
@@ -332,7 +349,7 @@ export default function Page(props) {
                         <select
                           name
                           id
-                          className="c-addselect w-100 h-100"
+                          className="c-addselect w-100 inputse"
                           value={selectedStore}
                           onChange={handleStoreChange}
                         >
@@ -373,11 +390,11 @@ export default function Page(props) {
 
           {/* section2 & section3 */}
           <div className="c-section2">
-            <div className="container-fluid c-index1">
+            <div className="container-fluid ">
               <div className="row">
-                <div className="col-7 c-prduct">
+                <div className="col-7 c-prduct c-index1">
                   <div className="product-top">
-                    <div className="h3 pb-3 m-0">商品描述</div>
+                    <div className="h3 pb-3 m-0 c-List-body">商品描述</div>
                     <div className="product-list-text">
                       <div className="h6">{ListData.description}</div>
                     </div>
@@ -387,7 +404,7 @@ export default function Page(props) {
                     className="product-title"
                     style={{ paddingTop: '1.75rem' }}
                   >
-                    <div className="h3 pb-3 m-0">電子裝置規格</div>
+                    <div className="h3 pb-3 m-0 c-List-title">電子裝置規格</div>
                   </div>
                   {/* 第一行 */}
                   <div className="product-body d-flex">
@@ -447,7 +464,7 @@ export default function Page(props) {
                     <div className="product-list empty-placeholder" />
                   </div>
                 </div>
-                <div className="col-5 bo-gu">
+                <div className="col-5 bo-gu ">
                   <div className="c-guide">
                     <div className="c-g pt-1">
                       <div className="c-gu-title">
