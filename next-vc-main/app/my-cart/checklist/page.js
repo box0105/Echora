@@ -47,6 +47,7 @@ export default function ChecklistPage() {
       const res = await fetch(url)
       if (!res.ok) throw new Error('狀態錯誤')
       const data = await res.json()
+      
       setUserCoupons(data.userCheckCoupons)
     } catch (err) {
       console.log('發生錯誤', err)
@@ -201,7 +202,7 @@ export default function ChecklistPage() {
                   onChange={handleCouponChange}
                 >
                   <option value="">請選擇優惠券</option>
-                  {userCoupons.map((coupon) => (
+                  {userCoupons.filter((coupon)=>coupon.claimed != 0).map((coupon) => (
                     <option key={coupon.id} value={coupon.name}>
                       {coupon.name}
                     </option>
