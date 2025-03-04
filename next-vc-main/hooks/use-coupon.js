@@ -190,9 +190,7 @@ export function MyCouponProvider({ children }) {
         },
         body: JSON.stringify({ userId: userId }),
       })
-
       const data = await res.json()
-
       console.log(data)
       return data
     } catch (err) {

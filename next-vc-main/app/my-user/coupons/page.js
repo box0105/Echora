@@ -102,7 +102,11 @@ export default function UserCouponPage() {
           <div className="section-title h4 mb-0">
             已使用/已失效
             <div className='clear'><button className='btn btn-dark' onClick={async () => {
-              handleClearClick()
+              if(isAuth){
+                handleClearClick()
+              }else{
+                alert('錯誤')
+              }
             }}>全部清除</button></div>
 
           </div>

@@ -202,8 +202,7 @@ router.post('/:userId/all', async (req, res) => {
 
 // user刪除優惠券
 router.delete('/', async (req, res) => {
-  // const userId = req.body.userId
-  const userId = 100
+  const userId = req.body.userId
   const [rows] = await db.query(`SELECT * FROM usercoupons WHERE userId = ? AND isDelete = ?`, [userId, true])
   // console.log(rows);
 
