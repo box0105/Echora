@@ -7,8 +7,6 @@ import { useParams } from 'next/navigation'
 import { useMyCart } from '@/hooks/use-cart'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
 
 export default function Page(props) {
   const [ListData, setListData] = useState(null)
