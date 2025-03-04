@@ -20,7 +20,7 @@ export default function CartItem({ item }) {
         <div className="col-md-9">
           <div className="card-body h-100 p-lg-3 p-0 d-flex flex-column">
             <div className="d-flex flex-column justify-content-between flex-grow-1">
-              <div>
+              <div className='ps-2 ps-md-0'>
                 <h4 className="h3 p-lg-x-2 p-lg-1">{item.name}</h4>
                 {item.brand && <h5 className="p-lg-1">品牌 : {item.brand}</h5>}
                 {item.color && <h5 className="p-lg-1">顏色 : {item.color}</h5>}
