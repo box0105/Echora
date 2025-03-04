@@ -155,6 +155,7 @@ export default function ChecklistPage() {
   //#endregion
   // ------------------
 
+  console.log(userCoupons)
   return (
     <>
       <div className="m-background mb-5">
@@ -199,11 +200,14 @@ export default function ChecklistPage() {
                   onChange={handleCouponChange}
                 >
                   <option value="">請選擇優惠券</option>
-                  {userCoupons.map((coupon) => (
-                    <option key={coupon.id} value={coupon.name}>
-                      {coupon.name}
-                    </option>
-                  ))}
+                  {userCoupons.map(
+                    (coupon) =>
+                      coupon.isDeleted == false && (
+                        <option key={coupon.couponId} value={coupon.name}>
+                          {coupon.name}
+                        </option>
+                      )
+                  )}
                 </select>
               </div>
               <div className="d-flex justify-content-between py-2">
