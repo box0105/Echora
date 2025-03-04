@@ -105,7 +105,7 @@ export default function MemberLayout({ children }) {
               </div>
               <div className="sidebar-section">
                 <h2
-                  className={`sidebar-title ${isActive('/my-user/userlike')}`}
+                  className={`sidebar-title ${isActive('/my-user/favorites')}`}
                 >
                   <Link href="/my-user/favorites"> 我的收藏</Link>
                 </h2>
