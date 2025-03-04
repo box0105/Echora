@@ -22,9 +22,9 @@ export default function CouponPage() {
   const [userCoupons, setUserCoupons] = useState([])
   const { notifyAndGet, notifyAndGetAll, time } = useMyCoupon()
   const { isAuth } = useAuth()
-
   const progressCircle = useRef(null)
   const progressContent = useRef(null)
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,7 +49,7 @@ export default function CouponPage() {
   }, [isAuth])
 
   const fetchUserCoupon = async () => {
-    const userId = localStorage.getItem('userId')
+    const userId = getUserId()
     console.log(userId)
     try {
       const url = `http://localhost:3005/api/coupon/${userId}`
@@ -63,6 +63,8 @@ export default function CouponPage() {
     }
     // fetchUserCoupon()
   }
+
+  const getUserId = () => localStorage.getItem('userId')
 
   return (
     <>
