@@ -23,11 +23,12 @@ export default function RootLayout({ children }) {
       <body>
         <Suspense fallback={<div>Loading...</div>}>
           <Providers>
-            {!noHeaderPaths.includes(pathname) && <Header />}
+            {!noHeaderPaths.includes(pathname) &&
+              !pathname.includes('admin') && <Header />}
             <main style={{ minHeight: 'calc(100vh - 440px)' }}>
               <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
             </main>
-            <Footer />
+            {!pathname.includes('admin') && <Footer />}
           </Providers>
         </Suspense>
       </body>

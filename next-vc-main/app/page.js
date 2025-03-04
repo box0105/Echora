@@ -3,7 +3,7 @@ import './_styles/bootstrap.scss'
 import './_styles/index.scss'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-
+import ActivitySwiper from './_components/ActivitySwiper';
 import Cart from './_components/cart-offcanvas'
 
 import React, { useState, useEffect } from 'react'
@@ -156,38 +156,7 @@ export default function AppPage(props) {
                 RECENT ACTIVITIES<span> / 近期活動</span>
               </h1>
             </div>
-            <div className="row row-cols-1 row-cols-md-2 g-4">
-              <div className="col">
-                <div className="card">
-                  <img
-                    src="/images/cart/card3.png"
-                    className="card-img-top"
-                    alt="..."
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title h5">
-                      Weiwuying International Music Festival
-                    </h5>
-                    <p className="card-text h6">衛武營國際音樂節</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col">
-                <div className="card">
-                  <img
-                    src="/images/cart/card3.png"
-                    className="card-img-top"
-                    alt="..."
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title h5">
-                      Weiwuying International Music Festival
-                    </h5>
-                    <p className="card-text h6">衛武營國際音樂節</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ActivitySwiper/>
           </div>
         </div>
       </div>
