@@ -96,9 +96,10 @@ export default function MemberLayout({ children }) {
               </div>
               <div className="sidebar-section">
                 <h2
-                  className={`sidebar-title ${isActive(
-                    '/my-user/order' ? `/my-user/order/${orderId}` : ''
-                  )}`}
+                  className={`sidebar-title ${
+                    isActive(`/my-user/order`) ||
+                    isActive(`/my-user/order/${orderId}`)
+                  }`}
                 >
                   <Link href="/my-user/order"> 我的訂單</Link>
                 </h2>
@@ -116,7 +117,7 @@ export default function MemberLayout({ children }) {
                 </h2>
               </div>
             </aside>
-            <div className="profile-content">{children}</div>
+            <div className="profile-content flex-grow-1 ">{children}</div>
           </div>
         </div>
       </main>
