@@ -36,11 +36,13 @@ export default function Header() {
   const router = useRouter()
   const [searchName, setSearchName] = useState('')
   const { criteria, setCriteria, defaultCriteria } = useProductState()
-  const { updateQueryParams } = useActivity();
+  const { updateQueryParams } = useActivity()
 
   const handleSearch = (e) => {
     if (e.key === 'Enter') {
-      if (pathName.includes('/product')) {
+      if (pathName.includes('/activity')) {
+        updateQueryParams({ search: searchName })
+      } else {
         router.push(`/product/list`)
         setCriteria((prev) => ({
           ...prev,
@@ -173,9 +175,12 @@ export default function Header() {
                   </div>
                 )}
               </div>
-              <a href="">
-                <img src="/images/header/heart.svg" />
-              </a>
+              {isAuth && (
+                <Link href="/my-user/favorites">
+                  <img src="/images/header/heart.svg" />
+                </Link>
+              )}
+
               <a
                 className={styles['m-cart']}
                 href="true"
@@ -258,9 +263,9 @@ export default function Header() {
                 }}
               />
             </div>
-            <ul className="list-unstyled">
+            <ul className="list-unstyled" onClick={() => setMenuOpen(false)}>
               <li>
-                <a href="true">
+                <Link href="/product/list">
                   <div className="d-flex">
                     <h6 className="h7 mb-0">ELECTRIC GUITARS</h6>
                     <p className="px-1 mb-0">/</p>
@@ -268,10 +273,10 @@ export default function Header() {
                       電吉他商品
                     </p>
                   </div>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="true">
+                <Link href="/activity">
                   <div className="d-flex">
                     <h6 className="h7 mb-0">MUSIC FESTIVALS</h6>
                     <p className="px-1 mb-0">/</p>
@@ -279,10 +284,10 @@ export default function Header() {
                       音樂活動
                     </p>
                   </div>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="true">
+                <Link href="/rent">
                   <div className="d-flex">
                     <h6 className="h7 mb-0">RENTAL SERVICE</h6>
                     <p className="px-1 mb-0">/</p>
@@ -290,10 +295,10 @@ export default function Header() {
                       商品租借
                     </p>
                   </div>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="true">
+                <Link href="/coupons">
                   <div className="d-flex">
                     <h6 className="h7 mb-0">SPECIAL EVENTS</h6>
                     <p className="px-1 mb-0">/</p>
@@ -301,7 +306,7 @@ export default function Header() {
                       特別優惠
                     </p>
                   </div>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

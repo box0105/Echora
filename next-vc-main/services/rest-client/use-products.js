@@ -1,6 +1,8 @@
 import { useQuery } from './use-fetcher'
 import { createContext, useContext, useState } from 'react'
 
+
+//products
 // 預設搜尋條件
 const defaultCriteria = {
   // page: 1,
@@ -15,15 +17,16 @@ const defaultCriteria = {
   order: 'ASC',
 }
 
-//使用CONTEXT記錄搜尋條件，勾子名稱為useProductState
+//使用CONTEXT記錄搜尋條件與產品卡第一個產品的product_sku_id，勾子名稱為useProductState
 // --start--
 const ProductContext = createContext(null)
 ProductContext.displayName = "ProductContext"
 
 export function ProductProvider({children}){
   const [criteria, setCriteria] = useState(defaultCriteria)
+  const [firstSkuId, setFirstSkuId] = useState('')
 return(
-  <ProductContext.Provider value={{criteria, setCriteria, defaultCriteria}}>
+  <ProductContext.Provider value={{criteria, setCriteria, defaultCriteria, firstSkuId, setFirstSkuId}}>
     {children}
   </ProductContext.Provider>
 )
@@ -71,3 +74,5 @@ export const useGetColorPalette = () => {
 
   return { colorpalette, error, isloading }
 }
+
+

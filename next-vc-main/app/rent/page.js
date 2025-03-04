@@ -132,7 +132,7 @@ export default function Page(props) {
 
           {/* section2 */}
           <div className="c-section2-title d-none d-md-block ">
-            <div className="container-fluid c-index">
+            <div className="container-fluid c-index p-0">
               <div className="c-index-title ">
                 <h1>
                   ELECTRIC GUITAR RENTAL PRODUCTS{' '}
@@ -144,11 +144,11 @@ export default function Page(props) {
 
           {/* section-mod */}
           <div className="c-section2-title d-block d-md-none pt-5">
-            <div className="container-fluid c-index-mod pb-0">
+            <div className="container-fluid c-index-mod p-0">
               <div className="col-12">
                 <h6 className="c-tit">ELECTRIC GUITAR RENTAL PRODUCTS</h6>
               </div>
-              <div className="col">
+              <div className="col c-col">
                 <div className=" h6 c-bot p-0">電吉他租借商品</div>
               </div>
               <div
@@ -182,7 +182,7 @@ export default function Page(props) {
               isOpen ? 'filter-open' : ''
             }`}
           >
-            <div className="container-fluid c-index-mod-1">
+            <div className="container-fluid c-index-mod-1 p-0">
               <div className="row">
                 <Modfiter
                   data={filteredData}

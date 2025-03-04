@@ -5,12 +5,22 @@ import './style.scss'
 import React, { useState, useEffect } from 'react'
 import { useMyCoupon } from '@/hooks/use-coupon'
 import { useAuth } from '@/hooks/use-auth'
+import Link from 'next/link'
 // import { array } from 'prop-types'
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react'
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+// import required modules
+import {Autoplay, Parallax, Pagination, Navigation } from 'swiper/modules'
 
 export default function CouponPage() {
   const [coupon, setCoupon] = useState([])
   const [userCoupons, setUserCoupons] = useState([])
-  const { notifyAndGet, notifyAndGetAll } = useMyCoupon()
+  const { notifyAndGet, notifyAndGetAll, time } = useMyCoupon()
   const { isAuth } = useAuth()
 
   useEffect(() => {
@@ -53,18 +63,90 @@ export default function CouponPage() {
 
   return (
     <>
-      <div className="container-fluid">
+      <div className="container-fluid k-container">
         <main className="k-main">
-          <div className="content ">
+          {/* <div className="content ">
             <div className="title flex-column">
               <div>SPECIAL OFFER</div>
               <span>聖誕季優惠活動 LES系列9折優惠</span>
             </div>
             <div className="title flex-column">
-              <h1 className="btn btn-outline-light">立即加入會員</h1>
+              <Link href="/my-user">
+                <h1 className=" btn btn-outline-light mt-2">立即加入會員</h1>
+
+              </Link>
               <h6>活動期間:2024/12/01 - 2025/01/31</h6>
             </div>
+          </div>*/}
+          <Swiper
+        style={{
+          '--swiper-navigation-color': '#fff',
+          '--swiper-pagination-color': '#fff',
+        }}
+        speed={600}
+        parallax={true}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Parallax, Pagination, Navigation]}
+        className="mySwiper"
+      >
+        <div
+          slot="container-start"
+          className="parallax-bg"
+          style={{
+            'background':
+              'url()',
+          }}
+          data-swiper-parallax="-23%"
+        ></div>
+        <SwiperSlide>
+          <div className="title" data-swiper-parallax="-300">
+            Slide 1
           </div>
+          <div className="subtitle" data-swiper-parallax="-200">
+            Subtitle
+          </div>
+          <div className="text" data-swiper-parallax="-100">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+              dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
+              laoreet justo vitae porttitor porttitor.
+            </p>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="title" data-swiper-parallax="-300">
+            Slide 2
+          </div>
+          <div className="subtitle" data-swiper-parallax="-200">
+            Subtitle
+          </div>
+          <div className="text" data-swiper-parallax="-100">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+              dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
+              laoreet justo vitae porttitor porttitor.
+            </p>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="title" data-swiper-parallax="-300">
+            Slide 3
+          </div>
+          <div className="subtitle" data-swiper-parallax="-200">
+            Subtitle
+          </div>
+          <div className="text" data-swiper-parallax="-100">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+              dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
+              laoreet justo vitae porttitor porttitor.
+            </p>
+          </div>
+        </SwiperSlide>
+      </Swiper>
         </main>
 
         <article className="k-article">
@@ -80,38 +162,61 @@ export default function CouponPage() {
                 id={item.id}
                 className=" col-lg-3 col-md-6 col-sm-12 col-xxl-3 image-col"
               >
-                <div className="col ">
+                <div className="col">
                   <div className="text">
-                    {item.name}
-                    <br />${item.discount}
-                  </div>
-                  <br />
+                    <div className="d-flex ">
+                      <div className="h3">
+                        <b>{item.name}</b>
+                      </div>
+                      <div className="ms-3">
+                        {userCoupons
+                          .map((v) => v.couponId)
+                          .includes(item.id) ? (
+                          <button
+                            className="btn btn-secondary "
+                            onClick={async () => {
+                              if (isAuth) {
+                                await notifyAndGet(item.id, item.typeId)
+                                await fetchUserCoupon()
+                              } else {
+                                alert('請先登入')
+                              }
+                            }}
+                          >
+                            {userCoupons
+                              .map((v) => v.couponId)
+                              .includes(item.id)
+                              ? '已領取'
+                              : '領取'}
+                          </button>
+                        ) : (
+                          <button
+                            className="btn btn-dark "
+                            onClick={async () => {
+                              if (isAuth) {
+                                await notifyAndGet(item.id, item.typeId)
+                                await fetchUserCoupon()
+                              } else {
+                                alert('請先登入')
+                              }
+                            }}
+                          >
+                            {userCoupons
+                              .map((v) => v.couponId)
+                              .includes(item.id)
+                              ? '已領取'
+                              : '領取'}
+                          </button>
+                        )}
+                      </div>
+                    </div>
 
-                  {userCoupons.map((v) => v.couponId).includes(item.id) ? (
-                    <button
-                      className="btn btn-secondary "
-                      onClick={async () => {
-                        await notifyAndGet(item.id, item.typeId)
-                        await fetchUserCoupon()
-                      }}
-                    >
-                      {userCoupons.map((v) => v.couponId).includes(item.id)
-                        ? '已領取'
-                        : '領取'}
-                    </button>
-                  ) : (
-                    <button
-                      className="btn btn-dark "
-                      onClick={async () => {
-                        await notifyAndGet(item.id, item.typeId)
-                        await fetchUserCoupon()
-                      }}
-                    >
-                      {userCoupons.map((v) => v.couponId).includes(item.id)
-                        ? '已領取'
-                        : '領取'}
-                    </button>
-                  )}
+                    <div>
+                      使用時間:
+                      <br />
+                      {time(item.startTime)}~{time(item.endTime)}
+                    </div>
+                  </div>
                 </div>
               </li>
             ))}
@@ -120,15 +225,20 @@ export default function CouponPage() {
             <button
               className="btn btn-outline-dark"
               onClick={async () => {
-                await notifyAndGetAll()
-                await fetchUserCoupon()
+                if(isAuth){
+                  await notifyAndGetAll()
+                  await fetchUserCoupon()
+                }else{
+                  alert('請先登入')
+
+                }
+                
               }}
             >
               全部領取
             </button>
           </div>
         </article>
-        <hr />
       </div>
     </>
   )

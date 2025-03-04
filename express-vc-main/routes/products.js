@@ -9,10 +9,10 @@ const router = express.Router()
 router.get('/', async (req, res) => {
   // type決定是否取得資料
   // type=data 需取得資料; type=count 不需取得資料
-  const type = req.query.type || 'all'
+  // const type = req.query.type || 'all'
 
-  const page = Number(req.query.page) || 1
-  const perPage = Number(req.query.perpage) || 8
+  // const page = Number(req.query.page) || 1
+  // const perPage = Number(req.query.perpage) || 8
 
   //搜尋參數
   const nameLike = req.query.name_like || ''
@@ -151,39 +151,39 @@ router.get('/colorpalette', async (req, res) => {
 })
 
 // GET /api/products/search?q=
-router.get('/search', async (req, res) => {
-  const { q } = req.query
-  console.log(req.query)
-  try {
-    if (!q) throw new Error('請提供查詢字串')
+// router.get('/search', async (req, res) => {
+//   const { q } = req.query
+//   console.log(req.query)
+//   try {
+//     if (!q) throw new Error('請提供查詢字串')
 
-    const sql =
-      'SELECT product.*, brand.name AS brand_name FROM product JOIN brand ON product.brand_id = brand.id WHERE product.name LIKE ? OR brand.name LIKE ?'
-    const searchQuery = `%${q}%`
-    const [rows] = await db.query(sql, [searchQuery, searchQuery])
+//     const sql =
+//       'SELECT product.*, brand.name AS brand_name FROM product JOIN brand ON product.brand_id = brand.id WHERE product.name LIKE ? OR brand.name LIKE ?'
+//     const searchQuery = `%${q}%`
+//     const [rows] = await db.query(sql, [searchQuery, searchQuery])
 
-    res.status(200).json({
-      status: 'success',
-      data: rows,
-      message: `搜尋成功, 條件: ${q}`,
-    })
-  } catch (err) {
-    console.log(err)
-    res.status(400).json({
-      status: 'error',
-      message: err.message ? err.message : '搜尋失敗',
-    })
-  }
-})
+//     res.status(200).json({
+//       status: 'success',
+//       data: rows,
+//       message: `搜尋成功, 條件: ${q}`,
+//     })
+//   } catch (err) {
+//     console.log(err)
+//     res.status(400).json({
+//       status: 'error',
+//       message: err.message ? err.message : '搜尋失敗',
+//     })
+//   }
+// })
 
 // 得到單筆資料
-// GET /api/products/:pid
+// GET /api/products/:pid/:fskuid
 //for product detail page
-router.get('/:pid', async (req, res) => {
-  const { pid } = req.params
-  const sql = `SELECT product.*, brand.name AS brand_name, product_sku.id AS product_sku_id, product_sku.stock, color.name AS color_name, color.color_image, image.image, image.sort_order, spec.neck_pickup, spec.middle_pickup, spec.bridge_pickup, spec.controls, spec.switching FROM product JOIN brand ON product.brand_id = brand.id JOIN product_sku ON product.id = product_sku.product_id JOIN color ON product_sku.color_id = color.id JOIN image ON product_sku.id = image.product_sku_id JOIN spec ON product.id = spec.product_id WHERE product.id = ${pid} ORDER BY image.sort_order;`
+router.get('/:pid/:firstSkuId', async (req, res) => {
+  const { pid, firstSkuId } = req.params
+  const sql = `SELECT product.*, brand.name AS brand_name, product_sku.id AS product_sku_id, product_sku.stock, color.name AS color_name, color.color_image, image.image, image.sort_order, spec.neck_pickup, spec.middle_pickup, spec.bridge_pickup, spec.controls, spec.switching FROM product JOIN brand ON product.brand_id = brand.id JOIN product_sku ON product.id = product_sku.product_id JOIN color ON product_sku.color_id = color.id JOIN image ON product_sku.id = image.product_sku_id JOIN spec ON product.id = spec.product_id WHERE product.id = ? ORDER BY CASE WHEN product_sku.id = ? THEN 0 ELSE 1 END, image.sort_order;`
   try {
-    const [rows] = await db.query(sql)
+    const [rows] = await db.query(sql, [pid, firstSkuId])
     // console.log(rows)
     res.status(200).json({
       status: 'success',

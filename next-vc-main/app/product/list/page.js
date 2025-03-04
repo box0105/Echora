@@ -4,6 +4,7 @@ import ProductCard from '../_components/product-card'
 import FilterBar from '../_components/filter-bar'
 
 import { useSearchParams } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { useProductState } from '@/services/rest-client/use-products'
 
@@ -167,7 +168,7 @@ export default function ProductListPage(props) {
       const data = await res.json()
       const finalData = await convertData(data.data)
       setPdData(finalData)
-      // console.log(finalData)
+      console.log(finalData)
 
    
     } catch (err) {
@@ -229,33 +230,20 @@ export default function ProductListPage(props) {
   // didmount後執行getPdData()
   useEffect(() => {
     getPdData(queryString)
-  }, [])
-
+  },[queryString])
+  
   useEffect(() => {
     setQueryString(generateQueryString(criteria))
     setVisibleCount(12)
   }, [criteria])
 
-  useEffect(() => {
-    getPdData(queryString)
-  },[queryString])
 
-  // useEffect(() => {
-  //   if(name_like){
-  //     setCriteria((prev) => ({
-  //       ...prev,
-  //       nameLike: name_like,
-  //   }))
-  //   const newQueryString = generateQueryString({...criteria, nameLike: name_like})
-  //   setQueryString(newQueryString)
-  //   getPdData(newQueryString)
-  //   }
-  // }, [name_like])
+
 
   return (
     <>
       <div>
-        <div className="g-pdlist-title px-modified">
+        <div className="g-pdlist-title l-px-modified">
           <div className="container-fluid p-0">
             <div className="d-flex align-items-center">
               <h4 className="h4 mb-0">ELECTRIC GUITARS</h4>
@@ -263,7 +251,7 @@ export default function ProductListPage(props) {
             </div>
           </div>
         </div>
-        <div className="g-pdlist-topbar px-modified">
+        <div className="g-pdlist-topbar l-px-modified">
           <div className="container-fluid d-flex justify-content-between p-0">
             <div className="g-left d-flex align-items-center">
               <h6 className="g-amount mb-0">{pdData.length} 件商品</h6>
@@ -364,11 +352,11 @@ export default function ProductListPage(props) {
             </div>
           </div>
         </div>
-        <section className="g-pdlist px-modified">
+        <section className="g-pdlist l-px-modified">
           <div className="container-fluid p-1">
             <div className="row row-cols-xl-4 row-cols-2">
               {pdData.slice(0, visibleCount).map((product, i) => (
-                <ProductCard key={product.id} data={product} />
+                <ProductCard key={product.id} data={product}/>
               ))}
             </div>
           </div>
@@ -385,6 +373,7 @@ export default function ProductListPage(props) {
           setFilterOpen={setFilterOpen}
           criteria={criteria}
           setCriteria={setCriteria}
+          defaultCriteria={defaultCriteria}
           generateQueryString={generateQueryString}
           queryString={queryString}
           setQueryString={setQueryString}
@@ -400,10 +389,11 @@ export default function ProductListPage(props) {
           setPriceGte={(value) => setCriteriaByName('priceGte', value)}
           priceLte={priceLte}
           setPriceLte={(value) => setCriteriaByName('priceLte', value)}
+          setSelectedSort={(value) => setSelectedSort(value)}
         />
         {/* comparision sec */}
         <section
-          className={`g-compare-sec px-modified ${
+          className={`g-compare-sec l-px-modified ${
             comparisionOpen ? 'active' : ''
           }`}
         >

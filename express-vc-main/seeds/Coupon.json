@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "夏日特惠",
+    "name": "$500",
     "code": "matsu",
     "typeId": 1,
     "discount": 500,
@@ -11,7 +11,7 @@
   },
   {
     "id": 2,
-    "name": "冬日特惠 10%OFF",
+    "name": "10%OFF",
     "code": "fuyu",
     "typeId": 2,
     "discount": 90,
@@ -21,17 +21,17 @@
   },
   {
     "id": 3,
-    "name": "過年特惠",
+    "name": "20%OFF",
     "code": "newyear",
     "typeId": 2,
-    "discount": 70,
+    "discount": 80,
     "startTime": "2024-07-27T12:34:56.789Z",
     "endTime": "2024-07-27T12:34:56.789Z",
     "isDelete": false
   },
   {
     "id": 4,
-    "name": "寒假特惠",
+    "name": "30%OFF",
     "code": "cool",
     "typeId": 2,
     "discount": 70,
@@ -41,9 +41,9 @@
   },
   {
     "id": 5,
-    "name": "暑假特惠",
+    "name": "$70",
     "code": "hot",
-    "typeId": 2,
+    "typeId": 1,
     "discount": 70,
     "startTime": "2024-07-27T12:34:56.789Z",
     "endTime": "2024-07-27T12:34:56.789Z",

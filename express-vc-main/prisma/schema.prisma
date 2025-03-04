@@ -29,22 +29,24 @@ model User {
   emailValidated Boolean       @default(false) @map("email_validated")
   googleUid      String?       @unique @map("google_uid")
   avatar         String?
+  failedAttempts Int           @default(0) @map("failed_attempts")
+  isLocked       Boolean       @default(false) @map("is_locked")
+  lockUntil      DateTime?     @map("lock_until")
   // 關聯: User:Product = n:m 透過 Favorite
-  userLike       userLike[]
+  favorite       favorite[]
   usercoupons    UserCoupons[]
 }
 
-model userLike {
+model favorite {
   // 關聯: User:userLike = 1:n 
   user      User    @relation(fields: [userId], references: [id])
   userId    Int     @map("user_id")
   // 關聯: Product:userLike = 1:n 
-  product   Product @relation(fields: [productId], references: [id])
-  productId Int     @map("product_id")
+  // product   Product @relation(fields: [productSkuId], references: [id])
+  productSkuId String @db.VarChar(20) @map("product_sku_id")
 
   // 複合主鍵
-  @@id([userId, productId])
-  @@map("user_like")
+  @@id([userId, productSkuId])
 }
 
 model Otp {
@@ -92,14 +94,14 @@ model Image {
 }
 
 model Product {
-  id            Int        @id @default(autoincrement())
-  name          String     @db.VarChar(100)
-  brandId       Int        @map("brand_id")
-  discription   String     @db.Text
-  price         Int        @default(0)
-  discountPrice Int?       @map("discount_price")
-  createdAt     DateTime   @default(now()) @map("created_at")
-  userLike      userLike[]
+  id            Int         @id @default(autoincrement())
+  name          String      @db.VarChar(100)
+  brandId       Int         @map("brand_id")
+  discription   String      @db.Text
+  price         Int         @default(0)
+  discountPrice Int?        @map("discount_price")
+  createdAt     DateTime    @default(now()) @map("created_at")
+  // favorite      favorite[]
 
   @@map("product")
 }

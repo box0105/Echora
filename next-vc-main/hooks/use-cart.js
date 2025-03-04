@@ -60,7 +60,33 @@ export function MyCartProvider({ children }) {
   }
 
   // 商品加入購物車
-  const onAdd = (product, selectedColor) => {
+  const onAdd = (product) => {
+    // 產生租借項目的唯一 key
+    const rentKey = `rent-${product.product_sku_id}-${product.color}`
+
+    // 檢查購物車內是否已經有相同的租借項目
+    const existingRent = cartItems.some((item) => item.key === rentKey)
+    if (existingRent) {
+      nextToast()
+      return
+    }
+
+    const newRent = {
+      count: 1,
+      id: product.product_sku_id,
+      name: product.name,
+      stock: product.stock,
+      brand: product.brand_name,
+      image: `/images/product/pd-images/${product.image}`,
+      color: product.color_name,
+      price: product.price,
+      key: rentKey,
+    }
+
+    setCartItems([newRent, ...cartItems])
+    fristToast()
+  }
+  const onAdd2 = (product, selectedColor) => {
     // 從 selectedColor 取得所需資訊
     const color = selectedColor.name
     const stock = product.stock[selectedColor.skuId]

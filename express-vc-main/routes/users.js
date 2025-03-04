@@ -120,20 +120,49 @@ router.post('/login', async (req, res) => {
     if (rows.length === 0) {
       return res.status(404).json({
         status: 'error',
-        message: '找不到該會員',
+        message: '此email尚未註冊',
       })
     }
 
     const user = rows[0]
 
+    // 檢查帳戶是否被鎖定
+    if (user.is_locked && user.lock_until > Date.now()) {
+      return res.status(403).json({
+        status: 'error',
+        message: '帳戶已鎖定，請稍後3分鐘再試',
+      })
+    }
+
     // 驗證密碼
     const isMatch = await bcrypt.compare(password, user.password)
     if (!isMatch) {
+      // 更新失敗次數
+      const failedAttempts = user.failed_attempts + 1
+      let isLocked = user.is_locked
+      let lockUntil = user.lock_until
+
+      if (failedAttempts >= 3) {
+        isLocked = true
+        lockUntil = new Date(Date.now() + 5 * 60 * 1000) // 鎖定 5 分鐘
+      }
+
+      await db.query(
+        'UPDATE user SET failed_attempts = ?, is_locked = ?, lock_until = ? WHERE id = ?',
+        [failedAttempts, isLocked, lockUntil, user.id]
+      )
+
       return res.status(400).json({
         status: 'error',
-        message: '密碼錯誤',
+        message: '密碼錯誤，輸入錯誤超過3次將被鎖定5分鐘',
       })
     }
+
+    // 重置失敗次數
+    await db.query(
+      'UPDATE user SET failed_attempts = 0, is_locked = 0, lock_until = NULL WHERE id = ?',
+      [user.id]
+    )
 
     // 生成 JWT
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
@@ -170,7 +199,6 @@ router.post('/logout', (req, res) => {
     message: '登出成功',
   })
 })
-
 // #endregion ------------
 
 // #region ------ PUT ------
