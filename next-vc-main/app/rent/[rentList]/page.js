@@ -12,10 +12,16 @@ import { FaCalendarAlt } from 'react-icons/fa'
 export default function Page(props) {
   const CustomInput = ({ value, onClick }) => (
     <div className="date-picker-container">
-      <input type="text" value={value} readOnly className="date-picker-input" onClick={onClick} />
+      <input
+        type="text"
+        value={value}
+        readOnly
+        className="date-picker-input"
+        onClick={onClick}
+      />
       <FaCalendarAlt className="calendar-icon" onClick={onClick} />
     </div>
-  );
+  )
   const initialStartDate = new Date()
   initialStartDate.setDate(initialStartDate.getDate() + 3) // 開始日期為當前日期＋3天
 
@@ -378,7 +384,17 @@ export default function Page(props) {
                             width="18px"
                             alt=""
                           />
-                          <h6 className="m-0">尚有庫存</h6>
+                          <div
+                            className={`m-0 h6 ${
+                              ListData?.stock > 0
+                                ? 'text-success'
+                                : 'text-danger'
+                            }`}
+                          >
+                            {ListData?.stock > 0
+                              ? `尚有庫存 (${ListData.stock})`
+                              : '缺貨'}
+                          </div>
                         </div>
                       </div>
                     </div>

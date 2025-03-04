@@ -133,7 +133,7 @@ export default function Page(props) {
           {/* section2 */}
           <div className="c-section2-title d-none d-md-block ">
             <div className="container-fluid c-index p-0">
-              <div className="c-index-title ">
+              <div className="c-index-title c-text-p">
                 <h1>
                   ELECTRIC GUITAR RENTAL PRODUCTS{' '}
                   <span className="h3"> / 電吉他租借商品</span>

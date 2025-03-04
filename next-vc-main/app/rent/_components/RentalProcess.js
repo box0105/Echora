@@ -4,7 +4,7 @@ import React from 'react';
 export default function RentalProcess() {
   return (
     <div className="col-12 c-Process">
-      <div className="d-none d-sm-flex bg-black">
+      <div className="d-none d-sm-flex bg-black c-black">
         <ProcessStepsDesktop />
       </div>
       <div className="d-block d-sm-none bg-black">
@@ -23,7 +23,7 @@ const ProcessStepsDesktop = () => (
       <h2>Rental Process</h2>
       <div className="h3">租借流程說明</div>
     </div>
-    <div className="col-7 ">
+    <div className="col-7 d-flex justify-content-start align-items-center">
       <img className='pt-3 pb-2' src="/images/Rent/Process-1.png" alt />
     </div>
     <div className="col-1 d-flex justify-content-center align-items-center iconf">
