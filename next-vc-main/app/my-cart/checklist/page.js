@@ -47,6 +47,7 @@ export default function ChecklistPage() {
       const res = await fetch(url)
       if (!res.ok) throw new Error('狀態錯誤')
       const data = await res.json()
+      
       setUserCoupons(data.userCheckCoupons)
     } catch (err) {
       console.log('發生錯誤', err)

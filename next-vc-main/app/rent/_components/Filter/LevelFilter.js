@@ -1,4 +1,4 @@
-const GuitarLevelFilter = ({ onChange, selectedLevels }) => (
+const GuitarLevelFilter = ({ onChange, selectedLevels= [] }) => (
     <div className="rent title">
       <div className="h5 c-lenav">吉他級別</div>
       <div className="level-check pt-3">

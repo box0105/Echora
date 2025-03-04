@@ -133,6 +133,14 @@ export function MyCouponProvider({ children }) {
         console.log(res)
         // callback()
 
+        if (res.status == 'sign') {
+          MySwal.fire({
+            title: '無法領取',
+            text: `請先登入`,
+            icon: 'warning',
+          })
+        }
+
         if (res.status == 'fail') {
           MySwal.fire({
             title: '無法領取',
@@ -182,9 +190,7 @@ export function MyCouponProvider({ children }) {
         },
         body: JSON.stringify({ userId: userId }),
       })
-
       const data = await res.json()
-
       console.log(data)
       return data
     } catch (err) {
