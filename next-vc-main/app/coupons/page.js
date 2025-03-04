@@ -188,7 +188,7 @@ export default function CouponPage() {
               <li
                 key={item.id}
                 id={item.id}
-                className=" col-lg-3 col-md-6 col-sm-12 col-xxl-3 image-col"
+                className=" col-lg-6 col-md-6 col-sm-12 col-xxl-3 image-col"
               >
                 <div className="col">
                   <div className="text">
