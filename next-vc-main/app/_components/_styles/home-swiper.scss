@@ -1,0 +1,17 @@
+.b-swiper.b-home-page {
+  height: 460px;
+
+  @media screen and (max-width: 576px) {
+    height: 270px;
+  }
+
+  // 校正 translateY (因為 Swiper 那頁有設定 h-75，這樣寫雖然可以動但好像不太好，不過我就先不花時間找排版問題了)
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    transform: translateY(-125%);
+
+    @media screen and (max-width: 576px) {
+      transform: translateY(-100%);
+    }
+  }
+}

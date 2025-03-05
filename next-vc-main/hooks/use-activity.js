@@ -71,7 +71,7 @@ export const ActivityProvider = ({
   useEffect(() => {
     // 初次渲染封面
     if (acts && acts.length > 0) {
-      const cover = updateRandomPhotos(3)
+      const cover = updateRandomPhotos(6)
       setRandomImages(cover.randomImages)
       setRandomIds(cover.randomIndicesArray)
     }
@@ -79,7 +79,7 @@ export const ActivityProvider = ({
 
   // 隨機產生照片
   function updateRandomPhotos(num) {
-    if (!acts || acts.length === 0) return;
+    if (!acts || acts.length < num) return
 
     const randomIndices = new Set()
     while (randomIndices.size < num) {

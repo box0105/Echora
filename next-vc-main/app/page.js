@@ -26,7 +26,7 @@ export default function AppPage(props) {
             </div>
           </div>
           <div className="m-section1-mobile">
-            <img src="/images/cart/section1-img2.png" alt />
+            <img src="/images/cart/section1-img2.png" alt="..."/>
           </div>
         </div>
         <div className="m-section2">
