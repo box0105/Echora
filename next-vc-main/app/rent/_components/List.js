@@ -8,7 +8,7 @@ export default function RentList() {
   const [filteredData, setFilteredData] = useState([]); // 存放过滤后的数据
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(20);
+  const [visibleCount, setVisibleCount] = useState(12);
   const [sortOrder, setSortOrder] = useState({ field: 'price', direction: 'asc' });
   const [filters, setFilters] = useState({
     brands: [],
@@ -34,7 +34,6 @@ export default function RentList() {
     fetchData();
   }, []);
 
-
   const storeMapping = {
     '台北店': 1,
     '台中店': 2,
@@ -45,13 +44,12 @@ export default function RentList() {
     '中級': 2,
     '高級': 3,
   };
+
   // 筛选和排序
   useEffect(() => {
-
     let filtered = [...data];
-  
-  
-    console.log('筛选后的数据:', filtered);
+
+    // 筛选
     if (filters?.brands?.length) {
       filtered = filtered.filter(item => filters.brands.includes(item.brand_name));
     }
@@ -67,9 +65,7 @@ export default function RentList() {
         item.rentitemColors.some(color => filters.colors.includes(color.color_name))
       );
     }
-    console.log('数据:', data);
-    console.log('当前筛选条件:', filters);
-    console.log('数据中的每一项品牌:', data.map(item => item.brand));
+
     // 排序
     const sorted = filtered.sort((a, b) => {
       if (sortOrder.field === 'price') {
@@ -81,28 +77,38 @@ export default function RentList() {
       }
       return 0;
     });
-  
+
     setFilteredData(sorted);  // 更新过滤后的数据
   }, [data, filters, sortOrder]);  // 依赖项：数据、筛选条件和排序条件
-  
+
   // 处理筛选变化
   const handleFilterChange = (newFilters) => {
     setFilters(newFilters); // 更新筛选条件
   };
 
   // 处理排序变化
-  const handleSortChange = (field, direction) => {
-    setSortOrder({ field, direction });
+  const handleSortChange = (option) => {
+    setSortOrder({
+      id: option.id,
+      field: option.field,
+      direction: option.direction,
+    });
   };
+  
 
   if (isLoading) return <p>加载中...</p>;
   if (isError) return <p>加载失败，请稍后再试。</p>;
-  
+
   return (
     <div className="c-section2-body d-none d-md-block">
       <div className="container-fluid">
         <div className="row">
-          <RentFilter onFilterChange={handleFilterChange} onSortChange={handleSortChange} />
+          {/* 将 onSortChange 和 onFilterChange 传递到 RentFilter */}
+          <RentFilter 
+            onFilterChange={handleFilterChange} 
+            onSortChange={handleSortChange} 
+            selectedSorts={sortOrder}
+          />
           <div className="col-6 col-sm-6 col-md-9 col-lg-9 clo-2">
             <div className="caa info">
               <div className="c-section3">
@@ -115,7 +121,7 @@ export default function RentList() {
             </div>
           </div>
         </div>
-  
+
         <div className="btn1 d-flex justify-content-center">
           <LoadMoreButton
             visibleCount={visibleCount}

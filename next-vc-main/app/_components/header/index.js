@@ -26,29 +26,28 @@ export default function Header() {
   // 在不同路徑改變搜尋框的文字
   const pathName = usePathname()
   const getSearchPlaceholder = () => {
-   
-    if (pathName.includes("/activity")) return "搜尋活動名稱或表演樂團";
-    else  return "搜尋電吉他商品";
+    if (pathName.includes("/product")) return "搜尋電吉他商品名";
+    else if (pathName.includes("/activity")) return "搜尋活動名稱或表演樂團";
+    else if (pathName.includes("/rent")) return "搜尋電吉他租借";
+    else return "搜尋";
   };
 
   // search
   const router = useRouter()
   const [searchName, setSearchName] = useState('')
   const { criteria, setCriteria, defaultCriteria } = useProductState()
-  const { updateQueryParams } = useActivity();
+  const { updateQueryParams, deleteQueryParams } = useActivity()
 
   const handleSearch = (e) => {
-    if (e.key === 'Enter') {
-      if (pathName.includes('/activity')) {
-        updateQueryParams({ search: searchName })
-      }
-      else {
-        router.push(`/product/list`)
-        setCriteria((prev) => ({
-          ...prev,
-          nameLike: searchName,
-        }))
-      } 
+    if (pathName.includes('/product')) {
+      setCriteria((prev) => ({
+        ...prev,
+        nameLike: searchName,
+      }));
+    } else if (pathName.includes('/activity')) {
+      updateQueryParams({ search: searchName });
+    } else if (pathName.includes('/rent')) {
+      updateQueryParams({ search: searchName });
     }
   }
 
@@ -171,9 +170,12 @@ export default function Header() {
                   </div>
                 )}
               </div>
-              <Link href="/my-user/favorites">
-                <img src="/images/header/heart.svg" />
-              </Link>
+              {isAuth && (
+                <Link href="/my-user/favorites">
+                  <img src="/images/header/heart.svg" />
+                </Link>
+              )}
+
               <a
                 className={styles['m-cart']}
                 href="true"
@@ -207,7 +209,14 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link href="/activity">
+                <Link
+                  href="/activity"
+                  onClick={() => {
+                    // 清空活動篩選條件 & Search欄位
+                    deleteQueryParams()
+                    setSearchName('')
+                  }}
+                >
                   <div className="d-flex">
                     <h6 className="h7">MUSIC FESTIVALS</h6>
                     <p className="px-1">/</p>
@@ -256,9 +265,7 @@ export default function Header() {
                 }}
               />
             </div>
-            <ul className="list-unstyled"
-            onClick={() => setMenuOpen(false)}
-            >
+            <ul className="list-unstyled" onClick={() => setMenuOpen(false)}>
               <li>
                 <Link href="/product/list">
                   <div className="d-flex">

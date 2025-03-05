@@ -5,12 +5,14 @@ import Main from './_components/ListMain'
 import Boottom from './_components/ListBottom'
 import { useParams } from 'next/navigation'
 import { useMyCart } from '@/hooks/use-cart'
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export default function Page(props) {
   const [ListData, setListData] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState(false)
-  const [selectedColor, setSelectedColor] = useState(null) // 用来保存选中的颜色
+  const [selectedColor, setSelectedColor] = useState(null)
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date())
   const [quantity, setQuantity] = useState(1)
@@ -76,10 +78,7 @@ export default function Page(props) {
     if (ListData && startDate && endDate) {
       const start = new Date(startDate)
       const end = new Date(endDate)
-      if (end < start) {
-        alert('結束日期不能早於起始日期！')
-        return
-      }
+
       const timeDiff = end.getTime() - start.getTime() // 获取时间差
       const dayDiff = timeDiff / (1000 * 3600 * 24) // 转换为天数
       const pricePerDay = ListData.price // 单日租金
@@ -87,6 +86,63 @@ export default function Page(props) {
       setTotalPrice(total)
     }
   }
+
+  // 验证开始日期合法性
+  const minStartDate = useMemo(() => {
+    const now = new Date();
+    const minDate = new Date(now);
+    minDate.setDate(now.getDate() + 3); // 设置开始日期最小值为当前日期后3天
+    return minDate;
+  }, []);
+
+  // 验证开始日期合法性
+  const handleStartDateChange = (e) => {
+    const newStartDate = new Date(e.target.value);
+
+    // 确保开始日期不能早于当前日期的三天后
+    if (newStartDate < minStartDate) {
+      alert('麻煩預約租借必須要三天後才能預約');
+      return;
+    }
+  
+    // 设置开始日期
+    setStartDate(newStartDate);
+  
+    // 计算结束日期，结束日期是开始日期的后一天
+    const newEndDate = new Date(newStartDate);
+    newEndDate.setDate(newStartDate.getDate() + 1); // 结束日期为开始日期后1天
+    setEndDate(newEndDate);
+  };
+  
+  // 修改后的 handleEndDateChange
+  const handleEndDateChange = (e) => {
+    const newEndDate = new Date(e.target.value);
+  
+    // 结束日期不能小于开始日期
+    if (newEndDate <= startDate) {
+      alert('結束日期無法小於開始日期');
+      return;
+    }
+  
+    // 结束日期不能超过7天
+    const maxEndDate = new Date(startDate);
+    maxEndDate.setDate(startDate.getDate() + 7);
+    if (newEndDate > maxEndDate) {
+      alert('本網站租約最長為7日');
+      return;
+    }
+  
+    setEndDate(newEndDate);
+  };
+  
+  // 修改 minEndDate
+  const minEndDate = new Date(startDate);
+  minEndDate.setDate(startDate.getDate() + 1); // 设置结束日期最小值为起始日期的后一天
+//日期
+  useEffect(() => {
+    const today = new Date(); // 當前日期
+    setStartDate(today);
+  }, []);
   useEffect(() => {
     calculateTotalPrice()
   }, [startDate, endDate, quantity, selectedColor])
@@ -101,29 +157,6 @@ export default function Page(props) {
     }
   }, [ListData])
 
-  // 購物車
-  // const handleAddToCart = () => {
-  //   if (typeof onAddRent !== 'function') {
-  //     console.error("onAddRent is not a function");
-  //     return;
-  //   }
-  //   const cartData = {
-  //     id: ListData.id,
-  //     name: ListData.name,
-  //     date_start: startDate.toISOString().split('T')[0],
-  //     date_end: endDate.toISOString().split('T')[0],
-  //     total_price: totalPrice,
-  //     color: selectedColor?.name || '無顏色',
-  //     image: selectedImages[0] || '/images/default_image.jpg',
-  //     description: ListData.description,
-  //     specifications: ListData.rentList,
-  //     store: selectedStore,
-  //     selectedTickets: quantity,
-  //   }
-
-  //   onAddRent(cartData)
-  //   console.log(JSON.stringify(cartData, null, 2))
-  // }
   const handleAddToCart = () => {
     const cartData = {
       id: ListData.id,
@@ -141,9 +174,6 @@ export default function Page(props) {
       stock: ListData.stock,
       rentStore: selectedStore,
     }
-
-    // 在這裡打印 cartData
-    console.log('Cart Data:', cartData)
 
     // 如果你需要格式化輸出 JSON 以便更清晰地查看，使用以下代碼：
     console.log('Formatted Cart Data:', JSON.stringify(cartData, null, 2))
@@ -261,13 +291,14 @@ export default function Page(props) {
                         <div className="c-sdata">
                           <div className="h4 title-start">租借起始日</div>
                         </div>
-                        <input
-                          type="date"
-                          className="w-100 p-0 border border-0 bg-white"
-                          value={startDate.toISOString().split('T')[0]}
-                          onChange={(e) =>
-                            setStartDate(new Date(e.target.value))
-                          }
+                        <DatePicker
+                          selected={startDate}
+                          onChange={(date) => setStartDate(date)}
+                          minDate={minStartDate} // 设置开始日期最小值为当前日期的三天后
+                          placeholderText="開始日期"
+                          dateFormat="yyyy/MM/dd"
+                          className="w-100"
+
                         />
                       </div>
 
@@ -275,11 +306,14 @@ export default function Page(props) {
                         <div className="c-edata">
                           <div className="h4 title-start">租借結束日</div>
                         </div>
-                        <input
-                          type="date"
-                          className="w-100 p-0 border border-0 bg-white"
-                          value={endDate.toISOString().split('T')[0]}
-                          onChange={(e) => setEndDate(new Date(e.target.value))}
+                        <DatePicker 
+                          selected={endDate}
+                          onChange={(date) => setEndDate(date)}
+                          minDate={minEndDate} 
+                          placeholderText="結束日期"
+                          dateFormat="yyyy/MM/dd"
+                          disabled={!startDate}
+                          className="w-100"
                         />
                       </div>
 

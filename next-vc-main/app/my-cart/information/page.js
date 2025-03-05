@@ -65,7 +65,7 @@ export default function InformationPage() {
           address: userInf.address.slice(6) || '',
         })
       } else {
-        toast.error('使用者資料未填寫完整')
+        toast.warn('您的個人資料未填寫完整', { position: 'bottom-right' })
       }
     } else {
       setFormData({

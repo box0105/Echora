@@ -1,4 +1,4 @@
-.container-fluid {
+.k-container {
     padding: 0;
     width: 100%;
     height: auto;
@@ -9,12 +9,18 @@
 // }
 
 .k-main {
+    position: relative;
+    /* 確保漸層疊加層的定位 */
     display: flex;
-    width: auto;
-    height:70vh;
+    width: 100%;
+    height: 70vh;
     /* background: url(./images/main.jpg) lightgray  no-repeat; */
-    background: url(../../public/images/coupon/main.jpg) 0px -723.5px / 100% 251.836% no-repeat;
-    /* background-size:  cover; */
+    background: url(../../public/images/coupon/pexels-monstera-4137785.png) 0px -680px / 100% 251.836% no-repeat;
+    @media (max-width: 400px) {
+        background: url(../../public/images/coupon/pexels-monstera-4137785.png) -1200px -680px / 100% 251.836% no-repeat;
+        background-size: auto;
+    }
+    background-size: auto;
     /* 背景縮放問題先保留 */
     color: #fff;
     align-items: center;
@@ -30,9 +36,11 @@
     }
 
     .content {
-        width: 33rem;
-        height: 27rem;
-        margin-left: 3rem;
+        position: relative;
+        /* 讓標題可以疊在漸層之上 */
+        z-index: 2;
+        /* 確保標題在漸層疊加層之上 */
+        width: 100%;
 
         /* mobile */
         @media (max-width: 580px) {
@@ -40,15 +48,11 @@
         }
 
         .title {
+            justify-content: center;
+            align-items: center;
             display: flex;
             width: 100%;
             height: 50%;
-
-            @media (max-width: 900px) {
-                justify-content: center;
-                align-items: center;
-                height: auto;
-            }
 
             div {
                 font-size: 56px;
@@ -77,25 +81,54 @@
             }
 
             h6 {
-                padding-top: 30%;
+                padding-top: 1.5rem;
             }
 
-            h1 {
-                width: 60%;
-                border-radius: 100px;
-                border: 3px solid;
+            .btn {
                 font-weight: bold;
-                letter-spacing: 3px;
+                width: 120%;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                border: 3px solid #fff;
+                padding: 5px;
+                border-radius: 100px;
+                background: transparent;
+                color: #fff;
+                text-decoration: none;
+                cursor: pointer;
                 font-size: 32px;
-
+                transition: 0.5s ease-in-out;
+                letter-spacing: 3px;
                 /* mobile */
                 @media (max-width: 580px) {
                     font-size: 24px;
-                    width: 80%;
+                    width: 100%;
                 }
+            }
+            .btn:hover {
+                padding: 10px;
+                background: #fdefcc;
+                border: 3px solid #d3af54;
+                color: #3a3a3a;
+                box-shadow: 11px 11px 11px #222;
             }
         }
     }
+}
+
+.k-main::before {
+    content: "";
+    /* 必須要有 content 才能顯示 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+    /* 調整透明度 */
+    z-index: 1;
+    /* 確保疊加層在背景圖片之上，但在標題之下 */
 }
 
 .k-article {
@@ -103,6 +136,10 @@
     height: auto;
     background: #f9f9f9;
     padding-inline: 64px;
+
+    @media (max-width: 400px) {
+        padding-inline: 16px;
+    }
 
     .k-title {
         padding-top: 5rem;
@@ -127,13 +164,14 @@
         }
 
         @media (max-width: 1120px) {
-
             // .col:nth-child(-n +2) {
             //     display: none;
             // }
         }
 
         .col {
+            // background: green;
+            margin: 1px;
             position: relative;
             width: 100%;
             height: 8.5rem;
@@ -149,8 +187,6 @@
             /* 圖片置中 */
             background-size: contain;
             /* 圖片縮放到容器大小，保持比例 */
-
-           
         }
 
         .image-col:nth-child(even) {
@@ -164,44 +200,59 @@
 
         li {
             padding: 0;
+            // 些微調整優惠券大小
+            padding-bottom: 20px;
+            margin-bottom: 10px;
             list-style: none;
             display: flex;
 
             div .text {
+                width: 48%;
                 top: 50%;
-                left: 50%;
+                left: 60%;
                 transform: translate(-50%, -50%);
                 position: absolute;
+
+                .h3 {
+                    width: 55%;
+                }
             }
         }
 
         button {
-            position: absolute;
-            top: 48%;
-            right: 3rem;
-            transform: translate(-50%, -50%);
+            // position: absolute;
+            // top: 48%;
+            // right: 3rem;
+            // transform: translate(-50%, -50%);
 
             @media (max-width: 770px) {
                 right: 8rem;
             }
+
             @media (max-width: 720px) {
                 right: 7rem;
             }
+
             @media (max-width: 680px) {
                 right: 6rem;
             }
+
             @media (max-width: 640px) {
                 right: 5rem;
             }
+
             @media (max-width: 600px) {
                 right: 3rem;
             }
+
             @media (max-width: 540px) {
                 right: 1rem;
             }
+
             @media (max-width: 520px) {
                 right: 1rem;
             }
+
             @media (max-width: 480px) {
                 display: none;
             }
@@ -221,5 +272,19 @@
             height: 3rem;
             font-weight: bold;
         }
+    }
+}
+
+.k-Swiper {
+    position: absolute;
+    top: 40px;
+    left: -500px;
+    width: 40%;
+    height: 50%;
+    // background: #000;
+    @media (max-width: 1500px) {
+        top: 0;
+        left: 0;
+        width: 100%;
     }
 }

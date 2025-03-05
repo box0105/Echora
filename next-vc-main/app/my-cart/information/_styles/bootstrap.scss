@@ -1,7 +1,7 @@
 /* Bootstrap的style調整 */
-.container-fluid {
-  padding: 0;
-}
+// .container-fluid {
+//   padding: 0;
+// }
 .card.card1 {
   padding-inline: 16px;
   border-radius: 0;
@@ -9,7 +9,7 @@
   img {
     border-radius: 0;
   }
-  @media (max-width:996px) {
+  @media (max-width: 996px) {
     padding: 16px;
   }
 }

@@ -18,10 +18,10 @@ const SortOptions = ({ onChange, selectedSorts }) => {
                   type="radio"
                   id={option.id}
                   name="sortOption"
-                  checked={selectedSorts === option.id}  
+                  checked={selectedSorts?.id === option.id}  
                   onChange={() => onChange(option)}  
                 />
-                <label className="form-check-label" htmlFor={option.id}>
+                <label className="form-check-label pt-1" htmlFor={option.id}>
                   <h6 className="h6">{option.label}</h6>
                 </label>
               </div>

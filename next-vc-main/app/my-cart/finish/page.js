@@ -7,15 +7,12 @@ import './_styles/cart-finish.scss'
 import React, { useEffect } from 'react'
 import Link from 'next/link'
 
-
-
 export default function FinishPage() {
-
   useEffect(() => {
     const userId = localStorage.getItem('userId')
     const couponObj = localStorage.getItem('coupon')
-    const couponId = JSON.parse(couponObj).couponId
-    console.log(couponId);
+    const couponId = JSON.parse(couponObj)?.couponId || ''
+    console.log(couponId)
     const useCoupon = async () => {
       try {
         const res = await fetch(`http://localhost:3005/api/coupon/`, {
@@ -35,7 +32,7 @@ export default function FinishPage() {
       }
     }
     useCoupon()
-    localStorage.removeItem('coupon');
+    localStorage.removeItem('coupon')
   }, [])
 
   return (

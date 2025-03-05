@@ -8,7 +8,7 @@ import Header from './_components/header'
 
 export default function RootLayout({ children }) {
   const pathname = usePathname()
-  const noHeaderPaths = [
+  const noHeaderFooterPaths = [
     '/my-user',
     '/my-user/register',
     '/my-user/forget-password',
@@ -23,11 +23,11 @@ export default function RootLayout({ children }) {
       <body>
         <Suspense fallback={<div>Loading...</div>}>
           <Providers>
-            {!noHeaderPaths.includes(pathname) && <Header />}
+            {!noHeaderFooterPaths.includes(pathname) && !pathname.includes('admin')&& <Header />}
             <main style={{ minHeight: 'calc(100vh - 440px)' }}>
               <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
             </main>
-            <Footer />
+            {!noHeaderFooterPaths.includes(pathname) && !pathname.includes('admin') && <Footer />}
           </Providers>
         </Suspense>
       </body>

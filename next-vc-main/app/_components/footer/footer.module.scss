@@ -8,16 +8,18 @@
   }
 
   ul {
-    display: flex;
-    width: 100%;
-    height: auto;
-    gap: 50px;
+    margin: 0;
+    // display: flex;
+    // width: 100%;
+    // height: auto;
+    // gap: 50px;
     padding-top: 30px;
     padding-bottom: 1px;
     align-items: start;
 
     li {
       font-weight: bold;
+      margin-bottom: 10px;
 
       div {
         cursor: pointer;
@@ -33,7 +35,7 @@
 
       .email {
         cursor: default;
-        width: 50%;
+        width: 75%;
 
         .group {
           display: flex;
@@ -47,6 +49,7 @@
           border: none;
         }
       }
+     
     }
     .icons {
       gap: 10px;

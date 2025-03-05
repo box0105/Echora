@@ -27,10 +27,14 @@ router.get('/', async (req, res) => {
 // user的優惠券
 router.get('/:userId', async (req, res) => {
   const userId = Number(req.params.userId)
-
+  // if (!userId) throw new Error('請先登入!') //不確定是否要驗證
+  if (!userId) {
+    const message = '請先登入會員'
+    res.status(200).json({ status: 'sign', data: [], message: message })
+    return
+  }
   const user = await db.query(`SELECT username FROM user WHERE id = ${userId}`)
-  if (!user) throw new Error('請先登入!') //不確定是否要驗證
-
+  console.log(user);
   const [rows] = await db.query(
     `SELECT * FROM usercoupons WHERE userId = ${userId}`
   )
@@ -41,6 +45,9 @@ router.get('/:userId', async (req, res) => {
   try {
     // 1. 使用 Prisma 查詢
     const datas = await prisma.userCoupons.findMany({
+      where:{
+        userId: userId,
+      },
       include: {
         // user: true, 有需要才回傳使用者的資料 較敏感
         coupon: true,
@@ -62,6 +69,7 @@ router.get('/:userId', async (req, res) => {
       startTime: data.coupon.startTime,
       endTime: data.coupon.endTime,
     }))
+    console.log(userCheckCoupons);
 
     res.json({
       status: 'success',
@@ -93,9 +101,13 @@ router.post('/:userId', async (req, res) => {
 
   try {
     // 驗證使用者是否存在
+    if (!userId){
+      res.status(200).json({status:'sign',data:[],message:'請先登入'})
+      return
+    }
+
     const [row] = await db.query(`SELECT * FROM user WHERE id = ?`, [userId])
     const user = row[0]
-    if (!user) throw new Error('請先登入!')
     // console.log(user);
 
     // 驗證優惠券是否存在且有效
@@ -146,9 +158,9 @@ router.post('/:userId', async (req, res) => {
 // user取得所有優惠券
 router.post('/:userId/all', async (req, res) => {
   const userId = Number(req.params.userId)
-
-  const [A] = await db.query(`SELECT * FROM coupon WHERE isDelete = ?`, [false])
-  const [B] = await db.query(`SELECT * FROM usercoupons WHERE claimed = ?`, [true])
+  // console.log(userId);
+  const [A] = await db.query(`SELECT * FROM coupon WHERE isDelete = ? `, [false])
+  const [B] = await db.query(`SELECT * FROM usercoupons WHERE claimed = ? AND userId = ?`, [true,userId])
   // console.log(A);
   // console.log(B);
 
@@ -164,10 +176,11 @@ router.post('/:userId/all', async (req, res) => {
 
   try {
     // 驗證使用者是否存在
+    if (!userId) throw new Error('請先登入!')
+
     const [row] = await db.query(`SELECT * FROM user WHERE id = ?`, [userId])
     const user = row[0]
-    if (!user) throw new Error('請先登入!')
-    // console.log(user);
+    console.log(user);
 
     //驗證已領取
     if (newA.length == 0) throw new Error('您已經全部領取了!')
@@ -189,8 +202,7 @@ router.post('/:userId/all', async (req, res) => {
 
 // user刪除優惠券
 router.delete('/', async (req, res) => {
-  // const userId = req.body.userId
-  const userId = 100
+  const userId = req.body.userId
   const [rows] = await db.query(`SELECT * FROM usercoupons WHERE userId = ? AND isDelete = ?`, [userId, true])
   // console.log(rows);
 

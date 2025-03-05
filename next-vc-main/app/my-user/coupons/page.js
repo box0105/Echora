@@ -5,6 +5,7 @@ import '../_styles/coupons.scss'
 import MemberLayout from '../layouts/memberLayout'
 import React, { useState, useEffect, useCallback } from 'react'
 import { useMyCoupon } from '@/hooks/use-coupon'
+import { useAuth } from '@/hooks/use-auth'
 
 
 
@@ -13,12 +14,20 @@ export default function UserCouponPage() {
   const { time, clear } = useMyCoupon()
   const [user, setUser] = useState(null)
   const [btn, setBtn] = useState(false)
+  const { isAuth } = useAuth()
 
 
   useEffect(() => {
     const user = localStorage.getItem('userId')
     setUser(user)
-  }, [])
+    console.log(user);
+  }, [user])
+
+    useEffect(() => {
+      if (isAuth) {
+        fetchData()
+      }
+    }, [isAuth,user])
 
   //useCallback(fn,deps)記憶一個函數 當(fn,deps)的deps(依賴項陣列)值變化才會重新建立函數 節省效能
   const fetchData = useCallback(async () => {
@@ -39,7 +48,7 @@ export default function UserCouponPage() {
     if (user) {
       fetchData()
     }
-  }, [fetchData, btn, user])
+  }, [fetchData, btn, user,setBtn])
 
   const handleClearClick = async () => {
     if (!user) return; // 確保 user 存在
@@ -93,7 +102,11 @@ export default function UserCouponPage() {
           <div className="section-title h4 mb-0">
             已使用/已失效
             <div className='clear'><button className='btn btn-dark' onClick={async () => {
-              handleClearClick()
+              if(isAuth){
+                handleClearClick()
+              }else{
+                alert('錯誤')
+              }
             }}>全部清除</button></div>
 
           </div>

@@ -1,4 +1,4 @@
-const ColorFilter = ({ onChange, selectedColors }) => {
+const ColorFilter = ({ onChange, selectedColors= [] }) => {
     const colors = [
       { name: 'Ebony', src: '/images/Rent/color-images/black.svg' },
       { name: 'Sky Blue', src: '/images/Rent/color-images/lightblue.svg' },

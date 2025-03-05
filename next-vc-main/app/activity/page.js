@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { useActivity } from '@/hooks/use-activity'
+import {useActivity} from '@/hooks/use-activity'
 
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import '../_styles/bootstrap.scss'
@@ -14,7 +14,7 @@ import FilterPanel from './_components/FilterPanel'
 import HeroSection from './_components/HeroSection'
 
 export default function ActivityPage() {
-  // Fetch Data, sort & filter & search
+  // 從 ActivityContext 取出 Data, sort & filter & search
   const { acts, isLoading, updateQueryParams, randomImages, randomIds } = useActivity()
 
   // Filter Aside Switch
@@ -34,7 +34,6 @@ export default function ActivityPage() {
         actNum={acts?.length}
         onOpen={() => setIsFilterOpen(!isFilterOpen)}
         onChange={updateQueryParams}
-        // onChange={()=>updateQueryParams({ search: '共生音樂節' })
       />
 
       <div className="b-container">

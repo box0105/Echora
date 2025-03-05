@@ -47,6 +47,7 @@ export default function ChecklistPage() {
       const res = await fetch(url)
       if (!res.ok) throw new Error('狀態錯誤')
       const data = await res.json()
+      
       setUserCoupons(data.userCheckCoupons)
     } catch (err) {
       console.log('發生錯誤', err)
@@ -155,6 +156,7 @@ export default function ChecklistPage() {
   //#endregion
   // ------------------
 
+  console.log(userCoupons)
   return (
     <>
       <div className="m-background mb-5">
@@ -177,11 +179,9 @@ export default function ChecklistPage() {
             <div className="m-sec2-col8 col-lg-8 col-12">
               <div className="d-flex justify-content-between align-items-end py-4">
                 <div className="h2">購物車清單</div>
-                <h3 className="me-4">{totalQty} 件商品</h3>
+                <h3 className="">{totalQty} 件商品</h3>
               </div>
-              <div className="row row-cols-1">
-                <CartList cartItems={cartItems} />
-              </div>
+              <CartList cartItems={cartItems} />
             </div>
             <div className="m-sec2-col4 col-lg-4 col-12">
               <div className="h3 pt-4 pb-2">訂單確認</div>
@@ -201,11 +201,14 @@ export default function ChecklistPage() {
                   onChange={handleCouponChange}
                 >
                   <option value="">請選擇優惠券</option>
-                  {userCoupons.map((coupon) => (
-                    <option key={coupon.id} value={coupon.name}>
-                      {coupon.name}
-                    </option>
-                  ))}
+                  {userCoupons.map(
+                    (coupon) =>
+                      coupon.isDeleted == false && (
+                        <option key={coupon.couponId} value={coupon.name}>
+                          {coupon.name}
+                        </option>
+                      )
+                  )}
                 </select>
               </div>
               <div className="d-flex justify-content-between py-2">

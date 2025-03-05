@@ -3,10 +3,12 @@
 import styles from './product-card.module.scss'
 import { useRouter } from 'next/navigation'
 import { useProductState } from '@/services/rest-client/use-products'
+import { useMyCart } from '@/hooks/use-cart'
 
 export default function ProductCard({ data = {}, removeFavItem }) {
   const router = useRouter()
   const { setFirstSkuId } = useProductState()
+  const { onAdd } = useMyCart()
   return (
     <>
       <div className="col p-2">
@@ -53,7 +55,7 @@ export default function ProductCard({ data = {}, removeFavItem }) {
               className={`${styles['g-add-to-cart']} d-flex justify-content-center align-items-center`}
               onClick={(e) => {
                 e.stopPropagation()
-                console.log(data)
+                onAdd(data)
               }}
             >
               <h6 className="m-0">加入購物車</h6>
