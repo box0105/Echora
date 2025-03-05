@@ -90,6 +90,7 @@ export default function ProductImagesCarousel({ detailData, selectedSku }) {
           </div>
           <Swiper
             modules={[Navigation]}
+            spaceBetween={8}
             navigation={{
               nextEl: '.custom-swiper-button-next2',
               prevEl: '.custom-swiper-button-prev2',

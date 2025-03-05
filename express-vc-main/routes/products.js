@@ -169,29 +169,6 @@ router.get('/colorpalette', async (req, res) => {
   }
 })
 
-// 得到單筆資料
-// GET /api/products/:pid/:fskuid
-//for product detail page
-router.get('/:pid/:firstSkuId', async (req, res) => {
-  const { pid, firstSkuId } = req.params
-  const sql = `SELECT product.*, brand.name AS brand_name, product_sku.id AS product_sku_id, product_sku.stock, color.name AS color_name, color.color_image, image.image, image.sort_order, spec.neck_pickup, spec.middle_pickup, spec.bridge_pickup, spec.controls, spec.switching FROM product JOIN brand ON product.brand_id = brand.id JOIN product_sku ON product.id = product_sku.product_id JOIN color ON product_sku.color_id = color.id JOIN image ON product_sku.id = image.product_sku_id JOIN spec ON product.id = spec.product_id WHERE product.id = ? ORDER BY CASE WHEN product_sku.id = ? THEN 0 ELSE 1 END, image.sort_order;`
-  try {
-    const [rows] = await db.query(sql, [pid, firstSkuId])
-    // console.log(rows)
-    res.status(200).json({
-      status: 'success',
-      data: rows,
-      message: '取得資料成功',
-    })
-  } catch (err) {
-    console.log(err)
-    res.status(400).json({
-      status: 'error',
-      message: err.message ? err.message : '取得資料失敗',
-    })
-  }
-})
-
 //得到比較產品的資料
 // GET /api/products/comparison?products=
 router.get('/comparison', async (req, res) => {
@@ -233,6 +210,72 @@ router.get('/comparison', async (req, res) => {
     })
   }
 })
+
+//得到可能會喜歡的產品資料
+// GET /api/products/maylike/:colorId
+router.get('/maylike/:colorId', async (req, res) => {
+  const { colorId } = req.params
+  const colorIdNum = Number(colorId)
+  console.log(colorIdNum)
+  try {
+    if (!colorId) throw new Error('請提供color id')
+
+    const sql = `SELECT product.*,
+    brand.name AS brand_name, 
+    product_sku.id AS product_sku_id, 
+    product_sku.stock, 
+    color.name AS color_name, 
+    color.color_image, 
+    image.image
+    FROM product
+    JOIN brand ON product.brand_id = brand.id 
+    JOIN product_sku ON product.id = product_sku.product_id 
+    JOIN color ON product_sku.color_id = color.id 
+    JOIN image ON product_sku.id = image.product_sku_id
+    WHERE image.sort_order = 1
+    AND color.id = ?
+    LIMIT 8`
+
+    const [rows] = await db.query(sql, [colorIdNum])
+
+    res.status(200).json({
+      status: 'success',
+      data: rows,
+      message: '取得資料成功',
+    })
+  } catch (err) {
+    console.log(err)
+    res.status(400).json({
+      status: 'error',
+      message: err.message ? err.message : '取得資料失敗',
+    })
+  }
+})
+
+// 得到單筆資料
+// GET /api/products/:pid/:fskuid
+//for product detail page
+router.get('/:pid/:firstSkuId', async (req, res) => {
+  const { pid, firstSkuId } = req.params
+  const sql = `SELECT product.*, brand.name AS brand_name, product_sku.id AS product_sku_id, product_sku.stock, color.name AS color_name, color.color_image, color.id AS color_id ,image.image, image.sort_order, spec.neck_pickup, spec.middle_pickup, spec.bridge_pickup, spec.controls, spec.switching FROM product JOIN brand ON product.brand_id = brand.id JOIN product_sku ON product.id = product_sku.product_id JOIN color ON product_sku.color_id = color.id JOIN image ON product_sku.id = image.product_sku_id JOIN spec ON product.id = spec.product_id WHERE product.id = ? ORDER BY CASE WHEN product_sku.id = ? THEN 0 ELSE 1 END, image.sort_order;`
+  try {
+    const [rows] = await db.query(sql, [pid, firstSkuId])
+    // console.log(rows)
+    res.status(200).json({
+      status: 'success',
+      data: rows,
+      message: '取得資料成功',
+    })
+  } catch (err) {
+    console.log(err)
+    res.status(400).json({
+      status: 'error',
+      message: err.message ? err.message : '取得資料失敗',
+    })
+  }
+})
+
+
 
 // GET /api/products/search?q=
 // router.get('/search', async (req, res) => {

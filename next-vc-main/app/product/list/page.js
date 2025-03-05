@@ -29,7 +29,7 @@ export default function ProductListPage(props) {
   const [queryString, setQueryString] = useState('')
 
   // 在不同頁面之間共享條件(列表頁、商品頁)
-  const { criteria, setCriteria, defaultCriteria } = useProductState()
+  const { criteria, setCriteria, defaultCriteria} = useProductState()
   // 從context中取得目前記錄的共享條件的值
   const {
     // page,

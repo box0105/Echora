@@ -40,6 +40,7 @@
   min-height: 776px;
   overflow: hidden;
   display: none;
+  position: relative;
 
   @media screen and (max-width: 992px) {
     display: block;
@@ -105,12 +106,11 @@
 .custom-swiper-button-prev2 {
   transform: rotate(90deg);
   transform-origin: center;
-  // left: -60px;
-  // 右
+  right: 30px;
 }
 
 .custom-swiper-button-next2 {
   transform: rotate(90deg);
   transform-origin: center;
-  // right: -60px;
+  left: 30px;
 }
