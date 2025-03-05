@@ -6,6 +6,8 @@ import { MyCartProvider } from '@/hooks/use-cart'
 import { AuthProvider } from '@/hooks/use-auth'
 //  載入商品搜尋條件context
 import { ProductProvider } from '@/services/rest-client/use-products'
+// 載入活動 context
+import { ActivityProvider } from '@/hooks/use-activity'
 //  載入動畫context
 import { LoaderProvider } from '@/hooks/use-loader'
 // 自訂用載入動畫元件
@@ -25,7 +27,9 @@ export function Providers({ children }) {
           <AuthProvider>
             <UserProvider>
               <MyCartProvider>
-                <ProductProvider>{children}</ProductProvider>
+                <ActivityProvider>
+                  <ProductProvider>{children}</ProductProvider>
+                </ActivityProvider>
               </MyCartProvider>
             </UserProvider>
           </AuthProvider>
