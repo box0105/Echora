@@ -4,12 +4,13 @@ import React, { useState, useEffect } from 'react'
 import { useMyCoupon } from '@/hooks/use-coupon'
 import { useAuth } from '@/hooks/use-auth'
 import Link from 'next/link'
-import { isValid, parseISO } from 'date-fns';
+import { isValid, parseISO } from 'date-fns'
 
 const CouponAdminTable = () => {
   const { time } = useMyCoupon()
   const [coupons, setCoupons] = useState([]) // 優惠券資料
-  const [timeError, setTimeError] = useState(''); // 用於顯示時間錯誤訊息
+  const [coupon, setCoupon] = useState([]) //後端fetch資料
+  const [timeError, setTimeError] = useState('') // 用於顯示時間錯誤訊息
   const [editingCouponId, setEditingCouponId] = useState(null) // 正在編輯的優惠券 ID
   const [editingCoupon, setEditingCoupon] = useState(null) // 儲存正在編輯的優惠券資料
   const [newCoupon, setNewCoupon] = useState({
@@ -25,6 +26,22 @@ const CouponAdminTable = () => {
   })
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const url = 'http://localhost:3005/api/coupon'
+        const res = await fetch(url)
+        if (!res.ok) throw new Error('狀態錯誤')
+        const data = await res.json()
+        console.log(data.data)
+        setCoupon(data.data)
+      } catch (err) {
+        console.log('發生錯誤', err)
+      }
+    }
+    fetchData()
+  }, [])
+
+  useEffect(() => {
     // 模擬從後端取得資料 (實際應用中請使用 API 呼叫)
     const initialCoupons = [
       { id: 1, name: '夏季折扣', code: 'SUMMER10', discount: 10 },
@@ -38,7 +55,7 @@ const CouponAdminTable = () => {
     const { name, value } = e.target
     // setNewCoupon((prevNewCoupon) => ({ ...prevNewCoupon, [name]: value }))
     setNewCoupon({ ...newCoupon, [name]: value })
-    setTimeError('');
+    setTimeError('')
   }
 
   // 新增優惠券
@@ -72,7 +89,6 @@ const CouponAdminTable = () => {
       endTime: '',
       status: '',
     }) // 清空輸入框
-
   }
 
   // 開始編輯優惠券
@@ -142,10 +158,10 @@ const CouponAdminTable = () => {
         />
         <select name="type" value={newCoupon.type} onChange={handleInputChange}>
           <option value="">請選擇</option>
-          <option key="1" value="固定金額">
+          <option key="1" value="1">
             固定金額
           </option>
-          <option key="2" value="百分比">
+          <option key="2" value="1">
             百分比
           </option>
         </select>
@@ -237,12 +253,11 @@ const CouponAdminTable = () => {
                     value={editingCoupon.type || ''}
                     onChange={handleEditingInputChange}
                   >
-                    <option value="">請選擇</option>
-                    <option value="固定金額">固定金額</option>
-                    <option value="百分比">百分比</option>
+                    <option value="1">固定金額</option>
+                    <option value="2">百分比</option>
                   </select>
                 ) : (
-                  coupon.type
+                  <div>{coupon.type == 1 ? '固定金額' : '百分比'}</div>
                 )}
               </td>
               <td>
