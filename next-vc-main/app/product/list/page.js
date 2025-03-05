@@ -236,7 +236,7 @@ export default function ProductListPage(props) {
     setVisibleCount(12)
   }, [criteria])
 
-  // 比較需要的函式
+  // 比較功能需要的函式
   // 拖曳開始時，將產品資訊存入 dataTransfer
   const [selectedProducts, setSelectedProducts] = useState([
     null,

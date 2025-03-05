@@ -207,12 +207,14 @@ router.get('/comparison', async (req, res) => {
     product_sku.stock, 
     color.name AS color_name, 
     color.color_image, 
-    image.image
+    image.image,
+    spec.neck_pickup, spec.middle_pickup, spec.bridge_pickup, spec.controls, spec.switching
     FROM product
     JOIN brand ON product.brand_id = brand.id 
     JOIN product_sku ON product.id = product_sku.product_id 
     JOIN color ON product_sku.color_id = color.id 
     JOIN image ON product_sku.id = image.product_sku_id
+    JOIN spec ON product.id = spec.product_id
     WHERE image.sort_order = 1
     AND product_sku.id IN (?)`
 
