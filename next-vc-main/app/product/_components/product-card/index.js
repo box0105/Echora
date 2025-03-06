@@ -16,7 +16,7 @@ export default function ProductCard({ data = {}, handleDragStart}) {
 
   return (
     <>
-      <div className="col p-2">
+      {/* <div className="col p-2"> */}
         <div
           className={styles['g-product-card']}
           onClick={() => {
@@ -65,7 +65,7 @@ export default function ProductCard({ data = {}, handleDragStart}) {
             </p>
           </div>
         </div>
-      </div>
+      {/* </div> */}
     </>
   )
 }

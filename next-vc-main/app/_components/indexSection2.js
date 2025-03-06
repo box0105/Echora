@@ -1,8 +1,14 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import { useProductState } from '@/services/rest-client/use-products'
 
 export default function IndexSection2(props) {
+  const { criteria, setCriteria, defaultCriteria } = useProductState()
+
+  // setCriteria((prev) => {
+  //   return { ...prev, [name]: value }
+  // })
   return (
     <>
       <div className="container-fluid m-index">
@@ -12,7 +18,10 @@ export default function IndexSection2(props) {
           </h1>
         </div>
         <div className="row mb-2">
-          <div className="col-lg-7 col-6 m-section2-col m-section2-col1 m-section2-col5 m-anime">
+          <div
+            className="col-lg-7 col-6 m-section2-col m-section2-col1 m-section2-col5 m-anime"
+            onClick={() => {}}
+          >
             <div className="m-section2-line d-flex flex-column justify-content-center">
               <h4>JSHINE</h4>
               <p>曜彩系列</p>

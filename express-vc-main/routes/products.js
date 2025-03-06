@@ -5,7 +5,6 @@ const router = express.Router()
 
 // 得到所有商品資料
 // GET /api/products
-
 router.get('/', async (req, res) => {
   // type決定是否取得資料
   // type=data 需取得資料; type=count 不需取得資料
@@ -238,6 +237,34 @@ router.get('/maylike/:colorId', async (req, res) => {
 
     const [rows] = await db.query(sql, [colorIdNum])
 
+    res.status(200).json({
+      status: 'success',
+      data: rows,
+      message: '取得資料成功',
+    })
+  } catch (err) {
+    console.log(err)
+    res.status(400).json({
+      status: 'error',
+      message: err.message ? err.message : '取得資料失敗',
+    })
+  }
+})
+
+// 得到首頁主打產品資料
+// GET /api/products/trending
+router.get('/trending', async (req, res) => {
+  const sql = `SELECT product.*, brand.name AS brand_name, product_sku.id AS product_sku_id, product_sku.stock, color.name AS color_name, color.color_image, color.id AS color_id ,image.image, image.sort_order
+  FROM product 
+  JOIN brand ON product.brand_id = brand.id 
+  JOIN product_sku ON product.id = product_sku.product_id 
+  JOIN color ON product_sku.color_id = color.id 
+  JOIN image ON product_sku.id = image.product_sku_id 
+  JOIN spec ON product.id = spec.product_id 
+  WHERE image.sort_order = 1 AND product.name LIKE '%player%';`
+  try {
+    const [rows] = await db.query(sql)
+    // console.log(rows)
     res.status(200).json({
       status: 'success',
       data: rows,

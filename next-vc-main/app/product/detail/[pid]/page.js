@@ -23,7 +23,7 @@ export default function ProductDetailIdPage() {
       name,
       brand_name: brand,
       price,
-      discount_price: discountPrice,
+      // discount_price: discountPrice,
       discription,
       color_name: selectedColorInfo.name,
       color_image: selectedColorInfo.image,
@@ -265,7 +265,7 @@ export default function ProductDetailIdPage() {
                   onClick={toggleFav}
                 />
                 <h3 className="h3 mb-0 me-5">{detailData[0].name}</h3>
-                <h6 className="g-price h6 m-0">NT$ {detailData[0].price}</h6>
+                <h6 className="g-price h6 m-0">NT$ {detailData[0].price.toLocaleString()}</h6>
                 <div className="g-pd-brand d-flex justify-content-center align-items-center">
                   <p className="h7 m-0">{detailData[0].brand}</p>
                 </div>

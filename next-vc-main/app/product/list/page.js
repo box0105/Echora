@@ -29,7 +29,7 @@ export default function ProductListPage(props) {
   const [queryString, setQueryString] = useState('')
 
   // 在不同頁面之間共享條件(列表頁、商品頁)
-  const { criteria, setCriteria, defaultCriteria} = useProductState()
+  const { criteria, setCriteria, defaultCriteria } = useProductState()
   // 從context中取得目前記錄的共享條件的值
   const {
     // page,
@@ -245,7 +245,9 @@ export default function ProductListPage(props) {
     null,
   ])
 
-  const selectedAmount = selectedProducts.filter(product => product !== null).length
+  const selectedAmount = selectedProducts.filter(
+    (product) => product !== null
+  ).length
 
   const handleDragStart = (e, product) => {
     e.dataTransfer.setData('product', JSON.stringify(product))
@@ -271,8 +273,9 @@ export default function ProductListPage(props) {
   const router = useRouter()
   const toComparePage = () => {
     const selectedSkus = selectedProducts
-    .filter(product => product !== null)
-    .map( product => product.product_sku_id).join(",")
+      .filter((product) => product !== null)
+      .map((product) => product.product_sku_id)
+      .join(',')
     router.push(`/product/comparison?products=${selectedSkus}`)
   }
 
@@ -432,11 +435,12 @@ export default function ProductListPage(props) {
           <div className="container-fluid p-1">
             <div className="row row-cols-xl-4 row-cols-2">
               {pdData.slice(0, visibleCount).map((product, i) => (
-                <ProductCard
-                  key={product.id}
-                  data={product}
-                  handleDragStart={handleDragStart}
-                />
+                <div className="col p-2" key={product.id}>
+                  <ProductCard
+                    data={product}
+                    handleDragStart={handleDragStart}
+                  />
+                </div>
               ))}
             </div>
           </div>
@@ -527,16 +531,18 @@ export default function ProductListPage(props) {
                 </div>
               </div>
               <div className="d-flex flex-column">
-                <button 
-                disabled={selectedAmount > 1 ? false : true}
-                className={`g-compare-btn text-center ${selectedAmount > 1 ? 'active' : ''}`}
-                onClick={toComparePage}
+                <button
+                  disabled={selectedAmount > 1 ? false : true}
+                  className={`g-compare-btn text-center ${
+                    selectedAmount > 1 ? 'active' : ''
+                  }`}
+                  onClick={toComparePage}
                 >
                   <h6 className="mb-0">{`比較 ${selectedAmount} 款電吉他`}</h6>
                 </button>
-                <button 
-                className="g-clear-btn text-center"
-                onClick={() => setSelectedProducts([null, null, null, null])}
+                <button
+                  className="g-clear-btn text-center"
+                  onClick={() => setSelectedProducts([null, null, null, null])}
                 >
                   <h6 className="mb-0">清除全部</h6>
                 </button>
