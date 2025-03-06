@@ -82,7 +82,10 @@ export default function PasswordPage() {
       )
       const resData = await res.json()
       if (resData.status === 'success') {
-        toast.success('會員密碼修改成功')
+        toast.success('會員密碼修改成功', {
+          autoClose: 2000,
+          position: 'bottom-right',
+        })
       } else {
         toast.error(`會員密碼修改失敗: ${resData.message}`)
       }
