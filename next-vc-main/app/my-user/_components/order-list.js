@@ -42,7 +42,7 @@ export default function OrderList() {
               <th scope="col">付款方式</th>
               <th scope="col">寄件方式</th>
               <th scope="col">總金額</th>
-              <th scope="col"></th>
+              <th scope="col">詳情</th>
             </tr>
           </thead>
           <tbody>
@@ -66,7 +66,7 @@ export default function OrderList() {
                   <h6>{order.shippingMethod}</h6>
                 </td>
                 <td>
-                  <h6>NT$ {order.totalAmount}</h6>
+                  <h6>NT$ {Number(order.totalAmount).toLocaleString()}</h6>
                 </td>
                 <td>
                   <button className="btn">

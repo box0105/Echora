@@ -55,7 +55,7 @@ export default function ComponentsOrderDetail() {
                 : `使用的優惠券 : ${order.coupon}`}
             </p>
             <p>
-              {order.cost == 0 ? '折扣 : 無' : `折扣 : - NT$ ${order.cost}`}
+              {order.cost == 0 ? '折扣 : 無' : `折扣 : - NT$ ${Number(order.cost).toLocaleString()}`}
             </p>
             <br />
             <hr />

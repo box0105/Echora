@@ -84,7 +84,7 @@ export default function CartItem({ item }) {
                   <h5 className="p-lg-1 mb-0" style={{fontWeight : 700}}>價錢: NT$ {item.price.toLocaleString()}</h5>
                   <button
                     type="button"
-                    className="btn m-cart-remove btn-sm"
+                    className="btn m-cart-remove btn-sm m-lg-0 m-2"
                     onClick={() => {
                       onRemove(item.key)
                     }}
