@@ -530,7 +530,7 @@ export default function ProfilePage() {
                   type="text"
                   id="username"
                   name="username"
-                  className="form-control"
+                  className="form-control a-form-control"
                   value={profileInput?.username || ''}
                   onChange={handleInputChange}
                 />
@@ -544,7 +544,7 @@ export default function ProfilePage() {
                   type="email"
                   id="email"
                   name="email"
-                  className="form-control"
+                  className="form-control a-form-control"
                   value={profileInput?.email || ''}
                   readOnly
                 />
@@ -579,7 +579,7 @@ export default function ProfilePage() {
                   type="text"
                   id="phone"
                   name="phone"
-                  className="form-control"
+                  className="form-control a-form-control"
                   value={profileInput?.phone || ''}
                   onChange={handleInputChange}
                   placeholder="請輸入電話號碼"
@@ -592,7 +592,7 @@ export default function ProfilePage() {
                 <select
                   id="city"
                   name="city"
-                  className="form-control"
+                  className="form-control a-form-control"
                   value={selectedCity}
                   onChange={handleCityChange}
                 >
@@ -607,7 +607,7 @@ export default function ProfilePage() {
                   <select
                     id="district"
                     name="district"
-                    className="form-control"
+                    className="form-control a-form-control"
                     value={selectedDistrict}
                     onChange={handleDistrictChange}
                   >
@@ -624,7 +624,7 @@ export default function ProfilePage() {
                     type="text"
                     id="remainingAddress"
                     name="remainingAddress"
-                    className="form-control"
+                    className="form-control a-form-control"
                     value={remainingAddress}
                     onChange={handleRemainingAddressChange}
                     placeholder="請輸入詳細地址"
@@ -639,7 +639,7 @@ export default function ProfilePage() {
                   type="text"
                   id="postcode"
                   name="postcode"
-                  className="form-control"
+                  className="form-control a-form-control"
                   value={profileInput?.postcode || ''}
                   onChange={handleInputChange}
                   placeholder="請輸入郵遞區號"
