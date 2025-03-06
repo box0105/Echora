@@ -9,6 +9,7 @@ import { useMyCart } from '@/hooks/use-cart'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useAuth } from '@/hooks/use-auth'
+import { toastWarning } from '@/hooks/use-toast'
 
 export default function ChecklistPage() {
   const { cartItems, totalAmount, totalQty } = useMyCart()
@@ -16,7 +17,14 @@ export default function ChecklistPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    router.replace('/my-cart/information')
+    if (cartItems.length <= 0) {
+      toastWarning('購物車內無商品!')
+      setTimeout(() => {
+        router.replace('/')
+      }, 2000)
+    } else {
+      router.replace('/my-cart/information')
+    }
   }
 
   //#region 優惠券選單
@@ -47,7 +55,7 @@ export default function ChecklistPage() {
       const res = await fetch(url)
       if (!res.ok) throw new Error('狀態錯誤')
       const data = await res.json()
-      
+
       setUserCoupons(data.userCheckCoupons)
     } catch (err) {
       console.log('發生錯誤', err)
@@ -214,7 +222,9 @@ export default function ChecklistPage() {
               <div className="d-flex justify-content-between py-2">
                 <h5>折扣 :</h5>
                 <h5>
-                  {discountedAmount == 0 ? '' : `- NT$ ${discountedAmount.toLocaleString()}`}
+                  {discountedAmount == 0
+                    ? ''
+                    : `- NT$ ${discountedAmount.toLocaleString()}`}
                 </h5>
               </div>
               <hr />
