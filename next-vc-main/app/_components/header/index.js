@@ -39,6 +39,7 @@ export default function Header() {
   const { updateQueryParams, deleteQueryParams } = useActivity()
 
   const handleSearch = (e) => {
+    // 待改
     if (pathName.includes('/product')) {
       setCriteria((prev) => ({
         ...prev,
@@ -49,6 +50,16 @@ export default function Header() {
     } else if (pathName.includes('/rent')) {
       updateQueryParams({ search: searchName });
     }
+    // if (pathName.includes('/product')) {
+    //   setCriteria((prev) => ({
+    //     ...prev,
+    //     nameLike: searchName,
+    //   }));
+    // } else if (pathName.includes('/activity')) {
+    //   updateQueryParams({ search: searchName });
+    // } else if (pathName.includes('/rent')) {
+    //   updateQueryParams({ search: searchName });
+    // }
   }
 
   const [showDropdown, setShowDropdown] = useState(false)

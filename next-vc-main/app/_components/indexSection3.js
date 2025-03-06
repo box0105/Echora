@@ -80,7 +80,7 @@ export default function IndexSection3(props) {
       const data = await res.json()
       const finalData = await convertData(data.data)
       setTrendingData(finalData)
-      console.log(finalData)
+      // console.log(finalData)
     } catch (err) {
       console.log(err)
     }

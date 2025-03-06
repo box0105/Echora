@@ -33,7 +33,7 @@ export default function IndexCardCarousel({ data = [] }) {
             <Swiper
               modules={[Navigation]}
               spaceBetween={0}
-              slidesPerView={5}
+              slidesPerView={4}
               navigation={{
                 nextEl: `.${styles['custom-swiper-button-next']}`,
                 prevEl: `.${styles['custom-swiper-button-prev']}`,
@@ -41,7 +41,7 @@ export default function IndexCardCarousel({ data = [] }) {
               breakpoints={{
                 390: { slidesPerView: 1 },
                 768: { slidesPerView: 3 },
-                1200: { slidesPerView: 5 },
+                1200: { slidesPerView: 4 },
               }}
               className={`mySwiper ${styles['g-my-swiper']}`}
             >

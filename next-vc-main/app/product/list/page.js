@@ -279,6 +279,8 @@ export default function ProductListPage(props) {
     router.push(`/product/comparison?products=${selectedSkus}`)
   }
 
+  console.log(criteria);
+
   return (
     <>
       <div>
