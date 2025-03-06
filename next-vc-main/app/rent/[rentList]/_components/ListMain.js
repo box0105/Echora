@@ -64,9 +64,9 @@ const ImageSlider = ({ images, imageBasePath = '/images/Rent/pd-images/' }) => {
           <Image
             src={`${imageBasePath}${img || 'default-image.jpg'}`}
             alt={`縮略圖 ${index}`}
-            width={100}
+            width={150}
             height={200}
-            className={`mx-auto h-40 w-100 object-cover gap-2 ${index === activeIndex ? 'active' : ''}`}
+            className={`mx-auto h-40 w-50 object-contain gap-2 ${index === activeIndex ? 'active' : ''}`}
           />
         </div>
       ))}
@@ -110,7 +110,7 @@ const ImageSlider = ({ images, imageBasePath = '/images/Rent/pd-images/' }) => {
         <div className="c-bpiv d-none d-lg-block w-100" style={{ height: '700px', paddingTop: '72px', paddingBottom: '72px'}}>
           <Image
             key={mainImage}
-            className="main-pic object-fit-contain"
+            className="main-pic h-100  object-fit-contain"
             src={`${imageBasePath}${mainImage}`}
             alt="主圖"
             width={535}
