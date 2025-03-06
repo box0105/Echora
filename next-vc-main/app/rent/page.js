@@ -8,6 +8,8 @@ import RentalProcess from './_components/RentalProcess'
 import Card from './_components/Rentcard/card'
 import List from './_components/List'
 import Modfiter from './_components/fit/fiteerMod'
+import { useRent } from '@/hooks/use-rent'; 
+
 
 export default function Page(props) {
   const [isOpen, setIsOpen] = useState(false)
@@ -19,6 +21,8 @@ export default function Page(props) {
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState(false)
+  const { query, setQuery, results, error } = useRent();
+  console.log('useRent返回的query:', query);
 
   const [visibleCount, setVisibleCount] = useState(12)
 
@@ -47,7 +51,6 @@ export default function Page(props) {
       setIsLoading(false)
     }
   }
-
   useEffect(() => {
     getData()
   }, [])
@@ -62,9 +65,14 @@ export default function Page(props) {
     中級: 2,
     高級: 3,
   }
+  console.log(' for query:', query);  // 放在 useEffect 顶部
+
 
   useEffect(() => {
-    let filtered = [...data];
+    console.log('useEffect triggered for results:', results);  // 放在 useEffect 顶部
+
+    let filtered = [...results];
+    console.log('Current search query:', query);
 
     // **篩選邏輯 (品牌、地址、顏色、等級)**
     if (filters?.brands?.length) {
@@ -80,6 +88,9 @@ export default function Page(props) {
     if (filters?.colors?.length) {
       filtered = filtered.filter(item => item.rentitemColors.some(color => filters.colors.includes(color.color_name)));
     }
+    if (query) {
+      filtered = filtered.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
+    }
 
     // **排序邏輯**
     if (sortOrder.field === 'random') {
@@ -91,12 +102,13 @@ export default function Page(props) {
     }
 
     setFilteredData(filtered);
-}, [data, filters, sortOrder]);
+  }, [results, filters, sortOrder, query]);
 
   const handleFilterChange = (newFilters) => {
     // console.log('接收到新篩選條件:', newFilters)
     setFilters(newFilters)
   }
+
 
   const handleSortChange = (sortOption) => {
     // console.log("選擇的排序:", sortOption); 
@@ -133,10 +145,9 @@ export default function Page(props) {
           {/* section2 */}
           <div className="c-section2-title d-none d-md-block ">
             <div className="container-fluid c-index p-0">
-              <div className="c-index-title c-text-p">
+              <div className="c-index-title c-text-p ">
                 <h1>
-                  ELECTRIC GUITAR RENTAL PRODUCTS{' '}
-                  <span className="h3"> / 電吉他租借商品</span>
+                <h3 className="h3">ELECTRIC GUITAR RENTAL PRODUCTS/ 電吉他租借商品</h3>
                 </h1>
               </div>
             </div>
@@ -144,7 +155,7 @@ export default function Page(props) {
 
           {/* section-mod */}
           <div className="c-section2-title d-block d-md-none pt-5">
-            <div className="container-fluid c-index-mod p-0">
+            <div className="container-fluid c-index-mod ">
               <div className="col-12">
                 <h6 className="c-tit">ELECTRIC GUITAR RENTAL PRODUCTS</h6>
               </div>
@@ -172,7 +183,7 @@ export default function Page(props) {
           {/* section2-body */}
           <div className="c-section2-body d-none d-md-block">
             <div className="container-fluid c-index-1 ;">
-              <List data={data} />
+            <List data={filteredData.slice(0, visibleCount)} />
             </div>
           </div>
 

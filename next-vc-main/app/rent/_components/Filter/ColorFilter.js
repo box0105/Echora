@@ -20,7 +20,7 @@ const ColorFilter = ({ onChange, selectedColors= [] }) => {
         <div className="color-title pb-4">
           <div className="h5 c-lenav">顏色</div>
         </div>
-        <div className="c-filter-color d-flex flex-wrap gap-2">
+        <div className="c-filter-color d-flex flex-wrap gap-4">
           {colors.map((color) => (
             <img
               key={color.name}

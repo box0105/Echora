@@ -33,9 +33,11 @@
 .c-price-1 {
   padding-bottom: 1.5rem;
 }
-.c-guide {
-  border-bottom: 1px solid hsl(0, 0%, 59%);
-}
+.c-g{
+  @media (max-width: 400px) {
+    border-bottom: 2px solid var(--grey100);
+    }
+  }
 /* 左邊攔 */
 .text-br {
   width: 7rem;
@@ -75,11 +77,16 @@
 /* section2 */
 .c-index1 {
   padding-inline: 64px;
+  @media (max-width: 400px) {
+    padding: 0 16px 0 16px;
+}
 }
 .c-prduct {
   padding: 0 4rem 4rem 4rem;;
-
-
+  @media (max-width: 400px) {
+    padding: 0 16px 0 16px;
+    background-color: var(--grey50);
+  }
 }
 .c-List-body{
   padding-top: 28px;
@@ -88,6 +95,12 @@
 .c-List-title{
   padding-top: 28px;
   border-top: 2px solid var(--grey100);
+  }
+.c-gu-title{
+  @media (max-width: 400px) {
+  border-top: 2px solid var(--grey100);
+  padding-top: 16px;
+  }
 }
 .product-body {
   justify-content: space-between;
@@ -103,6 +116,9 @@
 .bo-gu {
   padding: 0 9rem 0 9rem;
   background-color: var(--grey50);
+  @media (max-width: 400px) {
+    padding: 0 16px 4rem 16px;
+  }
 }
 
 /* section3 */
@@ -243,9 +259,10 @@ body {
   .col-7,
   .col-5 {
     width: 100%;
-    padding: 0;
   }
-
+  .c-left{
+    padding: 64px 16px 0;
+  }
   .card-group {
     flex-direction: column;
     align-items: center;
@@ -292,5 +309,16 @@ body {
   /* 手機（sm） */
   .product-list {
     flex-basis: 100%; /* 變成單列 */
+  }
+}
+@media (max-width: 480px) {
+  .c-addselect {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    /* 以下属性可选，用於防止文字过长时换行 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }

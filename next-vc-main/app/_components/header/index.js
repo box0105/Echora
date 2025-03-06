@@ -3,6 +3,7 @@ import styles from './header.module.scss'
 import CartOffcanvas from '../cart-offcanvas'
 import { useMyCart } from '@/hooks/use-cart'
 import { useActivity } from '@/hooks/use-activity'
+import { useRent } from "@/hooks/use-rent" 
 import { useRouter, usePathname } from 'next/navigation'
 import { useProductState } from '@/services/rest-client/use-products'
 import { useState, useEffect } from 'react'
@@ -37,6 +38,7 @@ export default function Header() {
   const [searchName, setSearchName] = useState('')
   const { criteria, setCriteria, defaultCriteria } = useProductState()
   const { updateQueryParams } = useActivity()
+  const { setQuery } = useRent(); 
 
   const handleSearch = (e) => {
     if (pathName.includes('/product')) {
@@ -47,7 +49,7 @@ export default function Header() {
     } else if (pathName.includes('/activity')) {
       updateQueryParams({ search: searchName });
     } else if (pathName.includes('/rent')) {
-      updateQueryParams({ search: searchName });
+      setQuery(e.target.value);
     }
   }
 

@@ -119,13 +119,18 @@ router.get('/', async (req, res) => {
 
 // 修改后的 /api/rent/search 路由
 router.get('/search', async (req, res) => {
-  const { q } = req.query;
+  const { q, page = 1, perPage = 10, priceMin, priceMax } = req.query;
   console.log(req.query);
 
   try {
     if (!q) throw new Error('請提供查詢字串');
 
-    const sql = `
+    const searchQuery = `%${q.toLowerCase()}%`; // 忽略大小写
+
+    // 计算分页的偏移量
+    const offset = (page - 1) * perPage;
+
+    let sql = `
       SELECT 
         rent.*, 
         rentBrand.name AS brand_name 
@@ -134,14 +139,27 @@ router.get('/search', async (req, res) => {
       JOIN 
         RentBrand AS rentBrand ON rent.rentBrandId = rentBrand.id
       WHERE 
-        rent.name LIKE ? 
-        OR rentBrand.name LIKE ?
+        (LOWER(rent.name) LIKE ? OR LOWER(rentBrand.name) LIKE ?)
     `;
-    const searchQuery = `%${q}%`;
 
-    // 用 db.query 執行查詢
-    const [rows] = await db.query(sql, [searchQuery, searchQuery]);
+    const params = [searchQuery, searchQuery];
 
+    // 如果有价格范围，添加到查询条件
+    if (priceMin) {
+      sql += ' AND rent.price >= ?';
+      params.push(priceMin);
+    }
+    if (priceMax) {
+      sql += ' AND rent.price <= ?';
+      params.push(priceMax);
+    }
+
+    // 添加分页条件
+    sql += ' LIMIT ?, ?';
+    params.push(offset, perPage);
+
+    const [rows] = await db.query(sql, params);
+    console.log(rows);  // 输出查询结果
     res.status(200).json({
       status: 'success',
       data: rows,
@@ -155,6 +173,7 @@ router.get('/search', async (req, res) => {
     });
   }
 });
+
 
 // 修改后的 /api/rent/search 路由
 // router.get('/search', async (req, res) => {

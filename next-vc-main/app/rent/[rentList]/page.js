@@ -8,6 +8,7 @@ import { useMyCart } from '@/hooks/use-cart'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { FaCalendarAlt } from 'react-icons/fa'
+import StoreSelector from '../_components/StoreSelector'
 
 export default function Page(props) {
   const CustomInput = ({ value, onClick }) => (
@@ -35,7 +36,7 @@ export default function Page(props) {
   const [startDate, setStartDate] = useState(initialStartDate)
   const [endDate, setEndDate] = useState(initialEndDate)
   const [quantity, setQuantity] = useState(1)
-  const [selectedStore, setSelectedStore] = useState('台北店')
+  const [selectedStore, setSelectedStore] = useState('')
   const [totalPrice, setTotalPrice] = useState(0)
   const { onAddRent } = useMyCart()
 
@@ -181,6 +182,23 @@ export default function Page(props) {
     }
   }, [ListData])
 
+  //店家
+  useEffect(() => {
+    const menu = document.querySelector('.c-addselect')
+
+    if (menu) {
+      const handleTouchStart = (e) => {
+        e.stopPropagation() // 只阻止 `react-select` 组件内部的 `touchstart` 事件
+      }
+
+      menu.addEventListener('touchstart', handleTouchStart)
+
+      return () => {
+        menu.removeEventListener('touchstart', handleTouchStart)
+      }
+    }
+  }, [])
+
   const handleAddToCart = () => {
     const cartData = {
       id: ListData.id,
@@ -258,7 +276,7 @@ export default function Page(props) {
                   <div className="col-7 c-index1 ">
                     <Main images={selectedImages} />
                   </div>
-                  <div className="col-5 c-left">
+                  <div className="col-5 c-left ">
                     <div className="c-text">
                       <div className="c-title d-flex justify-content-start align-items-center">
                         <h2 className="title-text">{ListData.name}</h2>
@@ -348,14 +366,14 @@ export default function Page(props) {
                       </div>
 
                       {/* 門店選擇 */}
-                      <div className="c-addr gap-2 py-3">
+                      {/* <div className="c-addr gap-2 py-3">
                         <div className="c-add-title">
                           <div className=" h4 c-addtiele">自取地點</div>
                         </div>
                         <select
                           name
                           id
-                          className="c-addselect w-100 inputse"
+                          className="c-addselect  inputse"
                           value={selectedStore}
                           onChange={handleStoreChange}
                         >
@@ -369,12 +387,22 @@ export default function Page(props) {
                             高雄店
                           </option>
                         </select>
-                      </div>
+                      </div> */}
+                      <StoreSelector
+                        selectedStore={selectedStore}
+                        setSelectedStore={setSelectedStore}
+                      />
 
                       <div className="btn1">
                         <button
                           className="btn btn-dark btnbot"
                           onClick={handleAddToCart}
+                          disabled={ListData?.stock <= 0} 
+                          style={{
+                            opacity: ListData?.stock <= 0 ? 0.5 : 1, 
+                            cursor:
+                              ListData?.stock <= 0 ? 'not-allowed' : 'pointer', 
+                          }}
                         >
                           <div className="h4 text-white m-0">加入購物車</div>
                         </button>
@@ -503,7 +531,7 @@ export default function Page(props) {
                     </div>
                   </div>
                   <div className="c-readdr">
-                    <div className="c-g pt-1">
+                    <div className="c-g pt-1 p-0">
                       <div className="c-gu-title">
                         <div className="h4">租借地點</div>
                       </div>{' '}
@@ -558,12 +586,13 @@ export default function Page(props) {
             <div className="container-fluid c-index">
               <div className="c-index-title d-none d-md-block">
                 <div className="row align-items-center gap-0">
-                  <div className="col-3 ps-4 pe-0">
-                    <h1 className="m-0">YOU MAY ALSO LIKE</h1>
+                  <div className="col-5 d-flex  ">
+                    <h2 className="h2 m-0">Recently popular rental products</h2>
+                    <h5 className=" h3 m-0 pt-1"> / 最近熱門租借商品</h5>
                   </div>
-                  <div className="col-6 pe-4 ps-0">
-                    <h5 className=" h5 m-0"> / 您可能也會喜歡</h5>
-                  </div>
+                  {/* <div className="col-6 pe-4 ps-0">
+                    <h5 className=" h4 m-0"> / 最近熱門租借商品</h5>
+                  </div> */}
                 </div>
               </div>
               <Boottom />

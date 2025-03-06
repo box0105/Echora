@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import RentCards from '../../_components/Rentcard/card'; // 引入 RentCards 组件
-
 // Swiper 样式
 import 'swiper/css';
 import 'swiper/css/navigation';
