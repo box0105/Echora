@@ -24,6 +24,72 @@ router.get('/', async (req, res) => {
   }
 })
 
+// 管理員新增優惠券
+router.post('/admin', async (req, res) => {
+
+  // 請求主體的資料會儲存在 req.body 物件中
+  const data = req.body
+  const { id, name, code, typeId, discount, startTime, endTime, isDelete } = data
+  console.log(id)
+  console.log(name)
+  console.log(code)
+  console.log(typeId)
+  console.log(discount)
+  console.log(startTime)
+  console.log(endTime)
+  console.log(isDelete)
+  // console.log(Array.isArray(couponId))
+  try {
+    const sql = `INSERT INTO coupon (id,name,code,typeId,discount,startTime,endTime,isDelete) VALUES (?,?,?,?,?,?,?,?)`
+    const values = [id, name, code, typeId, discount, startTime, endTime, isDelete]
+    await db.query(sql, values)
+    res
+      .status(200)
+      .json({ status: 'success', message: '優惠券已成功添加' })
+  } catch (err) {
+    console.log(err)
+    res.json({ status: 'fail', message: err.message })
+  }
+})
+
+// 管理員修改優惠券
+router.put('/admin', async (req, res) => {
+  const data = req.body
+  const { id, name, code, typeId, discount, startTime, endTime, isDelete } = data
+  console.log(data);
+
+  try {
+    const editCoupon = await db.query(
+      'UPDATE coupon SET name = ?, code = ?, typeId = ?, discount = ?, startTime = ?, endTime = ?, isDelete = ? WHERE id = ?',
+      [name, code,  typeId,discount, startTime, endTime, isDelete, id]
+    )
+    console.log(editCoupon)
+    res.status(200).json({ status: 'success', message: '修改成功' })
+  } catch (err) {
+    console.log(err)
+    res.status(400).json({ status: 'fail', message: err.message })
+  }
+})
+
+// 管理員刪除優惠券
+router.delete('/admin', async (req, res) => {
+  const data = req.body
+  const { id } = data
+  const [rows] = await db.query(`SELECT * FROM coupon WHERE id = ?`, [id])
+  console.log(rows);
+
+  try {
+      const sql = 'DELETE FROM coupon WHERE id = ?'
+      const values = [id]
+      await db.query(sql, values)
+
+    res.status(200).json({ status: 'success', message: '刪除成功!' })
+  } catch (err) {
+    console.log(err)
+    res.status(400).json({ status: 'fail', message: '刪除失敗!' })
+  }
+})
+
 // user的優惠券
 router.get('/:userId', async (req, res) => {
   const userId = Number(req.params.userId)
@@ -45,7 +111,7 @@ router.get('/:userId', async (req, res) => {
   try {
     // 1. 使用 Prisma 查詢
     const datas = await prisma.userCoupons.findMany({
-      where:{
+      where: {
         userId: userId,
       },
       include: {
@@ -101,8 +167,8 @@ router.post('/:userId', async (req, res) => {
 
   try {
     // 驗證使用者是否存在
-    if (!userId){
-      res.status(200).json({status:'sign',data:[],message:'請先登入'})
+    if (!userId) {
+      res.status(200).json({ status: 'sign', data: [], message: '請先登入' })
       return
     }
 
@@ -160,7 +226,7 @@ router.post('/:userId/all', async (req, res) => {
   const userId = Number(req.params.userId)
   // console.log(userId);
   const [A] = await db.query(`SELECT * FROM coupon WHERE isDelete = ? `, [false])
-  const [B] = await db.query(`SELECT * FROM usercoupons WHERE claimed = ? AND userId = ?`, [true,userId])
+  const [B] = await db.query(`SELECT * FROM usercoupons WHERE claimed = ? AND userId = ?`, [true, userId])
   // console.log(A);
   // console.log(B);
 
