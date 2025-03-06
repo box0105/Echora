@@ -405,7 +405,7 @@ export default function ProfilePage() {
 
   useEffect(() => {
     if (!isAuth) {
-      return router.push('/my-user')
+      return
     }
 
     const userId = localStorage.getItem('userId')
