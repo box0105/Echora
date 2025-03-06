@@ -80,11 +80,10 @@ export default function RegisterPage() {
           }
         }, 2000)
       } else {
-        if (resData.message.includes('重複的 email')) {
-          toast.error('此 email 已被使用')
-        } else {
-          toast.error(`錯誤 - 註冊失敗: ${resData.message}`)
-        }
+        const errorMessage = resData.message.includes('重複的 email')
+          ? '此 email 已被使用'
+          : `此 email 已被使用`
+        toast.error(errorMessage, { autoClose: 1500 })
       }
     } catch (err) {
       if (err.response?.data?.message.includes('重複的 email')) {
