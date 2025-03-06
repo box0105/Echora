@@ -538,7 +538,7 @@ export default function ProfilePage() {
 
               <div className="form-group">
                 <label htmlFor="email" className="form-label">
-                  Email
+                  Email/帳號
                 </label>
                 <input
                   type="email"
