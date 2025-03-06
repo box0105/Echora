@@ -9,19 +9,18 @@ import { isValid, parseISO } from 'date-fns'
 const CouponAdminTable = () => {
   const { time } = useMyCoupon()
   const [coupons, setCoupons] = useState([]) // 優惠券資料
-  const [coupon, setCoupon] = useState([]) //後端fetch資料
-  const [timeError, setTimeError] = useState('') // 用於顯示時間錯誤訊息
+  const [error, setError] = useState('') // 用於顯示時間錯誤訊息
   const [editingCouponId, setEditingCouponId] = useState(null) // 正在編輯的優惠券 ID
   const [editingCoupon, setEditingCoupon] = useState(null) // 儲存正在編輯的優惠券資料
   const [newCoupon, setNewCoupon] = useState({
     // 新增優惠券的預設資料
     name: '',
     code: '',
-    type: '',
+    typeId: '',
     discount: 0,
     startTime: '',
     endTime: '',
-    status: '下架',
+    isDelete: '下架',
     // 其他欄位...
   })
 
@@ -33,7 +32,7 @@ const CouponAdminTable = () => {
         if (!res.ok) throw new Error('狀態錯誤')
         const data = await res.json()
         console.log(data.data)
-        setCoupon(data.data)
+        setCoupons(data.data)
       } catch (err) {
         console.log('發生錯誤', err)
       }
@@ -41,21 +40,21 @@ const CouponAdminTable = () => {
     fetchData()
   }, [])
 
-  useEffect(() => {
-    // 模擬從後端取得資料 (實際應用中請使用 API 呼叫)
-    const initialCoupons = [
-      { id: 1, name: '夏季折扣', code: 'SUMMER10', discount: 10 },
-      { id: 2, name: '新會員優惠', code: 'NEWUSER', discount: 5 },
-    ]
-    setCoupons(initialCoupons)
-  }, [])
+  // useEffect(() => {
+  //   // 模擬從後端取得資料 (實際應用中請使用 API 呼叫)
+  //   const initialCoupons = [
+  //     { id: 1, name: '夏季折扣', code: 'SUMMER10', discount: 10 },
+  //     { id: 2, name: '新會員優惠', code: 'NEWUSER', discount: 5 },
+  //   ]
+  //   setCoupons(initialCoupons)
+  // }, [])
 
   // 處理輸入框的變更
   const handleInputChange = (e) => {
     const { name, value } = e.target
     // setNewCoupon((prevNewCoupon) => ({ ...prevNewCoupon, [name]: value }))
     setNewCoupon({ ...newCoupon, [name]: value })
-    setTimeError('')
+    setError('')
   }
 
   // 新增優惠券
@@ -66,28 +65,28 @@ const CouponAdminTable = () => {
 
     // 驗證日期格式
     if (!isValid(startDate) || !isValid(endDate)) {
-      setTimeError('時間格式不正確')
+      setError('時間格式不正確')
       return
     }
 
     // 比較開始和結束時間
     if (endDate <= startDate) {
-      setTimeError('結束時間必須晚於開始時間')
+      setError('結束時間必須晚於開始時間')
       return
     }
 
-    const newId =
-      coupons.length > 0 ? Math.max(...coupons.map((c) => c.id)) + 1 : 1
+    const newId = coupons.length > 0 ? Math.max(...coupons.map((c) => c.id)) + 1 : 1
     const couponToAdd = { ...newCoupon, id: newId } // 產生新的 id
     setCoupons([...coupons, couponToAdd])
+    createCoupon(couponToAdd)
     setNewCoupon({
       name: '',
       code: '',
-      type: '',
+      typeId: '',
       discount: 0,
       startTime: '',
       endTime: '',
-      status: '',
+      isDelete: '',
     }) // 清空輸入框
   }
 
@@ -109,7 +108,9 @@ const CouponAdminTable = () => {
     const updatedCoupons = coupons.map((coupon) =>
       coupon.id === editingCoupon.id ? editingCoupon : coupon
     )
+
     setCoupons(updatedCoupons)
+    updateCoupon(editingCoupon.id)
     setEditingCoupon(null) //清空
     setEditingCouponId(null) // 停止編輯
   }
@@ -118,6 +119,8 @@ const CouponAdminTable = () => {
   const handleDeleteCoupon = (id) => {
     const updatedCoupons = coupons.filter((coupon) => coupon.id !== id)
     setCoupons(updatedCoupons)
+    const deletedCoupon = coupons.filter((coupon) => coupon.id == id)
+    deleteCoupon()
   }
 
   //轉換時間
@@ -133,6 +136,85 @@ const CouponAdminTable = () => {
     const dateString = date.toLocaleDateString(undefined, dateOptions)
     const timeString = date.toLocaleTimeString(undefined, timeOptions)
     return `${dateString} ${timeString}`
+  }
+
+  const createCoupon = async (couponToAdd) => {
+    // const userId = getUserId() 改成管理員
+    try {
+      // http://localhost:3005/api/coupon/resource
+      const res = await fetch(`http://localhost:3005/api/coupon/admin`, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({ id: couponToAdd.id, name: couponToAdd.name, code: couponToAdd.code, typeId: couponToAdd.typeId, discount: couponToAdd.discount, startTime: couponToAdd.startTime, endTime: couponToAdd.endTime, isDelete: couponToAdd.isDelete }),
+      })
+
+      const data = await res.json()
+
+      console.log(data)
+      return data
+    } catch (err) {
+      setError(err.message)
+      console.log(err.message)
+      return { status: 'fail' }
+    }
+  }
+
+  const updateCoupon = async (couponID) => {
+    // const userId = getUserId() 改成管理員
+
+    try {
+      // http://localhost:3005/api/coupon/resource
+      const res = await fetch(`http://localhost:3005/api/coupon/admin`, {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: couponID,
+          name: editingCoupon.name,
+          code: editingCoupon.code,
+          typeId: editingCoupon.typeId,
+          discount: editingCoupon.discount,
+          startTime: editingCoupon.startTime,
+          endTime: editingCoupon.endTime,
+          isDelete: editingCoupon.isDelete
+        }),
+      })
+
+      const data = await res.json()
+
+      console.log(data)
+      return data
+    } catch (err) {
+      setError(err.message)
+      console.log(err.message)
+      return { status: 'fail' }
+    }
+  }
+
+  const deleteCoupon = async () => {
+    // const userId = getUserId() 改成管理員
+    try {
+      // http://localhost:3005/api/coupon/resource
+      const res = await fetch(`http://localhost:3005/api/coupon/admin`, {
+        method: 'DELETE',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({ id: editingCoupon.id }),
+      })
+
+      const data = await res.json()
+
+      console.log(data)
+      return data
+    } catch (err) {
+      setError(err.message)
+      console.log(err.message)
+      return { status: 'fail' }
+    }
   }
 
   return (
@@ -156,16 +238,16 @@ const CouponAdminTable = () => {
           value={newCoupon.code}
           onChange={handleInputChange}
         />
-        <select name="type" value={newCoupon.type} onChange={handleInputChange}>
+        <select name="typeId" value={newCoupon.typeId} onChange={handleInputChange}>
           <option value="">請選擇</option>
           <option key="1" value="1">
             固定金額
           </option>
-          <option key="2" value="1">
+          <option key="2" value="2">
             百分比
           </option>
         </select>
-        {newCoupon.type != '' ? (
+        {newCoupon.typeId != '' ? (
           <input
             type="number"
             name="discount"
@@ -191,19 +273,19 @@ const CouponAdminTable = () => {
           onChange={handleInputChange}
         />
         <select
-          name="status"
-          value={newCoupon.status}
+          name="isDelete"
+          value={newCoupon.isDelete}
           onChange={handleInputChange}
         >
-          <option key="1" value="上架">
+          <option key="1" value="0">
             上架
           </option>
-          <option key="2" value="下架">
+          <option key="2" value="1">
             下架
           </option>
         </select>
         <button onClick={handleAddCoupon}>新增</button>
-        {timeError && <div className="error-message">{timeError}</div>}
+        {error && <div className="error-message">{error}</div>}
       </div>
 
       {/* 優惠券表格 */}
@@ -249,15 +331,15 @@ const CouponAdminTable = () => {
               <td>
                 {editingCouponId === coupon.id ? (
                   <select
-                    name="type"
-                    value={editingCoupon.type || ''}
+                    name="typeId"
+                    value={editingCoupon.typeId || ''}
                     onChange={handleEditingInputChange}
                   >
                     <option value="1">固定金額</option>
                     <option value="2">百分比</option>
                   </select>
                 ) : (
-                  <div>{coupon.type == 1 ? '固定金額' : '百分比'}</div>
+                  <div>{coupon.typeId == 1 ? '固定金額' : '百分比'}</div>
                 )}
               </td>
               <td>
@@ -299,34 +381,39 @@ const CouponAdminTable = () => {
               <td>
                 {editingCouponId === coupon.id ? (
                   <select
-                    name="status"
-                    value={editingCoupon.status || '下架'}
+                    name="isDelete"
+                    value={editingCoupon.isDelete || '下架'}
                     onChange={handleEditingInputChange}
                   >
-                    <option key="1" value="上架">
+                    <option key="1" value="0">
                       上架
                     </option>
-                    <option key="2" value="下架">
+                    <option key="2" value="1">
                       下架
                     </option>
                   </select>
                 ) : (
-                  coupon.status
+                  coupon.isDelete
                 )}
               </td>
               <td>
                 {editingCouponId === coupon.id ? (
-                  <button onClick={() => handleUpdateCoupon(coupon)}>
-                    儲存
-                  </button>
+                  <div>
+                    <button onClick={() => {
+                      handleUpdateCoupon(coupon.id)
+                    }}>
+                      儲存
+                    </button>
+                    <button onClick={() => handleDeleteCoupon(coupon.id)}>
+                      刪除
+                    </button>
+                  </div>
                 ) : (
                   <>
                     <button onClick={() => handleEditCoupon(coupon.id)}>
                       編輯
                     </button>
-                    <button onClick={() => handleDeleteCoupon(coupon.id)}>
-                      刪除
-                    </button>
+
                   </>
                 )}
               </td>
