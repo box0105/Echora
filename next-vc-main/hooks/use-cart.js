@@ -1,6 +1,6 @@
 // 1.建⽴與導出它
 import { createContext, useContext, useState, useEffect } from 'react'
-import { toast } from 'react-toastify'
+import { toastSuccess, toastInfo } from './use-toast'
 
 const CartContext = createContext(null)
 
@@ -49,14 +49,10 @@ export function MyCartProvider({ children }) {
   // -------- 加入購物車 --------
 
   const fristToast = () => {
-    toast.success('加入購物車成功', {
-      position: 'bottom-right',
-    })
+    toastSuccess('加入購物車成功')
   }
   const nextToast = () => {
-    toast.info('已有相同商品在購物車內！', {
-      position: 'bottom-right',
-    })
+    toastInfo('已有相同商品在購物車內！')
   }
 
   // 商品加入購物車

@@ -278,7 +278,7 @@ model MyOrder {
   paymentMethod   String
   cost            String
   coupon          String
-  totalAmount     Int
+  totalAmount     String
   createdAt       DateTime @default(now()) // 訂單創建時間
 }
 

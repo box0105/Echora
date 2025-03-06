@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { isDev, apiURL } from '@/config'
 import { customAlphabet } from 'nanoid'
 import { useAuth } from '@/hooks/use-auth'
+import { toastWarning } from '@/hooks/use-toast'
 
 // 載入loading元件
 
@@ -65,7 +66,7 @@ export default function InformationPage() {
           address: userInf.address || '',
         })
       } else {
-        toast.warn('您的個人資料未填寫完整', { position: 'bottom-right' })
+        toastWarning('您的個人資料未填寫完整')
       }
     } else {
       setFormData({
@@ -464,7 +465,7 @@ export default function InformationPage() {
                 <div className="h3 pt-4 pb-2">訂單摘要</div>
                 <div className="d-flex justify-content-between py-2">
                   <h5>小計 :</h5>
-                  <h5>NT$ {totalAmount}</h5>
+                  <h5>NT$ {totalAmount.toLocaleString()}</h5>
                 </div>
                 <div className="d-flex justify-content-between py-2">
                   <h5>運費 :</h5>
@@ -477,7 +478,7 @@ export default function InformationPage() {
                 <hr />
                 <div className="d-flex justify-content-between py-3">
                   <h4 className="h4">總計 :</h4>
-                  <h4 className="h4">NT$ {totalAmount - cost}</h4>
+                  <h4 className="h4">NT$ {(totalAmount - cost).toLocaleString()}</h4>
                 </div>
                 {/* <div className="row row-cols-1 pt-4 d-md-block d-none">
                 <CartList cartItems={cartItems} />
