@@ -22,6 +22,8 @@ const initUserProfile = {
   phone: '',
   postcode: '',
   address: '',
+  city: '',
+  district: '',
 }
 
 const taiwanCities = {
@@ -421,12 +423,13 @@ export default function ProfilePage() {
         const resData = await res.json()
         console.log('API 回傳資料:', resData)
         if (resData.status === 'success') {
-          const { address } = resData.data
-          const [city, district, ...rest] = address.split(' ')
-          const remainingAddress = rest.join(' ')
-          setSelectedCity(city)
-          setSelectedDistrict(district)
-          setRemainingAddress(remainingAddress)
+          const { city, district, address } = resData.data
+          if (address) {
+            const remainingAddress = address.replace(`${city} ${district} `, '')
+            setSelectedCity(city)
+            setSelectedDistrict(district)
+            setRemainingAddress(remainingAddress)
+          }
           setProfileInput(resData.data)
           console.log('User profile data:', resData.data)
         } else {
@@ -436,7 +439,6 @@ export default function ProfilePage() {
         toast.error(`獲取會員資料失敗: ${err.message}`)
       }
     }
-
     fetchUserProfile()
   }, [isAuth, router])
 
@@ -455,7 +457,9 @@ export default function ProfilePage() {
     setRemainingAddress('')
     setProfileInput((prevProfile) => ({
       ...prevProfile,
-      address: `${city}`,
+      city: city,
+      district: '',
+      address: '',
     }))
   }
 
@@ -464,6 +468,7 @@ export default function ProfilePage() {
     setSelectedDistrict(district)
     setProfileInput((prevProfile) => ({
       ...prevProfile,
+      district: district,
       address: `${selectedCity} ${district} ${remainingAddress}`,
     }))
   }
@@ -473,7 +478,7 @@ export default function ProfilePage() {
     setRemainingAddress(address)
     setProfileInput((prevProfile) => ({
       ...prevProfile,
-      address: `${selectedCity} ${selectedDistrict} ${address}`,
+      address: address,
     }))
   }
 
@@ -495,7 +500,11 @@ export default function ProfilePage() {
           position: 'bottom-right',
           autoClose: 1000,
         })
-        setProfileInput(resData.data)
+        // 確保保留所有欄位
+        setProfileInput((prevProfile) => ({
+          ...prevProfile,
+          ...resData.data,
+        }))
       } else {
         toast.error(`更新會員資料失敗: ${resData.message}`)
       }
@@ -522,7 +531,7 @@ export default function ProfilePage() {
                   id="username"
                   name="username"
                   className="form-control"
-                  value={profileInput?.username}
+                  value={profileInput?.username || ''}
                   onChange={handleInputChange}
                 />
               </div>
@@ -536,7 +545,7 @@ export default function ProfilePage() {
                   id="email"
                   name="email"
                   className="form-control"
-                  value={profileInput?.email}
+                  value={profileInput?.email || ''}
                   readOnly
                 />
               </div>
@@ -559,6 +568,82 @@ export default function ProfilePage() {
                     </Link>
                   </button>
                 </div>
+              </div>
+            </div>
+            <div className="right">
+              <div className="form-group">
+                <label htmlFor="phone" className="form-label">
+                  電話號碼
+                </label>
+                <input
+                  type="text"
+                  id="phone"
+                  name="phone"
+                  className="form-control"
+                  value={profileInput?.phone || ''}
+                  onChange={handleInputChange}
+                  placeholder="請輸入電話號碼"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="address" className="form-label">
+                  地址
+                </label>
+                <select
+                  id="city"
+                  name="city"
+                  className="form-control"
+                  value={selectedCity}
+                  onChange={handleCityChange}
+                >
+                  <option value="">請選擇縣市</option>
+                  {Object.keys(taiwanCities).map((city) => (
+                    <option key={city} value={city}>
+                      {city}
+                    </option>
+                  ))}
+                </select>
+                {selectedCity && taiwanCities[selectedCity] && (
+                  <select
+                    id="district"
+                    name="district"
+                    className="form-control"
+                    value={selectedDistrict}
+                    onChange={handleDistrictChange}
+                  >
+                    <option value="">請選擇區域</option>
+                    {taiwanCities[selectedCity].map((district) => (
+                      <option key={district} value={district}>
+                        {district}
+                      </option>
+                    ))}
+                  </select>
+                )}
+                {selectedDistrict && (
+                  <input
+                    type="text"
+                    id="remainingAddress"
+                    name="remainingAddress"
+                    className="form-control"
+                    value={remainingAddress}
+                    onChange={handleRemainingAddressChange}
+                    placeholder="請輸入詳細地址"
+                  />
+                )}
+              </div>
+              <div className="form-group">
+                <label htmlFor="postcode" className="form-label">
+                  郵遞區號
+                </label>
+                <input
+                  type="text"
+                  id="postcode"
+                  name="postcode"
+                  className="form-control"
+                  value={profileInput?.postcode || ''}
+                  onChange={handleInputChange}
+                  placeholder="請輸入郵遞區號"
+                />
               </div>
               <fieldset className="gender-group form-group">
                 <legend className="form-label">
@@ -601,82 +686,6 @@ export default function ProfilePage() {
                   <span>不便透露</span>
                 </label>
               </fieldset>
-            </div>
-            <div className="right">
-              <div className="form-group">
-                <label htmlFor="phone" className="form-label">
-                  電話號碼
-                </label>
-                <input
-                  type="text"
-                  id="phone"
-                  name="phone"
-                  className="form-control"
-                  value={profileInput?.phone}
-                  onChange={handleInputChange}
-                  placeholder="請輸入電話號碼"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="address" className="form-label">
-                  地址
-                </label>
-                <select
-                  id="city"
-                  name="city"
-                  className="form-control"
-                  value={selectedCity}
-                  onChange={handleCityChange}
-                >
-                  <option value="">請選擇縣市</option>
-                  {Object.keys(taiwanCities).map((city) => (
-                    <option key={city} value={city}>
-                      {city}
-                    </option>
-                  ))}
-                </select>
-                {selectedCity && (
-                  <select
-                    id="district"
-                    name="district"
-                    className="form-control"
-                    value={selectedDistrict}
-                    onChange={handleDistrictChange}
-                  >
-                    <option value="">請選擇區域</option>
-                    {taiwanCities[selectedCity].map((district) => (
-                      <option key={district} value={district}>
-                        {district}
-                      </option>
-                    ))}
-                  </select>
-                )}
-                {selectedDistrict && (
-                  <input
-                    type="text"
-                    id="remainingAddress"
-                    name="remainingAddress"
-                    className="form-control"
-                    value={remainingAddress}
-                    onChange={handleRemainingAddressChange}
-                    placeholder="請輸入詳細地址"
-                  />
-                )}
-              </div>
-              <div className="form-group">
-                <label htmlFor="postcode" className="form-label">
-                  郵遞區號
-                </label>
-                <input
-                  type="text"
-                  id="postcode"
-                  name="postcode"
-                  className="form-control"
-                  value={profileInput?.postcode}
-                  onChange={handleInputChange}
-                  placeholder="請輸入郵遞區號"
-                />
-              </div>
             </div>
             {/* <div className="section-header">
               <h4 className="form-label">頭貼</h4>
