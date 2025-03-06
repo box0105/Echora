@@ -60,9 +60,9 @@ export default function InformationPage() {
           recipient: userInf?.username || '',
           phone: userInf?.phone || '',
           email: userInf?.email || '',
-          city: userInf.address.slice(0, 3) || '',
-          country: userInf.address.slice(3, 6) || '',
-          address: userInf.address.slice(6) || '',
+          city: userInf.city || '',
+          country: userInf.district || '',
+          address: userInf.address || '',
         })
       } else {
         toast.warn('您的個人資料未填寫完整', { position: 'bottom-right' })
