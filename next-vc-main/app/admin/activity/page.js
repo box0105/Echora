@@ -483,7 +483,7 @@ export default function AdminActivity() {
           {/* 價錢 */}
           <div className="row gy-3 gx-4 d-flex align-items-center">
             <div className="col-auto col-sm-1">
-              <h className="mb-0">價錢</h>
+              <h5 className="mb-0">價錢</h5>
             </div>
             <div className="col-12 col-sm-auto">
               <label className="form-label mb-0">價錢 bar</label>
