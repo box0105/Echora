@@ -13,7 +13,6 @@ import { useRouter } from 'next/navigation'
 import PreviewUploadImage from './_components/preview-upload-image'
 import TWZipCode from './_components/tw-zipcode'
 import { Oval } from 'react-loader-spinner'
-import { useUser } from '@/hooks/use-profile'
 
 const initUserProfile = {
   username: '',
@@ -406,8 +405,7 @@ export default function ProfilePage() {
 
   useEffect(() => {
     if (!isAuth) {
-      router.push('/my-user')
-      return
+      return router.push('/my-user')
     }
 
     const userId = localStorage.getItem('userId')
@@ -499,6 +497,7 @@ export default function ProfilePage() {
         toast.success('會員資料更新成功', {
           position: 'bottom-right',
           autoClose: 1000,
+          onClose: () => window.location.reload('/my-user/profile'),
         })
         // 確保保留所有欄位
         setProfileInput((prevProfile) => ({
