@@ -17,7 +17,7 @@ body {
 .back {
   position: absolute;
   top: 36px;
-  left: 16px;
+  left: 36px;
   cursor: pointer;
   color: #000;
   font: 400 16px Noto Sans TC, sans-serif;
@@ -54,7 +54,7 @@ body {
   flex-direction: column;
   flex-grow: 1;
   width: 25%;
-  max-width: 500px;
+  // max-width: 500px;
   margin: auto 0;
   padding: 80px 60px 0;
 }

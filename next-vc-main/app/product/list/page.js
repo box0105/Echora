@@ -4,7 +4,7 @@ import ProductCard from '../_components/product-card'
 import FilterBar from '../_components/filter-bar'
 
 import { useSearchParams } from 'next/navigation'
-// import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { useProductState } from '@/services/rest-client/use-products'
 
@@ -18,7 +18,10 @@ export default function ProductListPage(props) {
   const [comparisionOpen, setComparisionOpen] = useState(false)
   const comparisionToggle = () => setComparisionOpen(!comparisionOpen)
   // 排序狀態
-  const [selectedSort, setSelectedSort] = useState({sort: 'price', order: 'ASC'})
+  const [selectedSort, setSelectedSort] = useState({
+    sort: 'price',
+    order: 'ASC',
+  })
   // 瀏覽更多 狀態
   const [visibleCount, setVisibleCount] = useState(12)
 
@@ -26,7 +29,7 @@ export default function ProductListPage(props) {
   const [queryString, setQueryString] = useState('')
 
   // 在不同頁面之間共享條件(列表頁、商品頁)
-  const { criteria, setCriteria, defaultCriteria } = useProductState()
+  const { criteria, setCriteria, defaultCriteria} = useProductState()
   // 從context中取得目前記錄的共享條件的值
   const {
     // page,
@@ -169,14 +172,10 @@ export default function ProductListPage(props) {
       const finalData = await convertData(data.data)
       setPdData(finalData)
       console.log(finalData)
-
-   
     } catch (err) {
       console.log(err)
     }
   }
-
-
   // fetch db
   // const [pdData, setPdData] = useState([])
 
@@ -230,15 +229,52 @@ export default function ProductListPage(props) {
   // didmount後執行getPdData()
   useEffect(() => {
     getPdData(queryString)
-  },[queryString])
-  
+  }, [queryString])
+
   useEffect(() => {
     setQueryString(generateQueryString(criteria))
     setVisibleCount(12)
   }, [criteria])
 
+  // 比較功能需要的函式
+  // 拖曳開始時，將產品資訊存入 dataTransfer
+  const [selectedProducts, setSelectedProducts] = useState([
+    null,
+    null,
+    null,
+    null,
+  ])
 
+  const selectedAmount = selectedProducts.filter(product => product !== null).length
 
+  const handleDragStart = (e, product) => {
+    e.dataTransfer.setData('product', JSON.stringify(product))
+  }
+
+  const handleDrop = (e, index) => {
+    e.preventDefault()
+    const productData = e.dataTransfer.getData('product')
+    if (productData) {
+      const product = JSON.parse(productData)
+      const updatedProducts = [...selectedProducts]
+      updatedProducts[index] = product // 放到指定的方框內
+      setSelectedProducts(updatedProducts)
+    }
+  }
+
+  const handleRemove = (index) => {
+    const updatedProducts = [...selectedProducts]
+    updatedProducts[index] = null
+    setSelectedProducts(updatedProducts)
+  }
+
+  const router = useRouter()
+  const toComparePage = () => {
+    const selectedSkus = selectedProducts
+    .filter(product => product !== null)
+    .map( product => product.product_sku_id).join(",")
+    router.push(`/product/comparison?products=${selectedSkus}`)
+  }
 
   return (
     <>
@@ -289,14 +325,24 @@ export default function ProductListPage(props) {
                 <div className="g-order-sec">
                   <a href>
                     <h6
-                      className={selectedSort.sort === 'price' && selectedSort.order === 'DESC' ? 'active' : ''}
+                      className={
+                        selectedSort.sort === 'price' &&
+                        selectedSort.order === 'DESC'
+                          ? 'active'
+                          : ''
+                      }
                       onClick={() => {
-                          const updatedCriteria = {...criteria, sort: 'price', order: 'DESC'}
-                          const newQueryString = generateQueryString(updatedCriteria)
-                          setCriteria(updatedCriteria)
-                          setQueryString(newQueryString)
-                          getPdData(newQueryString)
-                          setSelectedSort({sort: 'price', order: 'DESC'})
+                        const updatedCriteria = {
+                          ...criteria,
+                          sort: 'price',
+                          order: 'DESC',
+                        }
+                        const newQueryString =
+                          generateQueryString(updatedCriteria)
+                        setCriteria(updatedCriteria)
+                        setQueryString(newQueryString)
+                        getPdData(newQueryString)
+                        setSelectedSort({ sort: 'price', order: 'DESC' })
                       }}
                     >
                       價格由高至低
@@ -304,14 +350,24 @@ export default function ProductListPage(props) {
                   </a>
                   <a href>
                     <h6
-                      className={selectedSort.sort === 'price' && selectedSort.order === 'ASC' ? 'active' : ''}
+                      className={
+                        selectedSort.sort === 'price' &&
+                        selectedSort.order === 'ASC'
+                          ? 'active'
+                          : ''
+                      }
                       onClick={() => {
-                          const updatedCriteria = {...criteria, sort: 'price', order: 'ASC'}
-                          const newQueryString = generateQueryString(updatedCriteria)
-                          setCriteria(updatedCriteria)
-                          setQueryString(newQueryString)
-                          getPdData(newQueryString)
-                          setSelectedSort({sort: 'price', order: 'ASC'})
+                        const updatedCriteria = {
+                          ...criteria,
+                          sort: 'price',
+                          order: 'ASC',
+                        }
+                        const newQueryString =
+                          generateQueryString(updatedCriteria)
+                        setCriteria(updatedCriteria)
+                        setQueryString(newQueryString)
+                        getPdData(newQueryString)
+                        setSelectedSort({ sort: 'price', order: 'ASC' })
                       }}
                     >
                       價格由低至高
@@ -319,14 +375,24 @@ export default function ProductListPage(props) {
                   </a>
                   <a href>
                     <h6
-                      className={selectedSort.sort === 'name' && selectedSort.order === 'ASC' ? 'active' : ''}
+                      className={
+                        selectedSort.sort === 'name' &&
+                        selectedSort.order === 'ASC'
+                          ? 'active'
+                          : ''
+                      }
                       onClick={() => {
-                          const updatedCriteria = {...criteria, sort: 'name', order: 'ASC'}
-                          const newQueryString = generateQueryString(updatedCriteria)
-                          setCriteria(updatedCriteria)
-                          setQueryString(newQueryString)
-                          getPdData(newQueryString)
-                          setSelectedSort({sort: 'name', order: 'ASC'})
+                        const updatedCriteria = {
+                          ...criteria,
+                          sort: 'name',
+                          order: 'ASC',
+                        }
+                        const newQueryString =
+                          generateQueryString(updatedCriteria)
+                        setCriteria(updatedCriteria)
+                        setQueryString(newQueryString)
+                        getPdData(newQueryString)
+                        setSelectedSort({ sort: 'name', order: 'ASC' })
                       }}
                     >
                       商品名稱 A - Z
@@ -334,14 +400,24 @@ export default function ProductListPage(props) {
                   </a>
                   <a href>
                     <h6
-                      className={selectedSort.sort === 'name' && selectedSort.order === 'DESC' ? 'active' : ''}
+                      className={
+                        selectedSort.sort === 'name' &&
+                        selectedSort.order === 'DESC'
+                          ? 'active'
+                          : ''
+                      }
                       onClick={() => {
-                          const updatedCriteria = {...criteria, sort: 'name', order: 'DESC'}
-                          const newQueryString = generateQueryString(updatedCriteria)
-                          setCriteria(updatedCriteria)
-                          setQueryString(newQueryString)
-                          getPdData(newQueryString)
-                          setSelectedSort({sort: 'name', order: 'DESC'})
+                        const updatedCriteria = {
+                          ...criteria,
+                          sort: 'name',
+                          order: 'DESC',
+                        }
+                        const newQueryString =
+                          generateQueryString(updatedCriteria)
+                        setCriteria(updatedCriteria)
+                        setQueryString(newQueryString)
+                        getPdData(newQueryString)
+                        setSelectedSort({ sort: 'name', order: 'DESC' })
                       }}
                     >
                       商品名稱 Z - A
@@ -356,17 +432,28 @@ export default function ProductListPage(props) {
           <div className="container-fluid p-1">
             <div className="row row-cols-xl-4 row-cols-2">
               {pdData.slice(0, visibleCount).map((product, i) => (
-                <ProductCard key={product.id} data={product}/>
+                <ProductCard
+                  key={product.id}
+                  data={product}
+                  handleDragStart={handleDragStart}
+                />
               ))}
             </div>
           </div>
         </section>
         <div className="g-more-sec d-flex justify-content-center align-items-center">
-        {visibleCount < pdData.length ? (
-          <button className="g-more-btn" onClick={() => {setVisibleCount((prev) => prev + 12)}}>
-            <h6 className="mb-0">瀏覽更多</h6>
-          </button> ) : (<h6 className="mb-0 g-all">- 已顯示所有商品 -</h6>)
-        }
+          {visibleCount < pdData.length ? (
+            <button
+              className="g-more-btn"
+              onClick={() => {
+                setVisibleCount((prev) => prev + 12)
+              }}
+            >
+              <h6 className="mb-0">瀏覽更多</h6>
+            </button>
+          ) : (
+            <h6 className="mb-0 g-all">- 已顯示所有商品 -</h6>
+          )}
         </div>
         <FilterBar
           filterOpen={filterOpen}
@@ -411,25 +498,46 @@ export default function ProductListPage(props) {
                   最多可比較4款商品
                 </p>
                 <div className="g-compare-boxes d-flex gap-3">
-                  <div className="g-compare-box d-flex justify-content-center align-items-center">
-                    <img src="/images/product/list/electric.svg" />
-                  </div>
-                  <div className="g-compare-box d-flex justify-content-center align-items-center">
-                    <img src="/images/product/list/electric.svg" />
-                  </div>
-                  <div className="g-compare-box d-flex justify-content-center align-items-center">
-                    <img src="/images/product/list/electric.svg" />
-                  </div>
-                  <div className="g-compare-box d-flex justify-content-center align-items-center">
-                    <img src="/images/product/list/electric.svg" />
-                  </div>
+                  {selectedProducts.map((selectedProduct, index) => (
+                    <div
+                      className="g-compare-box d-flex justify-content-center align-items-center position-relative"
+                      onDragOver={(e) => e.preventDefault()}
+                      onDrop={(e) => handleDrop(e, index)}
+                    >
+                      {selectedProduct ? (
+                        <>
+                          <img
+                            src={`/images/product/pd-images/${selectedProduct.image}`}
+                            alt={selectedProduct.name}
+                            className="g-guitar"
+                          />
+                          {/* 刪除按鈕 */}
+                          <button
+                            onClick={() => handleRemove(index)}
+                            className="position-absolute"
+                          >
+                            <img src="/images/product/list/x.svg" />
+                          </button>
+                        </>
+                      ) : (
+                        <img src="/images/product/list/electric.svg" />
+                      )}
+                    </div>
+                  ))}
                 </div>
               </div>
               <div className="d-flex flex-column">
-                <button className="g-compare-btn text-center">
-                  <h6 className="mb-0">比較O款電吉他</h6>
+                <button 
+                disabled={selectedAmount > 1 ? false : true}
+                className={`g-compare-btn text-center ${selectedAmount > 1 ? 'active' : ''}`}
+                onClick={toComparePage}
+                >
+                  <h6 className="mb-0">{`比較 ${selectedAmount} 款電吉他`}</h6>
                 </button>
-                <button className="g-clear-btn text-center">
+                <button 
+                className="g-clear-btn text-center"
+                onClick={() => setSelectedProducts([null, null, null, null])}
+                >
                   <h6 className="mb-0">清除全部</h6>
                 </button>
               </div>

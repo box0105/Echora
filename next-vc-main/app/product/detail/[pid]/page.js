@@ -41,9 +41,9 @@ export default function ProductDetailIdPage() {
   const [selectedSku, setSelectedSku] = useState()
 
   //用useProductState()取得firstSkuId
-  const { firstSkuId } = useProductState()
+  const { firstSkuId, setFirstSkuId } = useProductState()
 
-  // fetch db
+  // fetch db for details
   const [detailData, setDetailData] = useState([])
   // 取得網址上的動態參數
   const params = useParams()
@@ -70,7 +70,7 @@ export default function ProductDetailIdPage() {
           switching,
           product_sku_id,
           stock,
-          // color_id,
+          color_id,
           color_name,
           color_image,
           image,
@@ -103,6 +103,7 @@ export default function ProductDetailIdPage() {
         ) {
           products[id].colors.push({
             skuId: product_sku_id,
+            colorId: color_id,
             name: color_name,
             image: color_image,
           })
@@ -122,6 +123,7 @@ export default function ProductDetailIdPage() {
       console.log(`http://localhost:3005/api/products/${pid}/${firstSkuId}`)
       setDetailData(Object.values(products))
       setSelectedSku(Object.values(products)[0].defaultSelectedSku)
+      setColorId(Object.values(products)[0].colors[0].colorId)
     } catch (err) {
       console.log(err)
     }
@@ -204,6 +206,20 @@ export default function ProductDetailIdPage() {
     }
   }
 
+  // fetch db for may also like
+  const [colorId, setColorId] = useState()
+  const [mayLikeData, setMayLikeData] = useState([])
+
+  const getMayLikeData = async (colorId) => {
+    try {
+      const res = await fetch(`http://localhost:3005/api/products/maylike/${colorId}`)
+      const data = await res.json()
+      setMayLikeData(data.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   //didmount後執行getDetailData()
   useEffect(() => {
     getDetailData()
@@ -215,6 +231,11 @@ export default function ProductDetailIdPage() {
     getFav(uid)
     // getSku(selectedSku)
   }, [selectedSku, uid])
+
+  useEffect(() => {
+    getMayLikeData(colorId)
+  }, [colorId])
+
 
   if (!detailData.length) {
     return (
@@ -266,6 +287,7 @@ export default function ProductDetailIdPage() {
                           onClick={() => {
                             setSelectedSku(color.skuId)
                             setColorName(color.name)
+                            setColorId(color.colorId)
                             // console.log(color)
                             // box
                             // setSelectedColor(color)
@@ -363,7 +385,7 @@ export default function ProductDetailIdPage() {
             </div>
           </div>
         </section>
-        <ProductCardCarousel />
+        <ProductCardCarousel data = {mayLikeData}/>
       </div>
     </>
   )

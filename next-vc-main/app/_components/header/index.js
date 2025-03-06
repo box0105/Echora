@@ -26,28 +26,28 @@ export default function Header() {
   // 在不同路徑改變搜尋框的文字
   const pathName = usePathname()
   const getSearchPlaceholder = () => {
-    if (pathName.includes("/product")) return "搜尋電吉他商品名";
-    if (pathName.includes("/activity")) return "搜尋活動名稱或表演樂團";
-    if (pathName.includes("/rent")) return "搜尋電吉他租借";
-    return "搜尋";
-  };
+    if (pathName.includes('/product')) return '搜尋電吉他商品名'
+    else if (pathName.includes('/activity')) return '搜尋活動名稱或表演樂團'
+    else if (pathName.includes('/rent')) return '搜尋電吉他租借'
+    else return '搜尋'
+  }
 
   // search
   const router = useRouter()
   const [searchName, setSearchName] = useState('')
   const { criteria, setCriteria, defaultCriteria } = useProductState()
-  const { updateQueryParams } = useActivity()
+  const { updateQueryParams, deleteQueryParams } = useActivity()
 
   const handleSearch = (e) => {
     if (pathName.includes('/product')) {
       setCriteria((prev) => ({
         ...prev,
         nameLike: searchName,
-      }));
+      }))
     } else if (pathName.includes('/activity')) {
-      updateQueryParams({ search: searchName });
+      updateQueryParams({ search: searchName })
     } else if (pathName.includes('/rent')) {
-      updateQueryParams({ search: searchName });
+      updateQueryParams({ search: searchName })
     }
   }
 
@@ -104,7 +104,7 @@ export default function Header() {
         localStorage.removeItem('userId')
         setIsAuth(false)
         mutate()
-        toast.success('已成功登出')
+        // toast.success('已成功登出')
         router.push('/')
       } else {
         toast.error(`登出失敗: ${resData.message}`)
@@ -209,7 +209,14 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link href="/activity">
+                <Link
+                  href="/activity"
+                  onClick={() => {
+                    // 清空活動篩選條件 & Search欄位
+                    deleteQueryParams()
+                    setSearchName('')
+                  }}
+                >
                   <div className="d-flex">
                     <h6 className="h7">MUSIC FESTIVALS</h6>
                     <p className="px-1">/</p>
