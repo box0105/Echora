@@ -59,6 +59,13 @@
   }
 }
 
+.c-band{
+  width: 90px;
+  height: 30px;
+  background-color: var(--black);
+  color: var(--white);
+  margin-bottom: 24px;
+}
 .btn1 {
   width: 100%;
   padding: 2.5rem 0 2rem 0;
@@ -120,7 +127,10 @@
     padding: 0 16px 4rem 16px;
   }
 }
-
+.custom-datepicker {
+  font-size: 16px;
+  color: var(--grey100);
+}
 /* section3 */
 .c-index-title {
   margin-bottom: 50px;
@@ -156,6 +166,7 @@ body {
   border-radius: 5px;
   font-size: 16px;
 }
+
 
 .calendar-icon {
   position: absolute;

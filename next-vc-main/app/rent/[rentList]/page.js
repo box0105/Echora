@@ -279,7 +279,7 @@ export default function Page(props) {
                   <div className="col-5 c-left ">
                     <div className="c-text">
                       <div className="c-title d-flex justify-content-start align-items-center">
-                        <h2 className="title-text">{ListData.name}</h2>
+                        <h3 className="h3 title-text">{ListData.name}</h3>
                       </div>
                       <div className="c-price">
                         <h3 className="c-price-1 m-0">
@@ -288,8 +288,7 @@ export default function Page(props) {
                       </div>
                       <div className="c-brand">
                         <div
-                          className="bg-dark text-br d-flex justify-content-center"
-                          style={{ paddingBottom: '1.5rem' }}
+                          className="bg-dark text-br c-band  d-flex justify-content-center align-items-center"
                         >
                           <h5 className="text-white p-1 m-0">
                             {ListData.brand}
@@ -331,7 +330,7 @@ export default function Page(props) {
                       {/* 日期選擇器 */}
                       <div className="c-start gap-2 py-3">
                         <div className="c-sdata">
-                          <div className="h4 title-start">租借起始日</div>
+                          <h6 className=" title-start">租借起始日</h6>
                         </div>
                         <DatePicker
                           selected={startDate}
@@ -341,12 +340,13 @@ export default function Page(props) {
                           dateFormat="yyyy/MM/dd"
                           disabled={!startDate}
                           customInput={<CustomInput />}
+                          className="custom-datepicker"
                         />
                       </div>
 
                       <div className="c-end gap-2 py-3">
                         <div className="c-edata">
-                          <div className="h4 title-start">租借結束日</div>
+                          <h6 className=" title-start">租借結束日</h6>
                         </div>
                         <DatePicker
                           selected={endDate}
@@ -357,12 +357,13 @@ export default function Page(props) {
                           dateFormat="yyyy/MM/dd"
                           disabled={!startDate}
                           customInput={<CustomInput />}
+                          className="custom-datepicker"
                         />
                       </div>
 
                       {/* 总价显示 */}
                       <div className="c-price-total">
-                        <h4>總金額: {totalPrice} 元</h4>
+                        <h6>總金額: {totalPrice} 元</h6>
                       </div>
 
                       {/* 門店選擇 */}
@@ -404,9 +405,9 @@ export default function Page(props) {
                               ListData?.stock <= 0 ? 'not-allowed' : 'pointer', 
                           }}
                         >
-                          <div className="h4 text-white m-0">加入購物車</div>
+                          <h6 className=" text-white m-0">加入購物車</h6>
                         </button>
-                        <div className="g-stock d-flex align-items-center gap-2 pt-2">
+                        <div className="g-stock d-flex align-items-center gap-2 pt-3">
                           <img
                             src="/images/product/detail/stock.svg"
                             width="18px"
@@ -438,9 +439,9 @@ export default function Page(props) {
               <div className="row">
                 <div className="col-7 c-prduct c-index1">
                   <div className="product-top">
-                    <div className="h3 pb-3 m-0 c-List-body">商品描述</div>
+                    <h6 className=" pb-3 m-0 c-List-body">商品描述</h6>
                     <div className="product-list-text">
-                      <div className="h6">{ListData.description}</div>
+                      <p className="list">{ListData.description}</p>
                     </div>
                   </div>
 
@@ -448,23 +449,23 @@ export default function Page(props) {
                     className="product-title"
                     style={{ paddingTop: '1.75rem' }}
                   >
-                    <div className="h3 pb-3 m-0 c-List-title">電子裝置規格</div>
+                    <h6 className=" pb-3 m-0 c-List-title">電子裝置規格</h6>
                   </div>
                   {/* 第一行 */}
                   <div className="product-body d-flex">
                     <div className="product-list">
                       <div className="product-bo-1">
-                        <div className="h5 pb-3 m-0">琴頸拾音器</div>
+                        <p className="h5 pb-3 m-0">琴頸拾音器</p>
                       </div>
                       <div className="product-bo-2">
-                        <h6 className="pb-3 m-0">
+                        <p className="pb-3 m-0">
                           {ListData.rentList?.neckPickup}
-                        </h6>
+                        </p>
                       </div>
                     </div>
                     <div className="product-list">
                       <div className="product-bo-1">
-                        <div className="h5 pb-3 m-0">中段拾音器</div>
+                        <p className="h5 pb-3 m-0">中段拾音器</p>
                       </div>
                       <div className="product-bo-2">
                         <h6 className="pb-3 m-0">
@@ -474,12 +475,12 @@ export default function Page(props) {
                     </div>
                     <div className="product-list">
                       <div className="product-bo-1">
-                        <div className="h5 pb-3 m-0">琴橋拾音器</div>
+                        <p className="h5 pb-3 m-0">琴橋拾音器</p>
                       </div>
                       <div className="product-bo-2">
-                        <h6 className="pb-3 m-0">
+                        <p className="pb-3 m-0">
                           {ListData.rentList?.bridgePickup}
-                        </h6>
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -487,22 +488,22 @@ export default function Page(props) {
                   <div className="product-body-2 d-flex pt-3">
                     <div className="product-list">
                       <div className="product-bo-1">
-                        <div className="h5 pb-3 m-0">控制器</div>
+                        <p className="h5 pb-3 m-0">控制器</p>
                       </div>
-                      <div className="product-bo-2">
+                      <props className="product-bo-2">
                         <div className="h6 m-0">
                           {ListData.rentList?.controls}
                         </div>
-                      </div>
+                      </props>
                     </div>
                     <div className="product-list">
                       <div className="product-bo-1">
-                        <div className="h5 pb-3 m-0">拾音器開關</div>
+                        <p className="h5 pb-3 m-0">拾音器開關</p>
                       </div>
                       <div className="product-bo-2">
-                        <div className="h6 pb-3 m-0">
+                        <p className="h6 pb-3 m-0">
                           {ListData.rentList?.switching}
-                        </div>
+                        </p>
                       </div>
                     </div>
                     <div className="product-list empty-placeholder" />
@@ -512,10 +513,10 @@ export default function Page(props) {
                   <div className="c-guide">
                     <div className="c-g pt-1">
                       <div className="c-gu-title">
-                        <div className="h4">租借指南</div>
+                        <h6 className="r">租借指南</h6>
                       </div>
                       <div className="text-gu pt-1">
-                        <div className="h6">
+                        <div className="p">
                           <span> 計費方式：</span>
                           <br />
                           以一日(24H)為單位。 <br />
@@ -533,10 +534,10 @@ export default function Page(props) {
                   <div className="c-readdr">
                     <div className="c-g pt-1 p-0">
                       <div className="c-gu-title">
-                        <div className="h4">租借地點</div>
+                        <h6 className="r">租借地點</h6>
                       </div>{' '}
                       <div className="text-gu pt-1">
-                        <div className="h6">
+                        <p className="h6">
                           台北店：
                           <br />
                           <a
@@ -573,7 +574,7 @@ export default function Page(props) {
                           <br />
                           話號碼：&nbsp;07 396 5555。
                           <br />
-                        </div>
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -586,9 +587,10 @@ export default function Page(props) {
             <div className="container-fluid c-index">
               <div className="c-index-title d-none d-md-block">
                 <div className="row align-items-center gap-0">
-                  <div className="col-5 d-flex  ">
-                    <h2 className="h2 m-0">Recently popular rental products</h2>
-                    <h5 className=" h3 m-0 pt-1"> / 最近熱門租借商品</h5>
+                  <div className="col-5 d-flex  gap-2">
+                    <h1 className="h2 ">Recently popular rental products</h1>
+                    <h5 className='h5 pt-2'>/</h5>
+                    <h4 className=" h4 pt-2"> 最近熱門租借商品</h4>
                   </div>
                   {/* <div className="col-6 pe-4 ps-0">
                     <h5 className=" h4 m-0"> / 最近熱門租借商品</h5>

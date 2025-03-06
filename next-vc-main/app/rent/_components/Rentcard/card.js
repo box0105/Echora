@@ -6,6 +6,7 @@ import Link from 'next/link'; // 使用Link
 import './card.scss';
 
 export default function RentCards({ data }) {
+  console.log(data);
   if (!data || data.length === 0) {
     return <p>目前沒有租賃商品。</p>;
   }
@@ -14,6 +15,7 @@ export default function RentCards({ data }) {
     <>
       {data.map((item) => (
         <RentcardCard key={item.id} {...item} />
+
       ))}
     </>
   );
@@ -24,7 +26,7 @@ function RentcardCard({ id, name, price, rentitemColors, brand_name }) {
   const defaultImage =
     rentitemColors?.[0]?.images?.[0]
       ? `/images/Rent/pd-images/${rentitemColors[0].images[0]}`
-      : '/images/Rent/default.jpg';
+      : '/images/Rent/pd-images/default.jpg';
 
   // 設定主圖片狀態，初始值為 defaultImage
   const [mainImage, setMainImage] = useState(defaultImage);

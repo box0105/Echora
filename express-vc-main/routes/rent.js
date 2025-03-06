@@ -119,51 +119,93 @@ router.get('/', async (req, res) => {
 
 // 修改后的 /api/rent/search 路由
 router.get('/search', async (req, res) => {
-  const { q, page = 1, perPage = 10, priceMin, priceMax } = req.query;
+  const { query } = req.query;
   console.log(req.query);
 
   try {
-    if (!q) throw new Error('請提供查詢字串');
+    if (!query) throw new Error('請提供查詢字串');
 
-    const searchQuery = `%${q.toLowerCase()}%`; // 忽略大小写
+    const searchQuery = `%${query}%`; // 忽略大小写
 
-    // 计算分页的偏移量
-    const offset = (page - 1) * perPage;
-
-    let sql = `
-      SELECT 
-        rent.*, 
-        rentBrand.name AS brand_name 
-      FROM 
-        Rent AS rent
-      JOIN 
-        RentBrand AS rentBrand ON rent.rentBrandId = rentBrand.id
-      WHERE 
-        (LOWER(rent.name) LIKE ? OR LOWER(rentBrand.name) LIKE ?)
+    const sql = `
+      SELECT
+        Rent.*,
+        RentBrand.name AS brand_name,
+        RentItemColor.id AS rent_item_color_id,
+        RentItemColor.stock,
+        RentColor.name AS color_name,
+        RentColor.rentColor_image AS color_image,
+        RentImges.image,
+        RentImges.sort_order
+      FROM Rent
+      LEFT JOIN RentBrand ON Rent.rentBrandId = RentBrand.id
+      LEFT JOIN RentItemColor ON Rent.id = RentItemColor.rentId
+      LEFT JOIN RentColor ON RentItemColor.RentColor_id = RentColor.id
+      LEFT JOIN RentImges ON RentItemColor.id = RentImges.RentItemColorId
+      WHERE (LOWER(Rent.name) LIKE ? OR LOWER(RentBrand.name) LIKE ?)
     `;
-
+    
     const params = [searchQuery, searchQuery];
-
-    // 如果有价格范围，添加到查询条件
-    if (priceMin) {
-      sql += ' AND rent.price >= ?';
-      params.push(priceMin);
-    }
-    if (priceMax) {
-      sql += ' AND rent.price <= ?';
-      params.push(priceMax);
-    }
-
-    // 添加分页条件
-    sql += ' LIMIT ?, ?';
-    params.push(offset, perPage);
-
+    console.log('SQL:', sql);
+    
     const [rows] = await db.query(sql, params);
-    console.log(rows);  // 输出查询结果
+    console.log('查詢結果:', rows);
+
+    // 使用 formattedData 进行数据整理
+    const formattedData = rows.reduce((acc, row) => {
+      let existingRent = acc.find((item) => item.id === row.id);
+
+      if (existingRent) {
+        const existingColor = existingRent.rentitemColors.find(
+          (color) => color.rent_item_color_id === row.rent_item_color_id
+        );
+
+        if (existingColor) {
+          if (row.image) {
+            existingColor.images.push({ image: row.image, sort_order: row.sort_order });
+            // 按 sort_order 排序
+            existingColor.images.sort((a, b) => a.sort_order - b.sort_order);
+          }
+        } else {
+          existingRent.rentitemColors.push({
+            rent_item_color_id: row.rent_item_color_id,
+            stock: row.stock,
+            color_name: row.color_name,
+            color_image: row.color_image,
+            images: row.image ? [{ image: row.image, sort_order: row.sort_order }] : [],
+          });
+        }
+      } else {
+        acc.push({
+          ...row,
+          brand_name: row.brand_name,
+          rentitemColors: row.rent_item_color_id
+            ? [
+                {
+                  rent_item_color_id: row.rent_item_color_id,
+                  stock: row.stock,
+                  color_name: row.color_name,
+                  color_image: row.color_image,
+                  images: row.image ? [{ image: row.image, sort_order: row.sort_order }] : [],
+                },
+              ]
+            : [],
+        });
+      }
+      return acc;
+    }, []);
+
+    // 去掉每个 rentitemColors 下 images 的 sort_order，只返回 image
+    formattedData.forEach(rent => {
+      rent.rentitemColors.forEach(color => {
+        color.images = color.images.map(img => img.image); // 只保留 image
+      });
+    });
+
     res.status(200).json({
       status: 'success',
-      data: rows,
-      message: `搜尋成功, 條件: ${q}`,
+      data: formattedData, // 返回整理后的数据
+      message: `搜尋成功, 條件: ${query}`,
     });
   } catch (err) {
     console.error(err);
@@ -173,6 +215,9 @@ router.get('/search', async (req, res) => {
     });
   }
 });
+
+
+
 
 
 // 修改后的 /api/rent/search 路由

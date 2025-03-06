@@ -100,7 +100,9 @@
     }
   }
 }
-
+.c-input{
+  border-radius: 50px;
+}
 /* 確保過濾器容器能夠滾動 */
 .c-lerf-mod {
   position: fixed;
@@ -154,13 +156,14 @@
   padding: 25px;
   position: sticky;
   bottom: 0;
-  background-color: white; /* 可以設置背景色讓按鈕清晰可見 */
+  background-color: white; 
   padding: 15px;
   z-index: 1; /* 確保按鈕在最上層 */
   button {
     padding: 12px 24px;
     border-radius: 50px;
-    font-size: 16px;
+    font-size: 16px
+    ;
   }
 }
 .color {

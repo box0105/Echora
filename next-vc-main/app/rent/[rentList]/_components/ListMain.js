@@ -66,7 +66,7 @@ const ImageSlider = ({ images, imageBasePath = '/images/Rent/pd-images/' }) => {
             alt={`縮略圖 ${index}`}
             width={150}
             height={200}
-            className={`mx-auto h-40 w-50 object-contain gap-2 ${index === activeIndex ? 'active' : ''}`}
+            className={`mx-auto h-40 w-100 object-contain gap-2 ${index === activeIndex ? 'active' : ''}`}
           />
         </div>
       ))}

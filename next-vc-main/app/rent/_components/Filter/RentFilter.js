@@ -20,8 +20,11 @@ export default function RentFilter({ onFilterChange, onSortChange, selectedSorts
 
   // 更新排序选项并传递到父组件
   const handleSortChange = (sortOption) => {
-    // 将排序变化传递给父组件
-    onSortChange(sortOption);
+    setFilters((prev) => {
+      const updatedFilters = { ...prev, sort: sortOption };
+      onSortChange(sortOption);  // 传递排序变化给父组件
+      return updatedFilters;
+    });
   };
 
   // 更新筛选条件并传递到父组件
@@ -42,20 +45,20 @@ export default function RentFilter({ onFilterChange, onSortChange, selectedSorts
   // 清空所有筛选条件并通知父组件
   const handleClearFilters = () => {
     setFilters({
-      sort: { field: 'price', direction: 'asc' },
+      sort: { field: 'random', direction: 'asc' },
       brands: [],
       addresses: [],
       levels: [],
       colors: [],
     });
     onFilterChange({
-      sort: { field: 'price', direction: 'asc' },
+      sort: { field: 'random', direction: 'asc' },
       brands: [],
       addresses: [],
       levels: [],
       colors: [],
     });
-    onSortChange({ field: 'price', direction: 'asc' });
+    onSortChange({ field: 'random', direction: 'asc' });
   };
 
   return (

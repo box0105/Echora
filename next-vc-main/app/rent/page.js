@@ -1,80 +1,57 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-// import 'bootstrap/dist/css/bootstrap.min.css'
 import './_styles/first.scss'
 import HeroSection from './_components/HeroSection'
 import RentalProcess from './_components/RentalProcess'
 import Card from './_components/Rentcard/card'
 import List from './_components/List'
 import Modfiter from './_components/fit/fiteerMod'
-import { useRent } from '@/hooks/use-rent'; 
+import { useRent } from '@/hooks/use-rent';
 
-
-export default function Page(props) {
-  const [isOpen, setIsOpen] = useState(false)
-  const onKeyPressHandler = (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      setIsOpen(true)
-    }
-  }
-  const [data, setData] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [isError, setIsError] = useState(false)
-  const { query, setQuery, results, error } = useRent();
-  console.log('useRent返回的query:', query);
-
-  const [visibleCount, setVisibleCount] = useState(12)
-
+export default function Page() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(12);
+  
+  // 🟢 使用 `useRent` 直接取得數據
+  const { query, setQuery, results, isLoading, error } = useRent();
+  
   const [sortOrder, setSortOrder] = useState({
-    field: 'price',
+    field: 'random',
     direction: 'asc',
-  })
-  const [filteredData, setFilteredData] = useState([])
+  });
+
   const [filters, setFilters] = useState({
     brands: [],
     addresses: [],
     levels: [],
     colors: [],
-  })
-
-  const getData = async () => {
-    try {
-      const res = await fetch('http://localhost:3005/api/rent')
-      const data = await res.json()
-      console.log(data)
-      setData(data.data)
-    } catch (err) {
-      console.log(err)
-      setIsError(true)
-    } finally {
-      setIsLoading(false)
-    }
-  }
-  useEffect(() => {
-    getData()
-  }, [])
+  });
 
   const storeMapping = {
     台北店: 1,
     台中店: 2,
     高雄店: 3,
-  }
+  };
   const levelMap = {
     初級: 1,
     中級: 2,
     高級: 3,
-  }
-  console.log(' for query:', query);  // 放在 useEffect 顶部
+  };
 
+  // console.log('useRent返回的 query:', query);
+
+  // 🟢 過濾與排序邏輯
+  const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
-    console.log('useEffect triggered for results:', results);  // 放在 useEffect 顶部
-
+    if (!results) return;
+  
+    // console.log('useEffect triggered for results:', results);
+    
     let filtered = [...results];
-    console.log('Current search query:', query);
-
-    // **篩選邏輯 (品牌、地址、顏色、等級)**
+  
+    // **篩選邏輯**
     if (filters?.brands?.length) {
       filtered = filtered.filter(item => filters.brands.includes(item.brand_name));
     }
@@ -91,43 +68,36 @@ export default function Page(props) {
     if (query) {
       filtered = filtered.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
     }
-
+  
     // **排序邏輯**
     if (sortOrder.field === 'random') {
-      filtered = filtered.sort(() => Math.random() - 0.5);  // **隨機排序**
+      // 確保隨機排序
+      filtered = filtered.sort(() => Math.random() - 0.5);
     } else if (sortOrder.field === 'price') {
       filtered = filtered.sort((a, b) => sortOrder.direction === 'asc' ? a.price - b.price : b.price - a.price);
     } else if (sortOrder.field === 'name') {
       filtered = filtered.sort((a, b) => sortOrder.direction === 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name));
     }
-
-    setFilteredData(filtered);
-  }, [results, filters, sortOrder, query]);
+  
+    setFilteredData(filtered); // 更新篩選過後的數據
+  
+  }, [results, filters, sortOrder, query]);  // 確保依賴項正確觸發 useEffect
+  
 
   const handleFilterChange = (newFilters) => {
-    // console.log('接收到新篩選條件:', newFilters)
-    setFilters(newFilters)
-  }
-
-
-  const handleSortChange = (sortOption) => {
-    // console.log("選擇的排序:", sortOption); 
-    setSortOrder(sortOption); // 确保更新状态
+    setFilters(newFilters);
   };
 
-  if (isError) return <div>發生錯誤</div>
+  const handleSortChange = (sortOption) => {
+    setSortOrder(sortOption);
+  };
+
+  if (error) return <div>發生錯誤: {error.message}</div>;
 
   return (
     <>
       {isLoading ? (
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100vh',
-          }}
-        >
+        <div className="loading-container">
           <div>載入中...</div>
         </div>
       ) : (
@@ -147,7 +117,7 @@ export default function Page(props) {
             <div className="container-fluid c-index p-0">
               <div className="c-index-title c-text-p ">
                 <h1>
-                <h3 className="h3">ELECTRIC GUITAR RENTAL PRODUCTS/ 電吉他租借商品</h3>
+                  <h3 className="h3">ELECTRIC GUITAR RENTAL PRODUCTS/ 電吉他租借商品</h3>
                 </h1>
               </div>
             </div>
@@ -165,7 +135,6 @@ export default function Page(props) {
               <div
                 className=" d-flex mod-sel justify-content-end"
                 onClick={() => setIsOpen(true)}
-                onKeyUp={onKeyPressHandler}
                 role="button"
                 tabIndex="0"
               >
@@ -182,17 +151,13 @@ export default function Page(props) {
 
           {/* section2-body */}
           <div className="c-section2-body d-none d-md-block">
-            <div className="container-fluid c-index-1 ;">
-            <List data={filteredData.slice(0, visibleCount)} />
+            <div className="container-fluid c-index-1">
+              <List data={filteredData.slice(0, visibleCount)} />
             </div>
           </div>
 
           {/* section-mod */}
-          <div
-            className={`c-section2-body Mod d-block d-md-none ${
-              isOpen ? 'filter-open' : ''
-            }`}
-          >
+          <div className={`c-section2-body Mod d-block d-md-none ${isOpen ? 'filter-open' : ''}`}>
             <div className="container-fluid c-index-mod-1 p-0">
               <div className="row">
                 <Modfiter
@@ -200,25 +165,23 @@ export default function Page(props) {
                   setIsOpen={setIsOpen}
                   onFilterChange={handleFilterChange}
                   onSortChange={handleSortChange}
-                  selectedSort={sortOrder} // 这里传递当前的排序状态
+                  selectedSort={sortOrder}
                   filters={filters}
                 />
               </div>
               <div className="row row-cols-xl-4 row-cols-2">
                 <Card data={filteredData.slice(0, visibleCount)} />
               </div>
-              <div className="btn1 d-flex justify-content-center ">
+              <div className="btn1 d-flex justify-content-center">
                 <button
-                  className=" btn btn-outline-dark text-dark "
+                  className="btn btn-outline-dark text-dark"
                   style={{
                     padding: '0.75rem 1.5rem',
                     borderRadius: '3.125rem',
                     width: '15rem',
                     height: '3rem',
                   }}
-                  onClick={() =>
-                    setVisibleCount((prev) => Math.min(prev + 10, data.length))
-                  }
+                  onClick={() => setVisibleCount(prev => Math.min(prev + 10, filteredData.length))}
                 >
                   <div className="h5">瀏覽更多</div>
                 </button>
@@ -228,5 +191,5 @@ export default function Page(props) {
         </div>
       )}
     </>
-  )
+  );
 }
