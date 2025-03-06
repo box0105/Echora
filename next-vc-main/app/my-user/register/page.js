@@ -70,7 +70,10 @@ export default function RegisterPage() {
       const res = await register(userInput)
       const resData = await res.json()
       if (resData.status === 'success') {
-        toast.success('註冊成功，請重新登入', { autoClose: 2000 })
+        toast.success('註冊成功，請重新登入', {
+          autoClose: 2000,
+          position: 'bottom-right',
+        })
         setTimeout(() => {
           if (isClient) {
             router.push('/my-user')
