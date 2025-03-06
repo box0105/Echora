@@ -141,7 +141,7 @@ export default function RegisterPage() {
       <div className="login-container">
         <div className="login-main">
           <Link href="/">
-            <span className="back"> &lt;返回 </span>
+            <span className="back"> &lt; 回首頁 </span>
           </Link>
 
           <img
