@@ -9,6 +9,17 @@ import { useState, useEffect, useRef } from 'react'
 
 export default function ProductImagesCarousel({ detailData, selectedSku }) {
   const [selectedImage, setSelectedImage] = useState(0)
+  const [activeImg, setActiveImg] = useState(0)
+
+  // swiper
+  const swiperRef = useRef(null)
+
+  // 點擊某張圖片時，讓該圖片跑到最上方
+  const handleSlideClick = (index) => {
+    if (swiperRef.current) {
+      swiperRef.current.slideToLoop(index)
+    }
+  }
 
   const images = selectedSku
     ? detailData[0]?.images[selectedSku]
@@ -40,6 +51,8 @@ export default function ProductImagesCarousel({ detailData, selectedSku }) {
               modules={[Navigation]}
               spaceBetween={16}
               slidesPerView={3}
+              onSwiper={(swiper) => (swiperRef.current = swiper)}
+              loop={true}
               navigation={{
                 nextEl: '.custom-swiper-button-next',
                 prevEl: '.custom-swiper-button-prev',
@@ -49,8 +62,12 @@ export default function ProductImagesCarousel({ detailData, selectedSku }) {
               {images.map((img, index) => (
                 <SwiperSlide
                   key={index}
-                  className="g-swiper-slide"
-                  onClick={() => setSelectedImage(index)}
+                  className={`g-swiper-slide ${ activeImg === index ? 'active' : ''}`}
+                  onClick={() => {
+                    setSelectedImage(index)
+                    setActiveImg(index)
+                    handleSlideClick(index)
+                    }}
                 >
                   <img
                     className="h-100 object-fit-cover"
@@ -74,14 +91,14 @@ export default function ProductImagesCarousel({ detailData, selectedSku }) {
           />
         </div>
         <div className="g-main-img2 col-12 text-center">
-          <div className="custom-swiper-button-prev2">
+          <div className="custom-swiper-button-next2">
             <img
               className=""
               src="/images/product/detail/arrow_up.svg"
               alt=""
             />
           </div>
-          <div className="custom-swiper-button-next2">
+          <div className="custom-swiper-button-prev2">
             <img
               className=""
               src="/images/product/detail/arrow_down.svg"

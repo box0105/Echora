@@ -325,19 +325,19 @@ export default function ProductDetailIdPage() {
                 <div className="g-pd-disc py-3">
                   <div className="g-disc-title d-flex justify-content-between align-items-center">
                     <h6 className="m-0">商品描述</h6>
-                    <img src="/images/product/detail/minus.svg" alt="" />
+                    {/* <img src="/images/product/detail/minus.svg" alt="" /> */}
                   </div>
                   <p className="mt-3 mb-0">{detailData[0].discription}</p>
                 </div>
                 <div className="g-pd-spec py-3">
                   <div className="g-spec-title d-flex justify-content-between align-items-center">
                     <h6 className="m-0">電子裝置規格</h6>
-                    <img src="/images/product/detail/minus.svg" alt="" />
+                    {/* <img src="/images/product/detail/minus.svg" alt="" /> */}
                   </div>
                   <ul className="list-unstyled">
                     {detailData[0]?.neckPickup && (
                       <li>
-                        <p className="mb-2">琴頸拾音器</p>
+                        <p className="mb-1">琴頸拾音器</p>
                         <p className="p m-0" style={{ fontWeight: 400 }}>
                           {detailData[0].neckPickup}
                         </p>
@@ -345,7 +345,7 @@ export default function ProductDetailIdPage() {
                     )}
                     {detailData[0]?.middlePickup && (
                       <li>
-                        <p className="mb-2">中段拾音器</p>
+                        <p className="mb-1">中段拾音器</p>
                         <p className="p m-0" style={{ fontWeight: 400 }}>
                           {detailData[0].middlePickup}
                         </p>
@@ -353,7 +353,7 @@ export default function ProductDetailIdPage() {
                     )}
                     {detailData[0]?.bridgePickup && (
                       <li>
-                        <p className="mb-2">琴橋拾音器</p>
+                        <p className="mb-1">琴橋拾音器</p>
                         <p className="p m-0" style={{ fontWeight: 400 }}>
                           {detailData[0].bridgePickup}
                         </p>
@@ -361,7 +361,7 @@ export default function ProductDetailIdPage() {
                     )}
                     {detailData[0]?.controls && (
                       <li>
-                        <p className="mb-2">控制器</p>
+                        <p className="mb-1">控制器</p>
                         <p className="m-0" style={{ fontWeight: 400 }}>
                           {detailData[0].controls}
                         </p>
@@ -369,7 +369,7 @@ export default function ProductDetailIdPage() {
                     )}
                     {detailData[0]?.switching && (
                       <li>
-                        <p className="mb-2">拾音器開關</p>
+                        <p className="mb-1">拾音器開關</p>
                         <p className="m-0">{detailData[0].switching}</p>
                       </li>
                     )}
