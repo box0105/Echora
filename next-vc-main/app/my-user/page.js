@@ -84,7 +84,7 @@ export default function UserPage() {
 
       if (resData?.status === 'success') {
         localStorage.setItem('userId', resData.data.user.id)
-        toast.success('已成功登入', { autoClose: 2000 }) // 先顯示通知
+        // toast.success('已成功登入', { autoClose: 2000 }) // 先顯示通知
 
         setTimeout(() => {
           setIsAuth(true) // 延遲改變 isAuth，避免 useEffect 立即觸發
@@ -124,7 +124,7 @@ export default function UserPage() {
           localStorage.setItem('userId', resData.data.user.id)
           setIsAuth(true)
           mutate()
-          toast.success('已成功登入')
+          // toast.success('已成功登入')
           setTimeout(() => {
             if (isClient) {
               router.push('/')
@@ -149,7 +149,7 @@ export default function UserPage() {
 
     if (resData.status === 'success') {
       mutate()
-      toast.success('已成功登出')
+      // toast.success('已成功登出')
     } else {
       toast.error('登出失敗')
     }
@@ -166,7 +166,7 @@ export default function UserPage() {
       <div className="login-container">
         <div className="login-main">
           <Link href="/">
-            <span className="back"> &lt;返回 </span>
+            <span className="back"> &lt; 回首頁 </span>
           </Link>
           <img
             src="../images/user/login.jpg"

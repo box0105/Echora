@@ -187,7 +187,7 @@ export default function ChecklistPage() {
               <div className="h3 pt-4 pb-2">訂單確認</div>
               <div className="d-flex justify-content-between py-2">
                 <h5>小計 :</h5>
-                <h5>NT$ {totalAmount}</h5>
+                <h5>NT$ {totalAmount.toLocaleString()}</h5>
               </div>
               <div className="d-flex justify-content-between py-2">
                 <h5>運費 :</h5>
@@ -214,13 +214,13 @@ export default function ChecklistPage() {
               <div className="d-flex justify-content-between py-2">
                 <h5>折扣 :</h5>
                 <h5>
-                  {discountedAmount == 0 ? '' : `- NT$ ${discountedAmount}`}
+                  {discountedAmount == 0 ? '' : `- NT$ ${discountedAmount.toLocaleString()}`}
                 </h5>
               </div>
               <hr />
               <div className="d-flex justify-content-between py-3">
                 <h4 className="h4">總計 :</h4>
-                <h4 className="h4">NT$ {countedAmount}</h4>
+                <h4 className="h4">NT$ {countedAmount.toLocaleString()}</h4>
               </div>
               <button type="submit" className="btn btn-dark w-100 mt-5">
                 結帳

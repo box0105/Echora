@@ -18,12 +18,14 @@ datasource db {
 //以下為會員部分
 model User {
   id             Int           @id @default(autoincrement())
-  username       String        @unique
+  username       String
   password       String
   email          String        @unique
   sex            String?
   phone          String?
   postcode       String?
+  city           String?
+  district       String?
   address        String?
   // 關聯 User:Profile = 1:1 
   emailValidated Boolean       @default(false) @map("email_validated")
@@ -39,11 +41,11 @@ model User {
 
 model favorite {
   // 關聯: User:userLike = 1:n 
-  user      User    @relation(fields: [userId], references: [id])
-  userId    Int     @map("user_id")
+  user         User   @relation(fields: [userId], references: [id])
+  userId       Int    @map("user_id")
   // 關聯: Product:userLike = 1:n 
   // product   Product @relation(fields: [productSkuId], references: [id])
-  productSkuId String @db.VarChar(20) @map("product_sku_id")
+  productSkuId String @map("product_sku_id") @db.VarChar(20)
 
   // 複合主鍵
   @@id([userId, productSkuId])
@@ -94,13 +96,13 @@ model Image {
 }
 
 model Product {
-  id            Int         @id @default(autoincrement())
-  name          String      @db.VarChar(100)
-  brandId       Int         @map("brand_id")
-  discription   String      @db.Text
-  price         Int         @default(0)
-  discountPrice Int?        @map("discount_price")
-  createdAt     DateTime    @default(now()) @map("created_at")
+  id            Int      @id @default(autoincrement())
+  name          String   @db.VarChar(100)
+  brandId       Int      @map("brand_id")
+  discription   String   @db.Text
+  price         Int      @default(0)
+  discountPrice Int?     @map("discount_price")
+  createdAt     DateTime @default(now()) @map("created_at")
   // favorite      favorite[]
 
   @@map("product")
@@ -276,7 +278,7 @@ model MyOrder {
   paymentMethod   String
   cost            String
   coupon          String
-  totalAmount     Int
+  totalAmount     String
   createdAt       DateTime @default(now()) // 訂單創建時間
 }
 

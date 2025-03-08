@@ -70,18 +70,20 @@ export default function RegisterPage() {
       const res = await register(userInput)
       const resData = await res.json()
       if (resData.status === 'success') {
-        toast.success('註冊成功，請重新登入', { autoClose: 2000 })
+        toast.success('註冊成功，請重新登入', {
+          autoClose: 2000,
+          position: 'bottom-right',
+        })
         setTimeout(() => {
           if (isClient) {
             router.push('/my-user')
           }
         }, 2000)
       } else {
-        if (resData.message.includes('重複的 email')) {
-          toast.error('此 email 已被使用')
-        } else {
-          toast.error(`錯誤 - 註冊失敗: ${resData.message}`)
-        }
+        const errorMessage = resData.message.includes('重複的 email')
+          ? '此 email 已被使用'
+          : `此 email 已被使用`
+        toast.error(errorMessage, { autoClose: 1500 })
       }
     } catch (err) {
       if (err.response?.data?.message.includes('重複的 email')) {
@@ -138,7 +140,7 @@ export default function RegisterPage() {
       <div className="login-container">
         <div className="login-main">
           <Link href="/">
-            <span className="back"> &lt;返回 </span>
+            <span className="back"> &lt; 回首頁 </span>
           </Link>
 
           <img

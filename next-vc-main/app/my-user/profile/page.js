@@ -13,7 +13,6 @@ import { useRouter } from 'next/navigation'
 import PreviewUploadImage from './_components/preview-upload-image'
 import TWZipCode from './_components/tw-zipcode'
 import { Oval } from 'react-loader-spinner'
-import { useUser } from '@/hooks/use-profile'
 
 const initUserProfile = {
   username: '',
@@ -22,6 +21,8 @@ const initUserProfile = {
   phone: '',
   postcode: '',
   address: '',
+  city: '',
+  district: '',
 }
 
 const taiwanCities = {
@@ -404,7 +405,6 @@ export default function ProfilePage() {
 
   useEffect(() => {
     if (!isAuth) {
-      router.push('/my-user')
       return
     }
 
@@ -421,12 +421,13 @@ export default function ProfilePage() {
         const resData = await res.json()
         console.log('API 回傳資料:', resData)
         if (resData.status === 'success') {
-          const { address } = resData.data
-          const [city, district, ...rest] = address.split(' ')
-          const remainingAddress = rest.join(' ')
-          setSelectedCity(city)
-          setSelectedDistrict(district)
-          setRemainingAddress(remainingAddress)
+          const { city, district, address } = resData.data
+          if (address) {
+            const remainingAddress = address.replace(`${city} ${district} `, '')
+            setSelectedCity(city)
+            setSelectedDistrict(district)
+            setRemainingAddress(remainingAddress)
+          }
           setProfileInput(resData.data)
           console.log('User profile data:', resData.data)
         } else {
@@ -436,7 +437,6 @@ export default function ProfilePage() {
         toast.error(`獲取會員資料失敗: ${err.message}`)
       }
     }
-
     fetchUserProfile()
   }, [isAuth, router])
 
@@ -455,7 +455,9 @@ export default function ProfilePage() {
     setRemainingAddress('')
     setProfileInput((prevProfile) => ({
       ...prevProfile,
-      address: `${city}`,
+      city: city,
+      district: '',
+      address: '',
     }))
   }
 
@@ -464,6 +466,7 @@ export default function ProfilePage() {
     setSelectedDistrict(district)
     setProfileInput((prevProfile) => ({
       ...prevProfile,
+      district: district,
       address: `${selectedCity} ${district} ${remainingAddress}`,
     }))
   }
@@ -473,7 +476,7 @@ export default function ProfilePage() {
     setRemainingAddress(address)
     setProfileInput((prevProfile) => ({
       ...prevProfile,
-      address: `${selectedCity} ${selectedDistrict} ${address}`,
+      address: address,
     }))
   }
 
@@ -494,8 +497,13 @@ export default function ProfilePage() {
         toast.success('會員資料更新成功', {
           position: 'bottom-right',
           autoClose: 1000,
+          onClose: () => window.location.reload('/my-user/profile'),
         })
-        setProfileInput(resData.data)
+        // 確保保留所有欄位
+        setProfileInput((prevProfile) => ({
+          ...prevProfile,
+          ...resData.data,
+        }))
       } else {
         toast.error(`更新會員資料失敗: ${resData.message}`)
       }
@@ -521,22 +529,22 @@ export default function ProfilePage() {
                   type="text"
                   id="username"
                   name="username"
-                  className="form-control"
-                  value={profileInput?.username}
+                  className="form-control a-form-control"
+                  value={profileInput?.username || ''}
                   onChange={handleInputChange}
                 />
               </div>
 
               <div className="form-group">
                 <label htmlFor="email" className="form-label">
-                  Email
+                  Email/帳號
                 </label>
                 <input
                   type="email"
                   id="email"
                   name="email"
-                  className="form-control"
-                  value={profileInput?.email}
+                  className="form-control a-form-control"
+                  value={profileInput?.email || ''}
                   readOnly
                 />
               </div>
@@ -611,8 +619,8 @@ export default function ProfilePage() {
                   type="text"
                   id="phone"
                   name="phone"
-                  className="form-control"
-                  value={profileInput?.phone}
+                  className="form-control a-form-control"
+                  value={profileInput?.phone || ''}
                   onChange={handleInputChange}
                   placeholder="請輸入電話號碼"
                 />
@@ -624,7 +632,7 @@ export default function ProfilePage() {
                 <select
                   id="city"
                   name="city"
-                  className="form-control"
+                  className="form-control a-form-control"
                   value={selectedCity}
                   onChange={handleCityChange}
                 >
@@ -635,11 +643,11 @@ export default function ProfilePage() {
                     </option>
                   ))}
                 </select>
-                {selectedCity && (
+                {selectedCity && taiwanCities[selectedCity] && (
                   <select
                     id="district"
                     name="district"
-                    className="form-control"
+                    className="form-control a-form-control"
                     value={selectedDistrict}
                     onChange={handleDistrictChange}
                   >
@@ -656,7 +664,7 @@ export default function ProfilePage() {
                     type="text"
                     id="remainingAddress"
                     name="remainingAddress"
-                    className="form-control"
+                    className="form-control a-form-control"
                     value={remainingAddress}
                     onChange={handleRemainingAddressChange}
                     placeholder="請輸入詳細地址"
@@ -671,8 +679,8 @@ export default function ProfilePage() {
                   type="text"
                   id="postcode"
                   name="postcode"
-                  className="form-control"
-                  value={profileInput?.postcode}
+                  className="form-control a-form-control"
+                  value={profileInput?.postcode || ''}
                   onChange={handleInputChange}
                   placeholder="請輸入郵遞區號"
                 />

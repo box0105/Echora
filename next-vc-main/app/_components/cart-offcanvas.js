@@ -40,13 +40,12 @@ export default function CartOffcanvas({ show, onClose }) {
         transition: 'transform 0.3s ease-in-out', // 設定動畫時間
       }}
     >
-      <div className="offcanvas-header">
+      <div className="offcanvas-header ">
         {cartItems.length == 0 ? (
           ''
         ) : (
           <div className="d-flex align-items-end">
-            <div className="h2 pe-5">購物車清單</div>
-            <h3>{totalQty}件商品</h3>
+            <div className="h4 pe-4 mb-0 pt-4">購物車清單</div>
           </div>
         )}
         <button
@@ -75,9 +74,10 @@ export default function CartOffcanvas({ show, onClose }) {
         <div className="offcanvas-body">
           <CartList cartItems={cartItems} />
           <hr className="py-3" />
+          <h5 className="mb-0 text-end">{totalQty}件商品</h5>
           <div className="d-flex justify-content-between py-2">
             <h4 className="h4">總計 :</h4>
-            <h4 className="h4">NT$ {totalAmount}</h4>
+            <h4 className="h4">NT$ {totalAmount.toLocaleString()}</h4>
           </div>
           {isAuth ? (
             <Link href="/my-cart/checklist">
