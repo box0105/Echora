@@ -1,142 +1,133 @@
-import React, { useState, useEffect } from 'react'
-import RentFilter from './Filter/RentFilter'
-import RentCards from './Rentcard/card.js'
-import { useRent } from '@/hooks/use-rent'
+import React, { useState, useEffect } from 'react';
+import RentFilter from './Filter/RentFilter';
+import RentCards from './Rentcard/card.js';
+import { useRent } from '@/hooks/use-rent';
 
 export default function RentList() {
-  const [data, setData] = useState([]) // 存放API数据
-  const [filteredData, setFilteredData] = useState([]) // 存放过滤后的数据
-  const [isLoading, setIsLoading] = useState(true)
-  const [isError, setIsError] = useState(false)
-  const [visibleCount, setVisibleCount] = useState(12)
-
-  const { query, setQuery, results, error } = useRent()
-
+  // 从 hook 中获取数据、查询、加载状态与错误信息
+  const { query, setQuery, results, isLoading, error } = useRent();
+  
+  // 筛选后的数据和可见条数
+  const [filteredData, setFilteredData] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(12);
+  
+  // 排序和筛选状态
   const [sortOrder, setSortOrder] = useState({
     field: 'random',
     direction: 'asc',
-  })
+  });
   const [filters, setFilters] = useState({
     brands: [],
     addresses: [],
     levels: [],
     colors: [],
-  })
-
-  // 加载数据
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('http://localhost:3005/api/rent')
-        const jsonData = await res.json()
-        setData(jsonData.data) // 设置原始数据
-      } catch (err) {
-        console.error('错误:', err)
-        setIsError(true)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-    fetchData()
-  }, [])
-
+  });
+  
+  // 映射关系：将店名和等级转换为对应的数字
   const storeMapping = {
     台北店: 1,
     台中店: 2,
     高雄店: 3,
-  }
+  };
   const levelMap = {
     初級: 1,
     中級: 2,
     高級: 3,
-  }
+  };
 
-  // 筛选和排序
+  // 筛选和排序逻辑
   useEffect(() => {
-
-    let filtered = [...results]
- 
-    console.log('过滤前的数据頭:', filtered)
-    // 根据 query 过滤
+    // 以 hook 返回的数据为基础
+    let filtered = [...results];
+    
+    // 处理 query 筛选
     if (query) {
-      filtered = filtered.filter(item => {
-        const name = item.name ? item.name.toLowerCase() : '';
-        const q = query.toLowerCase().trim();
-        const match = name.includes(q);
-        if (!match) {
-          console.log(`不匹配: ${name} 不包含 ${q}`);
-        }
-        return match;
-      });
-   console.log('query 过滤后的数据:', filtered)
+      filtered = filtered.filter(item =>
+        item.name.toLowerCase().includes(query.toLowerCase())
+      );
     }
+  
 
-    // 筛选
-    if (filters?.brands?.length) {
-      filtered = filtered.filter((item) =>
+    // ① 根据 query 再次过滤（如果需要，注意：如果 API 已按 query 筛选，此步可省略）
+    // if (query) {
+    //   filtered = filtered.filter(item => {
+    //     const name = item.name ? item.name.toLowerCase() : '';
+    //     const q = query.toLowerCase().trim();
+    //     const match = name.includes(q);
+    //     if (!match) {
+    //       console.log(`不匹配: ${name} 不包含 ${q}`);
+    //     }
+    //     return match;
+    //   });
+    //   console.log('query 过滤后的数据:', filtered);
+    // }
+    
+    // ② 根据各个筛选条件过滤
+    if (filters.brands.length) {
+      filtered = filtered.filter(item =>
         filters.brands.includes(item.brand_name)
-      )
+      );
     }
-    if (filters?.addresses?.length) {
+    if (filters.addresses.length) {
       const selectedStoreIds = filters.addresses.map(
         (name) => storeMapping[name]
-      ) // 把店名转换成 store_id
-      filtered = filtered.filter((item) =>
+      );
+      filtered = filtered.filter(item =>
         selectedStoreIds.includes(item.stores_id)
-      )
+      );
     }
-    if (filters?.levels?.length) {
-      filtered = filtered.filter((item) =>
-        filters.levels.map((lvl) => levelMap[lvl]).includes(item.level)
-      )
+    if (filters.levels.length) {
+      filtered = filtered.filter(item =>
+        filters.levels.map(lvl => levelMap[lvl]).includes(item.level)
+      );
     }
-    if (filters?.colors?.length) {
-      filtered = filtered.filter((item) =>
-        item.rentitemColors.some((color) =>
+    if (filters.colors.length) {
+      filtered = filtered.filter(item =>
+        item.rentitemColors.some(color =>
           filters.colors.includes(color.color_name)
         )
-      )
+      );
     }
-
-    // 随机排序
+    
+    // ③ 排序逻辑：若是 random，则随机打乱，否则根据 price 或 name 排序
     if (sortOrder.field === 'random') {
-      filtered = filtered.sort(() => Math.random() - 0.5) // 随机排序
+      filtered = filtered.sort(() => Math.random() - 0.5);
+    } else if (sortOrder.field === 'price') {
+      filtered = filtered.sort((a, b) =>
+        sortOrder.direction === 'asc' ? a.price - b.price : b.price - a.price
+      );
+    } else if (sortOrder.field === 'name') {
+      filtered = filtered.sort((a, b) =>
+        sortOrder.direction === 'asc'
+          ? a.name.localeCompare(b.name)
+          : b.name.localeCompare(a.name)
+      );
     }
+    
+    // 更新 state 使 UI 重新渲染
+    setFilteredData(filtered);
+  }, [results, query, filters, sortOrder]); // 依赖项：当数据、查询或筛选、排序条件发生变化时重新计算
 
-    // 排序
-    else {
-      const sorted = filtered.sort((a, b) => {
-        if (sortOrder.field === 'price') {
-          return sortOrder.direction === 'asc'
-            ? a.price - b.price
-            : b.price - a.price
-        } else if (sortOrder.field === 'name') {
-          return sortOrder.direction === 'asc'
-            ? a.name.localeCompare(b.name)
-            : b.name.localeCompare(a.name)
-        }
-        return 0
-      })
-      filtered = sorted
-    }
-    setFilteredData(filtered) // 更新过滤后的数据
-  }, [results, filters, sortOrder, query]) // 依赖项：数据、筛选条件、排序条件和 query
-  // 处理筛选变化
+
+  // 处理筛选条件变化
   const handleFilterChange = (newFilters) => {
-    setFilters(newFilters) // 更新筛选条件
-  }
+    setFilters(newFilters);
+  };
 
-  // 处理排序变化
-  const handleSortChange = (option) => {
-    setSortOrder({
-      id: option.id,
-      field: option.field,
-      direction: option.direction,
-    })
-  }
+  // 处理排序条件变化
+   const handleSortChange = (sortOption) => {
+    setSortOrder(sortOption);
+  };
+  // const handleSortChange = (option) => {
+  //   setSortOrder({
+  //     field: option.field,
+  //     direction: option.direction,
+  //   });
+  // };
 
-  if (isLoading) return <p>加载中...</p>
-  if (isError) return <p>加载失败，请稍后再试。</p>
+  // 渲染 loading 或 error 状态
+  if (isLoading) return <p>加载中...</p>;
+  if (error) return <p>加载失败，请稍后再试。</p>;
 
   return (
     <div className="c-section2-body d-none d-md-block">
@@ -146,8 +137,8 @@ export default function RentList() {
           placeholder="租借商品搜尋"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          style={{ width: '390px' }}
-          className='c-input ps-2'
+          style={{ width: '380px' }}
+          className='c-input  c-bot-l'
         />
         <div className="row">
           {/* 将 onSortChange 和 onFilterChange 传递到 RentFilter */}
@@ -178,7 +169,7 @@ export default function RentList() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 // LoadMoreButton 组件
@@ -198,4 +189,4 @@ const LoadMoreButton = ({ visibleCount, setVisibleCount, dataLength }) => (
       {visibleCount >= dataLength ? '已经到底了' : '浏览更多'}
     </div>
   </button>
-)
+);

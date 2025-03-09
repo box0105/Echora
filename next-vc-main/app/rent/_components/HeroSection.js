@@ -1,5 +1,10 @@
 'use client'
 import React from 'react';
+import BackgroundCarousel from "./BackgroundCarousel"
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation, Autoplay } from 'swiper/modules';
 
 export default function HeroSection() {
   return (
@@ -14,13 +19,48 @@ export default function HeroSection() {
   );
 }
 
+
+
 const MainImage = () => (
   <>
-    <img
-      src="/images/Rent/C-main.jpg"
-      className="card-img d-none d-md-block border-radius-0"
-      alt="..."
-    />
+    {/* 桌面版轮播图 */}
+    <div className="d-none d-md-block">
+      <Swiper
+        slidesPerView={1}
+        spaceBetween={0}
+        navigation={true}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
+        modules={[Navigation, Autoplay]}
+        className="mySwiper"
+      >
+        <SwiperSlide>
+          <img
+            src="/images/Rent/C-main.jpg"
+            className="card-img border-radius-0"
+            alt="..."
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img
+            src="/images/Rent/C-main3.jpg"
+            className="card-img border-radius-0"
+            alt="..."
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img
+            src="/images/Rent/C-main1.jpg"
+            className="card-img border-radius-0"
+            alt="..."
+          />
+        </SwiperSlide>
+      </Swiper>
+    </div>
+
+    {/* 移动版静态图片 */}
     <img
       src="/images/Rent/C-main.jpg"
       className="card-img d-block d-md-none border-radius-0"
@@ -31,7 +71,7 @@ const MainImage = () => (
 );
 
 const HeroText = () => (
-  <div className="card-img-overlay no-rounded-corners d-flex justify-content-satrt align-items-center">
+  <div className="card-img-overlay no-rounded-corners d-flex justify-content-satrt align-items-center title-z">
     <div className="col-6 c-section1-text ">
       <Title />
       <Description />

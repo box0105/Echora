@@ -10,6 +10,7 @@ export function useRent() {
   const fetchData = async (searchQuery) => {
     setIsLoading(true);
     setError(null);
+    console.log('发送 API 请求，查询参数：', searchQuery);  // 检查传递的查询
     try {
       const url = searchQuery 
         ? `http://localhost:3005/api/rent/search?query=${encodeURIComponent(searchQuery)}`
@@ -29,8 +30,9 @@ export function useRent() {
 
   // **2. 頁面載入時請求數據**
   useEffect(() => {
+    console.log('query 更新:', query);  // 打印 query 变化
     fetchData(query);
   }, [query]); // 🔄 當 `query` 變化時，重新請求 API
-
+  console.log({ query, results, isLoading, error });
   return { query, setQuery, results, isLoading, error };
 }

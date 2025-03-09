@@ -9,10 +9,13 @@ import List from './_components/List'
 import Modfiter from './_components/fit/fiteerMod'
 import { useRent } from '@/hooks/use-rent';
 
+
 export default function Page() {
   const [isOpen, setIsOpen] = useState(false);
   const [visibleCount, setVisibleCount] = useState(12);
-  
+  //圖片
+  const [backgroundImage, setBackgroundImage] = useState('/images/Rent/background.png');
+
   // 🟢 使用 `useRent` 直接取得數據
   const { query, setQuery, results, isLoading, error } = useRent();
   
@@ -39,7 +42,9 @@ export default function Page() {
     高級: 3,
   };
 
-  // console.log('useRent返回的 query:', query);
+  const changeBackground = (newImage) => {
+    setBackgroundImage(newImage);
+  };
 
   // 🟢 過濾與排序邏輯
   const [filteredData, setFilteredData] = useState([]);
@@ -88,8 +93,14 @@ export default function Page() {
     setFilters(newFilters);
   };
 
-  const handleSortChange = (sortOption) => {
-    setSortOrder(sortOption);
+  // const handleSortChange = (sortOption) => {
+  //   setSortOrder(sortOption);
+  // };
+  const handleSortChange = (option) => {
+    setSortOrder({
+      field: option.field,
+      direction: option.direction,
+    });
   };
 
   if (error) return <div>發生錯誤: {error.message}</div>;
@@ -102,7 +113,8 @@ export default function Page() {
         </div>
       ) : (
         <div>
-          <div className="c-backgrund">
+          <div className="c-backgrund"
+          >
             {/* section1 */}
             <div className="c-section1">
               <div className="card text-bg-dark c-section1">

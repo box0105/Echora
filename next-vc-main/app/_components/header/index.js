@@ -38,7 +38,7 @@ export default function Header() {
   const [searchName, setSearchName] = useState('')
   const { criteria, setCriteria, defaultCriteria } = useProductState()
   const { updateQueryParams } = useActivity()
-  const { setQuery } = useRent(); 
+  const { query, setQuery } = useRent(); 
 
   const handleSearch = (e) => {
     if (pathName.includes('/product')) {
@@ -75,7 +75,7 @@ export default function Header() {
           },
         })
         const resData = await res.json()
-        console.log('API 回傳資料:', resData)
+        // console.log('API 回傳資料:', resData)
         if (resData.status === 'success') {
           setUserProfile(resData.data)
           console.log('User profile data:', resData.data)
@@ -115,7 +115,6 @@ export default function Header() {
       toast.error(`登出失敗: ${err.message}`)
     }
   }
-
   return (
     <>
       <nav className={`${styles['g-header']} ${styles['px-modified']}`}>
