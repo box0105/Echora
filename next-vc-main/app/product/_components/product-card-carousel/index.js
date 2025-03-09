@@ -1,11 +1,15 @@
 'use client'
 import styles from './product-card-carousel.module.scss'
+import { useProductState } from '@/services/rest-client/use-products'
+import { useRouter } from 'next/navigation'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 
-export default function ProductCardCarousel() {
+export default function ProductCardCarousel({ data = [] }) {
+  const router = useRouter()
+  const { setFirstSkuId } = useProductState()
   return (
     <>
       <section
@@ -39,7 +43,7 @@ export default function ProductCardCarousel() {
             <Swiper
               modules={[Navigation]}
               spaceBetween={0}
-              slidesPerView={5}
+              slidesPerView={4}
               navigation={{
                 nextEl: `.${styles['custom-swiper-button-next']}`,
                 prevEl: `.${styles['custom-swiper-button-prev']}`,
@@ -47,184 +51,51 @@ export default function ProductCardCarousel() {
               breakpoints={{
                 390: { slidesPerView: 1 },
                 768: { slidesPerView: 3 },
-                1200: { slidesPerView: 5 },
+                1200: { slidesPerView: 4 },
               }}
               className={`mySwiper ${styles['g-my-swiper']}`}
             >
-              <SwiperSlide className={styles['g-swiper-slide']}>
-                <div className={styles['g-product-card']}>
+              {data?.map((product, i) => (
+                <SwiperSlide key={i} className={styles['g-swiper-slide']}>
                   <div
-                    className={`${styles['g-pd-img']} d-flex justify-content-center align-items-center position-relative`}
+                    className={styles['g-product-card']}
+                    onClick={() => {
+                      setFirstSkuId(product.product_sku_id)
+                      router.push(`/product/detail/${product.id}`)
+                    }}
                   >
                     <div
-                      className={`${styles['g-brand-name']} d-flex justify-content-center align-items-center position-absolute`}
+                      className={`${styles['g-pd-img']} d-flex justify-content-center align-items-center position-relative`}
                     >
-                      Gibson
-                    </div>
-                    <img className="h-100" src="" alt="" />
-                  </div>
-                  <div className={styles['g-pd-text']}>
-                    <h6 className="h6">
-                      Product Name Product Name Product Name
-                    </h6>
-                    <div className="d-flex gap-3">
-                      <h6 className="h6">$79000</h6>
-                      {/* <h6 class="h6">$72900</h6> */}
-                    </div>
-                    <div className={styles['g-color-row']}>
-                      <div>
-                        <img width="22px" src="" alt="" />
+                      <div
+                        className={`${styles['g-brand-name']} d-flex justify-content-center align-items-center position-absolute`}
+                      >
+                        {product.brand_name}
                       </div>
+                      <img
+                        className="h-100"
+                        src={`/images/product/pd-images/${product.image}`}
+                        alt=""
+                      />
                     </div>
-                    <p className={`p ${styles['g-color-text']}`}>2 colors</p>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className={styles['g-swiper-slide']}>
-                <div className={styles['g-product-card']}>
-                  <div
-                    className={`${styles['g-pd-img']} d-flex justify-content-center align-items-center position-relative`}
-                  >
-                    <div
-                      className={`${styles['g-brand-name']} d-flex justify-content-center align-items-center position-absolute`}
-                    >
-                      Gibson
-                    </div>
-                    <img className="h-100" src="" alt="" />
-                  </div>
-                  <div className={styles['g-pd-text']}>
-                    <h6 className="h6">
-                      Product Name Product Name Product Name
-                    </h6>
-                    <div className="d-flex gap-3">
-                      <h6 className="h6">$79000</h6>
-                      {/* <h6 class="h6">$72900</h6> */}
-                    </div>
-                    <div className={styles['g-color-row']}>
-                      <div>
-                        <img width="22px" src="" alt="" />
+                    <div className={styles['g-pd-text']}>
+                      <h6 className="h6">{product.name}</h6>
+                      <div className="d-flex gap-3">
+                        <h6 className="h6">
+                          ${product.price.toLocaleString()}
+                        </h6>
+                        {/* <h6 class="h6">$72900</h6> */}
                       </div>
-                    </div>
-                    <p className={`p ${styles['g-color-text']}`}>2 colors</p>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className={styles['g-swiper-slide']}>
-                <div className={styles['g-product-card']}>
-                  <div
-                    className={`${styles['g-pd-img']} d-flex justify-content-center align-items-center position-relative`}
-                  >
-                    <div
-                      className={`${styles['g-brand-name']} d-flex justify-content-center align-items-center position-absolute`}
-                    >
-                      Gibson
-                    </div>
-                    <img className="h-100" src="" alt="" />
-                  </div>
-                  <div className={styles['g-pd-text']}>
-                    <h6 className="h6">
-                      Product Name Product Name Product Name
-                    </h6>
-                    <div className="d-flex gap-3">
-                      <h6 className="h6">$79000</h6>
-                      {/* <h6 class="h6">$72900</h6> */}
-                    </div>
-                    <div className={styles['g-color-row']}>
-                      <div>
-                        <img width="22px" src="" alt="" />
+                      {/* <div className={styles['g-color-row']}>
+                        <div>
+                          <img width="22px" src="" alt="" />
+                        </div>
                       </div>
+                      <p className={`p ${styles['g-color-text']}`}>2 colors</p> */}
                     </div>
-                    <p className={`p ${styles['g-color-text']}`}>2 colors</p>
                   </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className={styles['g-swiper-slide']}>
-                <div className={styles['g-product-card']}>
-                  <div
-                    className={`${styles['g-pd-img']} d-flex justify-content-center align-items-center position-relative`}
-                  >
-                    <div
-                      className={`${styles['g-brand-name']} d-flex justify-content-center align-items-center position-absolute`}
-                    >
-                      Gibson
-                    </div>
-                    <img className="h-100" src="" alt="" />
-                  </div>
-                  <div className={styles['g-pd-text']}>
-                    <h6 className="h6">
-                      Product Name Product Name Product Name
-                    </h6>
-                    <div className="d-flex gap-3">
-                      <h6 className="h6">$79000</h6>
-                      {/* <h6 class="h6">$72900</h6> */}
-                    </div>
-                    <div className={styles['g-color-row']}>
-                      <div>
-                        <img width="22px" src="" alt="" />
-                      </div>
-                    </div>
-                    <p className={`p ${styles['g-color-text']}`}>2 colors</p>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className={styles['g-swiper-slide']}>
-                <div className={styles['g-product-card']}>
-                  <div
-                    className={`${styles['g-pd-img']} d-flex justify-content-center align-items-center position-relative`}
-                  >
-                    <div
-                      className={`${styles['g-brand-name']} d-flex justify-content-center align-items-center position-absolute`}
-                    >
-                      Gibson
-                    </div>
-                    <img className="h-100" src="" alt="" />
-                  </div>
-                  <div className={styles['g-pd-text']}>
-                    <h6 className="h6">
-                      Product Name Product Name Product Name
-                    </h6>
-                    <div className="d-flex gap-3">
-                      <h6 className="h6">$79000</h6>
-                      {/* <h6 class="h6">$72900</h6> */}
-                    </div>
-                    <div className={styles['g-color-row']}>
-                      <div>
-                        <img width="22px" src="" alt="" />
-                      </div>
-                    </div>
-                    <p className={`p ${styles['g-color-text']}`}>2 colors</p>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className={styles['g-swiper-slide']}>
-                <div className={styles['g-product-card']}>
-                  <div
-                    className={`${styles['g-pd-img']} d-flex justify-content-center align-items-center position-relative`}
-                  >
-                    <div
-                      className={`${styles['g-brand-name']} d-flex justify-content-center align-items-center position-absolute`}
-                    >
-                      Gibson
-                    </div>
-                    <img className="h-100" src="" alt="" />
-                  </div>
-                  <div className={styles['g-pd-text']}>
-                    <h6 className="h6">
-                      Product Name Product Name Product Name
-                    </h6>
-                    <div className="d-flex gap-3">
-                      <h6 className="h6">$79000</h6>
-                      {/* <h6 class="h6">$72900</h6> */}
-                    </div>
-                    <div className={styles['g-color-row']}>
-                      <div>
-                        <img width="22px" src="" alt="" />
-                      </div>
-                    </div>
-                    <p className={`p ${styles['g-color-text']}`}>2 colors</p>
-                  </div>
-                </div>
-              </SwiperSlide>
+                </SwiperSlide>
+              ))}
             </Swiper>
           </div>
         </div>

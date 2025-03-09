@@ -2,7 +2,7 @@
 
 import './style.scss'
 // import 'bootstrap/dist/css/bootstrap.min.css'
-import React, { useState, useEffect } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { useMyCoupon } from '@/hooks/use-coupon'
 import { useAuth } from '@/hooks/use-auth'
 import Link from 'next/link'
@@ -15,13 +15,16 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 // import required modules
-import {Autoplay, Parallax, Pagination, Navigation } from 'swiper/modules'
+import { Autoplay, Parallax, Pagination, Navigation } from 'swiper/modules'
 
 export default function CouponPage() {
   const [coupon, setCoupon] = useState([])
   const [userCoupons, setUserCoupons] = useState([])
   const { notifyAndGet, notifyAndGetAll, time } = useMyCoupon()
   const { isAuth } = useAuth()
+  const progressCircle = useRef(null)
+  const progressContent = useRef(null)
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,7 +49,7 @@ export default function CouponPage() {
   }, [isAuth])
 
   const fetchUserCoupon = async () => {
-    const userId = localStorage.getItem('userId')
+    const userId = getUserId()
     console.log(userId)
     try {
       const url = `http://localhost:3005/api/coupon/${userId}`
@@ -60,6 +63,8 @@ export default function CouponPage() {
     }
     // fetchUserCoupon()
   }
+
+  const getUserId = () => localStorage.getItem('userId')
 
   return (
     <>
@@ -77,76 +82,101 @@ export default function CouponPage() {
               </Link>
               <h6>活動期間:2024/12/01 - 2025/01/31</h6>
             </div>
-          </div>*/}
+          </div> */}
           <Swiper
-        style={{
-          '--swiper-navigation-color': '#fff',
-          '--swiper-pagination-color': '#fff',
-        }}
-        speed={600}
-        parallax={true}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Parallax, Pagination, Navigation]}
-        className="mySwiper"
-      >
-        <div
-          slot="container-start"
-          className="parallax-bg"
-          style={{
-            'background':
-              'url()',
-          }}
-          data-swiper-parallax="-23%"
-        ></div>
-        <SwiperSlide>
-          <div className="title" data-swiper-parallax="-300">
-            Slide 1
-          </div>
-          <div className="subtitle" data-swiper-parallax="-200">
-            Subtitle
-          </div>
-          <div className="text" data-swiper-parallax="-100">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
-              laoreet justo vitae porttitor porttitor.
-            </p>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="title" data-swiper-parallax="-300">
-            Slide 2
-          </div>
-          <div className="subtitle" data-swiper-parallax="-200">
-            Subtitle
-          </div>
-          <div className="text" data-swiper-parallax="-100">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
-              laoreet justo vitae porttitor porttitor.
-            </p>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="title" data-swiper-parallax="-300">
-            Slide 3
-          </div>
-          <div className="subtitle" data-swiper-parallax="-200">
-            Subtitle
-          </div>
-          <div className="text" data-swiper-parallax="-100">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
-              laoreet justo vitae porttitor porttitor.
-            </p>
-          </div>
-        </SwiperSlide>
-      </Swiper>
+            spaceBetween={30}
+            centeredSlides={true}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[Autoplay, Pagination]}
+            className="k-Swiper"
+          >
+            <SwiperSlide>
+              <div className="content">
+                <div className="title flex-column">
+                  <div>SPECIAL OFFER</div>
+                  <span>聖誕季優惠活動 LES系列9折優惠</span>
+                </div>
+                <div className="title flex-column">
+                  <Link href="/my-user">
+                    <h1 className=" btn btn-outline-light mt-2">
+                      立即加入會員
+                    </h1>
+                  </Link>
+                  <h6>活動期間:2024/12/01 - 2025/01/31</h6>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="content">
+                <div className="title flex-column">
+                  <div>SPECIAL OFFER</div>
+                  <span>聖誕季優惠活動 LES系列9折優惠</span>
+                </div>
+                <div className="title flex-column">
+                  <Link href="/my-user">
+                    <h1 className=" btn btn-outline-light mt-2">
+                      立即加入會員
+                    </h1>
+                  </Link>
+                  <h6>活動期間:2024/12/01 - 2025/01/31</h6>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="content">
+                <div className="title flex-column">
+                  <div>SPECIAL OFFER</div>
+                  <span>聖誕季優惠活動 LES系列9折優惠</span>
+                </div>
+                <div className="title flex-column">
+                  <Link href="/my-user">
+                    <h1 className=" btn btn-outline-light mt-2">
+                      立即加入會員
+                    </h1>
+                  </Link>
+                  <h6>活動期間:2024/12/01 - 2025/01/31</h6>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="content">
+                <div className="title flex-column">
+                  <div>SPECIAL OFFER</div>
+                  <span>聖誕季優惠活動 LES系列9折優惠</span>
+                </div>
+                <div className="title flex-column">
+                  <Link href="/my-user">
+                    <h1 className=" btn btn-outline-light mt-2">
+                      立即加入會員
+                    </h1>
+                  </Link>
+                  <h6>活動期間:2024/12/01 - 2025/01/31</h6>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="content">
+                <div className="title flex-column">
+                  <div>SPECIAL OFFER</div>
+                  <span>聖誕季優惠活動 LES系列9折優惠</span>
+                </div>
+                <div className="title flex-column">
+                  <Link href="/my-user">
+                    <h1 className=" btn btn-outline-light mt-2">
+                      立即加入會員
+                    </h1>
+                  </Link>
+                  <h6>活動期間:2024/12/01 - 2025/01/31</h6>
+                </div>
+              </div>
+            </SwiperSlide>
+          </Swiper>
         </main>
 
         <article className="k-article">
@@ -155,7 +185,7 @@ export default function CouponPage() {
               COUPONS / <span className="span">會員優惠券專區</span>
             </h1>
           </div>
-          <div className="row row-cols-lg-4 row-cols-md-4 row-cols-sm-1 row-cols-xm-1 row-cols-xxm-1  ">
+          <div className="row row-cols-lg-4 row-cols-md-4 row-cols-sm-1 row-cols-xm-1 row-cols-xxm-1 ">
             {coupon.map((item) => (
               <li
                 key={item.id}
@@ -225,14 +255,12 @@ export default function CouponPage() {
             <button
               className="btn btn-outline-dark"
               onClick={async () => {
-                if(isAuth){
+                if (isAuth) {
                   await notifyAndGetAll()
                   await fetchUserCoupon()
-                }else{
+                } else {
                   alert('請先登入')
-
                 }
-                
               }}
             >
               全部領取

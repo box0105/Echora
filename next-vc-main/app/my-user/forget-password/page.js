@@ -51,7 +51,7 @@ export default function ForgetPasswordPage() {
       // 將會進行重新驗證(revalidation)(將資料標記為已過期並觸發重新請求)
       mutate()
 
-      toast.success('已成功登出')
+      // toast.success('已成功登出')
     } else {
       toast.error(`登出失敗`)
     }

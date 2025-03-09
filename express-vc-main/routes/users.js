@@ -205,7 +205,8 @@ router.post('/logout', (req, res) => {
 // 更新會員資料
 router.put('/:id', async (req, res) => {
   const userId = req.params.id
-  const { username, phone, address, email, postcode, sex } = req.body
+  const { username, phone, city, district, address, email, postcode, sex } =
+    req.body
 
   // 構建動態 SQL 語句和參數數組
   let updateFields = []
@@ -218,6 +219,14 @@ router.put('/:id', async (req, res) => {
   if (phone) {
     updateFields.push('phone = ?')
     updateValues.push(phone)
+  }
+  if (city) {
+    updateFields.push('city = ?')
+    updateValues.push(city)
+  }
+  if (district) {
+    updateFields.push('district = ?')
+    updateValues.push(district)
   }
   if (address) {
     updateFields.push('address = ?')

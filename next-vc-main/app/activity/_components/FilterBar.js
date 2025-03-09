@@ -17,7 +17,7 @@ export default function FilterBar({ actNum, onOpen, onChange }) {
   return (
     <>
       {/* Title */}
-      <div className="g-pdlist-title px-modified">
+      <div className="g-pdlist-title l-px-modified">
         <div className="container-fluid p-0">
           <div className="d-flex align-items-center">
             <h4 className="h4 mb-0">ACTIVITY</h4>
@@ -26,7 +26,7 @@ export default function FilterBar({ actNum, onOpen, onChange }) {
         </div>
       </div>
       {/* Filter row */}
-      <div className="b-filter-bar g-pdlist-topbar px-modified">
+      <div className="g-pdlist-topbar l-px-modified b-filter-bar">
         <div className="container-fluid d-flex justify-content-between p-0">
           <div className="g-left d-flex align-items-center">
             {/* 商品數量 */}

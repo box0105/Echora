@@ -1,0 +1,122 @@
+/* product images side */
+.g-pd-imgs {
+  background-color: var(--grey50);
+}
+
+.g-side-scroll {
+  padding: 160px 64px 160px 64px;
+  overflow: hidden;
+
+  .g-img-box {
+    background-color: var(--white);
+
+    &:hover {
+      border: 1px solid var(--grey300);
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    padding-inline: 32px;
+  }
+}
+
+.g-main-img {
+  padding: 100px 64px 100px 0px;
+  overflow: hidden;
+  height: 100%;
+
+  img {
+    max-width: 100%;
+  }
+
+  @media screen and (max-width: 992px) {
+    display: none;
+  }
+}
+
+.g-main-img2 {
+  padding-block: 100px;
+  height: 100vh;
+  min-height: 776px;
+  overflow: hidden;
+  display: none;
+  position: relative;
+
+  @media screen and (max-width: 992px) {
+    display: block;
+  }
+}
+
+
+/* swiper-custom1 */
+.g-swiper-sec {
+  position: relative;
+  height: 100%;
+  padding: 2px;
+}
+
+.g-my-swiper {
+  height: 100%;
+}
+
+.g-swiper-slide {
+  padding: 4px;
+  background-color: var(--white);
+  display: flex !important;
+  justify-content: center !important;
+  overflow: hidden;
+  cursor: pointer;
+  &.active {
+    border: 1px solid var(--grey300);
+  }
+}
+
+.custom-swiper-button-prev,
+.custom-swiper-button-next {
+  position: absolute;
+  left: calc(50% - 12px);
+  cursor: pointer;
+
+  // @media screen and (max-width: 576px) {
+  //   display: none;
+  // }
+}
+
+.custom-swiper-button-prev {
+  top: -60px;
+}
+
+.custom-swiper-button-next {
+  bottom: -60px;
+}
+
+/* swiper-custom2 */
+.g-swiper-slide2 {
+  padding: 4px;
+  display: flex !important;
+  justify-content: center !important;
+  overflow: hidden;
+}
+
+.custom-swiper-button-prev2,
+.custom-swiper-button-next2 {
+  position: absolute;
+  top: calc(50% - 12px);
+  cursor: pointer;
+}
+
+.custom-swiper-button-prev2 {
+  transform: rotate(90deg);
+  transform-origin: center;
+  left: 30px;
+  z-index: 10;
+  user-select: none;
+}
+
+.custom-swiper-button-next2 {
+  transform: rotate(90deg);
+  transform-origin: center;
+  right: 30px;
+  z-index: 10;
+  user-select: none;
+}

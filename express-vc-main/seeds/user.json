@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "username": "john_doe",
-    "password": "hashed_password_123",
+    "username": "admin",
+    "password": "12345",
     "email": "john.doe@example.com",
     "sex": "male",
     "phone": "0912345678",
@@ -116,18 +116,6 @@
     "phone": "0911222333",
     "address": "花蓮縣花蓮市中山路321號",
     "postcode": "970",
-    "emailValidated": false,
-    "googleUid": null
-  },
-  {
-    "id": 100,
-    "username": "wabi",
-    "password": "12345",
-    "email": "test@example.com",
-    "sex": "female",
-    "phone": "0906985221",
-    "address": "新北市三峽區國慶路",
-    "postcode": null,
     "emailValidated": false,
     "googleUid": null
   }

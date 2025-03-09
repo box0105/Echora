@@ -1,0 +1,39 @@
+'use client'
+
+import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+
+export default function AdminPanel() {
+  return (
+    <nav className="col-md-2 mb-5 bg-white card p-3 d-flex flex-column align-items-center">
+      <Link href="/admin" className='w-100 text-center'>
+        <Image
+          src="/images/header/logo-mb.svg"
+          alt="Logo"
+          width={150}
+          height={50}
+        />
+      </Link>
+      
+      <ul className="nav flex-column align-self-stretch mt-3 pt-3">
+        <li className="nav-item active">
+          <h6 className="mb-0">
+            <Link href="/admin/activity" className="nav-link">
+              <i className="fa-solid fa-table-list me-3 text-secondary" />
+              活動管理
+            </Link>
+          </h6>
+        </li>
+        <li className="nav-item">
+          <h6 className="mb-0">
+            <Link href="/my-user" className="nav-link">
+              <i className="fa-solid fa-right-from-bracket me-3 text-secondary" />
+              登出
+            </Link>
+          </h6>
+        </li>
+      </ul>
+    </nav>
+  )
+}

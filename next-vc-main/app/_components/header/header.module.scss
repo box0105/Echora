@@ -37,7 +37,7 @@
   left: 24px;
 
   @media screen and (max-width: 992px) {
-    top: 13px;
+    top: 12px;
   }
 }
 
@@ -188,9 +188,11 @@
   position: absolute;
   border: none;
   background-color: transparent;
-  left: -80px;
+  right: -10px;
   font-size: 12px;
   top: -9px;
+  width: 300px;
+  text-align: right;
 
   @media screen and (max-width: 390px) {
     display: none;

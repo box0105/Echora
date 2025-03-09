@@ -11,7 +11,7 @@
 /* section2 */
 .m-sec2-col8 {
   padding-right: 64px;
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     padding: 16px;
   }
 }
@@ -36,7 +36,7 @@
   margin: 0;
 }
 .m-sec2-card {
-  max-height: 350px;
+  max-height: 230px;
   display: flex;
   justify-content: center;
   @media (max-width: 768px) {

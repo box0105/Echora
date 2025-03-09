@@ -50,12 +50,16 @@ export default function ComponentsOrderDetail() {
             <p>付款方式 : {order.paymentMethod}</p>
             <p>取貨方式 : {order.shippingMethod}</p>
             <p>
-              {order.coupon == '' ? '使用的優惠券 : 無' : `使用的優惠券 : ${order.coupon}`}
+              {order.coupon == ''
+                ? '使用的優惠券 : 無'
+                : `使用的優惠券 : ${order.coupon}`}
             </p>
-            <p>{order.cost == 0 ? '折扣 : 無' : `折扣 : - NT$ ${order.cost}`}</p>
+            <p>
+              {order.cost == 0 ? '折扣 : 無' : `折扣 : - NT$ ${Number(order.cost).toLocaleString()}`}
+            </p>
             <br />
             <hr />
-            <h5>總金額 : NT$ {order.totalAmount}</h5>
+            <h5>總金額 : NT$ {Number(order.totalAmount).toLocaleString()}</h5>
           </div>
           <div className="col col-6">
             <h3>訂購商品</h3>
@@ -102,7 +106,8 @@ export default function ComponentsOrderDetail() {
                             <strong>數量 :</strong> {item.count}
                           </h6>
                           <h6 className="card-text">
-                            <strong>價錢 : </strong>NT$ {item.price}
+                            <strong>價錢 : </strong>NT${' '}
+                            {Number(item.price).toLocaleString()}
                           </h6>
                         </div>
                       </div>

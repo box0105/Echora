@@ -156,6 +156,7 @@ export default function ChecklistPage() {
   //#endregion
   // ------------------
 
+  console.log(userCoupons)
   return (
     <>
       <div className="m-background mb-5">
@@ -178,17 +179,15 @@ export default function ChecklistPage() {
             <div className="m-sec2-col8 col-lg-8 col-12">
               <div className="d-flex justify-content-between align-items-end py-4">
                 <div className="h2">購物車清單</div>
-                <h3 className="me-4">{totalQty} 件商品</h3>
+                <h3 className="">{totalQty} 件商品</h3>
               </div>
-              <div className="row row-cols-1">
-                <CartList cartItems={cartItems} />
-              </div>
+              <CartList cartItems={cartItems} />
             </div>
             <div className="m-sec2-col4 col-lg-4 col-12">
               <div className="h3 pt-4 pb-2">訂單確認</div>
               <div className="d-flex justify-content-between py-2">
                 <h5>小計 :</h5>
-                <h5>NT$ {totalAmount}</h5>
+                <h5>NT$ {totalAmount.toLocaleString()}</h5>
               </div>
               <div className="d-flex justify-content-between py-2">
                 <h5>運費 :</h5>
@@ -202,23 +201,26 @@ export default function ChecklistPage() {
                   onChange={handleCouponChange}
                 >
                   <option value="">請選擇優惠券</option>
-                  {userCoupons.filter((coupon)=>coupon.claimed != 0).map((coupon) => (
-                    <option key={coupon.id} value={coupon.name}>
-                      {coupon.name}
-                    </option>
-                  ))}
+                  {userCoupons.map(
+                    (coupon) =>
+                      coupon.isDeleted == false && (
+                        <option key={coupon.couponId} value={coupon.name}>
+                          {coupon.name}
+                        </option>
+                      )
+                  )}
                 </select>
               </div>
               <div className="d-flex justify-content-between py-2">
                 <h5>折扣 :</h5>
                 <h5>
-                  {discountedAmount == 0 ? '' : `- NT$ ${discountedAmount}`}
+                  {discountedAmount == 0 ? '' : `- NT$ ${discountedAmount.toLocaleString()}`}
                 </h5>
               </div>
               <hr />
               <div className="d-flex justify-content-between py-3">
                 <h4 className="h4">總計 :</h4>
-                <h4 className="h4">NT$ {countedAmount}</h4>
+                <h4 className="h4">NT$ {countedAmount.toLocaleString()}</h4>
               </div>
               <button type="submit" className="btn btn-dark w-100 mt-5">
                 結帳

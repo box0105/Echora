@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import styles from './product-card.module.scss'
 import { useProductState } from '@/services/rest-client/use-products'
 
-export default function ProductCard({ data = {}}) {
+export default function ProductCard({ data = {}, handleDragStart}) {
   const [mainImage, setMainImage] = useState(data.image)
   const { setFirstSkuId } = useProductState()
   const router = useRouter()
@@ -16,7 +16,7 @@ export default function ProductCard({ data = {}}) {
 
   return (
     <>
-      <div className="col p-2">
+      {/* <div className="col p-2"> */}
         <div
           className={styles['g-product-card']}
           onClick={() => {
@@ -36,6 +36,8 @@ export default function ProductCard({ data = {}}) {
               className="h-100"
               src={`/images/product/pd-images/${mainImage}`}
               alt=""
+              draggable
+              onDragStart={(e) => handleDragStart(e, data)}
             />
           </div>
           <div className={styles['g-pd-text']}>
@@ -63,7 +65,7 @@ export default function ProductCard({ data = {}}) {
             </p>
           </div>
         </div>
-      </div>
+      {/* </div> */}
     </>
   )
 }

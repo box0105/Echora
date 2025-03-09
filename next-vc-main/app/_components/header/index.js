@@ -6,7 +6,7 @@ import { useActivity } from '@/hooks/use-activity'
 import { useRent } from "@/hooks/use-rent" 
 import { useRouter, usePathname } from 'next/navigation'
 import { useProductState } from '@/services/rest-client/use-products'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { useAuth } from '@/hooks/use-auth'
 import { useUser } from '@/hooks/use-profile'
@@ -24,16 +24,15 @@ export default function Header() {
   const [showCart, setShowCart] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
+  // search
   // 在不同路徑改變搜尋框的文字
   const pathName = usePathname()
   const getSearchPlaceholder = () => {
-    if (pathName.includes("/product")) return "搜尋電吉他商品名";
-    if (pathName.includes("/activity")) return "搜尋活動名稱或表演樂團";
-    if (pathName.includes("/rent")) return "搜尋電吉他租借";
-    return "搜尋";
-  };
+    if (pathName.includes('/activity')) return '搜尋活動名稱或表演樂團'
+    else if (pathName.includes('/rent')) return '搜尋電吉他租借商品'
+    else return '搜尋電吉他商品'
+  }
 
-  // search
   const router = useRouter()
   const [searchName, setSearchName] = useState('')
   const { criteria, setCriteria, defaultCriteria } = useProductState()
@@ -106,7 +105,7 @@ export default function Header() {
         localStorage.removeItem('userId')
         setIsAuth(false)
         mutate()
-        toast.success('已成功登出')
+        // toast.success('已成功登出')
         router.push('/')
       } else {
         toast.error(`登出失敗: ${resData.message}`)
@@ -210,7 +209,14 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link href="/activity">
+                <Link
+                  href="/activity"
+                  onClick={() => {
+                    // 清空活動篩選條件 & Search欄位
+                    deleteQueryParams()
+                    setSearchName('')
+                  }}
+                >
                   <div className="d-flex">
                     <h6 className="h7">MUSIC FESTIVALS</h6>
                     <p className="px-1">/</p>
