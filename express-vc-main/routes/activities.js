@@ -1,14 +1,37 @@
 import express from 'express'
-// import db from '../config/mysql.js'
+import multer from 'multer'
+
 import { PrismaClient } from '@prisma/client'
 import { successResponse, errorResponse } from '../lib/utils.js'
 
 const router = express.Router()
 const prisma = new PrismaClient()
 
-/* router prefix: /api/activities */
+const storage = multer.diskStorage({
+  // 設定檔案搬移目的地
+  destination: (req, file, cb) => {
+    cb(null, 'public/images/uploads')
+  },
+  filename: (req, file, cb) => {
+    const newFileName = Date.now() + '_' + file.originalname
+    cb(null, newFileName)
+  },
+})
 
-// get All datas
+const upload = multer({
+  storage,
+  fileFilter(req, file, cb) {
+    if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
+      return cb(new Error('Please upload jpg/jpeg/png files'))
+    }
+    cb(null, true)
+  },
+  limits: {
+    fileSize: 10000000, // 10MB
+  },
+})
+
+// Read All datas
 router.get('/', async (req, res) => {
   try {
     const search = req.query.search
@@ -44,7 +67,7 @@ router.get('/', async (req, res) => {
     }
     if (price) {
       whereCondition.type = {
-        some: { price: { lte: price } }
+        some: { price: { lte: price } },
       }
     }
 
@@ -114,7 +137,7 @@ router.get('/', async (req, res) => {
   }
 })
 
-// get 所有選項
+// Read 所有選項
 router.get('/options', async (req, res) => {
   try {
     const categories = await prisma.activityCategory.findMany()
@@ -126,7 +149,7 @@ router.get('/options', async (req, res) => {
   }
 })
 
-// get One data
+// Read One data
 router.get('/:id', async (req, res) => {
   const { id } = req.params
 
@@ -143,6 +166,93 @@ router.get('/:id', async (req, res) => {
       },
     })
 
+    successResponse(res, { data })
+  } catch (error) {
+    errorResponse(res, error)
+  }
+})
+
+// 上傳照片
+router.post('/uploads', upload.array('files', 5), (req, res) => {
+  if (!req.files || req.files.length === 0) {
+    return res.status(400).json({ error: 'No file uploaded' })
+  }
+
+  const uploadedFiles = req.files.map((file) => ({
+    filename: file.originalname,
+    newFileName: file.filename,
+    size: file.size,
+  }))
+
+  res.json({
+    message: 'Files uploaded successfully',
+    files: uploadedFiles,
+  })
+})
+
+// Create
+router.post('/', express.json(), async (req, res) => {
+  const {
+    name,
+    category_id,
+    music_genre_id,
+    date_start,
+    date_end,
+    signup_start,
+    signup_end,
+    city,
+    dist,
+    address,
+    intro,
+    media,
+  } = req.body
+  const mediaString = Array.isArray(media) ? media.join(',') : media
+
+  const data = await prisma.activity.create({
+    data: {
+      name,
+      category_id: parseInt(category_id),
+      music_genre_id: parseInt(music_genre_id),
+      date_start: new Date(date_start),
+      date_end:date_end ? new Date(date_end) : null,
+      signup_start: signup_start ? new Date(signup_start) : null,
+      signup_end: signup_end ? new Date(signup_end) : null,
+      city,
+      dist,
+      address,
+      intro,
+      media: mediaString, // 將轉換後的字串存入 media
+      // 關聯 1:n
+      type: {
+        create: req.body.type || [],
+      },
+      article: {
+        create: req.body.article || [],
+      },
+      lineup: {
+        create: req.body.lineup || [],
+      },
+      // type: {
+      //   create: [
+      //     { name: '門票一', stock: 10, price: 999 },
+      //     { name: '門票二', stock: 15, price: 2999 },
+      //   ],
+      // },
+      // article: {
+      //   create: [
+      //     {title: '文章一', content: '文章一', images: '浮現祭/1-1.jpg'},
+      //     {title: '文章二', content: '文章二', images: '浮現祭/2-1.jpg'}
+      //   ]
+      // },
+      // lineup: {
+      //   create: [
+      //     {bands: '123456789'}, {bands:'98765321'}
+      //   ]
+      // }
+    },
+  })
+
+  try {
     successResponse(res, { data })
   } catch (error) {
     errorResponse(res, error)

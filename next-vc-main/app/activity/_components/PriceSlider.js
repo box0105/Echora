@@ -9,7 +9,7 @@ export default function PriceSlider({
 
   return (
     <div className="d-flex flex-column align-self-stretch">
-      <h4>價錢</h4>
+      <h4 className='b-cond-title'>價錢</h4>
       <div className="d-flex flex-column align-items-center gap-4">
         <input
           type="range"

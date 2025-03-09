@@ -199,7 +199,6 @@ model Activity {
   // 1:n
   lineup  ActivityLineup[]
   article ActivityArticle[]
-  // tickets       Ticket[]
   type    ActivityTicketType[]
 }
 
@@ -228,7 +227,7 @@ model ActivityArticle {
   activity    Activity @relation(fields: [activity_id], references: [id])
   title       String   @db.VarChar(255)
   content     String   @db.Text
-  images      String   @db.Text // 多個照片路徑
+  images      String?   @db.Text // 多個照片路徑
 }
 
 model ActivityTicketType {
@@ -238,27 +237,7 @@ model ActivityTicketType {
   stock       Int
   price       Int
   activity    Activity @relation(fields: [activity_id], references: [id])
-  // tickets     Ticket[]
 }
-
-// model Media {
-//   id          Int      @id @default(autoincrement())
-//   activity_id Int
-//   image       String   @db.VarChar(255)
-//   activity    Activity @relation(fields: [activity_id], references: [id])
-// }
-
-// model Ticket {
-//   id           Int      @id @default(autoincrement())
-//   user_id      Int
-//   activity_id  Int
-//   purchase_date DateTime
-//   type_id      Int
-//   available    Boolean
-//   qrcode       String   @db.VarChar(255)
-//   activity     Activity @relation(fields: [activity_id], references: [id])
-//   type         Type     @relation(fields: [type_id], references: [id])
-// }
 
 /**
  * Activity box End
