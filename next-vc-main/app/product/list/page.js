@@ -5,13 +5,13 @@ import FilterBar from '../_components/filter-bar'
 
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useProductState } from '@/services/rest-client/use-products'
 
 export default function ProductListPage(props) {
   //header search
-  const searchParams = useSearchParams()
-  const name_like = searchParams.get('name_like')
+  // const searchParams = useSearchParams()
+  // const name_like = searchParams.get('name_like')
 
   // 設定點擊事件
   const [filterOpen, setFilterOpen] = useState(false)
@@ -226,8 +226,14 @@ export default function ProductListPage(props) {
   //   }
   // }
 
-  // didmount後執行getPdData()
+  const isFirstRender = useRef(true); // 追蹤是否為初次渲染
+  
+  // didmount後的下一次(queryString改變時)執行getPdData()
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false // 初次渲染時設定為 false，下一次才會觸發
+      return
+    }
     getPdData(queryString)
   }, [queryString])
 
@@ -436,7 +442,7 @@ export default function ProductListPage(props) {
         <section className="g-pdlist l-px-modified">
           <div className="container-fluid p-1">
             <div className="row row-cols-xl-4 row-cols-2">
-              {pdData.slice(0, visibleCount).map((product, i) => (
+              {pdData?.slice(0, visibleCount).map((product, i) => (
                 <div className="col p-2" key={product.id}>
                   <ProductCard
                     data={product}
