@@ -3,8 +3,35 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { dateFormat } from '@/app/activity/_utils/dateFormat'
+import { useActivity } from '@/hooks/use-activity'
 
 export default function DataTable() {
+  const { acts, isLoading } = useActivity()
+
+  // API delete
+  const deleteActivity = async (activityId, activityName) => {
+    if (!window.confirm(`確定要刪除活動「${activityName}」嗎?`)) return
+
+    try {
+      const response = await fetch(
+        `http://localhost:3005/api/activities/${activityId}`,
+        {
+          method: 'DELETE',
+        }
+      )
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`)
+      }
+
+      console.log('活動刪除成功', await response.json());
+    } catch (error) {
+      console.error('活動刪除失敗!', error.message)
+    }
+  }
+
+  if (isLoading) return <h3>網頁載入中，請稍後...</h3>
   return (
     <>
       {/* heading */}
@@ -16,7 +43,7 @@ export default function DataTable() {
           </Link>
         </div>
         <div style={{ color: 'var(--grey400)' }}>
-          <small>共計 10 項活動</small>
+          <small>共計 {acts.length} 項活動</small>
         </div>
       </div>
       {/* content */}
@@ -67,75 +94,73 @@ export default function DataTable() {
             </thead>
             {/* tbody */}
             <tbody>
-              <tr>
-                <td>
-                  <h6 className="mb-0">1</h6>
-                </td>
-                <td>
-                  <div className="ratio ratio-16x9 border rounded">
-                    <Image
-                      src="/images/activity/浮現祭/main-1.jpg"
-                      alt="浮現祭"
-                      width={500}
-                      height={300}
-                      className="img-fluid"
-                    />
-                  </div>
-                </td>
-                <td>
-                  <h6 className="mb-0 text-truncate">浮現祭</h6>
-                </td>
-                <td>
-                  <h6 className="mb-0">音樂祭</h6>
-                </td>
-                <td>
-                  <h6 className="mb-0">流行音樂</h6>
-                </td>
-                {/* <td>
-                  <div class="row row-cols-1 gap-2 flex-wrap">
-                      <div class="col">
-                          <p class="text-center text-xs font-weight-bold mb-0 ">
-                              123
-                          </p>
+              {acts.map((act) => {
+                return (
+                  <tr key={act.id}>
+                    <td>
+                      <h6 className="mb-0">{act.id}</h6>
+                    </td>
+                    <td>
+                      <div className="ratio ratio-16x9 border rounded">
+                        <Image
+                          src={`/images/activity/${act.media.split(',')[0]}`}
+                          alt={act.name}
+                          width={500}
+                          height={300}
+                          className="img-fluid"
+                        />
                       </div>
-                  </div>
-                </td> */}
-                <td>
-                  <div className="h6 text-center mb-2">2024/3/12</div>
-                  <div className="h6 text-center mb-0">2024/5/11</div>
-                </td>
-                {/* <td>
-                    <div class="h6 text-center mb-2">
-                        2024/3/12
-                    </div>
-                    <div class="h6 text-center mb-0">
-                        2024/5/11
-                    </div>
-                </td> */}
-                <td>
-                  <div className="h6 mb-0">999</div>
-                </td>
-                <td>
-                  <div className="h6 mb-0">NT$ 555</div>
-                </td>
-                <td>
-                  <h6 className="mb-0">台中市</h6>
-                </td>
-                <td className="d-flex justify-content-center align-items-center gap-4">
-                  <Link
-                    className="text-secondary opacity-4"
-                    href="/admin/activity/update"
-                  >
-                    <i className="fa-solid fa-pen-to-square" />
-                  </Link>
-                  <Link
-                    className="text-secondary opacity-4"
-                    href="/admin/activity/delete"
-                  >
-                    <i className="fa-regular fa-trash-can" />
-                  </Link>
-                </td>
-              </tr>
+                    </td>
+                    <td>
+                      <h6 className="mb-0 text-truncate">{act.name}</h6>
+                    </td>
+                    <td>
+                      <h6 className="mb-0">{act.category.name}</h6>
+                    </td>
+                    <td>
+                      <h6 className="mb-0">{act.genre.name}</h6>
+                    </td>
+                    <td>
+                      <h6 className="text-center mb-0">
+                        {dateFormat(act.date_start)}
+                      </h6>
+                      {act.date_end && (
+                        <h6 className="text-center mt-2 mb-0">
+                          {dateFormat(act.date_end)}
+                        </h6>
+                      )}
+                    </td>
+                    <td>
+                      <h6 className="mb-0">{act.type[0].stock}</h6>
+                    </td>
+                    <td>
+                      <h6 className="mb-0">
+                        {act.type[0].price == 0
+                          ? 'Free'
+                          : `$${act.type[0].price.toLocaleString()}`}
+                      </h6>
+                    </td>
+                    <td>
+                      <h6 className="mb-0">{act.city}</h6>
+                    </td>
+                    <td className="d-flex justify-content-center align-items-center gap-4">
+                      <Link
+                        className="text-secondary opacity-4"
+                        href={`/admin/activity/update?id=${act.id}`}
+                      >
+                        <i className="fa-solid fa-pen-to-square" />
+                      </Link>
+                      <Link
+                        className="text-secondary opacity-4"
+                        href="#"
+                        onClick={() => deleteActivity(act.id, act.name)}
+                      >
+                        <i className="fa-regular fa-trash-can" />
+                      </Link>
+                    </td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>

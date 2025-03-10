@@ -7,6 +7,7 @@ import { successResponse, errorResponse } from '../lib/utils.js'
 const router = express.Router()
 const prisma = new PrismaClient()
 
+/* multer */
 const storage = multer.diskStorage({
   // 設定檔案搬移目的地
   destination: (req, file, cb) => {
@@ -30,6 +31,7 @@ const upload = multer({
     fileSize: 10000000, // 10MB
   },
 })
+/* multer */
 
 // Read All datas
 router.get('/', async (req, res) => {
@@ -203,6 +205,7 @@ router.post('/', express.json(), async (req, res) => {
     city,
     dist,
     address,
+    zipcode,
     intro,
     media,
   } = req.body
@@ -214,7 +217,7 @@ router.post('/', express.json(), async (req, res) => {
       category_id: parseInt(category_id),
       music_genre_id: parseInt(music_genre_id),
       date_start: new Date(date_start),
-      date_end:date_end ? new Date(date_end) : null,
+      date_end: date_end ? new Date(date_end) : null,
       signup_start: signup_start ? new Date(signup_start) : null,
       signup_end: signup_end ? new Date(signup_end) : null,
       city,
@@ -222,6 +225,7 @@ router.post('/', express.json(), async (req, res) => {
       address,
       intro,
       media: mediaString, // 將轉換後的字串存入 media
+      zipcode: parseInt(zipcode),
       // 關聯 1:n
       type: {
         create: req.body.type || [],
@@ -254,6 +258,33 @@ router.post('/', express.json(), async (req, res) => {
 
   try {
     successResponse(res, { data })
+  } catch (error) {
+    errorResponse(res, error)
+  }
+})
+
+// Delete
+router.delete('/:activityId', async function (req, res) {
+  try {
+    const activityId = Number(req.params.activityId)
+
+    // 先刪除關聯表的資料
+    await prisma.activityLineup.deleteMany({
+      where: { activity_id: activityId },
+    })
+    await prisma.activityArticle.deleteMany({
+      where: { activity_id: activityId },
+    })
+    await prisma.activityTicketType.deleteMany({
+      where: { activity_id: activityId },
+    })
+
+    // 再刪除 Activity
+    const deletedActivity = await prisma.activity.delete({
+      where: { id: activityId },
+    })
+
+    successResponse(res, deletedActivity)
   } catch (error) {
     errorResponse(res, error)
   }

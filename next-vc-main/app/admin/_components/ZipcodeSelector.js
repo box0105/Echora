@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 // https://marsz.tw/blog/articles/411
 export default function ZipcodeSelector() {

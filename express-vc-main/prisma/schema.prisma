@@ -193,6 +193,7 @@ model Activity {
   city           String           @db.VarChar(255)
   dist           String           @db.VarChar(255)
   address        String           @db.VarChar(255)
+  zipcode        Int
   intro          String           @db.Text
   media          String           @db.Text // 多個照片路徑
 
