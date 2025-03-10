@@ -19,21 +19,26 @@ import { MyCouponProvider } from '@/hooks/use-coupon'
 import { SWRDevTools } from 'swr-devtools'
 import { UserProvider } from '@/hooks/use-profile'
 
+// 載入header height context
+import { HeaderProvider } from '@/hooks/use-header'
+
 export function Providers({ children }) {
   return (
     <SWRDevTools>
       <LoaderProvider close={2} CustomLoader={CatLoader}>
-        <MyCouponProvider>
-          <AuthProvider>
-            <UserProvider>
-              <MyCartProvider>
-                <ActivityProvider>
-                  <ProductProvider>{children}</ProductProvider>
-                </ActivityProvider>
-              </MyCartProvider>
-            </UserProvider>
-          </AuthProvider>
-        </MyCouponProvider>
+        <HeaderProvider>
+          <MyCouponProvider>
+            <AuthProvider>
+              <UserProvider>
+                <MyCartProvider>
+                  <ActivityProvider>
+                    <ProductProvider>{children}</ProductProvider>
+                  </ActivityProvider>
+                </MyCartProvider>
+              </UserProvider>
+            </AuthProvider>
+          </MyCouponProvider>
+        </HeaderProvider>
       </LoaderProvider>
     </SWRDevTools>
   )

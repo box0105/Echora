@@ -18,6 +18,7 @@ import {
 } from '@/services/rest-client/use-user'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { useHeaderHeight } from '@/hooks/use-header'
 
 export default function Header() {
   const { totalQty } = useMyCart()
@@ -25,35 +26,40 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   // header滾動效果
-  const [prevScrollY, setPrevScrollY] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
-  const headerRef = useRef(null);
+  const [prevScrollY, setPrevScrollY] = useState(0)
+  const [isVisible, setIsVisible] = useState(true)
+  const { headerRef } = useHeaderHeight()
   const handleScroll = () => {
-    const currentScrollY = window.scrollY;
+    const currentScrollY = window.scrollY
 
-    if (currentScrollY > prevScrollY && currentScrollY > 100) {
-      setIsVisible(false);
+    if (currentScrollY > prevScrollY && currentScrollY > 50) {
+      setIsVisible(false)
     } else {
-      setIsVisible(true);
+      setIsVisible(true)
     }
 
-    setPrevScrollY(currentScrollY);
-  };
+    setPrevScrollY(currentScrollY)
+  }
 
   useEffect(() => {
     // 監聽滾動事件
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll)
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [prevScrollY]);
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [prevScrollY])
 
-
+  // header 在不同路徑改變顏色
+  const pathName = usePathname()
+  const getBackgroundColor = () => {
+    if (pathName.includes('/product/list') || pathName == '/activity') return 'g-white-color';
+    return 'g-ori-color';
+  };
 
   // search
   // 在不同路徑改變搜尋框的文字
-  const pathName = usePathname()
+  // const pathName = usePathname()
   const getSearchPlaceholder = () => {
     if (pathName.includes('/activity')) return '搜尋活動名稱或表演樂團'
     else if (pathName.includes('/rent')) return '搜尋電吉他租借商品'
@@ -73,7 +79,7 @@ export default function Header() {
       } else if (pathName.includes('/rent')) {
         updateQueryParams({ search: searchName })
       } else {
-        if(criteria.nameLike == '' && searchName == '') return
+        if (criteria.nameLike == '' && searchName == '') return
         setCriteria((prev) => ({
           ...prev,
           nameLike: searchName,
@@ -155,9 +161,12 @@ export default function Header() {
 
   return (
     <>
-      <nav 
-      // ref={headerRef}
-      className={`${styles['g-header']} ${styles['px-modified']} ${isVisible? styles['visible'] : `${styles['hidden']} hidden`}`}>
+      <nav
+        ref={headerRef}
+        className={`${styles['g-header']} ${styles['px-modified']} ${styles[getBackgroundColor()]} ${
+          isVisible ? styles['visible'] : `${styles['hidden']} hidden`
+        }`}
+      >
         <div className="container-fluid">
           <div className={`${styles['g-nav-top']} row`}>
             <div className={`${styles['g-logo']} col-lg-4 col-6 order-1 ps-0`}>

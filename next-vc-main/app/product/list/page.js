@@ -7,10 +7,31 @@ import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import { useState, useEffect, useRef } from 'react'
 import { useProductState } from '@/services/rest-client/use-products'
+import { useHeaderHeight } from '@/hooks/use-header'
 
 export default function ProductListPage(props) {
   // header 動態捲動
+  const { headerHeight } = useHeaderHeight()
+  const [prevScrollY, setPrevScrollY] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
 
+    if (currentScrollY > prevScrollY && currentScrollY > 50) {
+      setIsVisible(false);
+    } else {
+      setIsVisible(true);
+    }
+
+    setPrevScrollY(currentScrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prevScrollY]);
 
   // 設定點擊事件
   const [filterOpen, setFilterOpen] = useState(false)
@@ -288,7 +309,7 @@ export default function ProductListPage(props) {
 
   return (
     <>
-      <div className="g-pdlist-bar">
+      <div className="g-pdlist-bar" style={{top: isVisible ? `${headerHeight}px` : '0px'}}>
         <div className="g-pdlist-title l-px-modified">
           <div className="container-fluid p-0">
             <div className="d-flex align-items-center">

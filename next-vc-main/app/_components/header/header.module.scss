@@ -15,10 +15,18 @@
   z-index: 100;
   width: 100%;
   border-bottom: 1px solid var(--grey-100, #dadada);
-  background: rgba(255, 255, 255, 0.7);
-  /* blur60 */
-  backdrop-filter: blur(30px);
+  // background: rgba(255, 255, 255, 0.7);
+  // /* blur60 */
+  // backdrop-filter: blur(30px);
   transition: transform 0.3s ease-in-out;
+  &.g-ori-color {
+    background: rgba(255, 255, 255, 0.7);
+    /* blur60 */
+    backdrop-filter: blur(30px);
+  }
+  &.g-white-color {
+    background-color: var(--white);
+  }
 
   @media screen and (max-width: 992px) {
     border-bottom: none;
