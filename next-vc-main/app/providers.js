@@ -12,8 +12,10 @@ import { ActivityProvider } from '@/hooks/use-activity'
 import { LoaderProvider } from '@/hooks/use-loader'
 // 自訂用載入動畫元件
 import { CatLoader } from '@/hooks/use-loader/components'
-//
+// 載入優惠券context
 import { MyCouponProvider } from '@/hooks/use-coupon'
+// 載入管理員context
+import { AdminAuthProvider } from '@/hooks/use-admin'
 
 // 載入swr-devtools使用
 import { SWRDevTools } from 'swr-devtools'
@@ -26,11 +28,13 @@ export function Providers({ children }) {
         <MyCouponProvider>
           <AuthProvider>
             <UserProvider>
-              <MyCartProvider>
-                <ActivityProvider>
-                  <ProductProvider>{children}</ProductProvider>
-                </ActivityProvider>
-              </MyCartProvider>
+              <AdminAuthProvider>
+                <MyCartProvider>
+                  <ActivityProvider>
+                    <ProductProvider>{children}</ProductProvider>
+                  </ActivityProvider>
+                </MyCartProvider>
+              </AdminAuthProvider>
             </UserProvider>
           </AuthProvider>
         </MyCouponProvider>
