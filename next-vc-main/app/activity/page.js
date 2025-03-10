@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 import {useActivity} from '@/hooks/use-activity'
 
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import '../_styles/bootstrap.scss'
 import './_styles/act.scss'
 import './_styles/act-font.scss'
 

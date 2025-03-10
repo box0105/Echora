@@ -21,7 +21,7 @@ import { dateFormat } from '../_utils/dateFormat'
 
 export default function ActivityDetailPage() {
   // Activity ID
-  const params = useParams();
+  const params = useParams()
   const activityId = Number(params?.detail)
   // const searchParams = useSearchParams()
   // const activityId = Number(searchParams?.get('id'))
@@ -45,14 +45,7 @@ export default function ActivityDetailPage() {
 
       <main>
         <section className="b-main-info">
-          <BreadCrumb
-            breads={[
-              act?.category?.name,
-              act?.genre?.name,
-              act?.city,
-              act?.name,
-            ]}
-          />
+          <BreadCrumb breads={act} />
           <Title _title={act?.name} />
           <IntroCard
             isOpen={isInfoOpen}
@@ -71,7 +64,7 @@ export default function ActivityDetailPage() {
             </article>
           </div>
           <div className="col-12 col-xl-3 order-first order-xl-last">
-            <PurchaseAside data={act}/>
+            <PurchaseAside data={act} />
           </div>
         </div>
 
