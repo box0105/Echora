@@ -69,7 +69,7 @@
 .btn1 {
   width: 100%;
   padding: 2.5rem 0 2rem 0;
-  border-bottom: 1px solid hsl(0, 0%, 59%);
+  border-bottom: 1px solid var(--grey100);
 }
 
 .btnbot {
@@ -104,8 +104,8 @@
   border-top: 2px solid var(--grey100);
   }
 .c-gu-title{
-  @media (max-width: 400px) {
   border-top: 2px solid var(--grey100);
+  @media (max-width: 400px) {
   padding-top: 16px;
   }
 }

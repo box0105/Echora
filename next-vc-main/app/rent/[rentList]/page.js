@@ -3,6 +3,7 @@ import React, { useState, useEffect, useMemo } from 'react'
 import '../_styles/list.scss'
 import Main from './_components/ListMain'
 import Boottom from './_components/ListBottom'
+import RentCardCarousel from './_components/rent-card-carousel/index'
 import { useParams } from 'next/navigation'
 import { useMyCart } from '@/hooks/use-cart'
 import DatePicker from 'react-datepicker'
@@ -512,7 +513,7 @@ export default function Page(props) {
                 <div className="col-5 bo-gu ">
                   <div className="c-guide">
                     <div className="c-g pt-1">
-                      <div className="c-gu-title">
+                      <div className="c-gu-title-top">
                         <h6 className="r">租借指南</h6>
                       </div>
                       <div className="text-gu pt-1">
@@ -533,11 +534,11 @@ export default function Page(props) {
                   </div>
                   <div className="c-readdr">
                     <div className="c-g pt-1 p-0">
-                      <div className="c-gu-title">
+                      <div className="c-gu-title pt-2">
                         <h6 className="r">租借地點</h6>
-                      </div>{' '}
+                      </div>
                       <div className="text-gu pt-1">
-                        <p className="h6">
+                        <p className="addr">
                           台北店：
                           <br />
                           <a
@@ -583,7 +584,8 @@ export default function Page(props) {
             </div>
           </div>
           {/* section3 */}
-          <div className="c-section3">
+          <RentCardCarousel/>
+          {/* <div className="c-section3">
             <div className="container-fluid c-index">
               <div className="c-index-title d-none d-md-block">
                 <div className="row align-items-center gap-0">
@@ -592,14 +594,14 @@ export default function Page(props) {
                     <h5 className='h5 pt-2'>/</h5>
                     <h4 className=" h4 pt-2"> 最近熱門租借商品</h4>
                   </div>
-                  {/* <div className="col-6 pe-4 ps-0">
+                  <div className="col-6 pe-4 ps-0">
                     <h5 className=" h4 m-0"> / 最近熱門租借商品</h5>
-                  </div> */}
+                  </div>
                 </div>
               </div>
               <Boottom />
             </div>
-          </div>
+          </div> */}
         </div>
       )}
     </>

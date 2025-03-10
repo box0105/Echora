@@ -46,7 +46,7 @@ function RentcardCard({ id, name, price, rentitemColors, brand_name }) {
             <div className="g-pd-text">
               <h6 className="h6">{name}</h6>
               <div className="d-flex gap-3">
-                <h6 className="h6">${price.toLocaleString()}</h6>
+                <h6 className="h6">${price.toLocaleString()}/天</h6>
               </div>
               <div className="g-color-row">
                 {rentitemColors?.map((color) => (
