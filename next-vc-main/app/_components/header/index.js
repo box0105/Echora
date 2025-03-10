@@ -1,5 +1,6 @@
 'use client'
 import styles from './header.module.scss'
+import '../../product/list/list.scss'
 import CartOffcanvas from '../cart-offcanvas'
 import { useMyCart } from '@/hooks/use-cart'
 import { useActivity } from '@/hooks/use-activity'
@@ -22,6 +23,33 @@ export default function Header() {
   const { totalQty } = useMyCart()
   const [showCart, setShowCart] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+
+  // header滾動效果
+  const [prevScrollY, setPrevScrollY] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+  const headerRef = useRef(null);
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > prevScrollY && currentScrollY > 100) {
+      setIsVisible(false);
+    } else {
+      setIsVisible(true);
+    }
+
+    setPrevScrollY(currentScrollY);
+  };
+
+  useEffect(() => {
+    // 監聽滾動事件
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prevScrollY]);
+
+
 
   // search
   // 在不同路徑改變搜尋框的文字
@@ -127,7 +155,9 @@ export default function Header() {
 
   return (
     <>
-      <nav className={`${styles['g-header']} ${styles['px-modified']}`}>
+      <nav 
+      // ref={headerRef}
+      className={`${styles['g-header']} ${styles['px-modified']} ${isVisible? styles['visible'] : `${styles['hidden']} hidden`}`}>
         <div className="container-fluid">
           <div className={`${styles['g-nav-top']} row`}>
             <div className={`${styles['g-logo']} col-lg-4 col-6 order-1 ps-0`}>
