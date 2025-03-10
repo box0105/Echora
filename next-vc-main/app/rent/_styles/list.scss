@@ -33,11 +33,6 @@
 .c-price-1 {
   padding-bottom: 1.5rem;
 }
-.c-g{
-  @media (max-width: 400px) {
-    border-bottom: 2px solid var(--grey100);
-    }
-  }
 /* 左邊攔 */
 .text-br {
   width: 7rem;
@@ -125,6 +120,12 @@
   background-color: var(--grey50);
   @media (max-width: 400px) {
     padding: 0 16px 4rem 16px;
+  }
+  .c-gu-title-top{
+    @media (max-width: 400px) {
+      border-top: 2px solid var(--grey100);
+      padding-top: 16px;
+    }
   }
 }
 .custom-datepicker {

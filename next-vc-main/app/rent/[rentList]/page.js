@@ -456,7 +456,7 @@ export default function Page(props) {
                   <div className="product-body d-flex">
                     <div className="product-list">
                       <div className="product-bo-1">
-                        <p className="h5 pb-3 m-0">琴頸拾音器</p>
+                        <p className=" pb-3 m-0">琴頸拾音器</p>
                       </div>
                       <div className="product-bo-2">
                         <p className="pb-3 m-0">
@@ -466,7 +466,7 @@ export default function Page(props) {
                     </div>
                     <div className="product-list">
                       <div className="product-bo-1">
-                        <p className="h5 pb-3 m-0">中段拾音器</p>
+                        <p className=" pb-3 m-0">中段拾音器</p>
                       </div>
                       <div className="product-bo-2">
                         <h6 className="pb-3 m-0">
@@ -476,7 +476,7 @@ export default function Page(props) {
                     </div>
                     <div className="product-list">
                       <div className="product-bo-1">
-                        <p className="h5 pb-3 m-0">琴橋拾音器</p>
+                        <p className=" pb-3 m-0">琴橋拾音器</p>
                       </div>
                       <div className="product-bo-2">
                         <p className="pb-3 m-0">
@@ -489,7 +489,7 @@ export default function Page(props) {
                   <div className="product-body-2 d-flex pt-3">
                     <div className="product-list">
                       <div className="product-bo-1">
-                        <p className="h5 pb-3 m-0">控制器</p>
+                        <p className=" pb-3 m-0">控制器</p>
                       </div>
                       <props className="product-bo-2">
                         <div className="h6 m-0">
@@ -499,10 +499,10 @@ export default function Page(props) {
                     </div>
                     <div className="product-list">
                       <div className="product-bo-1">
-                        <p className="h5 pb-3 m-0">拾音器開關</p>
+                        <p className=" pb-3 m-0">拾音器開關</p>
                       </div>
                       <div className="product-bo-2">
-                        <p className="h6 pb-3 m-0">
+                        <p className=" pb-3 m-0">
                           {ListData.rentList?.switching}
                         </p>
                       </div>
