@@ -28,7 +28,7 @@ export default function FavPage() {
       )
       const result = await res.json()
       if (result.status === 'success') {
-        alert('已從我的收藏移除商品')
+        // alert('已從我的收藏移除商品')
         getFavItems()
       }
     } catch (err) {

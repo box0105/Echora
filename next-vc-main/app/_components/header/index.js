@@ -5,7 +5,7 @@ import { useMyCart } from '@/hooks/use-cart'
 import { useActivity } from '@/hooks/use-activity'
 import { useRouter, usePathname } from 'next/navigation'
 import { useProductState } from '@/services/rest-client/use-products'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { useAuth } from '@/hooks/use-auth'
 import { useUser } from '@/hooks/use-profile'
@@ -23,33 +23,44 @@ export default function Header() {
   const [showCart, setShowCart] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
+  // search
   // 在不同路徑改變搜尋框的文字
   const pathName = usePathname()
   const getSearchPlaceholder = () => {
-    if (pathName.includes('/product')) return '搜尋電吉他商品名'
-    else if (pathName.includes('/activity')) return '搜尋活動名稱或表演樂團'
-    else if (pathName.includes('/rent')) return '搜尋電吉他租借'
-    else return '搜尋'
+    if (pathName.includes('/activity')) return '搜尋活動名稱或表演樂團'
+    else if (pathName.includes('/rent')) return '搜尋電吉他租借商品'
+    else return '搜尋電吉他商品'
   }
 
-  // search
   const router = useRouter()
   const [searchName, setSearchName] = useState('')
   const { criteria, setCriteria, defaultCriteria } = useProductState()
+  const isFirstRender = useRef(true) // 追蹤是否為初次渲染
   const { updateQueryParams, deleteQueryParams } = useActivity()
 
   const handleSearch = (e) => {
-    if (pathName.includes('/product')) {
-      setCriteria((prev) => ({
-        ...prev,
-        nameLike: searchName,
-      }))
-    } else if (pathName.includes('/activity')) {
-      updateQueryParams({ search: searchName })
-    } else if (pathName.includes('/rent')) {
-      updateQueryParams({ search: searchName })
+    if (e.key === 'Enter') {
+      if (pathName.includes('/activity')) {
+        updateQueryParams({ search: searchName })
+      } else if (pathName.includes('/rent')) {
+        updateQueryParams({ search: searchName })
+      } else {
+        if(criteria.nameLike == '' && searchName == '') return
+        setCriteria((prev) => ({
+          ...prev,
+          nameLike: searchName,
+        }))
+      }
     }
   }
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false // 初次渲染時設定為 false，下一次才會觸發
+      return
+    }
+    router.push('/product/list')
+  }, [criteria])
 
   const [showDropdown, setShowDropdown] = useState(false)
   const { user, isAuth, setIsAuth } = useAuth()

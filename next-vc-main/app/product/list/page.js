@@ -5,13 +5,13 @@ import FilterBar from '../_components/filter-bar'
 
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useProductState } from '@/services/rest-client/use-products'
 
 export default function ProductListPage(props) {
   //header search
-  const searchParams = useSearchParams()
-  const name_like = searchParams.get('name_like')
+  // const searchParams = useSearchParams()
+  // const name_like = searchParams.get('name_like')
 
   // 設定點擊事件
   const [filterOpen, setFilterOpen] = useState(false)
@@ -29,7 +29,7 @@ export default function ProductListPage(props) {
   const [queryString, setQueryString] = useState('')
 
   // 在不同頁面之間共享條件(列表頁、商品頁)
-  const { criteria, setCriteria, defaultCriteria} = useProductState()
+  const { criteria, setCriteria, defaultCriteria } = useProductState()
   // 從context中取得目前記錄的共享條件的值
   const {
     // page,
@@ -226,8 +226,14 @@ export default function ProductListPage(props) {
   //   }
   // }
 
-  // didmount後執行getPdData()
+  const isFirstRender = useRef(true); // 追蹤是否為初次渲染
+  
+  // didmount後的下一次(queryString改變時)執行getPdData()
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false // 初次渲染時設定為 false，下一次才會觸發
+      return
+    }
     getPdData(queryString)
   }, [queryString])
 
@@ -245,7 +251,9 @@ export default function ProductListPage(props) {
     null,
   ])
 
-  const selectedAmount = selectedProducts.filter(product => product !== null).length
+  const selectedAmount = selectedProducts.filter(
+    (product) => product !== null
+  ).length
 
   const handleDragStart = (e, product) => {
     e.dataTransfer.setData('product', JSON.stringify(product))
@@ -271,10 +279,13 @@ export default function ProductListPage(props) {
   const router = useRouter()
   const toComparePage = () => {
     const selectedSkus = selectedProducts
-    .filter(product => product !== null)
-    .map( product => product.product_sku_id).join(",")
+      .filter((product) => product !== null)
+      .map((product) => product.product_sku_id)
+      .join(',')
     router.push(`/product/comparison?products=${selectedSkus}`)
   }
+
+  console.log(criteria);
 
   return (
     <>
@@ -431,12 +442,13 @@ export default function ProductListPage(props) {
         <section className="g-pdlist l-px-modified">
           <div className="container-fluid p-1">
             <div className="row row-cols-xl-4 row-cols-2">
-              {pdData.slice(0, visibleCount).map((product, i) => (
-                <ProductCard
-                  key={product.id}
-                  data={product}
-                  handleDragStart={handleDragStart}
-                />
+              {pdData?.slice(0, visibleCount).map((product, i) => (
+                <div className="col p-2" key={product.id}>
+                  <ProductCard
+                    data={product}
+                    handleDragStart={handleDragStart}
+                  />
+                </div>
               ))}
             </div>
           </div>
@@ -527,16 +539,18 @@ export default function ProductListPage(props) {
                 </div>
               </div>
               <div className="d-flex flex-column">
-                <button 
-                disabled={selectedAmount > 1 ? false : true}
-                className={`g-compare-btn text-center ${selectedAmount > 1 ? 'active' : ''}`}
-                onClick={toComparePage}
+                <button
+                  disabled={selectedAmount > 1 ? false : true}
+                  className={`g-compare-btn text-center ${
+                    selectedAmount > 1 ? 'active' : ''
+                  }`}
+                  onClick={toComparePage}
                 >
                   <h6 className="mb-0">{`比較 ${selectedAmount} 款電吉他`}</h6>
                 </button>
-                <button 
-                className="g-clear-btn text-center"
-                onClick={() => setSelectedProducts([null, null, null, null])}
+                <button
+                  className="g-clear-btn text-center"
+                  onClick={() => setSelectedProducts([null, null, null, null])}
                 >
                   <h6 className="mb-0">清除全部</h6>
                 </button>

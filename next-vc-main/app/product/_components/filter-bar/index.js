@@ -29,7 +29,7 @@ export default function FilterBar({
   setPriceGte,
   priceLte,
   setPriceLte,
-  setSelectedSort
+  setSelectedSort,
 }) {
   // fetch brands, colors, colorpalette
   const { brands } = useGetBrands()
@@ -61,29 +61,34 @@ export default function FilterBar({
   useEffect(() => {
     setPriceGte(value[0])
     setPriceLte(value[1])
-  },[value])
+  }, [value])
 
   return (
     <>
-      <section className={`g-filter-sec ${filterOpen ? 'active' : ''}`}
-      onClick={() => setFilterOpen(false)}
+      <section
+        className={`g-filter-sec ${filterOpen ? 'active' : ''}`}
+        onClick={() => setFilterOpen(false)}
       >
         <div className="container-fluid p-0">
-          <div className="g-filter-bar"
-          onClick={(e) => {
-            e.stopPropagation()
-          }}
+          <div
+            className="g-filter-bar"
+            onClick={(e) => {
+              e.stopPropagation()
+            }}
           >
             <div className="g-clear d-flex justify-content-between">
-                <h6 className="g-clear-link mb-0"
-                onClick={()=>{
+              <h6
+                className="g-clear-link mb-0"
+                onClick={() => {
                   setCriteria(defaultCriteria)
                   setColorSeries({})
                   setColorActive({})
-                  setValue([1,700000])
-                  setSelectedSort({sort: 'price', order: 'ASC'})
-                  }}
-                >清除篩選條件</h6>
+                  setValue([1, 700000])
+                  setSelectedSort({ sort: 'price', order: 'ASC' })
+                }}
+              >
+                清除篩選條件
+              </h6>
               <img
                 width="16px"
                 src="/images/product/list/x.svg"
@@ -139,10 +144,16 @@ export default function FilterBar({
                   {colorpalette.map((colorseries) => (
                     <div
                       className={`g-series g-series${colorseries.id} ${
-                        colorSeries[colorseries.id] ? 'active' : ''
+                        colorPids.includes(colorseries.id) ? 'active' : ''
                       }`}
                       key={colorseries.id}
                       onClick={() => {
+                        if (colorPids.includes(colorseries.id)) {
+                          setColorSeries((prev) => ({
+                            ...prev,
+                            [colorseries.id]: true,
+                          }))
+                        }
                         setColorSeries((prev) => {
                           const updatedColorSeries = {
                             ...prev,
@@ -176,6 +187,12 @@ export default function FilterBar({
                     <div
                       key={color.id}
                       onClick={() => {
+                        if (colorIds.includes(color.id)) {
+                          setColorActive((prev) => ({
+                            ...prev,
+                            [color.id]: true,
+                          }))
+                        }
                         setColorActive((prev) => {
                           const updatedColor = {
                             ...prev,
@@ -194,7 +211,7 @@ export default function FilterBar({
                     >
                       <img
                         src={`/images/product/list/${color.color_image}`}
-                        className={colorActive[color.id] ? 'active' : ''}
+                        className={colorIds.includes(color.id) ? 'active' : ''}
                       />
                     </div>
                   ))}
@@ -228,7 +245,7 @@ export default function FilterBar({
                           },
                         },
                         '& .MuiSlider-thumb.Mui-focusVisible': {
-                            boxShadow: 'none', // **固定 focus ring，移除漸層**
+                          boxShadow: 'none', // **固定 focus ring，移除漸層**
                         },
                         '& .MuiSlider-track': {
                           backgroundColor: 'rgb(58, 58, 58)', // 選中的範圍
