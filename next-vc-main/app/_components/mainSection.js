@@ -11,15 +11,15 @@ export default function Carousel() {
     <Swiper
       modules={[Autoplay, Pagination, EffectFade]}
       autoplay={{
-        delay: 4000,
+        delay: 5000,
         disableOnInteraction: false,
       }}
       loop={true}
-      effect="fade"
-      speed={1700}
-      fadeEffect={{
-        crossFade: true, // 淡入淡出時是否交叉顯示
-      }}
+      // effect="fade"
+      speed={500}
+      // fadeEffect={{
+      //   crossFade: true, // 淡入淡出時是否交叉顯示
+      // }}
       pagination={{
         clickable: true,
       }}
