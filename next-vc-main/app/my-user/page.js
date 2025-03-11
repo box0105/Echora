@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { useAuth } from '@/hooks/use-auth'
 import useFirebase from './_hooks/use-firebase'
 import { toast, ToastContainer } from 'react-toastify'
+import { toastError, toastSuccess, toastWarning } from '@/hooks/use-toast'
 import 'react-toastify/dist/ReactToastify.css'
 import {
   useAuthGoogleLogin,
@@ -61,12 +62,12 @@ export default function UserPage() {
 
   const handleLogin = async () => {
     if (isAuth) {
-      toast.error('錯誤 - 會員已登入')
+      toastError('錯誤 - 會員已登入')
       return
     }
 
     if (!userInput.email || !userInput.password) {
-      toast.error('請提供 email 和 password')
+      toastError('請提供 email 和 password')
       return
     }
 
@@ -94,15 +95,15 @@ export default function UserPage() {
           }
         }, 1500) // 確保 `toast` 先出現再跳轉
       } else {
-        toast.error(`登入失敗: ${resData.message}`)
+        toastError(`登入失敗: ${resData.message}`)
       }
     } catch (err) {
-      toast.error(`登入失敗: ${err.message}`)
+      toastError(`登入失敗: ${err.message}`)
     }
   }
   const handleGoogleLogin = async () => {
     if (isAuth) {
-      toast.error('錯誤 - 會員已登入')
+      toastError('錯誤 - 會員已登入')
       return
     }
 
@@ -131,12 +132,12 @@ export default function UserPage() {
             }
           }, 2000)
         } else {
-          toast.error('Google 登入失敗')
+          toastError('Google 登入失敗')
           console.log('Google login error:', resData.message)
         }
       })
     } catch (error) {
-      toast.error('Google 登入失敗')
+      toastError('Google 登入失敗')
       console.error('Google login error:', error)
     }
   }
@@ -151,7 +152,7 @@ export default function UserPage() {
       mutate()
       // toast.success('已成功登出')
     } else {
-      toast.error('登出失敗')
+      toastError('登出失敗')
     }
   }
 

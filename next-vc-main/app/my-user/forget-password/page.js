@@ -16,7 +16,7 @@ import Link from 'next/link'
 import { RotatingLines } from 'react-loader-spinner'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
+import { toastWarning, toastError, toastSuccess } from '@/hooks/use-toast'
 export default function ForgetPasswordPage() {
   // 登入後設定全域的會員資料用
   const { mutate } = useAuthGet()
@@ -53,7 +53,7 @@ export default function ForgetPasswordPage() {
 
       // toast.success('已成功登出')
     } else {
-      toast.error(`登出失敗`)
+      toastError(`登出失敗`)
     }
   }
 
@@ -71,13 +71,13 @@ export default function ForgetPasswordPage() {
 
       const resData = await response.json()
       if (resData.status === 'success') {
-        toast.success('驗證碼已發送到您的電子郵件')
+        toastSuccess('驗證碼已發送到您的電子郵件')
         setIsOtpSent(true) // 更新狀態以顯示驗證碼已寄送的訊息
       } else {
-        toast.error(resData.message)
+        toastError(resData.message)
       }
     } catch (err) {
-      toast.error('無法發送驗證碼')
+      toastError('無法發送驗證碼')
       console.log(err.message)
     }
   }
@@ -90,13 +90,13 @@ export default function ForgetPasswordPage() {
     console.log(resData)
 
     if (resData.status === 'success') {
-      toast.success('資訊 - 密碼已成功修改，導向使用者登入頁面')
+      toastSuccess('資訊 - 密碼已成功修改，導向使用者登入頁面')
 
       setTimeout(() => {
         router.push('/my-user')
       }, 2000)
     } else {
-      toast.error(`錯誤 - ${resData.message}`)
+      toastError(`錯誤 - ${resData.message}`)
     }
   }
 
