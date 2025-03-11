@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { act, createContext, useContext, useEffect, useState, useRef } from 'react'
 import { useFetch } from './use-fetch'
 
 // 1. 建立 Context 物件
@@ -8,11 +8,15 @@ export const ActivityProvider = ({
   children,
   url = 'http://localhost:3005/api/activities',
 }) => {
+  const [acts, setActs] = useState([])
+
   const [queryParams, setQueryParams] = useState({})
   const [apiUrl, setApiUrl] = useState(url)
   // 預設圖片
   const [randomImages, setRandomImages] = useState(['/浮現祭/main-1.jpg'])
   const [randomIds, setRandomIds] = useState([0])
+  // 封面照數量
+  const coverNum = 5
 
   // 更新 Query 物件
   const updateQueryParams = (newParams) => {
@@ -59,7 +63,14 @@ export const ActivityProvider = ({
   }
 
   // Fetch data
-  const { data: acts, isLoading } = useFetch(apiUrl)
+  const { data, isLoading } = useFetch(apiUrl)
+
+  useEffect(() => {
+    // 每次 API 取得新資料時更新 acts
+    if (data) {
+      setActs(data) 
+    }
+  }, [data]) 
 
   useEffect(() => {
     // Query 變更時重新產生後端網址
@@ -68,19 +79,20 @@ export const ActivityProvider = ({
     }
   }, [queryParams])
 
+
+  // 初次渲染封面 (用一個 flag 判斷是否初次)
+  const hasInitCover = useRef(false);
   useEffect(() => {
-    // 初次渲染封面
-    if (acts && acts.length > 0) {
-      const cover = updateRandomPhotos(6)
+    if (!hasInitCover.current && acts.length >= coverNum) {
+      const cover = updateRandomPhotos(coverNum)
       setRandomImages(cover.randomImages)
       setRandomIds(cover.randomIndicesArray)
+      hasInitCover.current = true;
     }
-  }, [isLoading])
+  }, [acts])
 
   // 隨機產生照片
   function updateRandomPhotos(num) {
-    if (!acts || acts.length < num) return
-
     const randomIndices = new Set()
     while (randomIndices.size < num) {
       const randomIndex = Math.floor(Math.random() * acts.length)

@@ -1,78 +1,29 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
-import { useFetch } from '@/hooks/use-fetch'
-
+import React from 'react'
+import { useFilterPanel } from '@/hooks/use-filter-panel'
 import FormCheckbox from './FormCheckbox'
 import FormDate from './FormDate'
 import FormSelect from './FormSelect'
 import PriceSlider from './PriceSlider'
 
 export default function FilterPanel({ isOpen, onClose, onChange }) {
-  // 渲染選項
-  const { data } = useFetch('http://localhost:3005/api/activities/options')
-  const city = [
-    '基隆市',
-    '台北市',
-    '新北市',
-    '桃園市',
-    '新竹市',
-    '新竹縣',
-    '苗栗縣',
-    '台中市',
-    '彰化縣',
-    '南投縣',
-    '雲林縣',
-    '嘉義市',
-    '嘉義縣',
-    '台南市',
-    '高雄市',
-    '屏東縣',
-    '宜蘭縣',
-    '花蓮縣',
-    '台東縣',
-    '澎湖縣',
-    '金門縣',
-    '連江縣',
-  ]
+  const {
+    selectedCategories,
+    selectedGenres,
+    selectedCity,
+    selectedPrice,
+    selectedDate,
+    error,
+    city,
+    resetFilters,
+    handleDateChange,
+    setSelectedCategories,
+    setSelectedGenres,
+    setSelectedCity,
+    setSelectedPrice,
+  } = useFilterPanel()
 
-  // 紀錄選擇
-  const [selectedCategories, setSelectedCategories] = useState([])
-  const [selectedGenres, setSelectedGenres] = useState([])
-  const [selectedCity, setSelectedCity] = useState('')
-  const [selectedPrice, setSelectedPrice] = useState(5000)
-
-  const initDate = () => {
-    const start = new Date()
-    const end = new Date(start)
-    end.setMonth(end.getMonth() + 1)
-    return [start.toISOString().split('T')[0], end.toISOString().split('T')[0]]
-  }
-  const [selectedDate, setSelectedDate] = useState(initDate())
-  const [error, setError] = useState('')
-
-  // 初次渲染選項
-  useEffect(() => {
-    if (data) {
-      setSelectedCategories(
-        data.categories.map((v, i) => ({
-          id: i + 1,
-          name: v.name,
-          checked: false,
-        }))
-      )
-      setSelectedGenres(
-        data.genres.map((v, i) => ({ id: i + 1, name: v.name, checked: false }))
-      )
-    }
-  }, [data])
-
-  // 日期檢查
-  useEffect(() => {
-    const message =
-      selectedDate[0] > selectedDate[1] ? '活動開始日期應該早於結束日期' : ''
-    setError(message)
-  }, [selectedDate])
 
   // 控制 FilterPanel 開啟關閉
   if (!isOpen) return <></>
@@ -85,15 +36,7 @@ export default function FilterPanel({ isOpen, onClose, onChange }) {
             className="b-btn-unstyled"
             onClick={() => {
               // 重設選項
-              setSelectedCategories((prev) =>
-                prev.map((v) => ({ ...v, checked: false }))
-              )
-              setSelectedGenres((prev) =>
-                prev.map((v) => ({ ...v, checked: false }))
-              )
-              setSelectedDate(initDate)
-              setSelectedCity('')
-              setSelectedPrice(5000)
+              resetFilters()
               // 網址物件清空條件
               onChange({
                 categoryIds: null,
@@ -127,8 +70,8 @@ export default function FilterPanel({ isOpen, onClose, onChange }) {
           title="活動時間"
           selected={selectedDate}
           error={error}
-          onChange1={(e) => setSelectedDate([e.target.value, selectedDate[1]])}
-          onChange2={(e) => setSelectedDate([selectedDate[0], e.target.value])}
+          onChange1={(e) => handleDateChange([e.target.value, selectedDate[1]])}
+          onChange2={(e) => handleDateChange([selectedDate[0], e.target.value])}
         />
         <FormSelect
           title="城市"
