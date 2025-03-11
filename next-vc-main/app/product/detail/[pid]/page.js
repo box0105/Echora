@@ -120,7 +120,7 @@ export default function ProductDetailIdPage() {
       })
 
       console.log(Object.values(products))
-      console.log(`http://localhost:3005/api/products/${pid}/${firstSkuId}`)
+      // console.log(`http://localhost:3005/api/products/${pid}/${firstSkuId}`)
       setDetailData(Object.values(products))
       setSelectedSku(Object.values(products)[0].defaultSelectedSku)
       setColorId(Object.values(products)[0].colors[0].colorId)
@@ -133,7 +133,7 @@ export default function ProductDetailIdPage() {
   const [favIcon, setFavIcon] = useState('heart.svg')
   const [favItems, setFavItems] = useState([])
   const [uid, setUid] = useState(null)
-  const toggleFav = () => {
+  const toggleFav = async () => {
     if (!uid) {
       alert('請先登入')
       return
@@ -146,12 +146,12 @@ export default function ProductDetailIdPage() {
 
     if (favItems.includes(selectedSku)) {
       // setFavIcon('heart.svg')
-      removeFromFav(uid, selectedSku)
+      await removeFromFav(uid, selectedSku)
     } else {
       // setFavIcon('heart-solid.svg')
-      addToFav(uid, selectedSku)
+      await addToFav(uid, selectedSku)
     }
-    getFav(uid)
+     await getFav(uid)
   }
   const getFav = async (uid) => {
     try {
@@ -182,7 +182,6 @@ export default function ProductDetailIdPage() {
         console.log('已加入我的收藏')
       }
     } catch (err) {
-      // alert('加入失敗')
       console.log(err)
     }
   }
@@ -207,7 +206,7 @@ export default function ProductDetailIdPage() {
   }
 
   // fetch db for may also like
-  const [colorId, setColorId] = useState()
+  const [colorId, setColorId] = useState(1)
   const [mayLikeData, setMayLikeData] = useState([])
 
   const getMayLikeData = async (colorId) => {
