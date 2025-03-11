@@ -9,6 +9,7 @@ import useFirebase from '../_hooks/use-firebase'
 import Link from 'next/link'
 import { useAuthGoogleLogin } from '@/services/rest-client/use-user'
 import { toast, ToastContainer } from 'react-toastify'
+import { toastError, toastSuccess, toastWarning } from '@/hooks/use-toast'
 import 'react-toastify/dist/ReactToastify.css'
 import { useRouter } from 'next/navigation'
 
@@ -56,13 +57,13 @@ export default function RegisterPage() {
     e.preventDefault()
     // 檢查是否有登入，如果有登入就不能註冊
     if (isAuth) {
-      toast.error('錯誤 - 會員已登入')
+      toastError('錯誤 - 會員已登入')
       return
     }
 
     // 確保所有必需字段都有值
     if (!userInput.username || !userInput.email || !userInput.password) {
-      toast.error('請提供 username, email 和 password')
+      toastError('請提供 username, email 和 password')
       return
     }
 
@@ -70,7 +71,7 @@ export default function RegisterPage() {
       const res = await register(userInput)
       const resData = await res.json()
       if (resData.status === 'success') {
-        toast.success('註冊成功，請重新登入', {
+        toastSuccess('註冊成功，請重新登入', {
           autoClose: 2000,
           position: 'bottom-right',
         })
@@ -83,13 +84,13 @@ export default function RegisterPage() {
         const errorMessage = resData.message.includes('重複的 email')
           ? '此 email 已被使用'
           : `此 email 已被使用`
-        toast.error(errorMessage, { autoClose: 1500 })
+        toastError(errorMessage, { autoClose: 1500 })
       }
     } catch (err) {
       if (err.response?.data?.message.includes('重複的 email')) {
-        toast.error('此 email 已被使用')
+        toastError('此 email 已被使用')
       } else {
-        toast.error(
+        toastError(
           `錯誤 - 註冊失敗: ${err.response?.data?.message || err.message}`
         )
       }
@@ -108,7 +109,7 @@ export default function RegisterPage() {
   // **處理 Google 登入**
   const handleGoogleLogin = () => {
     if (isAuth) {
-      toast.error('錯誤 - 會員已登入')
+      toastError('錯誤 - 會員已登入')
       return
     }
     loginGoogle(async (providerData) => {
@@ -118,12 +119,12 @@ export default function RegisterPage() {
       const resData = await res.json()
 
       if (resData.status === 'success') {
-        toast.success('已成功登入', { autoClose: 2000 })
+        toastSuccess('已成功登入', { autoClose: 2000 })
         if (isClient) {
           router.push('/') // 重定向到首頁
         }
       } else {
-        toast.error('Google 登入失敗')
+        toastError('Google 登入失敗')
       }
     })
   }

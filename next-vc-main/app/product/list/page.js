@@ -7,11 +7,31 @@ import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import { useState, useEffect, useRef } from 'react'
 import { useProductState } from '@/services/rest-client/use-products'
+import { useHeaderHeight } from '@/hooks/use-header'
 
 export default function ProductListPage(props) {
-  //header search
-  // const searchParams = useSearchParams()
-  // const name_like = searchParams.get('name_like')
+  // header 動態捲動
+  const { headerHeight } = useHeaderHeight()
+  const [prevScrollY, setPrevScrollY] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > prevScrollY && currentScrollY > 50) {
+      setIsVisible(false);
+    } else {
+      setIsVisible(true);
+    }
+
+    setPrevScrollY(currentScrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prevScrollY]);
 
   // 設定點擊事件
   const [filterOpen, setFilterOpen] = useState(false)
@@ -226,8 +246,8 @@ export default function ProductListPage(props) {
   //   }
   // }
 
-  const isFirstRender = useRef(true); // 追蹤是否為初次渲染
-  
+  const isFirstRender = useRef(true) // 追蹤是否為初次渲染
+
   // didmount後的下一次(queryString改變時)執行getPdData()
   useEffect(() => {
     if (isFirstRender.current) {
@@ -285,11 +305,11 @@ export default function ProductListPage(props) {
     router.push(`/product/comparison?products=${selectedSkus}`)
   }
 
-  console.log(criteria);
+  console.log(criteria)
 
   return (
     <>
-      <div>
+      <div className="g-pdlist-bar" style={{top: isVisible ? `${headerHeight}px` : '0px'}}>
         <div className="g-pdlist-title l-px-modified">
           <div className="container-fluid p-0">
             <div className="d-flex align-items-center">
@@ -439,126 +459,124 @@ export default function ProductListPage(props) {
             </div>
           </div>
         </div>
-        <section className="g-pdlist l-px-modified">
-          <div className="container-fluid p-1">
-            <div className="row row-cols-xl-4 row-cols-2">
-              {pdData?.slice(0, visibleCount).map((product, i) => (
-                <div className="col p-2" key={product.id}>
-                  <ProductCard
-                    data={product}
-                    handleDragStart={handleDragStart}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-        <div className="g-more-sec d-flex justify-content-center align-items-center">
-          {visibleCount < pdData.length ? (
-            <button
-              className="g-more-btn"
-              onClick={() => {
-                setVisibleCount((prev) => prev + 12)
-              }}
-            >
-              <h6 className="mb-0">瀏覽更多</h6>
-            </button>
-          ) : (
-            <h6 className="mb-0 g-all">- 已顯示所有商品 -</h6>
-          )}
-        </div>
-        <FilterBar
-          filterOpen={filterOpen}
-          setFilterOpen={setFilterOpen}
-          criteria={criteria}
-          setCriteria={setCriteria}
-          defaultCriteria={defaultCriteria}
-          generateQueryString={generateQueryString}
-          queryString={queryString}
-          setQueryString={setQueryString}
-          // handleSearch={handleSearch}
-          getPdData={getPdData}
-          brandIds={brandIds}
-          setBrandIds={(value) => setCriteriaByName('brandIds', value)}
-          colorPids={colorPids}
-          setColorPids={(value) => setCriteriaByName('colorPids', value)}
-          colorIds={colorIds}
-          setColorIds={(value) => setCriteriaByName('colorIds', value)}
-          priceGte={priceGte}
-          setPriceGte={(value) => setCriteriaByName('priceGte', value)}
-          priceLte={priceLte}
-          setPriceLte={(value) => setCriteriaByName('priceLte', value)}
-          setSelectedSort={(value) => setSelectedSort(value)}
-        />
-        {/* comparision sec */}
-        <section
-          className={`g-compare-sec l-px-modified ${
-            comparisionOpen ? 'active' : ''
-          }`}
-        >
-          <div className="container-fluid p-0">
-            <div className="d-flex justify-content-between align-items-center">
-              <div className>
-                <h6 className="h6">Electric Guitar Comparision</h6>
-                <h6 className="mb-0">電吉他商品比較</h6>
-              </div>
-              <div className="d-flex align-items-center">
-                <img src="/images/product/list/drag.svg" />
-                <p className="mb-0">
-                  將商品拖曳至方框中
-                  <br />
-                  最多可比較4款商品
-                </p>
-                <div className="g-compare-boxes d-flex gap-3">
-                  {selectedProducts.map((selectedProduct, index) => (
-                    <div
-                      className="g-compare-box d-flex justify-content-center align-items-center position-relative"
-                      onDragOver={(e) => e.preventDefault()}
-                      onDrop={(e) => handleDrop(e, index)}
-                    >
-                      {selectedProduct ? (
-                        <>
-                          <img
-                            src={`/images/product/pd-images/${selectedProduct.image}`}
-                            alt={selectedProduct.name}
-                            className="g-guitar"
-                          />
-                          {/* 刪除按鈕 */}
-                          <button
-                            onClick={() => handleRemove(index)}
-                            className="position-absolute"
-                          >
-                            <img src="/images/product/list/x.svg" />
-                          </button>
-                        </>
-                      ) : (
-                        <img src="/images/product/list/electric.svg" />
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="d-flex flex-column">
-                <button
-                  disabled={selectedAmount > 1 ? false : true}
-                  className={`g-compare-btn text-center ${
-                    selectedAmount > 1 ? 'active' : ''
-                  }`}
-                  onClick={toComparePage}
-                >
-                  <h6 className="mb-0">{`比較 ${selectedAmount} 款電吉他`}</h6>
-                </button>
-                <button
-                  className="g-clear-btn text-center"
-                  onClick={() => setSelectedProducts([null, null, null, null])}
-                >
-                  <h6 className="mb-0">清除全部</h6>
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
+      <section className="g-pdlist l-px-modified">
+        <div className="container-fluid p-1">
+          <div className="row row-cols-xl-4 row-cols-2">
+            {pdData?.slice(0, visibleCount).map((product, i) => (
+              <div className="col p-2" key={product.id}>
+                <ProductCard data={product} handleDragStart={handleDragStart} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <div className="g-more-sec d-flex justify-content-center align-items-center">
+        {visibleCount < pdData.length ? (
+          <button
+            className="g-more-btn"
+            onClick={() => {
+              setVisibleCount((prev) => prev + 12)
+            }}
+          >
+            <h6 className="mb-0">瀏覽更多</h6>
+          </button>
+        ) : (
+          <h6 className="mb-0 g-all">- 已顯示所有商品 -</h6>
+        )}
+      </div>
+      <FilterBar
+        filterOpen={filterOpen}
+        setFilterOpen={setFilterOpen}
+        criteria={criteria}
+        setCriteria={setCriteria}
+        defaultCriteria={defaultCriteria}
+        generateQueryString={generateQueryString}
+        queryString={queryString}
+        setQueryString={setQueryString}
+        // handleSearch={handleSearch}
+        getPdData={getPdData}
+        brandIds={brandIds}
+        setBrandIds={(value) => setCriteriaByName('brandIds', value)}
+        colorPids={colorPids}
+        setColorPids={(value) => setCriteriaByName('colorPids', value)}
+        colorIds={colorIds}
+        setColorIds={(value) => setCriteriaByName('colorIds', value)}
+        priceGte={priceGte}
+        setPriceGte={(value) => setCriteriaByName('priceGte', value)}
+        priceLte={priceLte}
+        setPriceLte={(value) => setCriteriaByName('priceLte', value)}
+        setSelectedSort={(value) => setSelectedSort(value)}
+      />
+      {/* comparision sec */}
+      <section
+        className={`g-compare-sec l-px-modified ${
+          comparisionOpen ? 'active' : ''
+        }`}
+      >
+        <div className="container-fluid p-0">
+          <div className="d-flex justify-content-between align-items-center">
+            <div className>
+              <h6 className="h6">Electric Guitar Comparision</h6>
+              <h6 className="mb-0">電吉他商品比較</h6>
+            </div>
+            <div className="d-flex align-items-center">
+              <img src="/images/product/list/drag.svg" />
+              <p className="mb-0">
+                將商品拖曳至方框中
+                <br />
+                最多可比較4款商品
+              </p>
+              <div className="g-compare-boxes d-flex gap-3">
+                {selectedProducts.map((selectedProduct, index) => (
+                  <div
+                    className="g-compare-box d-flex justify-content-center align-items-center position-relative"
+                    onDragOver={(e) => e.preventDefault()}
+                    onDrop={(e) => handleDrop(e, index)}
+                  >
+                    {selectedProduct ? (
+                      <>
+                        <img
+                          src={`/images/product/pd-images/${selectedProduct.image}`}
+                          alt={selectedProduct.name}
+                          className="g-guitar"
+                        />
+                        {/* 刪除按鈕 */}
+                        <button
+                          onClick={() => handleRemove(index)}
+                          className="position-absolute"
+                        >
+                          <img src="/images/product/list/x.svg" />
+                        </button>
+                      </>
+                    ) : (
+                      <img src="/images/product/list/electric.svg" />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="d-flex flex-column">
+              <button
+                disabled={selectedAmount > 1 ? false : true}
+                className={`g-compare-btn text-center ${
+                  selectedAmount > 1 ? 'active' : ''
+                }`}
+                onClick={toComparePage}
+              >
+                <h6 className="mb-0">{`比較 ${selectedAmount} 款電吉他`}</h6>
+              </button>
+              <button
+                className="g-clear-btn text-center"
+                onClick={() => setSelectedProducts([null, null, null, null])}
+              >
+                <h6 className="mb-0">清除全部</h6>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* </div> */}
     </>
   )
 }

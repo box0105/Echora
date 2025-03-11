@@ -7,6 +7,7 @@ import MemberLayout from '../layouts/memberLayout'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { toast, ToastContainer } from 'react-toastify'
+import { toastWarning, toastSuccess, toastError } from '@/hooks/use-toast'
 import 'react-toastify/dist/ReactToastify.css'
 import { useAuth } from '@/hooks/use-auth'
 import { useRouter } from 'next/navigation'
@@ -431,10 +432,10 @@ export default function ProfilePage() {
           setProfileInput(resData.data)
           console.log('User profile data:', resData.data)
         } else {
-          toast.error(`獲取會員資料失敗: ${resData.message}`)
+          toastWarning(`獲取會員資料失敗: ${resData.message}`)
         }
       } catch (err) {
-        toast.error(`獲取會員資料失敗: ${err.message}`)
+        toastWarning(`獲取會員資料失敗: ${err.message}`)
       }
     }
     fetchUserProfile()
@@ -494,7 +495,7 @@ export default function ProfilePage() {
       })
       const resData = await res.json()
       if (resData.status === 'success') {
-        toast.success('會員資料更新成功', {
+        toastSuccess('會員資料更新成功', {
           position: 'bottom-right',
           autoClose: 1000,
           onClose: () => window.location.reload('/my-user/profile'),
@@ -505,10 +506,10 @@ export default function ProfilePage() {
           ...resData.data,
         }))
       } else {
-        toast.error(`更新會員資料失敗: ${resData.message}`)
+        toastError(`更新會員資料失敗: ${resData.message}`)
       }
     } catch (err) {
-      toast.error(`更新會員資料失敗: ${err.message}`)
+      toastError(`更新會員資料失敗: ${err.message}`)
     }
   }
 
