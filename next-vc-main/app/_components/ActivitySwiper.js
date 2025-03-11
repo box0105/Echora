@@ -49,7 +49,8 @@ export default function ActivitySwiper() {
       >
         {imageArr?.map((img, i) => {
           const activity = acts?.[ids[i]]
-          const price = activity?.type?.[0]?.price?.toLocaleString()
+          const price = activity?.type?.[0]?.price
+
           return (
             <SwiperSlide key={i}>
               <Link
@@ -66,8 +67,12 @@ export default function ActivitySwiper() {
                 </div>
               </Link>
               <div className="p-3">
-                <div className="h5">{activity?.name}</div>
-                <h5>{price > 0 ? `Tickets: $${price}` : 'Free Admission'}</h5>
+                <h6 className="h6">{activity?.name}</h6>
+                <h6>
+                  {price > 0
+                    ? `Tickets: $${price.toLocaleString()}`
+                    : 'Free Admission'}
+                </h6>
               </div>
             </SwiperSlide>
           )

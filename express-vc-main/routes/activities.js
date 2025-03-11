@@ -1,14 +1,42 @@
 import express from 'express'
-// import db from '../config/mysql.js'
+import multer from 'multer'
+import { resolve } from 'node:path'
+
 import { PrismaClient } from '@prisma/client'
 import { successResponse, errorResponse } from '../lib/utils.js'
 
 const router = express.Router()
 const prisma = new PrismaClient()
 
-/* router prefix: /api/activities */
+/* multer */
+const storage = multer.diskStorage({
+  // 設定檔案搬移至前端
+  destination: (req, file, cb) => {
+    cb(null, resolve('../', 'next-vc-main', 'public', 'images', 'activity'))
+  },
+  filename: (req, file, cb) => {
+    const newFileName = Date.now() + '_' + file.originalname
+    console.log(newFileName)
 
-// get All datas
+    cb(null, newFileName)
+  },
+})
+
+const upload = multer({
+  storage,
+  fileFilter(req, file, cb) {
+    if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
+      return cb(new Error('Please upload jpg/jpeg/png files'))
+    }
+    cb(null, true)
+  },
+  limits: {
+    fileSize: 10000000, // 10MB
+  },
+})
+/* multer */
+
+// Read All datas
 router.get('/', async (req, res) => {
   try {
     const search = req.query.search
@@ -44,7 +72,7 @@ router.get('/', async (req, res) => {
     }
     if (price) {
       whereCondition.type = {
-        some: { price: { lte: price } }
+        some: { price: { lte: price } },
       }
     }
 
@@ -114,7 +142,7 @@ router.get('/', async (req, res) => {
   }
 })
 
-// get 所有選項
+// Read 所有選項
 router.get('/options', async (req, res) => {
   try {
     const categories = await prisma.activityCategory.findMany()
@@ -126,7 +154,7 @@ router.get('/options', async (req, res) => {
   }
 })
 
-// get One data
+// Read One data
 router.get('/:id', async (req, res) => {
   const { id } = req.params
 
@@ -144,6 +172,186 @@ router.get('/:id', async (req, res) => {
     })
 
     successResponse(res, { data })
+  } catch (error) {
+    errorResponse(res, error)
+  }
+})
+
+// 上傳照片
+router.post('/uploads', upload.array('files', 5), (req, res) => {
+  if (!req.files || req.files.length === 0) {
+    return res.status(400).json({ error: 'No file uploaded' })
+  }
+
+  const uploadedFiles = req.files.map((file) => ({
+    filename: file.originalname,
+    newFileName: file.filename,
+    size: file.size,
+  }))
+
+  res.json({
+    message: 'Files uploaded successfully',
+    files: uploadedFiles,
+  })
+})
+
+// Create
+router.post('/', express.json(), async (req, res) => {
+  const {
+    name,
+    category_id,
+    music_genre_id,
+    date_start,
+    date_end,
+    signup_start,
+    signup_end,
+    city,
+    dist,
+    address,
+    zipcode,
+    intro,
+    media,
+  } = req.body
+  const mediaString = Array.isArray(media) ? media.join(',') : media
+
+  const data = await prisma.activity.create({
+    data: {
+      name,
+      category_id: parseInt(category_id),
+      music_genre_id: parseInt(music_genre_id),
+      date_start: new Date(date_start),
+      date_end: date_end ? new Date(date_end) : null,
+      signup_start: signup_start ? new Date(signup_start) : null,
+      signup_end: signup_end ? new Date(signup_end) : null,
+      city,
+      dist,
+      address,
+      intro,
+      media: mediaString, // 將轉換後的字串存入 media
+      zipcode: parseInt(zipcode),
+      // 關聯 1:n
+      type: {
+        create: req.body.type || [],
+      },
+      article: {
+        create: req.body.article || [],
+      },
+      lineup: {
+        create: req.body.lineup || [],
+      },
+      // type: {
+      //   create: [
+      //     { name: '門票一', stock: 10, price: 999 },
+      //     { name: '門票二', stock: 15, price: 2999 },
+      //   ],
+      // },
+      // article: {
+      //   create: [
+      //     {title: '文章一', content: '文章一', images: '浮現祭/1-1.jpg'},
+      //     {title: '文章二', content: '文章二', images: '浮現祭/2-1.jpg'}
+      //   ]
+      // },
+      // lineup: {
+      //   create: [
+      //     {bands: '123456789'}, {bands:'98765321'}
+      //   ]
+      // }
+    },
+  })
+
+  try {
+    successResponse(res, { data })
+  } catch (error) {
+    errorResponse(res, error)
+  }
+})
+
+// Update
+router.put('/:id', express.json(), async (req, res) => {
+  const { id } = req.params
+  console.log('Update ID:', req.params.id)
+
+  const {
+    name,
+    category_id,
+    music_genre_id,
+    date_start,
+    date_end,
+    signup_start,
+    signup_end,
+    city,
+    dist,
+    address,
+    zipcode,
+    intro,
+    media,
+    type,
+    article,
+    lineup,
+  } = req.body
+  const mediaString = Array.isArray(media) ? media.join(',') : media
+
+  try {
+    const data = await prisma.activity.update({
+      where: { id: Number(id) },
+      data: {
+        name,
+        category_id: parseInt(category_id),
+        music_genre_id: parseInt(music_genre_id),
+        date_start: new Date(date_start),
+        date_end: date_end ? new Date(date_end) : null,
+        signup_start: signup_start ? new Date(signup_start) : null,
+        signup_end: signup_end ? new Date(signup_end) : null,
+        city,
+        dist,
+        address,
+        intro,
+        media: mediaString,
+        zipcode: parseInt(zipcode),
+        // 更新 1:n 關聯
+        type: {
+          deleteMany: {}, // 先刪除所有舊的關聯
+          create: type || [], // 再新增新的資料
+        },
+        article: {
+          deleteMany: {},
+          create: article || [],
+        },
+        lineup: {
+          deleteMany: {},
+          create: lineup || [],
+        },
+      },
+    })
+
+    successResponse(res, { data })
+  } catch (error) {
+    errorResponse(res, error)
+  }
+})
+
+// Delete
+router.delete('/:activityId', async function (req, res) {
+  try {
+    const activityId = Number(req.params.activityId)
+
+    // 先刪除關聯表的資料
+    await prisma.activityLineup.deleteMany({
+      where: { activity_id: activityId },
+    })
+    await prisma.activityArticle.deleteMany({
+      where: { activity_id: activityId },
+    })
+    await prisma.activityTicketType.deleteMany({
+      where: { activity_id: activityId },
+    })
+
+    // 再刪除 Activity
+    const deletedActivity = await prisma.activity.delete({
+      where: { id: activityId },
+    })
+
+    successResponse(res, deletedActivity)
   } catch (error) {
     errorResponse(res, error)
   }

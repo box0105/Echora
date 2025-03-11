@@ -13,13 +13,16 @@ export default function ActivityCardBase({ data, imageSize, showCategory, showLo
         <div className="row g-0 h-100">
           {/* card-image */}
           <div className={`col-${imageSize.col} col-lg-${imageSize.lg}`}>
+          <Link href={`/activity/${data?.id}`}>
             <Image
               className="object-fit-cover w-100 h-100"
               src={`${src}${data?.media?.split(',')[0]}`}
               alt={data?.name || '照片載入失敗'}
               width={500}
               height={300}
-            />
+             />
+          </Link>
+          
           </div>
           {/* card-body */}
           <div className={`col-${12 - imageSize.col} col-lg-${12 - imageSize.lg}`}>
