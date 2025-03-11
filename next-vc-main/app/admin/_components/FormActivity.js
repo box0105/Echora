@@ -8,6 +8,7 @@ import ZipcodeSelector from './ZipcodeSelector'
 
 const FormActivity = ({
   isLoading,
+  isUpdate,
   formData,
   setFormData,
   selectedCategories,
@@ -384,15 +385,20 @@ const FormActivity = ({
       <div className="col-12">
         <h4 className="b-cond-title">活動圖片</h4>
         <div className="b-img-upload row row-cols-xl-3 row-cols-lg-2 row-cols-1 g-3">
-          {imagePreviews.map((src, i) => (
+          {imagePreviews.map((item, i) => (
             <div className="col position-relative" key={i}>
               <div className="ratio ratio-16x9 border rounded">
-                <Image className="object-fit-cover" alt={src} src={src} fill />
+                <Image
+                  className="object-fit-cover"
+                  alt={item.url}
+                  src={item.url}
+                  fill
+                />
               </div>
               <button
                 type="button"
                 className="b-delete-btn btn btn-light position-absolute top-0 end-0"
-                onClick={() => handleImageDelete(i)}
+                onClick={() => handleImageDelete(item.id, item.type)}
               >
                 x
               </button>
@@ -420,7 +426,9 @@ const FormActivity = ({
       <pre>
         {'imageFiles (新上傳照片)\n'}
         {JSON.stringify(
-          imageFiles.map((file) => file.name),
+          imageFiles.map((file) => ({
+            id: file.id,
+          })),
           null,
           2
         )}
@@ -438,7 +446,7 @@ const FormActivity = ({
           href="/admin/activity"
           className="btn btn-outline-secondary ms-2 mb-0"
         >
-          取消
+          {isUpdate ? '返回' : '取消'}
         </Link>
       </div>
 

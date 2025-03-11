@@ -25,7 +25,7 @@ export default function DataTable() {
         throw new Error(`HTTP error! Status: ${response.status}`)
       }
 
-      console.log('活動刪除成功', await response.json());
+      console.log('活動刪除成功', await response.json())
     } catch (error) {
       console.error('活動刪除失敗!', error.message)
     }
@@ -53,40 +53,39 @@ export default function DataTable() {
             {/*head*/}
             <thead>
               <tr>
-                <th>
+                {/* <th>
                   <button className="b-btn-unstyled text-secondary opacity-4">
                     編號
                     <i className="ms-2 fa-solid fa-sort-up" />
                   </button>
-                </th>
+                </th> */}
+                <th className="text-secondary opacity-4">編號</th>
                 <th className="text-secondary opacity-4">活動</th>
                 <th className="text-secondary opacity-4">名稱</th>
                 <th className="text-secondary opacity-4">活動類型</th>
                 <th className="text-secondary opacity-4">音樂類型</th>
-                {/* <th class="text-secondary opacity-4">
-                    演出參與
-                </th> */}
-                <th>
+                {/* <th>
                   <button className="b-btn-unstyled text-secondary opacity-4">
                     活動日期
                     <i className="ms-2 fa-solid fa-sort-up" />
                   </button>
-                </th>
-                {/* <th class="text-secondary opacity-4">
-                    報名日期
                 </th> */}
-                <th>
+                <th className="text-secondary opacity-4">活動日期</th>
+
+                {/* <th>
                   <button className="b-btn-unstyled text-secondary opacity-4">
                     門票數量
                     <i className="ms-2 fa-solid fa-sort-up" />
                   </button>
-                </th>
-                <th>
+                </th> */}
+                <th className="text-secondary opacity-4">門票數量</th>
+                {/* <th>
                   <button className="b-btn-unstyled text-secondary opacity-4">
                     門票價格
                     <i className="ms-2 fa-solid fa-sort-up" />
                   </button>
-                </th>
+                </th> */}
+                <th className="text-secondary opacity-4">門票價格</th>
                 <th className="text-secondary opacity-4">城市</th>
                 {/* update & delete */}
                 <th className="text-secondary opacity-4">操作</th>
@@ -105,9 +104,8 @@ export default function DataTable() {
                         <Image
                           src={`/images/activity/${act.media.split(',')[0]}`}
                           alt={act.name}
-                          width={500}
-                          height={300}
-                          className="img-fluid"
+                          fill
+                          className="object-fit-cover"
                         />
                       </div>
                     </td>

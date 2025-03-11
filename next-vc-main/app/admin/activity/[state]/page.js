@@ -5,12 +5,15 @@ import { useParams, useSearchParams } from 'next/navigation'
 import FormActivity from '../../_components/FormActivity'
 import { useFilterPanel } from '@/hooks/use-filter-panel'
 import { useFetch } from '@/hooks/use-fetch'
+import { useRouter } from 'next/navigation'
+import { toastSuccess, toastWarning } from '@/hooks/use-toast'
 
 export default function AdminActivityState() {
   const { state } = useParams()
   const searchParams = useSearchParams()
   const isUpdate = state === 'update'
   const activityId = Number(searchParams?.get('id'))
+  const router = useRouter()
 
   // Update 頁面時抓取資料
   const { data: act, isLoading } = useFetch(
@@ -68,12 +71,15 @@ export default function AdminActivityState() {
       setTicketNum(act?.type.length)
       setBandNum(act?.lineup.length)
       setArticleNum(act?.article.length)
-      setImagePreviews(
-        // 預覽檔名加上前綴
-        act?.media.split(',').map((file) => `/images/activity/${file}`)
-      )
+      setImagePreviews([
+        ...act.media.split(',').map((file) => ({
+          id: file, // 直接使用檔名當 ID
+          url: `/images/activity/${file}`, // 預覽檔名加上前綴
+          type: 'uploaded',
+        })),
+      ])
     }
-  }, [act, isLoading])
+  }, [act])
 
   const [imagePreviews, setImagePreviews] = useState([]) // 圖片預覽
   const [imageFiles, setImageFiles] = useState([]) // 存放照片
@@ -94,30 +100,38 @@ export default function AdminActivityState() {
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files)
     if (files.length === 0) return
+    if (files.length > 10) {
+      toastWarning('一次最多上傳 10 張照片')
+      return
+    }
 
     const newFileData = files.map((file) => {
       return {
+        id: URL.createObjectURL(file), // 用 URL 作為暫時的 ID
         url: URL.createObjectURL(file),
         file: file,
+        type: 'uploading',
       }
     })
 
-    setImagePreviews((prev) => [
-      ...prev,
-      ...newFileData.map((item) => item.url),
-    ])
-    setImageFiles((prev) => [...prev, ...newFileData.map((item) => item.file)])
+    setImagePreviews((prev) => [...prev, ...newFileData])
+    setImageFiles((prev) => [...prev, ...files])
   }
 
-  // 刪除圖片預覽圖片
-  const handleImageDelete = (index) => {
-    setImagePreviews((prev) => prev.filter((_, i) => i !== index))
-    setFormData(prevData => ({
-      ...prevData,
-      media: prevData.media.filter((_, i) => i !== index)
-  }));
+  // 刪除預覽（包含已上傳與未上傳）
+  const handleImageDelete = (id, type) => {
+    setImagePreviews((prev) => prev.filter((file) => file.id !== id))
 
-    setImageFiles((prev) => prev.filter((_, i) => i !== index))
+    if (type === 'uploading') {
+      // 刪除正在上傳的圖片
+ 
+    } else {
+      // 刪除已上傳的圖片
+      setFormData((prevData) => ({
+        ...prevData,
+        media: prevData.media.filter((file) => file !== id),
+      }))
+    }
   }
 
   // 將門票的欄位整理為物件
@@ -251,7 +265,14 @@ export default function AdminActivityState() {
     }
 
     // 呼叫 API
-    isUpdate ? updateActivity(updatedFormData) : createActivity(updatedFormData)
+    if (isUpdate) {
+      updateActivity(updatedFormData)
+      toastSuccess('活動更新完成')
+    } else {
+      createActivity(updatedFormData)
+      toastSuccess('活動建立成功')
+      router.push('/admin/activity')
+    }
   }
 
   // API upload image
@@ -293,6 +314,7 @@ export default function AdminActivityState() {
 
       <FormActivity
         isLoading={isLoading}
+        isUpdate={isUpdate}
         formData={formData}
         setFormData={setFormData}
         selectedCategories={selectedCategories}

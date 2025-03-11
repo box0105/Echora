@@ -9,7 +9,7 @@ export default function AdminPanel() {
   const pathName = usePathname();
 
   return (
-    <nav className="col-md-2 mb-5 bg-white card p-3 d-flex flex-column align-items-center">
+    <nav className="b-nav col-md-2 mb-5 bg-white card p-3 d-flex flex-column align-items-center">
       <Link href="/admin" className='w-100 text-center'>
         <Image
           src="/images/header/logo-mb.svg"
@@ -28,7 +28,7 @@ export default function AdminPanel() {
             </Link>
           </h6>
         </li>
-        <li className="nav-item active">
+        <li className={`nav-item ${pathName?.includes('coupon') ? 'active' : ''}`}>
           <h6 className="mb-0">
             <Link href="/admin/coupon" className="nav-link">
               <i className="fa-solid fa-table-list me-3 text-secondary" />
@@ -40,7 +40,7 @@ export default function AdminPanel() {
           <h6 className="mb-0">
             <Link href="/" className="nav-link">
               <i className="fa-solid fa-house me-3 text-secondary" />
-              一般首頁
+              返回首頁
             </Link>
           </h6>
         </li>

@@ -11,6 +11,9 @@ body {
     margin: 2rem 3rem;
     padding: 1.5rem;
   }
+  .card {
+    border: 1px solid var(--grey200)
+  }
 
   /* Table */
   @media screen and (max-width: 576px) {
@@ -23,9 +26,8 @@ body {
     }
   }
 
-  nav {
-    min-height: 30vh;
-    max-height: 50vh;
+  .b-nav {
+    height: 50vh;
 
     img {
       width: 80%;

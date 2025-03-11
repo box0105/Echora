@@ -9,7 +9,7 @@ import { redirect,useRouter } from 'next/navigation';
 import { flatMap } from 'lodash'
 import { useAuth } from '@/hooks/use-auth'
 import { useUser } from '@/hooks/use-profile'
-
+import { ToastContainer } from 'react-toastify'
 
 export default function AdminLayout({ children }) {
   const [admin, setAdmin] = useState(null)
@@ -73,6 +73,8 @@ export default function AdminLayout({ children }) {
           <AdminPanel />
           <main className="col-md-10 px-0 ps-md-2">{children}</main>
         </div>
+        {/* 載入吐司 */}
+      <ToastContainer />
       </div>
     )
   }

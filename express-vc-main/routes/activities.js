@@ -177,8 +177,8 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-// 上傳照片
-router.post('/uploads', upload.array('files', 5), (req, res) => {
+// 上傳照片 (最多10張)
+router.post('/uploads', upload.array('files', 10), (req, res) => {
   if (!req.files || req.files.length === 0) {
     return res.status(400).json({ error: 'No file uploaded' })
   }
