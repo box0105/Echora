@@ -28,6 +28,14 @@ export default function AdminPanel() {
             </Link>
           </h6>
         </li>
+        <li className="nav-item active">
+          <h6 className="mb-0">
+            <Link href="/admin/coupon" className="nav-link">
+              <i className="fa-solid fa-table-list me-3 text-secondary" />
+              優惠券管理
+            </Link>
+          </h6>
+        </li>
         <li className="nav-item">
           <h6 className="mb-0">
             <Link href="/" className="nav-link">

@@ -208,7 +208,8 @@ export default function Header() {
                 </Link>
                 {isAuth && showDropdown && (
                   <div className={styles['dropdown-menu']}>
-                    <button onClick={handleLogout}>登出</button>
+                    <button onClick={handleLogout}>登出</button><br />
+                    {userProfile.username == 'admin' ? <Link href="/admin">admin</Link> : ''}
                   </div>
                 )}
               </div>
@@ -290,9 +291,8 @@ export default function Header() {
       </nav>
       {/* hamburger menu bar */}
       <section
-        className={`${styles['g-menu-bar-sec']} ${
-          menuOpen ? styles.active : ''
-        }`}
+        className={`${styles['g-menu-bar-sec']} ${menuOpen ? styles.active : ''
+          }`}
       >
         <div className="container-fluid p-0">
           <div className={styles['g-menu-bar']}>
