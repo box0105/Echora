@@ -4,6 +4,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import { Navigation } from 'swiper/modules'
 import Image from 'next/image'
+import styles from './ImageGallery.module.scss';
 
 const ImageSlider = ({ images, imageBasePath = '/images/Rent/pd-images/' }) => {
   const [mainImage, setMainImage] = useState(images[0] || 'default-image.jpg')
@@ -48,7 +49,7 @@ const ImageSlider = ({ images, imageBasePath = '/images/Rent/pd-images/' }) => {
       <div
         className="d-flex flex-column align-items-center d-none d-lg-flex ps-2 gap-2 "
         style={{
-          paddingTop: '4.5rem',
+          paddingTop: '10rem',
           width: '200px',
           height: '800px',
           position: 'relative',
@@ -63,7 +64,7 @@ const ImageSlider = ({ images, imageBasePath = '/images/Rent/pd-images/' }) => {
         </button>
         <div className="overflow-hidden" style={{ height: '500px' }}>
           <div
-            className="d-flex flex-column justify-content-center"
+            className="d-flex flex-column justify-content-center gap-4"
             style={{
               transform: `translateY(-${scrollIndex * 110}px)`,
               transition: 'transform 0.3s ease-in-out',
@@ -83,9 +84,7 @@ const ImageSlider = ({ images, imageBasePath = '/images/Rent/pd-images/' }) => {
                   alt={`縮略圖 ${index}`}
                   width={100}
                   height={200}
-                  className={`mx-auto h-50 w-50 object-contain gap-2 ${
-                    index === activeIndex ? 'active' : ''
-                  }`}
+                  className={`${styles.image} ${index === activeIndex ? styles.active : ''}`}
                 />
               </div>
             ))}

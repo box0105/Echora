@@ -492,9 +492,9 @@ export default function Page(props) {
                         <p className=" pb-3 m-0">控制器</p>
                       </div>
                       <props className="product-bo-2">
-                        <div className="h6 m-0">
+                        <p className=" m-0">
                           {ListData.rentList?.controls}
-                        </div>
+                        </p>
                       </props>
                     </div>
                     <div className="product-list">

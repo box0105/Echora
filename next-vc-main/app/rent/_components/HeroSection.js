@@ -28,7 +28,6 @@ const MainImage = () => (
       <Swiper
         slidesPerView={1}
         spaceBetween={0}
-        navigation={true}
         loop={true}
         autoplay={{
           delay: 3000,
