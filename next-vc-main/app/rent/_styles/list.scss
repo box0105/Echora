@@ -1,8 +1,8 @@
 /* sextion1 */
-.c-index {
-  padding-inline: 64px;
-  padding-block: 100px 0;
-}
+// .c-index {
+//   padding-inline: 64px;
+//   padding-block: 100px 0;
+// }
 .c-pic {
   width: 110px;
   height: 140px;
@@ -22,6 +22,7 @@
 }
 .c-left {
   padding: 6rem 9rem 0 9rem;
+  background-color:  var(--grey50);
 }
 .title-text {
   margin-right: auto;
@@ -32,9 +33,6 @@
 .c-price-1 {
   padding-bottom: 1.5rem;
 }
-.c-guide {
-  border-bottom: 1px solid hsl(0, 0%, 59%);
-}
 /* 左邊攔 */
 .text-br {
   width: 7rem;
@@ -44,6 +42,7 @@
   padding-top: 1rem;
   padding-bottom: 1.5rem;
   .c-co {
+    border: 1px solid var(--grey100);
     padding: 1.25rem 1rem;
   }
 }
@@ -55,23 +54,55 @@
   }
 }
 
+.c-band{
+  width: 90px;
+  height: 30px;
+  background-color: var(--black);
+  color: var(--white);
+  margin-bottom: 24px;
+}
 .btn1 {
   width: 100%;
   padding: 2.5rem 0 2rem 0;
-  border-bottom: 1px solid hsl(0, 0%, 59%);
+  border-bottom: 1px solid var(--grey100);
 }
 
 .btnbot {
   border-radius: 50px;
   width: 100%;
-  padding: 1.5rem 1rem;
+  height: 58px;
+  // padding: 1.5rem 1rem;
+}
+.inputse{
+  height: 48px ;
 }
 /* section2 */
 .c-index1 {
   padding-inline: 64px;
+  @media (max-width: 400px) {
+    padding: 0 16px 0 16px;
+}
 }
 .c-prduct {
-  padding: 0 4rem 4rem 4rem;
+  padding: 0 4rem 4rem 4rem;;
+  @media (max-width: 400px) {
+    padding: 0 16px 0 16px;
+    background-color: var(--grey50);
+  }
+}
+.c-List-body{
+  padding-top: 28px;
+  border-top: 1px solid var(--grey500);
+}
+.c-List-title{
+  padding-top: 28px;
+  border-top: 2px solid var(--grey100);
+  }
+.c-gu-title{
+  border-top: 2px solid var(--grey100);
+  @media (max-width: 400px) {
+  padding-top: 16px;
+  }
 }
 .product-body {
   justify-content: space-between;
@@ -86,8 +117,21 @@
 }
 .bo-gu {
   padding: 0 9rem 0 9rem;
+  background-color: var(--grey50);
+  @media (max-width: 400px) {
+    padding: 0 16px 4rem 16px;
+  }
+  .c-gu-title-top{
+    @media (max-width: 400px) {
+      border-top: 2px solid var(--grey100);
+      padding-top: 16px;
+    }
+  }
 }
-
+.custom-datepicker {
+  font-size: 16px;
+  color: var(--grey100);
+}
 /* section3 */
 .c-index-title {
   margin-bottom: 50px;
@@ -110,15 +154,40 @@ body {
 //   padding-left: 15px;
 //   padding-right: 15px;
 // }
+.date-picker-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.date-picker-input {
+  width: 100%;
+  padding: 10px 35px 10px 10px; /* 確保右邊有足夠空間 */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+
+.calendar-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  cursor: pointer;
+  font-size: 18px;
+}
+
 
 .c-index {
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
-.card {
-  width: 100%;
-}
+// .card {
+//   width: 100%;
+// }
 
 /* 桌面 (大於1024px) */
 @media (min-width: 1024px) {
@@ -202,9 +271,10 @@ body {
   .col-7,
   .col-5 {
     width: 100%;
-    padding: 0;
   }
-
+  .c-left{
+    padding: 64px 16px 0;
+  }
   .card-group {
     flex-direction: column;
     align-items: center;
@@ -251,5 +321,16 @@ body {
   /* 手機（sm） */
   .product-list {
     flex-basis: 100%; /* 變成單列 */
+  }
+}
+@media (max-width: 480px) {
+  .c-addselect {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    /* 以下属性可选，用於防止文字过长时换行 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }

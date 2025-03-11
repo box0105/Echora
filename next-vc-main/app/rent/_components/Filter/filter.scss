@@ -17,6 +17,11 @@
 .c-filter-btn {
   width: 137px;
   height: 48px;
+  &:hover {
+    background-color: #000;  
+    color: #ffffff;  
+    font-style: #fff;
+  }
 }
 input[type="radio"] {
   -webkit-appearance: none;

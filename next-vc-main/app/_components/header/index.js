@@ -4,6 +4,7 @@ import '../../product/list/list.scss'
 import CartOffcanvas from '../cart-offcanvas'
 import { useMyCart } from '@/hooks/use-cart'
 import { useActivity } from '@/hooks/use-activity'
+import { useRent } from "@/hooks/use-rent" 
 import { useRouter, usePathname } from 'next/navigation'
 import { useProductState } from '@/services/rest-client/use-products'
 import { useState, useEffect, useRef } from 'react'
@@ -69,8 +70,8 @@ export default function Header() {
   const router = useRouter()
   const [searchName, setSearchName] = useState('')
   const { criteria, setCriteria, defaultCriteria } = useProductState()
-  const isFirstRender = useRef(true) // 追蹤是否為初次渲染
-  const { updateQueryParams, deleteQueryParams } = useActivity()
+  const { updateQueryParams } = useActivity()
+  const { query, setQuery } = useRent(); 
 
   const handleSearch = (e) => {
     if (e.key === 'Enter') {
@@ -87,14 +88,6 @@ export default function Header() {
       }
     }
   }
-
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false // 初次渲染時設定為 false，下一次才會觸發
-      return
-    }
-    router.push('/product/list')
-  }, [criteria])
 
   const [showDropdown, setShowDropdown] = useState(false)
   const { user, isAuth, setIsAuth } = useAuth()
@@ -118,7 +111,7 @@ export default function Header() {
           },
         })
         const resData = await res.json()
-        console.log('API 回傳資料:', resData)
+        // console.log('API 回傳資料:', resData)
         if (resData.status === 'success') {
           setUserProfile(resData.data)
           console.log('User profile data:', resData.data)
@@ -158,7 +151,6 @@ export default function Header() {
       toast.error(`登出失敗: ${err.message}`)
     }
   }
-
   return (
     <>
       <nav
@@ -260,10 +252,10 @@ export default function Header() {
               </li>
               <li>
                 <Link
-                  href="/activity"
+                  href=""
                   onClick={() => {
                     // 清空活動篩選條件 & Search欄位
-                    deleteQueryParams()
+                    deleteQueryParams() //這行出現error
                     setSearchName('')
                   }}
                 >

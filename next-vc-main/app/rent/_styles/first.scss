@@ -18,6 +18,38 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+.mySwiper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* 每个背景图片的样式 */
+.mySwiper .swiper-slide {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+}
+.mySwiper img {
+  position: relative; /* 确保轮播图不压住文字 */
+  z-index: 1;
+}
+.title-z {
+  position: absolute; /* 确保文字覆盖在图片上 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10; /* 提高文字的层级，确保在图片之上 */
+  background: rgba(0, 0, 0, 0.5); /* 可选，为文字加深背景对比度 */
+}
+.mySwiper img {
+  width: 100%;         /* 让图片始终铺满容器 */
+  height: 100vh;       /* 根据视口高度拉伸 */
+  object-fit: cover;   /* 裁切并填满区域，避免灰边 */
+}
 /* mob */
 @media (max-width: 390px) {
 }
@@ -52,7 +84,15 @@
   height: 27.113px;
   flex-shrink: 0;
 }
-
+.home-text{
+  padding-top: 42px;
+}
+.c-black{
+  height: 216px;
+}
+.c-text-p{
+  padding: 90px 64px 0;
+}
 /* sectioon2 */
 .c-index {
   padding-inline: 64px;
@@ -92,7 +132,9 @@
     }
   }
 }
-
+.c-input{
+  border-radius: 50px;
+}
 /* 確保過濾器容器能夠滾動 */
 .c-lerf-mod {
   position: fixed;
@@ -113,7 +155,11 @@
 .c-index-1 {
   padding-inline: 64px;
 }
-
+.c-bot-l{
+  height: 42px;
+  padding-left: 24px;
+  font-size: 14px;
+}
 .c-tit {
   width: 100%;
   font-size: 16px;
@@ -146,13 +192,14 @@
   padding: 25px;
   position: sticky;
   bottom: 0;
-  background-color: white; /* 可以設置背景色讓按鈕清晰可見 */
+  background-color: white; 
   padding: 15px;
   z-index: 1; /* 確保按鈕在最上層 */
   button {
     padding: 12px 24px;
     border-radius: 50px;
-    font-size: 16px;
+    font-size: 16px
+    ;
   }
 }
 .color {
