@@ -230,11 +230,17 @@ export default function InformationPage() {
 
     // 將 userData 寫入 localStorage
     localStorage.setItem('userData', JSON.stringify(userData))
-
-    if (userData.paymentMethod == 'linePay') {
-      goLinePay()
-    } else if (userData.paymentMethod == 'ECpay') {
-      goEcpay()
+    if (cartItems.length <= 0) {
+      toastWarning('購物車內無商品!')
+      setTimeout(() => {
+        router.replace('/')
+      }, 2000)
+    } else {
+      if (userData.paymentMethod == 'linePay') {
+        goLinePay()
+      } else if (userData.paymentMethod == 'ECpay') {
+        goEcpay()
+      }
     }
   }
   //#endregion

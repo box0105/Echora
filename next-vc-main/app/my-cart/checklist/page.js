@@ -9,6 +9,7 @@ import { useMyCart } from '@/hooks/use-cart'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useAuth } from '@/hooks/use-auth'
+import { toastWarning } from '@/hooks/use-toast'
 
 export default function ChecklistPage() {
   const { cartItems, totalAmount, totalQty } = useMyCart()
@@ -16,7 +17,14 @@ export default function ChecklistPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    router.replace('/my-cart/information')
+    if (cartItems.length <= 0) {
+      toastWarning('購物車內無商品!')
+      setTimeout(() => {
+        router.replace('/')
+      }, 2000)
+    } else {
+      router.replace('/my-cart/information')
+    }
   }
 
   //#region 優惠券選單
