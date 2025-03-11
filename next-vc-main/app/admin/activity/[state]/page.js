@@ -60,7 +60,7 @@ export default function AdminActivityState() {
         address: act?.address,
         zipcode: act?.zipcode,
         intro: act?.intro,
-        media: act?.media,
+        media: act?.media.split(','),
         type: act?.type,
         article: act?.article,
         lineup: act?.lineup,
@@ -69,6 +69,7 @@ export default function AdminActivityState() {
       setBandNum(act?.lineup.length)
       setArticleNum(act?.article.length)
       setImagePreviews(
+        // 預覽檔名加上前綴
         act?.media.split(',').map((file) => `/images/activity/${file}`)
       )
     }
@@ -111,6 +112,11 @@ export default function AdminActivityState() {
   // 刪除圖片預覽圖片
   const handleImageDelete = (index) => {
     setImagePreviews((prev) => prev.filter((_, i) => i !== index))
+    setFormData(prevData => ({
+      ...prevData,
+      media: prevData.media.filter((_, i) => i !== index)
+  }));
+
     setImageFiles((prev) => prev.filter((_, i) => i !== index))
   }
 
@@ -232,10 +238,11 @@ export default function AdminActivityState() {
     // 更新 formData
     const updatedFormData = {
       ...formData,
+      // 保留原有圖片，加入上傳照片
       media:
         newFilenames.length > 0
-          ? newFilenames.map((file) => `${file}`) // 將新檔名設置到 media，並加上前綴 uploads
-          : formData.media, // 若無新圖片，保留原本的 media
+          ? [...formData.media, ...newFilenames]
+          : [...formData.media],
 
       // 過濾 type、article、lineup 陣列內的 id, activity_id，讓 prisma 自動對應
       type: formData.type.map(({ id, activity_id, ...rest }) => rest),

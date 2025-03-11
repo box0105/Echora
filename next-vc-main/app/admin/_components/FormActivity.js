@@ -411,11 +411,21 @@ const FormActivity = ({
           />
         </div>
       </div>
-      {'上傳的圖片'}
-      <ul>
-        {imageFiles &&
-          imageFiles.map((f, i) => <li key={`i${i}`}>{f.name}</li>)}
-      </ul>
+
+      <pre>
+        {'formData.media (已存入活動照片)\n'}
+        {JSON.stringify(formData.media, null, 2)}
+      </pre>
+
+      <pre>
+        {'imageFiles (新上傳照片)\n'}
+        {JSON.stringify(
+          imageFiles.map((file) => file.name),
+          null,
+          2
+        )}
+      </pre>
+
       <div className="d-flex justify-content-end gap-3">
         <button
           className="btn btn-dark mb-0"
