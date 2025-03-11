@@ -14,6 +14,12 @@
   padding: 64px;
 }
 
+/* product imgs section */
+.g-pd-imgs {
+  padding-top: 126px;
+  background-color: var(--grey50);
+}
+
 /* product details section */
 .g-pd-details {
   /* 向下捲動時header會隱藏的狀態下 */
@@ -22,7 +28,8 @@
   /* min-height: 776px; */
 
   @media screen and (min-width: 992px) {
-    height: 100vh;
+    // height: 100vh;
+    height: calc(100vh + 100px);
     min-height: 776px;
   }
 }
@@ -31,7 +38,7 @@
 .g-pd-discrip {
   position: relative;
   overflow-y: auto;
-  padding: 100px 120px 28px 120px;
+  padding: 226px 120px 28px 120px;
 
   /* 隱藏滾動條 */
   /* Firefox */
@@ -46,7 +53,7 @@
 
   .g-heart {
     position: absolute;
-    top: 104px;
+    top: 230px; //(104+126)
     right: 120px;
   }
 
