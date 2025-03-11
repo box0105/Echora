@@ -252,7 +252,7 @@ export default function Header() {
               </li>
               <li>
                 <Link
-                  href=""
+                  href="/activity"
                   onClick={() => {
                     // 清空活動篩選條件 & Search欄位
                     deleteQueryParams() //這行出現error
