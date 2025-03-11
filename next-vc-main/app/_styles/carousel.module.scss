@@ -1,6 +1,6 @@
 .slideImage {
   width: 100%;
-  height: 785px; /* 固定高度，可依需求調整 */
+  height: 100vh; /* 固定高度，可依需求調整 */
   object-fit: cover;
   @media (max-width: 996px) {
     height: 500px;
