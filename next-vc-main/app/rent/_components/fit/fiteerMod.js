@@ -61,7 +61,8 @@ const handleSubmit = () => {
 
 
   return (
-    <div className="col-12 col-md-3 d-flex flex-column c-lerf-mod c-filter-scroll">
+    <div className="row">
+    <div className="col-10 col-md-3 d-flex flex-column c-lerf-mod c-filter-scroll">
       <SortMod setIsOpen={setIsOpen} onChange={handleSortChange} selectedSort={selectedSort}/>
       <BrandMod 
         onChange={(value) => toggleFilterValue('brands', value)}
@@ -84,6 +85,7 @@ const handleSubmit = () => {
         onSubmit={handleSubmit}
         onClear={handleClear} 
       />
+    </div>
     </div>
   );
 };

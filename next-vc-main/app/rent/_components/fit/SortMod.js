@@ -14,7 +14,7 @@ const SortMod = ({ setIsOpen, onKeyPressHandler, onChange, selectedSort }) => {
     return (
       <div className="sort">
         <div className="row">
-          <div className="col-11 h5 c-lenav">排序</div>
+          <div className="col-19 h5 c-lenav">排序</div>
           <div
             className="col-1 h5 c-lenav"
             onClick={() => setIsOpen(false)}
