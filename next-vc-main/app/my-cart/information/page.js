@@ -243,6 +243,7 @@ export default function InformationPage() {
   return (
     <>
       <div className="m-background mb-5">
+        <div className="m-127px"></div>
         <div className="m-checklist-section1">
           <div className="container-fluid d-flex justify-content-center m-index1">
             <div className="m-sec1-img w-75 ">
@@ -478,7 +479,9 @@ export default function InformationPage() {
                 <hr />
                 <div className="d-flex justify-content-between py-3">
                   <h4 className="h4">總計 :</h4>
-                  <h4 className="h4">NT$ {(totalAmount - cost).toLocaleString()}</h4>
+                  <h4 className="h4">
+                    NT$ {(totalAmount - cost).toLocaleString()}
+                  </h4>
                 </div>
                 {/* <div className="row row-cols-1 pt-4 d-md-block d-none">
                 <CartList cartItems={cartItems} />

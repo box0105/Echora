@@ -34,14 +34,14 @@ export default function Carousel() {
       </SwiperSlide>
       <SwiperSlide>
         <img
-          src="/images/index/slide2.webp"
+          src="/images/index/slide5.jpg"
           alt="Slide 2"
           className={styles.slideImage}
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
-          src="/images/index/slide5.jpg"
+          src="/images/index/slide2.png"
           alt="Slide 3"
           className={styles.slideImage}
         />
