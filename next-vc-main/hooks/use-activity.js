@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { act, createContext, useContext, useEffect, useState, useRef } from 'react'
 import { useFetch } from './use-fetch'
 
 // 1. 建立 Context 物件
@@ -79,19 +79,20 @@ export const ActivityProvider = ({
     }
   }, [queryParams])
 
+
+  // 初次渲染封面 (用一個 flag 判斷是否初次)
+  const hasInitCover = useRef(false);
   useEffect(() => {
-    // 初次渲染封面
-    if (acts && acts.length > 0 && acts.length >= coverNum) {
+    if (!hasInitCover.current && acts.length >= coverNum) {
       const cover = updateRandomPhotos(coverNum)
       setRandomImages(cover.randomImages)
       setRandomIds(cover.randomIndicesArray)
+      hasInitCover.current = true;
     }
-  }, [isLoading])
+  }, [acts])
 
   // 隨機產生照片
   function updateRandomPhotos(num) {
-    if (!acts || acts.length < num) return
-
     const randomIndices = new Set()
     while (randomIndices.size < num) {
       const randomIndex = Math.floor(Math.random() * acts.length)

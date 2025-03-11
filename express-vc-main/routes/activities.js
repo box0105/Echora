@@ -1,5 +1,6 @@
 import express from 'express'
 import multer from 'multer'
+import { resolve } from 'node:path'
 
 import { PrismaClient } from '@prisma/client'
 import { successResponse, errorResponse } from '../lib/utils.js'
@@ -9,12 +10,14 @@ const prisma = new PrismaClient()
 
 /* multer */
 const storage = multer.diskStorage({
-  // 設定檔案搬移目的地
+  // 設定檔案搬移至前端
   destination: (req, file, cb) => {
-    cb(null, 'public/images/uploads')
+    cb(null, resolve('../', 'next-vc-main', 'public', 'images', 'activity'))
   },
   filename: (req, file, cb) => {
     const newFileName = Date.now() + '_' + file.originalname
+    console.log(newFileName)
+
     cb(null, newFileName)
   },
 })
@@ -257,6 +260,70 @@ router.post('/', express.json(), async (req, res) => {
   })
 
   try {
+    successResponse(res, { data })
+  } catch (error) {
+    errorResponse(res, error)
+  }
+})
+
+// Update
+router.put('/:id', express.json(), async (req, res) => {
+  const { id } = req.params
+  console.log('Update ID:', req.params.id)
+
+  const {
+    name,
+    category_id,
+    music_genre_id,
+    date_start,
+    date_end,
+    signup_start,
+    signup_end,
+    city,
+    dist,
+    address,
+    zipcode,
+    intro,
+    media,
+    type,
+    article,
+    lineup,
+  } = req.body
+  const mediaString = Array.isArray(media) ? media.join(',') : media
+
+  try {
+    const data = await prisma.activity.update({
+      where: { id: Number(id) },
+      data: {
+        name,
+        category_id: parseInt(category_id),
+        music_genre_id: parseInt(music_genre_id),
+        date_start: new Date(date_start),
+        date_end: date_end ? new Date(date_end) : null,
+        signup_start: signup_start ? new Date(signup_start) : null,
+        signup_end: signup_end ? new Date(signup_end) : null,
+        city,
+        dist,
+        address,
+        intro,
+        media: mediaString,
+        zipcode: parseInt(zipcode),
+        // 更新 1:n 關聯
+        type: {
+          deleteMany: {}, // 先刪除所有舊的關聯
+          create: type || [], // 再新增新的資料
+        },
+        article: {
+          deleteMany: {},
+          create: article || [],
+        },
+        lineup: {
+          deleteMany: {},
+          create: lineup || [],
+        },
+      },
+    })
+
     successResponse(res, { data })
   } catch (error) {
     errorResponse(res, error)

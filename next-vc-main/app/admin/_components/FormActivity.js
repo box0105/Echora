@@ -5,7 +5,6 @@ import Link from 'next/link'
 import FormDate from '@/app/activity/_components/FormDate'
 import FormTitleWithBtn from './FormTitleWithBtn'
 import ZipcodeSelector from './ZipcodeSelector'
-import { zip } from 'lodash'
 
 const FormActivity = ({
   isLoading,
@@ -23,6 +22,7 @@ const FormActivity = ({
   setBandNum,
   articleNum,
   setArticleNum,
+  imageFiles,
   imagePreviews,
   handleFileChange,
   handleDateChange,
@@ -183,7 +183,7 @@ const FormActivity = ({
               <input
                 type="text"
                 className="form-control"
-                value={formData.type?.[index]?.name || ''}
+                value={formData.type?.[index]?.name}
                 onChange={(e) =>
                   handleTicketChange(index, 'name', e.target.value)
                 }
@@ -195,7 +195,7 @@ const FormActivity = ({
               <input
                 type="number"
                 className="form-control"
-                value={formData.type?.[index]?.price || 0}
+                value={formData.type?.[index]?.price}
                 min={0}
                 onChange={(e) => {
                   if (e.target.value)
@@ -209,7 +209,7 @@ const FormActivity = ({
               <input
                 type="number"
                 className="form-control"
-                value={formData.type?.[index]?.stock || 10}
+                value={formData.type?.[index]?.stock}
                 min={0}
                 onChange={(e) => {
                   if (e.target.value)
@@ -225,7 +225,7 @@ const FormActivity = ({
       <div className="col-12">
         <h4 className="b-cond-title">地址</h4>
         <input
-          className="js-demeter-tw-zipcode-selector"
+          className="js-demeter-tw-zipcode-selector d-none"
           data-city="#city"
           data-dist="#dist"
           // 設定 city, dist
@@ -259,7 +259,9 @@ const FormActivity = ({
                     setFormData({
                       ...formData,
                       dist: e.currentTarget.value,
-                      zipcode: document.querySelector(".js-demeter-tw-zipcode-selector").value
+                      zipcode: document.querySelector(
+                        '.js-demeter-tw-zipcode-selector'
+                      ).value,
                     })
                   }
                 ></select>
@@ -385,12 +387,7 @@ const FormActivity = ({
           {imagePreviews.map((src, i) => (
             <div className="col position-relative" key={i}>
               <div className="ratio ratio-16x9 border rounded">
-                <Image
-                  className="object-fit-cover"
-                  alt={src}
-                  src={src}
-                  fill
-                />
+                <Image className="object-fit-cover" alt={src} src={src} fill />
               </div>
               <button
                 type="button"
@@ -414,7 +411,11 @@ const FormActivity = ({
           />
         </div>
       </div>
-
+      {'上傳的圖片'}
+      <ul>
+        {imageFiles &&
+          imageFiles.map((f, i) => <li key={`i${i}`}>{f.name}</li>)}
+      </ul>
       <div className="d-flex justify-content-end gap-3">
         <button
           className="btn btn-dark mb-0"

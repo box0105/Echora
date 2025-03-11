@@ -31,9 +31,9 @@ export default function AdminActivityState() {
     zipcode: '',
     intro: '',
     media: '',
-    type: [{}],
+    type: [{ name: '', price: '', stock: '' }],
     article: [{ title: '', content: '', images: '' }],
-    lineup: [{}],
+    lineup: [{ bands: '' }],
   })
 
   // Update 頁面時把資料載入 formdata 呈現在畫面上
@@ -68,7 +68,9 @@ export default function AdminActivityState() {
       setTicketNum(act?.type.length)
       setBandNum(act?.lineup.length)
       setArticleNum(act?.article.length)
-      setImagePreviews(act?.media.split(',').map(file => `/images/activity/${file}`));
+      setImagePreviews(
+        act?.media.split(',').map((file) => `/images/activity/${file}`)
+      )
     }
   }, [act, isLoading])
 
@@ -162,6 +164,27 @@ export default function AdminActivityState() {
     console.log('活動新增成功', await response.json())
   }
 
+  // API update
+  const updateActivity = async (updatedFormData) => {
+    if (!activityId) {
+      console.error('缺少 activityId, 無法更新活動')
+      return
+    }
+    try {
+      const response = await fetch(
+        `http://localhost:3005/api/activities/${activityId}`,
+        {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(updatedFormData),
+        }
+      )
+      console.log('更新活動成功', await response.json())
+    } catch (error) {
+      console.error('更新活動失敗', error)
+    }
+  }
+
   // 表單提交與驗證
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -194,21 +217,34 @@ export default function AdminActivityState() {
       return
     }
 
-    if (imageFiles.length === 0) {
-      alert('請上傳至少一張圖片！')
-      return
-    }
+    // if (imageFiles.length === 0) {
+    //   alert('請上傳至少一張圖片！')
+    //   return
+    // }
 
-    const newFilenames = await uploadImage()
+    let newFilenames = []
+
+    // 若有新上傳的圖片才執行 uploadImage
+    if (imageFiles.length > 0) {
+      newFilenames = await uploadImage()
+    }
 
     // 更新 formData
     const updatedFormData = {
       ...formData,
-      media: newFilenames, // 將新檔名設置到 media
+      media:
+        newFilenames.length > 0
+          ? newFilenames.map((file) => `${file}`) // 將新檔名設置到 media，並加上前綴 uploads
+          : formData.media, // 若無新圖片，保留原本的 media
+
+      // 過濾 type、article、lineup 陣列內的 id, activity_id，讓 prisma 自動對應
+      type: formData.type.map(({ id, activity_id, ...rest }) => rest),
+      article: formData.article.map(({ id, activity_id, ...rest }) => rest),
+      lineup: formData.lineup.map(({ id, activity_id, ...rest }) => rest),
     }
 
-    // 呼叫 createActivity 時傳遞 updatedFormData
-    createActivity(updatedFormData)
+    // 呼叫 API
+    isUpdate ? updateActivity(updatedFormData) : createActivity(updatedFormData)
   }
 
   // API upload image
@@ -249,7 +285,7 @@ export default function AdminActivityState() {
       {/* <pre>{JSON.stringify(formData, null, 2)}</pre> */}
 
       <FormActivity
-      isLoading={isLoading}
+        isLoading={isLoading}
         formData={formData}
         setFormData={setFormData}
         selectedCategories={selectedCategories}
@@ -264,6 +300,7 @@ export default function AdminActivityState() {
         setBandNum={setBandNum}
         articleNum={articleNum}
         setArticleNum={setArticleNum}
+        imageFiles={imageFiles}
         imagePreviews={imagePreviews}
         handleFileChange={handleFileChange}
         handleImageDelete={handleImageDelete}

@@ -61,7 +61,6 @@ export default function HeroSection({
               </div>
 
               <Image
-                // src={`${srcFrontEnd}${img}` || `${srcBackEnd}${img}`}
                 src={
                   !imgError
                     ? `${srcFrontEnd}${img}`
