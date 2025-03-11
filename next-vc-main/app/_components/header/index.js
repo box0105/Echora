@@ -1,5 +1,6 @@
 'use client'
 import styles from './header.module.scss'
+import '../../product/list/list.scss'
 import CartOffcanvas from '../cart-offcanvas'
 import { useMyCart } from '@/hooks/use-cart'
 import { useActivity } from '@/hooks/use-activity'
@@ -18,15 +19,48 @@ import {
 } from '@/services/rest-client/use-user'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { useHeaderHeight } from '@/hooks/use-header'
 
 export default function Header() {
   const { totalQty } = useMyCart()
   const [showCart, setShowCart] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
+  // header滾動效果
+  const [prevScrollY, setPrevScrollY] = useState(0)
+  const [isVisible, setIsVisible] = useState(true)
+  const { headerRef } = useHeaderHeight()
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY
+
+    if (currentScrollY > prevScrollY && currentScrollY > 50) {
+      setIsVisible(false)
+    } else {
+      setIsVisible(true)
+    }
+
+    setPrevScrollY(currentScrollY)
+  }
+
+  useEffect(() => {
+    // 監聽滾動事件
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [prevScrollY])
+
+  // header 在不同路徑改變顏色
+  const pathName = usePathname()
+  const getBackgroundColor = () => {
+    if (pathName.includes('/product/list') || pathName == '/activity') return 'g-white-color';
+    return 'g-ori-color';
+  };
+
   // search
   // 在不同路徑改變搜尋框的文字
-  const pathName = usePathname()
+  // const pathName = usePathname()
   const getSearchPlaceholder = () => {
     if (pathName.includes('/activity')) return '搜尋活動名稱或表演樂團'
     else if (pathName.includes('/rent')) return '搜尋電吉他租借商品'
@@ -40,15 +74,18 @@ export default function Header() {
   const { query, setQuery } = useRent(); 
 
   const handleSearch = (e) => {
-    if (pathName.includes('/product')) {
-      setCriteria((prev) => ({
-        ...prev,
-        nameLike: searchName,
-      }));
-    } else if (pathName.includes('/activity')) {
-      updateQueryParams({ search: searchName });
-    } else if (pathName.includes('/rent')) {
-      setQuery(e.target.value);
+    if (e.key === 'Enter') {
+      if (pathName.includes('/activity')) {
+        updateQueryParams({ search: searchName })
+      } else if (pathName.includes('/rent')) {
+        updateQueryParams({ search: searchName })
+      } else {
+        if (criteria.nameLike == '' && searchName == '') return
+        setCriteria((prev) => ({
+          ...prev,
+          nameLike: searchName,
+        }))
+      }
     }
   }
 
@@ -116,7 +153,12 @@ export default function Header() {
   }
   return (
     <>
-      <nav className={`${styles['g-header']} ${styles['px-modified']}`}>
+      <nav
+        ref={headerRef}
+        className={`${styles['g-header']} ${styles['px-modified']} ${styles[getBackgroundColor()]} ${
+          isVisible ? styles['visible'] : `${styles['hidden']} hidden`
+        }`}
+      >
         <div className="container-fluid">
           <div className={`${styles['g-nav-top']} row`}>
             <div className={`${styles['g-logo']} col-lg-4 col-6 order-1 ps-0`}>
@@ -213,7 +255,7 @@ export default function Header() {
                   href="/activity"
                   onClick={() => {
                     // 清空活動篩選條件 & Search欄位
-                    deleteQueryParams()
+                    deleteQueryParams() //這行出現error
                     setSearchName('')
                   }}
                 >

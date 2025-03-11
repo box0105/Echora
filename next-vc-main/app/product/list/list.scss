@@ -10,10 +10,20 @@
 /* ---- */
 
 /* pdlist title section */
+.g-pdlist-bar{
+  position: fixed;
+  // top: 0px;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  transition: top 0.3s ease-in-out;
+  background-color: var(--white);
+  // 微調(在scroll時與header無間距)
+  padding-top: 20px;
+  margin-top: -20px;
+}
+
 .g-pdlist-title {
-  position: sticky;
-  top: 0;
-  z-index: 100;
   background-color: var(--white);
   padding-block: 20px;
   border-bottom: 1px solid var(--grey100);
@@ -33,11 +43,7 @@
   }
 }
 
-/* pdlist topbar section */
 .g-pdlist-topbar {
-  position: sticky;
-  top: 67.2px;
-  z-index: 100;
   background-color: var(--white);
   padding-block: 20px;
 
@@ -123,12 +129,11 @@
       background-color: var(--grey900);
       color: var(--white);
     }
-
-    // &:hover {
-    //   background-color: var(--grey900);
-    //   color: var(--white);
-    // }
   }
+}
+
+.g-pdlist{
+  margin-top: 256px;
 }
 
 /* more section */
