@@ -88,24 +88,14 @@ export default function UserPage() {
       if (resData?.status === 'success') {
         localStorage.setItem('userId', resData.data.user.id)
         // toast.success('已成功登入', { autoClose: 2000 }) // 先顯示通知
-        //區分管理員和會員導向
-        if (resData.data.user.id == 1) {
+        setTimeout(() => {
           setIsAuth(true) // 延遲改變 isAuth，避免 useEffect 立即觸發
           mutate()
-          setAdmin(true)
-          adminlogin(resData.data.token)
-          setTimeout(() => {
-            router.push('/admin')
-          }, 1500) // 確保 `toast` 先出現再跳轉
-        } else {
-          setTimeout(() => {
-            setIsAuth(true) // 延遲改變 isAuth，避免 useEffect 立即觸發
-            mutate()
-            if (isClient) {
-              router.push('/')
-            }
-          }, 1500) // 確保 `toast` 先出現再跳轉
-        }
+          if (isClient) {
+            router.push('/')
+          }
+        }, 1500) // 確保 `toast` 先出現再跳轉
+
 
       } else {
         toast.error(`登入失敗: ${resData.message}`)
@@ -170,11 +160,8 @@ export default function UserPage() {
   }
 
   useEffect(() => {
-    // if (isAuth) {
-    //   router.push('/')
-    // }
     if (isAuth) {
-      router.push(admin ? '/admin' : '/')
+      router.push('/')
     }
   }, [isAuth, router])
 

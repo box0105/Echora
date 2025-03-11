@@ -21,7 +21,7 @@ const CouponAdminTable = () => {
     name: '',
     code: '',
     typeId: '',
-    discount: 0,
+    discount: '',
     startTime: '',
     endTime: '',
     isDelete: 1,
@@ -50,7 +50,7 @@ const CouponAdminTable = () => {
     // setNewCoupon((prevNewCoupon) => ({ ...prevNewCoupon, [name]: value }))
     setNewCoupon({ ...newCoupon, [name]: value })
     setError('')
-    timeChange(name,value)
+    timeChange(name, value)
   }
 
   // 新增優惠券
@@ -79,7 +79,7 @@ const CouponAdminTable = () => {
       name: '',
       code: '',
       typeId: '',
-      discount: 0,
+      discount: '',
       startTime: '',
       endTime: '',
       isDelete: 1,
@@ -97,7 +97,7 @@ const CouponAdminTable = () => {
   const handleEditingInputChange = (e) => {
     const { name, value } = e.target
     setEditingCoupon({ ...editingCoupon, [name]: value })
-    timeChange(name,value)
+    timeChange(name, value)
   }
 
   // 更新優惠券
@@ -245,31 +245,39 @@ const CouponAdminTable = () => {
       </div>
 
       {/* 新增優惠券表單 */}
-      <div className="b-filter-card card p-4 shadow-sm">
-        <h3>新增優惠券</h3>
-        <div className='row'>
-          <div className='w-100 p-0'>
-            <input
-              className='col-6'
-              type="text"
-              name="name"
-              placeholder="優惠券名稱"
-              value={newCoupon.name}
-              onChange={handleInputChange}
-            />
+      <h3 className=''>新增優惠券</h3>
+
+      <div className="b-filter-card card p-4 shadow-sm k-create">
+        <div className='row g-1'>
+          <div className='p-0 col-12 '>
+            <h5>名稱:
+              <input
+                className='ms-2 col-5'
+                type="text"
+                name="name"
+                placeholder="優惠券名稱"
+                value={newCoupon.name}
+                onChange={handleInputChange}
+              />
+            </h5>
+
           </div>
-          <div className='w-100 p-0'>
-            <input
-              className='col-6'
-              type="text"
-              name="code"
-              placeholder="優惠券代碼"
-              value={newCoupon.code}
-              onChange={handleInputChange}
-            />
+          <div className=' p-0 col-12'>
+            <h5>代碼:
+              <input
+                className='ms-2 col-5'
+                type="text"
+                name="code"
+                placeholder="優惠券代碼"
+                value={newCoupon.code}
+                onChange={handleInputChange}
+              />
+            </h5>
           </div>
-          <div className='w-100 p-0'>
-            <select className='col-6' name="typeId" value={newCoupon.typeId} onChange={handleInputChange}>
+
+          <div className='col-12 p-0 h-100'>
+            <h5>折扣類型、金額:</h5>
+            <select className='col-lg-1 col-sm-4 me-2' name="typeId" value={newCoupon.typeId} onChange={handleInputChange}>
               <option value="">請選擇</option>
               <option key="1" value="1">
                 固定金額
@@ -280,7 +288,7 @@ const CouponAdminTable = () => {
             </select>
             {newCoupon.typeId != '' ? (
               <input
-                className='col-6'
+                className='col-lg-2 col-sm-4'
                 type="number"
                 name="discount"
                 placeholder="折扣"
@@ -288,35 +296,26 @@ const CouponAdminTable = () => {
                 onChange={handleInputChange}
               />
             ) : (
-              <input className='col-6' placeholder="折扣" value="" type="number" disabled />
+              <input className='col-lg-2 col-sm-4' placeholder="折扣" value="" type="number" disabled />
             )}
           </div>
 
-          <DateTime name='startTime' placeholder='開始時間' value={newCoupon.startTime} onChange={handleInputChange} />
-          {/* <div className='w-100 p-0'>
-            <input
-              className='col-6'
-              type="datetime-local"
-              name="startTime"
-              placeholder="開始時間"
-              value={newCoupon.startTime}
-              onChange={handleInputChange}
-            />
-          </div> */}
-          <DateTime name='endTime' placeholder='到期時間' value={newCoupon.endTime} onChange={handleInputChange} />
-          {/* <div className='w-100 p-0'>
-            <input
-              className='col-6'
-              type="datetime-local"
-              name="endTime"
-              placeholder="到期時間"
-              value={newCoupon.endTime}
-              onChange={handleInputChange}
-            />
-          </div> */}
-          <div className='w-100 p-0'>
+          <div className='col-lg-8 col-sm-12'>
+            <h5>開始時間:
+              <DateTime name='startTime' placeholder='開始時間' value={newCoupon.startTime} onChange={handleInputChange} />
+
+            </h5>
+          </div>
+
+          <div className='col-lg-8 col-sm-12'>
+            <h5>到期時間:
+              <DateTime name='endTime' placeholder='到期時間' value={newCoupon.endTime} onChange={handleInputChange} />
+            </h5>
+          </div>
+
+          <div className='col-12 p-0'>
             <select
-              className='col-6'
+              className='col-lg-1 col-sm-3'
               name="isDelete"
               value={newCoupon.isDelete}
               onChange={handleInputChange}
@@ -330,18 +329,18 @@ const CouponAdminTable = () => {
             </select>
           </div>
 
+          <div className='col-12 mt-3'>
+            <button onClick={handleAddCoupon} className='col-lg-1 col-sm-3 btn btn-primary'>新增</button>
+            {error && <div className="error-message">{error}</div>}
+          </div>
 
-
-
-          <button onClick={handleAddCoupon}>新增</button>
-          {error && <div className="error-message">{error}</div>}
         </div>
       </div>
 
       {/* 優惠券表格 */}
       <hr></hr>
       <h3 className='mt-2 mb-2'>優惠券總覽</h3>
-      <div className="b-filter-card card p-4 shadow-sm">
+      <div className="b-filter-card card p-4 shadow-sm table-responsive ">
         <table>
           <thead>
             <tr>
@@ -357,7 +356,7 @@ const CouponAdminTable = () => {
           <tbody>
             {coupons.map((coupon) => (
               <tr key={coupon.id}>
-                <td>
+                <td className=''>
                   {editingCouponId === coupon.id ? (
                     <input
                       type="text"

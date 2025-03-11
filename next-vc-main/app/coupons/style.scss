@@ -16,10 +16,12 @@
     height: 70vh;
     /* background: url(./images/main.jpg) lightgray  no-repeat; */
     background: url(../../public/images/coupon/pexels-monstera-4137785.png) 0px -680px / 100% 251.836% no-repeat;
+
     @media (max-width: 400px) {
         background: url(../../public/images/coupon/pexels-monstera-4137785.png) -1200px -680px / 100% 251.836% no-repeat;
         background-size: auto;
     }
+
     background-size: auto;
     /* 背景縮放問題先保留 */
     color: #fff;
@@ -40,7 +42,6 @@
         /* 讓標題可以疊在漸層之上 */
         z-index: 2;
         /* 確保標題在漸層疊加層之上 */
-        width: 100%;
 
         /* mobile */
         @media (max-width: 580px) {
@@ -48,7 +49,6 @@
         }
 
         .title {
-            justify-content: center;
             align-items: center;
             display: flex;
             width: 100%;
@@ -81,17 +81,26 @@
             }
 
             h6 {
-                padding-top: 1.5rem;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                display: flex;
+
+                @media (max-width: 1920px) {
+                    padding-top: .5rem;
+                }
+
+                @media (max-width: 390px) {
+                    padding-top: 1.5rem;
+                }
             }
 
             .btn {
                 font-weight: bold;
-                width: 120%;
-                justify-content: center;
-                align-items: center;
+                width: 100%;
                 display: flex;
                 border: 3px solid #fff;
-                padding: 5px;
+                padding-inline: 15px;
                 border-radius: 100px;
                 background: transparent;
                 color: #fff;
@@ -100,14 +109,16 @@
                 font-size: 32px;
                 transition: 0.5s ease-in-out;
                 letter-spacing: 3px;
+
                 /* mobile */
                 @media (max-width: 580px) {
                     font-size: 24px;
                     width: 100%;
                 }
             }
+
             .btn:hover {
-                padding: 10px;
+                padding-inline: 25px;
                 background: #fdefcc;
                 border: 3px solid #d3af54;
                 color: #3a3a3a;
@@ -201,7 +212,7 @@
         li {
             padding: 0;
             // 些微調整優惠券大小
-            padding-bottom: 20px;
+            padding-bottom: 2px;
             margin-bottom: 10px;
             list-style: none;
             display: flex;
@@ -224,6 +235,8 @@
             // top: 48%;
             // right: 3rem;
             // transform: translate(-50%, -50%);
+            width: 100%;
+            padding: 2px;
 
             @media (max-width: 770px) {
                 right: 8rem;
@@ -254,7 +267,7 @@
             }
 
             @media (max-width: 480px) {
-                display: none;
+                // display: none;
             }
         }
     }
@@ -278,9 +291,10 @@
 .k-Swiper {
     position: absolute;
     top: 40px;
-    left: -500px;
+    left: -480px;
     width: 40%;
     height: 50%;
+
     // background: #000;
     @media (max-width: 1500px) {
         top: 0;

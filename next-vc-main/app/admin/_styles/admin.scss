@@ -160,3 +160,11 @@ input[name=datetimes] {
   background-color: var(--grey900);
   color: white;
 }
+
+.k-create{
+  input{
+    border: 1px solid #8e8e8e;
+    border-radius: 3px;
+    height: 100%
+  }
+}
