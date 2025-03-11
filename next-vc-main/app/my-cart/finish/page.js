@@ -38,6 +38,7 @@ export default function FinishPage() {
   return (
     <>
       <div className="m-background mb-5">
+        <div className="m-127px"></div>
         <div className="m-checklist-section1">
           <div className="container-fluid d-flex justify-content-center m-index1">
             <div className="m-sec1-img w-75">

@@ -9,6 +9,7 @@ import { useMyCart } from '@/hooks/use-cart'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useAuth } from '@/hooks/use-auth'
+import { toastWarning } from '@/hooks/use-toast'
 
 export default function ChecklistPage() {
   const { cartItems, totalAmount, totalQty } = useMyCart()
@@ -16,7 +17,14 @@ export default function ChecklistPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    router.replace('/my-cart/information')
+    if (cartItems.length <= 0) {
+      toastWarning('購物車內無商品!')
+      setTimeout(() => {
+        router.replace('/')
+      }, 2000)
+    } else {
+      router.replace('/my-cart/information')
+    }
   }
 
   //#region 優惠券選單
@@ -47,7 +55,7 @@ export default function ChecklistPage() {
       const res = await fetch(url)
       if (!res.ok) throw new Error('狀態錯誤')
       const data = await res.json()
-      
+
       setUserCoupons(data.userCheckCoupons)
     } catch (err) {
       console.log('發生錯誤', err)
@@ -160,6 +168,7 @@ export default function ChecklistPage() {
   return (
     <>
       <div className="m-background mb-5">
+        <div className="m-127px"></div>
         <div className="m-checklist-section1">
           <div className="container-fluid d-flex justify-content-center m-index1">
             <div className="m-sec1-img w-75">
@@ -214,7 +223,9 @@ export default function ChecklistPage() {
               <div className="d-flex justify-content-between py-2">
                 <h5>折扣 :</h5>
                 <h5>
-                  {discountedAmount == 0 ? '' : `- NT$ ${discountedAmount.toLocaleString()}`}
+                  {discountedAmount == 0
+                    ? ''
+                    : `- NT$ ${discountedAmount.toLocaleString()}`}
                 </h5>
               </div>
               <hr />
@@ -228,89 +239,6 @@ export default function ChecklistPage() {
             </div>
           </div>
         </form>
-        {/* <div className="m-section3 w-100">
-          <div className="container-fluid m-index">
-            <div className="m-index-title">
-              <h1 className="h3">
-                TRENDING DEALS<span> / 熱門優惠商品</span>
-              </h1>
-            </div>
-            <div className="row row-cols-lg-4 row-cols-1 w-100 g-0">
-              <div className="col card-group">
-                <div className="card w-100" style={{ width: '18rem' }}>
-                  <img
-                    src="/images/cart/card2-img.png"
-                    className="card-img-top"
-                    alt="..."
-                  />
-                  <div className="card-body">
-                    <h3 className="card-title">Product Name</h3>
-                    <h4 className="card-text">Productttt</h4>
-                    <div className="d-flex">
-                      <h5 className="card-text">$77999</h5>
-                      <span>$72900</span>
-                    </div>
-                    <p>2 COLORS</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col card-group d-none d-lg-block">
-                <div className="card w-100" style={{ width: '18rem' }}>
-                  <img
-                    src="/images/cart/card2-img.png"
-                    className="card-img-top"
-                    alt="..."
-                  />
-                  <div className="card-body">
-                    <h3 className="card-title">Product Name</h3>
-                    <h4 className="card-text">Productttt</h4>
-                    <div className="d-flex">
-                      <h5 className="card-text">$77999</h5>
-                      <span>$72900</span>
-                    </div>
-                    <p>2 COLORS</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col card-group d-none d-lg-block">
-                <div className="card w-100" style={{ width: '18rem' }}>
-                  <img
-                    src="/images/cart/card2-img.png"
-                    className="card-img-top"
-                    alt="..."
-                  />
-                  <div className="card-body">
-                    <h3 className="card-title">Product Name</h3>
-                    <h4 className="card-text">Productttt</h4>
-                    <div className="d-flex">
-                      <h5 className="card-text">$77999</h5>
-                      <span>$72900</span>
-                    </div>
-                    <p>2 COLORS</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col card-group d-none d-lg-block">
-                <div className="card w-100" style={{ width: '18rem' }}>
-                  <img
-                    src="/images/cart/card2-img.png"
-                    className="card-img-top"
-                    alt="..."
-                  />
-                  <div className="card-body">
-                    <h3 className="card-title">Product Name</h3>
-                    <h4 className="card-text">Productttt</h4>
-                    <div className="d-flex">
-                      <h5 className="card-text">$77999</h5>
-                      <span>$72900</span>
-                    </div>
-                    <p>2 COLORS</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
       </div>
     </>
   )

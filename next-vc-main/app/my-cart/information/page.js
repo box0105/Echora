@@ -230,11 +230,17 @@ export default function InformationPage() {
 
     // 將 userData 寫入 localStorage
     localStorage.setItem('userData', JSON.stringify(userData))
-
-    if (userData.paymentMethod == 'linePay') {
-      goLinePay()
-    } else if (userData.paymentMethod == 'ECpay') {
-      goEcpay()
+    if (cartItems.length <= 0) {
+      toastWarning('購物車內無商品!')
+      setTimeout(() => {
+        router.replace('/')
+      }, 2000)
+    } else {
+      if (userData.paymentMethod == 'linePay') {
+        goLinePay()
+      } else if (userData.paymentMethod == 'ECpay') {
+        goEcpay()
+      }
     }
   }
   //#endregion
@@ -243,6 +249,7 @@ export default function InformationPage() {
   return (
     <>
       <div className="m-background mb-5">
+        <div className="m-127px"></div>
         <div className="m-checklist-section1">
           <div className="container-fluid d-flex justify-content-center m-index1">
             <div className="m-sec1-img w-75 ">
@@ -478,7 +485,9 @@ export default function InformationPage() {
                 <hr />
                 <div className="d-flex justify-content-between py-3">
                   <h4 className="h4">總計 :</h4>
-                  <h4 className="h4">NT$ {(totalAmount - cost).toLocaleString()}</h4>
+                  <h4 className="h4">
+                    NT$ {(totalAmount - cost).toLocaleString()}
+                  </h4>
                 </div>
                 {/* <div className="row row-cols-1 pt-4 d-md-block d-none">
                 <CartList cartItems={cartItems} />
