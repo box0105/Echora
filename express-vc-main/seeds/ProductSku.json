@@ -676,7 +676,7 @@
       "productId": 70,
       "name": "Player II Stratocaster®",
       "colorId": 9,
-      "stock": 10
+      "stock": 0
     },
     {
       "id": "71-8",
@@ -704,7 +704,7 @@
       "productId": 72,
       "name": "Player Plus Stratocaster®",
       "colorId": 8,
-      "stock": 10
+      "stock": 0
     },
     {
       "id": "73-11",

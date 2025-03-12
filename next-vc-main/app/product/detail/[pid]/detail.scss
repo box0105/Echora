@@ -134,10 +134,15 @@
   border-radius: 30px;
   padding: 16px 24px;
   margin-block: 16px 24px;
+
+  &:disabled{
+    background-color: var(--grey100);
+    color: var(--grey500);
+  }
 }
 
 .g-stock {
-  color: var(--grey700);
+  // color: var(--grey700);
   margin-bottom: 30px;
 }
 
