@@ -270,8 +270,8 @@ export default function ProductDetailIdPage() {
                   alt=""
                   onClick={toggleFav}
                 />
-                <h3 className="h3 mb-0 me-5">{detailData[0].name}</h3>
-                {detailData[0].discountPrice ? (
+                <h3 className="h3 mb-0 me-5">{detailData[0]?.name}</h3>
+                {detailData[0]?.discountPrice ? (
                   <>
                     <div className='d-flex align-items-center gap-2'>
                       <h6
@@ -281,35 +281,35 @@ export default function ProductDetailIdPage() {
                           textDecoration: 'line-through',
                         }}
                       >
-                        NT$ {detailData[0].price.toLocaleString()}
+                        NT$ {detailData[0]?.price.toLocaleString()}
                       </h6>
                       <h6
                         className="g-price h5 m-0"
                         style={{ color: 'var(--red)' }}
                       >
-                        NT$ {detailData[0].discountPrice.toLocaleString()}
+                        NT$ {detailData[0]?.discountPrice.toLocaleString()}
                       </h6>
                     </div>
                   </>
                 ) : (
                   <>
                     <h6 className="g-price h5 m-0">
-                      NT$ {detailData[0].price.toLocaleString()}
+                      NT$ {detailData[0]?.price.toLocaleString()}
                     </h6>
                   </>
                 )}
                 <div className="g-pd-brand d-flex justify-content-center align-items-center">
-                  <p className="h7 m-0">{detailData[0].brand}</p>
+                  <p className="h7 m-0">{detailData[0]?.brand}</p>
                 </div>
                 <div className="g-colors">
                   <div className="g-color-text d-flex align-items-center gap-2 mb-3">
                     <h5 className="m-0">顏色 :</h5>
                     <p className="h6 m-0">
-                      {colorName ? colorName : detailData[0].defaultColorName}
+                      {colorName ? colorName : detailData[0]?.defaultColorName}
                     </p>
                   </div>
                   <div className="g-color-balls d-flex">
-                    {detailData[0].colors.map((color) => (
+                    {detailData[0]?.colors.map((color) => (
                       <>
                         <button
                           key={color.skuId}
@@ -335,7 +335,7 @@ export default function ProductDetailIdPage() {
                 </div>
                 <button
                   className="g-add-to-cart d-flex justify-content-center align-items-center"
-                  disabled={detailData[0].stock[selectedSku] > 0 ? false : true}
+                  disabled={detailData[0]?.stock[selectedSku] > 0 ? false : true}
                   onClick={() => {
                     console.log(getSku(selectedSku))
                     onAdd(getSku(selectedSku))
@@ -345,7 +345,7 @@ export default function ProductDetailIdPage() {
                   <h6 className="m-0">加入購物車</h6>
                 </button>
                 <div className="g-stock d-flex align-items-center gap-2">
-                  {detailData[0].stock[selectedSku] > 0 ? (
+                  {detailData[0]?.stock[selectedSku] > 0 ? (
                     <>
                       <svg
                         width="19"
@@ -397,7 +397,7 @@ export default function ProductDetailIdPage() {
                     <h6 className="m-0">商品描述</h6>
                     {/* <img src="/images/product/detail/minus.svg" alt="" /> */}
                   </div>
-                  <p className="mt-3 mb-0">{detailData[0].discription}</p>
+                  <p className="mt-3 mb-0">{detailData[0]?.discription}</p>
                 </div>
                 <div className="g-pd-spec py-3">
                   <div className="g-spec-title d-flex justify-content-between align-items-center">
@@ -409,7 +409,7 @@ export default function ProductDetailIdPage() {
                       <li>
                         <p className="mb-1">琴頸拾音器</p>
                         <p className="p m-0" style={{ fontWeight: 400 }}>
-                          {detailData[0].neckPickup}
+                          {detailData[0]?.neckPickup}
                         </p>
                       </li>
                     )}
@@ -417,7 +417,7 @@ export default function ProductDetailIdPage() {
                       <li>
                         <p className="mb-1">中段拾音器</p>
                         <p className="p m-0" style={{ fontWeight: 400 }}>
-                          {detailData[0].middlePickup}
+                          {detailData[0]?.middlePickup}
                         </p>
                       </li>
                     )}
@@ -425,7 +425,7 @@ export default function ProductDetailIdPage() {
                       <li>
                         <p className="mb-1">琴橋拾音器</p>
                         <p className="p m-0" style={{ fontWeight: 400 }}>
-                          {detailData[0].bridgePickup}
+                          {detailData[0]?.bridgePickup}
                         </p>
                       </li>
                     )}
@@ -433,14 +433,14 @@ export default function ProductDetailIdPage() {
                       <li>
                         <p className="mb-1">控制器</p>
                         <p className="m-0" style={{ fontWeight: 400 }}>
-                          {detailData[0].controls}
+                          {detailData[0]?.controls}
                         </p>
                       </li>
                     )}
                     {detailData[0]?.switching && (
                       <li>
                         <p className="mb-1">拾音器開關</p>
-                        <p className="m-0">{detailData[0].switching}</p>
+                        <p className="m-0">{detailData[0]?.switching}</p>
                       </li>
                     )}
                   </ul>

@@ -3,8 +3,6 @@
 import ProductCard from '../_components/product-card'
 import { useState, useEffect } from 'react'
 import MemberLayout from '../layouts/memberLayout'
-import { method } from 'lodash'
-import { colors } from '@mui/material'
 export default function FavPage() {
   const [uid, setUid] = useState(null)
   const [favItems, setFavItems] = useState([])
@@ -43,7 +41,9 @@ export default function FavPage() {
   }, [])
 
   useEffect(() => {
-    getFavItems()
+    if (uid) {
+      getFavItems()
+    }
   }, [uid])
 
   return (
