@@ -19,7 +19,7 @@ export function useRent() {
       const response = await fetch(url);
       const data = await response.json();
       console.log('useRent API 响应:', data)
-      // setResults(data.data); // 🟢 設定 API 返回的數據
+      setResults(data.data); // 🟢 設定 API 返回的數據
     } catch (err) {
       console.error('API 請求錯誤:', err);
       setError(err);
