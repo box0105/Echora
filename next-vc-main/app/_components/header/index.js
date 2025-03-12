@@ -70,6 +70,7 @@ export default function Header() {
   const router = useRouter()
   const [searchName, setSearchName] = useState('')
   const { criteria, setCriteria, defaultCriteria } = useProductState()
+  const isFirstRender = useRef(true) // 追蹤是否為初次渲染
   const { updateQueryParams } = useActivity()
   const { query, setQuery } = useRent(); 
 
@@ -88,6 +89,14 @@ export default function Header() {
       }
     }
   }
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false // 初次渲染時設定為 false，下一次才會觸發
+      return
+    }
+    router.push('/product/list')
+  }, [criteria])
 
   const [showDropdown, setShowDropdown] = useState(false)
   const { user, isAuth, setIsAuth } = useAuth()
