@@ -24,14 +24,7 @@ export default function HeroSection({
 }) {
   // 如果是字串，則分割為陣列 (*輸入也有丟陣列的)
   const imageArr = typeof images == 'string' ? images.split(',') : images
-
-  // 添加照片判斷，預設採用前端路徑，若路徑不存在則用後端路徑
-  const [imgError, setImgError] = useState(false)
-  const handleImageError = () => {
-    setImgError(true)
-  }
-  const srcFrontEnd = '/images/activity/'
-  const srcBackEnd = 'http://localhost:3005/images/uploads/'
+  const src = '/images/activity/'
 
   return (
     <Swiper
@@ -61,13 +54,8 @@ export default function HeroSection({
               </div>
 
               <Image
-                src={
-                  !imgError
-                    ? `${srcFrontEnd}${img}`
-                    : `${srcBackEnd}${img}`
-                }
-                onError={handleImageError}
-                alt="圖片網址錯誤"
+                src={`${src}${img}`}
+                alt={`${src}${img}`}
                 fill
                 className="object-fit-cover"
                 priority

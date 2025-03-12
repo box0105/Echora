@@ -70,7 +70,7 @@ export default function Header() {
   const router = useRouter()
   const [searchName, setSearchName] = useState('')
   const { criteria, setCriteria, defaultCriteria } = useProductState()
-  const { updateQueryParams } = useActivity()
+  const { updateQueryParams, deleteQueryParams } = useActivity()
   const { query, setQuery } = useRent(); 
 
   const handleSearch = (e) => {

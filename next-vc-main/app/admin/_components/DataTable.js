@@ -5,9 +5,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { dateFormat } from '@/app/activity/_utils/dateFormat'
 import { useActivity } from '@/hooks/use-activity'
+import { toastInfo, toastSuccess, toastWarning } from '@/hooks/use-toast'
 
 export default function DataTable() {
-  const { acts, isLoading } = useActivity()
+  const { acts, isLoading, updateQueryParams } = useActivity()
 
   // API delete
   const deleteActivity = async (activityId, activityName) => {
@@ -21,12 +22,18 @@ export default function DataTable() {
         }
       )
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`)
-      }
+      const result = await response.json()
+      if (result.status === 'success') {
+        toastSuccess('活動刪除成功')
+        console.log('活動刪除成功', result)
 
-      console.log('活動刪除成功', await response.json())
+        // 觸發重新 fetch 資料
+        // updateQueryParams({reFetch:true})
+      } else {
+        toastWarning('該活動已被刪除')
+      }
     } catch (error) {
+      toastWarning('活動刪除發生錯誤')
       console.error('活動刪除失敗!', error.message)
     }
   }

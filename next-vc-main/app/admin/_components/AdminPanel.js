@@ -6,11 +6,16 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 export default function AdminPanel() {
-  const pathName = usePathname();
+  const pathName = usePathname()
+
+  // 導向到對應的一般頁面
+  let href = '/'
+  if (pathName?.includes('activity')) href = '/activity'
+  else if (pathName?.includes('coupon')) href = '/coupons'
 
   return (
     <nav className="b-nav col-md-2 mb-5 bg-white card p-3 d-flex flex-column align-items-center">
-      <Link href="/admin" className='w-100 text-center'>
+      <Link href="/admin" className="w-100 text-center">
         <Image
           src="/images/header/logo-mb.svg"
           alt="Logo"
@@ -18,9 +23,13 @@ export default function AdminPanel() {
           height={50}
         />
       </Link>
-      
+
       <ul className="nav flex-column align-self-stretch mt-3 pt-3">
-        <li className={`nav-item ${pathName?.includes('activity') ? 'active' : ''}`}>
+        <li
+          className={`nav-item ${
+            pathName?.includes('activity') ? 'active' : ''
+          }`}
+        >
           <h6 className="mb-0">
             <Link href="/admin/activity" className="nav-link">
               <i className="fa-solid fa-table-list me-3 text-secondary" />
@@ -28,7 +37,9 @@ export default function AdminPanel() {
             </Link>
           </h6>
         </li>
-        <li className={`nav-item ${pathName?.includes('coupon') ? 'active' : ''}`}>
+        <li
+          className={`nav-item ${pathName?.includes('coupon') ? 'active' : ''}`}
+        >
           <h6 className="mb-0">
             <Link href="/admin/coupon" className="nav-link">
               <i className="fa-solid fa-table-list me-3 text-secondary" />
@@ -38,12 +49,14 @@ export default function AdminPanel() {
         </li>
         <li className="nav-item">
           <h6 className="mb-0">
-            <Link href="/" className="nav-link">
+            <Link href={href} className="nav-link">
               <i className="fa-solid fa-house me-3 text-secondary" />
-              返回首頁
+              一般頁面
             </Link>
           </h6>
         </li>
+        {/* 
+        在一般頁面統一登出
         <li className="nav-item">
           <h6 className="mb-0">
             <Link href="/my-user" className="nav-link">
@@ -51,7 +64,8 @@ export default function AdminPanel() {
               登出
             </Link>
           </h6>
-        </li>
+        </li> 
+        */}
       </ul>
     </nav>
   )

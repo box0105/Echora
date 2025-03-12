@@ -1,6 +1,9 @@
 'use client'
 
 import React from 'react'
+// import FormDate from '@/app/activity/_components/FormDate'
+// import PriceSlider from '@/app/activity/_components/PriceSlider'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 export default function FilterPanel() {
   return (
@@ -9,9 +12,9 @@ export default function FilterPanel() {
         <h4>
           <button className="b-btn-unstyled">清除篩選條件</button>
         </h4>
-        <button className="b-btn-unstyled">
+        {/* <button className="b-btn-unstyled">
           <i className="fa-solid fa-xmark" />
-        </button>
+        </button> */}
       </div>
 
       {/* 選項 */}
@@ -454,18 +457,19 @@ export default function FilterPanel() {
           <label className="form-label mb-0">30天內</label>
         </div>
         <div className="col-12 col-sm-auto">
-          <input className="px-3" type="text" name="datetimes" />
+          {/* <FormDate /> */}
+          {/* <input className="px-3" type="text" name="datetimes" /> */}
         </div>
       </div>
       {/* 價錢 */}
-      <div className="row gy-3 gx-4 d-flex align-items-center">
+      {/* <div className="row gy-3 gx-4 d-flex align-items-center">
         <div className="col-auto col-sm-1">
           <h5 className="mb-0">價錢</h5>
         </div>
         <div className="col-12 col-sm-auto">
-          <label className="form-label mb-0">價錢 bar</label>
+          <PriceSlider />
         </div>
-      </div>
+      </div> */}
       <button className="b-btn b-load-btn mb-1">顯示活動</button>
     </form>
   )

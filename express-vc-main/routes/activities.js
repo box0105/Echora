@@ -157,6 +157,7 @@ router.get('/options', async (req, res) => {
 // Read One data
 router.get('/:id', async (req, res) => {
   const { id } = req.params
+  console.log('單一活動 ID:', req.params.id)
 
   try {
     const data = await prisma.activity.findUnique({
@@ -170,7 +171,9 @@ router.get('/:id', async (req, res) => {
         type: true,
       },
     })
-
+    if (!data) {
+      return res.status(404).json({ status: 'fail', error: '活動不存在' })
+    }
     successResponse(res, { data })
   } catch (error) {
     errorResponse(res, error)
