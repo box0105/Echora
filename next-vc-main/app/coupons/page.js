@@ -186,7 +186,7 @@ export default function CouponPage() {
             </h1>
           </div>
           <div className="row row-cols-lg-4 row-cols-md-4 row-cols-sm-1 row-cols-xm-1 row-cols-xxm-1 ">
-            {coupon.map((item) => (
+            {coupon.filter(item => item.isDelete != 1).map((item) => (
               <li
                 key={item.id}
                 id={item.id}
@@ -194,58 +194,59 @@ export default function CouponPage() {
               >
                 <div className="col">
                   <div className="text">
-                    <div className="d-flex ">
-                      <div className="h3">
-                        <b>{item.name}</b>
-                      </div>
-                      <div className="ms-3">
-                        {userCoupons
-                          .map((v) => v.couponId)
-                          .includes(item.id) ? (
-                          <button
-                            className="btn btn-secondary "
-                            onClick={async () => {
-                              if (isAuth) {
-                                await notifyAndGet(item.id, item.typeId)
-                                await fetchUserCoupon()
-                              } else {
-                                alert('請先登入')
-                              }
-                            }}
-                          >
-                            {userCoupons
-                              .map((v) => v.couponId)
-                              .includes(item.id)
-                              ? '已領取'
-                              : '領取'}
-                          </button>
-                        ) : (
-                          <button
-                            className="btn btn-dark "
-                            onClick={async () => {
-                              if (isAuth) {
-                                await notifyAndGet(item.id, item.typeId)
-                                await fetchUserCoupon()
-                              } else {
-                                alert('請先登入')
-                              }
-                            }}
-                          >
-                            {userCoupons
-                              .map((v) => v.couponId)
-                              .includes(item.id)
-                              ? '已領取'
-                              : '領取'}
-                          </button>
-                        )}
-                      </div>
-                    </div>
+                    <div className="d-flex">
 
+                    </div>
+                    <div className="h3">
+                      <b>{item.name}</b>
+                    </div>
                     <div>
                       使用時間:
                       <br />
                       {time(item.startTime)}~{time(item.endTime)}
                     </div>
+                    <div className="ms-3">
+                      {userCoupons
+                        .map((v) => v.couponId)
+                        .includes(item.id) ? (
+                        <button
+                          className="btn btn-secondary "
+                          onClick={async () => {
+                            if (isAuth) {
+                              await notifyAndGet(item.id, item.typeId)
+                              await fetchUserCoupon()
+                            } else {
+                              alert('請先登入')
+                            }
+                          }}
+                        >
+                          {userCoupons
+                            .map((v) => v.couponId)
+                            .includes(item.id)
+                            ? '已領取'
+                            : '領取'}
+                        </button>
+                      ) : (
+                        <button
+                          className="btn btn-dark "
+                          onClick={async () => {
+                            if (isAuth) {
+                              await notifyAndGet(item.id, item.typeId)
+                              await fetchUserCoupon()
+                            } else {
+                              alert('請先登入')
+                            }
+                          }}
+                        >
+                          {userCoupons
+                            .map((v) => v.couponId)
+                            .includes(item.id)
+                            ? '已領取'
+                            : '領取'}
+                        </button>
+                      )}
+                    </div>
+
                   </div>
                 </div>
               </li>

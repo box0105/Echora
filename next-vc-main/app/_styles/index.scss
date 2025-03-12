@@ -18,7 +18,10 @@
 /* 自訂 */
 
 /* section1 */
-.m-section1 {
+.m-section1 {  
+  @media (max-width: 768px) {
+    margin-top: 146px;
+  }
   width: 100%;
 }
 .m-section1-card1 {

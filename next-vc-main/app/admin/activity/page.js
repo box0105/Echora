@@ -1,41 +1,19 @@
 'use client'
 
 import DataTable from '../_components/DataTable'
+import TitleSearch from '../_components/TitleSearch'
+import FilterPanel from '../_components/FilterPanel'
 
 export default function AdminActivity() {
   return (
     <div className="container-fluid">
-      {/* Title & Search */}
       <div className="heading row justify-content-between align-items-center mb-4">
-        <div className="col-auto">
-          <h2 className="mb-0">活動後台管理</h2>
-        </div>
-        <div className="col-auto my-2">
-          <div className="input-group mx-auto">
-            <input
-              type="text"
-              className="form-control"
-              name="search"
-              placeholder="搜尋活動名稱、演出陣容"
-            />
-            <span className="input-group-text">
-              <i className="fas fa-search" />
-            </span>
-          </div>
-        </div>
+        <TitleSearch/>
       </div>
 
-      {/* Filter */}
       <div className="b-filter-card card p-4 shadow-sm">
-        <form className="row gx-4 gy-4">
-          <div className="b-filter-title d-flex justify-content-between align-items-center w-100">
-            <h4>
-              <button className="b-btn-unstyled">清除篩選條件</button>
-            </h4>
-            <button className="b-btn-unstyled">
-              <i className="fa-solid fa-xmark" />
-            </button>
-          </div>
+        <FilterPanel />
+      </div>
 
           {/* 選項 */}
           <div className="row gy-3 gx-4 d-flex align-items-center">
@@ -483,7 +461,7 @@ export default function AdminActivity() {
           {/* 價錢 */}
           <div className="row gy-3 gx-4 d-flex align-items-center">
             <div className="col-auto col-sm-1">
-              <h className="mb-0">價錢</h>
+              <h5 className="mb-0">價錢</h5>
             </div>
             <div className="col-12 col-sm-auto">
               <label className="form-label mb-0">價錢 bar</label>
@@ -492,8 +470,6 @@ export default function AdminActivity() {
           <button className="b-btn b-load-btn mb-1">顯示活動</button>
         </form>
       </div>
-
-      <DataTable />
     </div>
   )
 }

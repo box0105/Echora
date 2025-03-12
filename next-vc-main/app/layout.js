@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
         <Suspense fallback={<div>Loading...</div>}>
           <Providers>
             {!noHeaderFooterPaths.includes(pathname) && !pathname.includes('admin')&& <Header />}
-            <main style={{ minHeight: 'calc(100vh - 440px)' }}>
+            <main style={{ minHeight: 'calc(100vh - 365px)' }}>
               <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
             </main>
             {!noHeaderFooterPaths.includes(pathname) && !pathname.includes('admin') && <Footer />}

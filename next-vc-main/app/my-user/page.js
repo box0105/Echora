@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { useAuth } from '@/hooks/use-auth'
 import useFirebase from './_hooks/use-firebase'
 import { toast, ToastContainer } from 'react-toastify'
+import { toastError, toastSuccess, toastWarning } from '@/hooks/use-toast'
 import 'react-toastify/dist/ReactToastify.css'
 import {
   useAuthGoogleLogin,
@@ -16,6 +17,7 @@ import {
 } from '@/services/rest-client/use-user'
 import { useRouter } from 'next/navigation'
 import { set } from 'lodash'
+import { useAdminAuth } from '@/hooks/use-admin';
 
 export default function UserPage() {
   const [userInput, setUserInput] = useState({ email: '', password: '' })
@@ -33,6 +35,8 @@ export default function UserPage() {
   const { isAuth, setIsAuth } = useAuth()
   const router = useRouter()
   const [isClient, setIsClient] = useState(false)
+  const [admin, setAdmin] = useState(false)
+  const { adminlogin } = useAdminAuth(); // 從 Context 取得 login 函數
 
   useEffect(() => {
     setIsClient(true)
@@ -61,12 +65,12 @@ export default function UserPage() {
 
   const handleLogin = async () => {
     if (isAuth) {
-      toast.error('錯誤 - 會員已登入')
+      toastError('錯誤 - 會員已登入')
       return
     }
 
     if (!userInput.email || !userInput.password) {
-      toast.error('請提供 email 和 password')
+      toastError('請提供 email 和 password')
       return
     }
 
@@ -85,7 +89,6 @@ export default function UserPage() {
       if (resData?.status === 'success') {
         localStorage.setItem('userId', resData.data.user.id)
         // toast.success('已成功登入', { autoClose: 2000 }) // 先顯示通知
-
         setTimeout(() => {
           setIsAuth(true) // 延遲改變 isAuth，避免 useEffect 立即觸發
           mutate()
@@ -93,16 +96,18 @@ export default function UserPage() {
             router.push('/')
           }
         }, 1500) // 確保 `toast` 先出現再跳轉
+
+
       } else {
-        toast.error(`登入失敗: ${resData.message}`)
+        toastError(`登入失敗: ${resData.message}`)
       }
     } catch (err) {
-      toast.error(`登入失敗: ${err.message}`)
+      toastError(`登入失敗: ${err.message}`)
     }
   }
   const handleGoogleLogin = async () => {
     if (isAuth) {
-      toast.error('錯誤 - 會員已登入')
+      toastError('錯誤 - 會員已登入')
       return
     }
 
@@ -131,12 +136,12 @@ export default function UserPage() {
             }
           }, 2000)
         } else {
-          toast.error('Google 登入失敗')
+          toastError('Google 登入失敗')
           console.log('Google login error:', resData.message)
         }
       })
     } catch (error) {
-      toast.error('Google 登入失敗')
+      toastError('Google 登入失敗')
       console.error('Google login error:', error)
     }
   }
@@ -151,7 +156,7 @@ export default function UserPage() {
       mutate()
       // toast.success('已成功登出')
     } else {
-      toast.error('登出失敗')
+      toastError('登出失敗')
     }
   }
 
@@ -229,9 +234,8 @@ export default function UserPage() {
                 onClick={togglePasswordVisibility}
               >
                 <i
-                  className={`fa-solid ${
-                    showPassword ? 'fa-eye-slash' : 'fa-eye'
-                  }`}
+                  className={`fa-solid ${showPassword ? 'fa-eye-slash' : 'fa-eye'
+                    }`}
                 ></i>
               </button>
             </div>

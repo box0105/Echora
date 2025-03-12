@@ -6,6 +6,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { toast, ToastContainer } from 'react-toastify'
+import { toastError, toastSuccess, toastWarning } from '@/hooks/use-toast'
 import 'react-toastify/dist/ReactToastify.css'
 import { useUserUpdatePassword } from '@/services/rest-client/use-user'
 import { useAuth } from '@/hooks/use-auth'
@@ -56,12 +57,12 @@ export default function PasswordPage() {
       !userPasswordInput.current ||
       !userPasswordInput.confirm
     ) {
-      toast.error('密碼欄位為必填')
+      toastError('密碼欄位為必填')
       return
     }
 
     if (userPasswordInput.new !== userPasswordInput.confirm) {
-      toast.error('新密碼與確認密碼不同')
+      toastError('新密碼與確認密碼不同')
       return
     }
 
@@ -82,15 +83,15 @@ export default function PasswordPage() {
       )
       const resData = await res.json()
       if (resData.status === 'success') {
-        toast.success('會員密碼修改成功', {
+        toastSuccess('會員密碼修改成功', {
           autoClose: 2000,
           position: 'bottom-right',
         })
       } else {
-        toast.error(`會員密碼修改失敗: ${resData.message}`)
+        toastError(`會員密碼修改失敗: ${resData.message}`)
       }
     } catch (err) {
-      toast.error(`會員密碼修改失敗: ${err.message}`)
+      toastError(`會員密碼修改失敗: ${err.message}`)
     }
   }
 
@@ -99,7 +100,7 @@ export default function PasswordPage() {
   return (
     <>
       <MemberLayout>
-        <div className="change-password-form">
+        <div className="change-password-form w-50">
           <div className="change-password-header">
             <div className="section-title h4">修改密碼</div>
           </div>

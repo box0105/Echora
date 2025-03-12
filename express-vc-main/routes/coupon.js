@@ -8,6 +8,7 @@ const router = express.Router()
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
+
 router.use(express.json())
 
 // 取得所有優惠券
@@ -22,6 +23,12 @@ router.get('/', async (req, res) => {
   } catch (err) {
     console.log(err)
   }
+})
+
+//管理員登入
+router.get('/admin/login', async (req, res) => {
+  // 只有經過驗證的管理員才能訪問這個路由
+  res.json({ message: '歡迎來到後台' });
 })
 
 // 管理員新增優惠券
@@ -61,7 +68,7 @@ router.put('/admin', async (req, res) => {
   try {
     const editCoupon = await db.query(
       'UPDATE coupon SET name = ?, code = ?, typeId = ?, discount = ?, startTime = ?, endTime = ?, isDelete = ? WHERE id = ?',
-      [name, code,  typeId,discount, startTime, endTime, isDelete, id]
+      [name, code, typeId, discount, startTime, endTime, isDelete, id]
     )
     console.log(editCoupon)
     res.status(200).json({ status: 'success', message: '修改成功' })
@@ -79,9 +86,9 @@ router.delete('/admin', async (req, res) => {
   console.log(rows);
 
   try {
-      const sql = 'DELETE FROM coupon WHERE id = ?'
-      const values = [id]
-      await db.query(sql, values)
+    const sql = 'DELETE FROM coupon WHERE id = ?'
+    const values = [id]
+    await db.query(sql, values)
 
     res.status(200).json({ status: 'success', message: '刪除成功!' })
   } catch (err) {
