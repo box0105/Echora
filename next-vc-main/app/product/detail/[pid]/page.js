@@ -7,6 +7,8 @@ import { useState, useEffect, useRef } from 'react'
 import { useMyCart } from '@/hooks/use-cart'
 import { useParams } from 'next/navigation'
 import { useProductState } from '@/services/rest-client/use-products'
+import { toastWarning, toastSuccess } from '@/hooks/use-toast'
+import Swal from 'sweetalert2'
 
 export default function ProductDetailIdPage() {
   //for 購物車
@@ -135,12 +137,18 @@ export default function ProductDetailIdPage() {
   const [uid, setUid] = useState(null)
   const toggleFav = async () => {
     if (!uid) {
-      alert('請先登入')
+      Swal.fire({
+        // title: '',
+        text: '請先登入',
+        icon: 'info',
+        iconColor: 'var(--grey700)',
+        confirmButtonColor: 'var(--grey900)'
+      })
       return
     }
 
     if (!selectedSku) {
-      alert('請先選擇顏色')
+      toastWarning('請先選擇顏色')
       return
     }
 
@@ -178,8 +186,8 @@ export default function ProductDetailIdPage() {
       )
       const result = await res.json()
       if (result.status === 'success') {
-        // alert('已加入我的收藏')
-        console.log('已加入我的收藏')
+        toastSuccess('已加入我的收藏')
+        // console.log('已加入我的收藏')
       }
     } catch (err) {
       console.log(err)
@@ -196,11 +204,10 @@ export default function ProductDetailIdPage() {
       )
       const result = await res.json()
       if (result.status === 'success') {
-        // alert('已從我的收藏移除商品')
-        console.log('已從我的收藏移除商品')
+        toastSuccess('已從我的收藏移除商品')
+        // console.log('已從我的收藏移除商品')
       }
     } catch (err) {
-      // alert('移除失敗')
       console.log(err)
     }
   }
@@ -287,9 +294,6 @@ export default function ProductDetailIdPage() {
                             setSelectedSku(color.skuId)
                             setColorName(color.name)
                             setColorId(color.colorId)
-                            // console.log(color)
-                            // box
-                            // setSelectedColor(color)
                           }}
                         >
                           <img

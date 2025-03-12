@@ -6,6 +6,7 @@ import React, { useRef, useState, useEffect } from 'react'
 import { useMyCoupon } from '@/hooks/use-coupon'
 import { useAuth } from '@/hooks/use-auth'
 import Link from 'next/link'
+import Swal from 'sweetalert2'
 // import { array } from 'prop-types'
 
 // Import Swiper React components
@@ -24,7 +25,6 @@ export default function CouponPage() {
   const { isAuth } = useAuth()
   const progressCircle = useRef(null)
   const progressContent = useRef(null)
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -186,71 +186,82 @@ export default function CouponPage() {
             </h1>
           </div>
           <div className="row row-cols-lg-4 row-cols-md-4 row-cols-sm-1 row-cols-xm-1 row-cols-xxm-1 ">
-            {coupon.filter(item => item.isDelete != 1).map((item) => (
-              <li
-                key={item.id}
-                id={item.id}
-                className=" col-lg-3 col-md-6 col-sm-12 col-xxl-3 image-col"
-              >
-                <div className="col">
-                  <div className="text">
-                    <div className="d-flex">
-
+            {coupon
+              .filter((item) => item.isDelete != 1)
+              .map((item) => (
+                <li
+                  key={item.id}
+                  id={item.id}
+                  className=" col-lg-3 col-md-6 col-sm-12 col-xxl-3 image-col"
+                >
+                  <div className="col">
+                    <div className="text">
+                      <div className="d-flex"></div>
+                      <div className="h3">
+                        <b>{item.name}</b>
+                      </div>
+                      <div>
+                        使用時間:
+                        <br />
+                        {time(item.startTime)}~{time(item.endTime)}
+                      </div>
+                      <div className="ms-3">
+                        {userCoupons
+                          .map((v) => v.couponId)
+                          .includes(item.id) ? (
+                          <button
+                            className="btn btn-secondary "
+                            onClick={async () => {
+                              if (isAuth) {
+                                await notifyAndGet(item.id, item.typeId)
+                                await fetchUserCoupon()
+                              } else {
+                                Swal.fire({
+                                  text: '請先登入',
+                                  icon: 'info',
+                                  iconColor: 'var(--grey700)',
+                                  confirmButtonColor: 'var(--grey900)',
+                                })
+                                // alert('請先登入')
+                              }
+                            }}
+                          >
+                            {userCoupons
+                              .map((v) => v.couponId)
+                              .includes(item.id)
+                              ? '已領取'
+                              : '領取'}
+                          </button>
+                        ) : (
+                          <button
+                            className="btn btn-dark "
+                            onClick={async () => {
+                              if (isAuth) {
+                                await notifyAndGet(item.id, item.typeId)
+                                await fetchUserCoupon()
+                              } else {
+                                Swal.fire({
+                                  text: '請先登入',
+                                  icon: 'info',
+                                  iconColor: 'var(--grey700)',
+                                  confirmButtonColor: 'var(--grey900)',
+                                })
+                                // alert('請先登入')
+                              }
+                            }}
+                          >
+                            {userCoupons
+                              .map((v) => v.couponId)
+                              .includes(item.id)
+                              ? '已領取'
+                              : '領取'}
+                          </button>
+                        )}
+                      </div>
                     </div>
-                    <div className="h3">
-                      <b>{item.name}</b>
-                    </div>
-                    <div>
-                      使用時間:
-                      <br />
-                      {time(item.startTime)}~{time(item.endTime)}
-                    </div>
-                    <div className="ms-3">
-                      {userCoupons
-                        .map((v) => v.couponId)
-                        .includes(item.id) ? (
-                        <button
-                          className="btn btn-secondary "
-                          onClick={async () => {
-                            if (isAuth) {
-                              await notifyAndGet(item.id, item.typeId)
-                              await fetchUserCoupon()
-                            } else {
-                              alert('請先登入')
-                            }
-                          }}
-                        >
-                          {userCoupons
-                            .map((v) => v.couponId)
-                            .includes(item.id)
-                            ? '已領取'
-                            : '領取'}
-                        </button>
-                      ) : (
-                        <button
-                          className="btn btn-dark "
-                          onClick={async () => {
-                            if (isAuth) {
-                              await notifyAndGet(item.id, item.typeId)
-                              await fetchUserCoupon()
-                            } else {
-                              alert('請先登入')
-                            }
-                          }}
-                        >
-                          {userCoupons
-                            .map((v) => v.couponId)
-                            .includes(item.id)
-                            ? '已領取'
-                            : '領取'}
-                        </button>
-                      )}
-                    </div>
-
                   </div>
-                </div>
-              </li>
-            ))}
+                </li>
+              ))}
           </div>
           <div className="k-btn">
             <button
@@ -260,7 +271,13 @@ export default function CouponPage() {
                   await notifyAndGetAll()
                   await fetchUserCoupon()
                 } else {
-                  alert('請先登入')
+                  Swal.fire({
+                    text: '請先登入',
+                    icon: 'info',
+                    iconColor: 'var(--grey700)',
+                    confirmButtonColor: 'var(--grey900)',
+                  })
+                  // alert('請先登入')
                 }
               }}
             >

@@ -33,6 +33,6 @@ export function useRent() {
     console.log('query 更新:', query);  // 打印 query 变化
     fetchData(query);
   }, [query]); // 🔄 當 `query` 變化時，重新請求 API
-  console.log({ query, results, isLoading, error });
+  // console.log({ query, results, isLoading, error });
   return { query, setQuery, results, isLoading, error };
 }
