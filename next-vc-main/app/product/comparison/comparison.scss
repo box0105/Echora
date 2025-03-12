@@ -10,12 +10,16 @@
 /* ---- */
 
 /* pdlist title section */
-.g-pdlist-title {
-  position: sticky;
-  top: 0;
-  z-index: 100;
+.g-compare-title {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  transition: top 0.3s ease-in-out;
   background-color: var(--white);
-  padding-block: 20px;
+  // 微調(在scroll時與header無間距)
+  padding-block: 40px 20px;
+  margin-top: -20px;
   border-bottom: 1px solid var(--grey100);
 
   .h4 {
@@ -31,4 +35,8 @@
       font-size: 16px;
     }
   }
+}
+
+.g-pdcompare{
+  padding-block: 242px 48px;
 }

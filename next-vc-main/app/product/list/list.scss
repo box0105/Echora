@@ -196,11 +196,11 @@
       color: var(--white);
     }
 
-    &:active {
-      background-color: var(--white);
-      outline: 1px solid var(--black);
-      color: var(--black);
-    }
+    // &:active {
+    //   background-color: var(--white);
+    //   outline: 1px solid var(--black);
+    //   color: var(--black);
+    // }
   }
 
   .g-clear-btn {

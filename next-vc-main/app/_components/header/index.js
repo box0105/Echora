@@ -54,7 +54,7 @@ export default function Header() {
   // header 在不同路徑改變顏色
   const pathName = usePathname()
   const getBackgroundColor = () => {
-    if (pathName.includes('/product/list') || pathName == '/activity') return 'g-white-color';
+    if (pathName.includes('/product/list') || pathName.includes('/product/comparison') || pathName == '/activity') return 'g-white-color';
     return 'g-ori-color';
   };
 
