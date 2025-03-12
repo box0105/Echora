@@ -24,8 +24,7 @@ export default function ProductDetailIdPage() {
     skuSelected = {
       name,
       brand_name: brand,
-      price,
-      // discount_price: discountPrice,
+      price: discountPrice ? discountPrice : price,
       discription,
       color_name: selectedColorInfo.name,
       color_image: selectedColorInfo.image,
@@ -356,7 +355,7 @@ export default function ProductDetailIdPage() {
                       >
                         <path
                           d="M10.2325 1.39126C10.0833 1.33145 9.91673 1.33145 9.7675 1.39126L2.3075 4.37501L5.3125 5.57626L13.005 2.50001L10.2325 1.39126ZM14.6875 3.17376L6.995 6.25001L10 7.45126L17.6925 4.37501L14.6875 3.17376ZM18.75 5.29876L10.625 8.54876V18.4513L18.75 15.2013V5.29876ZM9.375 18.4525V8.54751L1.25 5.29876V15.2025L9.375 18.4525ZM9.30375 0.23001C9.75071 0.0512595 10.2493 0.0512595 10.6963 0.23001L19.6075 3.79501C19.7234 3.84144 19.8227 3.9215 19.8926 4.02487C19.9626 4.12824 20 4.25019 20 4.37501V15.2025C19.9998 15.4523 19.9249 15.6963 19.7847 15.903C19.6446 16.1098 19.4457 16.2698 19.2138 16.3625L10.2325 19.955C10.0833 20.0148 9.91673 20.0148 9.7675 19.955L0.7875 16.3625C0.555314 16.27 0.356178 16.1101 0.215803 15.9033C0.0754271 15.6965 0.000257912 15.4524 0 15.2025L0 4.37501C2.90499e-05 4.25019 0.0374297 4.12824 0.107384 4.02487C0.177338 3.9215 0.276641 3.84144 0.3925 3.79501L9.30375 0.23001Z"
-                          fill="#19D22E"
+                          fill='var(--black)'
                         />
                       </svg>
                       {/* <img
@@ -364,7 +363,8 @@ export default function ProductDetailIdPage() {
                         width="18px"
                         alt=""
                       /> */}
-                      <h6 className="m-0" style={{ color: '#19D22E' }}>
+                      {/* <h6 className="m-0" style={{ color: '#19D22E' }}> */}
+                      <h6 className="m-0" style={{ color: 'var(--black)' }}>
                         尚有庫存
                       </h6>
                     </>

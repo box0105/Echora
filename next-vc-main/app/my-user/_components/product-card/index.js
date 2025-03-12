@@ -47,8 +47,25 @@ export default function ProductCard({ data = {}, removeFavItem }) {
           </div>
           <div className={styles['g-pd-text']}>
             <h6 className="h7">{data.name}</h6>
-            <div className="d-flex gap-3">
-              <h6 className="h7">${data.price.toLocaleString()}</h6>
+            <div className="d-flex gap-2">
+              {data.discount_price ? (
+                <>
+                  <h6
+                    className="h7"
+                    style={{
+                      color: 'var(--grey500)',
+                      textDecoration: 'line-through',
+                    }}
+                  >
+                    ${data.price.toLocaleString()}
+                  </h6>
+                  <h6 className="h7" style={{ color: 'var(--red)' }}>
+                    ${data.discount_price.toLocaleString()}
+                  </h6>
+                </>
+              ) : (
+                <h6 className="h7">${data.price.toLocaleString()}</h6>
+              )}
             </div>
             <p className="p">Color : {data.color_name}</p>
             <button

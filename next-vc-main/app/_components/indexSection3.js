@@ -95,7 +95,7 @@ export default function IndexSection3(props) {
       <div className="container-fluid m-index">
         <div className="m-index-title m-anime">
           <h1 className="h3">
-            TRENDING PRODUCTS<span> / 主打熱門商品</span>
+            TRENDING DEALS<span> / 熱門優惠商品</span>
           </h1>
         </div>
         <IndexCardCarousel data={trendingData}/>

@@ -261,7 +261,8 @@ router.get('/trending', async (req, res) => {
   JOIN color ON product_sku.color_id = color.id 
   JOIN image ON product_sku.id = image.product_sku_id 
   JOIN spec ON product.id = spec.product_id 
-  WHERE image.sort_order = 1 AND product.name LIKE '%player%';`
+  WHERE image.sort_order = 1 AND product.discount_price IS NOT NULL
+  ORDER BY product.id ASC;`
   try {
     const [rows] = await db.query(sql)
     // console.log(rows)

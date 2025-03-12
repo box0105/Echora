@@ -260,6 +260,8 @@ export default function ProductListPage(props) {
   useEffect(() => {
     setQueryString(generateQueryString(criteria))
     setVisibleCount(12)
+    // window.scrollTo(0, 0)
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
   }, [criteria])
 
   // 比較功能需要的函式

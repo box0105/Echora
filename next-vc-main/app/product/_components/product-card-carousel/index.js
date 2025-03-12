@@ -80,11 +80,25 @@ export default function ProductCardCarousel({ data = [] }) {
                     </div>
                     <div className={styles['g-pd-text']}>
                       <h6 className="h6">{product.name}</h6>
-                      <div className="d-flex gap-3">
-                        <h6 className="h6">
-                          ${product.price.toLocaleString()}
-                        </h6>
-                        {/* <h6 class="h6">$72900</h6> */}
+                      <div className="d-flex gap-2">
+                        {product.discount_price ? (
+                          <>
+                            <h6
+                              className="h7"
+                              style={{
+                                color: 'var(--grey500)',
+                                textDecoration: 'line-through',
+                              }}
+                            >
+                              ${product.price.toLocaleString()}
+                            </h6>
+                            <h6 className="h7" style={{ color: 'var(--red)' }}>
+                              ${product.discount_price.toLocaleString()}
+                            </h6>
+                          </>
+                        ) : (
+                          <h6 className="h7">${product.price.toLocaleString()}</h6>
+                        )}
                       </div>
                       {/* <div className={styles['g-color-row']}>
                         <div>
