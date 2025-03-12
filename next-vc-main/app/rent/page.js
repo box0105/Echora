@@ -116,7 +116,7 @@ export default function Page() {
           <div className="c-backgrund"
           >
             {/* section1 */}
-            <div className="c-section1">
+            <div className="c-section1-out">
               <div className="card text-bg-dark c-section1">
                 <HeroSection />
                 <RentalProcess />
@@ -170,8 +170,7 @@ export default function Page() {
 
           {/* section-mod */}
           <div className={`c-section2-body Mod d-block d-md-none ${isOpen ? 'filter-open' : ''}`}>
-            <div className="container-fluid c-index-mod-1 p-0">
-              <div className="row">
+            <div className="container-fluid c-index-mod-1">
                 <Modfiter
                   data={filteredData}
                   setIsOpen={setIsOpen}
@@ -180,7 +179,7 @@ export default function Page() {
                   selectedSort={sortOrder}
                   filters={filters}
                 />
-              </div>
+
               <div className="row row-cols-xl-4 row-cols-2">
                 <Card data={filteredData.slice(0, visibleCount)} />
               </div>

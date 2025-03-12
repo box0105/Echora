@@ -10,7 +10,7 @@ export function useRent() {
   const fetchData = async (searchQuery) => {
     setIsLoading(true);
     setError(null);
-    console.log('发送 API 请求，查询参数：', searchQuery);  // 检查传递的查询
+    // console.log('发送 API 请求，查询参数：', searchQuery);  // 检查传递的查询
     try {
       const url = searchQuery 
         ? `http://localhost:3005/api/rent/search?query=${encodeURIComponent(searchQuery)}`
