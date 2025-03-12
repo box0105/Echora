@@ -205,7 +205,7 @@ export default function CouponPage() {
                       <br />
                       {time(item.startTime)}~{time(item.endTime)}
                     </div>
-                    <div className="ms-3">
+                    <div >
                       {userCoupons
                         .map((v) => v.couponId)
                         .includes(item.id) ? (
