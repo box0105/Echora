@@ -119,6 +119,9 @@ export default function LinePayPage() {
       // 顯示成功訊息
     } else {
       toast.error('付款失敗')
+      setTimeout(() => {
+        router.replace('/')
+      }, 3000)
     }
   }
 
@@ -179,6 +182,7 @@ export default function LinePayPage() {
     return (
       <>
         <div className="d-flex flex-column align-items-center justify-content-center pt-5 mt-5">
+          <div className="m-127px"></div>
           <div className="mb-4">
             <PuffLoader color="#00b853" size={70} />
           </div>

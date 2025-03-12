@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { useMyCart } from '@/hooks/use-cart'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { PuffLoader } from 'react-spinners'
+import { toastWarning } from '@/hooks/use-toast'
 
 export default function PayOKPage() {
   const { clearCart } = useMyCart()
@@ -34,11 +35,17 @@ export default function PayOKPage() {
               router.replace('/my-cart/finish')
             }, 3000)
           } else {
-            alert('訂單提交失敗！')
+            toastWarning('訂單提交失敗！')
+            setTimeout(() => {
+              router.replace('/')
+            }, 3000)
           }
         } catch (error) {
           console.error('錯誤:', error)
-          alert('訂單提交過程中出現錯誤')
+          toastWarning('訂單提交過程中出現錯誤')
+          setTimeout(() => {
+            router.replace('/')
+          }, 3000)
         }
       }
       submitOrder()
@@ -48,6 +55,7 @@ export default function PayOKPage() {
   return (
     <>
       <div className="d-flex flex-column align-items-center justify-content-center pt-5 mt-5">
+        <div className="m-127px"></div>
         <div className="mb-4">
           <PuffLoader color="#00b853" size={70} />
         </div>

@@ -5,8 +5,8 @@
 
   .container {
     max-width: 1280px;
-    margin: 0 auto;
-    padding: 120px 64px;
+    margin: 160px auto;
+    padding: 0 64px;
   }
 
   .page-title {
@@ -248,6 +248,10 @@
     .footer-bottom {
       padding-left: 20px;
       padding-right: 20px;
+    }
+
+    .container {
+      margin: 185px auto;
     }
 
     .main {

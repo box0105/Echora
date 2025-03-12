@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import { useState } from 'react'
 // npm i swiper
 import { Swiper, SwiperSlide } from 'swiper/react'
 // 可以在這找想加上想要的效果 https://swiperjs.com/demos
@@ -19,11 +20,18 @@ export default function HeroSection({
   title = '',
   subTitle = '',
   images,
-  ids = [0],
+  ids,
 }) {
-  const src = '/images/activity/'
   // 如果是字串，則分割為陣列 (*輸入也有丟陣列的)
-  const imageArr = (typeof images == 'string') ? images.split(',') : images
+  const imageArr = typeof images == 'string' ? images.split(',') : images
+
+  // 添加照片判斷，預設採用前端路徑，若路徑不存在則用後端路徑
+  const [imgError, setImgError] = useState(false)
+  const handleImageError = () => {
+    setImgError(true)
+  }
+  const srcFrontEnd = '/images/activity/'
+  const srcBackEnd = 'http://localhost:3005/images/uploads/'
 
   return (
     <Swiper
@@ -43,8 +51,8 @@ export default function HeroSection({
       {imageArr?.map((img, i) => (
         <SwiperSlide key={i}>
           <Link
-            href={ids.length ? `/activity/${ids[i] + 1}` : '#'}
-            style={{ cursor: ids.length ? 'pointer' : 'default' }}
+            href={ids ? `/activity/${ids[i] + 1}` : '#'}
+            style={{ cursor: ids ? 'pointer' : 'default' }}
           >
             <div className="position-relative w-100 h-100">
               <div className="b-swiper-text position-relative b-sm-none">
@@ -53,8 +61,13 @@ export default function HeroSection({
               </div>
 
               <Image
-                src={`${src}${img}`}
-                alt={img || '輪播圖片'}
+                src={
+                  !imgError
+                    ? `${srcFrontEnd}${img}`
+                    : `${srcBackEnd}${img}`
+                }
+                onError={handleImageError}
+                alt="圖片網址錯誤"
                 fill
                 className="object-fit-cover"
                 priority

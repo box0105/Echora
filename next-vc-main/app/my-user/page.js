@@ -17,6 +17,7 @@ import {
 } from '@/services/rest-client/use-user'
 import { useRouter } from 'next/navigation'
 import { set } from 'lodash'
+import { useAdminAuth } from '@/hooks/use-admin';
 
 export default function UserPage() {
   const [userInput, setUserInput] = useState({ email: '', password: '' })
@@ -34,6 +35,8 @@ export default function UserPage() {
   const { isAuth, setIsAuth } = useAuth()
   const router = useRouter()
   const [isClient, setIsClient] = useState(false)
+  const [admin, setAdmin] = useState(false)
+  const { adminlogin } = useAdminAuth(); // 從 Context 取得 login 函數
 
   useEffect(() => {
     setIsClient(true)
@@ -86,7 +89,6 @@ export default function UserPage() {
       if (resData?.status === 'success') {
         localStorage.setItem('userId', resData.data.user.id)
         // toast.success('已成功登入', { autoClose: 2000 }) // 先顯示通知
-
         setTimeout(() => {
           setIsAuth(true) // 延遲改變 isAuth，避免 useEffect 立即觸發
           mutate()
@@ -94,6 +96,8 @@ export default function UserPage() {
             router.push('/')
           }
         }, 1500) // 確保 `toast` 先出現再跳轉
+
+
       } else {
         toastError(`登入失敗: ${resData.message}`)
       }
@@ -230,9 +234,8 @@ export default function UserPage() {
                 onClick={togglePasswordVisibility}
               >
                 <i
-                  className={`fa-solid ${
-                    showPassword ? 'fa-eye-slash' : 'fa-eye'
-                  }`}
+                  className={`fa-solid ${showPassword ? 'fa-eye-slash' : 'fa-eye'
+                    }`}
                 ></i>
               </button>
             </div>

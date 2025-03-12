@@ -1,9 +1,9 @@
 'use client';
 
-export default function FormSelect({ title, options, selected, onChange }) {
+export default function FormSelect({ title='選擇縣市', options, selected, onChange }) {
   return (
     <div className="d-flex flex-column align-self-stretch">
-      <h4>{title}</h4>
+      <h4 className='b-cond-title'>{title}</h4>
       <select className="b-form-select" value={selected} onChange={e => {
         onChange(e.target.value);
       }}>

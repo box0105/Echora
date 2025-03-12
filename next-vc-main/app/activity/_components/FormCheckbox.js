@@ -2,11 +2,7 @@
 
 import React from 'react'
 
-export default function FormCheckbox({ title, options, selected, onChange }) {
-  // const initState = options.map((v, i) => {
-  //   return { id: i + 1, name: v.name, checked: false }
-  // })
-  // const [checks, setChecks] = useState(initState)
+export default function FormCheckbox({ title, selected, onChange }) {
 
   // 處理點選切換
   const onToggleChecked = (checkId) => {
@@ -21,7 +17,7 @@ export default function FormCheckbox({ title, options, selected, onChange }) {
 
   return (
     <div className="d-flex flex-column align-self-stretch">
-      <h4>{title}</h4>
+      <h4 className='b-cond-title'>{title}</h4>
       {/* <pre>{JSON.stringify(selected, null, 2)}</pre> */}
       {selected.map((check) => (
         <div

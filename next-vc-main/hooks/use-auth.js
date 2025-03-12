@@ -16,12 +16,16 @@ export const AuthProvider = ({ children }) => {
   const router = useRouter()
   const pathname = usePathname()
 
+
   useEffect(() => {
     setDidAuthMount(true)
   }, [])
 
   useEffect(() => {
     const userId = localStorage.getItem('userId')
+    console.log("use-auth.js");
+    
+    // console.log({user}); 沒有回寫入
     if (userId) {
       setIsAuth(true)
     } else {
