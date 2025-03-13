@@ -12,7 +12,7 @@ function BackgroundCarousel() {
         spaceBetween={0}
         navigation={true} // 启用左右箭头
         modules={[Navigation]} // 导航模块
-        className="mySwiper"
+        className="c-mySwiper"
       >
         {/* 每个 SwiperSlide 中设置不同的背景图片 */}
         <SwiperSlide style={{ backgroundImage: 'url(/images/Rent/background.png)' }} />

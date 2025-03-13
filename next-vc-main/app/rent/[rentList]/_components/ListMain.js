@@ -6,11 +6,14 @@ import { Navigation } from 'swiper/modules'
 import Image from 'next/image'
 import styles from './ImageGallery.module.scss';
 
-const ImageSlider = ({ images, imageBasePath = '/images/Rent/pd-images/' }) => {
+const ImageSlider = ({ images, imageBasePath = '/images/Rent/pd-images/', brand }) => {
   const [mainImage, setMainImage] = useState(images[0] || 'default-image.jpg')
   const [activeIndex, setActiveIndex] = useState(0)
   const [scrollIndex, setScrollIndex] = useState(0)
   const visibleThumbnails = 3 // 顯示的縮略圖數量
+
+  // 根據品牌名稱決定主圖是否添加 w-100 類別
+  const mainImageClass = brand === 'Gibson' ? 'w-100' : '';
 
   useEffect(() => {
     if (images[0]) {
@@ -35,19 +38,19 @@ const ImageSlider = ({ images, imageBasePath = '/images/Rent/pd-images/' }) => {
 
   const handleScrollDown = () => {
     setScrollIndex((prev) =>
-      Math.min(prev + 1, Math.max(images.length - visibleThumbnails, 0))
+      Math.min(prev + 1, images.length - visibleThumbnails)
     )
   }
+
   useEffect(() => {
-    console.log('images:', images)  // 檢查 images 是否正確
+    console.log('images:', images)
   }, [images])
-  
 
   return (
     <div className="relative w-full max-w-lg d-flex">
       {/* 桌面端側邊縮略圖 */}
       <div
-        className="d-flex flex-column align-items-center d-none d-lg-flex ps-2 gap-2 "
+        className="d-flex flex-column align-items-center d-none d-lg-flex ps-2 gap-2"
         style={{
           paddingTop: '10rem',
           width: '200px',
@@ -60,8 +63,10 @@ const ImageSlider = ({ images, imageBasePath = '/images/Rent/pd-images/' }) => {
           onClick={handleScrollUp}
           disabled={scrollIndex === 0}
         >
-          <img src="/images/Rent/Vector.png" />
+          <img src="/images/Rent/Vector.png" alt="上移" />
         </button>
+
+        {/* 縮略圖 */}
         <div className="overflow-hidden" style={{ height: '500px' }}>
           <div
             className="d-flex flex-column justify-content-center gap-4"
@@ -77,69 +82,64 @@ const ImageSlider = ({ images, imageBasePath = '/images/Rent/pd-images/' }) => {
                 onClick={() => handleImageClick(img, index)}
                 onKeyDown={(e) => handleKeyDown(e, img, index)}
                 role="button"
-                className="text-center" // 确保内部内容居中
+                className="text-center"
               >
                 <Image
                   src={`${imageBasePath}${img || 'default-image.jpg'}`}
                   alt={`縮略圖 ${index}`}
                   width={100}
-                  height={200}
+                  height={100}
                   className={`${styles.image} ${index === activeIndex ? styles.active : ''}`}
                 />
               </div>
             ))}
           </div>
         </div>
+
         <button
           className="btn btn-light"
           onClick={handleScrollDown}
           disabled={scrollIndex >= images.length - visibleThumbnails}
         >
-          <img src="/images/Rent/arrow.png" />
+          <img src="/images/Rent/arrow.png" alt="下移" />
         </button>
       </div>
 
-        {/* 移動端輪播圖 */}
-        <div className="d-lg-none w-100" style={{ height: '500px' }}>
-          <Swiper
-            modules={[Navigation]}
-            loop={true}
-            slidesPerView={1}
-            style={{ height: '100%' }}
-          >
-            {images.map((img, index) => (
-              <SwiperSlide
-                key={index}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <Image
-                  src={`${imageBasePath}${img || 'default-image.jpg'}`}
-                  width={300}
-                  height={450} // 調整高度更符合小螢幕
-                  layout="responsive" // 新增 layout='responsive' 提升自適應性
-                  alt={`輪播圖 ${index}`}
-                  style={{ objectFit: 'cover' }}
-                  className='w-100'
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+      {/* 移動端輪播圖 */}
+      <div className="d-lg-none w-100" style={{ height: '500px' }}>
+        <Swiper modules={[Navigation]} loop={true} slidesPerView={1} style={{ height: '100%' }}>
+          {images.map((img, index) => (
+            <SwiperSlide
+              key={index}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Image
+                src={`${imageBasePath}${img || 'default-image.jpg'}`}
+                width={300}
+                height={450}
+                layout="responsive"
+                alt={`輪播圖 ${index}`}
+                style={{ objectFit: 'cover' }}
+                className="w-100"
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
 
-      {/* 添加間距，主圖和縮略圖之間的間距 */}
+      {/* 桌面版主圖 */}
       <div style={{ marginLeft: '160px' }} className="d-none d-lg-block">
-        {/* 桌面版主圖 */}
         <div
           className="c-bpiv d-none d-lg-block w-100"
           style={{ height: '900px', paddingTop: '72px', paddingBottom: '72px' }}
         >
           <Image
             key={mainImage}
-            className="main-pic h-100 w-100  object-fit-contain"
+            className={`main-pic h-100 object-fit-contain ${mainImageClass}`}
             src={`${imageBasePath}${mainImage}`}
             alt="主圖"
             width={535}
@@ -152,4 +152,4 @@ const ImageSlider = ({ images, imageBasePath = '/images/Rent/pd-images/' }) => {
   )
 }
 
-export default ImageSlider
+export default ImageSlider;

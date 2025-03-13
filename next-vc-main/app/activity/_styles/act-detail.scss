@@ -8,8 +8,12 @@
 }
 
 .b-container.b-detail-page {
-  padding-top: 2rem;
-  padding-inline: 2rem;
+  padding-top: 2.75rem;
+  padding-inline: 4rem;
+
+  .b-swiper {
+    // height: 550px;
+  }
 
   .b-main-info {
     padding-top: 3rem;

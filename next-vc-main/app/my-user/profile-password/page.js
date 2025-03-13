@@ -107,7 +107,7 @@ export default function PasswordPage() {
           <div className="change-password-body">
             <form onSubmit={handleSubmit}>
               <div className="mb-4 position-relative">
-                <label htmlFor="current" className="form-label">
+                <label htmlFor="current" className="a-form-label">
                   舊密碼
                 </label>
                 <input
@@ -130,7 +130,7 @@ export default function PasswordPage() {
                 ></i>
               </div>
               <div className="mb-4 position-relative">
-                <label htmlFor="new" className="form-label">
+                <label htmlFor="new" className="a-form-label">
                   新密碼
                 </label>
                 <input
@@ -153,7 +153,7 @@ export default function PasswordPage() {
                 ></i>
               </div>
               <div className="mb-4 position-relative">
-                <label htmlFor="confirm" className="form-label">
+                <label htmlFor="confirm" className="a-form-label">
                   確認新密碼
                 </label>
                 <input

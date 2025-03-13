@@ -6,7 +6,16 @@ import '../_styles/style0.scss'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
+import {
+  useAuthGoogleLogin,
+  useAuthGet,
+  useAuthLogout,
+  useAuthLogin,
+} from '@/services/rest-client/use-user'
+import { useAuth } from '@/hooks/use-auth'
+import { toastError, toastWarning } from '@/hooks/use-toast'
+
 
 export default function MemberLayout({ children }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -16,7 +25,7 @@ export default function MemberLayout({ children }) {
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen)
   }
-
+ const { user, isAuth, setIsAuth } = useAuth()
   const isActive = (path) => {
     return pathname === path ? 'active' : ''
   }
@@ -37,7 +46,33 @@ export default function MemberLayout({ children }) {
         return '會員中心'
     }
   }
+  const { mutate } = useAuthGet()
+  const router = useRouter()
+// **處理登出（支援 Google + 一般帳號）**
+  const handleLogout = async () => {
+    try {
+      const res = await fetch('http://localhost:3005/api/users/logout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      const resData = await res.json()
 
+      if (resData.status === 'success') {
+        // 清除 localStorage 中的 userId
+        localStorage.removeItem('userId')
+        setIsAuth(false)
+        mutate()
+        // toast.success('已成功登出')
+        router.push('/')
+      } else {
+        toastError(`登出失敗: ${resData.message}`)
+      }
+    } catch (err) {
+      toastError(`登出失敗: ${err.message}`)
+    }
+  }
   return (
     <div>
       <main className="main">
@@ -114,6 +149,11 @@ export default function MemberLayout({ children }) {
               <div className="sidebar-section">
                 <h2 className={`sidebar-title ${isActive('/my-user/coupons')}`}>
                   <Link href="/my-user/coupons"> 我的優惠券</Link>
+                </h2>
+              </div>
+              <div className="sidebar-section">
+                <h2 className={`sidebar-title`}>
+                  <button onClick={handleLogout} className='sidebar-title' style={{border:"none", outline:"none", background:"none", padding:"0"}}>登出</button> 
                 </h2>
               </div>
             </aside>

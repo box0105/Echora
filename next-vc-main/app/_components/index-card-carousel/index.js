@@ -10,7 +10,7 @@ export default function IndexCardCarousel({ data = [] }) {
   return (
     <>
       <section
-        className={`${styles['g-also-like']} ${styles['d-px-modified']} pt-0 m-anime m-section2-col5 m-section2-colx`}
+        className={`${styles['g-main-trending']} ${styles['g-trending-px-modified']} pt-0 m-anime m-section2-col5 m-section2-colx`}
       >
         <div className="container-fluid p-0">
           {/* swiper */}

@@ -85,9 +85,9 @@ export default function Footer(props) {
       <hr />
       <div className={styles.mise}>
         <p>Copyright © 2025 Echora Company</p>
-        <button className={`btn btn-outline-dark ${styles['k-btn']}`}>
+        {/* <button className={`btn btn-outline-dark ${styles['k-btn']}`}>
           <i className="fa-solid fa-location-dot " /> 查找專門店
-        </button>
+        </button> */}
       </div>
     </footer>
   )

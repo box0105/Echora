@@ -39,21 +39,21 @@ const MainImage = () => (
         <SwiperSlide>
           <img
             src="/images/Rent/C-main.jpg"
-            className="card-img border-radius-0"
+            className="card-img border-radius-0 c-img"
             alt="..."
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src="/images/Rent/C-main3.jpg"
-            className="card-img border-radius-0"
+            className="card-img border-radius-0 c-img"
             alt="..."
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src="/images/Rent/C-main1.jpg"
-            className="card-img border-radius-0"
+            className="card-img border-radius-0 c-img"
             alt="..."
           />
         </SwiperSlide>
@@ -103,9 +103,9 @@ const Title = () => (
 const Description = () => (
   <div className="c-ptext d-none d-md-block">
     <div className=" h4 home-text">
-      電吉他租借服務說明電吉他租借服務電吉他租借服務
+    我們的電吉他租借服務專為音樂愛好者、吉他學習者及專業樂手設計，提供各種品牌與型號的電吉他，滿足不同風格與需求。無論是舞台表演、錄音製作，還是短期學習，我們都能為您提供合適的樂器。
       <br />
-      電吉他租借服務電吉他租借服務
+      多樣品牌選擇：從經典 Fender、Gibson 到現代 Ibanez、ESP 應有盡有。
       <br />
       全台共三間台北、台中、高雄三間門市可取貨
     </div>

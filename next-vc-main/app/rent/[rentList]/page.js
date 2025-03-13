@@ -10,6 +10,7 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { FaCalendarAlt } from 'react-icons/fa'
 import StoreSelector from '../_components/StoreSelector'
+import { toastSuccess, toastError } from '@/hooks/use-toast'
 
 export default function Page(props) {
   const CustomInput = ({ value, onClick }) => (
@@ -110,7 +111,12 @@ export default function Page(props) {
 
     setTotalPrice(total)
   }
-
+  const maxEndDate = useMemo(() => {
+    if (!startDate) return null
+    const mEnd = new Date(startDate)
+    mEnd.setDate(startDate.getDate() + 7)
+    return mEnd
+  }, [startDate])
   // 验证开始日期合法性
   const minStartDate = useMemo(() => {
     const now = new Date()
@@ -120,55 +126,63 @@ export default function Page(props) {
   }, [])
 
   // 验证开始日期合法性
-  const handleStartDateChange = (e) => {
-    const newStartDate = new Date(e.target.value)
+  const handleStartDateChange = (date) => {
+    const newStartDate = new Date(date)
 
-    // 确保开始日期不能早于当前日期的三天后
     if (newStartDate < minStartDate) {
-      alert('麻煩預約租借必須要三天後才能預約')
+      toastError('麻煩預約租借必須要三天後才能預約')
       return
     }
 
-    // 设置开始日期
     setStartDate(newStartDate)
 
-    // 计算结束日期，结束日期是开始日期的后一天
+    // 重新計算並檢查 `newEndDate` 是否在最大日期範圍內
     const newEndDate = new Date(newStartDate)
-    newEndDate.setDate(newStartDate.getDate() + 1) // 结束日期为开始日期后1天
-    setEndDate(newEndDate)
+    newEndDate.setDate(newStartDate.getDate() + 1)
+
+    if (newEndDate > maxEndDate) {
+      setEndDate(maxEndDate)
+    } else {
+      setEndDate(newEndDate)
+    }
   }
 
   // 修改后的 handleEndDateChange
   const handleEndDateChange = (date) => {
     if (!startDate) {
-      alert('請先選擇開始日期')
+      toastWarning('請先選擇開始日期')
       return
     }
 
     if (date <= startDate) {
-      alert('結束日期無法小於或等於開始日期')
+      toastError('結束日期無法小於或等於開始日期')
       return
     }
 
     setEndDate(date)
   }
 
-  // 計算結束日期的最大限制：起始日期＋7天
-  const maxEndDate = useMemo(() => {
-    if (!startDate) return new Date()
-    const mEnd = new Date(startDate)
-    mEnd.setDate(startDate.getDate() + 7)
-    return mEnd
+  // 修改 minEndDate
+  const minEndDate = useMemo(() => {
+    if (!startDate) return null
+    const newMinEndDate = new Date(startDate)
+    newMinEndDate.setDate(startDate.getDate() + 1)
+    return newMinEndDate
   }, [startDate])
 
-  // 修改 minEndDate
-  const minEndDate = new Date(startDate)
-  minEndDate.setDate(startDate.getDate() + 1) // 设置结束日期最小值为起始日期的后一天
   //日期
   // useEffect(() => {
   //   const today = new Date(); // 當前日期
   //   setStartDate(today);
   // }, []);
+  useEffect(() => {
+    if (startDate && endDate && endDate <= startDate) {
+      const correctedEndDate = new Date(startDate)
+      correctedEndDate.setDate(startDate.getDate() + 1)
+      setEndDate(correctedEndDate)
+    }
+  }, [startDate])
+
   useEffect(() => {
     calculateTotalPrice()
   }, [startDate, endDate, quantity, selectedColor])
@@ -201,6 +215,11 @@ export default function Page(props) {
   }, [])
 
   const handleAddToCart = () => {
+    if (!ListData || ListData.stock <= 0) {
+      toastError('商品缺貨，無法加入購物車')
+      return
+    }
+
     const cartData = {
       id: ListData.id,
       name: ListData.name,
@@ -218,12 +237,22 @@ export default function Page(props) {
       rentStore: selectedStore,
     }
 
-    // 如果你需要格式化輸出 JSON 以便更清晰地查看，使用以下代碼：
     console.log('Formatted Cart Data:', JSON.stringify(cartData, null, 2))
 
-    // 確保這裡的 onAddRent 是一個有效的函數（如果有的話）
+    // 檢查 onAddRent 是否存在
+    if (typeof onAddRent === 'function') {
+      onAddRent(cartData)
 
-    onAddRent(cartData)
+      // 減少庫存
+      setListData((prevData) => ({
+        ...prevData,
+        stock: prevData.stock - 1,
+      }))
+
+      // toastSuccess('已成功加入購物車！')
+    } else {
+      toastError('加入購物車失敗，請稍後再試')
+    }
   }
   // useMemo 保证选中颜色后能正确更新图片
   const selectedImages = useMemo(() => {
@@ -270,12 +299,12 @@ export default function Page(props) {
       ) : (
         <div>
           {/* section1 */}
-          <div className="c-section1">
+          <div className="c-section1-list">
             <div className=" c">
               <div className="container-fluid">
                 <div className="row">
                   <div className="col-7 c-index1 ">
-                    <Main images={selectedImages} />
+                    <Main images={selectedImages} brand={ListData.brand}/>
                   </div>
                   <div className="col-5 c-left ">
                     <div className="c-text">
@@ -288,9 +317,7 @@ export default function Page(props) {
                         </h3>
                       </div>
                       <div className="c-brand">
-                        <div
-                          className="bg-dark text-br c-band  d-flex justify-content-center align-items-center"
-                        >
+                        <div className="bg-dark text-br c-band  d-flex justify-content-center align-items-center">
                           <h5 className="text-white p-1 m-0">
                             {ListData.brand}
                           </h5>
@@ -352,7 +379,7 @@ export default function Page(props) {
                         <DatePicker
                           selected={endDate}
                           onChange={(date) => handleEndDateChange(date)}
-                          minDate={minEndDate}
+                          minDate={minEndDate} // 改為來自 useMemo 的變數
                           maxDate={maxEndDate}
                           placeholderText="結束日期"
                           dateFormat="yyyy/MM/dd"
@@ -366,51 +393,39 @@ export default function Page(props) {
                       <div className="c-price-total">
                         <h6>總金額: {totalPrice} 元</h6>
                       </div>
-
-                      {/* 門店選擇 */}
-                      {/* <div className="c-addr gap-2 py-3">
+                      <div className="c-addr gap-2 ">
                         <div className="c-add-title">
-                          <div className=" h4 c-addtiele">自取地點</div>
+                          <h6>自取地點</h6>
                         </div>
-                        <select
-                          name
-                          id
-                          className="c-addselect  inputse"
-                          value={selectedStore}
-                          onChange={handleStoreChange}
-                        >
-                          <option value="台北店" className="h5">
-                            台北店
-                          </option>
-                          <option value="台中店" className="h5">
-                            台中店
-                          </option>
-                          <option value="高雄店" className="h5">
-                            高雄店
-                          </option>
-                        </select>
-                      </div> */}
-                      <StoreSelector
-                        selectedStore={selectedStore}
-                        setSelectedStore={setSelectedStore}
-                      />
+                        <StoreSelector
+                          selectedStore={selectedStore}
+                          setSelectedStore={setSelectedStore}
+                          className="c-addr-in gap-2"
+                        />
+                      </div>
+
 
                       <div className="btn1">
                         <button
                           className="btn btn-dark btnbot"
                           onClick={handleAddToCart}
-                          disabled={ListData?.stock <= 0} 
+                          disabled={ListData?.stock <= 0}
                           style={{
-                            opacity: ListData?.stock <= 0 ? 0.5 : 1, 
+                            opacity: ListData?.stock <= 0 ? 0.5 : 1,
                             cursor:
-                              ListData?.stock <= 0 ? 'not-allowed' : 'pointer', 
+                              ListData?.stock <= 0 ? 'not-allowed' : 'pointer',
                           }}
                         >
-                          <h6 className=" text-white m-0">加入購物車</h6>
+                          <h6 className="text-white m-0">加入購物車</h6>
                         </button>
+
                         <div className="g-stock d-flex align-items-center gap-2 pt-3">
                           <img
-                            src="/images/product/detail/stock.svg"
+                            src={
+                              ListData?.stock > 0
+                                ? '/images/product/detail/stock.svg' // 库存图片
+                                : '/images/product/detail/no_stock.svg' // 缺货图片
+                            }
                             width="18px"
                             alt=""
                           />
@@ -492,9 +507,7 @@ export default function Page(props) {
                         <p className=" pb-3 m-0">控制器</p>
                       </div>
                       <props className="product-bo-2">
-                        <p className=" m-0">
-                          {ListData.rentList?.controls}
-                        </p>
+                        <p className=" m-0">{ListData.rentList?.controls}</p>
                       </props>
                     </div>
                     <div className="product-list">
@@ -518,27 +531,27 @@ export default function Page(props) {
                       </div>
                       <div className="text-gu pt-1">
                         <div className="p">
-                          <span> 計費方式：</span>
+                        <span className='stores'>計費方式：</span>
                           <br />
                           以一日(24H)為單位。 <br />
                           如預期歸還以兩倍金額為預期租金。
                           <br />
-                          <span>注意事項：</span>
-                          <br/>
+                          <span className='stores'>注意事項：</span>
+                          <br />
                           本網站最高租借時間為7日。
                           <br />
                           租借與歸還須於租借門市營業時間內。
                           <br />
                           租借或歸還時皆需要當場確認吉他情況，如歸還時有損壞照價賠償。
-                          <br/>
-                          <span>門市營業時間：</span>
-                          <br/>
+                          <br />
+                          <span className='stores'>門市營業時間：</span>
+                          <br />
                           周一至周五:
-                          <br/>
+                          <br />
                           早上09:00 ~ 晚上20:00
-                          <br/>
+                          <br />
                           周末
-                          <br/>
+                          <br />
                           早上10:00 ~ 晚上20:00
                         </div>
                       </div>
@@ -551,7 +564,7 @@ export default function Page(props) {
                       </div>
                       <div className="text-gu pt-1">
                         <p className="addr">
-                        <span>台北店：</span>
+                          <span className='stores'>台北店：</span>
                           <br />
                           <a
                             href="https://www.google.com/maps/place/100%E5%8F%B0%E7%81%A3%E5%8F%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E6%AD%A3%E5%8D%80%E7%BE%85%E6%96%AF%E7%A6%8F%E8%B7%AF%E4%B8%89%E6%AE%B5140%E5%B7%B75%E8%99%9F/@25.0198989,121.5280768,17z/data=!3m1!4b1!4m6!3m5!1s0x3442a969f1687abd:0x1b197d1955f1e728!8m2!3d25.0198989!4d121.5280768!16s%2Fg%2F11bw3z9r7x?entry=ttu"
@@ -563,7 +576,7 @@ export default function Page(props) {
                           <br />
                           電話號碼：&nbsp;02 2543 3319。
                           <br />
-                          <span> 台中店：</span>
+                          <span className='stores'> 台中店：</span>
                           <br />
                           <a
                             href="https://maps.app.goo.gl/M7XMATehs6uHnPvTA"
@@ -575,7 +588,7 @@ export default function Page(props) {
                           <br />
                           電話號碼：&nbsp;04 2238 5589。
                           <br />
-                          <span> 高雄店：</span>
+                          <span className='stores'> 高雄店：</span>
                           <br />
                           <a
                             href="https://maps.app.goo.gl/nDz1Vc5KoatiXFeGA"
@@ -596,7 +609,7 @@ export default function Page(props) {
             </div>
           </div>
           {/* section3 */}
-          <RentCardCarousel/>
+          <RentCardCarousel />
           {/* <div className="c-section3">
             <div className="container-fluid c-index">
               <div className="c-index-title d-none d-md-block">

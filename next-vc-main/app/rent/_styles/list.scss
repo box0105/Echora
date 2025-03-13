@@ -3,7 +3,10 @@
 //   padding-inline: 64px;
 //   padding-block: 100px 0;
 // }
-span{
+.c-section1-list{
+  padding-top: 127px;
+}
+.stores{
   color: red;
 }
 .c-pic {
@@ -56,7 +59,10 @@ span{
     cursor: pointer;
   }
 }
-
+.c-addr-in{
+  padding-top: 0;
+  font-size: 14px;
+}
 .c-band{
   width: 90px;
   height: 30px;
@@ -148,15 +154,7 @@ span{
   align-items: center;
   justify-content: space-between;
 }
-/* 通用樣式 */
-body {
-  font-family: Arial, sans-serif;
-}
 
-// .container-fluid {
-//   padding-left: 15px;
-//   padding-right: 15px;
-// }
 .date-picker-container {
   position: relative;
   display: inline-block;
@@ -168,7 +166,8 @@ body {
   padding: 10px 35px 10px 10px; /* 確保右邊有足夠空間 */
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 12px;
+  font-style: var(--grey50);
 }
 
 
