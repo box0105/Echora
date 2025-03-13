@@ -71,7 +71,7 @@ export default function Header() {
   const [searchName, setSearchName] = useState('')
   const { criteria, setCriteria, defaultCriteria } = useProductState()
   const isFirstRender = useRef(true) // 追蹤是否為初次渲染
-  const { updateQueryParams } = useActivity()
+  const { updateQueryParams, deleteQueryParams } = useActivity()
   const { query, setQuery } = useRent(); 
 
   const handleSearch = (e) => {
