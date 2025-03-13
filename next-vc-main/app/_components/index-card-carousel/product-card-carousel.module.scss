@@ -1,19 +1,19 @@
 /* modify container padding */
-.d-px-modified {
-    padding: 0 64px;
+.g-trending-px-modified {
+    // padding: 0 64px;
   
     @media screen and (max-width: 576px) {
-      padding: 0 16px;
+      // padding: 0 16px;
     }
   }
   
   /* ---- */
 
-/* also like section */
+/* trending deals section */
 
-.g-also-like {
+.g-main-trending {
     padding-block: 100px 64px;
-    overflow: hidden;
+    // overflow: hidden;
   
     @media screen and (max-width: 430px) {
       padding-block: 64px;

@@ -92,7 +92,7 @@ export default function IndexSection3(props) {
 
   return (
     <>
-      <div className="container-fluid m-index">
+      <div className="container-fluid m-index overflow-hidden">
         <div className="m-index-title m-anime">
           <h1 className="h3">
             TRENDING DEALS<span> / 熱門優惠商品</span>
