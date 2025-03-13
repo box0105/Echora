@@ -445,7 +445,7 @@ const CouponAdminTable = () => {
                       </option>
                     </select>
                   ) : (
-                    coupon.isDelete == 0 ? <div>上架</div> : <div>下架</div>
+                    coupon.isDelete == 0 ? <div><img src="/images/coupon/check-mark-svgrepo-com.svg" width={24} height={24}/>上架</div> : <div><img src="/images/coupon/stop-svgrepo-com.svg" width={24} height={24}/>下架</div>
                   )}
                 </td>
                 <td>

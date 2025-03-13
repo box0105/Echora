@@ -38,41 +38,45 @@ export default function ActivityDetailPage() {
   if (isLoading) return <h3>網頁載入中，請稍後...</h3>
 
   return (
-    <div className="b-container b-detail-page">
-      {/* 開發測試 */}
-      {/* <pre>{JSON.stringify(act, null, 2)}</pre> */}
-      <HeroSection images={act?.media} />
+    <div className="b-header-padding">
+      <div className="b-container b-detail-page">
+        {/* 開發測試 */}
+        {/* <pre>{JSON.stringify(act, null, 2)}</pre> */}
+        <HeroSection images={act?.media} />
 
-      <main>
-        <section className="b-main-info">
-          <BreadCrumb breads={act} />
-          <Title _title={act?.name} />
-          <IntroCard
-            isOpen={isInfoOpen}
-            onClose={() => setIsInfoOpen(!isInfoOpen)}
-            dateFormat={dateFormat}
-            act={act}
-          />
-        </section>
+        <main>
+          <section className="b-main-info">
+            <BreadCrumb breads={act} />
+            <Title _title={act?.name} />
+            <IntroCard
+              isOpen={isInfoOpen}
+              onClose={() => setIsInfoOpen(!isInfoOpen)}
+              dateFormat={dateFormat}
+              act={act}
+            />
+          </section>
 
-        <div className="row g-5">
-          <div className="col-12 col-xl-9 order-last order-xl-first">
-            <article className="b-article-cards row g-0">
-              {act?.article?.map((art, i) => {
-                return <ArticleCard isLeft={i % 2 == 0} key={i} article={art} />
-              })}
-            </article>
+          <div className="row g-5">
+            <div className="col-12 col-xl-9 order-last order-xl-first">
+              <article className="b-article-cards row g-0">
+                {act?.article?.map((art, i) => {
+                  return (
+                    <ArticleCard isLeft={i % 2 == 0} key={i} article={art} />
+                  )
+                })}
+              </article>
+            </div>
+            <div className="col-12 col-xl-3 order-first order-xl-last">
+              <PurchaseAside data={act} />
+            </div>
           </div>
-          <div className="col-12 col-xl-3 order-first order-xl-last">
-            <PurchaseAside data={act} />
-          </div>
-        </div>
 
-        <section className="b-other-act">
-          <Title _title="YOU MAY ALSO LIKE, 您可能也會喜歡" />
-          <ActivityList data={acts} id={activityId} isSmall={true} />
-        </section>
-      </main>
+          <section className="b-other-act">
+            <Title _title="YOU MAY ALSO LIKE, 您可能也會喜歡" />
+            <ActivityList data={acts} id={activityId} isSmall={true} />
+          </section>
+        </main>
+      </div>
     </div>
   )
 }

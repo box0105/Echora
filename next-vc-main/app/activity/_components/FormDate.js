@@ -3,7 +3,7 @@
 export default function FormDate({ title, selected, error, onChange1, onChange2 }) {
   return (
     <div className="d-flex flex-column align-self-stretch">
-      <h4 className="b-cond-title">{title}</h4>
+      {title && <h4 className="b-cond-title">{title}</h4>}
 
       <div className="b-form-date">
         <div className="d-flex justify-content-between align-items-center">

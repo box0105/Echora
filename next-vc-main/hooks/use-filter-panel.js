@@ -5,12 +5,30 @@ export function useFilterPanel() {
   const { data } = useFetch('http://localhost:3005/api/activities/options')
 
   const city = [
-    "臺北市", "基隆市", "新北市", "連江縣", "宜蘭縣",
-    "新竹市", "新竹縣", "桃園市", "苗栗縣", "臺中市",
-    "彰化縣", "南投縣", "嘉義市", "嘉義縣", "雲林縣",
-    "臺南市", "高雄市", "南海島", "澎湖縣", "金門縣",
-    "屏東縣", "臺東縣", "花蓮縣"
-  ];
+    '臺北市',
+    '基隆市',
+    '新北市',
+    '連江縣',
+    '宜蘭縣',
+    '新竹市',
+    '新竹縣',
+    '桃園市',
+    '苗栗縣',
+    '臺中市',
+    '彰化縣',
+    '南投縣',
+    '嘉義市',
+    '嘉義縣',
+    '雲林縣',
+    '臺南市',
+    '高雄市',
+    '南海島',
+    '澎湖縣',
+    '金門縣',
+    '屏東縣',
+    '臺東縣',
+    '花蓮縣',
+  ]
 
   const initDate = () => {
     const start = new Date()
@@ -41,10 +59,13 @@ export function useFilterPanel() {
     }
   }, [data])
 
+  // 日期檢查
   useEffect(() => {
-    setError(
-      selectedDate[0] > selectedDate[1] ? '活動開始日期應該早於結束日期' : ''
-    )
+    if (selectedDate[0] && selectedDate[1])
+      setError(
+        selectedDate[0] > selectedDate[1] ? '活動開始日期應該早於結束日期' : ''
+      )
+    else setError('')
   }, [selectedDate])
 
   const resetFilters = () => {

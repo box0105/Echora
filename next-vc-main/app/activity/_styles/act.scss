@@ -5,6 +5,10 @@
 
 .b-container {
   padding-inline: 4rem;
+  
+}
+.b-header-padding {
+  padding-top: 127px !important; // header空間
 }
 
 .b-hero {
@@ -218,6 +222,10 @@
         #f9f9f9 100%
       )
     );
+
+    img {
+      max-height: 383px;
+    }
 
     .card-body {
       gap: 2.5rem;

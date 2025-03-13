@@ -157,6 +157,7 @@ router.get('/options', async (req, res) => {
 // Read One data
 router.get('/:id', async (req, res) => {
   const { id } = req.params
+  console.log('單一活動 ID:', req.params.id)
 
   try {
     const data = await prisma.activity.findUnique({
@@ -170,15 +171,17 @@ router.get('/:id', async (req, res) => {
         type: true,
       },
     })
-
+    if (!data) {
+      return res.status(404).json({ status: 'fail', error: '活動不存在' })
+    }
     successResponse(res, { data })
   } catch (error) {
     errorResponse(res, error)
   }
 })
 
-// 上傳照片
-router.post('/uploads', upload.array('files', 5), (req, res) => {
+// 上傳照片 (最多10張)
+router.post('/uploads', upload.array('files', 10), (req, res) => {
   if (!req.files || req.files.length === 0) {
     return res.status(400).json({ error: 'No file uploaded' })
   }

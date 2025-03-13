@@ -8,6 +8,7 @@ import ZipcodeSelector from './ZipcodeSelector'
 
 const FormActivity = ({
   isLoading,
+  isUpdate,
   formData,
   setFormData,
   selectedCategories,
@@ -22,8 +23,7 @@ const FormActivity = ({
   setBandNum,
   articleNum,
   setArticleNum,
-  imageFiles,
-  imagePreviews,
+  imageItems,
   handleFileChange,
   handleDateChange,
   handleImageDelete,
@@ -31,7 +31,9 @@ const FormActivity = ({
   handleLineupChange,
   handleArticleChange,
   handleSubmit,
+  numberToZh
 }) => {
+
   return (
     <form className="b-admin-form d-flex flex-column">
       <div className="col-6">
@@ -160,69 +162,6 @@ const FormActivity = ({
       </div>
 
       <div className="col-12">
-        <FormTitleWithBtn
-          title="門票"
-          num={ticketNum}
-          onAdd={() => {
-            if (formData.type?.[0]?.price !== 0) setTicketNum()
-            else confirm('免費票卷只需要一個欄位即可')
-          }}
-          handleForm={() =>
-            setFormData((prev) => ({
-              // formData 儲存的也要刪除
-              ...prev,
-              type: prev.type.slice(0, ticketNum - 1),
-            }))
-          }
-        />
-
-        {[...Array(ticketNum)].map((_, index) => (
-          <div key={index} className="row mb-3 gy-4">
-            <div className="col-6">
-              <label className="form-label">名稱 {index + 1}</label>
-              <input
-                type="text"
-                className="form-control"
-                value={formData.type?.[index]?.name}
-                onChange={(e) =>
-                  handleTicketChange(index, 'name', e.target.value)
-                }
-                required
-              />
-            </div>
-            <div className="col-3">
-              <label className="form-label">價格 {index + 1}</label>
-              <input
-                type="number"
-                className="form-control"
-                value={formData.type?.[index]?.price}
-                min={0}
-                onChange={(e) => {
-                  if (e.target.value)
-                    handleTicketChange(index, 'price', parseInt(e.target.value))
-                }}
-                required
-              />
-            </div>
-            <div className="col-3">
-              <label className="form-label">數量 {index + 1}</label>
-              <input
-                type="number"
-                className="form-control"
-                value={formData.type?.[index]?.stock}
-                min={0}
-                onChange={(e) => {
-                  if (e.target.value)
-                    handleTicketChange(index, 'stock', parseInt(e.target.value))
-                }}
-                required
-              />
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="col-12">
         <h4 className="b-cond-title">地址</h4>
         <input
           className="js-demeter-tw-zipcode-selector d-none"
@@ -245,6 +184,8 @@ const FormActivity = ({
                     setFormData({
                       ...formData,
                       city: e.currentTarget.value,
+                      // 城市選完，地區要等使用者重選
+                      dist: '',
                     })
                   }
                 ></select>
@@ -296,6 +237,64 @@ const FormActivity = ({
 
       <div className="col-12">
         <FormTitleWithBtn
+          title="門票"
+          num={ticketNum}
+          onAdd={setTicketNum}
+          handleForm={() =>
+            setFormData((prev) => ({
+              // formData 儲存的也要刪除
+              ...prev,
+              type: prev.type.slice(0, ticketNum - 1),
+            }))
+          }
+        />
+
+        {[...Array(ticketNum)].map((_, index) => (
+          <div key={index} className="row mb-3 gy-4">
+            <div className="col-6">
+              <label className="form-label">名稱{numberToZh(index + 1)}</label>
+              <input
+                type="text"
+                className="form-control"
+                value={formData.type?.[index]?.name}
+                onChange={(e) =>
+                  handleTicketChange(index, 'name', e.target.value)
+                }
+                required
+              />
+            </div>
+            <div className="col-3">
+              <label className="form-label">價格{numberToZh(index + 1)}</label>
+              <input
+                type="number"
+                className={`form-control b-ticket-${index + 1}`}
+                value={formData.type?.[index]?.price || ''}
+                min={0}
+                onChange={(e) => {
+                  handleTicketChange(index, 'price', parseInt(e.target.value))
+                }}
+                required
+              />
+            </div>
+            <div className="col-3">
+              <label className="form-label">數量{numberToZh(index + 1)}</label>
+              <input
+                type="number"
+                className="form-control"
+                value={formData.type?.[index]?.stock || ''}
+                min={0}
+                onChange={(e) => {
+                  handleTicketChange(index, 'stock', parseInt(e.target.value))
+                }}
+                required
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="col-12">
+        <FormTitleWithBtn
           title="陣容"
           num={bandNum}
           onAdd={setBandNum}
@@ -311,7 +310,7 @@ const FormActivity = ({
         <div className="row row-cols-2 mb-3 gy-4">
           {[...Array(bandNum)].map((_, index) => (
             <div className="col" key={index}>
-              <label className="form-label">陣容 {index + 1}</label>
+              <label className="form-label">陣容{numberToZh(index + 1)}</label>
               <textarea
                 className="form-control"
                 rows={3}
@@ -344,7 +343,7 @@ const FormActivity = ({
               <div className="col-6">
                 <div className="row gy-4">
                   <div className="col-12">
-                    <label className="form-label">標題 {index + 1}</label>
+                    <label className="form-label">標題{numberToZh(index + 1)}</label>
                     <input
                       type="text"
                       className="form-control"
@@ -356,17 +355,19 @@ const FormActivity = ({
                     />
                   </div>
 
+                  {/* 檔案上傳區 (捨棄) 
                   <div className="col-12">
                     <input type="file" multiple className="form-control" />
-                  </div>
+                  </div> */}
                 </div>
+                {/* 檔案預覽區 (捨棄) 
                 <div className="col-12 mt-3">
                   <div className="row row-cols-xl-3 row-cols-lg-2 row-cols-1 g-3"></div>
-                </div>
+                </div> */}
               </div>
 
               <div className="col-6">
-                <label className="form-label">內容 {index + 1}</label>
+                <label className="form-label">內容{numberToZh(index + 1)}</label>
                 <textarea
                   className="form-control"
                   value={formData.article?.[index]?.content || ''}
@@ -384,15 +385,20 @@ const FormActivity = ({
       <div className="col-12">
         <h4 className="b-cond-title">活動圖片</h4>
         <div className="b-img-upload row row-cols-xl-3 row-cols-lg-2 row-cols-1 g-3">
-          {imagePreviews.map((src, i) => (
+          {imageItems.map((item, i) => (
             <div className="col position-relative" key={i}>
               <div className="ratio ratio-16x9 border rounded">
-                <Image className="object-fit-cover" alt={src} src={src} fill />
+                <Image
+                  className="object-fit-cover"
+                  alt={item.url}
+                  src={item.url}
+                  fill
+                />
               </div>
               <button
                 type="button"
                 className="b-delete-btn btn btn-light position-absolute top-0 end-0"
-                onClick={() => handleImageDelete(i)}
+                onClick={() => handleImageDelete(item.id, item.type)}
               >
                 x
               </button>
@@ -416,11 +422,14 @@ const FormActivity = ({
         {'formData.media (已存入活動照片)\n'}
         {JSON.stringify(formData.media, null, 2)}
       </pre>
-
       <pre>
-        {'imageFiles (新上傳照片)\n'}
+        {'新上傳照片\n'}
         {JSON.stringify(
-          imageFiles.map((file) => file.name),
+          imageItems
+            .filter((file) => file.type == 'uploading')
+            .map((file) => ({
+              id: file.id,
+            })),
           null,
           2
         )}
@@ -438,7 +447,7 @@ const FormActivity = ({
           href="/admin/activity"
           className="btn btn-outline-secondary ms-2 mb-0"
         >
-          取消
+          {isUpdate ? '返回' : '取消'}
         </Link>
       </div>
 
