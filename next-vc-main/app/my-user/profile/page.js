@@ -163,7 +163,7 @@ export default function ProfilePage() {
           <div className="a-form-container">
             <div className="left">
               <div className="form-group">
-                <label htmlFor="username" className="form-label">
+                <label htmlFor="username" className="a-form-label">
                   姓名
                 </label>
                 <input
@@ -177,7 +177,7 @@ export default function ProfilePage() {
               </div>
 
               <div className="form-group">
-                <label htmlFor="email" className="form-label">
+                <label htmlFor="email" className="a-form-label">
                   Email/帳號
                 </label>
                 <input
@@ -192,7 +192,7 @@ export default function ProfilePage() {
               <div className="form-group">
                 <div className="password-group">
                   <div>
-                    <label htmlFor="password" className="form-label">
+                    <label htmlFor="password" className="a-form-label">
                       密碼
                     </label>
                     <div type="password" id="password" readOnly>
@@ -210,7 +210,7 @@ export default function ProfilePage() {
                 </div>
               </div>
               <fieldset className="gender-group form-group">
-                <legend className="form-label">
+                <legend className="a-form-label">
                   性別 <span>(選填)</span>
                 </legend>
                 <label className="gender-label">
@@ -253,7 +253,7 @@ export default function ProfilePage() {
             </div>
             <div className="right">
               <div className="form-group">
-                <label htmlFor="phone" className="form-label">
+                <label htmlFor="phone" className="a-form-label">
                   電話號碼
                 </label>
                 <input
@@ -267,7 +267,7 @@ export default function ProfilePage() {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="address" className="form-label">
+                <label htmlFor="address" className="a-form-label">
                   地址
                 </label>
                 <select
@@ -313,7 +313,7 @@ export default function ProfilePage() {
                 )}
               </div>
               <div className="form-group">
-                <label htmlFor="postcode" className="form-label">
+                <label htmlFor="postcode" className="a-form-label">
                   郵遞區號
                 </label>
                 <input
@@ -328,7 +328,7 @@ export default function ProfilePage() {
               </div>
             </div>
             {/* <div className="section-header">
-              <h4 className="form-label">頭貼</h4>
+              <h4 className="a-form-label">頭貼</h4>
               <img
                 src={profileInput.avatar || '../images/user/article-2'}
                 alt="頭貼"
