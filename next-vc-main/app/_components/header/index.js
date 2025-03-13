@@ -218,7 +218,7 @@ export default function Header() {
                 {isAuth && showDropdown && (
                   <div className={styles['dropdown-menu']}>
                     <button onClick={handleLogout}>登出</button><br />
-                    {userProfile.username == 'admin' ? <Link href="/admin">admin</Link> : ''}
+                    {userProfile.username == 'admin' ? <Link href="/admin/activity">admin</Link> : ''}
                   </div>
                 )}
               </div>
