@@ -12,11 +12,11 @@
 /* trending deals section */
 
 .g-main-trending {
-    padding-block: 100px 0px;
+    padding-block: 100px 10px;
     // overflow: hidden;
   
     @media screen and (max-width: 430px) {
-      padding-block: 64px;
+      padding-block: 64px 10px;
     }
   }
   

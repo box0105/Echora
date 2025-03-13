@@ -20,10 +20,10 @@ export default function RootLayout({ children }) {
       <head>
         {/* <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> */}
       </head>
-      <body>
+      <body  className={pathname === '/' ? 'g-background' : ''}>
         <Suspense fallback={<div>Loading...</div>}>
           <Providers>
-            {!noHeaderFooterPaths.includes(pathname) && !pathname.includes('admin')&& <Header />}
+          {!noHeaderFooterPaths.includes(pathname) && !pathname.includes('admin')&& <Header />}
             <main style={{ minHeight: 'calc(100vh - 365px)' }}>
               <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
             </main>

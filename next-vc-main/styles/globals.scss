@@ -21,6 +21,14 @@ body {
   font-family: 'Poppins', 'Noto Sans TC', sans-serif;
 }
 
+.g-background {
+  background-image: url(/images/index/background1.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 /* tc */
 h1 {
   font-size: 2rem; /* 32px */
