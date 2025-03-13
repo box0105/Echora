@@ -10,6 +10,7 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { FaCalendarAlt } from 'react-icons/fa'
 import StoreSelector from '../_components/StoreSelector'
+import { toastSuccess, toastError } from '@/hooks/use-toast'
 
 export default function Page(props) {
   const CustomInput = ({ value, onClick }) => (
@@ -214,6 +215,11 @@ export default function Page(props) {
   }, [])
 
   const handleAddToCart = () => {
+    if (!ListData || ListData.stock <= 0) {
+      toastError('商品缺貨，無法加入購物車')
+      return
+    }
+
     const cartData = {
       id: ListData.id,
       name: ListData.name,
@@ -231,12 +237,22 @@ export default function Page(props) {
       rentStore: selectedStore,
     }
 
-    // 如果你需要格式化輸出 JSON 以便更清晰地查看，使用以下代碼：
     console.log('Formatted Cart Data:', JSON.stringify(cartData, null, 2))
 
-    // 確保這裡的 onAddRent 是一個有效的函數（如果有的話）
+    // 檢查 onAddRent 是否存在
+    if (typeof onAddRent === 'function') {
+      onAddRent(cartData)
 
-    onAddRent(cartData)
+      // 減少庫存
+      setListData((prevData) => ({
+        ...prevData,
+        stock: prevData.stock - 1,
+      }))
+
+      // toastSuccess('已成功加入購物車！')
+    } else {
+      toastError('加入購物車失敗，請稍後再試')
+    }
   }
   // useMemo 保证选中颜色后能正确更新图片
   const selectedImages = useMemo(() => {
@@ -417,11 +433,16 @@ export default function Page(props) {
                               ListData?.stock <= 0 ? 'not-allowed' : 'pointer',
                           }}
                         >
-                          <h6 className=" text-white m-0">加入購物車</h6>
+                          <h6 className="text-white m-0">加入購物車</h6>
                         </button>
+
                         <div className="g-stock d-flex align-items-center gap-2 pt-3">
                           <img
-                            src="/images/product/detail/stock.svg"
+                            src={
+                              ListData?.stock > 0
+                                ? '/images/product/detail/stock.svg' // 库存图片
+                                : '/images/product/detail/no_stock.svg' // 缺货图片
+                            }
                             width="18px"
                             alt=""
                           />
