@@ -4,7 +4,7 @@ import '../../product/list/list.scss'
 import CartOffcanvas from '../cart-offcanvas'
 import { useMyCart } from '@/hooks/use-cart'
 import { useActivity } from '@/hooks/use-activity'
-import { useRent } from "@/hooks/use-rent" 
+import { useRent } from "@/hooks/use-rent"
 import { useRouter, usePathname } from 'next/navigation'
 import { useProductState } from '@/services/rest-client/use-products'
 import { useState, useEffect, useRef } from 'react'
@@ -72,7 +72,7 @@ export default function Header() {
   const { criteria, setCriteria, defaultCriteria } = useProductState()
   const isFirstRender = useRef(true) // 追蹤是否為初次渲染
   const { updateQueryParams, deleteQueryParams } = useActivity()
-  const { query, setQuery } = useRent(); 
+  const { query, setQuery } = useRent();
 
   const handleSearch = (e) => {
     if (e.key === 'Enter') {
@@ -164,9 +164,8 @@ export default function Header() {
     <>
       <nav
         ref={headerRef}
-        className={`${styles['g-header']} ${styles['px-modified']} ${styles[getBackgroundColor()]} ${
-          isVisible ? styles['visible'] : `${styles['hidden']} hidden`
-        }`}
+        className={`${styles['g-header']} ${styles['px-modified']} ${styles[getBackgroundColor()]} ${isVisible ? styles['visible'] : `${styles['hidden']} hidden`
+          }`}
       >
         <div className="container-fluid">
           <div className={`${styles['g-nav-top']} row`}>
@@ -215,12 +214,12 @@ export default function Header() {
                 <Link href={isAuth ? '/my-user/profile' : '/my-user'}>
                   <img src="/images/header/account.svg" />
                 </Link>
-                {isAuth && showDropdown && (
+                {/* {isAuth && showDropdown && (
                   <div className={styles['dropdown-menu']}>
-                    <button onClick={handleLogout}>登出</button><br />
-                    {userProfile.username == 'admin' ? <Link href="/admin/activity">admin</Link> : ''}
+                    <button onClick={handleLogout}>登出</button>
+                    {userProfile.username == 'admin' && <><br /> <Link href="/admin/activity">admin</Link></>}
                   </div>
-                )}
+                )} */}
               </div>
               {isAuth && (
                 <Link href="/my-user/favorites">
