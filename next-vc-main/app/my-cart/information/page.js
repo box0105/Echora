@@ -422,7 +422,7 @@ export default function InformationPage() {
                     className="form-check-label ps-2"
                     htmlFor="flexRadioDefault4"
                   >
-                    綠界科技ECPay
+                    信用卡
                   </label>
                 </div>
                 {/* <div className="form-check py-3 pe-4">
