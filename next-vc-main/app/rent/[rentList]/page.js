@@ -299,7 +299,7 @@ export default function Page(props) {
       ) : (
         <div>
           {/* section1 */}
-          <div className="c-section1">
+          <div className="c-section1-list">
             <div className=" c">
               <div className="container-fluid">
                 <div className="row">
