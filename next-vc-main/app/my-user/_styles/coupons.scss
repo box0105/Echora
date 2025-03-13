@@ -2,9 +2,7 @@
   width: 600px;
 }
 
-
 .k-body {
-
   .section {
     width: 100%;
   }
@@ -12,7 +10,7 @@
   .div {
     width: 100%;
     height: 8.5rem;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
     position: relative;
 
     display: flex;
@@ -31,7 +29,7 @@
   }
 
   .div::before {
-    content: '';
+    content: "";
     border-left: 1px solid #ccc;
     /* 使用 flex 屬性來控制位置 */
     flex-shrink: 0;
@@ -80,8 +78,8 @@
     justify-content: flex-end;
     width: 20%;
     margin-left: 80%;
-    margin-bottom: .5rem;
-    cursor: pointer
+    margin-bottom: 0.5rem;
+    cursor: pointer;
   }
 
   .btn {
