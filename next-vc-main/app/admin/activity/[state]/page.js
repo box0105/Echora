@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams, useRouter, useSearchParams } from 'next/navigation'
 import FormActivity from '../../_components/FormActivity'
 import { useFilterPanel } from '@/hooks/use-filter-panel'
+import { useActivity } from '@/hooks/use-activity'
 import { useFetch } from '@/hooks/use-fetch'
 import { toastInfo, toastSuccess, toastWarning } from '@/hooks/use-toast'
 import { NumberZh } from 'number-zh'
@@ -17,6 +18,8 @@ export default function AdminActivityState() {
   const numberZh = new NumberZh()
 
   // Update 頁面時抓取資料
+  const { reFetch } = useActivity()
+
   const { data: act, isLoading } = useFetch(
     isUpdate ? `http://localhost:3005/api/activities/${activityId}` : null
   )
@@ -192,6 +195,7 @@ export default function AdminActivityState() {
       const data = await response.json()
       if (data.status === 'success') {
         toastSuccess('活動新增完成')
+        reFetch()
       } else {
         toastInfo(`有表單欄位為空，請確認填寫`)
         console.error('活動新增失敗', data)
@@ -219,6 +223,7 @@ export default function AdminActivityState() {
       const data = await response.json()
       if (data.status === 'success') {
         toastSuccess(`活動更新完成`)
+        reFetch()
       } else {
         toastInfo(`有表單欄位為空，請確認填寫`)
         console.error('活動更新失敗', data)
@@ -292,7 +297,7 @@ export default function AdminActivityState() {
     } else if (formData.media.length === 0) {
       // 當圖片為空時，那就一定要上傳
       toastInfo('請上傳至少一張圖片!')
-      return;
+      return
     }
 
     // 更新 formData
