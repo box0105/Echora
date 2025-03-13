@@ -5,9 +5,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { dateFormat } from '@/app/activity/_utils/dateFormat'
 import { useActivity } from '@/hooks/use-activity'
+import { toastSuccess, toastWarning } from '@/hooks/use-toast'
 
 export default function DataTable() {
-  const { acts, isLoading } = useActivity()
+  const { acts, isLoading, updateQueryParams } = useActivity()
 
   // API delete
   const deleteActivity = async (activityId, activityName) => {
@@ -21,12 +22,18 @@ export default function DataTable() {
         }
       )
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`)
-      }
+      const result = await response.json()
+      if (result.status === 'success') {
+        toastSuccess('活動刪除成功')
+        console.log('活動刪除成功', result)
 
-      console.log('活動刪除成功', await response.json());
+        // 觸發重新 fetch 資料
+        updateQueryParams({reFetch:true})
+      } else {
+        toastWarning('該活動已被刪除')
+      }
     } catch (error) {
+      toastWarning('活動刪除發生錯誤')
       console.error('活動刪除失敗!', error.message)
     }
   }
@@ -53,40 +60,39 @@ export default function DataTable() {
             {/*head*/}
             <thead>
               <tr>
-                <th>
+                {/* <th>
                   <button className="b-btn-unstyled text-secondary opacity-4">
                     編號
                     <i className="ms-2 fa-solid fa-sort-up" />
                   </button>
-                </th>
+                </th> */}
+                <th className="text-secondary opacity-4">編號</th>
                 <th className="text-secondary opacity-4">活動</th>
                 <th className="text-secondary opacity-4">名稱</th>
                 <th className="text-secondary opacity-4">活動類型</th>
                 <th className="text-secondary opacity-4">音樂類型</th>
-                {/* <th class="text-secondary opacity-4">
-                    演出參與
-                </th> */}
-                <th>
+                {/* <th>
                   <button className="b-btn-unstyled text-secondary opacity-4">
                     活動日期
                     <i className="ms-2 fa-solid fa-sort-up" />
                   </button>
-                </th>
-                {/* <th class="text-secondary opacity-4">
-                    報名日期
                 </th> */}
-                <th>
+                <th className="text-secondary opacity-4">活動日期</th>
+
+                {/* <th>
                   <button className="b-btn-unstyled text-secondary opacity-4">
                     門票數量
                     <i className="ms-2 fa-solid fa-sort-up" />
                   </button>
-                </th>
-                <th>
+                </th> */}
+                <th className="text-secondary opacity-4">門票數量</th>
+                {/* <th>
                   <button className="b-btn-unstyled text-secondary opacity-4">
                     門票價格
                     <i className="ms-2 fa-solid fa-sort-up" />
                   </button>
-                </th>
+                </th> */}
+                <th className="text-secondary opacity-4">門票價格</th>
                 <th className="text-secondary opacity-4">城市</th>
                 {/* update & delete */}
                 <th className="text-secondary opacity-4">操作</th>
@@ -105,9 +111,8 @@ export default function DataTable() {
                         <Image
                           src={`/images/activity/${act.media.split(',')[0]}`}
                           alt={act.name}
-                          width={500}
-                          height={300}
-                          className="img-fluid"
+                          fill
+                          className="object-fit-cover"
                         />
                       </div>
                     </td>

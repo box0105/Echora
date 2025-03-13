@@ -1,16 +1,20 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { useParams, useSearchParams } from 'next/navigation'
+import { useParams, useRouter, useSearchParams } from 'next/navigation'
 import FormActivity from '../../_components/FormActivity'
 import { useFilterPanel } from '@/hooks/use-filter-panel'
 import { useFetch } from '@/hooks/use-fetch'
+import { toastInfo, toastSuccess, toastWarning } from '@/hooks/use-toast'
+import { NumberZh } from 'number-zh'
 
 export default function AdminActivityState() {
   const { state } = useParams()
   const searchParams = useSearchParams()
   const isUpdate = state === 'update'
   const activityId = Number(searchParams?.get('id'))
+  const router = useRouter()
+  const numberZh = new NumberZh()
 
   // Update 頁面時抓取資料
   const { data: act, isLoading } = useFetch(
@@ -68,15 +72,17 @@ export default function AdminActivityState() {
       setTicketNum(act?.type.length)
       setBandNum(act?.lineup.length)
       setArticleNum(act?.article.length)
-      setImagePreviews(
-        // 預覽檔名加上前綴
-        act?.media.split(',').map((file) => `/images/activity/${file}`)
-      )
+      setImageItems([
+        ...act.media.split(',').map((file) => ({
+          id: file, // 直接使用檔名當 ID
+          url: `/images/activity/${file}`, // 預覽檔名加上前綴
+          type: 'uploaded',
+        })),
+      ])
     }
-  }, [act, isLoading])
+  }, [act])
 
-  const [imagePreviews, setImagePreviews] = useState([]) // 圖片預覽
-  const [imageFiles, setImageFiles] = useState([]) // 存放照片
+  const [imageItems, setImageItems] = useState([]) // 用來儲存圖片的統一狀態
 
   const [ticketNum, setTicketNum] = useState(1)
   const [bandNum, setBandNum] = useState(1)
@@ -94,36 +100,42 @@ export default function AdminActivityState() {
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files)
     if (files.length === 0) return
+    if (files.length > 10) {
+      toastWarning('一次最多上傳 10 張照片')
+      return
+    }
 
     const newFileData = files.map((file) => {
       return {
+        id: URL.createObjectURL(file), // 用 URL 作為暫時的 ID
         url: URL.createObjectURL(file),
         file: file,
+        type: 'uploading',
       }
     })
 
-    setImagePreviews((prev) => [
-      ...prev,
-      ...newFileData.map((item) => item.url),
-    ])
-    setImageFiles((prev) => [...prev, ...newFileData.map((item) => item.file)])
+    setImageItems((prev) => [...prev, ...newFileData])
   }
 
-  // 刪除圖片預覽圖片
-  const handleImageDelete = (index) => {
-    setImagePreviews((prev) => prev.filter((_, i) => i !== index))
-    setFormData(prevData => ({
-      ...prevData,
-      media: prevData.media.filter((_, i) => i !== index)
-  }));
+  // 刪除預覽（包含已上傳與未上傳）
+  const handleImageDelete = (id, type) => {
+    setImageItems((prev) => prev.filter((file) => file.id !== id))
 
-    setImageFiles((prev) => prev.filter((_, i) => i !== index))
+    if (type === 'uploading') {
+      // 刪除正在上傳的圖片
+    } else {
+      // 刪除已上傳的圖片
+      setFormData((prevData) => ({
+        ...prevData,
+        media: prevData.media.filter((file) => file !== id),
+      }))
+    }
   }
 
   // 將門票的欄位整理為物件
   const handleTicketChange = (index, field, value) => {
     const updated = [...formData.type]
-    if (!updated[index]) updated[index] = { name: '', stock: 0, price: 0 }
+    if (!updated[index]) updated[index] = { name: '', stock: '', price: '' }
     updated[index][field] = value
     setFormData({ ...formData, type: updated })
   }
@@ -148,26 +160,45 @@ export default function AdminActivityState() {
   const [signupError, setSignupError] = useState('')
   const [totalError, setTotalError] = useState('')
   useEffect(() => {
-    if (formData?.signup_end && formData?.signup_start)
+    // 報名開始 > 結束
+    if (formData.signup_end && formData.signup_start)
       setSignupError(
         formData.signup_end < formData.signup_start
           ? '報名開始日期應早於結束日期'
           : ''
       )
-    if (formData?.signup_end)
+    else setSignupError('')
+
+    // 報名時間 > 活動時間
+    if (selectedDate)
       setTotalError(
-        selectedDate[0] < formData.signup_end ? '報名時間應早於活動時間' : ''
+        selectedDate[0] < formData?.signup_end ||
+          selectedDate[0] < formData?.signup_start
+          ? '報名時間應早於活動時間'
+          : ''
       )
+    else setTotalError('')
   }, [formData])
 
   // API create
   const createActivity = async (updatedFormData) => {
-    const response = await fetch('http://localhost:3005/api/activities', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(updatedFormData),
-    })
-    console.log('活動新增成功', await response.json())
+    try {
+      const response = await fetch('http://localhost:3005/api/activities', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedFormData),
+      })
+
+      const data = await response.json()
+      if (data.status === 'success') {
+        toastSuccess('活動新增完成')
+      } else {
+        toastInfo(`有表單欄位為空，請確認填寫`)
+        console.error('活動新增失敗', data)
+      }
+    } catch (error) {
+      console.error('活動新增遇到錯誤', error)
+    }
   }
 
   // API update
@@ -185,9 +216,15 @@ export default function AdminActivityState() {
           body: JSON.stringify(updatedFormData),
         }
       )
-      console.log('更新活動成功', await response.json())
+      const data = await response.json()
+      if (data.status === 'success') {
+        toastSuccess(`活動更新完成`)
+      } else {
+        toastInfo(`有表單欄位為空，請確認填寫`)
+        console.error('活動更新失敗', data)
+      }
     } catch (error) {
-      console.error('更新活動失敗', error)
+      console.error('活動更新遇到錯誤', error)
     }
   }
 
@@ -195,7 +232,19 @@ export default function AdminActivityState() {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    // 欄位驗證
+    // 檢查日期錯誤
+    if (signupError || totalError || dateError) {
+      toastWarning('請修正日期錯誤！')
+      return
+    }
+
+    // 檢查有無上傳照片
+    // if (imageFiles.length === 0) {
+    //   toastInfo('請上傳至少一張圖片！')
+    //   return
+    // }
+
+    // 表單欄位驗證
     const requiredFields = [
       'name',
       'category_id',
@@ -205,34 +254,45 @@ export default function AdminActivityState() {
       'dist',
       'address',
       'intro',
-      'type',
-      'article',
-      'lineup',
     ]
 
     for (let field of requiredFields) {
       if (!formData[field]) {
-        alert(`${field} 欄位未填寫！`)
+        toastInfo(`${field} 欄位未填寫！`)
         return
       }
     }
 
-    // 如果有需要檢查日期的錯誤，則不進行提交
-    if (signupError || totalError || dateError) {
-      alert('請修正日期錯誤！')
+    // 表單欄位驗證 (一對多)
+    const checkEmptyFields = (arr, fields, name) => {
+      for (let i = 0; i < arr.length; i++) {
+        for (let field of fields) {
+          if (!arr[i][field]) {
+            toastInfo(`${name}${numberToZh(i + 1)} 的 ${field} 欄位未填寫！`)
+            return false
+          }
+        }
+      }
+      return true
+    }
+
+    if (
+      !checkEmptyFields(formData.type, ['name', 'price', 'stock'], '門票') ||
+      !checkEmptyFields(formData.lineup, ['bands'], '陣容') ||
+      !checkEmptyFields(formData.article, ['title', 'content'], '文章')
+    ) {
       return
     }
 
-    // if (imageFiles.length === 0) {
-    //   alert('請上傳至少一張圖片！')
-    //   return
-    // }
-
     let newFilenames = []
 
-    // 若有新上傳的圖片才執行 uploadImage
-    if (imageFiles.length > 0) {
-      newFilenames = await uploadImage()
+    // 若有新上傳 (uploading) 的圖片才執行 uploadImage
+    if (imageItems.some((item) => item.type === 'uploading')) {
+      newFilenames.push(...(await uploadImage()))
+    } else if (formData.media.length === 0) {
+      // 當圖片為空時，那就一定要上傳
+      toastInfo('請上傳至少一張圖片!')
+      return;
     }
 
     // 更新 formData
@@ -251,14 +311,19 @@ export default function AdminActivityState() {
     }
 
     // 呼叫 API
-    isUpdate ? updateActivity(updatedFormData) : createActivity(updatedFormData)
+    if (isUpdate) {
+      updateActivity(updatedFormData)
+    } else {
+      createActivity(updatedFormData)
+      router.push('/admin/activity')
+    }
   }
 
   // API upload image
   const uploadImage = async () => {
     const formImage = new FormData()
-    imageFiles.forEach((file) => {
-      formImage.append('files', file) // 對應後端中間路由 upload.array('files', 5)
+    imageItems.forEach((item) => {
+      formImage.append('files', item.file) // 對應後端中間路由 upload.array('files', 5)
     })
 
     try {
@@ -280,6 +345,13 @@ export default function AdminActivityState() {
     }
   }
 
+  // 數字中文化
+  const numberToZh = (num) => {
+    const zh = numberZh.numberToZh(num)
+    const newzh = num > 9 ? zh.slice(1) : zh
+    return newzh
+  }
+
   if (state !== 'create' && state !== 'update') return
   return (
     <div className="card b-card b-filter-conds">
@@ -293,6 +365,7 @@ export default function AdminActivityState() {
 
       <FormActivity
         isLoading={isLoading}
+        isUpdate={isUpdate}
         formData={formData}
         setFormData={setFormData}
         selectedCategories={selectedCategories}
@@ -307,8 +380,7 @@ export default function AdminActivityState() {
         setBandNum={setBandNum}
         articleNum={articleNum}
         setArticleNum={setArticleNum}
-        imageFiles={imageFiles}
-        imagePreviews={imagePreviews}
+        imageItems={imageItems}
         handleFileChange={handleFileChange}
         handleImageDelete={handleImageDelete}
         handleDateChange={handleDateChange}
@@ -316,6 +388,7 @@ export default function AdminActivityState() {
         handleLineupChange={handleLineupChange}
         handleArticleChange={handleArticleChange}
         handleSubmit={handleSubmit}
+        numberToZh={numberToZh}
       />
     </div>
   )

@@ -9,9 +9,19 @@ import { redirect,useRouter } from 'next/navigation';
 import { flatMap } from 'lodash'
 import { useAuth } from '@/hooks/use-auth'
 import { useUser } from '@/hooks/use-profile'
-
+import { ToastContainer } from 'react-toastify'
 
 export default function AdminLayout({ children }) {
+  // 修改 Admin 頁面的背景顏色
+  useEffect(() => {
+    document.body.style.backgroundColor = 'var(--grey50)';
+    
+    // 清理函數以確保離開 Admin 頁面時不會影響其他頁面
+    return () => {
+      document.body.style.backgroundColor = 'var(--white)'; // 恢復默認顏色
+    };
+  }, []);
+
   const [admin, setAdmin] = useState(null)
   const { logout, token } = useAdminAuth();
   const [check, setCheck] = useState(false)
@@ -73,6 +83,8 @@ export default function AdminLayout({ children }) {
           <AdminPanel />
           <main className="col-md-10 px-0 ps-md-2">{children}</main>
         </div>
+        {/* 載入吐司 */}
+      <ToastContainer />
       </div>
     )
   }

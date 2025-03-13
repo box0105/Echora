@@ -2,14 +2,18 @@
   --card-border-radius: 1rem;
 }
 
-body {
-  background-color: var(--grey50);
-}
+// body {
+//   background-color: var(--grey50);
+// }
 
 .b-admin {
+  background-color: var(--grey50);
   .b-card {
     margin: 2rem 3rem;
     padding: 1.5rem;
+  }
+  .card {
+    border: 1px solid var(--grey200)
   }
 
   /* Table */
@@ -23,9 +27,8 @@ body {
     }
   }
 
-  nav {
-    min-height: 30vh;
-    max-height: 50vh;
+  .b-nav {
+    height: 50vh;
 
     img {
       width: 80%;

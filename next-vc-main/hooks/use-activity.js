@@ -1,4 +1,11 @@
-import { act, createContext, useContext, useEffect, useState, useRef } from 'react'
+import {
+  act,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  useRef,
+} from 'react'
 import { useFetch } from './use-fetch'
 
 // 1. 建立 Context 物件
@@ -68,9 +75,9 @@ export const ActivityProvider = ({
   useEffect(() => {
     // 每次 API 取得新資料時更新 acts
     if (data) {
-      setActs(data) 
+      setActs(data)
     }
-  }, [data]) 
+  }, [data])
 
   useEffect(() => {
     // Query 變更時重新產生後端網址
@@ -79,15 +86,14 @@ export const ActivityProvider = ({
     }
   }, [queryParams])
 
-
   // 初次渲染封面 (用一個 flag 判斷是否初次)
-  const hasInitCover = useRef(false);
+  const hasInitCover = useRef(false)
   useEffect(() => {
     if (!hasInitCover.current && acts.length >= coverNum) {
       const cover = updateRandomPhotos(coverNum)
       setRandomImages(cover.randomImages)
       setRandomIds(cover.randomIndicesArray)
-      hasInitCover.current = true;
+      hasInitCover.current = true
     }
   }, [acts])
 
