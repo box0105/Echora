@@ -1,9 +1,9 @@
 .image {
     display: block; // 確保圖片獨占一行，避免行內元素特性導致樣式錯亂
     margin: 0 auto; // 調整 `margin` 以保持置中
-    height: 100%; // 讓高度更穩定，配合 max-height 控制尺寸
-    width: 90%; 
-    max-width: 300px; // 控制最大寬度，避免過大
+    height: 80%; // 讓高度更穩定，配合 max-height 控制尺寸
+    width: 60%; 
+    max-width: 150px; // 控制最大寬度，避免過大
     object-fit: contain;
     border: 2px solid transparent; // 預設加上透明邊框，避免邊框“跳動”  
     transition: border 0.3s ease, transform 0.3s ease;
