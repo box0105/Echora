@@ -83,7 +83,7 @@ const ImageSlider = ({ images, imageBasePath = '/images/Rent/pd-images/' }) => {
                   src={`${imageBasePath}${img || 'default-image.jpg'}`}
                   alt={`縮略圖 ${index}`}
                   width={100}
-                  height={200}
+                  height={100}
                   className={`${styles.image} ${index === activeIndex ? styles.active : ''}`}
                 />
               </div>
