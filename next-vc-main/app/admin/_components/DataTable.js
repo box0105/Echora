@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { dateFormat } from '@/app/activity/_utils/dateFormat'
 import { useActivity } from '@/hooks/use-activity'
-import { toastInfo, toastSuccess, toastWarning } from '@/hooks/use-toast'
+import { toastSuccess, toastWarning } from '@/hooks/use-toast'
 
 export default function DataTable() {
   const { acts, isLoading, updateQueryParams } = useActivity()
@@ -28,7 +28,7 @@ export default function DataTable() {
         console.log('活動刪除成功', result)
 
         // 觸發重新 fetch 資料
-        // updateQueryParams({reFetch:true})
+        updateQueryParams({reFetch:true})
       } else {
         toastWarning('該活動已被刪除')
       }
