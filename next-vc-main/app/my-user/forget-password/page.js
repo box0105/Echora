@@ -256,7 +256,6 @@ export default function ForgetPasswordPage() {
               </p>
             )}
           </form>
-          s
         </div>
       </div>
       <ToastContainer />
