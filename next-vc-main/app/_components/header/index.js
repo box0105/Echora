@@ -214,12 +214,12 @@ export default function Header() {
                 <Link href={isAuth ? '/my-user/profile' : '/my-user'}>
                   <img src="/images/header/account.svg" />
                 </Link>
-                {isAuth && showDropdown && (
+                {/* {isAuth && showDropdown && (
                   <div className={styles['dropdown-menu']}>
                     <button onClick={handleLogout}>登出</button>
                     {userProfile.username == 'admin' && <><br /> <Link href="/admin/activity">admin</Link></>}
                   </div>
-                )}
+                )} */}
               </div>
               {isAuth && (
                 <Link href="/my-user/favorites">
