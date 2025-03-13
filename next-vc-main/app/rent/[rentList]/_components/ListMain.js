@@ -121,9 +121,9 @@ const ImageSlider = ({ images, imageBasePath = '/images/Rent/pd-images/', brand 
                 src={`${imageBasePath}${img || 'default-image.jpg'}`}
                 width={300}
                 height={450}
-                layout="responsive"
+                // layout="responsive"
                 alt={`輪播圖 ${index}`}
-                style={{ objectFit: 'cover' }}
+                style={{ objectFit: 'contain' }}
                 className="w-100"
               />
             </SwiperSlide>
