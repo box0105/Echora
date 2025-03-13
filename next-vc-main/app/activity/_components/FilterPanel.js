@@ -106,7 +106,7 @@ export default function FilterPanel({ isOpen, onClose, onChange }) {
             })
             // 視窗移動到活動列表的高度
             document
-              .querySelector('.b-title')
+              .querySelector('.g-pdlist-title')
               ?.scrollIntoView({ behavior: 'smooth' })
           }}
         >

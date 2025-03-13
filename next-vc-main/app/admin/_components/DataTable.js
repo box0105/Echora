@@ -8,7 +8,7 @@ import { useActivity } from '@/hooks/use-activity'
 import { toastSuccess, toastWarning } from '@/hooks/use-toast'
 
 export default function DataTable() {
-  const { acts, isLoading, updateQueryParams } = useActivity()
+  const { acts, isLoading, updateQueryParams, reFetch } = useActivity()
 
   // API delete
   const deleteActivity = async (activityId, activityName) => {
@@ -28,7 +28,7 @@ export default function DataTable() {
         console.log('活動刪除成功', result)
 
         // 觸發重新 fetch 資料
-        updateQueryParams({reFetch:true})
+        reFetch()
       } else {
         toastWarning('該活動已被刪除')
       }
