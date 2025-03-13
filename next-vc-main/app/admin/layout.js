@@ -24,11 +24,11 @@ export default function AdminLayout({ children }) {
   }, [])
 
   const [isAdmin, setIsAdmin] = useState(null)
-  const { logout, token } = useAdminAuth()
-  const [check, setCheck] = useState(false)
+  // const { logout, token } = useAdminAuth()
+  // const [check, setCheck] = useState(false)
   const { isAuth } = useAuth()
-  const router = useRouter()
-  const { userProfile, setUserProfile } = useUser()
+  // const router = useRouter()
+  // const { userProfile, setUserProfile } = useUser()
 
   // useEffect(() => {
   //   console.log({userProfile});
