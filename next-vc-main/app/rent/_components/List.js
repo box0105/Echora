@@ -186,7 +186,7 @@ const LoadMoreButton = ({ visibleCount, setVisibleCount, dataLength }) => (
     disabled={visibleCount >= dataLength}
   >
     <div className="h5">
-      {visibleCount >= dataLength ? '已经到底了' : '浏览更多'}
+      {visibleCount >= dataLength ? '已经到底了' : '瀏覽更多'}
     </div>
   </button>
 );
