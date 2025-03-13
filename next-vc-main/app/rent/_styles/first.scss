@@ -26,13 +26,13 @@
 }
 
 /* 每个背景图片的样式 */
-// .mySwiper .swiper-slide {
-//   background-size: cover;
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   background-attachment: fixed;
-//   height: 100%;
-// }
+.mySwiper .swiper-slide {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+}
 .c-mySwiper img {
   position: relative; /* 确保轮播图不压住文字 */
   z-index: 1;
@@ -46,7 +46,7 @@
   z-index: 10; /* 提高文字的层级，确保在图片之上 */
   background: rgba(0, 0, 0, 0.5); /* 可选，为文字加深背景对比度 */
 }
-.mySwiper img {
+.mySwiper .c-img {
   width: 100%;         /* 让图片始终铺满容器 */
   height: 100vh;       /* 根据视口高度拉伸 */
   object-fit: cover;   /* 裁切并填满区域，避免灰边 */

@@ -39,21 +39,21 @@ const MainImage = () => (
         <SwiperSlide>
           <img
             src="/images/Rent/C-main.jpg"
-            className="card-img border-radius-0"
+            className="card-img border-radius-0 c-img"
             alt="..."
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src="/images/Rent/C-main3.jpg"
-            className="card-img border-radius-0"
+            className="card-img border-radius-0 c-img"
             alt="..."
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src="/images/Rent/C-main1.jpg"
-            className="card-img border-radius-0"
+            className="card-img border-radius-0 c-img"
             alt="..."
           />
         </SwiperSlide>
