@@ -28,21 +28,21 @@ export function Providers({ children }) {
   return (
     <SWRDevTools>
       <LoaderProvider close={2} CustomLoader={CatLoader}>
-        <HeaderProvider>
-          <MyCouponProvider>
-            <AuthProvider>
-              <UserProvider>
-              <AdminAuthProvider>
+        <UserProvider>
+          <HeaderProvider>
+            <MyCouponProvider>
+              <AuthProvider>
+                <AdminAuthProvider>
                   <MyCartProvider>
                     <ActivityProvider>
                       <ProductProvider>{children}</ProductProvider>
                     </ActivityProvider>
                   </MyCartProvider>
-              </AdminAuthProvider>
-              </UserProvider>
-            </AuthProvider>
-          </MyCouponProvider>
-        </HeaderProvider>
+                </AdminAuthProvider>
+              </AuthProvider>
+            </MyCouponProvider>
+          </HeaderProvider>
+        </UserProvider>
       </LoaderProvider>
     </SWRDevTools>
   )
