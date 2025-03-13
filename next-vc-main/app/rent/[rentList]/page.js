@@ -304,7 +304,7 @@ export default function Page(props) {
               <div className="container-fluid">
                 <div className="row">
                   <div className="col-7 c-index1 ">
-                    <Main images={selectedImages} />
+                    <Main images={selectedImages} brand={ListData.brand}/>
                   </div>
                   <div className="col-5 c-left ">
                     <div className="c-text">
@@ -393,34 +393,17 @@ export default function Page(props) {
                       <div className="c-price-total">
                         <h6>總金額: {totalPrice} 元</h6>
                       </div>
-
-                      {/* 門店選擇 */}
-                      {/* <div className="c-addr gap-2 py-3">
+                      <div className="c-addr gap-2 ">
                         <div className="c-add-title">
-                          <div className=" h4 c-addtiele">自取地點</div>
+                          <h6>自取地點</h6>
                         </div>
-                        <select
-                          name
-                          id
-                          className="c-addselect  inputse"
-                          value={selectedStore}
-                          onChange={handleStoreChange}
-                        >
-                          <option value="台北店" className="h5">
-                            台北店
-                          </option>
-                          <option value="台中店" className="h5">
-                            台中店
-                          </option>
-                          <option value="高雄店" className="h5">
-                            高雄店
-                          </option>
-                        </select>
-                      </div> */}
-                      <StoreSelector
-                        selectedStore={selectedStore}
-                        setSelectedStore={setSelectedStore}
-                      />
+                        <StoreSelector
+                          selectedStore={selectedStore}
+                          setSelectedStore={setSelectedStore}
+                          className="c-addr-in gap-2"
+                        />
+                      </div>
+
 
                       <div className="btn1">
                         <button
@@ -548,12 +531,12 @@ export default function Page(props) {
                       </div>
                       <div className="text-gu pt-1">
                         <div className="p">
-                          <span> 計費方式：</span>
+                        <span className='stores'>計費方式：</span>
                           <br />
                           以一日(24H)為單位。 <br />
                           如預期歸還以兩倍金額為預期租金。
                           <br />
-                          <span>注意事項：</span>
+                          <span className='stores'>注意事項：</span>
                           <br />
                           本網站最高租借時間為7日。
                           <br />
@@ -561,7 +544,7 @@ export default function Page(props) {
                           <br />
                           租借或歸還時皆需要當場確認吉他情況，如歸還時有損壞照價賠償。
                           <br />
-                          <span>門市營業時間：</span>
+                          <span className='stores'>門市營業時間：</span>
                           <br />
                           周一至周五:
                           <br />
@@ -581,7 +564,7 @@ export default function Page(props) {
                       </div>
                       <div className="text-gu pt-1">
                         <p className="addr">
-                          <span>台北店：</span>
+                          <span className='stores'>台北店：</span>
                           <br />
                           <a
                             href="https://www.google.com/maps/place/100%E5%8F%B0%E7%81%A3%E5%8F%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E6%AD%A3%E5%8D%80%E7%BE%85%E6%96%AF%E7%A6%8F%E8%B7%AF%E4%B8%89%E6%AE%B5140%E5%B7%B75%E8%99%9F/@25.0198989,121.5280768,17z/data=!3m1!4b1!4m6!3m5!1s0x3442a969f1687abd:0x1b197d1955f1e728!8m2!3d25.0198989!4d121.5280768!16s%2Fg%2F11bw3z9r7x?entry=ttu"
@@ -593,7 +576,7 @@ export default function Page(props) {
                           <br />
                           電話號碼：&nbsp;02 2543 3319。
                           <br />
-                          <span> 台中店：</span>
+                          <span className='stores'> 台中店：</span>
                           <br />
                           <a
                             href="https://maps.app.goo.gl/M7XMATehs6uHnPvTA"
@@ -605,7 +588,7 @@ export default function Page(props) {
                           <br />
                           電話號碼：&nbsp;04 2238 5589。
                           <br />
-                          <span> 高雄店：</span>
+                          <span className='stores'> 高雄店：</span>
                           <br />
                           <a
                             href="https://maps.app.goo.gl/nDz1Vc5KoatiXFeGA"

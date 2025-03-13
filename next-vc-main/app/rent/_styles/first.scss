@@ -26,14 +26,14 @@
 }
 
 /* 每个背景图片的样式 */
-.mySwiper .swiper-slide {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  height: 100%;
-}
-.mySwiper img {
+// .mySwiper .swiper-slide {
+//   background-size: cover;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-attachment: fixed;
+//   height: 100%;
+// }
+.c-mySwiper img {
   position: relative; /* 确保轮播图不压住文字 */
   z-index: 1;
 }

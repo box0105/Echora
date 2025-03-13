@@ -6,7 +6,7 @@
 .c-section1{
   padding-top: 127px;
 }
-span{
+.stores{
   color: red;
 }
 .c-pic {
@@ -59,7 +59,10 @@ span{
     cursor: pointer;
   }
 }
-
+.c-addr-in{
+  padding-top: 0;
+  font-size: 14px;
+}
 .c-band{
   width: 90px;
   height: 30px;
