@@ -8,7 +8,7 @@ import { useActivity } from '@/hooks/use-activity'
 import { toastSuccess, toastWarning } from '@/hooks/use-toast'
 
 export default function DataTable() {
-  const { acts, isLoading, updateQueryParams, reFetch } = useActivity()
+  const { acts, isLoading, reFetch } = useActivity()
 
   // API delete
   const deleteActivity = async (activityId, activityName) => {
