@@ -33,7 +33,7 @@
   background-attachment: fixed;
   height: 100%;
 }
-.c-mySwiper img {
+.mySwiper .c-img {
   position: relative; /* 确保轮播图不压住文字 */
   z-index: 1;
 }
@@ -74,9 +74,9 @@
 .c-section1 {
   width: 100%;
 }
-// .c-section1-out{
-//   padding-top: 127px;
-// }
+.c-section1-out{
+  padding-top: 127px;
+}
 .c-section1-text {
   margin-left: 3%;
 }
