@@ -83,8 +83,7 @@ export default function AdminPanel() {
             </Link>
           </h6>
         </li>
-        {/* 
-        在一般頁面統一登出
+        
         <li className="nav-item">
           <h6 className="mb-0">
             <Link href="/my-user" className="nav-link" onClick={handleLogout}>
@@ -93,7 +92,7 @@ export default function AdminPanel() {
             </Link>
           </h6>
         </li> 
-        */}
+       
       </ul>
       <ToastContainer autoClose={3000} />
     </nav>
