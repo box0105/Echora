@@ -6,9 +6,11 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ClimbingBoxLoader } from 'react-spinners'
 import { toast, ToastContainer } from 'react-toastify'
+import { useRouter } from 'next/navigation'
 
 export default function AdminPanel() {
   const pathName = usePathname()
+  const router = useRouter()
 
   // 導向到對應的一般頁面
   let href = '/'
@@ -29,8 +31,8 @@ export default function AdminPanel() {
         if (resData.status === 'success') {
           // 清除 localStorage 中的 userId
           localStorage.removeItem('userId')
-          setIsAuth(false)
-          mutate()
+          // setIsAuth(false)
+          // mutate()
           // toast.success('已成功登出')
           router.push('/')
         } else {
@@ -86,7 +88,7 @@ export default function AdminPanel() {
         
         <li className="nav-item">
           <h6 className="mb-0">
-            <Link href="/my-user" className="nav-link" onClick={handleLogout}>
+            <Link href='/my-user' className="nav-link" onClick={handleLogout}>
               <i className="fa-solid fa-right-from-bracket me-3 text-secondary" />
               登出
             </Link>
