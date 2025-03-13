@@ -72,7 +72,7 @@ export default function Header() {
   const { criteria, setCriteria, defaultCriteria } = useProductState()
   const isFirstRender = useRef(true) // 追蹤是否為初次渲染
   const { updateQueryParams, deleteQueryParams } = useActivity()
-  const { query, setQuery } = useRent();
+  const { query, setQuery } = useRent(); 
 
   const handleSearch = (e) => {
     if (e.key === 'Enter') {

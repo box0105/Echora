@@ -470,7 +470,8 @@ export default function FilterPanel() {
           <PriceSlider />
         </div>
       </div> */}
-      <button className="b-btn b-load-btn mb-1">顯示活動</button>
+      
+      {/* <button className="b-btn b-load-btn mb-1">顯示活動</button> */}
     </form>
   )
 }
