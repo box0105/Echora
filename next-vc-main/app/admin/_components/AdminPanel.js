@@ -43,7 +43,7 @@ export default function AdminPanel() {
 
   return (
     <nav className="b-nav col-md-2 mb-5 bg-white card p-3 d-flex flex-column align-items-center">
-      <Link href="/admin" className="w-100 text-center">
+      <Link href={href} className="w-100 text-center">
         <Image
           src="/images/header/logo-mb.svg"
           alt="Logo"
@@ -75,14 +75,14 @@ export default function AdminPanel() {
             </Link>
           </h6>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <h6 className="mb-0">
             <Link href={href} className="nav-link">
               <i className="fa-solid fa-house me-3 text-secondary" />
               一般頁面
             </Link>
           </h6>
-        </li>
+        </li> */}
         
         <li className="nav-item">
           <h6 className="mb-0">

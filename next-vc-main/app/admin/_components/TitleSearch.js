@@ -8,7 +8,7 @@ export default function TitleSearch() {
       <div className="col-auto">
         <h2 className="mb-0">活動後台管理</h2>
       </div>
-      <div className="col-auto my-2">
+      {/* <div className="col-auto my-2">
         <div className="input-group mx-auto">
           <input
             type="text"
@@ -20,7 +20,7 @@ export default function TitleSearch() {
             <i className="fas fa-search" />
           </span>
         </div>
-      </div>
+      </div> */}
     </>
   )
 }

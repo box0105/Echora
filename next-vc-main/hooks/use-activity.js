@@ -30,6 +30,11 @@ export const ActivityProvider = ({
     setQueryParams((prevParams) => ({ ...prevParams, ...newParams }))
   }
 
+  // 透過 QueryParams 改變，重新抓取資料
+  const reFetch = () => {
+    updateQueryParams({ reFetch: true })
+  }
+
   // 清空 Query 物件
   const deleteQueryParams = () => {
     setQueryParams({})
@@ -38,6 +43,13 @@ export const ActivityProvider = ({
   // 將 Query 物件轉為後端網址
   const getFilteredUrl = () => {
     const urlParams = new URLSearchParams()
+
+    // 強制重整
+    if (queryParams.reFetch) {
+      deleteQueryParams()
+      return url
+    }
+
     // Search
     if (queryParams.search) urlParams.set('search', queryParams.search)
 
@@ -123,6 +135,7 @@ export const ActivityProvider = ({
         queryParams,
         updateQueryParams,
         deleteQueryParams,
+        reFetch,
         randomImages,
         randomIds,
       }}
