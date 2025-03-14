@@ -1,11 +1,14 @@
 'use client'
 
 import React from 'react'
+import TitleSearch from './_components/TitleSearch'
 
 export default function AdminPage() {
   return (
-    <>
-      <h3>Admin Page (之後加判斷只有Admin能進來)</h3>
-    </>
+    <div className="container-fluid">
+      <div className="heading row justify-content-between align-items-center mb-4">
+        <TitleSearch title="後台管理系統" />
+      </div>
+    </div>
   )
 }

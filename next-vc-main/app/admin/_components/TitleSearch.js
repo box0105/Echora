@@ -2,11 +2,11 @@
 
 import React from 'react'
 
-export default function TitleSearch() {
+export default function TitleSearch({title = '活動後台管理'}) {
   return (
     <>
       <div className="col-auto">
-        <h2 className="mb-0">活動後台管理</h2>
+        <h2 className="mb-0">{title}</h2>
       </div>
       {/* <div className="col-auto my-2">
         <div className="input-group mx-auto">

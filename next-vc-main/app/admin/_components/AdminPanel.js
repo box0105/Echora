@@ -3,10 +3,10 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { ClimbingBoxLoader } from 'react-spinners'
 import { toast, ToastContainer } from 'react-toastify'
-import { useRouter } from 'next/navigation'
+import { toastSuccess } from '@/hooks/use-toast'
 
 export default function AdminPanel() {
   const pathName = usePathname()
@@ -17,31 +17,29 @@ export default function AdminPanel() {
   if (pathName?.includes('activity')) href = '/activity'
   else if (pathName?.includes('coupon')) href = '/coupons'
 
-    // **處理登出（支援 Google + 一般帳號）**
-    const handleLogout = async () => {
-      try {
-        const res = await fetch('http://localhost:3005/api/users/logout', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
-        const resData = await res.json()
-  
-        if (resData.status === 'success') {
-          // 清除 localStorage 中的 userId
-          localStorage.removeItem('userId')
-          // setIsAuth(false)
-          // mutate()
-          // toast.success('已成功登出')
-          router.push('/')
-        } else {
-          toast.error(`登出失敗: ${resData.message}`)
-        }
-      } catch (err) {
-        toast.error(`登出失敗: ${err.message}`)
+  // **處理登出（支援 Google + 一般帳號）**
+  const handleLogout = async () => {
+    try {
+      const res = await fetch('http://localhost:3005/api/users/logout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      const resData = await res.json()
+      
+      if (resData.status === 'success') {
+        // 清除 localStorage 中的 userId
+        localStorage.removeItem('userId')
+        toastSuccess('管理者登出成功')
+        router.push('/')
+      } else {
+        toast.error(`登出失敗: ${resData.message}`)
       }
+    } catch (err) {
+      toast.error(`登出失敗: ${err.message}`)
     }
+  }
 
   return (
     <nav className="b-nav col-md-2 mb-5 bg-white card p-3 d-flex flex-column align-items-center">
@@ -77,15 +75,15 @@ export default function AdminPanel() {
             </Link>
           </h6>
         </li>
-        {/* <li className="nav-item">
+        <li className="nav-item">
           <h6 className="mb-0">
             <Link href={href} className="nav-link">
               <i className="fa-solid fa-house me-3 text-secondary" />
               一般頁面
             </Link>
           </h6>
-        </li> */}
-        
+        </li>
+
         <li className="nav-item">
           <h6 className="mb-0">
             <Link href='/my-user' className="nav-link" onClick={handleLogout}>
@@ -93,9 +91,9 @@ export default function AdminPanel() {
               登出
             </Link>
           </h6>
-        </li> 
-       
+        </li>
       </ul>
+
       <ToastContainer autoClose={3000} />
     </nav>
   )

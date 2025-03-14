@@ -73,7 +73,7 @@ export default function ActivityDetailPage() {
 
           <section className="b-other-act">
             <Title _title="YOU MAY ALSO LIKE, 您可能也會喜歡" />
-            <ActivityList data={acts} id={activityId} isSmall={true} />
+            <ActivityList data={acts} id={activityId} isSmall={true} numPerPage={9} bias={190}/>
           </section>
         </main>
       </div>

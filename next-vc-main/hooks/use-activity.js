@@ -1,5 +1,4 @@
 import {
-  act,
   createContext,
   useContext,
   useEffect,
@@ -15,7 +14,7 @@ export const ActivityProvider = ({
   children,
   url = 'http://localhost:3005/api/activities',
 }) => {
-  const [acts, setActs] = useState([])
+  const [acts, setActs] = useState(null)
 
   const [queryParams, setQueryParams] = useState({})
   const [apiUrl, setApiUrl] = useState(url)
@@ -101,7 +100,7 @@ export const ActivityProvider = ({
   // 初次渲染封面 (用一個 flag 判斷是否初次)
   const hasInitCover = useRef(false)
   useEffect(() => {
-    if (!hasInitCover.current && acts.length >= coverNum) {
+    if (!hasInitCover.current && acts?.length >= coverNum) {
       const cover = updateRandomPhotos(coverNum)
       setRandomImages(cover.randomImages)
       setRandomIds(cover.randomIndicesArray)

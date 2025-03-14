@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { act, useEffect, useState } from 'react'
 import { useActivity } from '@/hooks/use-activity'
 
 import '@fortawesome/fontawesome-free/css/all.min.css'
@@ -11,11 +11,16 @@ import ActivityList from './_components/ActivityList'
 import FilterBar from './_components/FilterBar'
 import FilterPanel from './_components/FilterPanel'
 import HeroSection from './_components/HeroSection'
+import { toastInfo } from '@/hooks/use-toast'
 
 export default function ActivityPage() {
   // 從 ActivityContext 取出 Data, sort & filter & search
   const { acts, isLoading, updateQueryParams, randomImages, randomIds } =
     useActivity()
+
+  useEffect(() => {
+    if (!isLoading && acts && acts.length === 0) toastInfo('無找到相關活動')
+  }, [acts, isLoading])
 
   // Filter Aside Switch
   const [isFilterOpen, setIsFilterOpen] = useState(false)
@@ -37,13 +42,13 @@ export default function ActivityPage() {
           onChange={updateQueryParams}
         />
 
-        <div className="b-container">
+        <div className="b-container" style={{ minHeight: '75vh' }}>
           <FilterPanel
             isOpen={isFilterOpen}
             onClose={() => setIsFilterOpen(!isFilterOpen)}
             onChange={updateQueryParams}
           />
-          <ActivityList data={acts} numPerPage={4} />
+          <ActivityList data={acts} numPerPage={10} bias={-160}/>
         </div>
       </div>
     </div>

@@ -6,7 +6,6 @@ import FilterPanel from '../_components/FilterPanel'
 
 export default function AdminActivity() {
   return (
-    
     <div className="container-fluid">
       <div className="heading row justify-content-between align-items-center mb-4">
         <TitleSearch />

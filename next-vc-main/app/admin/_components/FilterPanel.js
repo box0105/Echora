@@ -1,16 +1,21 @@
 'use client'
 
 import React from 'react'
+import { useState } from 'react'
 // import FormDate from '@/app/activity/_components/FormDate'
 // import PriceSlider from '@/app/activity/_components/PriceSlider'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 export default function FilterPanel() {
+  const [activeOption, setActiveOption] = useState(null)
+  const [activeOption2, setActiveOption2] = useState(null)
   return (
     <form className="row gx-4 gy-4">
       <div className="d-flex justify-content-between align-items-center w-100">
         <h4>
-          <button className="b-btn-unstyled">清除篩選條件</button>
+          <button className="b-btn-unstyled" type="button">
+            清除篩選條件
+          </button>
         </h4>
         {/* <button className="b-btn-unstyled">
           <i className="fa-solid fa-xmark" />
@@ -24,7 +29,11 @@ export default function FilterPanel() {
         </div>
         <div className="col-12 col-sm-auto">
           <label
-            className="form-label active"
+            // 雖然這頁挺紅的，但不會影響運作
+            className={`form-label ${
+              activeOption === 'activity' ? 'active' : ''
+            }`}
+            onClick={() => setActiveOption('activity')}
             data-bs-toggle="collapse"
             data-bs-target="#activityOptions"
           >
@@ -33,7 +42,8 @@ export default function FilterPanel() {
         </div>
         <div className="col-12 col-sm-auto">
           <label
-            className="form-label"
+            className={`form-label ${activeOption === 'music' ? 'active' : ''}`}
+            onClick={() => setActiveOption('music')}
             data-bs-toggle="collapse"
             data-bs-target="#musicOptions"
           >
@@ -42,7 +52,8 @@ export default function FilterPanel() {
         </div>
         <div className="col-12 col-sm-auto">
           <label
-            className="form-label"
+            className={`form-label ${activeOption === 'city' ? 'active' : ''}`}
+            onClick={() => setActiveOption('city')}
             data-bs-toggle="collapse"
             data-bs-target="#cityOptions"
           >
@@ -64,7 +75,6 @@ export default function FilterPanel() {
                   type="checkbox"
                   id="activity-festival"
                   name="activity"
-                  defaultValue="音樂祭"
                   className="d-none"
                 />
                 <label
@@ -77,7 +87,6 @@ export default function FilterPanel() {
                   type="checkbox"
                   id="activity-event"
                   name="activity"
-                  defaultValue="音樂活動"
                   className="d-none"
                 />
                 <label
@@ -88,9 +97,20 @@ export default function FilterPanel() {
                 </label>
                 <input
                   type="checkbox"
+                  id="activity-concert"
+                  name="activity"
+                  className="d-none"
+                />
+                <label
+                  htmlFor="activity-concert"
+                  className="btn btn-outline-secondary"
+                >
+                  演唱會
+                </label>
+                <input
+                  type="checkbox"
                   id="activity-party"
                   name="activity"
-                  defaultValue="電音派對"
                   className="d-none"
                 />
                 <label
@@ -111,7 +131,6 @@ export default function FilterPanel() {
                   type="checkbox"
                   id="music-pop"
                   name="music"
-                  defaultValue="流行音樂"
                   className="d-none"
                 />
                 <label
@@ -120,31 +139,109 @@ export default function FilterPanel() {
                 >
                   流行音樂
                 </label>
+
+                <input
+                  type="checkbox"
+                  id="music-classical"
+                  name="music"
+                  className="d-none"
+                />
+                <label
+                  htmlFor="music-classical"
+                  className="btn btn-outline-secondary"
+                >
+                  古典音樂
+                </label>
+
+                <input
+                  type="checkbox"
+                  id="music-symphony"
+                  name="music"
+                  className="d-none"
+                />
+                <label
+                  htmlFor="music-symphony"
+                  className="btn btn-outline-secondary"
+                >
+                  交響樂
+                </label>
+
                 <input
                   type="checkbox"
                   id="music-rock"
                   name="music"
-                  defaultValue="古典音樂"
                   className="d-none"
                 />
                 <label
                   htmlFor="music-rock"
                   className="btn btn-outline-secondary"
                 >
-                  古典音樂
+                  搖滾樂
                 </label>
+
                 <input
                   type="checkbox"
-                  id="music-jazz"
+                  id="music-hiphop"
                   name="music"
-                  defaultValue="交響樂"
                   className="d-none"
                 />
                 <label
-                  htmlFor="music-jazz"
+                  htmlFor="music-hiphop"
                   className="btn btn-outline-secondary"
                 >
-                  交響樂
+                  嘻哈
+                </label>
+
+                <input
+                  type="checkbox"
+                  id="music-anime"
+                  name="music"
+                  className="d-none"
+                />
+                <label
+                  htmlFor="music-anime"
+                  className="btn btn-outline-secondary"
+                >
+                  動漫
+                </label>
+
+                <input
+                  type="checkbox"
+                  id="music-rnb"
+                  name="music"
+                  className="d-none"
+                />
+                <label
+                  htmlFor="music-rnb"
+                  className="btn btn-outline-secondary"
+                >
+                  R&B
+                </label>
+
+                <input
+                  type="checkbox"
+                  id="music-kpop"
+                  name="music"
+                  className="d-none"
+                />
+                <label
+                  htmlFor="music-kpop"
+                  className="btn btn-outline-secondary"
+                >
+                  K-POP
+                </label>
+
+                <input
+                  type="checkbox"
+                  id="music-jpop"
+                  name="music"
+                  className="d-none"
+                />
+                <label
+                  htmlFor="music-jpop"
+                  className="btn btn-outline-secondary"
+                >
+                  J-POP
                 </label>
               </div>
             </div>
@@ -158,7 +255,6 @@ export default function FilterPanel() {
                   type="radio"
                   id="city-taipei"
                   name="city"
-                  defaultValue="台北市"
                   className="d-none"
                 />
                 <label
@@ -171,7 +267,6 @@ export default function FilterPanel() {
                   type="radio"
                   id="city-newtaipei"
                   name="city"
-                  defaultValue="新北市"
                   className="d-none"
                 />
                 <label
@@ -184,7 +279,6 @@ export default function FilterPanel() {
                   type="radio"
                   id="city-keelung"
                   name="city"
-                  defaultValue="基隆市"
                   className="d-none"
                 />
                 <label
@@ -197,7 +291,6 @@ export default function FilterPanel() {
                   type="radio"
                   id="city-taoyuan"
                   name="city"
-                  defaultValue="桃園市"
                   className="d-none"
                 />
                 <label
@@ -210,7 +303,6 @@ export default function FilterPanel() {
                   type="radio"
                   id="city-hsinchu"
                   name="city"
-                  defaultValue="新竹市"
                   className="d-none"
                 />
                 <label
@@ -223,7 +315,6 @@ export default function FilterPanel() {
                   type="radio"
                   id="city-hsinchu-county"
                   name="city"
-                  defaultValue="新竹縣"
                   className="d-none"
                 />
                 <label
@@ -236,7 +327,6 @@ export default function FilterPanel() {
                   type="radio"
                   id="city-miaoli"
                   name="city"
-                  defaultValue="苗栗縣"
                   className="d-none"
                 />
                 <label
@@ -249,7 +339,6 @@ export default function FilterPanel() {
                   type="radio"
                   id="city-taichung"
                   name="city"
-                  defaultValue="台中市"
                   className="d-none"
                 />
                 <label
@@ -262,7 +351,6 @@ export default function FilterPanel() {
                   type="radio"
                   id="city-changhua"
                   name="city"
-                  defaultValue="彰化縣"
                   className="d-none"
                 />
                 <label
@@ -275,7 +363,6 @@ export default function FilterPanel() {
                   type="radio"
                   id="city-nantou"
                   name="city"
-                  defaultValue="南投縣"
                   className="d-none"
                 />
                 <label
@@ -288,7 +375,6 @@ export default function FilterPanel() {
                   type="radio"
                   id="city-yunlin"
                   name="city"
-                  defaultValue="雲林縣"
                   className="d-none"
                 />
                 <label
@@ -301,7 +387,6 @@ export default function FilterPanel() {
                   type="radio"
                   id="city-chiayi"
                   name="city"
-                  defaultValue="嘉義市"
                   className="d-none"
                 />
                 <label
@@ -314,7 +399,6 @@ export default function FilterPanel() {
                   type="radio"
                   id="city-chiayi-county"
                   name="city"
-                  defaultValue="嘉義縣"
                   className="d-none"
                 />
                 <label
@@ -327,7 +411,6 @@ export default function FilterPanel() {
                   type="radio"
                   id="city-tainan"
                   name="city"
-                  defaultValue="台南市"
                   className="d-none"
                 />
                 <label
@@ -340,7 +423,6 @@ export default function FilterPanel() {
                   type="radio"
                   id="city-kaohsiung"
                   name="city"
-                  defaultValue="高雄市"
                   className="d-none"
                 />
                 <label
@@ -353,7 +435,6 @@ export default function FilterPanel() {
                   type="radio"
                   id="city-pingtung"
                   name="city"
-                  defaultValue="屏東縣"
                   className="d-none"
                 />
                 <label
@@ -366,7 +447,6 @@ export default function FilterPanel() {
                   type="radio"
                   id="city-yilan"
                   name="city"
-                  defaultValue="宜蘭縣"
                   className="d-none"
                 />
                 <label
@@ -379,7 +459,6 @@ export default function FilterPanel() {
                   type="radio"
                   id="city-hualien"
                   name="city"
-                  defaultValue="花蓮縣"
                   className="d-none"
                 />
                 <label
@@ -392,7 +471,6 @@ export default function FilterPanel() {
                   type="radio"
                   id="city-taitung"
                   name="city"
-                  defaultValue="台東縣"
                   className="d-none"
                 />
                 <label
@@ -405,7 +483,6 @@ export default function FilterPanel() {
                   type="radio"
                   id="city-penghu"
                   name="city"
-                  defaultValue="澎湖縣"
                   className="d-none"
                 />
                 <label
@@ -418,7 +495,6 @@ export default function FilterPanel() {
                   type="radio"
                   id="city-kinmen"
                   name="city"
-                  defaultValue="金門縣"
                   className="d-none"
                 />
                 <label
@@ -431,7 +507,6 @@ export default function FilterPanel() {
                   type="radio"
                   id="city-matsu"
                   name="city"
-                  defaultValue="連江縣"
                   className="d-none"
                 />
                 <label
@@ -451,10 +526,24 @@ export default function FilterPanel() {
           <h5 className="mb-0">日期</h5>
         </div>
         <div className="col-12 col-sm-auto">
-          <label className="form-label mb-0">7天內</label>
+          <label
+            className={`form-label mb-0 ${
+              activeOption2 === 'day7' ? 'active' : ''
+            }`}
+            onClick={() => setActiveOption2('day7')}
+          >
+            7天內
+          </label>
         </div>
         <div className="col-12 col-sm-auto">
-          <label className="form-label mb-0">30天內</label>
+          <label
+            className={`form-label mb-0 ${
+              activeOption2 === 'day30' ? 'active' : ''
+            }`}
+            onClick={() => setActiveOption2('day30')}
+          >
+            30天內
+          </label>
         </div>
         <div className="col-12 col-sm-auto">
           {/* <FormDate /> */}
@@ -470,7 +559,7 @@ export default function FilterPanel() {
           <PriceSlider />
         </div>
       </div> */}
-      
+
       {/* <button className="b-btn b-load-btn mb-1">顯示活動</button> */}
     </form>
   )

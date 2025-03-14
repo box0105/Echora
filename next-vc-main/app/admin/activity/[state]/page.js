@@ -1,26 +1,38 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { useParams, useRouter, useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
+import {
+  redirect,
+  useParams,
+  useRouter,
+  useSearchParams,
+} from 'next/navigation'
 import FormActivity from '../../_components/FormActivity'
 import { useFilterPanel } from '@/hooks/use-filter-panel'
-import { useActivity } from '@/hooks/use-activity'
 import { useFetch } from '@/hooks/use-fetch'
+import { useActivity } from '@/hooks/use-activity'
 import { toastInfo, toastSuccess, toastWarning } from '@/hooks/use-toast'
 import { NumberZh } from 'number-zh'
 
 export default function AdminActivityState() {
   const { state } = useParams()
   const searchParams = useSearchParams()
-  const isUpdate = state === 'update'
   const activityId = Number(searchParams?.get('id'))
+  const isUpdate = state === 'update'
+
   const router = useRouter()
   const numberZh = new NumberZh()
 
-  // Update 頁面時抓取資料
-  const { reFetch } = useActivity()
+  const { reFetch: reFetchAllActivity } = useActivity()
 
-  const { data: act, isLoading } = useFetch(
+  // Update 頁面時抓取資料
+  const {
+    data: act,
+    isLoading,
+    error,
+    reFetch: reFetchThisActivity,
+  } = useFetch(
     isUpdate ? `http://localhost:3005/api/activities/${activityId}` : null
   )
 
@@ -83,7 +95,15 @@ export default function AdminActivityState() {
         })),
       ])
     }
-  }, [act])
+    if (error) {
+      setTimeout(() => {
+        // 延遲，確保進到列表頁才通知
+        toastWarning('該活動不存在')
+      }, 600)
+
+      redirect('/admin/activity')
+    }
+  }, [act, error])
 
   const [imageItems, setImageItems] = useState([]) // 用來儲存圖片的統一狀態
 
@@ -108,9 +128,9 @@ export default function AdminActivityState() {
       return
     }
 
-    const newFileData = files.map((file) => {
+    const newFileData = files.map((file, i) => {
       return {
-        id: URL.createObjectURL(file), // 用 URL 作為暫時的 ID
+        id: `${Date.now()}_${i}`,
         url: URL.createObjectURL(file),
         file: file,
         type: 'uploading',
@@ -120,18 +140,19 @@ export default function AdminActivityState() {
     setImageItems((prev) => [...prev, ...newFileData])
   }
 
-  // 刪除預覽（包含已上傳與未上傳）
+  // 刪除預覽（包含 uploaded 與 uploading）
   const handleImageDelete = (id, type) => {
     setImageItems((prev) => prev.filter((file) => file.id !== id))
 
-    if (type === 'uploading') {
-      // 刪除正在上傳的圖片
-    } else {
-      // 刪除已上傳的圖片
+    // 刪除為已有的圖片時，也更新 formData
+    if (type === 'uploaded') {
       setFormData((prevData) => ({
         ...prevData,
         media: prevData.media.filter((file) => file !== id),
       }))
+    } else if (type === 'uploading') {
+      // 若刪除上傳中的，要重置檔案輸入框
+      // document.querySelector('#addImage').value = null
     }
   }
 
@@ -194,8 +215,8 @@ export default function AdminActivityState() {
 
       const data = await response.json()
       if (data.status === 'success') {
-        toastSuccess('活動新增完成')
-        reFetch()
+        // 列表頁資料重新抓取
+        reFetchAllActivity()
       } else {
         toastInfo(`有表單欄位為空，請確認填寫`)
         console.error('活動新增失敗', data)
@@ -223,7 +244,9 @@ export default function AdminActivityState() {
       const data = await response.json()
       if (data.status === 'success') {
         toastSuccess(`活動更新完成`)
-        reFetch()
+        // 列表頁跟詳細頁的資料都重新抓取
+        reFetchAllActivity()
+        reFetchThisActivity()
       } else {
         toastInfo(`有表單欄位為空，請確認填寫`)
         console.error('活動更新失敗', data)
@@ -293,9 +316,14 @@ export default function AdminActivityState() {
 
     // 若有新上傳 (uploading) 的圖片才執行 uploadImage
     if (imageItems.some((item) => item.type === 'uploading')) {
-      newFilenames.push(...(await uploadImage()))
+      const uploadedFiles = await uploadImage()
+
+      // 確保檔案上傳成功
+      if (uploadedFiles.length > 0) {
+        newFilenames.push(...uploadedFiles)
+      } else return
     } else if (formData.media.length === 0) {
-      // 當圖片為空時，那就一定要上傳
+      // 當前圖片為空時，那就一定要上傳
       toastInfo('請上傳至少一張圖片!')
       return
     }
@@ -321,6 +349,10 @@ export default function AdminActivityState() {
     } else {
       createActivity(updatedFormData)
       router.push('/admin/activity')
+      setTimeout(() => {
+        // 延遲，確保進到列表頁才通知
+        toastSuccess('活動新增完成')
+      }, 400)
     }
   }
 
@@ -341,12 +373,23 @@ export default function AdminActivityState() {
       )
 
       const result = await response.json()
-      console.log('圖片上傳成功', result)
 
-      // 回傳新檔名
-      return result.files.map((file) => file.newFileName)
+      if (result.status === 'success') {
+        console.log('圖片上傳成功', result)
+        // 回傳新檔名
+        return result.files.map((file) => file.newFileName)
+      } else {
+        toastWarning(result.error)
+
+        // 移除格式錯誤的圖片
+        setImageItems((prev) =>
+          prev.filter((item) => item.type !== 'uploading')
+        )
+        return []
+      }
     } catch (error) {
       console.error('圖片上傳失敗', error)
+      return []
     }
   }
 
