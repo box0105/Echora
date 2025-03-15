@@ -42,7 +42,7 @@ export default function MemberLayout({ children }) {
       case '/my-user/coupons':
         return '我的優惠券'
       case '/my-user/profile-password':
-        return '關於我'
+        return '修改密碼'
       default:
         return '會員中心'
     }
@@ -96,7 +96,7 @@ export default function MemberLayout({ children }) {
             </div>
             {isDropdownOpen && (
               <div className="dropdown-content dropdown">
-                <h5 className="tab-link" data-tab="orders">
+                <h5 className="tab-link" data-tab="profile">
                   <Link href="/my-user/profile"> 關於我</Link>
                 </h5>
                 <h5 className="tab-link" data-tab="orders">
@@ -105,13 +105,9 @@ export default function MemberLayout({ children }) {
                 <h5 className="tab-link" data-tab="favorites">
                   <Link href="/my-user/favorites"> 我的收藏</Link>
                 </h5>
-                <Link
-                  href="/my-user/coupons"
-                  className="tab-link"
-                  data-tab="coupons"
-                >
-                  我的優惠券
-                </Link>
+                <h5 className="tab-link" data-tab="coupons">
+                  <Link href="/my-user/coupons"> 我的優惠券</Link>
+                </h5>
               </div>
             )}
           </div>
