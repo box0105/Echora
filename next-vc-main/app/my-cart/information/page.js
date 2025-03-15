@@ -304,6 +304,8 @@ export default function InformationPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
+                      pattern="^09\d{8}$"
+                      maxLength="10"
                       required
                     />
                   </div>
