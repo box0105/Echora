@@ -63,12 +63,11 @@
 
     .b-swiper {
       background: var(--grey50);
-      min-height: 520px;
-      overflow: hidden;
+      min-height: 400px;
       height: 100%;
+      overflow: hidden;
 
       @media (max-width: 576px) {
-        /* 小於 sm */
         .b-swiper-image {
           object-fit: cover !important;
         }
@@ -145,6 +144,10 @@
     .b-act-list {
       padding-top: 1.5em;
       padding-bottom: 6.25em;
+
+      .card img {
+        max-height: 12em;
+      }
     }
   }
 }

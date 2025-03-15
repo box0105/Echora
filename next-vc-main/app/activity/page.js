@@ -34,21 +34,21 @@ export default function ActivityPage() {
           images={randomImages}
           ids={randomIds}
         />
+      </div>
 
-        <FilterBar
-          actNum={acts?.length}
-          onOpen={() => setIsFilterOpen(!isFilterOpen)}
+      <FilterBar
+        actNum={acts?.length}
+        onOpen={() => setIsFilterOpen(!isFilterOpen)}
+        onChange={updateQueryParams}
+      />
+
+      <div className="b-container b-table-page">
+        <FilterPanel
+          isOpen={isFilterOpen}
+          onClose={() => setIsFilterOpen(!isFilterOpen)}
           onChange={updateQueryParams}
         />
-
-        <div className="b-container" style={{ minHeight: '75vh' }}>
-          <FilterPanel
-            isOpen={isFilterOpen}
-            onClose={() => setIsFilterOpen(!isFilterOpen)}
-            onChange={updateQueryParams}
-          />
-          <ActivityList data={acts} numPerPage={10} bias={-160}/>
-        </div>
+        <ActivityList data={acts} numPerPage={10} bias={-160} />
       </div>
     </div>
   )

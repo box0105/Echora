@@ -402,45 +402,47 @@ export default function AdminActivityState() {
 
   if (state !== 'create' && state !== 'update') return
   return (
-    <div className="card b-card b-filter-conds">
-      <div className="row justify-content-between">
-        <div className="col-auto">
-          <h1>{state === 'create' ? '新增活動' : '修改活動'}</h1>
+    <div className="container-fluid">
+      <div className="card b-card b-filter-conds">
+        <div className="row justify-content-between">
+          <div className="col-auto">
+            <h2>{state === 'create' ? '新增活動' : '修改活動'}</h2>
+          </div>
         </div>
+
+        {/* Update : 有抓取到 formData.zipcode，再載入 ZipcodeSelector*/}
+        {formData.zipcode && <ZipcodeSelector />}
+        {/* Create : 預設載入 */}
+        <ZipcodeSelector />
+
+        <FormActivity
+          isLoading={isLoading}
+          isUpdate={isUpdate}
+          formData={formData}
+          setFormData={setFormData}
+          selectedCategories={selectedCategories}
+          selectedGenres={selectedGenres}
+          selectedDate={selectedDate}
+          dateError={dateError}
+          signupError={signupError}
+          totalError={totalError}
+          ticketNum={ticketNum}
+          setTicketNum={setTicketNum}
+          bandNum={bandNum}
+          setBandNum={setBandNum}
+          articleNum={articleNum}
+          setArticleNum={setArticleNum}
+          imageItems={imageItems}
+          handleFileChange={handleFileChange}
+          handleImageDelete={handleImageDelete}
+          handleDateChange={handleDateChange}
+          handleTicketChange={handleTicketChange}
+          handleLineupChange={handleLineupChange}
+          handleArticleChange={handleArticleChange}
+          handleSubmit={handleSubmit}
+          numberToZh={numberToZh}
+        />
       </div>
-
-      {/* Update : 有抓取到 formData.zipcode，再載入 ZipcodeSelector*/}
-      {formData.zipcode && <ZipcodeSelector />}
-      {/* Create : 預設載入 */}
-      <ZipcodeSelector />
-
-      <FormActivity
-        isLoading={isLoading}
-        isUpdate={isUpdate}
-        formData={formData}
-        setFormData={setFormData}
-        selectedCategories={selectedCategories}
-        selectedGenres={selectedGenres}
-        selectedDate={selectedDate}
-        dateError={dateError}
-        signupError={signupError}
-        totalError={totalError}
-        ticketNum={ticketNum}
-        setTicketNum={setTicketNum}
-        bandNum={bandNum}
-        setBandNum={setBandNum}
-        articleNum={articleNum}
-        setArticleNum={setArticleNum}
-        imageItems={imageItems}
-        handleFileChange={handleFileChange}
-        handleImageDelete={handleImageDelete}
-        handleDateChange={handleDateChange}
-        handleTicketChange={handleTicketChange}
-        handleLineupChange={handleLineupChange}
-        handleArticleChange={handleArticleChange}
-        handleSubmit={handleSubmit}
-        numberToZh={numberToZh}
-      />
     </div>
   )
 }

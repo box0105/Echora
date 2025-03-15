@@ -11,11 +11,11 @@ export default function AdminActivity() {
         <TitleSearch />
       </div>
 
-      <div className="b-filter-card card p-4 shadow-sm">
+      <div className="b-sm-none b-filter-card card p-4 shadow-sm">
         <FilterPanel />
       </div>
-      
-      <div className="card mt-5 shadow-sm">
+
+      <div className="card mt-4 shadow-sm">
         <DataTable />
       </div>
     </div>

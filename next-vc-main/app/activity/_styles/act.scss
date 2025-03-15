@@ -1,11 +1,19 @@
 /* 活動列表頁 */
-:root {
-  // --swiper-navigation-sides-offset: 4px;
-}
 
 .b-container {
+  --swiper-navigation-sides-offset: 1em;
+
   padding-inline: 4em;
+
+  @media screen and (max-width: 576px) {
+    padding-inline: 16px !important;
+  }
 }
+
+.b-table-page {
+  --swiper-pagination-bottom: 1.8em;
+}
+
 .b-header-padding {
   padding-top: 127px !important; // header空間
 }
@@ -13,7 +21,6 @@
 .b-swiper {
   height: 500px;
   opacity: 0.9;
-  border-radius: 4px;
   @media screen and (max-width: 576px) {
     height: 210px;
   }
@@ -194,7 +201,10 @@
     );
 
     img {
-      max-height: 383px;
+      max-height: 24em;
+      @media screen and (max-width: 576px) {
+        max-height: 12em;
+      }
     }
 
     .card-body {
@@ -309,8 +319,10 @@
 }
 
 /* ----- 活動路由通用  ------ */
-.b-sm-none {
-  display: none;
+@media screen and (max-width: 576px) {
+  .b-sm-none {
+    display: none;
+  }
 }
 
 .b-title {

@@ -23,8 +23,6 @@ export default function AdminLayout({ children }) {
 
   const [isAdmin, setIsAdmin] = useState(false)
   const { isAuth } = useAuth()
-  const router = useRouter()
-  const { userProfile, setUserProfile } = useUser()
 
   useEffect(() => {
     const userId = Number(localStorage.getItem('userId'))
@@ -45,10 +43,11 @@ export default function AdminLayout({ children }) {
       <div className="container-fluid b-admin">
         <div className="row px-2 py-3">
           <AdminPanel />
+
           <main className="col-md-10 px-0 ps-md-2">{children}</main>
         </div>
         {/* 載入吐司 */}
-        <MyToastContainer/>
+        <MyToastContainer />
       </div>
     )
   }

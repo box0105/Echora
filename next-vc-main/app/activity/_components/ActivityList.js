@@ -50,7 +50,7 @@ export default function ActivityList({
       <div
         className={`row row-cols-1 ${
           isSmall ? 'row-cols-lg-2 row-cols-xl-3' : 'row-cols-xxl-2'
-        } gx-4 gy-5`}
+        } gx-4 gy-4`}
       >
         {filteredData.slice(0, displayNum).map((act) => (
           <CardComponent key={act.id} data={act} />

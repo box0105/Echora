@@ -403,7 +403,12 @@ const FormActivity = ({
               >
                 x
               </button>
-              <div className={`p text-center mt-2 ${item.type==='uploading' ? 'text-danger text-opacity-75' : 'text-secondary-emphasis'}`}>{item.type}</div>
+              <div 
+                style={{color: item.type==='uploading' ? 'var(--grey600)' : ''}} 
+                className={`p text-center fst-italic fw-medium mt-2 ${item.type==='uploading' ? 'text-decoration-underline' : 'text-secondary-emphasis'}`}
+                >
+                {item.type =='uploading' && item.type}
+              </div>
             </div>
           ))}
         </div>
@@ -420,7 +425,7 @@ const FormActivity = ({
         </div>
       </div>
 
-      <pre>
+      {/* <pre>
         {'formData.media (已存入活動照片)\n'}
         {JSON.stringify(formData.media, null, 2)}
       </pre>
@@ -435,7 +440,7 @@ const FormActivity = ({
           null,
           2
         )}
-      </pre>
+      </pre> */}
 
       <div className="d-flex justify-content-start gap-3">
         <button
