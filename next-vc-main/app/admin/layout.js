@@ -19,7 +19,7 @@ export default function AdminLayout({ children }) {
 
     // 清理函數以確保離開 Admin 頁面時不會影響其他頁面
     return () => {
-      document.body.style.backgroundColor = 'var(--white)' // 恢復默認顏色
+      document.body.style.backgroundColor = '' // 恢復默認顏色
     }
   }, [])
 
