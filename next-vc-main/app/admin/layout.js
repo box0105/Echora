@@ -6,11 +6,9 @@ import './_styles/admin.scss'
 import './../activity/_styles/act.scss'
 import { useAdminAuth } from '@/hooks/use-admin'
 import { redirect, useRouter } from 'next/navigation'
-import { flatMap } from 'lodash'
 import { useAuth } from '@/hooks/use-auth'
 import { useUser } from '@/hooks/use-profile'
-import { ToastContainer } from 'react-toastify'
-import { toastWarning } from '@/hooks/use-toast'
+import { toastWarning, MyToastContainer } from '@/hooks/use-toast'
 
 export default function AdminLayout({ children }) {
   // 修改 Admin 頁面的背景顏色
@@ -23,26 +21,14 @@ export default function AdminLayout({ children }) {
     }
   }, [])
 
-  const [isAdmin, setIsAdmin] = useState(null)
-  // const { logout, token } = useAdminAuth()
-  // const [check, setCheck] = useState(false)
+  const [isAdmin, setIsAdmin] = useState(false)
   const { isAuth } = useAuth()
-  // const router = useRouter()
-  // const { userProfile, setUserProfile } = useUser()
-
-  // useEffect(() => {
-  //   console.log({userProfile});
-  //   if (!userProfile || userProfile.username != "admin") {
-  //     // redirect('/');
-  //     router.push('/')
-  //   }
-  // }, [userProfile])
+  const router = useRouter()
+  const { userProfile, setUserProfile } = useUser()
 
   useEffect(() => {
     const userId = Number(localStorage.getItem('userId'))
-    console.log('取得localstorage userId: ', userId)
-    // setAdmin(admin)
-    // setCheck(true)
+    console.log('取得localstorage userId:', userId)
 
     if (userId === 1) {
       setIsAdmin(userId)
@@ -51,31 +37,6 @@ export default function AdminLayout({ children }) {
       redirect('/')
     }
   }, [isAuth])
-
-  // useEffect(() => {
-  //     if (admin !== 1 && admin != null) {
-  //       console.log(admin, '123');
-  //       router.push('/');
-  //     } else {
-  //       setCheck(true)
-  //     }
-  // }, [check])
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const url = 'http://localhost:3005/api/coupon/admin/login'
-  //       const res = await fetch(url)
-  //       if (!res.ok) throw new Error('狀態錯誤')
-  //       const data = await res.json()
-  //       // console.log(data.data)
-  //       // setCoupons(data.data)
-  //     } catch (err) {
-  //       console.log('發生錯誤', err)
-  //     }
-  //   }
-  //   fetchData()
-  // }, [])
 
   if (!isAdmin) {
     return <></>
@@ -87,7 +48,7 @@ export default function AdminLayout({ children }) {
           <main className="col-md-10 px-0 ps-md-2">{children}</main>
         </div>
         {/* 載入吐司 */}
-        <ToastContainer />
+        <MyToastContainer/>
       </div>
     )
   }

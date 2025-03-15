@@ -4,10 +4,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import FormDate from '@/app/activity/_components/FormDate'
 import FormTitleWithBtn from './FormTitleWithBtn'
-import ZipcodeSelector from './ZipcodeSelector'
 
 const FormActivity = ({
-  isLoading,
   isUpdate,
   formData,
   setFormData,
@@ -31,9 +29,8 @@ const FormActivity = ({
   handleLineupChange,
   handleArticleChange,
   handleSubmit,
-  numberToZh
+  numberToZh,
 }) => {
-
   return (
     <form className="b-admin-form d-flex flex-column">
       <div className="col-6">
@@ -268,7 +265,7 @@ const FormActivity = ({
               <input
                 type="number"
                 className={`form-control b-ticket-${index + 1}`}
-                value={formData.type?.[index]?.price || ''}
+                value={formData.type?.[index]?.price}
                 min={0}
                 onChange={(e) => {
                   handleTicketChange(index, 'price', parseInt(e.target.value))
@@ -281,7 +278,7 @@ const FormActivity = ({
               <input
                 type="number"
                 className="form-control"
-                value={formData.type?.[index]?.stock || ''}
+                value={formData.type?.[index]?.stock}
                 min={0}
                 onChange={(e) => {
                   handleTicketChange(index, 'stock', parseInt(e.target.value))
@@ -343,7 +340,9 @@ const FormActivity = ({
               <div className="col-6">
                 <div className="row gy-4">
                   <div className="col-12">
-                    <label className="form-label">標題{numberToZh(index + 1)}</label>
+                    <label className="form-label">
+                      標題{numberToZh(index + 1)}
+                    </label>
                     <input
                       type="text"
                       className="form-control"
@@ -367,7 +366,9 @@ const FormActivity = ({
               </div>
 
               <div className="col-6">
-                <label className="form-label">內容{numberToZh(index + 1)}</label>
+                <label className="form-label">
+                  內容{numberToZh(index + 1)}
+                </label>
                 <textarea
                   className="form-control"
                   value={formData.article?.[index]?.content || ''}
@@ -402,6 +403,7 @@ const FormActivity = ({
               >
                 x
               </button>
+              <div className={`p text-center mt-2 ${item.type==='uploading' ? 'text-danger text-opacity-75' : 'text-secondary-emphasis'}`}>{item.type}</div>
             </div>
           ))}
         </div>
@@ -435,7 +437,7 @@ const FormActivity = ({
         )}
       </pre>
 
-      <div className="d-flex justify-content-end gap-3">
+      <div className="d-flex justify-content-start gap-3">
         <button
           className="btn btn-dark mb-0"
           type="button"
@@ -450,9 +452,6 @@ const FormActivity = ({
           {isUpdate ? '返回' : '取消'}
         </Link>
       </div>
-
-      {/* 載入台灣縣市選擇器 */}
-      {!isLoading && <ZipcodeSelector />}
     </form>
   )
 }
