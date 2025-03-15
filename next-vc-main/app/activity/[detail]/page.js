@@ -7,7 +7,6 @@ import { useFetch } from '@/hooks/use-fetch'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import '../_styles/act.scss'
 import '../_styles/act-detail.scss'
-import '../_styles/act-font.scss'
 
 import HeroSection from '../_components/HeroSection'
 import BreadCrumb from '../_components/BreadCrumb'

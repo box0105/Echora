@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { usePathname } from 'next/navigation'
+import ZipcodeSelector from '../../_components/ZipcodeSelector'
 import {
   redirect,
   useParams,
@@ -409,7 +409,10 @@ export default function AdminActivityState() {
         </div>
       </div>
 
-      {/* <pre>{JSON.stringify(formData, null, 2)}</pre> */}
+      {/* Update : 有抓取到 formData.zipcode，再載入 ZipcodeSelector*/}
+      {formData.zipcode && <ZipcodeSelector />}
+      {/* Create : 預設載入 */}
+      <ZipcodeSelector />
 
       <FormActivity
         isLoading={isLoading}

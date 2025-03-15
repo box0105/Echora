@@ -1,11 +1,10 @@
 'use client'
 
-import React, { act, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useActivity } from '@/hooks/use-activity'
 
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import './_styles/act.scss'
-import './_styles/act-font.scss'
 
 import ActivityList from './_components/ActivityList'
 import FilterBar from './_components/FilterBar'
@@ -28,7 +27,7 @@ export default function ActivityPage() {
   if (isLoading) return <h3>網頁載入中，請稍後...</h3>
   return (
     <div className="b-header-padding">
-      <div className="b-container px-0">
+      <div className="b-container b-table-page px-0 ">
         <HeroSection
           title="2025 全台音樂祭"
           subTitle="一同締造屬於你的冒險拾光"
