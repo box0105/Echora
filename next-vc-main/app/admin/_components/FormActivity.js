@@ -268,7 +268,7 @@ const FormActivity = ({
               <input
                 type="number"
                 className={`form-control b-ticket-${index + 1}`}
-                value={formData.type?.[index]?.price || ''}
+                value={formData.type?.[index]?.price}
                 min={0}
                 onChange={(e) => {
                   handleTicketChange(index, 'price', parseInt(e.target.value))
@@ -281,7 +281,7 @@ const FormActivity = ({
               <input
                 type="number"
                 className="form-control"
-                value={formData.type?.[index]?.stock || ''}
+                value={formData.type?.[index]?.stock}
                 min={0}
                 onChange={(e) => {
                   handleTicketChange(index, 'stock', parseInt(e.target.value))

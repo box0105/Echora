@@ -295,7 +295,7 @@ export default function AdminActivityState() {
     const checkEmptyFields = (arr, fields, name) => {
       for (let i = 0; i < arr.length; i++) {
         for (let field of fields) {
-          if (!arr[i][field]) {
+          if (arr[i][field] === '') {
             toastInfo(`${name}${numberToZh(i + 1)} 的 ${field} 欄位未填寫！`)
             return false
           }
