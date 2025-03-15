@@ -346,17 +346,17 @@ const CouponAdminTable = () => {
       {/* 優惠券表格 */}
       <hr></hr>
       <h4 className='mt-2 mb-2'>優惠券總覽</h4>
-      <div className="b-filter-card card p-4 shadow-sm table-responsive ">
-        <table>
+      <div className="b-filter-card card p-4 shadow-sm table-responsive k-table">
+        <table className='' >
           <thead>
             <tr>
-              <th>名稱</th>
-              <th>代碼</th>
-              <th>類型</th>
-              <th>折扣</th>
-              <th>開始時間</th>
+              <th >名稱</th>
+              <th >代碼</th>
+              <th >類型</th>
+              <th >折扣</th>
+              <th >開始時間</th>
               <th>到期時間</th>
-              <th>狀態</th>
+              <th >狀態</th>
             </tr>
           </thead>
           <tbody>
@@ -474,7 +474,7 @@ const CouponAdminTable = () => {
 
                     </>
                   )}
-                </td>
+                </td>               
               </tr>
             ))}
           </tbody>
