@@ -19,11 +19,13 @@
   // /* blur60 */
   // backdrop-filter: blur(30px);
   transition: transform 0.3s ease-in-out;
+
   &.g-ori-color {
     background: rgba(255, 255, 255, 0.7);
     /* blur60 */
     backdrop-filter: blur(30px);
   }
+
   &.g-white-color {
     background-color: var(--white);
   }
@@ -32,10 +34,11 @@
     border-bottom: none;
   }
 
-  &.visible{
+  &.visible {
     transform: translateY(0);
   }
-  &.hidden{
+
+  &.hidden {
     transform: translateY(-100%);
   }
 }
@@ -217,7 +220,7 @@
   width: 300px;
   text-align: right;
 
-  @media screen and (max-width: 390px) {
+  @media screen and (max-width: 430px) {
     display: none;
   }
 }

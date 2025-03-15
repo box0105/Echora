@@ -100,7 +100,7 @@ export default function PasswordPage() {
   return (
     <>
       <MemberLayout>
-        <div className="change-password-form w-50">
+        <div className="change-password-form">
           <div className="change-password-header">
             <div className="section-title h4">修改密碼</div>
           </div>
@@ -152,7 +152,7 @@ export default function PasswordPage() {
                   onClick={() => toggleShowPassword('new')}
                 ></i>
               </div>
-              <div className="mb-4 position-relative">
+              <div className="mb-4 position-relative" style={{ width: '100%' }}>
                 <label htmlFor="confirm" className="a-form-label">
                   確認新密碼
                 </label>

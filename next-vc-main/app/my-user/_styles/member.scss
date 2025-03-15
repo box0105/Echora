@@ -122,6 +122,14 @@
     gap: 16px;
   }
 
+  .change-password-form {
+    width: 50%;
+
+    @media screen and (max-width: 991px) {
+      width: 100%;
+    }
+  }
+
   .change-password {
     margin-top: 30px;
     color: #0077bb;

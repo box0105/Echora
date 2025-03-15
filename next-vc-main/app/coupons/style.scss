@@ -13,12 +13,12 @@
     /* 確保漸層疊加層的定位 */
     display: flex;
     width: 100%;
-    height: 70vh;
+    height: calc(606.45px + 127px);
     /* background: url(./images/main.jpg) lightgray  no-repeat; */
-    background: url(../../public/images/coupon/pexels-monstera-4137785.png) 0px -680px / 100% 251.836% no-repeat;
+    background: url(../../public/images/coupon/pexels-monstera-4137785.png) 0px -500px / 100% 251.836% no-repeat;
 
     @media (max-width: 400px) {
-        background: url(../../public/images/coupon/pexels-monstera-4137785.png) -1200px -680px / 100% 251.836% no-repeat;
+        background: url(../../public/images/coupon/pexels-monstera-4137785.png) -1200px -500 / 100% 251.836% no-repeat;
         background-size: auto;
     }
 
@@ -76,7 +76,7 @@
 
                 /* mobile */
                 @media (max-width: 580px) {
-                    font-size: 24px;
+                    font-size: 20px;
                 }
             }
 
@@ -112,7 +112,7 @@
 
                 /* mobile */
                 @media (max-width: 580px) {
-                    font-size: 24px;
+                    font-size: 20px;
                     width: 100%;
                 }
             }
@@ -290,14 +290,14 @@
 
 .k-Swiper {
     position: absolute;
-    top: 40px;
-    left: -480px;
+    top: 105px;
+    left: 0px;
     width: 40%;
     height: 50%;
 
     // background: #000;
     @media (max-width: 1500px) {
-        top: 0;
+        top: 80px;
         left: 0;
         width: 100%;
     }

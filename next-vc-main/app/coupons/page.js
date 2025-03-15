@@ -100,7 +100,7 @@ export default function CouponPage() {
               <div className="content">
                 <div className="title flex-column">
                   <div>SPECIAL OFFER</div>
-                  <span>聖誕季優惠活動 LES系列9折優惠</span>
+                  <span>聖誕季優惠活動 七折優惠券趕快領取</span>
                 </div>
                 <div className="title flex-column">
                   <Link href="/my-user">
@@ -116,7 +116,7 @@ export default function CouponPage() {
               <div className="content">
                 <div className="title flex-column">
                   <div>SPECIAL OFFER</div>
-                  <span>聖誕季優惠活動 LES系列9折優惠</span>
+                  <span>共襄盛舉音樂節 最高可折五百元優惠券</span>
                 </div>
                 <div className="title flex-column">
                   <Link href="/my-user">
@@ -124,11 +124,27 @@ export default function CouponPage() {
                       立即加入會員
                     </h1>
                   </Link>
-                  <h6>活動期間:2024/12/01 - 2025/01/31</h6>
+                  <h6>活動期間:2025/2/28 - 2025/3/10</h6>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
+              <div className="content">
+                <div className="title flex-column">
+                  <div>SPECIAL OFFER</div>
+                  <span>大港開唱 領取優惠大膽「暢」買</span>
+                </div>
+                <div className="title flex-column">
+                  <Link href="/my-user">
+                    <h1 className=" btn btn-outline-light mt-2">
+                      立即加入會員
+                    </h1>
+                  </Link>
+                  <h6>活動期間:2025/3/29 - 2025/4/15</h6>
+                </div>
+              </div>
+            </SwiperSlide>
+            {/* <SwiperSlide>
               <div className="content">
                 <div className="title flex-column">
                   <div>SPECIAL OFFER</div>
@@ -143,8 +159,8 @@ export default function CouponPage() {
                   <h6>活動期間:2024/12/01 - 2025/01/31</h6>
                 </div>
               </div>
-            </SwiperSlide>
-            <SwiperSlide>
+            </SwiperSlide> */}
+            {/* <SwiperSlide>
               <div className="content">
                 <div className="title flex-column">
                   <div>SPECIAL OFFER</div>
@@ -159,23 +175,7 @@ export default function CouponPage() {
                   <h6>活動期間:2024/12/01 - 2025/01/31</h6>
                 </div>
               </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="content">
-                <div className="title flex-column">
-                  <div>SPECIAL OFFER</div>
-                  <span>聖誕季優惠活動 LES系列9折優惠</span>
-                </div>
-                <div className="title flex-column">
-                  <Link href="/my-user">
-                    <h1 className=" btn btn-outline-light mt-2">
-                      立即加入會員
-                    </h1>
-                  </Link>
-                  <h6>活動期間:2024/12/01 - 2025/01/31</h6>
-                </div>
-              </div>
-            </SwiperSlide>
+            </SwiperSlide> */}
           </Swiper>
         </main>
 
