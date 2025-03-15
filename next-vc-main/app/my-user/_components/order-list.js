@@ -38,9 +38,15 @@ export default function OrderList() {
           <thead>
             <tr>
               <th scope="col">訂單編號</th>
-              <th scope="col">建立日期</th>
-              <th scope="col">付款方式</th>
-              <th scope="col">寄件方式</th>
+              <th scope="col" className="hide-on-mobile">
+                建立日期
+              </th>
+              <th scope="col" className="hide-on-mobile">
+                付款方式
+              </th>
+              <th scope="col" className="hide-on-mobile">
+                寄件方式
+              </th>
               <th scope="col">總金額</th>
               <th scope="col">詳情</th>
             </tr>
@@ -56,13 +62,13 @@ export default function OrderList() {
                 <td>
                   <h6>{order.orderNumber}</h6>
                 </td>
-                <td>
+                <td className="hide-on-mobile">
                   <h6>{order.createdAt.split('.')[0]}</h6>
                 </td>
-                <td>
+                <td className="hide-on-mobile">
                   <h6>{order.paymentMethod}</h6>
                 </td>
-                <td>
+                <td className="hide-on-mobile">
                   <h6>{order.shippingMethod}</h6>
                 </td>
                 <td>

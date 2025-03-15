@@ -39,7 +39,7 @@ export default function ComponentsOrderDetail() {
       <div className="">
         <br />
         <div className="row w-100 ">
-          <div className="col col-6">
+          <div className="col col-12 col-md-6">
             <h3>訂單編號 : {order.orderNumber}</h3>
             <br />
             <p>建單日期 : {order.createdAt.split('.')[0]}</p>
@@ -55,13 +55,15 @@ export default function ComponentsOrderDetail() {
                 : `使用的優惠券 : ${order.coupon}`}
             </p>
             <p>
-              {order.cost == 0 ? '折扣 : 無' : `折扣 : - NT$ ${Number(order.cost).toLocaleString()}`}
+              {order.cost == 0
+                ? '折扣 : 無'
+                : `折扣 : - NT$ ${Number(order.cost).toLocaleString()}`}
             </p>
             <br />
             <hr />
             <h5>總金額 : NT$ {Number(order.totalAmount).toLocaleString()}</h5>
           </div>
-          <div className="col col-6">
+          <div className="col col-12 col-md-6 mt-md-0 mt-5">
             <h3>訂購商品</h3>
             <br />
             <div className="">

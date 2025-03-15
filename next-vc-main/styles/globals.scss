@@ -14,7 +14,7 @@
   --grey700: #686868;
   --grey800: #505050;
   --grey900: #373737;
-  --red: #D52B1E
+  --red: #d52b1e;
 }
 
 body {
@@ -134,4 +134,7 @@ a:link {
 .m-127px {
   height: 127px;
   width: 100%;
+  @media (max-width: 768px) {
+    height: 153px;
+  }
 }

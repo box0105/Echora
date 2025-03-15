@@ -9,7 +9,7 @@ export default function OrderPage() {
     <MemberLayout>
       <div className="order-form">
         <div className="order-header">
-          <div className="order-title section-title h4">我的訂單</div>
+          <div className="order-title section-title h4 hide-on-mobile">我的訂單</div>
         </div>
         <div className="row order-summary w-100 m-0">
           <OrderList />

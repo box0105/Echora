@@ -104,7 +104,7 @@
 }
 
 .hamburger-member h5 {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   padding: 4px 12px;
   margin: 0 auto;
@@ -145,42 +145,42 @@
   display: inline-block;
 }
 
-@media (max-width: 991px) {
-  .content {
-    flex-direction: column;
-  }
+// @media (max-width: 991px) {
+//   .content {
+//     flex-direction: column;
+//   }
 
-  .sidebar {
-    display: none;
-    width: 100%;
-  }
+//   .sidebar {
+//     display: none;
+//     width: 100%;
+//   }
 
-  .col-6 {
-    width: 100%;
-  }
+//   .col-6 {
+//     width: 100%;
+//   }
 
-  .hamburger-member {
-    display: flex;
-    width: 100%;
-    height: 100%;
-  }
+//   .hamburger-member {
+//     display: flex;
+//     width: 100%;
+//     height: 100%;
+//   }
 
-  .dropdown-content {
-    display: inline;
-  }
+//   .dropdown-content {
+//     display: inline;
+//   }
 
-  .order-form,
-  .order-header,
-  .order-subtitle,
-  .order-title {
-    max-width: 100%;
-  }
+//   .order-form,
+//   .order-header,
+//   .order-subtitle,
+//   .order-title {
+//     max-width: 100%;
+//   }
 
-  .order-image img {
-    max-width: 100%;
-    height: 325px;
-  }
-}
+//   .order-image img {
+//     max-width: 100%;
+//     height: 325px;
+//   }
+// }
 
 .visually-hidden {
   position: absolute;
@@ -197,5 +197,11 @@ tbody td {
   vertical-align: middle;
   h6 {
     margin: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none;
   }
 }

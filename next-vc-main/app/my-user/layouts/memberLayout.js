@@ -16,7 +16,6 @@ import {
 import { useAuth } from '@/hooks/use-auth'
 import { toastError, toastWarning } from '@/hooks/use-toast'
 
-
 export default function MemberLayout({ children }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const pathname = usePathname()
@@ -25,7 +24,7 @@ export default function MemberLayout({ children }) {
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen)
   }
- const { user, isAuth, setIsAuth } = useAuth()
+  const { user, isAuth, setIsAuth } = useAuth()
   const isActive = (path) => {
     return pathname === path ? 'active' : ''
   }
@@ -36,6 +35,8 @@ export default function MemberLayout({ children }) {
         return '關於我'
       case '/my-user/order':
         return '我的訂單'
+      case `/my-user/order/${orderId}`:
+        return '訂單詳情'
       case '/my-user/favorites':
         return '我的收藏'
       case '/my-user/coupons':
@@ -48,7 +49,7 @@ export default function MemberLayout({ children }) {
   }
   const { mutate } = useAuthGet()
   const router = useRouter()
-// **處理登出（支援 Google + 一般帳號）**
+  // **處理登出（支援 Google + 一般帳號）**
   const handleLogout = async () => {
     try {
       const res = await fetch('http://localhost:3005/api/users/logout', {
@@ -153,7 +154,18 @@ export default function MemberLayout({ children }) {
               </div>
               <div className="sidebar-section">
                 <h2 className={`sidebar-title`}>
-                  <button onClick={handleLogout} className='sidebar-title' style={{border:"none", outline:"none", background:"none", padding:"0"}}>登出</button> 
+                  <button
+                    onClick={handleLogout}
+                    className="sidebar-title"
+                    style={{
+                      border: 'none',
+                      outline: 'none',
+                      background: 'none',
+                      padding: '0',
+                    }}
+                  >
+                    登出
+                  </button>
                 </h2>
               </div>
             </aside>
