@@ -7,7 +7,7 @@ import ActivityCardSm from '../_components/ActivityCardSm'
 export default function ActivityList({
   data,
   id,
-  numPerPage = 3,
+  numPerPage = 6,
   bias = 0,
   isSmall = false,
 }) {
@@ -22,9 +22,13 @@ export default function ActivityList({
   useEffect(() => {
     // 讓視窗滑動到新資料的位置
     if (displayNum != numPerPage) {
-      const newElement = document.querySelector(
-        `#act-${displayNum - numPerPage + 1}`
-      )
+      const page = displayNum / numPerPage
+      const target = 1 + (page - 1) * numPerPage
+      let newElement = document.querySelector(`#act-${target}`)
+      // 在詳細頁，資料列表會篩選掉某個ID的資料，如果剛好是它，要跳過
+      if (!newElement) newElement = document.querySelector(`#act-${target+1}`)
+      console.log(newElement)
+
       if (newElement) {
         const yOffset =
           newElement.getBoundingClientRect().top + window.scrollY + bias
@@ -52,8 +56,8 @@ export default function ActivityList({
           isSmall ? 'row-cols-lg-2 row-cols-xl-3' : 'row-cols-xxl-2'
         } gx-4 gy-4`}
       >
-        {filteredData.slice(0, displayNum).map((act) => (
-          <CardComponent key={act.id} data={act} />
+        {filteredData.slice(0, displayNum).map((act, i) => (
+          <CardComponent key={act.id} data={act} mapIndex={i+1}/>
         ))}
       </div>
       {displayNum < filteredData.length && (

@@ -2,9 +2,10 @@
 
 import ActivityCardBase from './ActivityCardBase';
 
-export default function ActivityCard({ data }) {
+export default function ActivityCard({ data, mapIndex }) {
   return (
     <ActivityCardBase
+    mapIndex={mapIndex}
       data={data}
       imageSize={{ col: 4, lg: 6 }}
       showCategory={true}
