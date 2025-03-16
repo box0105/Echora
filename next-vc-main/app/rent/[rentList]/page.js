@@ -438,7 +438,7 @@ export default function Page(props) {
                             alt=""
                           />
                           <div
-                            className={`m-0 p ${
+                            className={`m-0 h7 ${
                               ListData?.stock > 0
                                 ? 'text-success'
                                 : 'text-danger'
