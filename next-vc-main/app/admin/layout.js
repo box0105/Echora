@@ -31,7 +31,9 @@ export default function AdminLayout({ children }) {
     if (userId === 1) {
       setIsAdmin(userId)
     } else {
-      toastWarning('該使用者不具管理員權限')
+      setTimeout(() => {
+        toastWarning('該使用者不具管理員權限')
+      }, 400)
       redirect('/')
     }
   }, [isAuth])

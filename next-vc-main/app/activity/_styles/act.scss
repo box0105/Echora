@@ -256,6 +256,11 @@
     font-size: 10px;
   }
 
+  .card {
+    // 還原 bootstrap 預設，避免被 bootstrap.scss 覆蓋
+    border: 1px solid #dee2e6;
+  }
+
   h1 {
     font-size: 2em !important; /* 32px */
   }

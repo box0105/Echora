@@ -27,12 +27,14 @@ export default function AdminPanel() {
         },
       })
       const resData = await res.json()
-      
+
       if (resData.status === 'success') {
         // 清除 localStorage 中的 userId
         localStorage.removeItem('userId')
-        toastSuccess('管理者登出成功')
         router.push('/')
+        setTimeout(() => {
+          toastSuccess('管理者登出成功')
+        }, 600)
       } else {
         toast.error(`登出失敗: ${resData.message}`)
       }
@@ -86,7 +88,7 @@ export default function AdminPanel() {
 
         <li className="nav-item">
           <h6 className="mb-0">
-            <Link href='/my-user' className="nav-link" onClick={handleLogout}>
+            <Link href="/my-user" className="nav-link" onClick={handleLogout}>
               <i className="fa-solid fa-right-from-bracket me-3 text-secondary" />
               登出
             </Link>
