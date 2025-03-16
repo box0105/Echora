@@ -1,0 +1,318 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table User {
+  id Int [pk, increment]
+  username String [not null]
+  password String [not null]
+  email String [unique, not null]
+  sex String
+  phone String
+  postcode String
+  city String
+  district String
+  address String
+  emailValidated Boolean [not null, default: false]
+  googleUid String [unique]
+  avatar String
+  failedAttempts Int [not null, default: 0]
+  isLocked Boolean [not null, default: false]
+  lockUntil DateTime
+  favorite favorite [not null]
+  usercoupons UserCoupons [not null]
+}
+
+Table favorite {
+  user User [not null]
+  userId Int [not null]
+  productSkuId String [not null]
+
+  indexes {
+    (userId, productSkuId) [pk]
+  }
+}
+
+Table Otp {
+  id Int [pk, increment]
+  email String [not null]
+  otp String [not null]
+  hash String
+  createdAt DateTime [default: `now()`, not null]
+  expiredAt DateTime [not null]
+}
+
+Table brand {
+  id Int [pk, increment]
+  name String [not null]
+
+  Note: '以下為product相關資料表定義'
+}
+
+Table color {
+  id Int [pk, increment]
+  name String [not null]
+  colorImage String [not null]
+  colorPaletteId Int [not null]
+}
+
+Table color_palette {
+  id Int [pk, increment]
+  name String [not null]
+  cname String [not null]
+}
+
+Table image {
+  id Int [pk, increment]
+  productSkuId String [not null]
+  name String [not null]
+  image String [not null]
+  sortOrder Int [not null]
+}
+
+Table product {
+  id Int [pk, increment]
+  name String [not null]
+  brandId Int [not null]
+  discription String [not null]
+  price Int [not null, default: 0]
+  discountPrice Int
+  createdAt DateTime [default: `now()`, not null]
+}
+
+Table product_sku {
+  id String [pk]
+  productId Int [not null]
+  name String [not null]
+  colorId Int [not null]
+  stock Int [not null, default: 0]
+}
+
+Table spec {
+  productId Int [pk]
+  name String [not null]
+  neckPickup String
+  middlePickup String
+  bridgePickup String
+  controls String
+  switching String
+}
+
+Table Coupon {
+  id Int [pk, increment]
+  name String [not null]
+  code String [unique]
+  typeId Int [not null]
+  type CouponType [not null]
+  discount Int [not null]
+  minPurchase Decimal
+  description String
+  startTime DateTime [not null]
+  endTime DateTime [not null]
+  isDelete Boolean [not null, default: false]
+  usercoupons UserCoupons [not null]
+}
+
+Table CouponType {
+  id Int [pk, increment]
+  category String [not null]
+  name String [not null]
+  coupon Coupon [not null]
+  userCoupons UserCoupons [not null]
+}
+
+Table UserCoupons {
+  id Int [pk, increment]
+  userId Int [not null]
+  user User [not null]
+  couponId Int [not null]
+  coupon Coupon [not null]
+  couponTypeId Int [not null]
+  couponType CouponType [not null]
+  claimed Boolean [not null, default: true]
+  isDelete Boolean [not null, default: false]
+}
+
+Table Activity {
+  id Int [pk, increment]
+  name String [not null]
+  category_id Int [not null]
+  category ActivityCategory [not null]
+  music_genre_id Int [not null]
+  genre ActivityGenre [not null]
+  date_start DateTime [not null]
+  date_end DateTime
+  signup_start DateTime
+  signup_end DateTime
+  city String [not null]
+  dist String [not null]
+  address String [not null]
+  zipcode Int [not null]
+  intro String [not null]
+  media String [not null]
+  lineup ActivityLineup [not null]
+  article ActivityArticle [not null]
+  type ActivityTicketType [not null]
+}
+
+Table ActivityCategory {
+  id Int [pk, increment]
+  name String [not null]
+  activities Activity [not null]
+}
+
+Table ActivityGenre {
+  id Int [pk, increment]
+  name String [not null]
+  activities Activity [not null]
+}
+
+Table ActivityLineup {
+  id Int [pk, increment]
+  activity_id Int [not null]
+  activity Activity [not null]
+  bands String [not null]
+}
+
+Table ActivityArticle {
+  id Int [pk, increment]
+  activity_id Int [not null]
+  activity Activity [not null]
+  title String [not null]
+  content String [not null]
+  images String
+}
+
+Table ActivityTicketType {
+  id Int [pk, increment]
+  activity_id Int [not null]
+  name String [not null]
+  stock Int [not null]
+  price Int [not null]
+  activity Activity [not null]
+}
+
+Table MyOrder {
+  id Int [pk, increment]
+  userId Int
+  orderNumber String [unique, not null]
+  recipient String [not null]
+  phone String [not null]
+  email String [not null]
+  shippingAddress String [not null]
+  shippingMethod String [not null]
+  paymentMethod String [not null]
+  cost String [not null]
+  coupon String [not null]
+  totalAmount String [not null]
+  createdAt DateTime [default: `now()`, not null]
+}
+
+Table MyOrderItem {
+  id Int [pk, increment]
+  orderId Int [not null]
+  name String [not null]
+  rentDate String
+  color String
+  brand String
+  status String
+  image String [not null]
+  price String [not null]
+  count String [not null]
+  total String [not null]
+}
+
+Table Rent {
+  id Int [pk, increment]
+  name String [not null]
+  level Int [not null]
+  description String
+  rentBrandId Int
+  rentBrand RentBrand
+  rentColors RentItemColor [not null]
+  stores_id Int
+  stores Stores
+  price Int [not null, default: 0]
+  RentList_id Int
+  RentList RentList
+  time_start DateTime
+  time_end DateTime
+  created_at DateTime [default: `now()`, not null]
+}
+
+Table RentBrand {
+  id Int [pk, increment]
+  name String [not null]
+  rents Rent [not null]
+}
+
+Table RentColor {
+  id Int [pk, increment]
+  name String [not null]
+  colorImage String [not null]
+}
+
+Table RentItemColor {
+  id String [pk]
+  rentId Int [not null]
+  name String [not null]
+  colorId Int [not null]
+  stock Int [not null, default: 0]
+  Rent Rent [not null]
+}
+
+Table RentList {
+  id Int [pk, increment]
+  rentId Int [not null]
+  name String [not null]
+  neckPickup String
+  middlePickup String
+  bridgePickup String
+  controls String
+  switching String
+  rents Rent [not null]
+}
+
+Table RentImges {
+  id Int [pk, increment]
+  RentItemColorId String [not null]
+  name String [not null]
+  image String [not null]
+  sortOrder Int [not null]
+}
+
+Table Stores {
+  id Int [pk, increment]
+  name String [unique, not null]
+  address String [unique, not null]
+  address_phone String [not null, default: '']
+  rents Rent [not null]
+}
+
+Ref: favorite.userId > User.id
+
+Ref: Coupon.typeId > CouponType.id
+
+Ref: UserCoupons.userId > User.id
+
+Ref: UserCoupons.couponId > Coupon.id
+
+Ref: UserCoupons.couponTypeId > CouponType.id
+
+Ref: Activity.category_id > ActivityCategory.id
+
+Ref: Activity.music_genre_id > ActivityGenre.id
+
+Ref: ActivityLineup.activity_id > Activity.id
+
+Ref: ActivityArticle.activity_id > Activity.id
+
+Ref: ActivityTicketType.activity_id > Activity.id
+
+Ref: Rent.rentBrandId > RentBrand.id
+
+Ref: Rent.stores_id > Stores.id
+
+Ref: Rent.RentList_id > RentList.id
+
+Ref: RentItemColor.rentId > Rent.id

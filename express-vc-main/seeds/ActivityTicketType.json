@@ -30,36 +30,36 @@
   {
     "id": 5,
     "activity_id": 3,
-    "name": "大港人雙日聯票 ",
-    "price": 4000,
+    "name": "一般單日票",
+    "price": 2900,
     "stock": 10
   },
   {
     "id": 6,
-    "activity_id": 3,
-    "name": "大港人船鳴套票",
-    "price": 4600,
-    "stock": 10
-  },
-  {
-    "id": 7,
     "activity_id": 3,
     "name": "一般雙日聯票 ",
     "price": 4200,
     "stock": 10
   },
   {
+    "id": 7,
+    "activity_id": 3,
+    "name": "大港人雙日聯票 ",
+    "price": 4000,
+    "stock": 10
+  },
+  {
     "id": 8,
     "activity_id": 3,
-    "name": "一般船鳴套票 ",
-    "price": 4800,
+    "name": "大港人船鳴套票",
+    "price": 4600,
     "stock": 10
   },
   {
     "id": 9,
     "activity_id": 3,
-    "name": "一般單日票",
-    "price": 2900,
+    "name": "一般船鳴套票 ",
+    "price": 4800,
     "stock": 10
   },
   {
@@ -107,22 +107,22 @@
   {
     "id": 16,
     "activity_id": 8,
-    "name": "早鳥雙日票",
-    "price": 1920,
-    "stock": 10
-  },
-  {
-    "id": 17,
-    "activity_id": 8,
     "name": "預售單日票",
     "price": 1320,
     "stock": 10
   },
   {
-    "id": 18,
+    "id": 17,
     "activity_id": 8,
     "name": "現場單日票",
     "price": 1720,
+    "stock": 10
+  },
+  {
+    "id": 18,
+    "activity_id": 8,
+    "name": "早鳥雙日票",
+    "price": 1920,
     "stock": 10
   },
   {
@@ -142,29 +142,29 @@
   {
     "id": 21,
     "activity_id": 10,
-    "name": "超級搖滾座位區",
-    "price": 3499,
+    "name": "一般區",
+    "price": 999,
     "stock": 10
   },
   {
     "id": 22,
-    "activity_id": 10,
-    "name": "超級搖滾自由區",
-    "price": 2499,
-    "stock": 10
-  },
-  {
-    "id": 23,
     "activity_id": 10,
     "name": "搖滾區",
     "price": 1999,
     "stock": 10
   },
   {
+    "id": 23,
+    "activity_id": 10,
+    "name": "超級搖滾自由區",
+    "price": 2499,
+    "stock": 10
+  },
+  {
     "id": 24,
     "activity_id": 10,
-    "name": "一般區",
-    "price": 999,
+    "name": "超級搖滾座位區",
+    "price": 3499,
     "stock": 10
   },
   {
@@ -198,15 +198,15 @@
   {
     "id": 29,
     "activity_id": 13,
-    "name": "成人票",
-    "price": 2300,
+    "name": "兒童票",
+    "price": 1000,
     "stock": 10
   },
   {
     "id": 30,
     "activity_id": 13,
-    "name": "兒童票",
-    "price": 1000,
+    "name": "成人票",
+    "price": 2300,
     "stock": 10
   },
   {
@@ -219,22 +219,176 @@
   {
     "id": 32,
     "activity_id": 15,
-    "name": "單日 STANDARD 區域票",
+    "name": "單日 STANDARD 票",
     "price": 3600,
     "stock": 10
   },
   {
     "id": 33,
     "activity_id": 15,
-    "name": "單日 VIP 區域票",
+    "name": "單日 VIP 票",
     "price": 4600,
     "stock": 10
   },
   {
     "id": 34,
     "activity_id": 15,
-    "name": "雙日 STANDARD 區域票",
+    "name": "雙日 STANDARD 票",
     "price": 5800,
+    "stock": 10
+  },
+  {
+    "id": 35,
+    "activity_id": 16,
+    "name": "單日票",
+    "price": 1000,
+    "stock": 10
+  },
+  {
+    "id": 36,
+    "activity_id": 16,
+    "name": "雙日票",
+    "price": 1800,
+    "stock": 10
+  },
+  {
+    "id": 37,
+    "activity_id": 17,
+    "name": "免費票卷",
+    "price": 0,
+    "stock": 10
+  },
+  {
+    "id": 38,
+    "activity_id": 18,
+    "name": "海 鳥 票",
+    "price": 3000,
+    "stock": 10
+  },
+  {
+    "id": 39,
+    "activity_id": 18,
+    "name": "預 售 票",
+    "price": 3400,
+    "stock": 10
+  },
+  {
+    "id": 40,
+    "activity_id": 19,
+    "name": "單日票",
+    "price": 1300,
+    "stock": 10
+  },
+  {
+    "id": 41,
+    "activity_id": 19,
+    "name": "雙日票",
+    "price": 2300,
+    "stock": 10
+  },
+  {
+    "id": 42,
+    "activity_id": 20,
+    "name": "免費票卷",
+    "price": 0,
+    "stock": 10
+  },
+  {
+    "id": 43,
+    "activity_id": 21,
+    "name": "免費票卷",
+    "price": 0,
+    "stock": 10
+  },
+  {
+    "id": 44,
+    "activity_id": 22,
+    "name": "免費票卷",
+    "price": 0,
+    "stock": 10
+  },
+  {
+    "id": 45,
+    "activity_id": 23,
+    "name": "單日票",
+    "price": 3600,
+    "stock": 10
+  },
+  {
+    "id": 46,
+    "activity_id": 23,
+    "name": "第一波雙日票",
+    "price": 5600,
+    "stock": 10
+  },
+  {
+    "id": 47,
+    "activity_id": 24,
+    "name": "預售二日票",
+    "price": 2500,
+    "stock": 10
+  },
+  {
+    "id": 48,
+    "activity_id": 24,
+    "name": "預售三日票",
+    "price": 2700,
+    "stock": 10
+  },
+  {
+    "id": 49,
+    "activity_id": 25,
+    "name": "早鳥雙日票",
+    "price": 2000,
+    "stock": 10
+  },
+  {
+    "id": 50,
+    "activity_id": 25,
+    "name": "早鳥三日票",
+    "price": 2800,
+    "stock": 10
+  },
+  {
+    "id": 51,
+    "activity_id": 26,
+    "name": "單日預售票 ",
+    "price": 2088,
+    "stock": 10
+  },
+  {
+    "id": 52,
+    "activity_id": 26,
+    "name": "預售學生雙日票 ",
+    "price": 2588,
+    "stock": 10
+  },
+  {
+    "id": 53,
+    "activity_id": 27,
+    "name": "免費票卷",
+    "price": 0,
+    "stock": 10
+  },
+  {
+    "id": 54,
+    "activity_id": 28,
+    "name": "單人票",
+    "price": 1450,
+    "stock": 10
+  },
+  {
+    "id": 55,
+    "activity_id": 28,
+    "name": "友誼雙人票",
+    "price": 2600,
+    "stock": 10
+  },
+  {
+    "id": 56,
+    "activity_id": 29,
+    "name": "免費票卷",
+    "price": 0,
     "stock": 10
   }
 ]
