@@ -1,5 +1,4 @@
 /* 活動列表頁 */
-
 .b-container {
   --swiper-navigation-sides-offset: 1em;
 
@@ -254,6 +253,11 @@
 .b-detail-page {
   @media screen and (max-width: 576px) {
     font-size: 10px;
+  }
+
+  .card {
+    // 還原 bootstrap 預設，避免被 bootstrap.scss 覆蓋
+    border: 1px solid #dee2e6;
   }
 
   h1 {

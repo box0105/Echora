@@ -86,7 +86,7 @@ export default function FilterBar({ actNum, onOpen, onChange }) {
                     className="b-btn-unstyled w-100"
                     onClick={(e) => activeSortBtn(e, 'id', 'asc')}
                   >
-                    <h6 className="active">活動編號 1 - 9</h6>
+                    <h6>活動編號 1 - 9</h6>
                   </button>
                   <button
                     className="b-btn-unstyled w-100"

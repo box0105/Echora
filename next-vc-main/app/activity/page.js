@@ -48,7 +48,7 @@ export default function ActivityPage() {
           onClose={() => setIsFilterOpen(!isFilterOpen)}
           onChange={updateQueryParams}
         />
-        <ActivityList data={acts} numPerPage={10} bias={-160} />
+        <ActivityList data={acts} numPerPage={6} bias={-140} />
       </div>
     </div>
   )

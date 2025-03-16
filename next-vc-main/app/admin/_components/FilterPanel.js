@@ -13,7 +13,7 @@ export default function FilterPanel() {
     <form className="row gx-4 gy-4">
       <div className="d-flex justify-content-between align-items-center w-100">
         <h4>
-          <button className="b-btn-unstyled" type="button">
+          <button className="b-btn-unstyled">
             清除篩選條件
           </button>
         </h4>
