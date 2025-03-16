@@ -1,24 +1,26 @@
-.body {
-  width: 600px;
-}
-
+// .body {
+//   width: 600px;
+// }
 
 .k-body {
-
   .section {
     width: 100%;
   }
 
   .div {
-    width: 100%;
+    width: 70%;
     height: 8.5rem;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
     position: relative;
 
     display: flex;
     align-items: stretch;
     /* 讓子元素填滿高度 */
     position: relative;
+   
+    @media (max-width: 1100px) {
+      width: 100%;
+    }
 
     /* 確保偽元素相對於容器定位 */
 
@@ -31,7 +33,7 @@
   }
 
   .div::before {
-    content: '';
+    content: "";
     border-left: 1px solid #ccc;
     /* 使用 flex 屬性來控制位置 */
     flex-shrink: 0;
@@ -57,9 +59,13 @@
 
     div .text {
       top: 50%;
-      left: 40%;
+      left: 250px;
       transform: translate(-50%, -50%);
       position: absolute;
+      @media (max-width: 450px) {
+        left: 200px;
+      }
+    
     }
   }
 
@@ -79,9 +85,13 @@
     display: flex;
     justify-content: flex-end;
     width: 20%;
-    margin-left: 80%;
-    margin-bottom: .5rem;
-    cursor: pointer
+    margin-left: 70%;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    @media (max-width: 1100px) {
+      margin-left: 65%;
+      width: 35%;
+    }
   }
 
   .btn {

@@ -6,6 +6,7 @@ import FormCheckbox from './FormCheckbox'
 import FormDate from './FormDate'
 import FormSelect from './FormSelect'
 import PriceSlider from './PriceSlider'
+import { toastInfo } from '@/hooks/use-toast'
 
 export default function FilterPanel({ isOpen, onClose, onChange }) {
   const {
@@ -23,7 +24,6 @@ export default function FilterPanel({ isOpen, onClose, onChange }) {
     setSelectedCity,
     setSelectedPrice,
   } = useFilterPanel()
-
 
   // 控制 FilterPanel 開啟關閉
   if (!isOpen) return <></>
@@ -45,6 +45,7 @@ export default function FilterPanel({ isOpen, onClose, onChange }) {
                 city: null,
                 price: null,
               })
+              toastInfo('重設篩選條件')
             }}
           >
             清除篩選條件

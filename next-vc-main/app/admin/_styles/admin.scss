@@ -2,14 +2,10 @@
   --card-border-radius: 1rem;
 }
 
-// body {
-//   background-color: var(--grey50);
-// }
-
 .b-admin {
   background-color: var(--grey50);
   .b-card {
-    margin: 2rem 3rem;
+    // margin: 2rem 3rem;
     padding: 1.5rem;
   }
   .card {
@@ -189,5 +185,24 @@
       margin-bottom: 15px;
     }
   }
+
+
+  
 }
+}
+
+.k-table  {
+  width: 100%; /* 或其他你希望的寬度 */
+  // overflow-x: auto
+
+  th{
+    text-overflow: ellipsis; /* 使用省略符號表示隱藏的文字 */
+    padding-inline: 8px;
+    white-space: nowrap; /* 防止文字換行 */
+  }
+  td{
+    white-space: nowrap; /* 防止文字換行 */
+    padding-inline: 8px;
+  }
+ 
 }

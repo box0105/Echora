@@ -1,6 +1,6 @@
 /* 全域 */
-// .m-background {
-//   background-image: url(/images/cart/background.png);
+// .g-background {
+//   background-image: url(/images/index/background-grey.jpg);
 //   background-size: cover;
 //   background-position: center;
 //   background-repeat: no-repeat;
@@ -9,6 +9,15 @@
 .m-index {
   padding-inline: 64px;
   padding-block: 100px 0;
+  @media (max-width: 768px) {
+    padding-block: 70px 0;
+    padding-inline: 16px;
+  }
+}
+
+.m-index2{
+  padding-inline: 64px;
+  padding-block: 80px 0;
   @media (max-width: 768px) {
     padding-block: 50px 0;
     padding-inline: 16px;
@@ -62,13 +71,22 @@
 }
 /* section2 */
 .m-index-title {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   /* h1 {
     font-size: 32px;
     font-weight: 700;
   } */
   span {
     font-size: 18px;
+  }
+  @media (max-width: 576px) {
+    margin-bottom: 28px;
+    .g-text-size{
+      font-size: 18px;
+    }
+    span {
+      font-size: 16px;
+    }
   }
 }
 .m-section2-col {

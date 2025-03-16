@@ -8,7 +8,7 @@ export default function ActivityCardBase({ data, imageSize, showCategory, showLo
   const src = '/images/activity/';
 
   return (
-    <div className="col">
+    <div className="col" id={`act-${data.id}`}>
       <div className="card h-100">
         <div className="row g-0 h-100">
           {/* card-image */}

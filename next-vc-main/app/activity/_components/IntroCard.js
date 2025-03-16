@@ -34,7 +34,7 @@ export default function IntroCard({ isOpen, onClose, dateFormat, act }) {
               <h5 className="b-address">地址: {`${act.city}${act.dist}${act.address}`}</h5>
               <a
                 className="b-btn b-sm-none mt-2"
-                href={`https://www.google.com/maps?q=${act.address}`}
+                href={`https://www.google.com/maps?q=${act.city}${act.dist}${act.address}`}
                 target="_blank"
               >
                 查看地圖

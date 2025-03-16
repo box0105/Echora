@@ -45,9 +45,9 @@ export default function AppPage(props) {
           <Section3 />
         </div>
         <div className="m-section4">
-          <div className="container-fluid m-index">
+          <div className="container-fluid m-index2">
             <div className="m-index-title m-anime">
-              <h1 className="h3">
+              <h1 className="h3 g-text-size">
                 RECENT ACTIVITIES<span> / 近期活動</span>
               </h1>
             </div>

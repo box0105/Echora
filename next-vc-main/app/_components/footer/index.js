@@ -6,27 +6,24 @@ import React, { useState, useEffect } from 'react'
 export default function Footer(props) {
   return (
     <footer className={styles.footer}>
-      <hr />
       <div>
-        <ul className="nav justify-content-center row">
-          <li className="col-12 col-lg-4">
+        <ul className="nav justify-content-start row">
+          <li className="col-12 col-md-8 col-lg-4 p-0">
             <h6 className="h7">NEWSLETTER</h6>
             <div className={styles.email}>
               <div className={styles.group}>
                 <input placeholder="請輸入email訂閱電子報" type="text" />
-                <i className="fa-solid fa-arrow-right" />
+                <img src='/images/footer/arrow-left.svg' />
               </div>
-              <hr />
+              <hr className='mt-2 mb-3'/>
             </div>
-            <p>
+            <p className='w-75'>
               點擊&quot;訂閱&quot;即表示您確認您已閱讀和理解
               <a href="#">隱私權政策</a>
-              ，並且同
-              <br />
-              意接收時事通訊及其他如政策中所述的行銷資訊。
+              ，並且同意接收時事通訊及其他如政策中所述的行銷資訊。
             </p>
           </li>
-          <li className="h7 col-6 col-lg-2">
+          <li className="h7 col-6 col-lg-2 mb-lg-0 mb-4">
             INFO
             <div>
               <p className="m-0">常見問題</p>
@@ -41,7 +38,7 @@ export default function Footer(props) {
               <p className="m-0">退貨流程</p>
             </div>
           </li>
-          <li className="h7 col-6 col-lg-2">
+          <li className="h7 col-6 col-lg-2 mb-lg-0 mb-4">
             COMPANY
             <div>
               <p className="m-0">關於我們</p>
@@ -82,7 +79,6 @@ export default function Footer(props) {
           </li>
         </ul>
       </div>
-      <hr />
       <div className={styles.mise}>
         <p>Copyright © 2025 Echora Company</p>
         {/* <button className={`btn btn-outline-dark ${styles['k-btn']}`}>

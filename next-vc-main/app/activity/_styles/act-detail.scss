@@ -1,5 +1,5 @@
 :root {
-  --article-height: 36rem;
+  --article-height: 36em;
 }
 
 .card-body,
@@ -8,16 +8,16 @@
 }
 
 .b-container.b-detail-page {
-  padding-top: 2.75rem;
-  padding-inline: 4rem;
+  padding-top: 2.75em;
+  padding-inline: 4em;
 
   .b-swiper {
     // height: 550px;
   }
 
   .b-main-info {
-    padding-top: 3rem;
-    padding-bottom: 4.5rem;
+    padding-top: 3em;
+    padding-bottom: 4.5em;
 
     .breadcrumb-item:hover a {
       color: #2f97c6;
@@ -27,23 +27,23 @@
     }
 
     .b-title {
-      padding-top: 1rem;
+      padding-top: 1em;
     }
 
     .col-12 {
-      padding-bottom: 3rem;
+      padding-bottom: 3em;
     }
 
     .b-card-info,
     .b-card-band {
       border-top: 1.5px solid var(--grey100);
-      padding-top: 3rem;
+      padding-top: 3em;
     }
 
     .flattenBtn {
-      transition: transform 0.4s ease;
+      transition: transform 0.3s ease;
       &:hover {
-        transform: scale(1.25);
+        transform: scale(1.35);
       }
     }
 
@@ -53,22 +53,21 @@
   }
 
   .b-card {
-    padding: 2rem;
-    border-radius: 0.75rem;
+    padding: 2em;
+    border-radius: 0.75em;
     border: 2px solid var(--grey200);
   }
 
   .b-article-cards {
-    gap: 4rem;
+    gap: 4em;
 
     .b-swiper {
       background: var(--grey50);
-      min-height: 520px;
-      overflow: hidden;
+      min-height: 400px;
       height: 100%;
+      overflow: hidden;
 
       @media (max-width: 576px) {
-        /* 小於 sm */
         .b-swiper-image {
           object-fit: cover !important;
         }
@@ -85,8 +84,8 @@
 
   .b-aside {
     background: var(--grey50);
-    padding: 2.25rem;
-    min-width: 24.375rem;
+    padding: 2.25em;
+    min-width: 24.375em;
     position: sticky;
     top: 0;
 
@@ -112,39 +111,43 @@
           position: absolute;
           background: url('/check-lg.svg') no-repeat;
           background-size: cover;
-          width: 1.7rem;
-          height: 1.7rem;
+          width: 1.7em;
+          height: 1.7em;
           top: -16;
           right: -13;
           z-index: 6;
-          border-radius: 0.8rem;
+          border-radius: 0.8em;
           background-color: var(--grey50);
         }
       }
     }
 
     .b-purchaseBtn {
-      margin-top: 3.5rem;
+      margin-top: 3.5em;
     }
 
     .b-warning {
       border-top: 1.5px solid var(--grey200);
 
       li {
-        margin-block: 0.3rem;
-        font-size: 0.875rem;
+        margin-block: 0.3em;
+        font-size: 0.875em;
       }
     }
   }
 
   .b-other-act {
     .b-title {
-      padding-top: 6rem;
+      padding-top: 6em;
     }
 
     .b-act-list {
-      padding-top: 1.5rem;
-      padding-bottom: 6.25rem;
+      padding-top: 1.5em;
+      padding-bottom: 6.25em;
+
+      .card img {
+        max-height: 12em;
+      }
     }
   }
 }

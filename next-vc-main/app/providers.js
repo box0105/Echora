@@ -32,13 +32,13 @@ export function Providers({ children }) {
           <MyCouponProvider>
             <AuthProvider>
               <UserProvider>
-              <AdminAuthProvider>
+                <AdminAuthProvider>
                   <MyCartProvider>
                     <ActivityProvider>
                       <ProductProvider>{children}</ProductProvider>
                     </ActivityProvider>
                   </MyCartProvider>
-              </AdminAuthProvider>
+                </AdminAuthProvider>
               </UserProvider>
             </AuthProvider>
           </MyCouponProvider>

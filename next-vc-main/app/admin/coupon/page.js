@@ -239,13 +239,13 @@ const CouponAdminTable = () => {
 
       <div className="heading row justify-content-between align-items-center mb-4">
         <div className="col-auto mt-1">
-          <h2 className="mb-0 mt-2">優惠券後台管理</h2>
+          <h3 className="mb-0 mt-2">優惠券後台管理</h3>
         </div>
 
       </div>
 
       {/* 新增優惠券表單 */}
-      <h3 className=''>新增優惠券</h3>
+      <h4 className=''>新增優惠券</h4>
 
       <div className="b-filter-card card p-4 shadow-sm k-create">
         <div className='row g-1'>
@@ -300,22 +300,28 @@ const CouponAdminTable = () => {
             )}
           </div>
 
-          <div className='col-lg-8 col-sm-12'>
-            <h5>開始時間:
-              <DateTime name='startTime' placeholder='開始時間' value={newCoupon.startTime} onChange={handleInputChange} />
+          <div className='col-12'>
+            <div className='col-lg-4 col-sm-12'>
+              <h5>開始時間:
+                <DateTime name='startTime' placeholder='開始時間' value={newCoupon.startTime} onChange={handleInputChange} />
 
-            </h5>
+              </h5>
+            </div>
+          </div>
+          <div className='col-12'>
+            <div className='col-lg-4 col-sm-12'>
+              <h5>到期時間:
+                <DateTime name='endTime' placeholder='到期時間' value={newCoupon.endTime} onChange={handleInputChange} />
+              </h5>
+            </div>
           </div>
 
-          <div className='col-lg-8 col-sm-12'>
-            <h5>到期時間:
-              <DateTime name='endTime' placeholder='到期時間' value={newCoupon.endTime} onChange={handleInputChange} />
-            </h5>
-          </div>
+
+
 
           <div className='col-12 p-0'>
             <select
-              className='col-lg-1 col-sm-3'
+              className='col-lg-1 col-sm-4'
               name="isDelete"
               value={newCoupon.isDelete}
               onChange={handleInputChange}
@@ -330,7 +336,7 @@ const CouponAdminTable = () => {
           </div>
 
           <div className='col-12 mt-3'>
-            <button onClick={handleAddCoupon} className='col-lg-1 col-sm-3 btn btn-primary'>新增</button>
+            <button onClick={handleAddCoupon} className='col-lg-1 col-sm-3 btn btn-dark'>新增</button>
             {error && <div className="error-message">{error}</div>}
           </div>
 
@@ -339,18 +345,18 @@ const CouponAdminTable = () => {
 
       {/* 優惠券表格 */}
       <hr></hr>
-      <h3 className='mt-2 mb-2'>優惠券總覽</h3>
-      <div className="b-filter-card card p-4 shadow-sm table-responsive ">
-        <table>
+      <h4 className='mt-2 mb-2'>優惠券總覽</h4>
+      <div className="b-filter-card card p-4 shadow-sm table-responsive k-table">
+        <table className='' >
           <thead>
             <tr>
-              <th>名稱</th>
-              <th>代碼</th>
-              <th>類型</th>
-              <th>折扣</th>
-              <th>開始時間</th>
+              <th >名稱</th>
+              <th >代碼</th>
+              <th >類型</th>
+              <th >折扣</th>
+              <th >開始時間</th>
               <th>到期時間</th>
-              <th>狀態</th>
+              <th >狀態</th>
             </tr>
           </thead>
           <tbody>
@@ -445,7 +451,7 @@ const CouponAdminTable = () => {
                       </option>
                     </select>
                   ) : (
-                    coupon.isDelete == 0 ? <div><img src="/images/coupon/check-mark-svgrepo-com.svg" width={24} height={24}/>上架</div> : <div><img src="/images/coupon/stop-svgrepo-com.svg" width={24} height={24}/>下架</div>
+                    coupon.isDelete == 0 ? <div><img src="/images/coupon/check-mark-svgrepo-com.svg" width={24} height={24} />上架</div> : <div><img src="/images/coupon/stop-svgrepo-com.svg" width={24} height={24} />下架</div>
                   )}
                 </td>
                 <td>
@@ -468,7 +474,7 @@ const CouponAdminTable = () => {
 
                     </>
                   )}
-                </td>
+                </td>               
               </tr>
             ))}
           </tbody>

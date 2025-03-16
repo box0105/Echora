@@ -65,21 +65,21 @@
   {
     "id": 10,
     "activity_id": 4,
-    "name": "一般區預售票 ",
+    "name": "一般區",
     "price": 999,
     "stock": 10
   },
   {
     "id": 11,
     "activity_id": 4,
-    "name": "搖滾AB區預售票 ",
+    "name": "搖滾AB區",
     "price": 1999,
     "stock": 10
   },
   {
     "id": 12,
     "activity_id": 4,
-    "name": "超級搖滾AB區座位預售票 ",
+    "name": "超級搖滾AB區座位",
     "price": 2999,
     "stock": 10
   },
@@ -123,6 +123,118 @@
     "activity_id": 8,
     "name": "現場單日票",
     "price": 1720,
+    "stock": 10
+  },
+  {
+    "id": 19,
+    "activity_id": 9,
+    "name": "一般票單日票",
+    "price": 3000,
+    "stock": 10
+  },
+  {
+    "id": 20,
+    "activity_id": 9,
+    "name": "VIP 票單日票",
+    "price": 6000,
+    "stock": 10
+  },
+  {
+    "id": 21,
+    "activity_id": 10,
+    "name": "超級搖滾座位區",
+    "price": 3499,
+    "stock": 10
+  },
+  {
+    "id": 22,
+    "activity_id": 10,
+    "name": "超級搖滾自由區",
+    "price": 2499,
+    "stock": 10
+  },
+  {
+    "id": 23,
+    "activity_id": 10,
+    "name": "搖滾區",
+    "price": 1999,
+    "stock": 10
+  },
+  {
+    "id": 24,
+    "activity_id": 10,
+    "name": "一般區",
+    "price": 999,
+    "stock": 10
+  },
+  {
+    "id": 25,
+    "activity_id": 11,
+    "name": "青年票單日票",
+    "price": 2000,
+    "stock": 10
+  },
+  {
+    "id": 26,
+    "activity_id": 11,
+    "name": "一般票單日票",
+    "price": 2400,
+    "stock": 10
+  },
+  {
+    "id": 27,
+    "activity_id": 11,
+    "name": "VIP 票單日票",
+    "price": 3800,
+    "stock": 10
+  },
+  {
+    "id": 28,
+    "activity_id": 12,
+    "name": "免費票卷",
+    "price": 0,
+    "stock": 10
+  },
+  {
+    "id": 29,
+    "activity_id": 13,
+    "name": "成人票",
+    "price": 2300,
+    "stock": 10
+  },
+  {
+    "id": 30,
+    "activity_id": 13,
+    "name": "兒童票",
+    "price": 1000,
+    "stock": 10
+  },
+  {
+    "id": 31,
+    "activity_id": 14,
+    "name": "免費票卷",
+    "price": 0,
+    "stock": 10
+  },
+  {
+    "id": 32,
+    "activity_id": 15,
+    "name": "單日 STANDARD 區域票",
+    "price": 3600,
+    "stock": 10
+  },
+  {
+    "id": 33,
+    "activity_id": 15,
+    "name": "單日 VIP 區域票",
+    "price": 4600,
+    "stock": 10
+  },
+  {
+    "id": 34,
+    "activity_id": 15,
+    "name": "雙日 STANDARD 區域票",
+    "price": 5800,
     "stock": 10
   }
 ]

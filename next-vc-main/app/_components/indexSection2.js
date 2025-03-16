@@ -26,11 +26,11 @@ export default function IndexSection2(props) {
     <>
       <div className="container-fluid m-index">
         <div className="m-index-title m-anime">
-          <h1 className="h3">
+          <div className="h3 g-text-size">
             SHOP BY PALETTE<span> / 商品風格分類</span>
-          </h1>
+          </div>
         </div>
-        <div className="row mb-2">
+        <div className="row mb-2 w-100 ms-0">
           <div
             className="col-lg-7 col-6 m-section2-col m-section2-col1 m-section2-col5 m-anime g-btn"
             onClick={ () => {
@@ -58,7 +58,7 @@ export default function IndexSection2(props) {
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className="row w-100 ms-0">
           <div 
           className="col-lg-5 col-6 m-section2-col m-section2-col3 m-section2-col5 m-anime g-btn"
           onClick={ () => {
