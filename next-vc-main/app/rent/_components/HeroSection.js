@@ -34,7 +34,7 @@ const MainImage = () => (
           disableOnInteraction: false,
         }}
         modules={[Navigation, Autoplay]}
-        className="mySwiper"
+        className="c-mySwiper"
       >
         <SwiperSlide>
           <img

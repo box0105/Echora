@@ -303,7 +303,7 @@ export default function Page(props) {
             <div className=" c">
               <div className="container-fluid">
                 <div className="row">
-                  <div className="col-7 c-index1 ">
+                  <div className="col-7 c-index2 ">
                     <Main images={selectedImages} brand={ListData.brand} />
                   </div>
                   <div className="col-5 c-left ">
@@ -461,7 +461,7 @@ export default function Page(props) {
           <div className="c-section2">
             <div className="container-fluid ">
               <div className="row">
-                <div className="col-7 c-prduct c-index1">
+                <div className="col-7 c-prduct c-index2">
                   <div className="product-top">
                     <h6 className=" pb-3 m-0 c-List-body">商品描述</h6>
                     <div className="product-list-text">

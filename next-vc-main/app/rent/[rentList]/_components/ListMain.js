@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef} from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -8,6 +8,7 @@ import styles from './ImageGallery.module.scss';
 
 const ImageSlider = ({ images, imageBasePath = '/images/Rent/pd-images/', brand }) => {
   const [mainImage, setMainImage] = useState(images[0] || 'default-image.jpg')
+  const swiperRef = useRef(null)
   const [activeIndex, setActiveIndex] = useState(0)
   const [scrollIndex, setScrollIndex] = useState(0)
   const visibleThumbnails = 3 // 顯示的縮略圖數量
@@ -42,10 +43,18 @@ const ImageSlider = ({ images, imageBasePath = '/images/Rent/pd-images/', brand 
     )
   }
 
-  useEffect(() => {
-    console.log('images:', images)
-  }, [images])
+  // useEffect(() => {
+  //   console.log('images:', images)
+  // }, [images])
 
+  useEffect(() => {
+    if (images[0]) {
+      setMainImage(images[0])
+    }
+    if (swiperRef.current?.swiper) {
+      swiperRef.current.swiper.update() // 強制更新 Swiper
+    }
+  }, [images])
   return (
     <div className="relative w-full max-w-lg d-flex">
       {/* 桌面端側邊縮略圖 */}
@@ -107,7 +116,10 @@ const ImageSlider = ({ images, imageBasePath = '/images/Rent/pd-images/', brand 
 
       {/* 移動端輪播圖 */}
       <div className="d-lg-none w-100" style={{ height: '500px' }}>
-        <Swiper modules={[Navigation]} loop={true} slidesPerView={1} style={{ height: '100%' }}>
+        <Swiper modules={[Navigation]} loop={true} slidesPerView={1} 
+        observer={true}          // 新增：監聽 Swiper 自身變化
+        observeParents={true} 
+         style={{ height: '100%' }}>
           {images.map((img, index) => (
             <SwiperSlide
               key={index}
@@ -125,6 +137,7 @@ const ImageSlider = ({ images, imageBasePath = '/images/Rent/pd-images/', brand 
                 alt={`輪播圖 ${index}`}
                 style={{ objectFit: 'contain' }}
                 className="w-100"
+                priority={true}
               />
             </SwiperSlide>
           ))}
