@@ -182,7 +182,7 @@ const LoadMoreButton = ({ visibleCount, setVisibleCount, dataLength }) => (
       width: '15rem',
       height: '3rem',
     }}
-    onClick={() => setVisibleCount((prev) => Math.min(prev + 10, dataLength))}
+    onClick={() => setVisibleCount((prev) => Math.min(prev + 12, dataLength))}
     disabled={visibleCount >= dataLength}
   >
     <div className="h5">
