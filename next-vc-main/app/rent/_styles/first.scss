@@ -224,6 +224,15 @@ c-filter-img {
     }
   }
 }
+.btn-text{
+  padding: 0.75rem 1.5rem;
+  border-Radius: 3.125rem;
+  width: 15rem;
+  height: 3rem;
+  &:hover {
+   color: #fff !important;
+  }
+}
 .c-card-group {
   span {
     font-size: 16px;
