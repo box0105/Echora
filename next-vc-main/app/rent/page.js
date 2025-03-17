@@ -185,13 +185,7 @@ export default function Page() {
               </div>
               <div className="btn1 d-flex justify-content-center">
                 <button
-                  className="btn btn-outline-dark text-dark"
-                  style={{
-                    padding: '0.75rem 1.5rem',
-                    borderRadius: '3.125rem',
-                    width: '15rem',
-                    height: '3rem',
-                  }}
+                  className="btn btn-outline-dark text-dark btn-text"
                   onClick={() => setVisibleCount(prev => Math.min(prev + 10, filteredData.length))}
                 >
                   <div className="h5">瀏覽更多</div>
