@@ -50,7 +50,7 @@ export default function DataTable() {
           </Link>
         </div>
         <div style={{ color: 'var(--grey400)' }}>
-          <small>共計 {acts.length} 項活動</small>
+          <small>共計 {acts?.length} 項活動</small>
         </div>
       </div>
       {/* content */}
@@ -100,7 +100,7 @@ export default function DataTable() {
             </thead>
             {/* tbody */}
             <tbody>
-              {acts.map((act) => {
+              {acts?.map((act) => {
                 return (
                   <tr key={act.id}>
                     <td>
@@ -136,13 +136,13 @@ export default function DataTable() {
                       )}
                     </td>
                     <td>
-                      <h6 className="mb-0">{act.type[0].stock}</h6>
+                      <h6 className="mb-0">{act.type[0]?.stock}</h6>
                     </td>
                     <td>
                       <h6 className="mb-0">
-                        {act.type[0].price == 0
+                        {act.type[0]?.price == 0
                           ? 'Free'
-                          : `$${act.type[0].price.toLocaleString()}`}
+                          : `$${act.type[0]?.price.toLocaleString()}`}
                       </h6>
                     </td>
                     <td>

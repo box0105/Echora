@@ -150,7 +150,7 @@ export default function RentList() {
           <div className="col-6 col-sm-6 col-md-9 col-lg-9 clo-2">
             <div className="caa info">
               <div className="c-section3">
-                <div className="card-group gap-3">
+                <div className="c-card-group gap-3">
                   <div className="row row-cols-xl-4 row-cols-2">
                     <RentCards data={filteredData.slice(0, visibleCount)} />
                   </div>
@@ -182,7 +182,7 @@ const LoadMoreButton = ({ visibleCount, setVisibleCount, dataLength }) => (
       width: '15rem',
       height: '3rem',
     }}
-    onClick={() => setVisibleCount((prev) => Math.min(prev + 10, dataLength))}
+    onClick={() => setVisibleCount((prev) => Math.min(prev + 12, dataLength))}
     disabled={visibleCount >= dataLength}
   >
     <div className="h5">

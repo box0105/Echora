@@ -251,8 +251,15 @@ export default function ForgetPasswordPage() {
                 </button>
               </>
             ) : (
-              <p className="h6 mt-5" style={{ fontWeight: 400 }}>
-                驗證碼已寄出，請透過郵件連結使用該碼重設密碼。
+              <p
+                className="mt-5"
+                style={{
+                  fontWeight: 400,
+                  fontSize: '15px',
+                  textAlign: 'center',
+                }}
+              >
+                驗證碼已寄出，請透過郵件連結使用該碼重設密碼
               </p>
             )}
           </form>

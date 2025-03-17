@@ -87,7 +87,7 @@
                 display: flex;
 
                 @media (max-width: 1920px) {
-                    padding-top: .5rem;
+                    padding-top: 0.5rem;
                 }
 
                 @media (max-width: 390px) {
@@ -148,7 +148,7 @@
     background: #f9f9f9;
     padding-inline: 64px;
 
-    @media (max-width: 400px) {
+    @media (max-width: 567px) {
         padding-inline: 16px;
     }
 
@@ -223,7 +223,9 @@
                 left: 60%;
                 transform: translate(-50%, -50%);
                 position: absolute;
-
+                @media (max-width: 770px) {
+                    width: 40%;
+                }
                 .h3 {
                     width: 55%;
                 }
@@ -240,6 +242,7 @@
 
             @media (max-width: 770px) {
                 right: 8rem;
+                width: 60%;
             }
 
             @media (max-width: 720px) {

@@ -185,14 +185,14 @@ export default function CouponPage() {
               COUPONS / <span className="span">會員優惠券專區</span>
             </h1>
           </div>
-          <div className="row row-cols-lg-4 row-cols-md-4 row-cols-sm-1 row-cols-xm-1 row-cols-xxm-1 ">
+          <div className="row row-cols-xl-3 row-cols-lg-2 row-cols-md-auto row-cols-sm-auto ">
             {coupon
               .filter((item) => item.isDelete != 1)
               .map((item) => (
                 <li
                   key={item.id}
                   id={item.id}
-                  className=" col-lg-3 col-md-6 col-sm-12 col-xxl-3 image-col"
+                  className=" col-lg-4 col-md-6 col-sm-12 col-xxl-3 image-col"
                 >
                   <div className="col">
                     <div className="text">

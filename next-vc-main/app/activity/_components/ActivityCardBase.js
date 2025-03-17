@@ -4,11 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link'
 import { dateFormat } from '../_utils/dateFormat';
 
-export default function ActivityCardBase({ data, imageSize, showCategory, showLocation, children }) {
+export default function ActivityCardBase({ mapIndex, data, imageSize, showCategory, showLocation, children }) {
   const src = '/images/activity/';
 
   return (
-    <div className="col">
+    <div className="col" id={`act-${mapIndex}`}>
       <div className="card h-100">
         <div className="row g-0 h-100">
           {/* card-image */}

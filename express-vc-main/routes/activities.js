@@ -17,7 +17,6 @@ const storage = multer.diskStorage({
   filename: (req, file, cb) => {
     const newFileName = Date.now() + '_' + file.originalname
     console.log(newFileName)
-
     cb(null, newFileName)
   },
 })
@@ -25,13 +24,13 @@ const storage = multer.diskStorage({
 const upload = multer({
   storage,
   fileFilter(req, file, cb) {
-    if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
-      return cb(new Error('Please upload jpg/jpeg/png files'))
+    if (!file.originalname.toLocaleLowerCase().match(/\.(jpg|jpeg|png|webp)$/)) {
+      return cb(new Error('上傳檔案僅接收 .jpg/jpeg/png/webp'))
     }
     cb(null, true)
   },
   limits: {
-    fileSize: 10000000, // 10MB
+    fileSize: 10 * 1024 * 1024, // 10MB
   },
 })
 /* multer */
@@ -67,9 +66,14 @@ router.get('/', async (req, res) => {
     if (city) {
       whereCondition.city = city
     }
-    if (startDate && endDate) {
-      whereCondition.date_start = { gte: startDate, lte: endDate }
+
+    if (startDate || endDate) {
+      whereCondition.date_start = {
+        ...(startDate && { gte: startDate }),
+        ...(endDate && { lte: endDate }),
+      }
     }
+
     if (price) {
       whereCondition.type = {
         some: { price: { lte: price } },
@@ -156,10 +160,12 @@ router.get('/options', async (req, res) => {
 
 // Read One data
 router.get('/:id', async (req, res) => {
-  const { id } = req.params
-  console.log('單一活動 ID:', req.params.id)
-
   try {
+    const { id } = req.params
+    if (!id) {
+      return res.status(404).json({ status: 'fail', error: '請提供查詢活動 ID' })
+    }
+
     const data = await prisma.activity.findUnique({
       where: { id: Number(id) },
       // 關聯資料表
@@ -182,20 +188,25 @@ router.get('/:id', async (req, res) => {
 
 // 上傳照片 (最多10張)
 router.post('/uploads', upload.array('files', 10), (req, res) => {
-  if (!req.files || req.files.length === 0) {
-    return res.status(400).json({ error: 'No file uploaded' })
-  }
+    // 上傳成功時才執行
+    if (!req.files || req.files.length === 0) {
+      return res.status(400).json({ error: 'No file uploaded' })
+    }
 
-  const uploadedFiles = req.files.map((file) => ({
-    filename: file.originalname,
-    newFileName: file.filename,
-    size: file.size,
-  }))
+    const uploadedFiles = req.files.map((file) => ({
+      filename: file.originalname,
+      newFileName: file.filename,
+      size: file.size,
+    }))
 
-  res.json({
-    message: 'Files uploaded successfully',
-    files: uploadedFiles,
-  })
+    res.json({
+      status: 'success',
+      message: 'Files uploaded successfully',
+      files: uploadedFiles,
+    })
+}, (error, req, res, next) => {
+    // 上傳失敗，丟出錯誤訊息時執行
+    res.status(400).send({ error: error.message })
 })
 
 // Create
