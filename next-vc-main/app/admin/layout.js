@@ -8,7 +8,7 @@ import { useAdminAuth } from '@/hooks/use-admin'
 import { redirect, useRouter } from 'next/navigation'
 import { useAuth } from '@/hooks/use-auth'
 import { useUser } from '@/hooks/use-profile'
-import { toastWarning, MyToastContainer } from '@/hooks/use-toast'
+import { toastWarning } from '@/hooks/use-toast'
 
 export default function AdminLayout({ children }) {
   // 修改 Admin 頁面的背景顏色
@@ -48,8 +48,6 @@ export default function AdminLayout({ children }) {
 
           <main className="col-md-10 px-0 ps-md-2">{children}</main>
         </div>
-        {/* 載入吐司 */}
-        <MyToastContainer />
       </div>
     )
   }

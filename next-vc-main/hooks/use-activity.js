@@ -68,7 +68,7 @@ export const ActivityProvider = ({
       urlParams.set('endDate', queryParams.date[1])
     }
     if (queryParams.city) urlParams.set('city', queryParams.city)
-    if (queryParams.price && queryParams.price >= 0)
+    if (queryParams.price >= 0)
       urlParams.set('price', queryParams.price)
 
     // Sort

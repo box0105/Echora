@@ -184,24 +184,36 @@ export default function AdminActivityState() {
   const [signupError, setSignupError] = useState('')
   const [totalError, setTotalError] = useState('')
   useEffect(() => {
-    // 報名開始 > 結束
-    if (formData.signup_end && formData.signup_start)
-      setSignupError(
-        formData.signup_end < formData.signup_start
-          ? '報名開始日期應早於結束日期'
-          : ''
-      )
+    if (formData.signup_end && !formData.signup_start)
+      // signupError: 如果只選了報名結束
+      setSignupError('報名日期不完整，請填滿或是不設定報名日期')
+    else if (
+      // signupError : 報名開始 > 結束
+      formData.signup_end &&
+      formData.signup_start &&
+      formData.signup_end < formData.signup_start
+    )
+      setSignupError('報名開始日期應早於結束日期')
     else setSignupError('')
 
-    // 報名時間 > 活動時間
-    if (selectedDate)
+    // TotalError : 報名 > 活動
+    if (formData.date_start) {
       setTotalError(
-        selectedDate[0] < formData?.signup_end ||
-          selectedDate[0] < formData?.signup_start
+        formData.date_start < formData?.signup_end ||
+          formData.date_start < formData?.signup_start
           ? '報名時間應早於活動時間'
           : ''
       )
-    else setTotalError('')
+
+      setTimeout(() => {
+        console.log({
+          活動1: formData?.date_start,
+          活動2: formData?.date_end,
+          活動3: formData?.signup_start,
+          活動4: formData?.signup_end,
+        })
+      }, 400)
+    } else setTotalError('')
   }, [formData])
 
   // API create

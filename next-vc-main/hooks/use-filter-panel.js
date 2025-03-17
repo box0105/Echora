@@ -63,7 +63,7 @@ export function useFilterPanel() {
   useEffect(() => {
     if (selectedDate[0] && selectedDate[1])
       setError(
-        selectedDate[0] > selectedDate[1] ? '活動開始日期應該早於結束日期' : ''
+        selectedDate[0] > selectedDate[1] ? '活動開始日期應早於結束日期' : ''
       )
     else setError('')
   }, [selectedDate])
