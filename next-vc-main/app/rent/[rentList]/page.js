@@ -368,7 +368,7 @@ export default function Page(props) {
                           dateFormat="yyyy/MM/dd"
                           disabled={!startDate}
                           customInput={<CustomInput />}
-                          className="custom-datepicker"
+                          className="custom-datepicker w-100"
                         />
                       </div>
 
@@ -385,7 +385,7 @@ export default function Page(props) {
                           dateFormat="yyyy/MM/dd"
                           disabled={!startDate}
                           customInput={<CustomInput />}
-                          className="custom-datepicker"
+                          className="custom-datepicker w-100"
                         />
                       </div>
 
