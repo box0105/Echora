@@ -198,6 +198,7 @@
             /* 圖片置中 */
             background-size: contain;
             /* 圖片縮放到容器大小，保持比例 */
+
         }
 
         .image-col:nth-child(even) {
@@ -207,6 +208,11 @@
             background-size: contain;
             /* 圖片縮放到容器大小，保持比例 */
             color: #fff;
+
+            .btn-dark{
+                background-color: #ffffff;
+                color: #000000;
+            }
         }
 
         li {
@@ -223,11 +229,13 @@
                 left: 60%;
                 transform: translate(-50%, -50%);
                 position: absolute;
+
                 @media (max-width: 770px) {
                     width: 40%;
                 }
+
                 .h3 {
-                    width: 55%;
+                    width: 100%;
                 }
             }
         }
