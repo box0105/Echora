@@ -24,7 +24,9 @@ const storage = multer.diskStorage({
 const upload = multer({
   storage,
   fileFilter(req, file, cb) {
-    if (!file.originalname.toLocaleLowerCase().match(/\.(jpg|jpeg|png|webp)$/)) {
+    if (
+      !file.originalname.toLocaleLowerCase().match(/\.(jpg|jpeg|png|webp)$/)
+    ) {
       return cb(new Error('上傳檔案僅接收 .jpg/jpeg/png/webp'))
     }
     cb(null, true)
@@ -74,13 +76,13 @@ router.get('/', async (req, res) => {
       }
     }
 
-    if (price) {
+    if (price !== null && price >= 0) {
       whereCondition.type = {
         some: { price: { lte: price } },
       }
     }
 
-    // Sort : id, date, price(有bug)
+    // Sort : id, date, price
     if (orderType && order) {
       orderCondition[orderType] = order
     }
@@ -163,7 +165,9 @@ router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params
     if (!id) {
-      return res.status(404).json({ status: 'fail', error: '請提供查詢活動 ID' })
+      return res
+        .status(404)
+        .json({ status: 'fail', error: '請提供查詢活動 ID' })
     }
 
     const data = await prisma.activity.findUnique({
@@ -187,7 +191,10 @@ router.get('/:id', async (req, res) => {
 })
 
 // 上傳照片 (最多10張)
-router.post('/uploads', upload.array('files', 10), (req, res) => {
+router.post(
+  '/uploads',
+  upload.array('files', 10),
+  (req, res) => {
     // 上傳成功時才執行
     if (!req.files || req.files.length === 0) {
       return res.status(400).json({ error: 'No file uploaded' })
@@ -204,10 +211,12 @@ router.post('/uploads', upload.array('files', 10), (req, res) => {
       message: 'Files uploaded successfully',
       files: uploadedFiles,
     })
-}, (error, req, res, next) => {
+  },
+  (error, req, res, next) => {
     // 上傳失敗，丟出錯誤訊息時執行
     res.status(400).send({ error: error.message })
-})
+  }
+)
 
 // Create
 router.post('/', express.json(), async (req, res) => {

@@ -15,7 +15,7 @@ export default function FormDate({ title, selected, error, onChange1, onChange2 
             <input type="date" className="w-100" value={selected?.[1]} onChange={e => onChange2(e)} />
           </div>
         </div>
-        {error && <div className="text-danger mt-2">{error}</div>}
+        {error && <div className="b-warning-text text-center mt-3">{error}</div>}
       </div>
     </div>
   );

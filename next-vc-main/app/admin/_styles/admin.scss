@@ -1,5 +1,17 @@
+// Activity
+
 :root {
   --card-border-radius: 1rem;
+}
+
+.b-danger-text {
+  color: #d52b1e;
+  text-decoration: underline;
+}
+
+.b-warning-text {
+  color: var(--grey300);
+  text-decoration: underline;
 }
 
 .b-admin {
@@ -9,7 +21,7 @@
     padding: 1.5rem;
   }
   .card {
-    border: 1px solid var(--grey200)
+    border: 1px solid var(--grey200);
   }
 
   /* Table */
@@ -135,7 +147,7 @@
     .b-form-date {
       margin-bottom: 0;
     }
-    .b-img-upload col{
+    .b-img-upload col {
       min-height: 320px;
     }
   }
@@ -173,36 +185,33 @@
     color: white;
   }
 
-.k-create{
-  input{
-    border: 1px solid #8e8e8e;
-    border-radius: 3px;
-    height: 100%
-  }
+  .k-create {
+    input {
+      border: 1px solid #8e8e8e;
+      border-radius: 3px;
+      height: 100%;
+    }
 
-  .row{
-    div{
-      margin-bottom: 15px;
+    .row {
+      div {
+        margin-bottom: 15px;
+      }
     }
   }
-
-
-  
-}
 }
 
-.k-table  {
+// Coupon
+.k-table {
   width: 100%; /* 或其他你希望的寬度 */
   // overflow-x: auto
 
-  th{
+  th {
     text-overflow: ellipsis; /* 使用省略符號表示隱藏的文字 */
     padding-inline: 8px;
     white-space: nowrap; /* 防止文字換行 */
   }
-  td{
+  td {
     white-space: nowrap; /* 防止文字換行 */
     padding-inline: 8px;
   }
- 
 }
