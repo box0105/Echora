@@ -6,7 +6,7 @@ import '../_styles/style0.scss'
 import MemberLayout from '../layouts/memberLayout'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { toast, ToastContainer } from 'react-toastify'
+// import { toast, ToastContainer } from 'react-toastify'
 import { toastWarning, toastSuccess, toastError } from '@/hooks/use-toast'
 import 'react-toastify/dist/ReactToastify.css'
 import { useAuth } from '@/hooks/use-auth'
@@ -707,7 +707,6 @@ export default function ProfilePage() {
           </button>
         </form>
       </MemberLayout>
-      <ToastContainer />
     </>
   )
 }
