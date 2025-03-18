@@ -97,7 +97,7 @@ export default function CouponPage() {
             className="k-Swiper"
           >
             <SwiperSlide>
-              <div className="content">
+              <div className="k-content">
                 <div className="title flex-column">
                   <div>SPECIAL OFFER</div>
                   <span>聖誕季優惠活動 七折優惠券趕快領取</span>
@@ -113,7 +113,7 @@ export default function CouponPage() {
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="content">
+              <div className="k-content">
                 <div className="title flex-column">
                   <div>SPECIAL OFFER</div>
                   <span>共襄盛舉音樂節 最高可折五百元優惠券</span>
@@ -129,7 +129,7 @@ export default function CouponPage() {
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="content">
+              <div className="k-content">
                 <div className="title flex-column">
                   <div>SPECIAL OFFER</div>
                   <span>大港開唱 領取優惠大膽「暢」買</span>
