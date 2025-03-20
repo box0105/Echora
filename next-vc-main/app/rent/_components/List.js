@@ -175,7 +175,7 @@ export default function RentList() {
 // LoadMoreButton 组件
 const LoadMoreButton = ({ visibleCount, setVisibleCount, dataLength }) => (
   <button
-    className="btn btn-outline-dark text-dark"
+    className="btn btn-outline-dark text-dark btn-text"
     style={{
       padding: '0.75rem 1.5rem',
       borderRadius: '3.125rem',

@@ -13,6 +13,7 @@ import { isDev } from '@/config'
 // 載入loading元件
 import { RotatingLines } from 'react-loader-spinner'
 import { toast, ToastContainer } from 'react-toastify'
+import { toastWarning, toastError, toastSuccess } from '@/hooks/use-toast'
 import Link from 'next/link'
 
 export default function HashTokenPage() {
@@ -39,7 +40,7 @@ export default function HashTokenPage() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (password !== confirmPassword) {
-      toast.error('新密碼和確認密碼不一致')
+      toastError('新密碼和確認密碼不一致')
       return
     }
 
@@ -54,13 +55,13 @@ export default function HashTokenPage() {
 
       const resData = await response.json()
       if (resData.status === 'success') {
-        toast.success('密碼已成功更新')
+        toastSuccess('密碼已成功更新')
         router.push('/my-user')
       } else {
-        toast.error(resData.message)
+        toastError(resData.message)
       }
     } catch (err) {
-      toast.error('無法更新密碼')
+      toastError('無法更新密碼')
       console.log(err.message)
     }
   }
@@ -189,7 +190,6 @@ export default function HashTokenPage() {
           </form>
         </div>
       </div>
-      <ToastContainer />
     </>
   )
 }

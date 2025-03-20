@@ -119,7 +119,7 @@ const FormActivity = ({
         <div className="col-6">
           <FormDate
             title="活動時間"
-            error={dateError || totalError}
+            error={dateError}
             selected={[formData?.date_start, formData?.date_end]}
             onChange1={(e) => {
               handleDateChange([e.target.value, selectedDate[1]])
@@ -156,6 +156,11 @@ const FormActivity = ({
             }}
           />
         </div>
+        {totalError && (
+          <div className="col-12 text-center text-danger mt-3">
+            {totalError}
+          </div>
+        )}
       </div>
 
       <div className="col-12">
@@ -403,11 +408,17 @@ const FormActivity = ({
               >
                 x
               </button>
-              <div 
-                style={{color: item.type==='uploading' ? 'var(--grey600)' : ''}} 
-                className={`p text-center fst-italic fw-medium mt-2 ${item.type==='uploading' ? 'text-decoration-underline' : 'text-secondary-emphasis'}`}
-                >
-                {item.type =='uploading' && item.type}
+              <div
+                style={{
+                  color: item.type === 'uploading' ? 'var(--grey600)' : '',
+                }}
+                className={`p text-center fst-italic fw-medium mt-2 ${
+                  item.type === 'uploading'
+                    ? 'text-decoration-underline'
+                    : 'text-secondary-emphasis'
+                }`}
+              >
+                {item.type == 'uploading' && item.type}
               </div>
             </div>
           ))}
@@ -442,7 +453,7 @@ const FormActivity = ({
         )}
       </pre> */}
 
-      <div className="d-flex justify-content-start gap-3">
+      <div className="d-flex justify-content-end gap-3">
         <button
           className="btn btn-dark mb-0"
           type="button"

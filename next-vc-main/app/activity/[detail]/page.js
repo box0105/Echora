@@ -55,7 +55,7 @@ export default function ActivityDetailPage() {
             />
           </section>
 
-          <div className="row g-5">
+          <div className="row g-0 g-md-5">
             <div className="col-12 col-xl-9 order-last order-xl-first">
               <article className="b-article-cards row g-0">
                 {act?.article?.map((art, i) => {
@@ -72,7 +72,13 @@ export default function ActivityDetailPage() {
 
           <section className="b-other-act">
             <Title _title="YOU MAY ALSO LIKE, 您可能也會喜歡" />
-            <ActivityList data={acts} id={activityId} isSmall={true} numPerPage={9} bias={-24}/>
+            <ActivityList
+              data={acts}
+              id={activityId}
+              isSmall={true}
+              numPerPage={9}
+              bias={-24}
+            />
           </section>
         </main>
       </div>

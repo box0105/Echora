@@ -112,7 +112,7 @@ export default function MemberLayout({ children }) {
             )}
           </div>
 
-          <div className="content">
+          <div className="a-content">
             <aside className="sidebar">
               <div className="sidebar-section">
                 <h2 className={`sidebar-title ${isActive('/my-user/profile')}`}>

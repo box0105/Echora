@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "$500",
+    "name": "折$500",
     "code": "matsu",
     "typeId": 1,
     "discount": 500,
@@ -41,7 +41,7 @@
   },
   {
     "id": 5,
-    "name": "$70",
+    "name": "折$70",
     "code": "hot",
     "typeId": 1,
     "discount": 70,
