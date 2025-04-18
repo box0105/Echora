@@ -19,7 +19,7 @@ export default function ProductCard({ data = {}, removeFavItem }) {
             router.push(`/product/detail/${data.id}`)
           }}
         >
-          <div
+          <button
             className={`${styles['g-x']} position-absolute`}
             onClick={(e) => {
               e.stopPropagation()
@@ -27,7 +27,7 @@ export default function ProductCard({ data = {}, removeFavItem }) {
             }}
           >
             <img width="13px" src="/images/product/list/x.svg"></img>
-          </div>
+          </button>
           <div className={`${styles['g-overlay']} position-absolute`}>
             <h6>移除此商品</h6>
           </div>

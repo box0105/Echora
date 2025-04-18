@@ -12,26 +12,26 @@ import { useHeaderHeight } from '@/hooks/use-header'
 export default function ProductListPage(props) {
   // header 動態捲動
   const { headerHeight } = useHeaderHeight()
-  const [prevScrollY, setPrevScrollY] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
+  const [prevScrollY, setPrevScrollY] = useState(0)
+  const [isVisible, setIsVisible] = useState(true)
   const handleScroll = () => {
-    const currentScrollY = window.scrollY;
+    const currentScrollY = window.scrollY
 
     if (currentScrollY > prevScrollY && currentScrollY > 50) {
-      setIsVisible(false);
+      setIsVisible(false)
     } else {
-      setIsVisible(true);
+      setIsVisible(true)
     }
 
-    setPrevScrollY(currentScrollY);
-  };
+    setPrevScrollY(currentScrollY)
+  }
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [prevScrollY]);
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [prevScrollY])
 
   // 設定點擊事件
   const [filterOpen, setFilterOpen] = useState(false)
@@ -311,7 +311,10 @@ export default function ProductListPage(props) {
 
   return (
     <>
-      <div className="g-pdlist-bar" style={{top: isVisible ? `${headerHeight}px` : '0px'}}>
+      <div
+        className="g-pdlist-bar"
+        style={{ top: isVisible ? `${headerHeight}px` : '0px' }}
+      >
         <div className="g-pdlist-title l-px-modified">
           <div className="container-fluid p-0">
             <div className="d-flex align-items-center">
@@ -324,7 +327,7 @@ export default function ProductListPage(props) {
           <div className="container-fluid d-flex justify-content-between p-0">
             <div className="g-left d-flex align-items-center">
               <h6 className="g-amount mb-0">{pdData.length} 件商品</h6>
-              <div
+              <button
                 className="g-fliter d-sm-flex d-none"
                 onClick={() => {
                   setFilterOpen(true)
@@ -332,17 +335,17 @@ export default function ProductListPage(props) {
               >
                 <img src="/images/product/list/filter.svg" />
                 <h6 className="mb-0">篩選</h6>
-              </div>
+              </button>
             </div>
             <div className="g-right d-flex align-items-center">
-              <div
+              <button
                 className="g-compare d-sm-flex d-none"
                 onClick={comparisionToggle}
               >
                 <img src="/images/product/list/check-circle-fill.svg" />
                 <h6 className="mb-0">比較</h6>
-              </div>
-              <div
+              </button>
+              <button
                 className="g-fliter d-sm-none d-flex"
                 onClick={() => {
                   setFilterOpen(true)
@@ -350,20 +353,20 @@ export default function ProductListPage(props) {
               >
                 <img src="/images/product/list/filter.svg" />
                 <h6 className="mb-0">篩選</h6>
-              </div>
+              </button>
               <div className="g-order d-flex">
                 <img src="/images/product/list/order.svg" />
                 <h6 className="mb-0">排序</h6>
                 {/* order sec */}
                 <div className="g-order-sec">
                   <a>
-                    <h6
-                      className={
+                    <button
+                      className={`${
                         selectedSort.sort === 'price' &&
                         selectedSort.order === 'DESC'
                           ? 'active'
                           : ''
-                      }
+                      }`}
                       onClick={() => {
                         const updatedCriteria = {
                           ...criteria,
@@ -377,18 +380,19 @@ export default function ProductListPage(props) {
                         getPdData(newQueryString)
                         setSelectedSort({ sort: 'price', order: 'DESC' })
                       }}
+                      aria-label="Sort by price descending" // 為無障礙提供描述
                     >
                       價格由高至低
-                    </h6>
+                    </button>
                   </a>
                   <a>
-                    <h6
-                      className={
+                    <button
+                      className={`${
                         selectedSort.sort === 'price' &&
                         selectedSort.order === 'ASC'
                           ? 'active'
                           : ''
-                      }
+                      }`}
                       onClick={() => {
                         const updatedCriteria = {
                           ...criteria,
@@ -402,18 +406,19 @@ export default function ProductListPage(props) {
                         getPdData(newQueryString)
                         setSelectedSort({ sort: 'price', order: 'ASC' })
                       }}
+                      aria-label="Sort by price ascending" // 為無障礙提供描述
                     >
                       價格由低至高
-                    </h6>
+                    </button>
                   </a>
                   <a>
-                    <h6
-                      className={
+                    <button
+                      className={`${
                         selectedSort.sort === 'name' &&
                         selectedSort.order === 'ASC'
                           ? 'active'
                           : ''
-                      }
+                      }`}
                       onClick={() => {
                         const updatedCriteria = {
                           ...criteria,
@@ -427,18 +432,19 @@ export default function ProductListPage(props) {
                         getPdData(newQueryString)
                         setSelectedSort({ sort: 'name', order: 'ASC' })
                       }}
+                      aria-label="Sort by name ascending" // 為無障礙提供描述
                     >
                       商品名稱 A - Z
-                    </h6>
+                    </button>
                   </a>
                   <a>
-                    <h6
-                      className={
+                    <button
+                      className={`${
                         selectedSort.sort === 'name' &&
                         selectedSort.order === 'DESC'
                           ? 'active'
                           : ''
-                      }
+                      }`}
                       onClick={() => {
                         const updatedCriteria = {
                           ...criteria,
@@ -452,9 +458,10 @@ export default function ProductListPage(props) {
                         getPdData(newQueryString)
                         setSelectedSort({ sort: 'name', order: 'DESC' })
                       }}
+                      aria-label="Sort by name descending" // 為無障礙提供描述
                     >
                       商品名稱 Z - A
-                    </h6>
+                    </button>
                   </a>
                 </div>
               </div>

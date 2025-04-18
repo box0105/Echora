@@ -58,21 +58,19 @@ export default function PurchaseAside({ data }) {
       <form>
         <div className="row row-cols-1 gy-2">
           {tickets.map((ticket, i) => (
-            <div
+            <button
               key={ticket?.id}
               className={`b-ticket col d-flex justify-content-between align-items-center pt-3 pb-2 ${
                 selectedTickets.has(i) ? 'active' : ''
               }`}
               onClick={() => toggleTicketSelection(i)}
               style={{ cursor: 'pointer' }}
-              role="button" // 如果仍用 div，需加上 role="button"
-              tabIndex="0" // 如果仍用 div，需加上 tabIndex="0"
             >
               <h4>{ticket?.name}</h4>
               <div className="h4">
                 {isFree ? `NT$ ${ticket?.price} / 人` : 'NT$ 0'}
               </div>
-            </div>
+            </button>
           ))}
         </div>
         <button

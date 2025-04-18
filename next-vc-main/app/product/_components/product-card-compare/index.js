@@ -10,7 +10,7 @@ export default function ProductCardCompare({ data = {} }) {
   return (
     <>
       <div className="col p-2">
-        <div
+        <button
           className={`${styles['g-product-card']} position-relative`}
           onClick={() => {
             setFirstSkuId(data.product_sku_id)
@@ -55,7 +55,7 @@ export default function ProductCardCompare({ data = {} }) {
             </div>
             <p className="p">Color : {data.color_name}</p>
           </div>
-        </div>
+        </button>
       </div>
     </>
   )

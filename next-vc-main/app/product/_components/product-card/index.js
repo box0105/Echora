@@ -17,7 +17,7 @@ export default function ProductCard({ data = {}, handleDragStart }) {
   return (
     <>
       {/* <div className="col p-2"> */}
-      <div
+      <button
         className={styles['g-product-card']}
         onClick={() => {
           setFirstSkuId(data.product_sku_id)
@@ -81,7 +81,7 @@ export default function ProductCard({ data = {}, handleDragStart }) {
             {data.colors.length} {data.colors.length > 1 ? 'colors' : 'color'}
           </p>
         </div>
-      </div>
+      </button>
       {/* </div> */}
     </>
   )

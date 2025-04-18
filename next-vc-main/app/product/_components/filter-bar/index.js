@@ -65,19 +65,19 @@ export default function FilterBar({
 
   return (
     <>
-      <section
+      <button
         className={`g-filter-sec ${filterOpen ? 'active' : ''}`}
         onClick={() => setFilterOpen(false)}
       >
         <div className="container-fluid p-0">
-          <div
+          <button
             className="g-filter-bar"
             onClick={(e) => {
               e.stopPropagation()
             }}
           >
             <div className="g-clear d-flex justify-content-between">
-              <h6
+              <button
                 className="g-clear-link mb-0"
                 onClick={() => {
                   setCriteria(defaultCriteria)
@@ -88,7 +88,7 @@ export default function FilterBar({
                 }}
               >
                 清除篩選條件
-              </h6>
+              </button>
               <img
                 width="16px"
                 src="/images/product/list/x.svg"
@@ -142,7 +142,7 @@ export default function FilterBar({
                 </div>
                 <div className="g-series-sec d-flex flex-wrap gap-1 pt-4 pb-3">
                   {colorpalette.map((colorseries) => (
-                    <div
+                    <button
                       className={`g-series g-series${colorseries.id} ${
                         colorPids.includes(colorseries.id) ? 'active' : ''
                       }`}
@@ -174,7 +174,7 @@ export default function FilterBar({
                       <p className="mb-0" style={{ fontWeight: 500 }}>
                         {colorseries.cname}
                       </p>
-                    </div>
+                    </button>
                   ))}
                 </div>
               </div>
@@ -184,7 +184,7 @@ export default function FilterBar({
                 </div>
                 <div className="g-color-filter pt-4 pb-3">
                   {colors.map((color) => (
-                    <div
+                    <button
                       key={color.id}
                       onClick={() => {
                         if (colorIds.includes(color.id)) {
@@ -213,7 +213,7 @@ export default function FilterBar({
                         src={`/images/product/list/${color.color_image}`}
                         className={colorIds.includes(color.id) ? 'active' : ''}
                       />
-                    </div>
+                    </button>
                   ))}
                 </div>
               </div>
@@ -347,9 +347,9 @@ export default function FilterBar({
                 <h6 className="mb-0">顯示產品</h6>
               </button>
             </div>
-          </div>
+          </button>
         </div>
-      </section>
+      </button>
     </>
   )
 }

@@ -57,7 +57,7 @@ export default function ProductCardCarousel({ data = [] }) {
             >
               {data?.map((product, i) => (
                 <SwiperSlide key={i} className={styles['g-swiper-slide']}>
-                  <div
+                  <button
                     className={styles['g-product-card']}
                     onClick={() => {
                       setFirstSkuId(product.product_sku_id)
@@ -107,7 +107,7 @@ export default function ProductCardCarousel({ data = [] }) {
                       </div>
                       <p className={`p ${styles['g-color-text']}`}>2 colors</p> */}
                     </div>
-                  </div>
+                  </button>
                 </SwiperSlide>
               ))}
             </Swiper>

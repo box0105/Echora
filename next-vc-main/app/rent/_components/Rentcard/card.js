@@ -50,7 +50,7 @@ function RentcardCard({ id, name, price, rentitemColors, brand_name }) {
               </div>
               <div className="g-color-row">
                 {rentitemColors?.map((color) => (
-                  <div
+                  <button
                     key={color.id}
                     onMouseEnter={() =>
                       setMainImage(
@@ -76,7 +76,7 @@ function RentcardCard({ id, name, price, rentitemColors, brand_name }) {
                       }`}
                       alt={color.name || '顏色'}
                     />
-                  </div>
+                  </button>
                 ))}
               </div>
               <p className="p g-color-text">

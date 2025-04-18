@@ -92,7 +92,7 @@ export default function RentCardCarousel() {
             >
               {data?.map((product, i) => (
                 <SwiperSlide key={i} className={styles['g-swiper-slide']}>
-                  <div
+                  <button
                     className={styles['g-product-card']}
                     onClick={() => {
                       setFirstSkuId(product.product_sku_id)
@@ -121,7 +121,7 @@ export default function RentCardCarousel() {
                         </h6>
                       </div>
                     </div>
-                  </div>
+                  </button>
                 </SwiperSlide>
               ))}
             </Swiper>

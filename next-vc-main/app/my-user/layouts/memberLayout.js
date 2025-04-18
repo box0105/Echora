@@ -82,7 +82,7 @@ export default function MemberLayout({ children }) {
           {/* <hr /> */}
 
           <div className="hamburger-member" id="hamburger-member">
-            <div
+            <button
               className="dropdown-content no-border"
               onClick={toggleDropdown}
               aria-expanded={isDropdownOpen}
@@ -93,7 +93,7 @@ export default function MemberLayout({ children }) {
                   <i className="fa-solid fa-caret-down"></i>
                 </Link>
               </h5>
-            </div>
+            </button>
             {isDropdownOpen && (
               <div className="dropdown-content dropdown">
                 <h5 className="tab-link" data-tab="profile">

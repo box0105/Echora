@@ -119,15 +119,16 @@ export default function PasswordPage() {
                   onChange={handleFieldChange}
                   required
                 />
-                <i
+                <button
                   className={`fa ${
                     showPassword.current
                       ? 'fa-regular fa-eye-slash'
-                      : ' fa-regular fa-eye'
+                      : 'fa-regular fa-eye'
                   } position-absolute`}
                   style={{ top: '60%', right: '10px', cursor: 'pointer' }}
                   onClick={() => toggleShowPassword('current')}
-                ></i>
+                  aria-label="Toggle password visibility" // 可選，為無障礙提供更清晰的描述
+                ></button>
               </div>
               <div className="mb-4 position-relative">
                 <label htmlFor="new" className="a-form-label">
@@ -142,15 +143,16 @@ export default function PasswordPage() {
                   onChange={handleFieldChange}
                   required
                 />
-                <i
+                <button
                   className={`fa ${
                     showPassword.new
                       ? 'fa-regular fa-eye-slash'
-                      : ' fa-regular fa-eye'
+                      : 'fa-regular fa-eye'
                   } position-absolute`}
                   style={{ top: '60%', right: '10px', cursor: 'pointer' }}
                   onClick={() => toggleShowPassword('new')}
-                ></i>
+                  aria-label="Toggle password visibility" // 可選，為無障礙提供清晰的描述
+                ></button>
               </div>
               <div className="mb-4 position-relative" style={{ width: '100%' }}>
                 <label htmlFor="confirm" className="a-form-label">
@@ -165,15 +167,16 @@ export default function PasswordPage() {
                   onChange={handleFieldChange}
                   required
                 />
-                <i
+                <button
                   className={`fa ${
                     showPassword.confirm
                       ? 'fa-regular fa-eye-slash'
-                      : ' fa-regular fa-eye'
+                      : 'fa-regular fa-eye'
                   } position-absolute`}
                   style={{ top: '60%', right: '10px', cursor: 'pointer' }}
                   onClick={() => toggleShowPassword('confirm')}
-                ></i>
+                  aria-label="Toggle confirm password visibility" // 可選，為無障礙提供清晰的描述
+                ></button>
               </div>
               <button type="submit" className="submit-btn">
                 確認修改

@@ -144,7 +144,7 @@ export default function Page() {
               <div className="col c-col">
                 <div className=" h6 c-bot p-0">電吉他租借商品</div>
               </div>
-              <div
+              <button
                 className=" d-flex mod-sel justify-content-end"
                 onClick={() => setIsOpen(true)}
                 role="button"
@@ -157,7 +157,7 @@ export default function Page() {
                   style={{ width: '20px', height: '14px' }}
                 />
                 <div className=" p m-0">條件篩選</div>
-              </div>
+              </button>
             </div>
           </div>
 

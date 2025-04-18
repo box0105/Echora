@@ -4,7 +4,7 @@ import '../../product/list/list.scss'
 import CartOffcanvas from '../cart-offcanvas'
 import { useMyCart } from '@/hooks/use-cart'
 import { useActivity } from '@/hooks/use-activity'
-import { useRent } from "@/hooks/use-rent"
+import { useRent } from '@/hooks/use-rent'
 import { useRouter, usePathname } from 'next/navigation'
 import { useProductState } from '@/services/rest-client/use-products'
 import { useState, useEffect, useRef } from 'react'
@@ -54,9 +54,14 @@ export default function Header() {
   // header 在不同路徑改變顏色
   const pathName = usePathname()
   const getBackgroundColor = () => {
-    if (pathName.includes('/product/list') || pathName.includes('/product/comparison') || pathName == '/activity') return 'g-white-color';
-    return 'g-ori-color';
-  };
+    if (
+      pathName.includes('/product/list') ||
+      pathName.includes('/product/comparison') ||
+      pathName == '/activity'
+    )
+      return 'g-white-color'
+    return 'g-ori-color'
+  }
 
   // search
   // 在不同路徑改變搜尋框的文字
@@ -72,7 +77,7 @@ export default function Header() {
   const { criteria, setCriteria, defaultCriteria } = useProductState()
   const isFirstRender = useRef(true) // 追蹤是否為初次渲染
   const { updateQueryParams, deleteQueryParams } = useActivity()
-  const { query, setQuery } = useRent(); 
+  const { query, setQuery } = useRent()
 
   const handleSearch = (e) => {
     if (e.key === 'Enter') {
@@ -164,8 +169,9 @@ export default function Header() {
     <>
       <nav
         ref={headerRef}
-        className={`${styles['g-header']} ${styles['px-modified']} ${styles[getBackgroundColor()]} ${isVisible ? styles['visible'] : `${styles['hidden']} hidden`
-          }`}
+        className={`${styles['g-header']} ${styles['px-modified']} ${
+          styles[getBackgroundColor()]
+        } ${isVisible ? styles['visible'] : `${styles['hidden']} hidden`}`}
       >
         <div className="container-fluid">
           <div className={`${styles['g-nav-top']} row`}>
@@ -214,9 +220,11 @@ export default function Header() {
                 <Link href={isAuth ? '/my-user/profile' : '/my-user'}>
                   <img src="/images/header/account.svg" />
                 </Link>
-                {isAuth &&userProfile.username == 'admin'&& showDropdown && (
+                {isAuth && userProfile.username == 'admin' && showDropdown && (
                   <div className={styles['dropdown-menu']}>
-                    {userProfile.username == 'admin' && <Link href="/admin/activity">後台管理</Link>}
+                    {userProfile.username == 'admin' && (
+                      <Link href="/admin/activity">後台管理</Link>
+                    )}
                   </div>
                 )}
               </div>
@@ -298,21 +306,26 @@ export default function Header() {
       </nav>
       {/* hamburger menu bar */}
       <section
-        className={`${styles['g-menu-bar-sec']} ${menuOpen ? styles.active : ''
-          }`}
+        className={`${styles['g-menu-bar-sec']} ${
+          menuOpen ? styles.active : ''
+        }`}
       >
         <div className="container-fluid p-0">
           <div className={styles['g-menu-bar']}>
             <div className="d-flex justify-content-between pb-4">
               <img className="ps-3" src="/images/header/logo-mb.svg" />
-              <img
+              <button
                 className={styles['g-x']}
-                width="16px"
-                src="/images/header/x.svg"
                 onClick={() => {
                   setMenuOpen(false)
                 }}
-              />
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') setMenuOpen(false)
+                }}
+                aria-label="關閉菜單"
+              >
+                <img width="16px" src="/images/header/x.svg" alt="關閉" />
+              </button>
             </div>
             <ul className="list-unstyled" onClick={() => setMenuOpen(false)}>
               <li>

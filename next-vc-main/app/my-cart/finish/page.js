@@ -8,28 +8,33 @@ import React, { useEffect } from 'react'
 import Link from 'next/link'
 
 export default function FinishPage() {
+  const useCoupon = async (userId, couponId) => {
+    try {
+      const res = await fetch(`http://localhost:3005/api/coupon/`, {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({ userId: userId, couponId: couponId }),
+      })
+      const data = await res.json()
+      console.log(data)
+      return data
+    } catch (err) {
+      return { status: 'fail' }
+    }
+  }
+
   useEffect(() => {
     const userId = localStorage.getItem('userId')
     const couponObj = localStorage.getItem('coupon')
     const couponId = JSON.parse(couponObj)?.couponId || ''
     console.log(couponId)
-    const useCoupon = async () => {
-      try {
-        const res = await fetch(`http://localhost:3005/api/coupon/`, {
-          method: 'PUT',
-          headers: {
-            'Content-type': 'application/json',
-          },
-          body: JSON.stringify({ userId: userId, couponId: couponId }),
-        })
-        const data = await res.json()
-        console.log(data)
-        return data
-      } catch (err) {
-        return { status: 'fail' }
-      }
+
+    if (userId && couponId) {
+      useCoupon(userId, couponId)
     }
-    useCoupon()
+
     localStorage.removeItem('coupon')
   }, [])
 
