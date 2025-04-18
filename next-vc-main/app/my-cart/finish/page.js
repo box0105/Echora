@@ -12,7 +12,7 @@ import Link from 'next/link'
 //   useEffect(() => {
 //     const applyCoupon = async () => {
 //       try {
-//         const res = await fetch(`http://localhost:3005/api/coupon/`, {
+//         const res = await fetch(`https://echora-kwvs.onrender.com/api/api/coupon/`, {
 //           method: 'PUT',
 //           headers: {
 //             'Content-type': 'application/json',

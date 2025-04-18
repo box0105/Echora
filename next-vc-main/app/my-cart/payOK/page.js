@@ -24,7 +24,7 @@ export default function PayOKPage() {
 
         // 發送 POST 請求到後端 API 儲存資料
         try {
-          const response = await fetch('http://localhost:3005/api/myOrders', {
+          const response = await fetch('https://echora-kwvs.onrender.com/api/api/myOrders', {
             method: 'POST',
             body: formData,
           })

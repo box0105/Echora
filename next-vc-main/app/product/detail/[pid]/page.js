@@ -52,7 +52,7 @@ export default function ProductDetailIdPage() {
   const getDetailData = async () => {
     try {
       const res = await fetch(
-        `http://localhost:3005/api/products/${pid}/${firstSkuId}`
+        `https://echora-kwvs.onrender.com/api/api/products/${pid}/${firstSkuId}`
       )
       const data = await res.json()
       // 資料整理
@@ -121,7 +121,7 @@ export default function ProductDetailIdPage() {
       })
 
       console.log(Object.values(products))
-      // console.log(`http://localhost:3005/api/products/${pid}/${firstSkuId}`)
+      // console.log(`https://echora-kwvs.onrender.com/api/api/products/${pid}/${firstSkuId}`)
       setDetailData(Object.values(products))
       setSelectedSku(Object.values(products)[0].defaultSelectedSku)
       setColorId(Object.values(products)[0].colors[0].colorId)
@@ -162,7 +162,7 @@ export default function ProductDetailIdPage() {
   }
   const getFav = async (uid) => {
     try {
-      const res = await fetch(`http://localhost:3005/api/favorite/${uid}`)
+      const res = await fetch(`https://echora-kwvs.onrender.com/api/api/favorite/${uid}`)
       const data = await res.json()
       setFavItems(data.data)
       if (selectedSku && data.data.includes(selectedSku)) {
@@ -178,7 +178,7 @@ export default function ProductDetailIdPage() {
   const addToFav = async (uid, skuid) => {
     try {
       const res = await fetch(
-        `http://localhost:3005/api/favorite/${uid}/${skuid}`,
+        `https://echora-kwvs.onrender.com/api/api/favorite/${uid}/${skuid}`,
         {
           method: 'PUT',
         }
@@ -196,7 +196,7 @@ export default function ProductDetailIdPage() {
   const removeFromFav = async (uid, skuid) => {
     try {
       const res = await fetch(
-        `http://localhost:3005/api/favorite/${uid}/${skuid}`,
+        `https://echora-kwvs.onrender.com/api/api/favorite/${uid}/${skuid}`,
         {
           method: 'DELETE',
         }
@@ -218,7 +218,7 @@ export default function ProductDetailIdPage() {
   const getMayLikeData = async (colorId) => {
     try {
       const res = await fetch(
-        `http://localhost:3005/api/products/maylike/${colorId}`
+        `https://echora-kwvs.onrender.com/api/api/products/maylike/${colorId}`
       )
       const data = await res.json()
       setMayLikeData(data.data)

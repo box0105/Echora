@@ -414,7 +414,7 @@ export default function ProfilePage() {
 
     const fetchUserProfile = async () => {
       try {
-        const res = await fetch(`http://localhost:3005/api/users/${userId}`, {
+        const res = await fetch(`https://echora-kwvs.onrender.com/api/api/users/${userId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('userId')}`, // 附帶 token
           },
@@ -492,7 +492,7 @@ export default function ProfilePage() {
 
     const userId = localStorage.getItem('userId')
     try {
-      const res = await fetch(`http://localhost:3005/api/users/${userId}`, {
+      const res = await fetch(`https://echora-kwvs.onrender.com/api/api/users/${userId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

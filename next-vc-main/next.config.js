@@ -37,7 +37,7 @@ const nextConfig = {
   //   return [
   //     {
   //       source: '/api/:path*',
-  //       destination: 'http://localhost:3005/:path*', // Proxy to Backend
+  //       destination: 'https://echora-kwvs.onrender.com/api/:path*', // Proxy to Backend
   //     },
   //   ]
   // },

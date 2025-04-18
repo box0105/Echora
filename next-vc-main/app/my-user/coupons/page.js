@@ -30,7 +30,7 @@ export default function UserCouponPage() {
   const fetchData = useCallback(async () => {
     if (!user) return // 確保 user 存在
     try {
-      const url = `http://localhost:3005/api/coupon/${user}`
+      const url = `https://echora-kwvs.onrender.com/api/api/coupon/${user}`
       const res = await fetch(url)
       if (!res.ok) throw new Error('狀態錯誤')
       const data = await res.json()

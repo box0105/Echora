@@ -8,7 +8,7 @@ export default function FavPage() {
   const [favItems, setFavItems] = useState([])
   const getFavItems = async () => {
     try {
-      const res = await fetch(`http://localhost:3005/api/favorite/list/${uid}`)
+      const res = await fetch(`https://echora-kwvs.onrender.com/api/api/favorite/list/${uid}`)
       const data = await res.json()
       console.log(data.data)
       setFavItems(data.data)
@@ -19,7 +19,7 @@ export default function FavPage() {
   const removeFavItem = async (uid, skuid) => {
     try {
       const res = await fetch(
-        `http://localhost:3005/api/favorite/${uid}/${skuid}`,
+        `https://echora-kwvs.onrender.com/api/api/favorite/${uid}/${skuid}`,
         {
           method: 'DELETE',
         }

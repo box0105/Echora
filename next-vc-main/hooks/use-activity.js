@@ -12,7 +12,7 @@ const ActivityContext = createContext()
 
 export const ActivityProvider = ({
   children,
-  url = 'http://localhost:3005/api/activities',
+  url = 'https://echora-kwvs.onrender.com/api/api/activities',
 }) => {
   const [acts, setActs] = useState(null)
 

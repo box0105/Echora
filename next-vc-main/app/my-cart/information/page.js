@@ -94,7 +94,7 @@ export default function InformationPage() {
   const fetchUserInf = async () => {
     const userId = localStorage.getItem('userId')
     try {
-      const url = `http://localhost:3005/api/users/${userId}`
+      const url = `https://echora-kwvs.onrender.com/api/api/users/${userId}`
       const res = await fetch(url)
       if (!res.ok) throw new Error('提取資料失敗')
       const data = await res.json()

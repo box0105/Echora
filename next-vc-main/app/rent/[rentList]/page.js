@@ -46,7 +46,7 @@ export default function Page(props) {
   const pid = Number(params?.rentList)
   const getData = async () => {
     try {
-      const res = await fetch(`http://localhost:3005/api/rent/${pid}`)
+      const res = await fetch(`https://echora-kwvs.onrender.com/api/api/rent/${pid}`)
       if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`)
       }

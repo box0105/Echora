@@ -27,7 +27,7 @@ export default function ActivityDetailPage() {
 
   // Fetch Data
   const { data: acts, isLoading } = useFetch(
-    `http://localhost:3005/api/activities/`
+    `https://echora-kwvs.onrender.com/api/api/activities/`
   )
   const act = acts?.find((a) => a.id === activityId)
 

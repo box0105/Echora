@@ -29,7 +29,7 @@ export default function CouponPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = 'http://localhost:3005/api/coupon'
+        const url = 'https://echora-kwvs.onrender.com/api/api/coupon'
         const res = await fetch(url)
         if (!res.ok) throw new Error('狀態錯誤')
         const data = await res.json()
@@ -52,7 +52,7 @@ export default function CouponPage() {
     const userId = getUserId()
     console.log(userId)
     try {
-      const url = `http://localhost:3005/api/coupon/${userId}`
+      const url = `https://echora-kwvs.onrender.com/api/api/coupon/${userId}`
       const res = await fetch(url)
       if (!res.ok) throw new Error('狀態錯誤')
       const data = await res.json()

@@ -22,8 +22,8 @@ export function MyCouponProvider({ children }) {
   const claimCoupon = async (couponId, typeId) => {
     const userId = getUserId()
     try {
-      // http://localhost:3005/api/coupon/resource
-      const res = await fetch(`http://localhost:3005/api/coupon/${userId}`, {
+      // https://echora-kwvs.onrender.com/api/api/coupon/resource
+      const res = await fetch(`https://echora-kwvs.onrender.com/api/api/coupon/${userId}`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
@@ -46,7 +46,7 @@ export function MyCouponProvider({ children }) {
   const claimCoupons = async () => {
     const userId = getUserId()
     try {
-      const res = await fetch(`http://localhost:3005/api/coupon/${userId}/all`, {
+      const res = await fetch(`https://echora-kwvs.onrender.com/api/api/coupon/${userId}/all`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
@@ -186,8 +186,8 @@ export function MyCouponProvider({ children }) {
   //全部刪除
   const clear = async (userId) => {
     try {
-      // http://localhost:3005/api/coupon/resource
-      const res = await fetch(`http://localhost:3005/api/coupon/`, {
+      // https://echora-kwvs.onrender.com/api/api/coupon/resource
+      const res = await fetch(`https://echora-kwvs.onrender.com/api/api/coupon/`, {
         method: 'DELETE',
         headers: {
           'Content-type': 'application/json',

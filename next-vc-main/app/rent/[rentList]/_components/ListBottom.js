@@ -16,7 +16,7 @@ export default function ListBottom() {
 
   const getData = async () => {
     try {
-      const res = await fetch('http://localhost:3005/api/rent');  // 你的 API 地址
+      const res = await fetch('https://echora-kwvs.onrender.com/api/api/rent');  // 你的 API 地址
       const result = await res.json();
       console.log(result);
       

@@ -76,8 +76,8 @@ export const serverConfig = {
   //   merchantId: '3002607',
   //   hashKey: 'pwFHCqoQZGmho4w6',
   //   hashIV: 'EkRm7iFT261dpevs',
-  //   returnUrl: 'http://localhost:3005/test/ecpay/callback',
-  //   clientOrderResultUrl: 'http://localhost:3005/api/ecpay/result',
+  //   returnUrl: 'https://echora-kwvs.onrender.com/api/test/ecpay/callback',
+  //   clientOrderResultUrl: 'https://echora-kwvs.onrender.com/api/api/ecpay/result',
   //   orderCallbackUrl: 'http://localhost:3000/test/ecpay/callback',
   // },
 }

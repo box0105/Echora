@@ -68,7 +68,7 @@ export default function PasswordPage() {
 
     try {
       const res = await fetch(
-        `http://localhost:3005/api/users/${userId}/password`,
+        `https://echora-kwvs.onrender.com/api/api/users/${userId}/password`,
         {
           method: 'PUT',
           headers: {

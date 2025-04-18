@@ -12,7 +12,7 @@ export default function OrderList() {
       const userId = localStorage.getItem('userId')
       try {
         const res = await fetch(
-          `http://localhost:3005/api/myOrders?userId=${userId}`,
+          `https://echora-kwvs.onrender.com/api/api/myOrders?userId=${userId}`,
           {
             method: 'get',
             headers: {

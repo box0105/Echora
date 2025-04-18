@@ -27,7 +27,7 @@ const CouponAdminTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = 'http://localhost:3005/api/coupon'
+        const url = 'https://echora-kwvs.onrender.com/api/api/coupon'
         const res = await fetch(url)
         if (!res.ok) throw new Error('狀態錯誤')
         const data = await res.json()
@@ -141,8 +141,8 @@ const CouponAdminTable = () => {
   const createCoupon = async (couponToAdd) => {
     // const userId = getUserId() 改成管理員
     try {
-      // http://localhost:3005/api/coupon/resource
-      const res = await fetch(`http://localhost:3005/api/coupon/admin`, {
+      // https://echora-kwvs.onrender.com/api/api/coupon/resource
+      const res = await fetch(`https://echora-kwvs.onrender.com/api/api/coupon/admin`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
@@ -165,8 +165,8 @@ const CouponAdminTable = () => {
     // const userId = getUserId() 改成管理員
 
     try {
-      // http://localhost:3005/api/coupon/resource
-      const res = await fetch(`http://localhost:3005/api/coupon/admin`, {
+      // https://echora-kwvs.onrender.com/api/api/coupon/resource
+      const res = await fetch(`https://echora-kwvs.onrender.com/api/api/coupon/admin`, {
         method: 'PUT',
         headers: {
           'Content-type': 'application/json',
@@ -197,8 +197,8 @@ const CouponAdminTable = () => {
   const deleteCoupon = async () => {
     // const userId = getUserId() 改成管理員
     try {
-      // http://localhost:3005/api/coupon/resource
-      const res = await fetch(`http://localhost:3005/api/coupon/admin`, {
+      // https://echora-kwvs.onrender.com/api/api/coupon/resource
+      const res = await fetch(`https://echora-kwvs.onrender.com/api/api/coupon/admin`, {
         method: 'DELETE',
         headers: {
           'Content-type': 'application/json',

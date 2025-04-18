@@ -38,7 +38,7 @@ export default function ProductComparisonPage() {
     console.log(products)
     try {
       const res = await fetch(
-        `http://localhost:3005/api/products/comparison?products=${products}`
+        `https://echora-kwvs.onrender.com/api/api/products/comparison?products=${products}`
       )
       const data = await res.json()
       setCompareDatas(data.data)

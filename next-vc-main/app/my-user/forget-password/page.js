@@ -61,7 +61,7 @@ export default function ForgetPasswordPage() {
   const handleRequestOtpToken = async (e) => {
     e.preventDefault()
     try {
-      const response = await fetch('http://localhost:3005/api/mail', {
+      const response = await fetch('https://echora-kwvs.onrender.com/api/api/mail', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -51,7 +51,7 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-// POST http://localhost:3005/api/myOrders
+// POST https://echora-kwvs.onrender.com/api/api/myOrders
 router.post('/', upload.none(), async function (req, res) {
   try {
     // 解析 localStorage & 表單 傳來的資料

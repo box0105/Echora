@@ -22,7 +22,7 @@ export default function DataTable() {
 
     try {
       const response = await fetch(
-        `http://localhost:3005/api/activities/${activityId}`,
+        `https://echora-kwvs.onrender.com/api/api/activities/${activityId}`,
         {
           method: 'DELETE',
         }
