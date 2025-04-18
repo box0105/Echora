@@ -356,7 +356,7 @@ export default function ProductListPage(props) {
                 <h6 className="mb-0">排序</h6>
                 {/* order sec */}
                 <div className="g-order-sec">
-                  <a href>
+                  <a>
                     <h6
                       className={
                         selectedSort.sort === 'price' &&
@@ -381,7 +381,7 @@ export default function ProductListPage(props) {
                       價格由高至低
                     </h6>
                   </a>
-                  <a href>
+                  <a>
                     <h6
                       className={
                         selectedSort.sort === 'price' &&
@@ -406,7 +406,7 @@ export default function ProductListPage(props) {
                       價格由低至高
                     </h6>
                   </a>
-                  <a href>
+                  <a>
                     <h6
                       className={
                         selectedSort.sort === 'name' &&
@@ -431,7 +431,7 @@ export default function ProductListPage(props) {
                       商品名稱 A - Z
                     </h6>
                   </a>
-                  <a href>
+                  <a>
                     <h6
                       className={
                         selectedSort.sort === 'name' &&

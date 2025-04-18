@@ -19,7 +19,7 @@
     // height: auto;
     // gap: 50px;
     padding-block: 32px;
-    align-items: start;
+    align-items: flex-start;
 
     li {
       font-weight: bold;
@@ -67,7 +67,7 @@
       width: auto;
       height: auto;
       display: flex;
-      align-items: start;
+      align-items: flex-start;
       justify-items: center;
       cursor: default;
 

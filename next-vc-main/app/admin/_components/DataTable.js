@@ -12,7 +12,13 @@ export default function DataTable() {
 
   // API delete
   const deleteActivity = async (activityId, activityName) => {
-    if (!window.confirm(`確定要刪除活動「${activityName}」嗎?`)) return
+    // 確保 window 存在（= 在瀏覽器端）
+    if (typeof window !== 'undefined') {
+      const confirm = window.confirm(`確定要刪除活動「${activityName}」嗎?`)
+      if (!confirm) return
+    } else {
+      return
+    }
 
     try {
       const response = await fetch(
