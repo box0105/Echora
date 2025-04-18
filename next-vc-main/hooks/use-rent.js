@@ -13,8 +13,8 @@ export function useRent() {
     // console.log('发送 API 请求，查询参数：', searchQuery);  // 检查传递的查询
     try {
       const url = searchQuery 
-        ? `https://echora-kwvs.onrender.com/api/api/rent/search?query=${encodeURIComponent(searchQuery)}`
-        : `https://echora-kwvs.onrender.com/api/api/rent`;
+        ? `https://echora-kwvs.onrender.com/api/rent/search?query=${encodeURIComponent(searchQuery)}`
+        : `https://echora-kwvs.onrender.com/api/rent`;
 
       const response = await fetch(url);
       const data = await response.json();

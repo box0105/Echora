@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useFetch } from '@/hooks/use-fetch'
 
 export function useFilterPanel() {
-  const { data } = useFetch('https://echora-kwvs.onrender.com/api/api/activities/options')
+  const { data } = useFetch('https://echora-kwvs.onrender.com/api/activities/options')
 
   const city = [
     '臺北市',

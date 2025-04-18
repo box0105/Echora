@@ -38,7 +38,7 @@ export const useProductState = () => useContext(ProductContext)
 
 export const useGetBrands = () => {
   const { data, error, isloading } = useQuery(
-    'https://echora-kwvs.onrender.com/api/api/products/brands'
+    'https://echora-kwvs.onrender.com/api/products/brands'
   )
 
   let brands = []
@@ -51,7 +51,7 @@ export const useGetBrands = () => {
 
 export const useGetColors = () => {
   const { data, error, isloading } = useQuery(
-    'https://echora-kwvs.onrender.com/api/api/products/colors'
+    'https://echora-kwvs.onrender.com/api/products/colors'
   )
 
   let colors = []
@@ -64,7 +64,7 @@ export const useGetColors = () => {
 
 export const useGetColorPalette = () => {
   const { data, error, isloading } = useQuery(
-    'https://echora-kwvs.onrender.com/api/api/products/colorpalette'
+    'https://echora-kwvs.onrender.com/api/products/colorpalette'
   )
 
   let colorpalette = []

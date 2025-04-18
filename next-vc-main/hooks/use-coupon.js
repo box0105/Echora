@@ -22,8 +22,8 @@ export function MyCouponProvider({ children }) {
   const claimCoupon = async (couponId, typeId) => {
     const userId = getUserId()
     try {
-      // https://echora-kwvs.onrender.com/api/api/coupon/resource
-      const res = await fetch(`https://echora-kwvs.onrender.com/api/api/coupon/${userId}`, {
+      // https://echora-kwvs.onrender.com/api/coupon/resource
+      const res = await fetch(`https://echora-kwvs.onrender.com/api/coupon/${userId}`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
@@ -46,7 +46,7 @@ export function MyCouponProvider({ children }) {
   const claimCoupons = async () => {
     const userId = getUserId()
     try {
-      const res = await fetch(`https://echora-kwvs.onrender.com/api/api/coupon/${userId}/all`, {
+      const res = await fetch(`https://echora-kwvs.onrender.com/api/coupon/${userId}/all`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
@@ -186,8 +186,8 @@ export function MyCouponProvider({ children }) {
   //全部刪除
   const clear = async (userId) => {
     try {
-      // https://echora-kwvs.onrender.com/api/api/coupon/resource
-      const res = await fetch(`https://echora-kwvs.onrender.com/api/api/coupon/`, {
+      // https://echora-kwvs.onrender.com/api/coupon/resource
+      const res = await fetch(`https://echora-kwvs.onrender.com/api/coupon/`, {
         method: 'DELETE',
         headers: {
           'Content-type': 'application/json',

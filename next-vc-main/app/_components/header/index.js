@@ -119,7 +119,7 @@ export default function Header() {
 
     const fetchUserProfile = async () => {
       try {
-        const res = await fetch(`https://echora-kwvs.onrender.com/api/api/users/${userId}`, {
+        const res = await fetch(`https://echora-kwvs.onrender.com/api/users/${userId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('userId')}`, // 附帶 token
           },
@@ -143,7 +143,7 @@ export default function Header() {
   // **處理登出（支援 Google + 一般帳號）**
   const handleLogout = async () => {
     try {
-      const res = await fetch('https://echora-kwvs.onrender.com/api/api/users/logout', {
+      const res = await fetch('https://echora-kwvs.onrender.com/api/users/logout', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

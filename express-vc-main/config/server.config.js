@@ -77,7 +77,7 @@ export const serverConfig = {
   //   hashKey: 'pwFHCqoQZGmho4w6',
   //   hashIV: 'EkRm7iFT261dpevs',
   //   returnUrl: 'https://echora-kwvs.onrender.com/api/test/ecpay/callback',
-  //   clientOrderResultUrl: 'https://echora-kwvs.onrender.com/api/api/ecpay/result',
+  //   clientOrderResultUrl: 'https://echora-kwvs.onrender.com/api/ecpay/result',
   //   orderCallbackUrl: 'http://localhost:3000/test/ecpay/callback',
   // },
 }

@@ -63,7 +63,7 @@ export default function AdminLayout({ children }) {
   // useEffect(() => {
   //   const fetchData = async () => {
   //     try {
-  //       const url = 'https://echora-kwvs.onrender.com/api/api/coupon/admin/login'
+  //       const url = 'https://echora-kwvs.onrender.com/api/coupon/admin/login'
   //       const res = await fetch(url)
   //       if (!res.ok) throw new Error('狀態錯誤')
   //       const data = await res.json()

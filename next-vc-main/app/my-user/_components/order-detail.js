@@ -12,7 +12,7 @@ export default function ComponentsOrderDetail() {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          `https://echora-kwvs.onrender.com/api/api/myOrders/${orderId}`,
+          `https://echora-kwvs.onrender.com/api/myOrders/${orderId}`,
           {
             method: 'get',
             headers: {

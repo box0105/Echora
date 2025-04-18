@@ -18,7 +18,7 @@ export default function RentCardCarousel() {
   // 获取数据的函数
   const getData = async () => {
     try {
-      const res = await fetch('https://echora-kwvs.onrender.com/api/api/rent')  // 你的 API 地址
+      const res = await fetch('https://echora-kwvs.onrender.com/api/rent')  // 你的 API 地址
       const result = await res.json()
       // setData(result.data)  // 设置获取到的数据
       const shuffledData = result.data.sort(() => Math.random() - 0.5).slice(0, 12)

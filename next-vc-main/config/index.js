@@ -7,7 +7,7 @@ export const isDev = env === 'development'
 
 // 本機環境
 const local = {
-  apiURL: 'https://echora-kwvs.onrender.com/api/api',
+  apiURL: 'https://echora-kwvs.onrender.com/api',
   serverURL: 'https://echora-kwvs.onrender.com/api',
   avatarURL: 'https://echora-kwvs.onrender.com/api/avatar',
   nextUrl: 'http://localhost:3000',

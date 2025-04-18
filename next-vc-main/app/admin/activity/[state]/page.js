@@ -33,7 +33,7 @@ export default function AdminActivityState() {
     error,
     reFetch: reFetchThisActivity,
   } = useFetch(
-    isUpdate ? `https://echora-kwvs.onrender.com/api/api/activities/${activityId}` : null
+    isUpdate ? `https://echora-kwvs.onrender.com/api/activities/${activityId}` : null
   )
 
   const [formData, setFormData] = useState({
@@ -219,7 +219,7 @@ export default function AdminActivityState() {
   // API create
   const createActivity = async (updatedFormData) => {
     try {
-      const response = await fetch('https://echora-kwvs.onrender.com/api/api/activities', {
+      const response = await fetch('https://echora-kwvs.onrender.com/api/activities', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedFormData),
@@ -246,7 +246,7 @@ export default function AdminActivityState() {
     }
     try {
       const response = await fetch(
-        `https://echora-kwvs.onrender.com/api/api/activities/${activityId}`,
+        `https://echora-kwvs.onrender.com/api/activities/${activityId}`,
         {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
@@ -377,7 +377,7 @@ export default function AdminActivityState() {
 
     try {
       const response = await fetch(
-        'https://echora-kwvs.onrender.com/api/api/activities/uploads',
+        'https://echora-kwvs.onrender.com/api/activities/uploads',
         {
           method: 'POST',
           body: formImage,

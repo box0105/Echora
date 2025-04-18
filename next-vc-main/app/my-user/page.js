@@ -75,7 +75,7 @@ export default function UserPage() {
     }
 
     try {
-      const res = await fetch('https://echora-kwvs.onrender.com/api/api/users/login', {
+      const res = await fetch('https://echora-kwvs.onrender.com/api/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -115,7 +115,7 @@ export default function UserPage() {
       loginGoogle(async (providerData) => {
         console.log(providerData)
 
-        const res = await fetch('https://echora-kwvs.onrender.com/api/api/auth/google-login', {
+        const res = await fetch('https://echora-kwvs.onrender.com/api/auth/google-login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

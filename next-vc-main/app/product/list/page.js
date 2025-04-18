@@ -186,7 +186,7 @@ export default function ProductListPage(props) {
   const getPdData = async (queryString) => {
     try {
       const res = await fetch(
-        `https://echora-kwvs.onrender.com/api/api/products?${queryString}`
+        `https://echora-kwvs.onrender.com/api/products?${queryString}`
       )
       const data = await res.json()
       const finalData = await convertData(data.data)
@@ -201,7 +201,7 @@ export default function ProductListPage(props) {
 
   // const getPdData = async () => {
   //   try {
-  //     const res = await fetch('https://echora-kwvs.onrender.com/api/api/products')
+  //     const res = await fetch('https://echora-kwvs.onrender.com/api/products')
   //     const data = await res.json()
 
   //     // 資料整理(符合product card UI)

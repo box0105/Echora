@@ -51,7 +51,7 @@ export default function ChecklistPage() {
   const fetchUserCoupon = async () => {
     const userId = localStorage.getItem('userId')
     try {
-      const url = `https://echora-kwvs.onrender.com/api/api/coupon/${userId}`
+      const url = `https://echora-kwvs.onrender.com/api/coupon/${userId}`
       const res = await fetch(url)
       if (!res.ok) throw new Error('狀態錯誤')
       const data = await res.json()
