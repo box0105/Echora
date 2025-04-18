@@ -144,7 +144,8 @@ router.get('/', async (req, res) => {
 
     successResponse(res, { data: sorted })
   } catch (error) {
-    errorResponse(res, error)
+    console.error('資料庫查詢錯誤:', error);
+    res.status(500).json({ error: '資料庫查詢錯誤', details: error.message });
   }
 })
 
