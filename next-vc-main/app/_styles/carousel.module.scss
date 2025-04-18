@@ -10,8 +10,8 @@
   }
 }
 
-/* 正確方式：使用 :global 包裹選擇器 */
-:global(.swiper-pagination-bullet-active) {
-  background-color: #fff !important;
-  opacity: 1;
-}
+
+// :global(.swiper-pagination-bullet-active) {
+//   background-color: #fff !important;
+//   opacity: 1;
+// }
