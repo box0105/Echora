@@ -7,33 +7,42 @@ import './_styles/cart-finish.scss'
 import React, { useEffect } from 'react'
 import Link from 'next/link'
 
-export default function FinishPage() {
-  const useCoupon = async (userId, couponId) => {
-    try {
-      const res = await fetch(`http://localhost:3005/api/coupon/`, {
-        method: 'PUT',
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify({ userId: userId, couponId: couponId }),
-      })
-      const data = await res.json()
-      console.log(data)
-      return data
-    } catch (err) {
-      return { status: 'fail' }
+// 自定義 Hook
+const useCoupon = (userId, couponId) => {
+  useEffect(() => {
+    const applyCoupon = async () => {
+      try {
+        const res = await fetch(`http://localhost:3005/api/coupon/`, {
+          method: 'PUT',
+          headers: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify({ userId, couponId }),
+        })
+        const data = await res.json()
+        console.log(data)
+        return data
+      } catch (err) {
+        console.error('Coupon application failed', err)
+        return { status: 'fail' }
+      }
     }
-  }
 
+    if (userId && couponId) {
+      applyCoupon()
+    }
+  }, [userId, couponId])
+}
+
+export default function FinishPage() {
   useEffect(() => {
     const userId = localStorage.getItem('userId')
     const couponObj = localStorage.getItem('coupon')
     const couponId = JSON.parse(couponObj)?.couponId || ''
     console.log(couponId)
 
-    if (userId && couponId) {
-      useCoupon(userId, couponId)
-    }
+    // 使用自定義 Hook
+    useCoupon(userId, couponId)
 
     localStorage.removeItem('coupon')
   }, [])

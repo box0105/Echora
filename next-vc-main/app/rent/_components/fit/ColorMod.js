@@ -29,12 +29,11 @@ const ColorMod = ({ selectedColors = [], onChange }) => {
       </div>
       <div className="c-filter-color d-flex flex-wrap gap-2">
         {colors.map((color) => (
-          <div key={color.name} className="color-option">
+          <button key={color.name} className="color-option">
             <label
               className="color-label"
               style={{ cursor: 'pointer' }}
               onClick={() => handleColorChange(color.name)} // 點擊顏色更新篩選條件
-              tabIndex={0} // 確保支持鍵盤事件
               aria-label={`Select color ${color.name}`} // 讓輔助技術用戶知道選擇的顏色
             >
               <img src={color.src} alt={color.name} className="color-img" />
@@ -45,7 +44,7 @@ const ColorMod = ({ selectedColors = [], onChange }) => {
                 hidden // 隱藏原始的 checkbox
               />
             </label>
-          </div>
+          </button>
         ))}
       </div>
     </div>

@@ -327,10 +327,15 @@ export default function Header() {
                 <img width="16px" src="/images/header/x.svg" alt="關閉" />
               </button>
             </div>
-            <ul className="list-unstyled" onClick={() => setMenuOpen(false)}>
+            <ul className="list-unstyled">
               <li>
                 <Link href="/product/list">
-                  <div className="d-flex">
+                  <div
+                    className="d-flex"
+                    onClick={() => setMenuOpen(false)}
+                    role="button"
+                    tabIndex={0}
+                  >
                     <h6 className="h7 mb-0">ELECTRIC GUITARS</h6>
                     <p className="px-1 mb-0">/</p>
                     <p className="mb-0" style={{ fontWeight: 500 }}>
@@ -341,7 +346,12 @@ export default function Header() {
               </li>
               <li>
                 <Link href="/activity">
-                  <div className="d-flex">
+                  <div
+                    className="d-flex"
+                    onClick={() => setMenuOpen(false)}
+                    role="button"
+                    tabIndex={0}
+                  >
                     <h6 className="h7 mb-0">MUSIC FESTIVALS</h6>
                     <p className="px-1 mb-0">/</p>
                     <p className="mb-0" style={{ fontWeight: 500 }}>
@@ -352,7 +362,12 @@ export default function Header() {
               </li>
               <li>
                 <Link href="/rent">
-                  <div className="d-flex">
+                  <div
+                    className="d-flex"
+                    onClick={() => setMenuOpen(false)}
+                    role="button"
+                    tabIndex={0}
+                  >
                     <h6 className="h7 mb-0">RENTAL SERVICE</h6>
                     <p className="px-1 mb-0">/</p>
                     <p className="mb-0" style={{ fontWeight: 500 }}>
@@ -363,7 +378,12 @@ export default function Header() {
               </li>
               <li>
                 <Link href="/coupons">
-                  <div className="d-flex">
+                  <div
+                    className="d-flex"
+                    onClick={() => setMenuOpen(false)}
+                    role="button"
+                    tabIndex={0}
+                  >
                     <h6 className="h7 mb-0">SPECIAL EVENTS</h6>
                     <p className="px-1 mb-0">/</p>
                     <p className="mb-0" style={{ fontWeight: 500 }}>

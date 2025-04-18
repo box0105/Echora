@@ -2,7 +2,7 @@
 
 import DataTable from '../_components/DataTable'
 import TitleSearch from '../_components/TitleSearch'
-import FilterPanel from '../_components/FilterPanel'
+// import FilterPanel from '../_components/FilterPanel'
 
 export default function AdminActivity() {
   return (
@@ -12,7 +12,7 @@ export default function AdminActivity() {
       </div>
 
       <div className="b-sm-none b-filter-card card p-4 shadow-sm">
-        <FilterPanel />
+        <></>
       </div>
 
       <div className="card mt-4 shadow-sm">

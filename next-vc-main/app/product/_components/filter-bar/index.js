@@ -89,13 +89,19 @@ export default function FilterBar({
               >
                 清除篩選條件
               </button>
-              <img
-                width="16px"
-                src="/images/product/list/x.svg"
-                onClick={() => {
-                  setFilterOpen(false)
-                }}
-              />
+              <button
+                className="close-button"
+                style={{ background: 'none', border: 'none', padding: 0 }}
+                onClick={() => setFilterOpen(false)}
+                aria-label="Close filter"
+                tabIndex={0} // 使其可以通過鍵盤操作
+              >
+                <img
+                  width="16px"
+                  src="/images/product/list/x.svg"
+                  alt="Close filter"
+                />
+              </button>
             </div>
             <div className="g-filter-scroll">
               <div className="g-brand-sec">

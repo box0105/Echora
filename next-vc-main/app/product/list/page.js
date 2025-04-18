@@ -538,7 +538,7 @@ export default function ProductListPage(props) {
               </p>
               <div className="g-compare-boxes d-flex gap-3">
                 {selectedProducts.map((selectedProduct, index) => (
-                  <div
+                  <div key={index}
                     className="g-compare-box d-flex justify-content-center align-items-center position-relative"
                     onDragOver={(e) => e.preventDefault()}
                     onDrop={(e) => handleDrop(e, index)}

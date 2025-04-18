@@ -147,7 +147,6 @@ export default function Page() {
               <button
                 className=" d-flex mod-sel justify-content-end"
                 onClick={() => setIsOpen(true)}
-                role="button"
                 tabIndex="0"
               >
                 <img
