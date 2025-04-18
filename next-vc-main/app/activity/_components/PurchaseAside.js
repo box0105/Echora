@@ -65,6 +65,8 @@ export default function PurchaseAside({ data }) {
               }`}
               onClick={() => toggleTicketSelection(i)}
               style={{ cursor: 'pointer' }}
+              role="button" // 如果仍用 div，需加上 role="button"
+              tabIndex="0" // 如果仍用 div，需加上 tabIndex="0"
             >
               <h4>{ticket?.name}</h4>
               <div className="h4">
@@ -77,7 +79,10 @@ export default function PurchaseAside({ data }) {
           className="b-purchaseBtn b-btn b-load-btn w-100"
           onClick={onCart}
           disabled={!isFree}
-          style={{ cursor: !isFree ? 'not-allowed' : 'pointer', opacity: !isFree ? 0.5 : 1 }}
+          style={{
+            cursor: !isFree ? 'not-allowed' : 'pointer',
+            opacity: !isFree ? 0.5 : 1,
+          }}
         >
           加入購物車
         </button>

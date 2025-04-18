@@ -31,60 +31,72 @@ export default function IndexSection2(props) {
           </div>
         </div>
         <div className="row mb-2 w-100 ms-0">
-          <div
+          <button
             className="col-lg-7 col-6 m-section2-col m-section2-col1 m-section2-col5 m-anime g-btn"
             onClick={ () => {
               setCriteria(() => {
                 return { ...defaultCriteria, colorPids: [1] }
               })
             }}
+            role="button" 
+            tabIndex="0" 
+            aria-label="Select JSHINE曜彩系列"
           >
             <div className="m-section2-line d-flex flex-column justify-content-center">
               <h4>JSHINE</h4>
               <p>曜彩系列</p>
             </div>
-          </div>
-          <div 
-          className="col-lg-5 col-6 m-section2-col m-section2-col2 m-section2-col6 m-anime g-btn"
-          onClick={ () => {
+          </button>
+          <button 
+            className="col-lg-5 col-6 m-section2-col m-section2-col2 m-section2-col6 m-anime g-btn"
+            onClick={ () => {
               setCriteria(() => {
                 return { ...defaultCriteria, colorPids: [2] }
               })
             }}
+            role="button"
+            tabIndex="0"
+            aria-label="Select SUNRISE WOOD晨曦木韻系列"
           >
             <div className="m-section2-line d-flex flex-column justify-content-center">
               <h4>SUNRISE WOOD</h4>
               <p>晨曦木韻系列</p>
             </div>
-          </div>
+          </button>
         </div>
         <div className="row w-100 ms-0">
-          <div 
-          className="col-lg-5 col-6 m-section2-col m-section2-col3 m-section2-col5 m-anime g-btn"
-          onClick={ () => {
+          <button 
+            className="col-lg-5 col-6 m-section2-col m-section2-col3 m-section2-col5 m-anime g-btn"
+            onClick={ () => {
               setCriteria(() => {
                 return { ...defaultCriteria, colorPids: [3] }
               })
             }}
+            role="button"
+            tabIndex="0"
+            aria-label="Select GREY & WHITE石韻白系列"
           >
             <div className="m-section2-line d-flex flex-column justify-content-center">
               <h4>GREY &amp; WHITE</h4>
               <p>石韻白系列</p>
             </div>
-          </div>
-          <div 
-          className="col-lg-7 col-6 m-section2-col m-section2-col4 m-section2-col6 m-anime g-btn"
-          onClick={ () => {
+          </button>
+          <button 
+            className="col-lg-7 col-6 m-section2-col m-section2-col4 m-section2-col6 m-anime g-btn"
+            onClick={ () => {
               setCriteria(() => {
                 return { ...defaultCriteria, colorPids: [4] }
               })
             }}
+            role="button"
+            tabIndex="0"
+            aria-label="Select MIDNIGHT CITY夜晚城市系列"
           >
             <div className="m-section2-line d-flex flex-column justify-content-center">
               <h4>MIDNIGHT CITY</h4>
               <p>夜晚城市系列</p>
             </div>
-          </div>
+          </button>
         </div>
       </div>
     </>

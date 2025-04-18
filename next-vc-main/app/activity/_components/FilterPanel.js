@@ -47,11 +47,16 @@ export default function FilterPanel({ isOpen, onClose, onChange }) {
               })
               toastInfo('重設篩選條件')
             }}
+            aria-label="Clear all filters" // 新增 aria-label
           >
             清除篩選條件
           </button>
         </h4>
-        <button className="b-filter-close-btn b-btn-unstyled" onClick={onClose}>
+        <button
+          className="b-filter-close-btn b-btn-unstyled"
+          onClick={onClose}
+          aria-label="Close filter panel" // 新增 aria-label
+        >
           <i className="fa-solid fa-xmark" />
         </button>
       </div>

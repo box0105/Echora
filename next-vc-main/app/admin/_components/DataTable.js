@@ -161,13 +161,13 @@ export default function DataTable() {
                       >
                         <i className="fa-solid fa-pen-to-square" />
                       </Link>
-                      <Link
-                        className="text-secondary opacity-4"
-                        href="#"
+                      <button
+                        className="btn btn-link text-secondary opacity-4 p-0"
                         onClick={() => deleteActivity(act.id, act.name)}
+                        aria-label={`刪除活動 ${act.name}`}
                       >
                         <i className="fa-regular fa-trash-can" />
-                      </Link>
+                      </button>
                     </td>
                   </tr>
                 )

@@ -12,7 +12,7 @@ export default function ProductCard({ data = {}, removeFavItem }) {
   return (
     <>
       <div className="col p-2">
-        <div
+        <button
           className={`${styles['g-product-card']} position-relative`}
           onClick={() => {
             setFirstSkuId(data.product_sku_id)
@@ -78,7 +78,7 @@ export default function ProductCard({ data = {}, removeFavItem }) {
               <h6 className="m-0">加入購物車</h6>
             </button>
           </div>
-        </div>
+        </button>
       </div>
     </>
   )

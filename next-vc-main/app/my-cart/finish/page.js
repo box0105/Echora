@@ -26,8 +26,6 @@ export default function FinishPage() {
         console.log(data)
         return data
       } catch (err) {
-        setError(err.message)
-        console.log(err.message)
         return { status: 'fail' }
       }
     }
