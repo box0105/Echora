@@ -333,6 +333,11 @@ export default function Header() {
                   <div
                     className="d-flex"
                     onClick={() => setMenuOpen(false)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        setMenuOpen(false)
+                      }
+                    }}
                     role="button"
                     tabIndex={0}
                   >
@@ -349,6 +354,11 @@ export default function Header() {
                   <div
                     className="d-flex"
                     onClick={() => setMenuOpen(false)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        setMenuOpen(false)
+                      }
+                    }}
                     role="button"
                     tabIndex={0}
                   >
@@ -365,6 +375,11 @@ export default function Header() {
                   <div
                     className="d-flex"
                     onClick={() => setMenuOpen(false)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        setMenuOpen(false)
+                      }
+                    }}
                     role="button"
                     tabIndex={0}
                   >
@@ -381,6 +396,11 @@ export default function Header() {
                   <div
                     className="d-flex"
                     onClick={() => setMenuOpen(false)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        setMenuOpen(false)
+                      }
+                    }}
                     role="button"
                     tabIndex={0}
                   >

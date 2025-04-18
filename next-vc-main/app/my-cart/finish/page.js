@@ -8,7 +8,7 @@ import React, { useEffect } from 'react'
 import Link from 'next/link'
 
 // 自定義 Hook
-const useCoupon = (userId, couponId) => {
+const takeCoupon = (userId, couponId) => {
   useEffect(() => {
     const applyCoupon = async () => {
       try {
@@ -42,7 +42,7 @@ export default function FinishPage() {
     console.log(couponId)
 
     // 使用自定義 Hook
-    useCoupon(userId, couponId)
+    takeCoupon(userId, couponId)
 
     localStorage.removeItem('coupon')
   }, [])
