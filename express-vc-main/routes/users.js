@@ -104,6 +104,7 @@ router.post('/register', async (req, res) => {
 
 // 登入會員
 router.post('/login', async (req, res) => {
+  console.log('Received body:', req.body) // 新增這行看看
   const { email, password } = req.body
 
   if (!email || !password) {
@@ -185,7 +186,7 @@ router.post('/login', async (req, res) => {
     console.log(err)
     res.status(400).json({
       status: 'error',
-      message: err.message || '登入失敗',
+      message: err.message,
     })
   }
 })
