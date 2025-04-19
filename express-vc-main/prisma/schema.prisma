@@ -41,6 +41,7 @@ model User {
   // 關聯: User:Product = n:m 透過 Favorite
   favorite       favorite[]
   usercoupons    UserCoupons[]
+  @@map("user")
 }
 
 model favorite {
