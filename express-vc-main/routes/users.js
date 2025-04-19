@@ -183,10 +183,10 @@ router.post('/login', async (req, res) => {
       },
     })
   } catch (err) {
-    console.log(err)
+    console.error('[Login Error]', err, 'Message:', err.message)
     res.status(400).json({
       status: 'error',
-      message: err.message,
+      message: err.message || '登入失敗',
     })
   }
 })
