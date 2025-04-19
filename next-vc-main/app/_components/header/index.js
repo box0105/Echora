@@ -4,7 +4,6 @@ import '../../product/list/list.scss'
 import CartOffcanvas from '../cart-offcanvas'
 import { useMyCart } from '@/hooks/use-cart'
 import { useActivity } from '@/hooks/use-activity'
-import { useRent } from '@/hooks/use-rent'
 import { useRouter, usePathname } from 'next/navigation'
 import { useProductState } from '@/services/rest-client/use-products'
 import { useState, useEffect, useRef } from 'react'
@@ -77,7 +76,6 @@ export default function Header() {
   const { criteria, setCriteria, defaultCriteria } = useProductState()
   const isFirstRender = useRef(true) // 追蹤是否為初次渲染
   const { updateQueryParams, deleteQueryParams } = useActivity()
-  const { query, setQuery } = useRent()
 
   const handleSearch = (e) => {
     if (e.key === 'Enter') {
