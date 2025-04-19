@@ -27,7 +27,7 @@ export default function ActivityDetailPage() {
 
   // Fetch Data
   const { data: acts, isLoading } = useFetch(
-    `https://echora-kwvs.onrender.com/api/activities/`
+    `https://echora-kwvs.onrender.com/api/activities`
   )
   const act = acts?.find((a) => a.id === activityId)
 
@@ -35,6 +35,10 @@ export default function ActivityDetailPage() {
   const [isInfoOpen, setIsInfoOpen] = useState(false)
 
   if (isLoading) return <h3>網頁載入中，請稍後...</h3>
+  // 抓不到資料 or 找不到該活動
+  if (error || !act) {
+    return <h3>很抱歉，找不到該活動資料。</h3>
+  }
 
   return (
     <div className="b-header-padding">

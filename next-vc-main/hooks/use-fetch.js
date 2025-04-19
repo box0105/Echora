@@ -15,6 +15,7 @@ export function useFetch(url, options) {
 
       if (result.status === 'fail') {
         setError(result.error)
+        setIsLoading(false)
         console.log(result.error);
         return
       }
