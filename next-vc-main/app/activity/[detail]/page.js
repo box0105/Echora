@@ -43,8 +43,6 @@ export default function ActivityDetailPage() {
   return (
     <div className="b-header-padding">
       <div className="b-container b-detail-page">
-        {/* 開發測試 */}
-        {/* <pre>{JSON.stringify(act, null, 2)}</pre> */}
         <HeroSection images={act?.media} />
 
         <main>

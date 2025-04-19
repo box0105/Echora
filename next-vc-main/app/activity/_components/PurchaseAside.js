@@ -59,6 +59,7 @@ export default function PurchaseAside({ data }) {
         <div className="row row-cols-1 gy-2">
           {tickets.map((ticket, i) => (
             <button
+              type="button"
               key={ticket?.id}
               className={`b-ticket col d-flex justify-content-between align-items-center pt-3 pb-2 ${
                 selectedTickets.has(i) ? 'active' : ''
@@ -74,6 +75,7 @@ export default function PurchaseAside({ data }) {
           ))}
         </div>
         <button
+          type="submit"
           className="b-purchaseBtn b-btn b-load-btn w-100"
           onClick={onCart}
           disabled={!isFree}

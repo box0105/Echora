@@ -11,9 +11,9 @@ export default function AdminActivity() {
         <TitleSearch />
       </div>
 
-      <div className="b-sm-none b-filter-card card p-4 shadow-sm">
-        <></>
-      </div>
+      {/* <div className="b-sm-none b-filter-card card p-4 shadow-sm">
+        <FilterPanel/>
+      </div> */}
 
       <div className="card mt-4 shadow-sm">
         <DataTable />
