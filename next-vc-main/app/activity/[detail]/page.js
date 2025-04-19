@@ -26,7 +26,7 @@ export default function ActivityDetailPage() {
   // const activityId = Number(searchParams?.get('id'))
 
   // Fetch Data
-  const { data: acts, isLoading } = useFetch(
+  const { data: acts, isLoading, error } = useFetch(
     `https://echora-kwvs.onrender.com/api/activities`
   )
   const act = acts?.find((a) => a.id === activityId)
@@ -37,7 +37,7 @@ export default function ActivityDetailPage() {
   if (isLoading) return <h3>網頁載入中，請稍後...</h3>
   // 抓不到資料 or 找不到該活動
   if (error || !act) {
-    return <h3>很抱歉，找不到該活動資料。</h3>
+    return <h3>很抱歉，找不到該活動資料。{error}</h3>
   }
 
   return (
