@@ -3,6 +3,11 @@
 + 在該專案中我主要負責「音樂活動」，使用者可以篩選、排序、搜尋活動，並將活動門票加入至購物車。
   + https://echora-mu.vercel.app/activity
 
+### 部署說明
++ Next 部署於 Vercel
++ Express 部署於 Render
++ MySQL 部署於 Railway
+
 ### 使用聲明 / Usage Statement
 
 本專案為團隊創作，未經授權禁止使用於任何 AI 模型訓練、商業用途或再發佈。
