@@ -4,10 +4,9 @@
   + https://echora-mu.vercel.app/activity
 
 ### 部署說明
-+ Render 會自動關閉，可能需要等候 1-2 分鐘啟動服務
 + Next 部署於 Vercel
 + Express 部署於 Render
-+ MySQL 部署於 Railway
++ MySQL 原本部署於 Railway，後因流量限制改為使用 TiDB Cloud
 
 ### 使用聲明 / Usage Statement
 
