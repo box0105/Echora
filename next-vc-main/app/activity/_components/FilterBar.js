@@ -31,7 +31,7 @@ export default function FilterBar({ actNum, onOpen, onChange }) {
           <div className="container-fluid d-flex justify-content-between p-0">
             <div className="g-left d-flex align-items-center">
               {/* 商品數量 */}
-              <h6 className="g-amount mb-0">{actNum} 項活動</h6>
+              <h6 className="g-amount mb-0">{actNum | '0'} 項活動</h6>
               {/* 篩選 */}
               <button
                 className="b-btn-unstyled g-fliter d-sm-flex d-none"

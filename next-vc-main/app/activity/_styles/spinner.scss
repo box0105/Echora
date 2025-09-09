@@ -1,0 +1,14 @@
+.spinner {
+  border: 4px solid #f3f3f3; /* 淺灰背景 */
+  border-top: 4px solid #3498db; /* 旋轉的藍色部分 */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: auto; /* 置中 */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

@@ -11,6 +11,7 @@ import FilterBar from './_components/FilterBar'
 import FilterPanel from './_components/FilterPanel'
 import HeroSection from './_components/HeroSection'
 import { toastInfo } from '@/hooks/use-toast'
+import Spinner from './_components/Spinner'
 
 export default function ActivityPage() {
   // 從 ActivityContext 取出 Data, sort & filter & search
@@ -24,7 +25,15 @@ export default function ActivityPage() {
   // Filter Aside Switch
   const [isFilterOpen, setIsFilterOpen] = useState(false)
 
-  if (isLoading) return <h3>網頁載入中，請稍後...</h3>
+  if (isLoading) {
+    return (
+      <div style={{ padding: '56px 0', textAlign: 'center' }}>
+        <Spinner />
+        <p>資料載入中...</p>
+      </div>
+    )
+  }
+  
   return (
     <div className="b-header-padding">
       <div className="b-container b-table-page px-0 ">
