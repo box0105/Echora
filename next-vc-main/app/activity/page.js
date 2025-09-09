@@ -25,15 +25,8 @@ export default function ActivityPage() {
   // Filter Aside Switch
   const [isFilterOpen, setIsFilterOpen] = useState(false)
 
-  if (isLoading) {
-    return (
-      <div style={{ padding: '56px 0', textAlign: 'center' }}>
-        <Spinner />
-        <p>資料載入中...</p>
-      </div>
-    )
-  }
-  
+  if (isLoading) return <Spinner />
+
   return (
     <div className="b-header-padding">
       <div className="b-container b-table-page px-0 ">
