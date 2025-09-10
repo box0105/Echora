@@ -4,6 +4,7 @@ import { resolve } from 'node:path'
 
 import { PrismaClient } from '@prisma/client'
 import { successResponse, errorResponse } from '../lib/utils.js'
+import { timeStamp } from 'node:console'
 
 const router = express.Router()
 const prisma = new PrismaClient()
@@ -160,6 +161,11 @@ router.get('/options', async (req, res) => {
     errorResponse(res, error)
   }
 })
+
+// For Timerbot call to awake website
+router.get("/health", (req, res) => {
+  successResponse(res, { timeStamp: new Date() } )
+});
 
 // Read One data
 router.get('/:id', async (req, res) => {
