@@ -2,7 +2,7 @@
 //// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 //// ------------------------------------------------------
 
-Table User {
+Table user {
   id Int [pk, increment]
   username String [not null]
   password String [not null]
@@ -24,7 +24,7 @@ Table User {
 }
 
 Table favorite {
-  user User [not null]
+  user user [not null]
   userId Int [not null]
   productSkuId String [not null]
 
@@ -124,7 +124,7 @@ Table CouponType {
 Table UserCoupons {
   id Int [pk, increment]
   userId Int [not null]
-  user User [not null]
+  user user [not null]
   couponId Int [not null]
   coupon Coupon [not null]
   couponTypeId Int [not null]
@@ -289,11 +289,11 @@ Table Stores {
   rents Rent [not null]
 }
 
-Ref: favorite.userId > User.id
+Ref: favorite.userId > user.id
 
 Ref: Coupon.typeId > CouponType.id
 
-Ref: UserCoupons.userId > User.id
+Ref: UserCoupons.userId > user.id
 
 Ref: UserCoupons.couponId > Coupon.id
 
