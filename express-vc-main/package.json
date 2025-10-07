@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./api/index.js",
     "dev": "nodemon ./api/index.js",
-    "build": "prisma generate && prisma db push --force-reset && prisma db seed",
+    "build": "npx prisma generate && npx prisma db push --force-reset && npx prisma db seed",
     "debug": "DEBUG=express:* node ./api/index.js",
     "debug-win": "set DEBUG=express:* & node ./api/index.js",
     "lint-js": "export TIMING=1 || set TIMING=1&& eslint --ext .js,.jsx,.ts,.tsx prisma/seed.js --cache --cache-strategy metadata"
