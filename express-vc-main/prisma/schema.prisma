@@ -6,20 +6,11 @@ generator dbml {
   provider = "prisma-dbml-generator"
 }
 
-// local dev with mysql
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
-// vercel deploy with postgresql
-// datasource db {
-//   provider  = "postgresql"
-//   url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
-//   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
-// }
-
-//以下為會員部分
 model User {
   id             Int           @id @default(autoincrement())
   username       String
@@ -31,28 +22,23 @@ model User {
   city           String?
   district       String?
   address        String?
-  // 關聯 User:Profile = 1:1 
   emailValidated Boolean       @default(false) @map("email_validated")
   googleUid      String?       @unique @map("google_uid")
   avatar         String?
   failedAttempts Int           @default(0) @map("failed_attempts")
   isLocked       Boolean       @default(false) @map("is_locked")
   lockUntil      DateTime?     @map("lock_until")
-  // 關聯: User:Product = n:m 透過 Favorite
-  favorite       favorite[]
   usercoupons    UserCoupons[]
+  favorite       favorite[]
+
   @@map("user")
 }
 
 model favorite {
-  // 關聯: User:userLike = 1:n 
-  user         User   @relation(fields: [userId], references: [id])
   userId       Int    @map("user_id")
-  // 關聯: Product:userLike = 1:n 
-  // product   Product @relation(fields: [productSkuId], references: [id])
   productSkuId String @map("product_sku_id") @db.VarChar(20)
+  user         User   @relation(fields: [userId], references: [id])
 
-  // 複合主鍵
   @@id([userId, productSkuId])
 }
 
@@ -108,14 +94,11 @@ model Product {
   price         Int      @default(0)
   discountPrice Int?     @map("discount_price")
   createdAt     DateTime @default(now()) @map("created_at")
-  // favorite      favorite[]
 
   @@map("product")
 }
 
 model ProductSku {
-  // id        Int    @id @default(autoincrement())
-  //id 改為1-1, 1-2, 1-3 (productId-colorId)
   id        String @id @db.VarChar(20)
   productId Int    @map("product_id")
   name      String @db.VarChar(100)
@@ -126,7 +109,6 @@ model ProductSku {
 }
 
 model Spec {
-  // id        Int    @id @default(autoincrement())
   productId    Int     @id @map("product_id")
   name         String  @db.VarChar(100)
   neckPickup   String? @map("neck_pickup") @db.VarChar(100)
@@ -138,22 +120,22 @@ model Spec {
   @@map("spec")
 }
 
-// 問題:開啟關聯部分無法寫入資料
 model Coupon {
   id          Int           @id @default(autoincrement())
   name        String
-  code        String?       @unique // 優惠券代碼 (例如：SUMMER20)
-  typeId      Int //type fk
-  type        CouponType    @relation(fields: [typeId], references: [id]) // 優惠券類型 (關係)
-  discount    Int // 折扣金額或百分比 (根據 discount_type 決定)
-  minPurchase Decimal? //最低消費金額
-  description String? // 優惠券描述 (nullable)
+  code        String?       @unique
+  typeId      Int
+  discount    Int
+  minPurchase Decimal?
+  description String?
   startTime   DateTime
   endTime     DateTime
   isDelete    Boolean       @default(false)
+  type        CouponType    @relation(fields: [typeId], references: [id])
   usercoupons UserCoupons[]
 
-  @@index([code]) // 建立 code 索引
+  @@index([code])
+  @@index([typeId], map: "Coupon_typeId_fkey")
 }
 
 model CouponType {
@@ -167,47 +149,42 @@ model CouponType {
 model UserCoupons {
   id           Int        @id @default(autoincrement())
   userId       Int
-  user         User       @relation(fields: [userId], references: [id])
   couponId     Int
-  coupon       Coupon     @relation(fields: [couponId], references: [id])
   couponTypeId Int
-  couponType   CouponType @relation(fields: [couponTypeId], references: [id])
   claimed      Boolean    @default(true)
   isDelete     Boolean    @default(false)
+  coupon       Coupon     @relation(fields: [couponId], references: [id])
+  couponType   CouponType @relation(fields: [couponTypeId], references: [id])
+  user         User       @relation(fields: [userId], references: [id])
 
   @@index([couponId])
   @@index([userId])
   @@index([couponTypeId])
 }
 
-/**
- * Activity box Start
- */
-
 model Activity {
-  id             Int              @id @default(autoincrement())
-  name           String           @db.VarChar(255)
-  // 活動類別 n:1
-  category_id    Int              @map("category_id")
-  category       ActivityCategory @relation(fields: [category_id], references: [id])
-  // 音樂類別 n:1
+  id             Int                  @id @default(autoincrement())
+  name           String               @db.VarChar(255)
+  category_id    Int                  @map("category_id")
   music_genre_id Int
-  genre          ActivityGenre    @relation(fields: [music_genre_id], references: [id])
   date_start     DateTime
   date_end       DateTime?
   signup_start   DateTime?
   signup_end     DateTime?
-  city           String           @db.VarChar(255)
-  dist           String           @db.VarChar(255)
-  address        String           @db.VarChar(255)
+  city           String               @db.VarChar(255)
+  dist           String               @db.VarChar(255)
+  address        String               @db.VarChar(255)
   zipcode        Int
-  intro          String           @db.Text
-  media          String           @db.Text // 多個照片路徑
+  intro          String               @db.Text
+  media          String               @db.Text
+  category       ActivityCategory     @relation(fields: [category_id], references: [id])
+  genre          ActivityGenre        @relation(fields: [music_genre_id], references: [id])
+  article        ActivityArticle[]
+  lineup         ActivityLineup[]
+  type           ActivityTicketType[]
 
-  // 1:n
-  lineup  ActivityLineup[]
-  article ActivityArticle[]
-  type    ActivityTicketType[]
+  @@index([category_id], map: "Activity_category_id_fkey")
+  @@index([music_genre_id], map: "Activity_music_genre_id_fkey")
 }
 
 model ActivityCategory {
@@ -225,17 +202,21 @@ model ActivityGenre {
 model ActivityLineup {
   id          Int      @id @default(autoincrement())
   activity_id Int
-  activity    Activity @relation(fields: [activity_id], references: [id])
   bands       String   @db.VarChar(255)
+  activity    Activity @relation(fields: [activity_id], references: [id])
+
+  @@index([activity_id], map: "ActivityLineup_activity_id_fkey")
 }
 
 model ActivityArticle {
   id          Int      @id @default(autoincrement())
   activity_id Int
-  activity    Activity @relation(fields: [activity_id], references: [id])
   title       String   @db.VarChar(255)
   content     String   @db.Text
-  images      String?   @db.Text // 多個照片路徑
+  images      String?  @db.Text
+  activity    Activity @relation(fields: [activity_id], references: [id])
+
+  @@index([activity_id], map: "ActivityArticle_activity_id_fkey")
 }
 
 model ActivityTicketType {
@@ -245,30 +226,28 @@ model ActivityTicketType {
   stock       Int
   price       Int
   activity    Activity @relation(fields: [activity_id], references: [id])
+
+  @@index([activity_id], map: "ActivityTicketType_activity_id_fkey")
 }
 
-/**
- * Activity box End
- */
-
 model MyOrder {
-  id              Int      @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
+  id              Int      @id @default(autoincrement())
   userId          Int?
   orderNumber     String   @unique
   recipient       String
   phone           String
   email           String
-  shippingAddress String // 配送地址，儲存訂單的配送地址
+  shippingAddress String
   shippingMethod  String
   paymentMethod   String
   cost            String
   coupon          String
   totalAmount     String
-  createdAt       DateTime @default(now()) // 訂單創建時間
+  createdAt       DateTime @default(now())
 }
 
 model MyOrderItem {
-  id       Int     @id @default(autoincrement()) // 訂單唯一識別碼，自動遞增
+  id       Int     @id @default(autoincrement())
   orderId  Int
   name     String
   rentDate String?
@@ -287,23 +266,26 @@ model Rent {
   level       Int
   description String?
   rentBrandId Int?
-  rentBrand   RentBrand?      @relation(fields: [rentBrandId], references: [id])
-  rentColors  RentItemColor[]
   stores_id   Int?
-  stores      Stores?         @relation(fields: [stores_id], references: [id])
   price       Int             @default(0)
   RentList_id Int?
-  RentList    RentList?       @relation(fields: [RentList_id], references: [id])
   time_start  DateTime?
   time_end    DateTime?
   created_at  DateTime        @default(now())
-  // OrderItem   OrderItem[]
+  RentList    RentList?       @relation(fields: [RentList_id], references: [id])
+  rentBrand   RentBrand?      @relation(fields: [rentBrandId], references: [id])
+  stores      Stores?         @relation(fields: [stores_id], references: [id])
+  rentColors  RentItemColor[]
+
+  @@index([RentList_id], map: "Rent_RentList_id_fkey")
+  @@index([rentBrandId], map: "Rent_rentBrandId_fkey")
+  @@index([stores_id], map: "Rent_stores_id_fkey")
 }
 
 model RentBrand {
   id    Int    @id @default(autoincrement())
   name  String
-  rents Rent[] // 一個品牌可以有多個租賃物品
+  rents Rent[]
 }
 
 model RentColor {
@@ -319,6 +301,8 @@ model RentItemColor {
   colorId Int    @map("RentColor_id")
   stock   Int    @default(0)
   Rent    Rent   @relation(fields: [rentId], references: [id])
+
+  @@index([rentId], map: "RentItemColor_rentId_fkey")
 }
 
 model RentList {
@@ -346,5 +330,5 @@ model Stores {
   name          String @unique
   address       String @unique
   address_phone String @default("")
-  rents         Rent[] // 關聯到 Rent 表
+  rents         Rent[]
 }
